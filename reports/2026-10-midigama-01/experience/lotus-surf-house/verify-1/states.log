@@ -1,0 +1,33 @@
+== JS off
+hosts [ 'lotus-surf-house.os1.workers.dev' ]
+== Reduced motion
+{ anims: [] }
+== JSON blocked
+heightBefore 10807 {"cls":"fc off","nowVisible":false,"head":"","linkVisible":true,"linkText":"See today's forecast for Lazy Left on Rosa","iframeSrc":null,"iframeVisible":false,"h":10807,"y":8859,"fcTop":90}
+== Widget blocked
+heightBefore 10807 {"cls":"fc live","nowVisible":true,"head":"0.9–1.4 m","linkVisible":true,"linkText":"See today's forecast for Lazy Left on Rosa","iframeSrc":null,"iframeVisible":false,"h":10807,"y":8859,"fcTop":90}
+== JSON stale (2 days)
+heightBefore 10807 {"cls":"fc off","nowVisible":false,"head":"","linkVisible":true,"linkText":"See today's forecast for Lazy Left on Rosa","iframeSrc":null,"iframeVisible":false,"h":10807,"y":8859,"fcTop":90}
+== Interactions phone
+bar at top { cls: 'bar', top: 851 }
+hero {"h1":"Lotus Surf House","text":"Lotus Surf House\n\nA guesthouse in Midigama, on the south coast of Sri Lanka.\n\nCheck dates on Booking.com\nCall +94 77 464 7541","btns":[{"t":"Check dates on Booking.com","h":54,"w":350,"bottom":750,"href":"https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html","target":""},{"t":"Call +94 77 464 7541","h":50,"w":350,"bottom":808,"href":"tel:+94774647541","target":""}]}
+small targets [{"t":"Photo 1","w":36,"h":44},{"t":"Photo 2","w":24,"h":44},{"t":"Photo 3","w":24,"h":44},{"t":"Photo 4","w":24,"h":44},{"t":"Photo 5","w":24,"h":44},{"t":"Photo 6","w":24,"h":44},{"t":"Previous review","w":40,"h":44},{"t":"Review 1","w":30,"h":44},{"t":"Review 2","w":15,"h":44},{"t":"Review 3","w":15,"h":44},{"t":"Review 4","w":15,"h":44},{"t":"Review 5","w":15,"h":44},{"t":"Review 6","w":15,"h":44},{"t":"Review 7","w":15,"h":44},{"t":"Review 8","w":15,"h":44},{"t":"Review 9","w":15,"h":44},{"t":"Review 10","w":15,"h":44},{"t":"Review 11","w":15,"h":44},{"t":"Review 12","w":15,"h":44},{"t":"Next review","w":40,"h":44}]
+links {"#upstairs":2,"#top":1,"#guests":1,"#getting-here":1,"https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html":9,"tel:+94774647541":6,"https://www.google.com/maps/place/?q=place_id:ChIJBR_cQfoV4ToRQhXcrYmPyU0":3,"https://rosa.surf/spot/lazy-left":2}
+shows 1
+before { left: 0, cur: 0 }
+after next { left: 350, cur: 1 }
+after swipe { left: 700, cur: 2 }
+quote box h 523 523 quotes 12
+headings ["H2:The King Rooms","H3:King Room with Balcony","H2:Up on the roof","H2:In the garden","H3:Standard Double or Twin Room with Garden","H3:Double or Twin Room with Garden View","H3:Deluxe Queen Room","H2:Yelum","H2:Breakfast","H2:Guests","H2:Getting here","H3:Good to know"]
+== Booking tap
+landed https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html?chal_t=1793999673924&force_referer=https%3A%2F%2Flotus-surf-house.os1.workers.dev%2F newTab false ms 3543
+title Lotus Surf House, Midigama (updated prices 2027)
+body Midigama | Select dates | Beach |   | Lotus Surf House | Accessibility links | Skip to description | Skip to facilities | Skip to rooms | Skip to policies | Indhana Road, Midigama—Excellent location—Show on map | 9.0 | Rated: Superb 9, based on 125 reviews Expand ratings and reviews section | Superb · 125 reviews | 1/42 | Exceptional breakfast | Continental | Exceptional free WiFi | Rated 10.0 by guests | Choose dates to see prices | Check-in date | Sat 7 Nov 2026 | Check-out date | Sun 8 Nov 2026 | Adults | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 
+== Google listing
+https://www.google.com/maps/search/?api=1&query=Lotus+Surf+House+Midigama&hl=en
+ |  | Lotus Surf House |  | Open in the app | Your location |  | Lotus Surf House | 4.9 | (79)·3-star hotel |  | Directions |  | Start |  | Call |  | Save |  | Share | See all 150 photos in the app | Continue |  | Traffic |  | Transit |  | Bicycling |  | Satellite |  | Terrain |  | Wildfires |  | Map movement controls |  | Real-time location sharing |  | You
+== Laptop
+H 9251
+focus { t: 'Rooms', outline: 'solid 2px rgb(184, 67, 28)' }
+{"cls":"fc live","nowVisible":true,"head":"0.9–1.4 m","linkVisible":false,"linkText":"","iframeSrc":"https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric","iframeVisible":true,"h":9251,"y":7808,"fcTop":90}
+console []

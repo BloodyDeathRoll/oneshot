@@ -17,7 +17,7 @@
 //               "neutral" open sea, sky, or a detail with no landmark AND no
 //                         other place named in its title or credit
 //
-// A build fails if an image a mockup uses has place_ok unset, or is "neutral"
+// A build fails if an image a mockup or the final site uses has place_ok unset, or is "neutral"
 // while its title or credit names a place that is not the locality.
 //
 // Which images a mockup uses: its photos.json when it has one (an Astro project,
@@ -43,6 +43,8 @@ const LOCALITY = {
   'layday-surf-ahangama':          { town: 'Ahangama', near: ['ahangama', 'kabalana', 'welhengoda', 'warnagiri'] },
   'the-lavish-haven':              { town: 'Ahangama', near: ['ahangama', 'kabalana', 'piyadigama'] },
   'cheeky-monkey':                 { town: 'Midigama', near: ['midigama', 'kumbalgama'] },
+  'lotus-surf-house':              { town: 'Midigama', near: ['midigama', 'kumbalgama'] },
+  'coconut-surf-inn-guest-house-and-restaurant': { town: 'Gurubebila', near: ['gurubebila', 'midigama'] },
 };
 /* Named places on this coast that are NOT the locality. Seen in a title or a
    credit on a page about somewhere else, each one is a false claim. */
@@ -51,28 +53,37 @@ const ELSEWHERE = ['hikkaduwa', 'thiranagama', 'weligama', 'welligama', 'mirissa
                    'hambantota', 'colombo', 'arugam', 'trincomalee', 'jaffna'];
 
 let fails = 0, checked = 0;
+const noStock = [];
+const FINAL = 'final';
+const has = (text, id) => new RegExp(id.replace(/[^\w-]/g, '\\$&') + '(?!\\d)').test(text);
 for (const slug of fs.readdirSync(path.join(root, 'sites')).sort()) {
   if (only.length && !only.includes(slug)) continue;
   const mdir = path.join(root, 'sites', slug, 'mockups');
-  if (!fs.existsSync(mdir)) continue;
+  const fdir = path.join(root, 'sites', slug, 'final');
+  if (!fs.existsSync(mdir) && !fs.existsSync(fdir)) continue;
   const stockFile = path.join(root, 'dossier', slug, 'stock', 'index.json');
-  if (!fs.existsSync(stockFile)) continue;
+  if (!fs.existsSync(stockFile)) { noStock.push(slug); continue; }
   const stock = new Map(JSON.parse(fs.readFileSync(stockFile, 'utf8')).map((s) => [s.id, s]));
   // a fork (<slug>-v2, <slug>-<variant>) is the same business in the same place
   const loc = LOCALITY[slug] ?? LOCALITY[Object.keys(LOCALITY).find((k) => slug.startsWith(k + '-'))];
   if (!loc) { console.log(`FAIL  ${slug}: no locality recorded in tools/check-places.mjs`); fails++; continue; }
 
-  for (const v of fs.readdirSync(mdir)) {
+  const variants = fs.existsSync(mdir) ? fs.readdirSync(mdir) : [];
+  for (const v of fs.existsSync(fdir) ? [...variants, FINAL] : variants) {
     const pf = path.join(mdir, v, 'photos.json');
     const page = path.join(mdir, v, 'dist', 'index.html');
     let uses;
-    if (fs.existsSync(pf)) uses = JSON.parse(fs.readFileSync(pf, 'utf8'));
+    if (v === FINAL) {
+      // The built site: its content, schema gaps and photo list say which stock files it carries.
+      const text = ['src/tenant/content.json', 'src/gaps/gaps.json', 'photos.json']
+        .map((f) => path.join(fdir, f)).filter((f) => fs.existsSync(f)).map((f) => fs.readFileSync(f, 'utf8')).join('\n');
+      uses = [...stock.keys()].filter((id) => has(text, id)).map((id) => ({ id, shader: false, fromPage: true }));
+    } else if (fs.existsSync(pf)) uses = JSON.parse(fs.readFileSync(pf, 'utf8'));
     else if (fs.existsSync(page)) {
       const html = fs.readFileSync(page, 'utf8');
       const scripts = [...html.matchAll(/<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)].map((m) => m[1]).join('\n');
       const imgDir = path.join(mdir, v, 'dist', 'img');
       const names = fs.existsSync(imgDir) ? fs.readdirSync(imgDir).join('\n') : '';
-      const has = (text, id) => new RegExp(id.replace(/[^\w-]/g, '\\$&') + '(?!\\d)').test(text);
       uses = [...stock.keys()].filter((id) => has(html, id) || has(names, id))
         .map((id) => ({ id, shader: has(scripts, id), fromPage: true }));
     } else continue;
@@ -109,5 +120,6 @@ for (const slug of fs.readdirSync(path.join(root, 'sites')).sort()) {
     }
   }
 }
-console.log(`\n${checked} borrowed image use(s) checked · ${fails} failing mockup(s)`);
+if (noStock.length) console.log(`\nNo atmosphere images to check: ${noStock.join(', ')}`);
+console.log(`\n${checked} borrowed image use(s) checked · ${fails} failing page(s)`);
 process.exit(fails ? 1 : 0);

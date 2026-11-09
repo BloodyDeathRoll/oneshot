@@ -8,4 +8,4 @@ Optional polish (critics, none blocking): phone hero ~2/3 sky (move crop down so
 
 Facts to keep straight: the inn is Google 4.8 from 88; "Coconut Beach" 4.8/120 is the beach place (which wrongly carries the inn's phone). Rosa spot `weligama-west` (never `coconut-beach`, that is Arugam Bay). The restaurant has its own unclaimed Google listing (No 44 vs Booking's No.49). Pitch questions: WhatsApp/email, house number, prices/breakfast, AI-crawler policy.
 
-Review fixes (PR #68, 2026-11-06): pitch page and message corrected (room types, phone claim, forecast and season excepted from the sources line, rooms added to the owner's list). The proposal needs it. Score under rubric 0.3.2: 91.7, still a pass. **Not live until redeployed; redeploy before gate c.**
+Review fixes (PR #68, 2026-11-06): pitch page and message corrected (room types, phone claim, forecast and season excepted from the sources line, rooms added to the owner's list). The proposal needs it. Score under rubric 0.3.2: 91.7, still a pass. Proposal redeployed 2026-11-06 from main: version 549d09ed, all files byte-identical, noindex. The preview didn't change.

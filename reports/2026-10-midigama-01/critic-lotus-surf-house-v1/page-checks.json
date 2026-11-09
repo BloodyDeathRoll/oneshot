@@ -1,0 +1,620 @@
+{
+ "attribution": {
+  "390": {
+   "firstLoadRequests": 13,
+   "firstLoadThirdParty": 0,
+   "firstBytes": {
+    "t": 871329,
+    "by": {
+     "document": 19754,
+     "font": 57712,
+     "image": 793863
+    }
+   },
+   "top": [
+    "GET https://rosa-data-opal.vercel.app/data/spots/lazy-left.json",
+    "HEAD https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric"
+   ],
+   "widget": [
+    "GET https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "GET https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&di",
+    "GET https://rosa-data-opal.vercel.app/data/spots/lazy-left.json",
+    "GET https://rosa.surf/favicon.svg",
+    "GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa",
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/Map",
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/Map",
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/Map",
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/Map",
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/Map",
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/Map"
+   ],
+   "embedBytes": {
+    "t": 122225,
+    "by": {
+     "fetch": 10064,
+     "document": 7861,
+     "stylesheet": 1234,
+     "image": 54083,
+     "font": 48983
+    }
+   },
+   "ownAfterBlockBytes": {
+    "t": 71812,
+    "by": {
+     "image": 71812
+    }
+   },
+   "cls": 0
+  },
+  "1440": {
+   "firstLoadRequests": 13,
+   "firstLoadThirdParty": 0,
+   "firstBytes": {
+    "t": 936880,
+    "by": {
+     "document": 19762,
+     "font": 57714,
+     "image": 859404
+    }
+   },
+   "top": [
+    "GET https://rosa-data-opal.vercel.app/data/spots/lazy-left.json",
+    "HEAD https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric"
+   ],
+   "widget": [
+    "GET https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "GET https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&di",
+    "GET https://rosa-data-opal.vercel.app/data/spots/lazy-left.json",
+    "GET https://rosa.surf/favicon.svg",
+    "GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa",
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/Map",
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/Map",
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/Map",
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/Map",
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/Map",
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/Map"
+   ],
+   "embedBytes": {
+    "t": 122168,
+    "by": {
+     "fetch": 10031,
+     "document": 7861,
+     "stylesheet": 1234,
+     "image": 54059,
+     "font": 48983
+    }
+   },
+   "ownAfterBlockBytes": {
+    "t": 336004,
+    "by": {
+     "image": 336004
+    }
+   },
+   "cls": 0
+  }
+ },
+ "walk": [
+  [
+   {
+    "y": 7596,
+    "top": 1353,
+    "rosaTop": 1778,
+    "rosaBottom": 2278,
+    "vh": 844,
+    "live": false,
+    "on": false,
+    "loading": null,
+    "src": false,
+    "ms": 8217
+   },
+   {
+    "y": 8356,
+    "top": 593,
+    "rosaTop": 1018,
+    "rosaBottom": 1518,
+    "vh": 844,
+    "live": true,
+    "on": true,
+    "loading": null,
+    "src": true,
+    "ms": 9127
+   },
+   {
+    "y": 9115,
+    "top": -166,
+    "rosaTop": 259,
+    "rosaBottom": 759,
+    "vh": 844,
+    "live": true,
+    "on": true,
+    "loading": null,
+    "src": true,
+    "ms": 9887
+   },
+   {
+    "y": 9875,
+    "top": -926,
+    "rosaTop": -501,
+    "rosaBottom": -1,
+    "vh": 844,
+    "live": true,
+    "on": true,
+    "loading": null,
+    "src": true,
+    "ms": 10605
+   },
+   {
+    "y": 10634,
+    "top": -1014,
+    "rosaTop": -589,
+    "rosaBottom": -89,
+    "vh": 844,
+    "live": true,
+    "on": true,
+    "loading": null,
+    "src": true,
+    "ms": 11325
+   }
+  ],
+  [
+   {
+    "y": 7596,
+    "top": 1353,
+    "rosaTop": 1778,
+    "rosaBottom": 2278,
+    "vh": 844,
+    "live": false,
+    "on": false,
+    "loading": null,
+    "src": false,
+    "ms": 7888
+   },
+   {
+    "y": 8356,
+    "top": 593,
+    "rosaTop": 1018,
+    "rosaBottom": 1518,
+    "vh": 844,
+    "live": true,
+    "on": true,
+    "loading": null,
+    "src": true,
+    "ms": 8731
+   },
+   {
+    "y": 9115,
+    "top": -166,
+    "rosaTop": 259,
+    "rosaBottom": 759,
+    "vh": 844,
+    "live": true,
+    "on": true,
+    "loading": null,
+    "src": true,
+    "ms": 9440
+   },
+   {
+    "y": 9875,
+    "top": -926,
+    "rosaTop": -501,
+    "rosaBottom": -1,
+    "vh": 844,
+    "live": true,
+    "on": true,
+    "loading": null,
+    "src": true,
+    "ms": 10145
+   },
+   {
+    "y": 10634,
+    "top": -1014,
+    "rosaTop": -589,
+    "rosaBottom": -89,
+    "vh": 844,
+    "live": true,
+    "on": true,
+    "loading": null,
+    "src": true,
+    "ms": 10890
+   }
+  ],
+  [
+   {
+    "y": 7596,
+    "top": 1353,
+    "rosaTop": 1778,
+    "rosaBottom": 2278,
+    "vh": 844,
+    "live": false,
+    "on": false,
+    "loading": null,
+    "src": false,
+    "ms": 7898
+   },
+   {
+    "y": 8356,
+    "top": 593,
+    "rosaTop": 1018,
+    "rosaBottom": 1518,
+    "vh": 844,
+    "live": true,
+    "on": true,
+    "loading": null,
+    "src": true,
+    "ms": 8739
+   },
+   {
+    "y": 9115,
+    "top": -166,
+    "rosaTop": 259,
+    "rosaBottom": 759,
+    "vh": 844,
+    "live": true,
+    "on": true,
+    "loading": null,
+    "src": true,
+    "ms": 9444
+   },
+   {
+    "y": 9875,
+    "top": -926,
+    "rosaTop": -501,
+    "rosaBottom": -1,
+    "vh": 844,
+    "live": true,
+    "on": true,
+    "loading": null,
+    "src": true,
+    "ms": 10171
+   },
+   {
+    "y": 10634,
+    "top": -1014,
+    "rosaTop": -589,
+    "rosaBottom": -89,
+    "vh": 844,
+    "live": true,
+    "on": true,
+    "loading": null,
+    "src": true,
+    "ms": 10884
+   }
+  ]
+ ],
+ "tap": {
+  "json_blocked_390": {
+   "hit": "A.btn btn-book bar-book",
+   "cy": 795,
+   "landed": "https://rosa.surf/spot/lazy-left"
+  },
+  "json_blocked_1440": {
+   "hit": "SPAN.",
+   "cy": 467,
+   "landed": "https://rosa.surf/spot/lazy-left"
+  },
+  "widget_blocked_390": {
+   "hit": "A.btn btn-book bar-book",
+   "cy": 795,
+   "landed": "https://rosa.surf/spot/lazy-left"
+  },
+  "widget_blocked_1440": {
+   "hit": "SPAN.",
+   "cy": 467,
+   "landed": "https://rosa.surf/spot/lazy-left"
+  },
+  "nojs_390": {
+   "landed": "https://rosa.surf/spot/lazy-left"
+  }
+ },
+ "axe": {
+  "390": {
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "nodes": [
+      {
+       "t": ".mark",
+       "s": "Element's background color could not be determined due to a pseudo element"
+      },
+      {
+       "t": "h1",
+       "s": "Element's background color could not be determined because element contains an image node"
+      },
+      {
+       "t": ".where",
+       "s": "Element's background color could not be determined because element contains an image node"
+      },
+      {
+       "t": ".btn-hero-call > span",
+       "s": "Element's background color could not be determined because element contains an image node"
+      },
+      {
+       "t": ".king-over > .floor-tag",
+       "s": "Element's background color could not be determined due to a pseudo element"
+      },
+      {
+       "t": "#h-king",
+       "s": "Element's background color could not be determined due to a pseudo element"
+      }
+     ]
+    }
+   ],
+   "passes": 27,
+   "errs": [],
+   "targets": [
+    {
+     "s": ".credit-rosa a",
+     "w": 218,
+     "h": 48,
+     "vis": "visible"
+    },
+    {
+     "s": ".fc-link",
+     "w": 350,
+     "h": 500,
+     "vis": "hidden"
+    },
+    {
+     "s": ".fc-rosa iframe",
+     "w": 350,
+     "h": 500,
+     "vis": "visible"
+    }
+   ],
+   "contrast": [
+    {
+     "s": ".credit-rosa a",
+     "size": "16px",
+     "ratio": 11.36
+    },
+    {
+     "s": ".nh",
+     "size": "64px",
+     "ratio": 11.36
+    },
+    {
+     "s": ".nh small",
+     "size": "19.2px",
+     "ratio": 5.68
+    },
+    {
+     "s": ".nd span:first-child",
+     "size": "15px",
+     "ratio": 11.36
+    },
+    {
+     "s": ".nd span:nth-child(2)",
+     "size": "15px",
+     "ratio": 5.68
+    },
+    {
+     "s": ".upd [data-f=upd]",
+     "size": "13.5px",
+     "ratio": 5.68
+    }
+   ]
+  },
+  "1440": {
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "nodes": [
+      {
+       "t": ".king-over > .floor-tag",
+       "s": "Element's background color could not be determined due to a pseudo element"
+      },
+      {
+       "t": "#h-king",
+       "s": "Element's background color could not be determined due to a pseudo element"
+      },
+      {
+       "t": ".king-lede",
+       "s": "Element's background color could not be determined due to a pseudo element"
+      }
+     ]
+    }
+   ],
+   "passes": 27,
+   "errs": [],
+   "targets": [
+    {
+     "s": ".credit-rosa a",
+     "w": 218,
+     "h": 26,
+     "vis": "visible"
+    },
+    {
+     "s": ".fc-link",
+     "w": 420,
+     "h": 500,
+     "vis": "hidden"
+    },
+    {
+     "s": ".fc-rosa iframe",
+     "w": 420,
+     "h": 500,
+     "vis": "visible"
+    }
+   ],
+   "contrast": [
+    {
+     "s": ".credit-rosa a",
+     "size": "16px",
+     "ratio": 11.36
+    },
+    {
+     "s": ".nh",
+     "size": "88px",
+     "ratio": 11.36
+    },
+    {
+     "s": ".nh small",
+     "size": "26.4px",
+     "ratio": 5.68
+    },
+    {
+     "s": ".nd span:first-child",
+     "size": "16px",
+     "ratio": 11.36
+    },
+    {
+     "s": ".nd span:nth-child(2)",
+     "size": "16px",
+     "ratio": 5.68
+    },
+    {
+     "s": ".upd [data-f=upd]",
+     "size": "13.5px",
+     "ratio": 5.68
+    }
+   ]
+  }
+ },
+ "keys": {
+  "390": {
+   "forward": [
+    {
+     "tag": "A",
+     "txt": "Forecast for Lazy Left by Rosa",
+     "outline": "solid 2px",
+     "cls": ""
+    },
+    {
+     "tag": "IFRAME",
+     "txt": "Rosa surf forecast - Lazy Left",
+     "outline": "none 3px",
+     "cls": ""
+    },
+    {
+     "tag": "A",
+     "txt": "Check dates on Booking.com",
+     "outline": "solid 2px",
+     "cls": "btn btn-book "
+    }
+   ],
+   "back": [
+    "IFRAME:Rosa surf forecast - Lazy Left",
+    "A:Forecast for Lazy Left by Rosa"
+   ]
+  },
+  "1440": {
+   "forward": [
+    {
+     "tag": "A",
+     "txt": "Forecast for Lazy Left by Rosa",
+     "outline": "solid 2px",
+     "cls": ""
+    },
+    {
+     "tag": "IFRAME",
+     "txt": "Rosa surf forecast - Lazy Left",
+     "outline": "none 3px",
+     "cls": ""
+    },
+    {
+     "tag": "A",
+     "txt": "Check dates on Booking.com",
+     "outline": "solid 2px",
+     "cls": "btn btn-book "
+    }
+   ],
+   "back": [
+    "IFRAME:Rosa surf forecast - Lazy Left",
+    "A:Forecast for Lazy Left by Rosa"
+   ]
+  }
+ },
+ "overflow": {
+  "320": {
+   "sw": 320,
+   "cw": 320,
+   "nhFits": {
+    "nh": 210,
+    "avail": 236
+   },
+   "textOverflow": 0
+  },
+  "360": {
+   "sw": 360,
+   "cw": 360,
+   "nhFits": {
+    "nh": 210,
+    "avail": 276
+   },
+   "textOverflow": 0
+  },
+  "390": {
+   "sw": 390,
+   "cw": 390,
+   "nhFits": {
+    "nh": 210,
+    "avail": 306
+   },
+   "textOverflow": 0
+  },
+  "768": {
+   "sw": 768,
+   "cw": 768,
+   "nhFits": {
+    "nh": 210,
+    "avail": 376
+   },
+   "textOverflow": 0
+  },
+  "1024": {
+   "sw": 1024,
+   "cw": 1024,
+   "nhFits": {
+    "nh": 216,
+    "avail": 356
+   },
+   "textOverflow": 0
+  },
+  "1440": {
+   "sw": 1440,
+   "cw": 1440,
+   "nhFits": {
+    "nh": 289,
+    "avail": 356
+   },
+   "textOverflow": 0
+  }
+ },
+ "noJsPage": {
+  "390": {
+   "text": 7668,
+   "booking": 9,
+   "tel": 6,
+   "firstBookingTop": 0,
+   "visibleImgs": 18,
+   "thirdParty": 0
+  },
+  "1440": {
+   "text": 7682,
+   "booking": 9,
+   "tel": 6,
+   "firstBookingTop": 10,
+   "visibleImgs": 18,
+   "thirdParty": 0
+  }
+ },
+ "reduced": {
+  "anims": 0,
+  "video": 0,
+  "canvas": 0,
+  "on": true
+ },
+ "heroTap": {
+  "label": "",
+  "landed": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+  "newTab": false
+ },
+ "widgetClick": {
+  "popup": "https://rosa.surf/spot/lazy-left",
+  "sameTab": "https://lotus-surf-house.os1.workers.dev/"
+ }
+}

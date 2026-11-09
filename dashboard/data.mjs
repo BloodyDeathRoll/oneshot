@@ -17,7 +17,7 @@ import { readActivity, assignments as toAssignments, team as readTeam, operatorF
 import { status as mediaStatus } from '../tools/media.mjs';
 import { readJsonlMerged, showMain, lsMain, mainSha, MAIN } from '../tools/origin.mjs';
 import { RUNS_DIR } from '../tools/run.mjs';
-import { handoffs as readHandoffs, ownerOf } from '../tools/handoff.mjs';
+import { handoffs as readHandoffs, ownerOf, previewFromNotes } from '../tools/handoff.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'dashboard');
@@ -265,6 +265,41 @@ function readCandidates() {
 // ---- build ------------------------------------------------------------------------------------
 // The ledger and activity are this checkout's lines plus origin/main's (tools/origin.mjs), so the
 // page shows what either operator has merged. `origin: false` reads this checkout only.
+// Critic lines → numbered rounds and post-pass verifications, each with its score when the note has one.
+// Scores are always out of 100 (rubric.md 0.3.2: the weighted sum × 100 ÷ 105). Older notes need help:
+//  - Dimension 8 raised the maximum sum to 105 at rubric 0.3.0 (2026-09-28), and totals stayed raw sums until
+//    0.3.2 reached main, even when the note says "/100". Those are converted here; the ledger stays as written.
+//  - Some headline only the critic's part (dimensions 1–7), so the total adds dimension 8, the lower visual
+//    score (/10) × 2.5. Cheeky Monkey's notes say "/75" for that part; it is out of 80.
+//  - A `passed` line that repeats the last round's score is that round, not another reading.
+const RAW_SUM_FROM = '2026-09-28', RAW_SUM_UNTIL = '2026-11-05T22:10:43Z';
+const out100 = (sum) => Math.round(sum * 1000 / 105) / 10;
+export function criticSeries(hist) {
+  const series = [];
+  hist.forEach((h, i) => {
+    if (h.agent !== 'critic') return;
+    const note = h.note ?? '';
+    const total = note.match(/\b(?:PASS|FAIL)\b[^0-9]{0,20}(\d+(?:\.\d+)?)\s*\/\s*100/)
+      ?? note.match(/\b(?:PASS|FAIL)\b\s+round\s+\d+:\s*(\d+(?:\.\d+)?)\s*\(>=/);
+    const part = note.match(/\b(?:PASS|FAIL)\b[^0-9]{0,20}(\d+(?:\.\d+)?)\s*\/\s*80\b/)
+      ?? note.match(/\bd1-7\s+(\d+(?:\.\d+)?)\s*\/\s*(?:75|80)\b/);
+    const vis = note.match(/visual-critic(?:\s+d8|\s+\d+\.\d+\.\d+)?\s+(\d+(?:\.\d+)?)\s*\/\s*10/)?.[1];
+    const exp = note.match(/experience-critic(?:\s+d8|\s+\d+\.\d+\.\d+)?\s+(\d+(?:\.\d+)?)\s*\/\s*10/)?.[1];
+    let score = null;
+    if (total) score = h.ts >= RAW_SUM_FROM && h.ts < RAW_SUM_UNTIL ? out100(Number(total[1])) : Number(total[1]);
+    else if (part && vis && exp) score = out100(Number(part[1]) + Math.min(vis, exp) * 2.5);
+    const round = h.to_state.match(/^critiqued\((\d+)\)$/)?.[1];
+    if (score == null && !round) return;
+    const kind = round ? 'round' : /verification/i.test(note) ? 'verification' : /pre-score/i.test(note) ? 'pre-score' : 'other';
+    const prev = series.at(-1);
+    if (h.to_state === 'passed' && kind === 'other' && prev?.kind === 'round' && prev.score === score) return;
+    const next = hist[i + 1]?.to_state;
+    const verdict = score == null ? null : note.match(/\b(PASS|FAIL)\b/)?.[1] ?? (next === 'passed' ? 'PASS' : next === 'failed' ? 'FAIL' : null);
+    series.push({ ts: h.ts, kind, round: round ? Number(round) : null, verdict, score, to: h.to_state });
+  });
+  return series;
+}
+
 export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin = true } = {}) {
   const ledgerAbs = ledgerPath.startsWith('/') ? ledgerPath : join(ROOT, ledgerPath);
   const ledger = origin && ledgerAbs === join(ROOT, 'ledger.jsonl') ? readJsonlMerged('ledger.jsonl') : readJsonl(ledgerPath);
@@ -322,22 +357,6 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     return { group: 'pipeline', label: state };
   }
 
-  // Critic lines → numbered rounds and post-pass verifications, each with its score when the note has one.
-  function criticSeries(hist) {
-    return hist.filter((h) => h.agent === 'critic').map((h) => {
-      // Scores are always out of 100. Notes from 2026-10 that headline the critic's part (dimensions 1–7,
-      // out of 80) are totalled per rubric.md 0.3.2: (+ dimension 8 = the lower visual score (/10) × 2.5) × 100 ÷ 105.
-      let m = h.note?.match(/\b(PASS|FAIL)\b[^0-9]{0,20}(\d+(?:\.\d+)?)\s*\/\s*100/);
-      const part = !m && h.note?.match(/\b(PASS|FAIL)\b[^0-9]{0,20}(\d+(?:\.\d+)?)\s*\/\s*80\b/);
-      const vis = h.note?.match(/visual-critic\s+(\d+(?:\.\d+)?)\s*\/\s*10/)?.[1];
-      const exp = h.note?.match(/experience-critic\s+(\d+(?:\.\d+)?)\s*\/\s*10/)?.[1];
-      if (part && vis && exp) m = [null, part[1], String(Math.round((Number(part[2]) + Math.min(vis, exp) * 2.5) * 1000 / 105) / 10)];
-      const round = h.to_state.match(/^critiqued\((\d+)\)$/)?.[1];
-      const kind = round ? 'round' : /verification/i.test(h.note ?? '') ? 'verification' : /pre-score/i.test(h.note ?? '') ? 'pre-score' : 'other';
-      return { ts: h.ts, kind, round: round ? Number(round) : null, verdict: m?.[1] ?? null, score: m ? Number(m[2]) : null, to: h.to_state };
-    }).filter((c) => c.score != null || c.kind === 'round');
-  }
-
   const businesses = [];
   for (const [k, hist] of byKey) {
     const [run_id, slug] = k.split('\u0000');
@@ -355,7 +374,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     const pitchedLine = hist.find((h) => h.to_state === 'pitched');
     const outcomeLine = [...hist].reverse().find((h) => h.to_state.startsWith('outcome:'));
     const hosting = [...hist].reverse().find((h) => h.hosting_mode)?.hosting_mode ?? null;
-    const previewFromLedger = [...hist].reverse().map((h) => h.note?.match(/https:\/\/[\w.-]+\.workers\.dev/)?.[0]).find(Boolean);
+    const previewFromLedger = previewFromNotes(hist);
     const critic = criticSeries(hist);
     const criticRounds = critic.filter((c) => c.kind === 'round');
     const latestScored = [...critic].reverse().find((c) => c.score != null && c.verdict);
