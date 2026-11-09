@@ -259,3 +259,95 @@ The gate hero at both widths, the full-bleed King band with the white script tit
 - Global Surf's video and photographs: nine assets are missing in this checkout. I saw its layout, a phone video frame and its notes, not the full pages. Its `postcard` and `the-sign` pages were not shot.
 - Booking.com and Google live: I used the dossier's 3 Nov captures.
 - `/impeccable critique`, `/emil-design-eng` and the motion audit skills were not run.
+
+## Verification 2
+
+visual-critic 0.2.0 · station 5 (full) · run `2026-10-midigama-01` · 2026-11-09 · live preview https://lotus-surf-house.os1.workers.dev/ (redeployed today after the fix round) · variant calm "The gate" (ledger `mocked -> picked`). The section order follows Alon's gate-b words and is not counted as a defect.
+
+**Score 8/10. PASS (just). Better than the current presence: yes.**
+
+Evidence comes from the shared set `reports/2026-10-midigama-01/verify-2-lotus-surf-house/shots/` (shot 14:24Z today, desktop-00…11 for a 9208 px page and mobile-00…14 for a 10922 px page, plus both sheets). I did not re-shoot it. My own Playwright walks of the live page are scratch captures named `live/...` here. They are not kept, so each line says in words what the file shows. The comparison is the business's current presence: the Booking.com listing and the Google listing (`dossier/lotus-surf-house/funnel/walk/04-booking-com-fold.png`, `01-google-listing-fold.png`, `audit.json`). The business has no website.
+
+Independence: I did not open this round's `critic` or `experience-critic` reports. I formed the view below first. Only then did I read Round 1 and Verification 1 to check their points (see "Verification 1 points" at the end).
+
+### Three-second test
+
+- **Phone (`mobile-00`):** warm, green and inviting. The eye goes to the carved gate under the leaf canopy, then to "Lotus Surf House" in white script on one line, then to the full-width brick-red "Check dates on Booking.com" with an outlined Call pill under it. It is legible on the photograph. I would keep scrolling. This is still the best screen on the page.
+- **Desktop (`desktop-00`):** calm and well made. The gate photograph fills the right half. On the white left half sit the script name at about 79 px, a two-line description that is now balanced ("A guesthouse in Midigama, on / the south coast of Sri Lanka."), the red pill and a quiet Call link. It is one clear action. It is still a split hero and not an idea, but it is clean. I would scroll, and `desktop-01` rewards it with the full-bleed King room and "The King Rooms" in white script.
+
+### Checklist
+
+- **Media:** no usable video exists (all three clips are third-party, licence unknown, `concepts.md` §2), and the largest photograph is 1600 px. Neither visual hard fail applies. The strongest photographs lead and are big: the gate (`desktop-00`, `mobile-00`), the King room img-002 drawn full-bleed at 1440 from a 1600 px source (`desktop-01`), the balcony print img-025 (`desktop-02`, `mobile-02`), the roof Buddha (`desktop-03`) and the garden at container width (`desktop-05`, `mobile-06`). On the phone the King band crops a 1200 px-tall source to a tall portrait (`mobile-01`), so the soft Booking-grade photo looks a little soft. The Yelum veranda print now has a neutral wall and four rounded corners (`desktop-07`; `live/d-yelum-bottom.png` shows both bottom corners rounded on photograph). The rust floor is still the warmest patch on the page, but it no longer clashes. No person and no sea photograph exist in the set. The Rosa map is the only sea on the page.
+- **Composition and grid:** strong at the two full-width moments (`desktop-01`, `desktop-05`). The middle still repeats one move four times, a rounded print on the left and text on the right (`desktop-02` King, `desktop-03` roof, `desktop-06` garden rooms, `desktop-07` Yelum). In `desktop-02` the King facts still float, with about 170 px of empty space above "King Room with Balcony". The two rating cards are still unequal widths, about 244 against 196 px (`desktop-04`). The ratings band is a small pair in a tall white band, which is the sparsest screen on the page. The forecast block now sits on the page grid. Its heading and card start at x 144 like the text above, and the widget's right edge is x 1296 (`desktop-09`, `desktop-10`, measured).
+- **Typography:** the Parisienne and Hanken Grotesk pair suits the house. It is used for short titles only: "The King Rooms", "Up on the roof", "In the garden", "Yelum", "Breakfast", "Guests", "Getting here", "Surf at Lazy Left", "Come and stay". The closing is now a short script title with the practical sentence in Hanken beneath it (`desktop-11`, `mobile-14`, two lines of sans on the phone). The desktop subtitle no longer orphans "Lanka." The inspector counts 16 font sizes, which is more than needed but not visible as noise.
+- **Colour:** white, the cool stone tint, olive ink and the brick-red booking colour with white text. Red is unmistakable on every frame. The inspector's terracotta FAIL does not count against the page: the colour is drawn from the place and works. The page is still pale throughout, with no deep band, which is acceptable for calm.
+- **Hierarchy and rhythm:** the eye always knows where to go. A booking action is always in reach: the hero, the solid desktop header from about 840 px of scroll, each room, the closing, and the phone bar with a round call button. The pace is real in the first third, then it settles into alternating white and grey bands. The new "Surf at Lazy Left" section adds a change of content near the end, though not a change of gear.
+- **Polish:**
+  - Fixed since Verification 1: amenities are now a two-column list on desktop with no pipes (`desktop-09`). On the phone the pipes sit only between items on a line, never at a line end (`mobile-11`), and the check-in line wraps cleanly (`mobile-03`). The phone header now scrolls away with the page and no longer runs over the Call pill (`mobile-01` top shows the pill alone).
+  - **New defect, desktop:** the header stays transparent until about 840 px of scroll, and its "Lotus Surf House" wordmark is drawn over the hero's own content as that content scrolls under it. At scroll 290 the small wordmark sits on top of the big script name (`live/d-y290.png`, text on text). At 470 it sits beside and partly under the red hero pill (`live/d-y470.png`). At 500 the pill and the Call link pass under it (`live/d-scroll-500.png`). Every desktop visitor who scrolls sees this.
+  - Phone: on `mobile-02` the persistent bar sits directly under the King block's own red button, so two identical red buttons stack on one screen.
+  - Not defects: no horizontal overflow. The footer buttons are clean (`desktop-11`, `mobile-14`). The slideshow slides horizontally with a visible mid-transition (`live/d-slide-mid.png`). Hover tints the outlined buttons.
+- **Distinctiveness:** the gate, the net-draped King bed, the roof Buddha and the script titles make the first three screens this house. Below the garden it is a well-made guesthouse page rather than a singular one.
+- **Hero and motion:** the hero is clean, with a title, one line and one primary action, with no rating stack and no overlay effects. Motion is micro only. There is a one-time `settle` of the gate photo (scale 1.035 to 1 over 1.4 s, gone under reduced motion, measured), the header turning solid with the nav and "Check dates" fading in, the phone bar sliding up after the hero, the dots and the slide transitions, and quote cross-fades. The inspector reports a still page ("only 4 elements moved"). The main-item rule binds interactive and unique, and this is calm, so it is not a fail. Nothing in the motion lifts the score either.
+- **Inspector, read against the page (8 FAIL, 5 WARN):** I count the still page and the 16 sizes as real but minor. I discount the following. The "Upstairs" eyebrow is a small icon label. The forecast date line is a data label, not an eyebrow. The 1–2 px button shadows are barely visible. Terracotta is sourced. "Covered text" is the sticky bar passing over "Up on the roof" during scroll. "Reduced-hidden" is the desktop nav, which is hidden by design until the header turns solid. "Empty-middle" on "In the garden" is a two-column text pair over a full-width photo, and it reads as intended (`desktop-05`).
+
+### The forecast block (live)
+
+**Now a finished section.** It has gone from an appendix under a rule to a section of the page.
+
+- **Introduced:** the script title "Surf at Lazy Left", one bold line ("Lazy Left is the Rosa spot nearest the house."), and Giada's Booking review "The location is perfect to go and surf at lazy left and right" with name, source and date (`desktop-09`, `mobile-11`/`mobile-12`).
+- **Form:** there is no dividing line above it. The left half is one compact grey card, 620 × 220 at desktop (measured), on the same tint and radius as the rating cards. From top to bottom it holds the credit, "Forecast for Mon 9 Nov, 14:30", the big numeral "0.4–0.7 m" with the swell, wind and "Rosa, updated" lines beside it, and the "See today's forecast for Lazy Left on Rosa" link. There is no stretched air. The left column (title, line, quote, card) and Rosa's 420 × 500 widget share the top edge. The card's bottom ends about 34 px above the widget's bottom, which reads as balanced (`live/d-fc-late.png`).
+- **Rosa's widget:** light theme, untouched and recognisable, with the satellite map, "Lazy Left", the Epic badge and three rows for today (`live/d-fc-late.png`, `mobile-12`).
+- **Loading:** no Rosa or other third-party request on first load at either width (measured). The JSON and the iframe are requested only after scrolling to the block. While the widget loads, its 420 × 500 space is held by a plain tint box, and nothing shifts (`live/d-fc-early.png`).
+- **JavaScript off (phone):** title, line and quote, then one compact tinted link card, "See today's forecast for Lazy Left on Rosa ›", and no empty 500 px box (`live/m-nojs-fc.png`).
+- **Still visible, critic's lane, not scored here:** beside each other the halves can read as disagreeing. The headline says "Swell 7.9 s from the south-east, wind 5.7 km/h from the south, onshore". The widget's rows say 14 s / 12 s SSE with the wind marked OFFSHORE / CROSS (`desktop-10`, `mobile-12`). The models and hours differ, but a surfer will notice.
+- The credit "Forecast for Lazy Left by Rosa" is an underlined text link. The calibration dislikes underlined links, but this credit line is required by playbook §4, and it is quiet. Not counted.
+
+### Score: 8/10
+
+Clearly professional and calm. It is beautiful at the gate (especially on the phone), the King band and the garden, and it is clearly better than the Booking.com and Google listings. Every Verification 1 fix that cost the point has landed: the forecast form and its introduction, the Yelum print, the dangling separators, the closing line and the JS-off fallback. No item on the `references.md` calibration list is now broken. It is a low 8. What keeps it from more is the repeated print-left / text-right middle, the floating King facts and the unequal rating cards, a page that barely moves, and the new desktop header collision. If the header collision is not fixed it should be fixed before the pitch, but it alone does not drop the page below the bar: it is in transit only, desktop only, and the phone, the customer's device, is clean.
+
+### Better than the current presence? Yes
+
+First screen: `mobile-00` / `desktop-00` against `04-booking-com-fold.png`, which shows Booking's navy chrome, a search box, a score badge and the ping-pong table as photo 1 of 42 in a carousel, and against `01-google-listing-fold.png`, a map with a sheet of small photos. The house appears as a place, with its own gate, its name and one red action. Whole page: the King rooms are sold with a full-bleed band, a print and four details, and the garden rooms with a slideshow and a plain list. The roof, the garden, the owner, breakfast, guests, directions and the surf each get their own section, and a phone number is given that the Booking listing does not show. Those captures date from the 3 Nov walk. I did not look at the listings live.
+
+### Closest reference
+
+In method it is closest to Global Surf `postcard`: sign-script titles, a readable sans, one CTA, dot slideshows and a designed footer. It is below it because those sections are each their own moment and lead on footage. It is below `the-lavish-haven`, `ka-surf-hostel` and `layday-surf` on distinctiveness: each of those has an idea on the first screen, where this one has a very good photograph and a clean split.
+
+### Fix list, biggest effect first
+
+1. **Desktop header over the hero.** Give the header its solid ground, or fade the wordmark out, from the moment the hero title reaches it (about scroll 230), not at about 840. The small wordmark must never sit on the script name or the red pill (`live/d-y290.png`, `live/d-y470.png`). On the phone the header already scrolls away. Keep that.
+2. **Break the repeated middle.** Four sections in a row put a rounded print on the left and text on the right (`desktop-02`, `-03`, `-06`, `-07`). Mirror one of them, the roof or Yelum, to text left and print right. Alternatively, set the roof as a 3-up row of its three photos with the text above, so the page's rhythm changes once between the King band and the garden.
+3. **King facts (`desktop-02`).** Align the facts block with the top of the img-025 print, or vertically centre it on the print's middle third and pull the 4-up strip up under both. That removes the ~170 px of empty space above "King Room with Balcony".
+4. **Ratings band (`desktop-04`).** Give the two cards equal widths (both about 244 px). Then either cut the band's vertical padding by about a third, or move the pair into the Guests section above the quote, so the sparsest screen on the page goes away.
+5. **Phone double button (`mobile-02`).** Hide the persistent bar while a section's own red "Check dates" button is in view, or drop the inline red button in the King block on the phone and keep only the Call pill there, so two identical red buttons never stack.
+
+Smaller: one more micro move would help a page that the inspector measures as still, for example a 300 ms fade-up of each section's script title and print on entry, inside `prefers-reduced-motion: no-preference`. For the critic: check the forecast halves' period and wind wording side by side.
+
+### Keep
+
+The gate hero at both widths (the phone version above all), the full-bleed King band with the white script title, the King print, facts and strip, the garden landscape, the Parisienne / Hanken pair used for short titles only, brick red with white text, the phone bar with the round call button, the guests slideshow, the new "Surf at Lazy Left" section (title, guest quote, compact card, untouched Rosa widget, compact JS-off link), the short "Come and stay" closing, and the footer buttons.
+
+### Verification 1 points (checked after my own view)
+
+| V1 point | Now |
+|---|---|
+| 1 · Forecast form: hairline, off-grid, stretched card | Fixed. No line, on the x 144 grid, compact 220 px card (`desktop-09`/`-10`, `live/d-fc-late.png`). |
+| 2 · Forecast unintroduced | Fixed. "Surf at Lazy Left" title, one line, guest quote. |
+| 3 · Yelum print white band / square corners / cast | Fixed. Four rounded corners, neutral wall. The rust floor remains and is acceptable (`desktop-07`, `live/d-yelum-bottom.png`). |
+| 4 · Dangling separators, 5-line amenities | Fixed. Two-column list on desktop, no line-end pipes on the phone (`desktop-09`, `mobile-11`, `mobile-03`). |
+| 5 · 15-word script closing | Fixed. Short script title + Hanken sentence (`desktop-11`, `mobile-14`). |
+| Smaller · JS-off 500 px empty box | Fixed. Compact link card (`live/m-nojs-fc.png`). |
+| Smaller · "Sri / Lanka." orphan | Fixed (`desktop-00`). |
+| Smaller · phone logo over Call pill | Fixed on the phone. The same kind of collision now shows on desktop (fix 1). |
+| Not fixed (Round 1 points) | Unequal rating cards, floating King facts, stacked red buttons on `mobile-02`. |
+
+### Not looked at
+
+- A real phone. Everything was headless Chromium, with no CPU or network throttling this round.
+- Swiping inside Rosa's widget or its other days. The forecast with data older than 24 h (only the live state and JS-off were seen).
+- Every slide of the two slideshows. I saw the first slide and one transition of the garden-rooms slideshow.
+- Booking.com and Google live. I used the dossier's 3 Nov captures.
+- The gold pages were not reopened this round. I relied on my Round 1 / Verification 1 notes for `postcard`, `the-lavish-haven`, `ka-surf-hostel` and `layday-surf`.
+- `/impeccable critique`, `/emil-design-eng` and the motion-audit skills were not run. The tasteskill inspector was run against the live page.

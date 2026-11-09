@@ -1,0 +1,54 @@
+{
+ "note": "CDP encodedDataLength on the live Worker (compressed transfer), 390 touch, no throttling; main-page CDP session sees frame requests in-process only if same process; frame requests may be missing",
+ "first_load_bytes": 872763,
+ "first_load_requests": 13,
+ "scroll_own_bytes": 322757,
+ "scroll_thirdparty_bytes": 81541,
+ "thirdparty": [
+  [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json",
+   9612,
+   "scroll"
+  ],
+  [
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+   7863,
+   "scroll"
+  ],
+  [
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+   1234,
+   "scroll"
+  ],
+  [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json",
+   72,
+   "scroll"
+  ],
+  [
+   "https://rosa.surf/favicon.svg",
+   2362,
+   "scroll"
+  ],
+  [
+   "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+   48983,
+   "scroll"
+  ],
+  [
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/",
+   1287,
+   "scroll"
+  ],
+  [
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/",
+   4536,
+   "scroll"
+  ],
+  [
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/",
+   5592,
+   "scroll"
+  ]
+ ]
+}

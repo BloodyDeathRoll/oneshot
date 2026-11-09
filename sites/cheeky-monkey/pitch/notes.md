@@ -88,3 +88,5 @@ All made by `make-pitch-media.sh` (`# media:` headers). Git-ignored by the repo'
 - **No fee amounts anywhere.**
 - **Shared phone and owner** with Surf Swell Hostel (notes/cheeky-monkey.md): the same number receives both businesses' pitches if both are sent.
 - The pitch names no other business; the Google crop leaves out the "Similar hotels nearby" panel.
+
+Revised 2026-11-09 after the fix round and verification 2: five after-*.jpg re-shot from the live preview by make-pitch-media.sh (after-390-plan and before-*.jpg unchanged); three alt texts updated to the new shots (the pause button on both drone shots; the surf-weeks card shows its range, not the per-room rows); the sources line now includes the forecast, which verification 2's facts check covered (0 mismatches).

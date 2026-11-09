@@ -69,6 +69,8 @@ for (const [filename, { src, shapes, focal }] of jobs) {
     const r = ratio ?? H / W
     let cw = W, ch = Math.round(W * r)
     if (ch > H) { ch = H; cw = Math.round(H / r) }
+    /* round 4: `zoom` cuts a smaller region of the same ratio (the water photo off its sky, the sign print off its cut end) */
+    if (opts.zoom > 1) { cw = Math.round(cw / opts.zoom); ch = Math.round(ch / opts.zoom) }
     const fx = opts.focal && focal ? focal[0] : opts.fx ?? 0.5, fy = opts.focal && focal ? focal[1] : opts.fy ?? 0.5
     const left = Math.min(Math.max(Math.round(fx * W - cw / 2), 0), W - cw)
     const top = Math.min(Math.max(Math.round(fy * H - ch / 2), 0), H - ch)

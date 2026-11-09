@@ -91,3 +91,5 @@ All made by `make-pitch-media.sh` (`# media:` headers). Git-ignored by the repo'
 - **No fee amounts anywhere.**
 - **Polish open on the preview** (all three critics, not gating; NB): the phone header wordmark overprints the hero line and Call button while scrolling, the porch photo shows a white Instagram border on desktop, the King thumbnails can't be tapped. The owner will see the first one on his first scroll. The pitch's screenshots don't show it.
 - The pitch names no other business; the Google crops leave out the map and "Similar hotels nearby". It names the YouTube channel Travel With Sandhya only to ask whether its footage is the owner's.
+
+Revised 2026-11-09 after the fix round and verification 2: the six after-*.jpg re-shot from the live preview by make-pitch-media.sh (before-*.jpg unchanged); two alt texts updated to the new shots (King Room rating lines; the glance line without check-in); the sources line now includes the forecast, which verification 2's facts check covered (0 mismatches).

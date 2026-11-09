@@ -9,7 +9,7 @@
 import css from '../styles/site.css?raw'
 import js from '../scripts/site.js?raw'
 import {
-  c, G, L, S, e, t, paras, block, svg, pipe, word,
+  c, G, L, S, e, t, paras, block, svg, pipe, pipes, word, monYear, PLATFORM, AMENITY_GROUPS,
   NAME, PRIMARY, BOOK_HOST, TEL, PHONE, MAP, ADDRESS, TOWN,
   KING, GARDEN_ROOMS, beds, checkOut, STAY_NOTE, AMENITIES,
   RATINGS, REVIEWS, REVIEW_LINK, FINE,
@@ -20,6 +20,9 @@ import {
 const P = (body, cls = '') => paras(body).map((p) => `<p${cls ? ` class="${cls}"` : ''}>${e(p)}</p>`).join('')
 const garden = block('intro', 0), old = block('offer', 0), yelum = block('about', 0), breakfast = block('about', 1), roofB = block('about', 2), here = block('info', 0)
 const oldP = paras(old?.body)
+/* the Rosa forecast is on (schema v0.3): read here because the header's nav links to it */
+const fcOn = c.forecast?.enabled && /^[a-z0-9-]+$/.test(c.forecast?.rosaSpotId ?? '')
+const spotId = c.forecast?.rosaSpotId, spotName = c.forecast?.spotName || spotId
 
 /* ---------- buttons: real links, work with JS off ---------- */
 const book = (cls = '', label = PRIMARY?.label, icon = true) =>
@@ -34,8 +37,8 @@ const show = (sid, slots, label) => {
   return `<div class="show r45" data-show id="${sid}" role="region" aria-roledescription="carousel" aria-label="${e(label)}">`
     + `<ul class="track" tabindex="0">${slides}</ul>`
     + `<div class="ctrl" hidden><button class="arw prev" type="button" aria-label="${e(L.photo_prev)}">${svg('prev')}</button>`
-    + `<div class="dots" role="group" aria-label="${e(L.photo_pick)}">`
-    + ss.map((_, i) => `<button type="button" class="dot" aria-label="${e(t(L.photo_n, { n: i + 1 }))}"></button>`).join('')
+    + `<div class="dots" aria-hidden="true">`
+    + ss.map((_, i) => `<button type="button" class="dot" tabindex="-1" aria-label="${e(t(L.photo_n, { n: i + 1 }))}"></button>`).join('')
     + `</div><button class="arw next" type="button" aria-label="${e(L.photo_next)}">${svg('next')}</button></div></div>`
 }
 const rating = (r) => {
@@ -58,7 +61,7 @@ const lcp = V ? V.poster : gate
 const hero = `
 <header class="top" id="top">
   <a class="mark" href="#top">${e(NAME)}</a>
-  <nav class="nav" aria-label="${e(L.nav_aria)}"><a href="#upstairs">${e(L.nav.rooms)}</a><a href="#guests">${e(L.nav.guests)}</a><a href="#getting-here">${e(L.nav.here)}</a></nav>
+  <nav class="nav" aria-label="${e(L.nav_aria)}"><a href="#upstairs">${e(L.nav.rooms)}</a><a href="#guests">${e(L.nav.guests)}</a><a href="#getting-here">${e(L.nav.here)}</a>${fcOn ? `<a href="#surf">${e(L.nav.surf)}</a>` : ''}</nav>
   ${book('btn-sm', L.header_book)}
 </header>
 <section class="hero" aria-label="${e(NAME)}">
@@ -72,6 +75,13 @@ const hero = `
 
 /* ---------- the King Rooms: the page's big moment (gate b) ---------- */
 const FR = G.featuredRoom ?? {}
+/* 2026-11-09 (verification 1, experience fix 3): the proof, small and dated, beside the King facts, ~3,000 px before
+   the rating cards. The same ratings[] rows as the cards, so it adds no fact. */
+const kproofDay = RATINGS.map((r) => r.capturedAt).filter(Boolean).sort().pop()
+const kproof = RATINGS.length ? `<p class="kproof">${pipes([
+  ...RATINGS.map((r) => t(L.kproof_item, { s: `<b>${e(r.shown)}</b>`, scale: e(r.scale), p: e(r.name), n: e(String(r.count)) })),
+  kproofDay ? e(t(L.kproof_read, { d: RATINGS.find((r) => r.capturedAt === kproofDay).day })) : '',
+])}</p>` : ''
 const strip = S.strip.map((n) => img(n)).join('')
 const king = KING ? `
 <section class="king" id="upstairs" aria-labelledby="h-king">
@@ -90,7 +100,8 @@ const king = KING ? `
       <p class="beds">${svg('bed')}${e(beds(KING))}</p>
       ${KING.note ? `<p class="note">${e(KING.note)}</p>` : ''}
       <div class="actions">${book()}${call()}</div>
-      <p class="stay">${pipe([e(checkOut), ...(G.stayShort ?? []).map((s) => e(s.text))])}</p>
+      <p class="stay">${pipes([e(checkOut), ...(G.stayShort ?? []).map((s) => e(s.text))])}</p>
+      ${kproof}
     </div>
   </div>
   ${strip ? `<div class="wrap"><div class="strip">${strip}</div></div>` : ''}
@@ -145,10 +156,8 @@ const porch = yelum || breakfast ? `
 <section class="porch" aria-labelledby="h-yelum">
   <div class="wrap porch-grid">
     <div class="porch-pic">${img(S.porch)}</div>
-    <div class="porch-text">
-      ${yelum ? `<h2 class="script" id="h-yelum">${e(yelum.heading)}</h2>${P(yelum.body)}` : ''}
-      ${breakfast ? `<h2 class="script"${yelum ? '' : ' id="h-yelum"'}>${e(breakfast.heading)}</h2>${P(breakfast.body)}` : ''}
-    </div>
+    ${yelum ? `<div class="porch-text py"><h2 class="script" id="h-yelum">${e(yelum.heading)}</h2>${P(yelum.body)}</div>` : ''}
+    ${breakfast ? `<div class="porch-text pb"><h2 class="script"${yelum ? '' : ' id="h-yelum"'}>${e(breakfast.heading)}</h2>${P(breakfast.body)}</div>` : ''}
   </div>
 </section>` : ''
 
@@ -162,46 +171,58 @@ const guests = REVIEWS.length ? `
     <div class="quotes" data-quotes role="region" aria-roledescription="carousel" aria-label="${e(L.reviews_aria)}">
       <ul class="qtrack" tabindex="0" aria-label="${e(L.reviews_track)}">${quotes}</ul>
       <div class="ctrl" hidden><button class="arw prev" type="button" aria-label="${e(L.review_prev)}">${svg('prev')}</button>
-        <div class="dots" role="group" aria-label="${e(L.review_pick)}">${REVIEWS.map((_, i) => `<button type="button" class="dot" aria-label="${e(t(L.review_n, { n: i + 1 }))}"></button>`).join('')}</div>
+        <div class="dots" aria-hidden="true">${REVIEWS.map((_, i) => `<button type="button" class="dot" tabindex="-1" aria-label="${e(t(L.review_n, { n: i + 1 }))}"></button>`).join('')}</div>
         <button class="arw next" type="button" aria-label="${e(L.review_next)}">${svg('next')}</button></div>
     </div>
     ${REVIEW_LINK ? `<p class="more"><a class="btn btn-quiet" href="${e(REVIEW_LINK.url)}" rel="noopener">${e(REVIEW_LINK.label)}</a></p>` : ''}
   </div>
 </section>` : ''
 
-/* ---------- the Rosa forecast (2026-11-04, Alon) ----------
-   Schema v0.3, playbook §4's exception, ported from sites/cheeky-monkey/final (itself from sites/layday-surf-ahangama/
-   final). Lazy Left is the Rosa spot nearest the Google pin (about 290 m), not the business's own break: the block only
-   ever says "Forecast for Lazy Left by Rosa". Both halves have fixed boxes; nothing is requested until the block nears
-   the screen (src/scripts/site.js). With JS off, the plain link fills the widget's box. No wave fact is content. */
-const fcOn = c.forecast?.enabled && /^[a-z0-9-]+$/.test(c.forecast?.rosaSpotId ?? '')
-const spotId = c.forecast?.rosaSpotId, spotName = c.forecast?.spotName || spotId
-const forecast = fcOn ? `
-  <div class="wrap">
-    <div class="fc" data-json="https://rosa-data-opal.vercel.app/data/spots/${e(spotId)}.json" data-spot="${e(spotName)}">
-      <div class="fc-now" aria-live="polite">
+/* ---------- the Rosa forecast (2026-11-04, Alon; redone 2026-11-09 after verification 1) ----------
+   Schema v0.3, playbook §4's exception. Lazy Left is the Rosa spot nearest the Google pin (293 m; concepts.md §3,
+   amendment 2026-11-09), not the business's own break: the block never says it is theirs. Its own section with a
+   script title like the others, one sourced line tying it to the house (gaps.forecastIntro: the mapping and Giada's
+   verbatim words), then the pair on the page grid: the site's headline card on the left, Rosa's widget (unmodified,
+   420 × 500) on the right. The card has a fixed height, so nothing shifts when the data arrives, fails or is stale;
+   the plain link "See today's forecast for Lazy Left on Rosa" is always in it, and fills it when there is no fresh
+   reading (JS off, the JSON failed, stale data). With JS off the widget's box is not drawn at all. No wave fact is
+   content. Nothing is requested until the block nears the screen (src/scripts/site.js). */
+const FI = G.forecastIntro
+const fiWho = FI?.quote ? pipe([e(FI.quote.author), e(PLATFORM[FI.quote.source] ?? FI.quote.source), e(monYear(FI.quote.date))]) : ''
+const surf = fcOn ? `
+<section class="surf" id="surf" aria-labelledby="h-surf">
+  <div class="wrap fc">
+    <div class="fc-text">
+      <h2 class="script" id="h-surf">${e(t(L.fc_heading, { spot: spotName }))}</h2>
+      ${FI?.near ? `<p class="fc-near">${e(FI.near)}</p>` : ''}
+      ${FI?.quote ? `<figure class="fc-quote"><blockquote cite="${e(FI.quote.url)}"><p>${e(FI.quote.text)}</p></blockquote><figcaption class="who">${fiWho}</figcaption></figure>` : ''}
+      <div class="fc-now" aria-live="polite" data-json="https://rosa-data-opal.vercel.app/data/spots/${e(spotId)}.json" data-spot="${e(spotName)}"
+        data-latest="${e(L.fc_latest)}" data-swell="${e(L.fc_swell)}" data-wind="${e(L.fc_wind)}" data-updated="${e(L.fc_updated)}">
         <p class="credit-rosa">${svg('wave')}<a href="https://rosa.surf/spot/${e(spotId)}">${e(t(L.fc_credit, { spot: spotName }))}</a></p>
         <div class="live">
-          <p class="now"><span class="nh"> <small> m</small></span></p>
-          <p class="nd"><span data-f="t"></span><span data-f="swell"></span><span data-f="wind"></span></p>
-          <p class="upd">${svg('clock')}<span data-f="upd"></span></p>
+          <p class="nt" data-f="t"></p>
+          <div class="nrow">
+            <p class="now"><span class="nh"> <small> m</small></span></p>
+            <p class="nd"><span data-f="swell"></span><span data-f="wind"></span><span class="upd" data-f="upd"></span></p>
+          </div>
         </div>
-      </div>
-      <div class="fc-rosa">
-        <a class="fc-link" href="https://rosa.surf/spot/${e(spotId)}"><span>${e(t(L.fc_link, { spot: spotName }))}</span></a>
-        <iframe
-          data-src="https://rosa.surf/widget/?spot=${e(spotId)}&amp;theme=light&amp;units=metric"
-          title="${e(t(L.fc_title, { spot: spotName }))}"
-          width="100%"
-          height="500"
-          style="max-width:420px;border:0;border-radius:16px;display:block"
-          loading="lazy"
-          referrerpolicy="strict-origin-when-cross-origin"
-          sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
-        ></iframe>
+        <a class="fc-link" href="https://rosa.surf/spot/${e(spotId)}"><span>${e(t(L.fc_link, { spot: spotName }))}</span>${svg('next')}</a>
       </div>
     </div>
-  </div>` : ''
+    <div class="fc-rosa">
+      <iframe
+        data-src="https://rosa.surf/widget/?spot=${e(spotId)}&amp;theme=light&amp;units=metric"
+        title="${e(t(L.fc_title, { spot: spotName }))}"
+        width="100%"
+        height="500"
+        style="max-width:420px;border:0;border-radius:16px;display:block"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+      ></iframe>
+    </div>
+  </div>
+</section>` : ''
 
 /* ---------- getting here ---------- */
 const getting = `
@@ -211,7 +232,8 @@ const getting = `
       <h2 class="script" id="h-out">${e(here?.heading ?? L.nav.here)}</h2>
       ${P(here?.body)}
       ${ADDRESS ? `<p class="addr">${svg('pin')}<span>${e(ADDRESS)}</span></p>` : ''}
-      ${AMENITIES.length ? `<p class="amen">${pipe(AMENITIES.map(e))}</p>` : ''}
+      ${AMENITIES.length ? `<div class="amen" role="group" aria-label="${e(L.amen_aria)}">${pipes(AMENITY_GROUPS.plain.map(e), 'ul')}`
+        + AMENITY_GROUPS.groups.map((g) => `<p class="amen-g"><b>${e(g.note)}:</b> ${e(g.labels.join(', '))}</p>`).join('') + '</div>' : ''}
     </div>
     <div class="out-side">
       <div class="actions col">
@@ -221,13 +243,12 @@ const getting = `
       ${STAY_NOTE ? `<h3>${e(L.good_to_know)}</h3><p>${e(STAY_NOTE)}</p>` : ''}
     </div>
   </div>
-${forecast}
 </section>`
 
 const closing = `
 <section class="closing tint" id="book" aria-label="${e(L.closing_aria)}">
   <div class="wrap center">
-    ${c.closing ? `<p class="script close-line">${e(c.closing)}</p>` : ''}
+    ${c.closing ? `<h2 class="script close-title">${e(L.closing_title)}</h2><p class="close-line">${e(c.closing)}</p>` : ''}
     <div class="actions">${book()}${call()}</div>
   </div>
 </section>`
@@ -246,7 +267,7 @@ const foot = `<footer class="foot">
 <nav class="bar" id="bar" aria-label="${e(L.bar_aria)}">${book('bar-book')}${TEL ? `<a class="btn bar-call" href="${TEL}" aria-label="${e(t(L.call, { phone: PHONE }))}">${svg('phone')}</a>` : ''}</nav>`
 
 /* the header and the hero sit inside <main>, as in the mockup */
-const mainHtml = `<main>\n${hero}\n${king}\n${roof}\n${glance}\n${gardenSec}\n${porch}\n${guests}\n${getting}\n${closing}\n</main>\n${foot}`
+const mainHtml = `<main>\n${hero}\n${king}\n${roof}\n${glance}\n${gardenSec}\n${porch}\n${guests}\n${getting}\n${surf}\n${closing}\n</main>\n${foot}`
 
 /* 4h-style head: title = businessName + the town of contact.address; description = owner fields only */
 /* 4h: the other finals' rule, "<businessName>, <town>", falling back to the name alone above 60 characters */

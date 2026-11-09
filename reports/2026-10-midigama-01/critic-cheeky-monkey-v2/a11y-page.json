@@ -1,0 +1,369 @@
+{
+ "w390": {
+  "axe": {
+   "version": "4.13.0",
+   "violations": [],
+   "passes": 29,
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 182
+    }
+   ]
+  },
+  "overflow": {
+   "sw": 390,
+   "cw": 390,
+   "wide": [
+    "ARTICLE.card",
+    "DIV.card-ph",
+    "IMG.",
+    "H3.",
+    "P.price",
+    "B.",
+    "SPAN.",
+    "P.rows"
+   ]
+  },
+  "tab": {
+   "count": 70,
+   "no_visible_focus": [],
+   "offscreen": [],
+   "first": [
+    {
+     "tag": "A",
+     "t": "Skip to surf weeks and prices",
+     "outline": true,
+     "shadow": false,
+     "onscreen": true,
+     "h": 47,
+     "w": 262
+    },
+    {
+     "tag": "A",
+     "t": "Cheeky Monkey\nSurf Camp | Midigama, Sri ",
+     "outline": true,
+     "shadow": false,
+     "onscreen": true,
+     "h": 46,
+     "w": 178
+    },
+    {
+     "tag": "A",
+     "t": "Book",
+     "outline": true,
+     "shadow": false,
+     "onscreen": true,
+     "h": 46,
+     "w": 71
+    },
+    {
+     "tag": "A",
+     "t": "Call +94 71 924 8686",
+     "outline": true,
+     "shadow": true,
+     "onscreen": true,
+     "h": 46,
+     "w": 46
+    },
+    {
+     "tag": "BUTTON",
+     "t": "Pause the videos",
+     "outline": true,
+     "shadow": true,
+     "onscreen": true,
+     "h": 44,
+     "w": 44
+    },
+    {
+     "tag": "A",
+     "t": "Check dates on Booking.com",
+     "outline": true,
+     "shadow": false,
+     "onscreen": true,
+     "h": 56,
+     "w": 324
+    },
+    {
+     "tag": "A",
+     "t": "See the surf weeks",
+     "outline": true,
+     "shadow": true,
+     "onscreen": true,
+     "h": 46,
+     "w": 195
+    },
+    {
+     "tag": "A",
+     "t": "Forecast for Rams by Rosa",
+     "outline": true,
+     "shadow": false,
+     "onscreen": true,
+     "h": 44,
+     "w": 180
+    },
+    {
+     "tag": "A",
+     "t": "See today's forecast for Rams on Rosa",
+     "outline": true,
+     "shadow": true,
+     "onscreen": true,
+     "h": 46,
+     "w": 323
+    },
+    {
+     "tag": "A",
+     "t": "See today's forecast for Rams on Rosa",
+     "outline": true,
+     "shadow": false,
+     "onscreen": true,
+     "h": 58,
+     "w": 286
+    },
+    {
+     "tag": "A",
+     "t": "Forecast for Rams by Rosa",
+     "outline": true,
+     "shadow": false,
+     "onscreen": true,
+     "h": 44,
+     "w": 172
+    },
+    {
+     "tag": "DIV",
+     "t": "Full Surf Lesson Package\n\nUSD 300–400\npe",
+     "outline": true,
+     "shadow": false,
+     "onscreen": true,
+     "h": 654,
+     "w": 390
+    }
+   ]
+  },
+  "drawer": {
+   "open": true,
+   "focus": "icon-btn plan-x",
+   "role": "dialog",
+   "modal": "true",
+   "focus_stays_inside": true,
+   "after_esc": {
+    "open": false,
+    "focus": "Plan a stay"
+   }
+  },
+  "drawer_axe": {
+   "version": "4.13.0",
+   "violations": [],
+   "passes": 27,
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 129
+    }
+   ]
+  },
+  "pause": {
+   "hidden": false,
+   "label": "Pause the videos",
+   "pressed": "false"
+  }
+ },
+ "w1440": {
+  "axe": {
+   "version": "4.13.0",
+   "violations": [],
+   "passes": 29,
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 186
+    }
+   ]
+  },
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440,
+   "wide": [
+    "DIV.plan-panel",
+    "DIV.plan-top",
+    "H2.t-hand-s",
+    "BUTTON.icon-btn plan-x",
+    "svg.[object SVGAnimatedString]",
+    "use.[object SVGAnimatedString]",
+    "DIV.plan-steps",
+    "DIV.step on"
+   ]
+  },
+  "tab": {
+   "count": 70,
+   "no_visible_focus": [],
+   "offscreen": [],
+   "first": [
+    {
+     "tag": "A",
+     "t": "Skip to surf weeks and prices",
+     "outline": true,
+     "shadow": false,
+     "onscreen": true,
+     "h": 47,
+     "w": 262
+    },
+    {
+     "tag": "A",
+     "t": "Cheeky Monkey\nSurf Camp | Midigama, Sri ",
+     "outline": true,
+     "shadow": false,
+     "onscreen": true,
+     "h": 46,
+     "w": 193
+    },
+    {
+     "tag": "A",
+     "t": "Surf weeks",
+     "outline": true,
+     "shadow": false,
+     "onscreen": true,
+     "h": 48,
+     "w": 101
+    },
+    {
+     "tag": "A",
+     "t": "Rooms",
+     "outline": true,
+     "shadow": false,
+     "onscreen": true,
+     "h": 48,
+     "w": 75
+    },
+    {
+     "tag": "A",
+     "t": "Shop",
+     "outline": true,
+     "shadow": false,
+     "onscreen": true,
+     "h": 48,
+     "w": 63
+    },
+    {
+     "tag": "A",
+     "t": "Plan a stay",
+     "outline": true,
+     "shadow": true,
+     "onscreen": true,
+     "h": 46,
+     "w": 113
+    },
+    {
+     "tag": "A",
+     "t": "Book",
+     "outline": true,
+     "shadow": false,
+     "onscreen": true,
+     "h": 46,
+     "w": 75
+    },
+    {
+     "tag": "A",
+     "t": "Call +94 71 924 8686",
+     "outline": true,
+     "shadow": true,
+     "onscreen": true,
+     "h": 46,
+     "w": 46
+    },
+    {
+     "tag": "BUTTON",
+     "t": "Pause the videos",
+     "outline": true,
+     "shadow": true,
+     "onscreen": true,
+     "h": 46,
+     "w": 46
+    },
+    {
+     "tag": "A",
+     "t": "Check dates on Booking.com",
+     "outline": true,
+     "shadow": false,
+     "onscreen": true,
+     "h": 56,
+     "w": 324
+    },
+    {
+     "tag": "A",
+     "t": "See the surf weeks",
+     "outline": true,
+     "shadow": true,
+     "onscreen": true,
+     "h": 46,
+     "w": 195
+    },
+    {
+     "tag": "A",
+     "t": "Forecast for Rams by Rosa",
+     "outline": true,
+     "shadow": false,
+     "onscreen": true,
+     "h": 44,
+     "w": 180
+    }
+   ]
+  },
+  "drawer": {
+   "open": true,
+   "focus": "icon-btn plan-x",
+   "role": "dialog",
+   "modal": "true",
+   "focus_stays_inside": true,
+   "after_esc": {
+    "open": false,
+    "focus": "Plan a stay"
+   }
+  },
+  "drawer_axe": {
+   "version": "4.13.0",
+   "violations": [],
+   "passes": 27,
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 151
+    }
+   ]
+  },
+  "pause": {
+   "hidden": false,
+   "label": "Pause the videos",
+   "pressed": "false"
+  }
+ },
+ "reduced": {
+  "video_requests": [],
+  "html_class": "js still",
+  "poster_visible": true
+ },
+ "motion": {
+  "video_requests_noscroll": [
+   "cm-board.p640.webm",
+   "cm-drone.p1080.webm"
+  ],
+  "playing": [
+   {
+    "src": "cm-drone.p1080.webm",
+    "paused": false,
+    "muted": true,
+    "loop": true,
+    "playsinline": true,
+    "controls": false
+   },
+   {
+    "src": "cm-board.p640.webm",
+    "paused": false,
+    "muted": true,
+    "loop": true,
+    "playsinline": true,
+    "controls": false
+   }
+  ]
+ }
+}

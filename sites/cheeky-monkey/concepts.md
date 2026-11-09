@@ -112,6 +112,8 @@ The page is the visit: you pull up on the road in front of the shop, step in to 
 
 **Forecast: no**, in all three. The dossier names no break, so there is no dossier-spot → Rosa-spot mapping. "Midigama" would be the nearest-other-spot error the rule forbids.
 
+> **Amendment, 2026-11-09 (designer, 4g fix round after verification 1; records a human decision, does not change the concepts).** The picked page (unique, "Pick your board") carries the Rosa forecast after all, by **Alon's choice of 2026-11-04** (operator, in session). The mapping: **`rosaSpotId: rams`** (Rosa's `spot.name` "Rams", town Midigama), chosen because it is **the nearest spot Rosa covers**: Rosa's `data/index.json` puts Rams at 5.962565, 80.393597, which is **360 m** (haversine) from the dossier's `location.lat_lng` (5.9617986, 80.3967609; 369 m from the shop's own Google listing). The next Rosa spots are Coconut (`weligama-west`) at 578 m, Lazy Left at 679 m and Lazy Right at 980 m (checked 2026-11-09). The dossier still names no break, so **Rams is never called the business's break**: the page says "Rams is the nearest spot Rosa covers, about 360 m from the shop" and "Forecast for Rams by Rosa", nothing more. This departs from schema v0.3's "the nearest other spot is never used as this one" and from the paragraph above; it stands **pending Shahar's decision on proposal 2026-10-midigama-01/003 item 1**. If that item is rejected, `forecast.enabled` goes back to false and the block disappears (the template renders nothing without it).
+
 ---
 
 ## 4. Three concepts
