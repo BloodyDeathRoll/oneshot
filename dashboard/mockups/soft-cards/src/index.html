@@ -59,7 +59,22 @@ main{min-width:0;padding:0 24px 48px}
 .top .sub{font-size:13px;color:var(--ink3);margin-left:14px;font-weight:500}
 .controls{display:flex;gap:12px;align-items:center}
 .wf-chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 var(--gap)}
-.wf-side{display:grid;margin:0 0 24px;padding-bottom:24px;border-bottom:1px solid var(--rule)}.wf-side>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.wf-side select{box-sizing:border-box;width:100%;height:48px;margin:0;appearance:none;-webkit-appearance:none;font:inherit;font-size:15px;line-height:22px;font-weight:700;color:var(--ink);background:var(--t5) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center/24px;border:0;border-radius:12px;padding:13px 44px 13px 16px;cursor:pointer;text-overflow:ellipsis}.wf-side select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.wf-side{display:grid;margin:0 0 24px;padding-bottom:24px;border-bottom:1px solid var(--rule)}.wf-side button{box-sizing:border-box;width:100%;height:48px;margin:0;display:flex;align-items:center;justify-content:space-between;gap:8px;font:inherit;font-size:15px;line-height:22px;font-weight:700;color:var(--ink);background:var(--t5);border:0;border-radius:12px;padding:0 14px 0 16px;cursor:pointer;text-align:left}.wf-side button:focus-visible,.wf-top button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+/* Our own menus, not <select>: the browser draws a select's list and it cannot be styled (Shahar, 2026-11-15) */
+.dd{position:relative}
+.dd>button b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.dd>button .chev{flex:none;transition:transform .15s}
+.dd>button[aria-expanded=true] .chev{transform:rotate(180deg)}
+.dd ul{position:absolute;z-index:20;top:calc(100% + 8px);left:0;right:0;margin:0;padding:6px;list-style:none;background:var(--card);border:1px solid var(--rule);border-radius:16px;box-shadow:var(--shadow)}
+.dd li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:10px;font-size:14px;font-weight:500;color:var(--ink2);cursor:pointer}
+.dd li+li{margin-top:2px}
+.dd li:hover,.dd li:focus-visible{background:var(--t5);color:var(--ink);outline:0}
+.dd li[aria-selected=true]{color:var(--acc);font-weight:700}
+.dd li svg{width:16px;height:16px;flex:none;visibility:hidden}
+.dd li[aria-selected=true] svg{visibility:visible}
+.wf-side .chev,.wf-top .chev{width:16px;height:16px}
+.wf-side ul{top:56px} /* 8px under the button, above the rule */
+@media (prefers-reduced-motion:reduce){.dd>button .chev{transition:none}}
 .wf-chips button{font:inherit;font-size:14px;font-weight:600;height:36px;padding:0 14px;border-radius:999px;border:0;background:var(--card);box-shadow:var(--shadow);color:var(--ink2);cursor:pointer}
 .wf-chips button[aria-pressed=true]{background:var(--acc);color:#fff}
 .wf-chips button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
@@ -296,17 +311,8 @@ td.days span{font-weight:500;color:var(--ink3);font-size:13px;margin-left:2px}
 /* Sort by: a pill that opens a list as wide as itself */
 .sortsel{position:relative;margin-left:auto;width:264px;max-width:100%}
 .sortsel .psel{width:100%;border:0;cursor:pointer;padding:0 40px 0 16px;border-radius:999px}
-.sortsel .psel b{font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sortsel .psel .chev{right:16px;transition:transform .15s}
-.sortsel .psel[aria-expanded=true] .chev{transform:rotate(180deg)}
-.sortsel ul{position:absolute;z-index:20;top:calc(100% + 8px);left:0;right:0;margin:0;padding:6px;list-style:none;background:var(--card);border:1px solid var(--rule);border-radius:16px;box-shadow:var(--shadow)}
-.sortsel li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:10px;font-size:14px;font-weight:500;color:var(--ink2);cursor:pointer}
-.sortsel li+li{margin-top:2px}
-.sortsel li:hover,.sortsel li:focus-visible{background:var(--t5);color:var(--ink);outline:0}
-.sortsel li[aria-selected=true]{color:var(--acc);font-weight:700}
-.sortsel li svg{width:16px;height:16px;flex:none;visibility:hidden}
-.sortsel li[aria-selected=true] svg{visibility:visible}
-@media (prefers-reduced-motion:reduce){.sortsel .psel .chev{transition:none}}
+.sortsel .psel b{font-weight:600;color:var(--ink)}
+.sortsel .psel .chev{right:16px}
 .sites-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
 .site{padding:16px 16px 28px;display:flex;flex-direction:column;gap:0}
 .site .shot{display:block;border-radius:var(--r2);overflow:hidden;background:var(--t5);aspect-ratio:16/10;position:relative}
@@ -581,10 +587,8 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 .side .lp b{font-weight:700}
 .side-foot[hidden]{display:none}
 .wf-top{position:relative;display:inline-flex}
-.wf-top select{appearance:none;-webkit-appearance:none;height:48px;border:0;border-radius:12px;padding:0 48px 0 20px;font:inherit;font-size:15px;font-weight:700;color:#fff;background:var(--acc) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center/22px;cursor:pointer;box-shadow:var(--shadow)}
-.wf-top select:disabled{opacity:.55;cursor:default}
-.wf-top select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.wf-top select option{color:var(--ink);background:#fff}
+.wf-top button{height:48px;display:inline-flex;align-items:center;gap:12px;border:0;border-radius:12px;padding:0 16px 0 20px;font:inherit;font-size:15px;font-weight:700;color:#fff;background:var(--acc);cursor:pointer;box-shadow:var(--shadow);max-width:100%}
+.wf-top ul{left:auto;right:0;min-width:100%;width:max-content;max-width:calc(100vw - 32px)}
 .ov-ttl{font-size:15px;line-height:22px;font-weight:700;letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .ov-hd{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .ov-hd .ov-nm{flex-direction:column;align-items:flex-start;min-width:0}
@@ -641,7 +645,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 }
 @media (max-width:720px){
   .top{flex-wrap:wrap;height:auto;padding:12px 0;gap:12px}
-  .wf-top select{height:40px;font-size:14px;padding:0 40px 0 14px;background-position:right 12px center;background-size:18px}
+  .wf-top button{height:40px;font-size:14px;padding:0 12px 0 14px}
   .ov-counts{flex-wrap:wrap;row-gap:12px}
   .ov-counts .r{flex:1 0 30%;grid-template-columns:auto;grid-template-areas:"dd" "dt";justify-items:center;text-align:center}
   .ov-counts .r .ic{display:none}
@@ -708,7 +712,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 
 <aside class="side" aria-label="Views">
   <div class="logo"><i aria-hidden="true"></i><span>OneShot</span></div>
-  <label class="wf-side" id="wf-side-wrap" hidden><span>Workflow</span><select id="wf-side"></select></label>
+  <div class="wf-side" id="wf-side-wrap" hidden></div>
   <nav class="nav" aria-label="Main">
     <button type="button" data-view="overview" aria-current="page">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2.5"/><rect x="13" y="3" width="8" height="8" rx="2.5"/><rect x="3" y="13" width="8" height="8" rx="2.5"/><rect x="13" y="13" width="8" height="8" rx="2.5"/></svg>
@@ -743,7 +747,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
   <header class="top">
     <div style="display:flex;align-items:baseline"><h1 id="title" tabindex="-1">Overview</h1><span class="sub" id="title-sub"></span></div>
     <div class="controls" id="controls">
-      <label class="wf-top" id="wf-top-wrap" hidden><span class="sr">Workflow</span><select id="wf-top"></select></label>
+      <div class="wf-top" id="wf-top-wrap" hidden></div>
       <label class="psel" id="run-wrap"><span class="sr">Run</span>
         <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4h12M2 8h8M2 12h10"/></svg>
         <select id="run"></select>
@@ -952,11 +956,38 @@ renderRunSel();runSel.onchange=()=>{state.run=runSel.value;render()};
 
 // The workflow selector, twice: the side menu and the purple menu top right (Figma 2026-10-27); both set WF.
 function setWf(id){WF=id;D=scoped(RAW);if(state.run!=='all'&&!D.runs.find(r=>r.run_id===state.run))state.run='all';render()}
+// Our own menu, not a <select>: the browser draws a select's list and it cannot be styled (Shahar, 2026-11-15).
+// Fills wrap with a button (#id, showing kids) and a listbox of opts [[key,text]]; pick(key) runs on a choice.
+function menu(wrap,id,cls,aria,opts,cur,pick,...kids){
+  const btn=el('button',{type:'button',id,class:cls,'aria-haspopup':'listbox','aria-expanded':'false','aria-controls':id+'-list'},...kids);
+  btn.insertAdjacentHTML('beforeend','<svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>');
+  const list=el('ul',{id:id+'-list',role:'listbox','aria-label':aria,hidden:''});
+  const shut=()=>{list.hidden=true;btn.setAttribute('aria-expanded','false')};
+  for(const [k,t] of opts){
+    const li=el('li',{role:'option',tabindex:'-1','aria-selected':String(k===cur),text:t});
+    li.insertAdjacentHTML('beforeend','<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5 6.5 11.5 12.5 5"/></svg>');
+    li.onclick=()=>{shut();pick(k)};list.append(li);
+  }
+  const open=()=>{list.hidden=false;btn.setAttribute('aria-expanded','true');(list.querySelector('[aria-selected=true]')||list.firstChild)?.focus()};
+  btn.onclick=()=>list.hidden?open():shut();
+  btn.onkeydown=e=>{if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();open()}};
+  list.onkeydown=e=>{
+    const o=[...list.children],at=o.indexOf(document.activeElement);
+    const to={ArrowDown:Math.min(at+1,o.length-1),ArrowUp:Math.max(at-1,0),Home:0,End:o.length-1}[e.key];
+    if(to!=null){e.preventDefault();o[to].focus()}
+    else if(e.key==='Enter'||e.key===' '){e.preventDefault();o[at]?.click()}
+    else if(e.key==='Escape'){e.stopPropagation();shut();btn.focus()}
+    else if(e.key==='Tab')shut();
+  };
+  wrap.classList.add('dd');wrap.replaceChildren(btn,list);
+}
+// a click or Tab outside closes a menu; one listener for all (wraps outlive their re-rendered lists)
+document.addEventListener('focusout',e=>{const w=e.target.closest?.('.dd');if(w&&!w.contains(e.relatedTarget)){w.querySelector('ul').hidden=true;w.querySelector('button').setAttribute('aria-expanded','false')}});
 function renderChips(){
-  for(const [sel,wrap] of [[$('#wf-side'),$('#wf-side-wrap')],[$('#wf-top'),$('#wf-top-wrap')]]){
-    sel.innerHTML='';wrap.hidden=!multiWf();
-    for(const w of RAW.workflows)sel.append(el('option',{value:w.id,text:wfLabel(w.id)}));
-    sel.value=WF||'';sel.onchange=()=>setWf(sel.value);
+  if($('.wf-side ul:not([hidden]),.wf-top ul:not([hidden])'))return; // a live refresh must not close an open menu
+  for(const id of ['wf-side','wf-top']){
+    const wrap=$('#'+id+'-wrap');wrap.hidden=!multiWf();
+    menu(wrap,id,'','Workflow',(RAW.workflows||[]).map(w=>[w.id,wfLabel(w.id)]),WF,k=>{setWf(k);$('#'+id).focus()},el('span',{class:'sr',text:'Workflow'}),el('b',{text:wfLabel(WF)}));
   }
 }
 function renderChrome(){
@@ -1751,31 +1782,9 @@ function renderSites(){
   const sites=pitchSites();
   const head=$('#sites-head');head.innerHTML='';
   if(!sites.length){box.append(el('section',{class:'card'},el('h2',{class:'label',text:'No site has a preview yet'}),el('p',{class:'empty',style:'margin-top:8px;font-size:15px;color:var(--ink2)',text:'Fills when a business reaches previewed.'})));return}
-  // Our own menu, not a <select>: the browser draws a select's list and it cannot be styled (Shahar, 2026-11-15)
   const cur=SITE_SORTS.find(x=>x[0]===state.siteSort)||SITE_SORTS[0];
-  const btn=el('button',{type:'button',id:'sites-sort',class:'psel','aria-haspopup':'listbox','aria-expanded':'false','aria-controls':'sites-sort-list'},el('span',{text:'Sort by'}),el('b',{text:cur[1]}));
-  btn.insertAdjacentHTML('beforeend','<svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>');
-  const list=el('ul',{id:'sites-sort-list',role:'listbox','aria-label':'Sort sites by',hidden:''});
-  const wrap=el('div',{class:'sortsel'},btn,list);
-  const shut=()=>{list.hidden=true;btn.setAttribute('aria-expanded','false')};
-  const pick=k=>{state.siteSort=k;renderSites();$('#sites-sort').focus()};
-  for(const [k,t] of SITE_SORTS){
-    const li=el('li',{role:'option',tabindex:'-1','aria-selected':String(k===cur[0]),text:t});
-    li.insertAdjacentHTML('beforeend','<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5 6.5 11.5 12.5 5"/></svg>');
-    li.onclick=()=>pick(k);list.append(li);
-  }
-  const open=()=>{list.hidden=false;btn.setAttribute('aria-expanded','true');list.querySelector('[aria-selected=true]').focus()};
-  btn.onclick=()=>list.hidden?open():shut();
-  btn.onkeydown=e=>{if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();open()}};
-  list.onkeydown=e=>{
-    const o=[...list.children],at=o.indexOf(document.activeElement);
-    const to={ArrowDown:Math.min(at+1,o.length-1),ArrowUp:Math.max(at-1,0),Home:0,End:o.length-1}[e.key];
-    if(to!=null){e.preventDefault();o[to].focus()}
-    else if(e.key==='Enter'||e.key===' '){e.preventDefault();o[at]?.click()}
-    else if(e.key==='Escape'){e.stopPropagation();shut();btn.focus()}
-    else if(e.key==='Tab')shut();
-  };
-  wrap.addEventListener('focusout',e=>{if(!wrap.contains(e.relatedTarget))shut()}); // a click or Tab outside closes it
+  const wrap=el('div',{class:'sortsel'});
+  menu(wrap,'sites-sort','psel','Sort sites by',SITE_SORTS,cur[0],k=>{state.siteSort=k;renderSites();$('#sites-sort').focus()},el('span',{text:'Sort by'}),el('b',{text:cur[1]}));
   head.append(wrap);
   const key=SITE_SORTS.find(x=>x[0]===state.siteSort)?.[2];
   if(key)sites.sort((x,y)=>{const a=key(x),b=key(y);return (a<b?-1:a>b?1:0)||x.name.localeCompare(y.name)}); // pitchSites() returns a fresh array
