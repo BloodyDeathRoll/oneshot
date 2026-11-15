@@ -293,6 +293,20 @@ td.days span{font-weight:500;color:var(--ink3);font-size:13px;margin-left:2px}
 /* ---------- sites ---------- */
 .sites-head{display:flex;justify-content:space-between;align-items:baseline;padding-top:4px;margin-bottom:20px;font-size:15px;color:var(--ink2);font-weight:500}
 .sites-head b{color:var(--ink);font-weight:700}
+/* Sort by: a pill that opens a list as wide as itself */
+.sortsel{position:relative;margin-left:auto;width:264px;max-width:100%}
+.sortsel .psel{width:100%;border:0;cursor:pointer;padding:0 40px 0 16px;border-radius:999px}
+.sortsel .psel b{font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sortsel .psel .chev{right:16px;transition:transform .15s}
+.sortsel .psel[aria-expanded=true] .chev{transform:rotate(180deg)}
+.sortsel ul{position:absolute;z-index:20;top:calc(100% + 8px);left:0;right:0;margin:0;padding:6px;list-style:none;background:var(--card);border:1px solid var(--rule);border-radius:16px;box-shadow:var(--shadow)}
+.sortsel li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:10px;font-size:14px;font-weight:500;color:var(--ink2);cursor:pointer}
+.sortsel li+li{margin-top:2px}
+.sortsel li:hover,.sortsel li:focus-visible{background:var(--t5);color:var(--ink);outline:0}
+.sortsel li[aria-selected=true]{color:var(--acc);font-weight:700}
+.sortsel li svg{width:16px;height:16px;flex:none;visibility:hidden}
+.sortsel li[aria-selected=true] svg{visibility:visible}
+@media (prefers-reduced-motion:reduce){.sortsel .psel .chev{transition:none}}
 .sites-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
 .site{padding:16px 16px 28px;display:flex;flex-direction:column;gap:0}
 .site .shot{display:block;border-radius:var(--r2);overflow:hidden;background:var(--t5);aspect-ratio:16/10;position:relative}
@@ -1737,11 +1751,32 @@ function renderSites(){
   const sites=pitchSites();
   const head=$('#sites-head');head.innerHTML='';
   if(!sites.length){box.append(el('section',{class:'card'},el('h2',{class:'label',text:'No site has a preview yet'}),el('p',{class:'empty',style:'margin-top:8px;font-size:15px;color:var(--ink2)',text:'Fills when a business reaches previewed.'})));return}
-  const sel=el('select',{id:'sites-sort'});
-  for(const [k,t] of SITE_SORTS)sel.append(el('option',{value:k,text:t}));
-  sel.value=state.siteSort;sel.onchange=()=>{state.siteSort=sel.value;renderSites();$('#sites-sort').focus()};
-  const lab=el('label',{class:'psel'},el('span',{text:'Sort by'}),sel);lab.insertAdjacentHTML('beforeend','<svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>');
-  lab.style.marginLeft='auto';head.append(lab);
+  // Our own menu, not a <select>: the browser draws a select's list and it cannot be styled (Shahar, 2026-11-15)
+  const cur=SITE_SORTS.find(x=>x[0]===state.siteSort)||SITE_SORTS[0];
+  const btn=el('button',{type:'button',id:'sites-sort',class:'psel','aria-haspopup':'listbox','aria-expanded':'false','aria-controls':'sites-sort-list'},el('span',{text:'Sort by'}),el('b',{text:cur[1]}));
+  btn.insertAdjacentHTML('beforeend','<svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>');
+  const list=el('ul',{id:'sites-sort-list',role:'listbox','aria-label':'Sort sites by',hidden:''});
+  const wrap=el('div',{class:'sortsel'},btn,list);
+  const shut=()=>{list.hidden=true;btn.setAttribute('aria-expanded','false')};
+  const pick=k=>{state.siteSort=k;renderSites();$('#sites-sort').focus()};
+  for(const [k,t] of SITE_SORTS){
+    const li=el('li',{role:'option',tabindex:'-1','aria-selected':String(k===cur[0]),text:t});
+    li.insertAdjacentHTML('beforeend','<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5 6.5 11.5 12.5 5"/></svg>');
+    li.onclick=()=>pick(k);list.append(li);
+  }
+  const open=()=>{list.hidden=false;btn.setAttribute('aria-expanded','true');list.querySelector('[aria-selected=true]').focus()};
+  btn.onclick=()=>list.hidden?open():shut();
+  btn.onkeydown=e=>{if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();open()}};
+  list.onkeydown=e=>{
+    const o=[...list.children],at=o.indexOf(document.activeElement);
+    const to={ArrowDown:Math.min(at+1,o.length-1),ArrowUp:Math.max(at-1,0),Home:0,End:o.length-1}[e.key];
+    if(to!=null){e.preventDefault();o[to].focus()}
+    else if(e.key==='Enter'||e.key===' '){e.preventDefault();o[at]?.click()}
+    else if(e.key==='Escape'){e.stopPropagation();shut();btn.focus()}
+    else if(e.key==='Tab')shut();
+  };
+  wrap.addEventListener('focusout',e=>{if(!wrap.contains(e.relatedTarget))shut()}); // a click or Tab outside closes it
+  head.append(wrap);
   const key=SITE_SORTS.find(x=>x[0]===state.siteSort)?.[2];
   if(key)sites.sort((x,y)=>{const a=key(x),b=key(y);return (a<b?-1:a>b?1:0)||x.name.localeCompare(y.name)}); // pitchSites() returns a fresh array
   for(const b of sites){
