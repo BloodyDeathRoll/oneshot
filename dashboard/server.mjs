@@ -380,7 +380,7 @@ function reshoot(slug, url, out) {
     shooting.set(slug, shootThumb(url, tmp).then(() => {
       renameSync(tmp, out); thumbUrls[slug] = url; writeFileSync(THUMB_URLS, JSON.stringify(thumbUrls));
     }).catch((e) => {
-      shotFailed.set(slug, { url, at: Date.now() }); console.warn(`thumb ${slug}: could not shoot ${url}: ${e.message.split('\n')[0]}`); throw e;
+      rmSync(tmp, { force: true }); shotFailed.set(slug, { url, at: Date.now() }); console.warn(`thumb ${slug}: could not shoot ${url}: ${e.message.split('\n')[0]}`); throw e;
     }).finally(() => shooting.delete(slug)));
   }
   return shooting.get(slug);
@@ -391,8 +391,8 @@ async function serveThumb(res, slug) {
   const out = join(DIST, 'img', `${slug}.jpg`);
   const url = previewUrl(slug);
   if (!thumbFresh(out) || (url && thumbUrls[slug] !== url)) {
-    if (!url) return send(res, 404, { error: `${slug} has no preview URL` });
     const f = shotFailed.get(slug), have = existsSync(out);
+    if (!url) return have ? serveFile(res, out) : send(res, 404, { error: `${slug} has no preview URL` }); // no URL to shoot from: the old picture stands
     if (f && f.url === url && Date.now() - f.at < SHOT_RETRY_MS) { if (!have) return send(res, 502, { error: `could not shoot ${url} a moment ago; trying again in a few minutes` }); }
     else {
       const job = reshoot(slug, url, out);
