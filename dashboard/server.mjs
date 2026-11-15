@@ -38,7 +38,7 @@
 // reach it); online, a request without a valid Access token is refused too.
 
 import { createServer } from 'node:http';
-import { readFileSync, existsSync, appendFileSync, writeFileSync, mkdirSync, readdirSync, mkdtempSync, rmSync, watch, statSync, createReadStream } from 'node:fs';
+import { readFileSync, existsSync, appendFileSync, writeFileSync, mkdirSync, readdirSync, mkdtempSync, rmSync, watch, statSync, createReadStream, renameSync } from 'node:fs';
 import { createHash, randomUUID } from 'node:crypto';
 import { execFileSync, execFile } from 'node:child_process';
 import { tmpdir } from 'node:os';
@@ -367,14 +367,38 @@ function previewUrl(slug) {
   return previewCache.urls[slug] ?? null;
 }
 // Which URL each cached picture was shot from, so a corrected preview URL doesn't wait out the cache.
-const thumbUrls = new Map();
+// Kept on disk: a restart must not reshoot every picture.
+const THUMB_URLS = join(DIST, 'img', '.urls.json');
+let thumbUrls = {};
+try { thumbUrls = JSON.parse(readFileSync(THUMB_URLS, 'utf8')); } catch { /* none yet */ }
+const shooting = new Map(); // slug → the shot in flight
+// A preview that is down is not shot again for 5 minutes: each shot can hold the one browser for 30 s.
+const SHOT_RETRY_MS = 300_000, shotFailed = new Map(); // slug → { url, at } of the last failed shot
+function reshoot(slug, url, out) {
+  if (!shooting.has(slug)) {
+    const tmp = join(DIST, 'img', `${slug}.tmp.jpg`); // shot beside the picture, swapped in whole: a reader never gets half a file
+    shooting.set(slug, shootThumb(url, tmp).then(() => {
+      renameSync(tmp, out); thumbUrls[slug] = url; writeFileSync(THUMB_URLS, JSON.stringify(thumbUrls));
+    }).catch((e) => {
+      rmSync(tmp, { force: true }); shotFailed.set(slug, { url, at: Date.now() }); console.warn(`thumb ${slug}: could not shoot ${url}: ${e.message.split('\n')[0]}`); throw e;
+    }).finally(() => shooting.delete(slug)));
+  }
+  return shooting.get(slug);
+}
+// A picture on disk is served at once; when it is old or from another URL the new shot runs behind it.
 async function serveThumb(res, slug) {
   if (!/^[a-z0-9-]+$/.test(slug)) return send(res, 400, { error: 'bad slug' });
   const out = join(DIST, 'img', `${slug}.jpg`);
   const url = previewUrl(slug);
-  if (!thumbFresh(out) || (url && thumbUrls.get(slug) !== url)) {
-    if (!url) return send(res, 404, { error: `${slug} has no preview URL` });
-    try { await shootThumb(url, out); thumbUrls.set(slug, url); } catch (e) { if (!existsSync(out)) return send(res, 502, { error: `could not shoot ${url}: ${e.message}` }); }
+  if (!thumbFresh(out) || (url && thumbUrls[slug] !== url)) {
+    const f = shotFailed.get(slug), have = existsSync(out);
+    if (!url) return have ? serveFile(res, out) : send(res, 404, { error: `${slug} has no preview URL` }); // no URL to shoot from: the old picture stands
+    if (f && f.url === url && Date.now() - f.at < SHOT_RETRY_MS) { if (!have) return send(res, 502, { error: `could not shoot ${url} a moment ago; trying again in a few minutes` }); }
+    else {
+      const job = reshoot(slug, url, out);
+      if (have) job.catch(() => {}); // already logged in reshoot
+      else try { await job; } catch (e) { return send(res, 502, { error: `could not shoot ${url}: ${e.message}` }); }
+    }
   }
   serveFile(res, out);
 }

@@ -291,7 +291,7 @@ td.days span{font-weight:500;color:var(--ink3);font-size:13px;margin-left:2px}
 .pipe-sum{display:flex;gap:24px;font-size:13px;color:var(--ink3);font-weight:500;margin-top:4px}
 
 /* ---------- sites ---------- */
-.sites-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;font-size:15px;color:var(--ink2);font-weight:500}
+.sites-head{display:flex;justify-content:space-between;align-items:baseline;padding-top:4px;margin-bottom:20px;font-size:15px;color:var(--ink2);font-weight:500}
 .sites-head b{color:var(--ink);font-weight:700}
 .sites-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
 .site{padding:16px 16px 28px;display:flex;flex-direction:column;gap:0}
@@ -927,7 +927,7 @@ function countUp(node,to,key){
 }
 
 /* ---------- state ---------- */
-const state={run:'all',view:'overview',filter:'delivered',openPick:null,openSite:null,openDec:null,results:{},handoffs:{},dirty:false};
+const state={run:'all',view:'overview',siteSort:'status',filter:'delivered',openPick:null,openSite:null,openDec:null,results:{},handoffs:{},dirty:false};
 // Overview, Sites and Decisions cover every run; Pipeline and Agents show the run in the picker.
 const PER_RUN=['pipeline'];
 const agentRun=()=>state.run==='all'?D.run.run_id:state.run;
@@ -1726,11 +1726,24 @@ function renderPipeline(){
 }
 
 /* ---------- Sites ---------- */
+// Sort choices for the Sites view: [key, label, sort value]. Sites without an owner, a score or a date go last.
+const SITE_SORTS=[['status','Status'],
+  ['name','Name',b=>b.name.toLowerCase()],
+  ['date','Date (newest first)',b=>-new Date(b.last_change)||Infinity], // no valid date: last
+  ['owner','Owner',b=>b.owned_by?.name?.toLowerCase()??'\uffff'],
+  ['rating','Rating (highest first)',b=>-(b.critic_score??-1)]];
 function renderSites(){
   const box=$('#sites-grid');box.innerHTML='';
   const sites=pitchSites();
   const head=$('#sites-head');head.innerHTML='';
   if(!sites.length){box.append(el('section',{class:'card'},el('h2',{class:'label',text:'No site has a preview yet'}),el('p',{class:'empty',style:'margin-top:8px;font-size:15px;color:var(--ink2)',text:'Fills when a business reaches previewed.'})));return}
+  const sel=el('select',{id:'sites-sort'});
+  for(const [k,t] of SITE_SORTS)sel.append(el('option',{value:k,text:t}));
+  sel.value=state.siteSort;sel.onchange=()=>{state.siteSort=sel.value;renderSites();$('#sites-sort').focus()};
+  const lab=el('label',{class:'psel'},el('span',{text:'Sort by'}),sel);lab.insertAdjacentHTML('beforeend','<svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>');
+  lab.style.marginLeft='auto';head.append(lab);
+  const key=SITE_SORTS.find(x=>x[0]===state.siteSort)?.[2];
+  if(key)sites.sort((x,y)=>{const a=key(x),b=key(y);return (a<b?-1:a>b?1:0)||x.name.localeCompare(y.name)}); // pitchSites() returns a fresh array
   for(const b of sites){
     const c=el('article',{class:'card site',id:'site-'+b.slug,tabindex:'-1','aria-label':b.name});
     c.append(thumb(b,'shot'));
