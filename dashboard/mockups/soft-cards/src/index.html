@@ -1726,10 +1726,10 @@ function renderPipeline(){
 }
 
 /* ---------- Sites ---------- */
-// Sort choices for the Sites view: [key, label, sort value]. Sites without an owner or a score go last.
+// Sort choices for the Sites view: [key, label, sort value]. Sites without an owner, a score or a date go last.
 const SITE_SORTS=[['status','Status'],
   ['name','Name',b=>b.name.toLowerCase()],
-  ['date','Date (newest first)',b=>-new Date(b.last_change)],
+  ['date','Date (newest first)',b=>-new Date(b.last_change)||Infinity], // no valid date: last
   ['owner','Owner',b=>b.owned_by?.name?.toLowerCase()??'\uffff'],
   ['rating','Rating (highest first)',b=>-(b.critic_score??-1)]];
 function renderSites(){

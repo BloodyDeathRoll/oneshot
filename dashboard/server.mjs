@@ -372,11 +372,15 @@ const THUMB_URLS = join(DIST, 'img', '.urls.json');
 let thumbUrls = {};
 try { thumbUrls = JSON.parse(readFileSync(THUMB_URLS, 'utf8')); } catch { /* none yet */ }
 const shooting = new Map(); // slug → the shot in flight
+// A preview that is down is not shot again for 5 minutes: each shot can hold the one browser for 30 s.
+const SHOT_RETRY_MS = 300_000, shotFailed = new Map(); // slug → { url, at } of the last failed shot
 function reshoot(slug, url, out) {
   if (!shooting.has(slug)) {
     const tmp = join(DIST, 'img', `${slug}.tmp.jpg`); // shot beside the picture, swapped in whole: a reader never gets half a file
     shooting.set(slug, shootThumb(url, tmp).then(() => {
       renameSync(tmp, out); thumbUrls[slug] = url; writeFileSync(THUMB_URLS, JSON.stringify(thumbUrls));
+    }).catch((e) => {
+      shotFailed.set(slug, { url, at: Date.now() }); console.warn(`thumb ${slug}: could not shoot ${url}: ${e.message.split('\n')[0]}`); throw e;
     }).finally(() => shooting.delete(slug)));
   }
   return shooting.get(slug);
@@ -388,9 +392,13 @@ async function serveThumb(res, slug) {
   const url = previewUrl(slug);
   if (!thumbFresh(out) || (url && thumbUrls[slug] !== url)) {
     if (!url) return send(res, 404, { error: `${slug} has no preview URL` });
-    const job = reshoot(slug, url, out);
-    if (existsSync(out)) job.catch(() => {});
-    else try { await job; } catch (e) { return send(res, 502, { error: `could not shoot ${url}: ${e.message}` }); }
+    const f = shotFailed.get(slug), have = existsSync(out);
+    if (f && f.url === url && Date.now() - f.at < SHOT_RETRY_MS) { if (!have) return send(res, 502, { error: `could not shoot ${url} a moment ago; trying again in a few minutes` }); }
+    else {
+      const job = reshoot(slug, url, out);
+      if (have) job.catch(() => {}); // already logged in reshoot
+      else try { await job; } catch (e) { return send(res, 502, { error: `could not shoot ${url}: ${e.message}` }); }
+    }
   }
   serveFile(res, out);
 }
