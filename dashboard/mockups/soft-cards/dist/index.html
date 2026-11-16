@@ -59,7 +59,7 @@ main{min-width:0;padding:0 24px 48px}
 .top .sub{font-size:13px;color:var(--ink3);margin-left:14px;font-weight:500}
 .controls{display:flex;gap:12px;align-items:center}
 .wf-chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 var(--gap)}
-.wf-side{display:grid;margin:0 0 24px;padding-bottom:24px;border-bottom:1px solid var(--rule)}.wf-side button{box-sizing:border-box;width:100%;height:48px;margin:0;display:flex;align-items:center;justify-content:space-between;gap:8px;font:inherit;font-size:15px;line-height:22px;font-weight:700;color:var(--ink);background:var(--t5);border:0;border-radius:12px;padding:0 14px 0 16px;cursor:pointer;text-align:left}.wf-side button:focus-visible,.wf-top button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.wf-side{display:grid;margin:0 0 24px;padding-bottom:24px;border-bottom:1px solid var(--rule)}.wf-side>button{box-sizing:border-box;width:100%;height:48px;margin:0;display:flex;align-items:center;justify-content:space-between;gap:8px;font:inherit;font-size:15px;line-height:22px;font-weight:700;color:var(--ink);background:var(--t5);border:0;border-radius:12px;padding:0 14px 0 16px;cursor:pointer;text-align:left}.wf-side>button:focus-visible,.wf-top>button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 /* Our own menus, not <select>: the browser draws a select's list and it cannot be styled (Shahar, 2026-11-15) */
 .dd{position:relative}
 .dd>button b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
@@ -587,7 +587,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 .side .lp b{font-weight:700}
 .side-foot[hidden]{display:none}
 .wf-top{position:relative;display:inline-flex}
-.wf-top button{height:48px;display:inline-flex;align-items:center;gap:12px;border:0;border-radius:12px;padding:0 16px 0 20px;font:inherit;font-size:15px;font-weight:700;color:#fff;background:var(--acc);cursor:pointer;box-shadow:var(--shadow);max-width:100%}
+.wf-top>button{height:48px;display:inline-flex;align-items:center;gap:12px;border:0;border-radius:12px;padding:0 16px 0 20px;font:inherit;font-size:15px;font-weight:700;color:#fff;background:var(--acc);cursor:pointer;box-shadow:var(--shadow);max-width:100%}
 .wf-top ul{left:auto;right:0;min-width:100%;width:max-content;max-width:calc(100vw - 32px)}
 .ov-ttl{font-size:15px;line-height:22px;font-weight:700;letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .ov-hd{display:flex;align-items:center;justify-content:space-between;gap:8px}
@@ -645,7 +645,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 }
 @media (max-width:720px){
   .top{flex-wrap:wrap;height:auto;padding:12px 0;gap:12px}
-  .wf-top button{height:40px;font-size:14px;padding:0 12px 0 14px}
+  .wf-top>button{height:40px;font-size:14px;padding:0 12px 0 14px}
   .ov-counts{flex-wrap:wrap;row-gap:12px}
   .ov-counts .r{flex:1 0 30%;grid-template-columns:auto;grid-template-areas:"dd" "dt";justify-items:center;text-align:center}
   .ov-counts .r .ic{display:none}
@@ -2531,7 +2531,8 @@ function menu(wrap,id,cls,aria,opts,cur,pick,...kids){
     li.onclick=()=>{shut();pick(k)};list.append(li);
   }
   const open=()=>{list.hidden=false;btn.setAttribute('aria-expanded','true');(list.querySelector('[aria-selected=true]')||list.firstChild)?.focus()};
-  btn.onclick=()=>list.hidden?open():shut();
+  btn.onmousedown=e=>e.preventDefault(); // Safari does not focus a clicked button: without this, focusout shuts the open menu and the click reopens it
+  btn.onclick=()=>list.hidden?open():(shut(),btn.focus());
   btn.onkeydown=e=>{if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();open()}};
   list.onkeydown=e=>{
     const o=[...list.children],at=o.indexOf(document.activeElement);
@@ -2546,10 +2547,12 @@ function menu(wrap,id,cls,aria,opts,cur,pick,...kids){
 // a click or Tab outside closes a menu; one listener for all (wraps outlive their re-rendered lists)
 document.addEventListener('focusout',e=>{const w=e.target.closest?.('.dd');if(w&&!w.contains(e.relatedTarget)){w.querySelector('ul').hidden=true;w.querySelector('button').setAttribute('aria-expanded','false')}});
 function renderChips(){
-  if($('.wf-side ul:not([hidden]),.wf-top ul:not([hidden])'))return; // a live refresh must not close an open menu
   for(const id of ['wf-side','wf-top']){
     const wrap=$('#'+id+'-wrap');wrap.hidden=!multiWf();
+    // a live refresh must not close an open menu: rebuild it, then put it back open on the same row
+    const was=$('#'+id+'-list:not([hidden])'),at=was?[...was.children].indexOf(document.activeElement):-1;
     menu(wrap,id,'','Workflow',(RAW.workflows||[]).map(w=>[w.id,wfLabel(w.id)]),WF,k=>{setWf(k);$('#'+id).focus()},el('span',{class:'sr',text:'Workflow'}),el('b',{text:wfLabel(WF)}));
+    if(was&&!wrap.hidden){$('#'+id).click();$('#'+id+'-list').children[at]?.focus()}
   }
 }
 function renderChrome(){
