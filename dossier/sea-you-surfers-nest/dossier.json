@@ -1,0 +1,3934 @@
+{
+ "slug": "sea-you-surfers-nest",
+ "run_id": "2026-10-midigama-01",
+ "harvester_version": "0.5.0",
+ "harvested_at": "2026-11-21T23:22:00Z",
+ "businessType": "beach_lodging",
+ "businessType_why": "It earns its money renting double rooms (Booking: Deluxe Double Room and Standard Double Room; Airbnb: 7 bedrooms, 7 double beds, 'one A/C room & Six Non A/C rooms can accommodate 14 pax'). No surf lessons are offered in any source; surfboards are on racks in its photos and one guest mentions surf rental arranged by the host, which is an add-on. vertical/business-types.md row beach_lodging ('a bed near the wave, no lessons of its own').",
+ "business": {
+  "name": {
+   "value": "Sea You Surfers Nest",
+   "source_url": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0?hl=en",
+   "fetched_at": "2026-11-21T22:56:15Z",
+   "note": "Google listing name. The business's own sign reads 'Sea You / THE SURFERS NEST / MIDIGAMA' (img-001). Booking.com and Agoda: 'Sea You Surfers Nest! Hello to waves in a minute walk'. Airbnb: 'Wake up to waves, 2026 rates, Sea You Surfers Nest' and 'Sea You Surfer's Nest, Escape to the Sun & Sea!'."
+  },
+  "name_on_sign": {
+   "value": "Sea You – The Surfers Nest – Midigama",
+   "source_url": "https://cf.bstatic.com/xdata/images/hotel/max3000/755289509.jpg?k=604c42ae665585bb3b8d03de3eb4f814126e8c6152b56bd04633829b2237f39e&o=",
+   "fetched_at": "2026-11-21T23:12:30Z",
+   "note": "read from the sign in the property's own Booking photo 755289509 (img-001); the logo is a wave, surfboard, sun and palm"
+  },
+  "other_names": {
+   "value": [
+    "Sea You Surfers Nest! Hello to waves in a minute walk",
+    "Sea You Surfer's Nest"
+   ],
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "Booking/Agoda listing name; Airbnb listing 2 title"
+  },
+  "type": {
+   "value": "beach_lodging",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z"
+  },
+  "google_category": {
+   "value": "Bed & breakfast",
+   "source_url": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0?hl=en",
+   "fetched_at": "2026-11-21T22:56:15Z"
+  },
+  "booking_category": {
+   "value": "Hotel",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "Booking breadcrumb '(Hotel)'; Agoda 'Hotel', 'Managed by a private host'; Airbnb 'Room in Matara' / 'Guest house' / 'Entire guest house'"
+  },
+  "google_listing_claimed": {
+   "value": false,
+   "source_url": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0?hl=en",
+   "fetched_at": "2026-11-21T22:56:15Z",
+   "note": "Google shows 'Claim this business', 'Add place's phone number' and 'Add website': the owner has not claimed it"
+  },
+  "tagline": {
+   "value": null,
+   "gap": "no tagline published; the OTA name suffix 'Hello to waves in a minute walk' is the nearest thing"
+  },
+  "description": {
+   "value": "Escape to the sun, sand, and waves at our cozy surf haven. Whether you’re chasing the perfect wave, soaking up the beach vibes, or just looking to unwind, our place is your perfect home away from home. Come stay with us, relax, and let the good times roll! \nReserve your surfside escape today! – adds a surf vibe.",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "fetched_at": "2026-11-21T23:05:23Z",
+   "language": "en",
+   "author": "owner (Airbnb listing text; identical on listing 2)",
+   "note": "the trailing '– adds a surf vibe.' looks like a leftover from a text generator; the copywriter should not reuse it verbatim"
+  },
+  "description_rooms_note": {
+   "value": "Note: We have one A/C room & Six Non A/C rooms can accommodate 14 pax.(Pls inquire for per room rate for individual rooms)",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "fetched_at": "2026-11-21T23:05:23Z",
+   "language": "en",
+   "author": "owner (Airbnb listing 1)",
+   "note": "listing 2: 'NOTE: We have ONLY ONE A/C room & Six Non A/C rooms can accommodate 14 pax.(rates are for Non A/C double room, Pls inquire when booking)'"
+  },
+  "description_booking": {
+   "value": "Comfortable Accommodations: Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama offers family rooms with air-conditioning, private entrances, and balconies. Each room includes a work desk, free toiletries, and a wardrobe.\n\nDining Experience: The hotel features a family-friendly restaurant serving Asian and European cuisines in a traditional and modern ambience. Guests can enjoy local specialities, warm dishes, juice, and fruits for breakfast.\n\nAmenities and Services: Guests benefit from free WiFi in public areas, a 24-hour front desk, and free on-site private parking. Additional facilities include a terrace, garden, and paid airport shuttle service.\n\nNearby Attractions: Midigama Beach is a 6-minute walk away, while Koggala Airport is 11 km from the property.",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "language": "en",
+   "author": "Booking.com (generated from the property's facility answers; not the owner's own words)",
+   "note": "'restaurant' and 'family rooms with air-conditioning … and balconies' are Booking's wording and partly contradicted by the owner (one A/C room) and guests (shared kitchen) — see contradictions"
+  },
+  "owner": {
+   "value": "Ashly",
+   "source_url": "https://www.airbnb.co.uk/users/show/718689424",
+   "fetched_at": "2026-11-21T23:07:55Z",
+   "note": "Airbnb host 'Ashly', Superhost, identity verified, '1 year hosting', 'My work: Businessman'. Booking guest Marina (2026-02): 'Ashley, the owner'. Airbnb guest Mareike (2026-02): 'Ashly und sein Bruder' (Ashly and his brother) host, and 'Ashly wohnt mit im Haus' (lives in the house). Family name not published."
+  },
+  "host_stats": {
+   "value": {
+    "superhost": true,
+    "years_hosting": 1,
+    "reviews": 10,
+    "rating": 5.0,
+    "response_rate": "70%",
+    "response_time": "Responds within a few hours",
+    "identity_verified": true,
+    "listings": 2
+   },
+   "source_url": "https://www.airbnb.co.uk/users/show/718689424",
+   "fetched_at": "2026-11-21T23:07:55Z"
+  },
+  "since": {
+   "value": "2025 (Booking photos uploaded 2025-09-28; first reviews October 2025 on both Booking and Airbnb; Airbnb host '1 year hosting')",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "no opening year published"
+  }
+ },
+ "location": {
+  "address": {
+   "value": "151 Weliwaththa Rd, Midigama 80650, Sri Lanka",
+   "source_url": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0?hl=en",
+   "fetched_at": "2026-11-21T22:56:15Z",
+   "note": "Google listing address exactly as shown (aria-label 'Address: 151 Weliwaththa Rd, Midigama 80650, Sri Lanka'); postcode 80650 is on Google itself. Already in the playbook §6 order and capitalisation."
+  },
+  "address_other": [
+   {
+    "value": "Weliwaththa Road, 81700 Kumbalgama, Sri Lanka",
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+    "fetched_at": "2026-11-21T22:57:19Z",
+    "note": "Booking.com"
+   },
+   {
+    "value": "Weliwaththa Road, Midigama Beach, Mirissa, Sri Lanka, 81700",
+    "source_url": "https://www.agoda.com/en-gb/sea-you-surfers-nest/hotel/all/midigama-east-lk.html",
+    "fetched_at": "2026-11-21T22:59:37Z",
+    "note": "Agoda (Booking-fed)"
+   },
+   {
+    "value": "Weliwaththa Road, Weligama, 81700",
+    "source_url": "https://www.mapquest.com/lk/sea-you-surfers-nest-hello-to-waves-in-a-minute-walk-808545098",
+    "fetched_at": "2026-11-21T23:02:08Z",
+    "note": "MapQuest (Booking-fed)"
+   }
+  ],
+  "lat_lng": {
+   "value": [
+    5.9621402,
+    80.3974064
+   ],
+   "source_url": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0?hl=en",
+   "fetched_at": "2026-11-21T22:56:15Z"
+  },
+  "plus_code": {
+   "value": "X96W+VX Ahangama, Sri Lanka",
+   "source_url": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0?hl=en",
+   "fetched_at": "2026-11-21T22:56:15Z"
+  },
+  "map_url": {
+   "value": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0",
+   "source_url": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0?hl=en",
+   "fetched_at": "2026-11-21T22:56:15Z"
+  },
+  "distance_to_beach": [
+   {
+    "value": "Hello to waves in a minute walk",
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+    "fetched_at": "2026-11-21T22:57:19Z",
+    "author": "owner (listing name suffix on Booking/Agoda)"
+   },
+   {
+    "value": "Midigama Beach 500 m; 'Midigama Beach is a 6-minute walk away'",
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+    "fetched_at": "2026-11-21T22:57:19Z",
+    "author": "Booking (OpenStreetMap walking distance)"
+   },
+   {
+    "value": "Midigama Beach 330 m (straight line)",
+    "source_url": "https://www.agoda.com/en-gb/sea-you-surfers-nest/hotel/all/midigama-east-lk.html",
+    "fetched_at": "2026-11-21T22:59:37Z",
+    "author": "Agoda"
+   },
+   {
+    "value": "91 m to the shoreline",
+    "source_url": "reports/2026-10-midigama-01/candidates.json",
+    "fetched_at": "2026-10-26T12:41:32Z",
+    "author": "scout (map measurement)"
+   },
+   {
+    "value": "just 2 minutes walk to beautiful, shiny beach",
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html#review-ab9c2483c2c4b4c3",
+    "fetched_at": "2026-11-21T22:57:19Z",
+    "author": "Dona, New Zealand (Booking, 2025-10)"
+   },
+   {
+    "value": "just a few steps to the sea, restaurants and surf shops",
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z",
+    "author": "Mareike (Airbnb, 2026-02, translated by Airbnb from German 'nur ein paar Schritte bis zum Meer, Restaurants und Surfshops')"
+   }
+  ],
+  "setting": {
+   "value": "In Midigama, right by the coast — Steps from the sea, with restaurants and surf shops within easy walking distance",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "fetched_at": "2026-11-21T23:05:23Z",
+   "author": "Airbnb listing highlights (Airbnb's AI summary of guest reviews, not the owner)",
+   "note": "guests: 'Calm & quiet location' (Thushan, Booking 2025-10); 'Peaceful location, but walking distance or short tuk tuk ride to wonderful beaches, surf sports and nice restaurants' (Sanna, Airbnb 2026-01)"
+  },
+  "spot": {
+   "value": null,
+   "gap": "the business names no surf break; guests say 'good location for surfing' (Florentine) and 'walking distance … to wonderful beaches, surf sports' (Sanna). Booking lists Midigama Beach 500 m; Agoda 'Kite Surfing Mirissa 620 m'. The nearest named breaks (Lazy Left/Right, Rams, Plantation) are not mentioned by this business or its guests"
+  },
+  "nearby": {
+   "value": {
+    "Midigama station (train)": "950 m walking (Booking); 750 m (Agoda)",
+    "Kumbalgama station": "1.7 km (Booking)",
+    "Serf View Resturent": "250 m (Booking, sic)",
+    "Shirani Home Made Rice & Curry": "850 m",
+    "Surfing Wombats Restaurant": "1 km",
+    "Weligama Beach": "3.4 km (Booking) / 2.5 km (Agoda)",
+    "Koggala Airport": "10 km",
+    "Mattala Rajapaksa International Airport": "96 km",
+    "Walana Hospital": "2.7 km (Agoda)"
+   },
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "Booking 'Hotel surroundings' and Agoda 'What's nearby'"
+  }
+ },
+ "contact": {
+  "phone": {
+   "value": "+94715880052",
+   "source_url": "https://cf.bstatic.com/xdata/images/hotel/max3000/755289509.jpg?k=604c42ae665585bb3b8d03de3eb4f814126e8c6152b56bd04633829b2237f39e&o=",
+   "fetched_at": "2026-11-21T23:12:30Z",
+   "verified": "read by eye from the business's own street sign ('+94 715880052') in the property's own Booking.com photo 755289509 (uploaded 2025-09-28; img-001), zoomed at 3000 px — digits unambiguous; the same photo is on Airbnb listing 1508895627217411616. It is NOT published as text anywhere found: Google shows 'Add place's phone number', Booking/Agoda/Airbnb hide contact details until booking, and web searches for the number (four formats) return nothing. A Sri Lankan mobile (071).",
+   "confidence": "medium-high",
+   "note": "transcribed from an image, not copied from text (constraint 3): a human should confirm it (e.g. the owner on first contact) before it is used as the site's tap-to-call action"
+  },
+  "whatsapp": {
+   "value": null,
+   "gap": "no WhatsApp number or link published anywhere; the sign's mobile number may be on WhatsApp but nothing says so"
+  },
+  "email": {
+   "value": null,
+   "gap": "not published"
+  },
+  "socials": {
+   "instagram": null,
+   "facebook": null,
+   "tripadvisor": null,
+   "youtube": null,
+   "google_maps": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0?hl=en",
+   "note": "no Instagram, Facebook, Tripadvisor or YouTube found (web searches by name and number; guessed Instagram handles return only Instagram's login shell, so they can be neither confirmed nor ruled out without logging in); see sources.md"
+  },
+  "airbnb_messaging": {
+   "value": "Message host (Responds within a few hours; response rate 70%)",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "fetched_at": "2026-11-21T23:05:23Z"
+  }
+ },
+ "booking": {
+  "path": {
+   "value": "engine",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "rooms are sold on Booking.com (hotel id 14923256, 8 reviews, newest Mar 2026), Agoda (79261807, fed from Booking: same photos and the same 8 Booking reviews) and two Airbnb listings. The only direct channel is the mobile number on the business's sign (contact.phone). No WhatsApp, email, website or social profile."
+  },
+  "engine_url": {
+   "value": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z"
+  },
+  "other_engines": {
+   "value": [
+    {
+     "label": "Airbnb — Wake up to waves, 2026 rates, Sea You Surfers Nest (private room; 5.0 from 10)",
+     "url": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "label": "Airbnb — Sea You Surfer's Nest, Escape to the Sun & Sea! (whole guest house, 14 guests, new, no reviews)",
+     "url": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "label": "Agoda (Booking-fed)",
+     "url": "https://www.agoda.com/en-gb/sea-you-surfers-nest/hotel/all/midigama-east-lk.html"
+    }
+   ],
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "fetched_at": "2026-11-21T23:05:23Z",
+   "note": "Google hotel prices show Agoda and Booking.com only"
+  },
+  "reply_time_hint": {
+   "value": "Responds within a few hours",
+   "source_url": "https://www.airbnb.co.uk/users/show/718689424",
+   "fetched_at": "2026-11-21T23:07:55Z",
+   "note": "Airbnb host stats; response rate 70%"
+  }
+ },
+ "hours": [],
+ "hours_note": {
+  "value": null,
+  "gap": "lodging: no opening hours; check-in/out in stay_info. Booking and Agoda list a '24-hour front desk'."
+ },
+ "stay_info": {
+  "check_in": {
+   "value": "From 14:00 to 18:00",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "Booking house rules and FAQ ('Check-in … is from 14:00'); Agoda the same. Airbnb (both listings): 'Check in after 15:00' — contradiction"
+  },
+  "check_out": {
+   "value": "From 06:00 to 10:00",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "Booking; Agoda 'Check-out until: 10:00'. Airbnb publishes no check-out time on the page"
+  },
+  "children": {
+   "value": "Children of any age are welcome. … Cots and extra beds are not available at this property.",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z"
+  },
+  "pets": {
+   "value": "Pets are allowed on request. Charges may be applicable.",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z"
+  },
+  "parties": {
+   "value": "Parties/events are not allowed",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "also 'This property will not accommodate hen, stag or similar parties.'"
+  },
+  "min_nights": {
+   "value": null,
+   "gap": "not published"
+  },
+  "payment": {
+   "value": null,
+   "gap": "not published (Booking shows no payment restriction)"
+  }
+ },
+ "room_types": [
+  {
+   "value": {
+    "label": "Deluxe Double Room",
+    "booking_room_id": 1492325601,
+    "beds": "1 large double bed",
+    "sleeps": 2,
+    "size_m2": 13.0,
+    "bathrooms": 1,
+    "description": "The double room features air conditioning, a private entrance, as well as a terrace and a balcony. The unit has 1 bed."
+   },
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "Booking RoomPageDesktopRDS. Photos tagged to it: img-002, 012, 013, 014, 015, 022, 032, 033"
+  },
+  {
+   "value": {
+    "label": "Standard Double Room",
+    "booking_room_id": 1492325603,
+    "beds": "1 large double bed",
+    "sleeps": 2,
+    "size_m2": 12.0,
+    "bathrooms": 0,
+    "description": "The double room provides a private entrance and a wardrobe. The unit offers 1 bed."
+   },
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "Booking reports 0 bathrooms in the unit; guest Marina (2026-02): 'my bathroom was located outside the room. Although it was supposed to be for private use, occasionally it seemed to be used by others as well'. Photos tagged to it: img-005, 008, 009, 010, 011, 025, 026, 027"
+  },
+  {
+   "value": {
+    "label": "Budget Double Room",
+    "status": "named in one review, no longer listed"
+   },
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html#review-ab9c2483c2c4b4c3",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "Dona (2025-10) stayed in a 'Budget Double Room'"
+  },
+  {
+   "value": {
+    "label": "Airbnb: 7 bedrooms, 1 double bed each",
+    "sleeps": 14,
+    "ac_rooms": 1,
+    "non_ac_rooms": 6,
+    "bathroom": "Private attached bathroom (listing 1)"
+   },
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "fetched_at": "2026-11-21T23:05:23Z",
+   "note": "listing 2 (whole house): '14 guests · 7 bedrooms · 6 beds · 0 bathrooms' and shows 6 bedrooms — Airbnb counts disagree with listing 1"
+  }
+ ],
+ "room_count": {
+  "value": 7,
+  "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+  "fetched_at": "2026-11-21T23:05:23Z",
+  "verbatim": "We have one A/C room & Six Non A/C rooms can accommodate 14 pax.",
+  "note": "owner's count (Airbnb). Booking sells two room types; guest Joanna booked 4 rooms at once (2026-01)."
+ },
+ "room_types_note": "Mint-green painted four-poster double beds with teal velvet throws, timber towel ladders and green cabinets in every room (photos). One room has A/C (Airbnb guest Mareike had it: a door to a large balcony; 'not all rooms have this access'); the rest have fans and mosquito nets. Booking lists air conditioning as an 'Additional charge'. Rooms have barred, shuttered windows rather than glass (Mareike), and some are small (Joanna). Nightly rates are live OTA inventory and are not copied (site-content rule 'Live prices are not content').",
+ "offers": [],
+ "offers_note": "No price published by the business. Live OTA prices seen 2026-11-21 (not content, for the pitch only): Google hotel prices '₪63' a night for Mon 23 – Tue 24 Nov 2026 on Agoda and Booking.com ('GREAT DEAL … 31% less than usual'); Airbnb search card '£18 total' for 23–24 Dec on listing 1. Airbnb listing 2: 'rates are for Non A/C double room, Pls inquire when booking'. Guests: 'For the paid price, the room were absolutely good value' (Marina), 'Great value for the price' (Thushan); Booking value-for-money sub-score 7.9.",
+ "facilities": [
+  {
+   "value": "breakfast (Asian)",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "Booking 'Breakfast info: Asian'; Agoda 'Asian breakfast with local specialities, warm dishes, juice, and fruits'. Whether it is in the rate is not stated; Booking FAQ 'Do they serve breakfast?' unanswered on the page"
+  },
+  {
+   "value": "shared kitchen for guests",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "fetched_at": "2026-11-21T23:05:23Z",
+   "note": "Airbnb amenity 'Kitchen'; Mareike: 'man teilt sich die Küche mit ihm und den anderen Gästen' (you share the kitchen with him and the other guests); Florentine: cooking for yourself in the kitchen is no problem"
+  },
+  {
+   "value": "restaurant (Asian, European; open for breakfast)",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "Booking only ('1 restaurant on site … Open for Breakfast'); no guest mentions a restaurant on site — see contradictions"
+  },
+  {
+   "value": "food cooked by the hosts on request",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html#review-ab9c2483c2c4b4c3",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "Dona: 'They offered us delicious foods, super tasty'"
+  },
+  {
+   "value": "free WiFi",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "Booking: 'WiFi is available in public areas and is free of charge'; Agoda 'Free Wi-Fi in all rooms!'; Sanna (Airbnb): 'good wifi'"
+  },
+  {
+   "value": "free private parking on site",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z"
+  },
+  {
+   "value": "airport shuttle (additional charge)",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "Niamh (Airbnb) 'sorted an airport transfer for us'; Mareike was picked up free from her previous accommodation"
+  },
+  {
+   "value": "laundry (additional charge)",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "Airbnb lists a washing machine"
+  },
+  {
+   "value": "air conditioning in one room (Booking: 'Air conditioning — Additional charge')",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "fetched_at": "2026-11-21T23:05:23Z"
+  },
+  {
+   "value": "fan, mosquito net, private entrance, desk, wardrobe, free toiletries, shower, bidet",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z"
+  },
+  {
+   "value": "terrace / balconies and garden",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "Niamh: 'Private balcony outside of rooms'; Lazarine: 'Le balcon est un vrai atout, il y a de la place pour faire du yoga !'"
+  },
+  {
+   "value": "outdoor workspace with desk, chair and universal socket adapters",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "fetched_at": "2026-11-21T23:05:23Z",
+   "author": "Sanna (Airbnb, 2026-01)"
+  },
+  {
+   "value": "hot water and en-suite bathroom (Sanna's room)",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "fetched_at": "2026-11-21T23:05:23Z",
+   "note": "the instant-shower heaters are visible in img-008/028/048; the Standard Double Room's bathroom is outside the room (Marina)"
+  },
+  {
+   "value": "24-hour front desk",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z"
+  },
+  {
+   "value": "pets allowed on request (charges may apply)",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z"
+  },
+  {
+   "value": "exterior security cameras on property",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "fetched_at": "2026-11-21T23:05:23Z",
+   "note": "Airbnb safety disclosure (listing 1); a camera is visible in img-046"
+  },
+  {
+   "value": "no carbon-monoxide alarm or smoke alarm reported",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "fetched_at": "2026-11-21T23:05:23Z",
+   "note": "Airbnb safety section; fire extinguishers are visible in several photos (img-006, 034, 046, 072)"
+  },
+  {
+   "value": "shared beach access",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "fetched_at": "2026-11-21T23:05:23Z",
+   "note": "Airbnb amenity; the beach is public"
+  }
+ ],
+ "facilities_note": "Not offered or not stated: pool (none anywhere), surf lessons (none in any source), board storage (not mentioned; a wall rack with three surfboards and a longboard-shaped outdoor shower are in the photos). Booking's 'family rooms with air-conditioning … and balconies' is Booking's generated text.",
+ "surf": {
+  "lessons": {
+   "value": null,
+   "gap": "no surf lessons offered or mentioned in any source"
+  },
+  "board_rental": {
+   "value": "location surf (surfboard rental) arranged by the host",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "fetched_at": "2026-11-21T23:05:23Z",
+   "author": "Lazarine (Airbnb, 2025-10): 'hôte très attentionné et arrangeant (location surf et déplacement)'",
+   "confidence": "low",
+   "note": "one guest only; no board list, sizes or prices anywhere. Surfboards on a wall rack appear in img-004, 034, 072"
+  },
+  "board_storage": {
+   "value": null,
+   "gap": "not mentioned; a surfboard wall rack is visible in photos (img-034, img-072)"
+  },
+  "surf_transport": {
+   "value": "déplacement (transport) arranged by the host",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "fetched_at": "2026-11-21T23:05:23Z",
+   "author": "Lazarine (Airbnb, 2025-10)",
+   "confidence": "low"
+  }
+ },
+ "season": {
+  "value": null,
+  "gap": "the business publishes no surf season; reviews cover stays in Oct 2025 and Jan–Mar 2026"
+ },
+ "languages_spoken": [
+  {
+   "value": "en",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z",
+   "note": "Booking and Agoda 'Languages spoken: English'"
+  }
+ ],
+ "reviews": {
+  "google": {
+   "rating": 4.9,
+   "count": 11,
+   "scale": 5,
+   "source_url": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0?hl=en",
+   "fetched_at": "2026-11-21T22:56:15Z",
+   "note": "distribution 5★ 10, 4★ 1. Review texts are not shown in Google's limited (signed-out) view; the Reviews tab does not load. Not quoted."
+  },
+  "booking": {
+   "rating": 8.0,
+   "count": 8,
+   "scale": 10,
+   "label": "Very good",
+   "subscores": {
+    "Cleanliness": 8.6,
+    "Comfort": 9.3,
+    "Facilities": 8.6,
+    "Location": 10,
+    "Staff": 9.3,
+    "Value for money": 7.9
+   },
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "fetched_at": "2026-11-21T22:57:19Z"
+  },
+  "agoda": {
+   "rating": 8.8,
+   "count": 8,
+   "scale": 10,
+   "label": "Excellent",
+   "source_url": "https://www.agoda.com/en-gb/sea-you-surfers-nest/hotel/all/midigama-east-lk.html",
+   "fetched_at": "2026-11-21T22:59:37Z",
+   "note": "'Verified reviews provided by' Booking.com: the same 8 reviews, re-scored by Agoda (room comfort 9.4, service 9.3, cleanliness 8.6, facilities 8.6, location 10.0). Not an independent rating; do not show it beside Booking's."
+  },
+  "airbnb_1": {
+   "rating": 5.0,
+   "count": 10,
+   "scale": 5,
+   "note": "Guest favourite; cleanliness 4.9, accuracy 5.0, check-in 5.0, communication 5.0, location 4.8, value 4.8",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "fetched_at": "2026-11-21T23:05:23Z"
+  },
+  "airbnb_2": {
+   "rating": null,
+   "count": 0,
+   "gap": "new listing, no reviews yet",
+   "source_url": "https://www.airbnb.co.uk/rooms/1793988904511877292",
+   "fetched_at": "2026-11-21T23:08:21Z"
+  },
+  "airbnb_host": {
+   "rating": 5.0,
+   "count": 10,
+   "scale": 5,
+   "source_url": "https://www.airbnb.co.uk/users/show/718689424",
+   "fetched_at": "2026-11-21T23:07:55Z"
+  },
+  "tripadvisor": {
+   "rating": null,
+   "count": null,
+   "gap": "no listing found"
+  },
+  "hostelworld": {
+   "rating": null,
+   "count": null,
+   "gap": "no listing found"
+  },
+  "all_booking": [
+   {
+    "review_id": "88a00b385a0a69ab",
+    "author": "Marina",
+    "country": "Italy",
+    "stay": "2026-02-07 to 2026-02-11",
+    "nights": 4,
+    "room": "Standard Double Room",
+    "traveller_type": "SOLO_TRAVELLERS",
+    "score": 8.0,
+    "scale": 10,
+    "lang": "en",
+    "title": "Very nice stay",
+    "positive": "I had a very pleasant stay at this place. For the paid price, the room were absolutely good value and met my expectations. Outside, there is a lovely and well-maintained patio area, which is very nice to relax in. Ashley, the owner, is truly fantastic, very kind, attentive, and always ready to help with anything you might need. He really makes you feel welcome and well taken care of.",
+    "negative": "Since I was on the ground floor the room was a little dark. Also, my bathroom was located outside the room. Although it was supposed to be for private use, occasionally it seemed to be used by others as well",
+    "owner_reply": null,
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html#review-88a00b385a0a69ab",
+    "fetched_at": "2026-11-21T22:57:19Z"
+   },
+   {
+    "review_id": "c01eb61241be43e7",
+    "author": "Joanna",
+    "country": "Poland",
+    "stay": "2026-01-30 to 2026-02-01",
+    "nights": 2,
+    "room": "Standard Double Room",
+    "traveller_type": "GROUP_OF_FRIENDS",
+    "score": 6.0,
+    "scale": 10,
+    "lang": "en",
+    "title": null,
+    "positive": "Staff was very nice, they let us Change our reservation\nLocation was good",
+    "negative": "We booked 4 rooms, two of them were fine but other two was way too small. It was hard to walk around it and there was no place to out things. During the day was so hot it was impossible to Dorn any time in those rooms",
+    "owner_reply": null,
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html#review-c01eb61241be43e7",
+    "fetched_at": "2026-11-21T22:57:19Z"
+   },
+   {
+    "review_id": "9e7670457ab0f400",
+    "author": "Camilla",
+    "country": "United Kingdom",
+    "stay": "2026-01-01 to 2026-01-04",
+    "nights": 3,
+    "room": "Deluxe Double Room",
+    "traveller_type": "COUPLES",
+    "score": 5.0,
+    "scale": 10,
+    "lang": "en",
+    "title": "Check your booking with facilities don’t rely on booking.com email confirmations!",
+    "positive": "Property was nice but sadly there was a muddle with our booking and part of our group had to stay elsewhere (in not a nice place which we only stayed in for one night and they refused to refund us for other two nights)The issue was either a booking.com issue or the property it is unclear to us which. We had had confirmation emails etc  but the place was full…I was travelling with my daughter and so we ended up in different places which was upsetting. I suggest ringing several days before arrival to check your booking is correct!",
+    "negative": "My daughter stayed one night and was happy with facilities",
+    "owner_reply": null,
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html#review-9e7670457ab0f400",
+    "fetched_at": "2026-11-21T22:57:19Z"
+   },
+   {
+    "review_id": "ab9c2483c2c4b4c3",
+    "author": "Dona",
+    "country": "New Zealand",
+    "stay": "2025-10-16 to 2025-10-17",
+    "nights": 1,
+    "room": "Budget Double Room",
+    "traveller_type": "SOLO_TRAVELLERS",
+    "score": 10.0,
+    "scale": 10,
+    "lang": "en",
+    "title": "Unforgettable Stay - Exceptional Treats",
+    "positive": "Love this property, just 2 minutes walk to beautiful, shiny beach. Rooms are perfect, much clean and tidy, comfortable. Staff are super friendly and take care of the guests exceptional level. They offered us delicious foods, super tasty, love them. We received unforgettable treatments from Sea you surfers nest. Its exceptional value for money. Recommended to anyone who love beaches and true Sri Lankan hospitality. We'll definitely Sea You again... Cheers!! 😍",
+    "negative": null,
+    "owner_reply": null,
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html#review-ab9c2483c2c4b4c3",
+    "fetched_at": "2026-11-21T22:57:19Z"
+   },
+   {
+    "review_id": "6683690ceb709b16",
+    "author": "Thushan",
+    "country": "New Zealand",
+    "stay": "2025-10-06 to 2025-10-07",
+    "nights": 1,
+    "room": "Deluxe Double Room",
+    "traveller_type": "SOLO_TRAVELLERS",
+    "score": 10.0,
+    "scale": 10,
+    "lang": "en",
+    "title": "Location was great and comfortable. Great value for the price. Staff was very friendly.",
+    "positive": "Clean & tidy rooms\r\nCalm & quiet location",
+    "negative": null,
+    "owner_reply": null,
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html#review-6683690ceb709b16",
+    "fetched_at": "2026-11-21T22:57:19Z"
+   },
+   {
+    "review_id": "9bdf7dd66e421455",
+    "author": "Daniel",
+    "country": "Switzerland",
+    "stay": "2026-02-03 to 2026-02-04",
+    "nights": 1,
+    "room": "Standard Double Room",
+    "traveller_type": "COUPLES",
+    "score": 6.0,
+    "scale": 10,
+    "lang": "fr",
+    "title": null,
+    "positive": "L’emplacement comme les chambres sont propres et fonctionnelles",
+    "negative": "Nous avons pas apprécié le propriétaire peu arrangeant et agréable. Il comptait chaque centime et nous nous sommes pas senti très accueilli.",
+    "owner_reply": null,
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html#review-9bdf7dd66e421455",
+    "fetched_at": "2026-11-21T22:57:19Z"
+   },
+   {
+    "review_id": "3e365cab649b38dd",
+    "author": "Szebi",
+    "country": "Thailand",
+    "stay": "2026-03-03 to 2026-03-05",
+    "nights": 2,
+    "room": "Deluxe Double Room",
+    "traveller_type": "COUPLES",
+    "score": 10.0,
+    "scale": 10,
+    "lang": "hu",
+    "title": null,
+    "positive": null,
+    "negative": null,
+    "owner_reply": null,
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html#review-3e365cab649b38dd",
+    "fetched_at": "2026-11-21T22:57:19Z"
+   },
+   {
+    "review_id": "2c342ccd5140f307",
+    "author": "Yulia",
+    "country": "Russia",
+    "stay": "2026-01-19 to 2026-01-26",
+    "nights": 7,
+    "room": "Standard Double Room",
+    "traveller_type": "SOLO_TRAVELLERS",
+    "score": 10.0,
+    "scale": 10,
+    "lang": "ru",
+    "title": null,
+    "positive": null,
+    "negative": null,
+    "owner_reply": null,
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html#review-2c342ccd5140f307",
+    "fetched_at": "2026-11-21T22:57:19Z"
+   }
+  ],
+  "all_airbnb": [
+   {
+    "review_id": "1623844802453489441",
+    "author": "Kenza",
+    "date": "2026-02",
+    "rating": 5,
+    "scale": 5,
+    "lang": "en",
+    "text": "We had a great stay! Ashly was incredibly friendly, welcoming, and very accomodating. The room was clean, comfortable, and exactly as described. The location is amazing, just steps away from the sea and restaurants. \nWe would definitely recommend staying here!",
+    "owner_reply": null,
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z"
+   },
+   {
+    "review_id": "1625998246765851551",
+    "author": "Molly Jayne",
+    "date": "2026-02",
+    "rating": 5,
+    "scale": 5,
+    "lang": "en",
+    "text": "Amazing location in Midigama. Great place to stay, would recommend",
+    "owner_reply": null,
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z"
+   },
+   {
+    "review_id": "1615132045407314629",
+    "author": "Florentine",
+    "date": "2026-02",
+    "rating": 5,
+    "scale": 5,
+    "lang": "de",
+    "text": "Sehr angenehmer ruhiger Aufenthalt, schönes Zimmer und gute Lage zum surfen. Nette Restaurants direkt um die Ecke oder in der Küche schnell was selbst zubereiten ist auch kein Problem. Würde wieder kommen :-)",
+    "owner_reply": null,
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z"
+   },
+   {
+    "review_id": "1649148209654500422",
+    "author": "Raul",
+    "date": "2026-03",
+    "rating": 5,
+    "scale": 5,
+    "lang": "en",
+    "text": "It was a nice place to stay. Would recommend to go there.",
+    "owner_reply": null,
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z"
+   },
+   {
+    "review_id": "1608594402178103661",
+    "author": "Sanna",
+    "date": "2026-01",
+    "rating": 5,
+    "scale": 5,
+    "lang": "en",
+    "text": "Fantastic place for exploring Midigama. Peaceful location, but walking distance or short tuk tuk ride to wonderful beaches, surf sports and nice restaurants. The accomodation had everything you need for a comfortable stay: good bed & pillow, space enough in the room to get your things out of the bag, hot water and en suite bathroom. I was partially working during my stay and found the setup in the outside area perfect for remote working: good wifi, comfortable desk & chair and even universal socket adapters outside! Communication with Ashly was always very quick and positive. Would definitely return!",
+    "owner_reply": null,
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z"
+   },
+   {
+    "review_id": "1642582721841397987",
+    "author": "Karl",
+    "date": "2026-03",
+    "rating": 5,
+    "scale": 5,
+    "lang": "de",
+    "text": "Alles war super :)",
+    "owner_reply": null,
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z"
+   },
+   {
+    "review_id": "1604227543840275244",
+    "author": "Niamh",
+    "date": "2026-01",
+    "rating": 5,
+    "scale": 5,
+    "lang": "en",
+    "text": "We really enjoyed our stay! Great location and price! Private balcony outside of rooms. The host is extremely responsive and helpful. Let us check in sooner, was able to book an additional night, recommend where to get laundry done & sorted an airport transfer for us! Highly recommend staying here",
+    "owner_reply": null,
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z"
+   },
+   {
+    "review_id": "1630990013606200287",
+    "author": "Mareike",
+    "date": "2026-02",
+    "rating": 5,
+    "scale": 5,
+    "lang": "de",
+    "text": "Ashly und sein Bruder waren sehr aufmerksame & freundliche Gastgeber. Ich wurde kostenlos von meiner vorigen Unterkunft abgeholt. Mir wurde bei allen Fragen und Problemen sehr schnell geantwortet und geholfen. Ashly wohnt mit im Haus und man teilt sich die Küche mit ihm und den anderen Gästen. Deshalb fühlt sich der Aufenthalt an, wie als wohne man bei einer Gastfamilie. Die Lage ist Top, nur ein paar Schritte bis zum Meer, Restaurants und Surfshops. \nIch hatte das Zimmer mit Klimaanlage, die eine Tür hin zu einem schönen großen Balkon hat. Nicht alle Zimmer haben diesen Zugang. Gefreut hätte ich mich noch über kostenloses Trinkwasser und ein Regal oder Schrank im Zimmer. Wer mit hohen Temperaturen zurechtkommt, sitzt sicher gerne auf dem Balkon. Wer es nur im Kühlen aushält und deshalb im Zimmer bleibt, findet es vielleicht ein bisschen dunkel (keine großen Tageslichtfenster aus Glas) sondern vergitterte offene Fenster mit Fensterläden, die man wegen dem AC geschlossen hält.",
+    "owner_reply": null,
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z"
+   },
+   {
+    "review_id": "1590399709275325157",
+    "author": "Hannah",
+    "date": "2026-01",
+    "rating": 5,
+    "scale": 5,
+    "lang": "de",
+    "text": "Wir hatten einen tollen Aufenthalt! Die Lage war super alles in Laufnähe erreichbar: Surfen, Strand, Cafés und Restaurants. Ashly war immer bemüht und hat uns bei allem unterstützt!",
+    "owner_reply": null,
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z"
+   },
+   {
+    "review_id": "1544071274858346830",
+    "author": "Lazarine",
+    "date": "2025-10",
+    "rating": 5,
+    "scale": 5,
+    "lang": "fr",
+    "text": "Logement impeccable, hôte très attentionné et arrangeant (location surf et déplacement).\nToujours disponible mais discret, \nLe balcon est un vrai atout, il y a de la place pour faire du yoga !\nSéjour vraiment parfait",
+    "owner_reply": null,
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z"
+   }
+  ],
+  "quotes": [
+   {
+    "text": "Fantastic place for exploring Midigama. Peaceful location, but walking distance or short tuk tuk ride to wonderful beaches, surf sports and nice restaurants. The accomodation had everything you need for a comfortable stay: good bed & pillow, space enough in the room to get your things out of the bag, hot water and en suite bathroom. I was partially working during my stay and found the setup in the outside area perfect for remote working: good wifi, comfortable desk & chair and even universal socket adapters outside! Communication with Ashly was always very quick and positive. Would definitely return!",
+    "author": "Sanna",
+    "date": "2026-01",
+    "score": 5,
+    "scale": 5,
+    "source": "airbnb",
+    "lang": "en",
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z"
+   },
+   {
+    "text": "We really enjoyed our stay! Great location and price! Private balcony outside of rooms. The host is extremely responsive and helpful. Let us check in sooner, was able to book an additional night, recommend where to get laundry done & sorted an airport transfer for us! Highly recommend staying here",
+    "author": "Niamh",
+    "date": "2026-01",
+    "score": 5,
+    "scale": 5,
+    "source": "airbnb",
+    "lang": "en",
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z"
+   },
+   {
+    "text": "We had a great stay! Ashly was incredibly friendly, welcoming, and very accomodating. The room was clean, comfortable, and exactly as described. The location is amazing, just steps away from the sea and restaurants. \nWe would definitely recommend staying here!",
+    "author": "Kenza",
+    "date": "2026-02",
+    "score": 5,
+    "scale": 5,
+    "source": "airbnb",
+    "lang": "en",
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z"
+   },
+   {
+    "text": "I had a very pleasant stay at this place. For the paid price, the room were absolutely good value and met my expectations. Outside, there is a lovely and well-maintained patio area, which is very nice to relax in. Ashley, the owner, is truly fantastic, very kind, attentive, and always ready to help with anything you might need. He really makes you feel welcome and well taken care of.",
+    "author": "Marina, Italy",
+    "date": "2026-02",
+    "score": 8.0,
+    "scale": 10,
+    "room": "Standard Double Room",
+    "source": "booking",
+    "lang": "en",
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html#review-88a00b385a0a69ab",
+    "fetched_at": "2026-11-21T22:57:19Z",
+    "note": "positive half only; her negative half is a critical theme (dark ground-floor room, bathroom outside the room)"
+   },
+   {
+    "text": "Amazing location in Midigama. Great place to stay, would recommend",
+    "author": "Molly Jayne",
+    "date": "2026-02",
+    "score": 5,
+    "scale": 5,
+    "source": "airbnb",
+    "lang": "en",
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z"
+   },
+   {
+    "text": "Wir hatten einen tollen Aufenthalt! Die Lage war super alles in Laufnähe erreichbar: Surfen, Strand, Cafés und Restaurants. Ashly war immer bemüht und hat uns bei allem unterstützt!",
+    "author": "Hannah",
+    "date": "2026-01",
+    "score": 5,
+    "scale": 5,
+    "source": "airbnb",
+    "lang": "de",
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z",
+    "note": "German"
+   },
+   {
+    "text": "Logement impeccable, hôte très attentionné et arrangeant (location surf et déplacement).\nToujours disponible mais discret, \nLe balcon est un vrai atout, il y a de la place pour faire du yoga !\nSéjour vraiment parfait",
+    "author": "Lazarine",
+    "date": "2025-10",
+    "score": 5,
+    "scale": 5,
+    "source": "airbnb",
+    "lang": "fr",
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z",
+    "note": "French; 'location surf' = surfboard rental arranged by the host"
+   },
+   {
+    "text": "Sehr angenehmer ruhiger Aufenthalt, schönes Zimmer und gute Lage zum surfen. Nette Restaurants direkt um die Ecke oder in der Küche schnell was selbst zubereiten ist auch kein Problem. Würde wieder kommen :-)",
+    "author": "Florentine",
+    "date": "2026-02",
+    "score": 5,
+    "scale": 5,
+    "source": "airbnb",
+    "lang": "de",
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z",
+    "note": "German"
+   },
+   {
+    "text": "Ashly und sein Bruder waren sehr aufmerksame & freundliche Gastgeber. Ich wurde kostenlos von meiner vorigen Unterkunft abgeholt. Mir wurde bei allen Fragen und Problemen sehr schnell geantwortet und geholfen. Ashly wohnt mit im Haus und man teilt sich die Küche mit ihm und den anderen Gästen. Deshalb fühlt sich der Aufenthalt an, wie als wohne man bei einer Gastfamilie. Die Lage ist Top, nur ein paar Schritte bis zum Meer, Restaurants und Surfshops. \nIch hatte das Zimmer mit Klimaanlage, die eine Tür hin zu einem schönen großen Balkon hat. Nicht alle Zimmer haben diesen Zugang. Gefreut hätte ich mich noch über kostenloses Trinkwasser und ein Regal oder Schrank im Zimmer. Wer mit hohen Temperaturen zurechtkommt, sitzt sicher gerne auf dem Balkon. Wer es nur im Kühlen aushält und deshalb im Zimmer bleibt, findet es vielleicht ein bisschen dunkel (keine großen Tageslichtfenster aus Glas) sondern vergitterte offene Fenster mit Fensterläden, die man wegen dem AC geschlossen hält.",
+    "author": "Mareike",
+    "date": "2026-02",
+    "score": 5,
+    "scale": 5,
+    "source": "airbnb",
+    "lang": "de",
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z",
+    "note": "German; also names the host's brother and a free pick-up; long, partly critical (dark rooms, no drinking water, no shelf)"
+   },
+   {
+    "text": "Clean & tidy rooms\r\nCalm & quiet location",
+    "author": "Thushan, New Zealand",
+    "date": "2025-10",
+    "score": 10.0,
+    "scale": 10,
+    "room": "Deluxe Double Room",
+    "source": "booking",
+    "lang": "en",
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html#review-6683690ceb709b16",
+    "fetched_at": "2026-11-21T22:57:19Z",
+    "note": "title reads 'Location was great and comfortable. Great value for the price. Staff was very friendly.'"
+   },
+   {
+    "text": "Love this property, just 2 minutes walk to beautiful, shiny beach. Rooms are perfect, much clean and tidy, comfortable. Staff are super friendly and take care of the guests exceptional level. They offered us delicious foods, super tasty, love them. We received unforgettable treatments from Sea you surfers nest. Its exceptional value for money. Recommended to anyone who love beaches and true Sri Lankan hospitality. We'll definitely Sea You again... Cheers!! 😍",
+    "author": "Dona, New Zealand",
+    "date": "2025-10",
+    "score": 10.0,
+    "scale": 10,
+    "room": "Budget Double Room",
+    "source": "booking",
+    "lang": "en",
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html#review-ab9c2483c2c4b4c3",
+    "fetched_at": "2026-11-21T22:57:19Z",
+    "note": "see quotes_note on the two Oct-2025 one-night 10/10 reviews"
+   },
+   {
+    "text": "It was a nice place to stay. Would recommend to go there.",
+    "author": "Raul",
+    "date": "2026-03",
+    "score": 5,
+    "scale": 5,
+    "source": "airbnb",
+    "lang": "en",
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z"
+   },
+   {
+    "text": "Alles war super :)",
+    "author": "Karl",
+    "date": "2026-03",
+    "score": 5,
+    "scale": 5,
+    "source": "airbnb",
+    "lang": "de",
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z",
+    "note": "German 'Alles war super :)'; Airbnb shows the translation 'Everything was great :)'"
+   }
+  ],
+  "quotes_note": "All 8 Booking reviews (ReviewList GraphQL the page itself calls) and all 10 Airbnb reviews (listing 1508895627217411616, the page's own reviews API) were read; every one is in all_booking / all_airbnb verbatim. Two Booking reviews (Szebi, Yulia: 10/10) have no text. None has an owner reply. Observation, not an accusation: the two earliest Booking reviews (Dona and Thushan, both New Zealand, one-night solo stays in Oct 2025, both 10/10) and Dona's 'We'll definitely Sea You again' pun read like friends of the house; prefer the 2026 Airbnb quotes (Sanna, Niamh, Kenza) when choosing testimonials.",
+  "critical_themes": [
+   {
+    "theme": "HOST/BUSINESS CONDUCT — booking mix-up: part of a group turned away, refund refused",
+    "count": 1,
+    "severity": "high",
+    "examples": [
+     "Camilla, United Kingdom (Booking, stay 2026-01-01 to 01-04, 5/10, review 9e7670457ab0f400): 'there was a muddle with our booking and part of our group had to stay elsewhere (in not a nice place which we only stayed in for one night and they refused to refund us for other two nights)The issue was either a booking.com issue or the property it is unclear to us which. We had had confirmation emails etc  but the place was full…I was travelling with my daughter and so we ended up in different places which was upsetting.'"
+    ],
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html#review-9e7670457ab0f400",
+    "fetched_at": "2026-11-21T22:57:19Z",
+    "note": "Flagged high under the run's rule (anything about host conduct). It is an overbooking/refund complaint, not a personal-safety or harassment allegation; the guest herself is unsure whether Booking or the property was at fault. No owner reply. Never quoted or paraphrased on the site."
+   },
+   {
+    "theme": "HOST CONDUCT — owner unaccommodating and stingy",
+    "count": 1,
+    "severity": "high",
+    "examples": [
+     "Daniel, Switzerland (Booking, stay 2026-02-03, 6/10, review 9bdf7dd66e421455, in French): 'Nous avons pas apprécié le propriétaire peu arrangeant et agréable. Il comptait chaque centime et nous nous sommes pas senti très accueilli.' (we did not like the owner, not accommodating or pleasant; he counted every cent and we did not feel welcome)"
+    ],
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html#review-9bdf7dd66e421455",
+    "fetched_at": "2026-11-21T22:57:19Z",
+    "note": "Flagged high under the run's rule (host conduct). A hospitality complaint with no safety element. It stands against 11 reviews that praise the host by name (Marina, Kenza, Niamh, Sanna, Mareike, Hannah, Lazarine…). Never quoted on the site."
+   },
+   {
+    "theme": "rooms small, hot or dark",
+    "count": 3,
+    "examples": [
+     "Joanna, Poland (Booking 2026-01, 6/10): 'We booked 4 rooms, two of them were fine but other two was way too small. … During the day was so hot it was impossible to Dorn any time in those rooms'",
+     "Marina, Italy (Booking 2026-02, 8/10): 'Since I was on the ground floor the room was a little dark.'",
+     "Mareike (Airbnb 2026-02, German): rooms 'ein bisschen dunkel (keine großen Tageslichtfenster aus Glas)' — a bit dark, no large glass windows, shutters kept closed for the A/C"
+    ],
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+    "fetched_at": "2026-11-21T22:57:19Z"
+   },
+   {
+    "theme": "bathroom outside the room / possibly shared (Standard Double Room)",
+    "count": 1,
+    "examples": [
+     "Marina (Booking 2026-02): 'my bathroom was located outside the room. Although it was supposed to be for private use, occasionally it seemed to be used by others as well'"
+    ],
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html#review-88a00b385a0a69ab",
+    "fetched_at": "2026-11-21T22:57:19Z",
+    "note": "consistent with Booking's bathroomCount 0 for the Standard Double Room; the site must not promise en-suite for every room"
+   },
+   {
+    "theme": "small extras missing",
+    "count": 1,
+    "examples": [
+     "Mareike (Airbnb 2026-02): would have liked free drinking water and a shelf or cupboard in the room"
+    ],
+    "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "fetched_at": "2026-11-21T23:05:23Z"
+   }
+  ],
+  "safety_check": "All 18 reachable review texts (8 Booking, 10 Airbnb) were read in their original languages (en, fr, de, hu/ru with no text). No review alleges a threat to guest safety, harassment, intrusive or inappropriate behaviour, theft or a security incident. Two host/business-conduct complaints (Camilla: overbooking and refused refund; Daniel: unfriendly, penny-counting owner) are flagged severity high under this run's rule and need a human glance; neither is a safety allegation. Google's 11 review texts could not be read (signed-out limited view)."
+ },
+ "images": [
+  {
+   "id": "img-001",
+   "file": "assets/img-001.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289509.jpg?k=604c42ae665585bb3b8d03de3eb4f814126e8c6152b56bd04633829b2237f39e&o=",
+   "fetched_at": "2026-11-21T23:18:02Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289509",
+   "category": "exterior",
+   "description": "the business's own round street sign on a post: wave, surfboard and palm logo, 'Sea You / THE SURFERS NEST / MIDIGAMA / +94 715880052', palms and a roof behind; overcast sky",
+   "flags": [
+    "shows_phone_number"
+   ],
+   "usable": true,
+   "original_size": [
+    3439,
+    5159
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/bbcdf5a2-4f32-421b-83c4-fd43b7a789cf.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    }
+   ],
+   "platform_alt": "a sign for a seafood restaurant with a palm tree at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:16",
+   "airbnb_space": "Exterior",
+   "note": "the sign is the only public place the phone number appears (contact.phone). Booking's auto-alt calls it 'a sign for a seafood restaurant' — wrong; it is the business's own sign.",
+   "sha256": "2bd9ce82810a4febcbb93c98a80acf817b4da4adbcc46e96f4e2e36511d66598",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-002",
+   "file": "assets/img-002.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289633.jpg?k=96d82e80f923434c37aac7a36d0013ac258848421cf1d2c76a4e62492747f711&o=",
+   "fetched_at": "2026-11-21T23:18:03Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289633",
+   "category": "room",
+   "description": "Deluxe Double Room: mint-green four-poster double bed, white linen, grey panelled door open to the veranda with a green table outside",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    5357,
+    3571
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/c068ae3f-dc9c-4cc4-8590-455fc1ce0a24.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/c068ae3f-dc9c-4cc4-8590-455fc1ce0a24.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/3248cbbb-219e-4868-8b44-6f20cb048140.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a bedroom with a green canopy bed and a table at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:40",
+   "booking_room_ids": [
+    1492325601
+   ],
+   "airbnb_space": "Bedroom 7",
+   "sha256": "9274656923a96e9febc4b96c2fbd9bf6e8ba39d964b0fa5f7872d2defd417770",
+   "width": 2000,
+   "height": 1333
+  },
+  {
+   "id": "img-003",
+   "file": "assets/img-003.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289525.jpg?k=32b4a0daa391c2328fa0212cede2ce6e220e4e8f428ae9c4c96f8ee52273762c&o=",
+   "fetched_at": "2026-11-21T23:18:04Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289525",
+   "category": "outdoor",
+   "description": "upstairs balcony: mint-green table and two chairs with a potted plant, palm fronds beyond the parapet",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    5181,
+    3454
+   ],
+   "also_on": [],
+   "platform_alt": "a blue table with two chairs and a potted plant at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:22",
+   "sha256": "8feabebbd7748372945873a2ca67c88743dacc241bf422e173aa99e30a952286",
+   "width": 2000,
+   "height": 1333
+  },
+  {
+   "id": "img-004",
+   "file": "assets/img-004.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289654.jpg?k=3f9a7e18625e0fb7efa938b1467394e6d64414532489f339ae6d8746a441c979&o=",
+   "fetched_at": "2026-11-21T23:18:05Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289654",
+   "category": "common",
+   "description": "open lounge/veranda: rattan armchair, low wooden table, three surfboards stood against the wall, plants, old wooden doors",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    5519,
+    3679
+   ],
+   "also_on": [],
+   "platform_alt": "a room with a surfboard and a table and a chair at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:43",
+   "sha256": "0f034f6282e147ca0ed66f6d5d28b8722846a1d3c65e0255619dbcaabbae5477",
+   "width": 2000,
+   "height": 1333
+  },
+  {
+   "id": "img-005",
+   "file": "assets/img-005.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289575.jpg?k=809a9c5d02be42aa357d709de3ee43f0a68847a6e5c12b5df5f9720d5277ea7b&o=",
+   "fetched_at": "2026-11-21T23:18:05Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289575",
+   "category": "room",
+   "description": "Standard Double Room: mint-green four-poster with a teal velvet throw, timber towel ladder, green cabinet and mirror",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3688,
+    5532
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/5fa3fb35-1a88-45a3-8df3-f06536b87316.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/5fa3fb35-1a88-45a3-8df3-f06536b87316.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/66c2b5c0-857d-401a-b504-500a92b2e33f.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a bedroom with a blue bunk bed and a mirror at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:31",
+   "booking_room_ids": [
+    1492325603
+   ],
+   "airbnb_space": "Bedroom 2",
+   "sha256": "3a8ee98d54aa76e43fe0062ae9357dc1d3a3142fdff135c0657439fb7a133d2c",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-006",
+   "file": "assets/img-006.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289614.jpg?k=91d798961afdce927cb559995d24b88ff5ca289b7c0dc7f903ffddedf3cee556&o=",
+   "fetched_at": "2026-11-21T23:18:07Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289614",
+   "category": "common",
+   "description": "courtyard corner: polished-concrete bench, wooden stool, potted plants, two red fire extinguishers",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    5440,
+    3627
+   ],
+   "also_on": [],
+   "platform_alt": "a bench in a room with plants and a stool at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:37",
+   "sha256": "24f2a0aa5fc43c5023a07b3e800e882a92619b89c509715da49d28990f654348",
+   "width": 2000,
+   "height": 1333
+  },
+  {
+   "id": "img-007",
+   "file": "assets/img-007.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289520.jpg?k=b5aa7aa8c53ba47433eaf49597f47069f8c686548bd8585a6cb3f7696481bf17&o=",
+   "fetched_at": "2026-11-21T23:18:08Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289520",
+   "category": "outdoor",
+   "description": "mint-green table laid with a white teapot, cups and flowers, green chairs, red-oxide floor",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    4701,
+    3134
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/9376f13a-a0a3-4263-bf49-321a36f946d0.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    }
+   ],
+   "platform_alt": "a green table with cups and a vase with flowers on it at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:21",
+   "airbnb_space": "Living room",
+   "sha256": "d0813fceef5c52bd141ec1545672ebef24aaf47812f082a3827ddd16e7a4b04c",
+   "width": 2000,
+   "height": 1333
+  },
+  {
+   "id": "img-008",
+   "file": "assets/img-008.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755704863.jpg?k=249a7a9f3027541c523966dba156c8551a7bb2af2e7cc882b0784829d6e80ed6&o=",
+   "fetched_at": "2026-11-21T23:18:08Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755704863",
+   "category": "bathroom",
+   "description": "bathroom: electric instant-shower heater with rain head, toilet, white walls",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3564,
+    5346
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/f32d70b5-7b43-4676-96d4-60cfd017a10d.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a bathroom with a toilet and a shower at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:51:56",
+   "booking_room_ids": [
+    1492325603
+   ],
+   "sha256": "bb7e890d2151485c552f883d1233e1f44fe96684b3901f6c92604e19aeae338b",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-009",
+   "file": "assets/img-009.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755704785.jpg?k=95930f239524c2d85bee0cb2d7b7d160c59b08fc41ccf09944d40f5f164435a8&o=",
+   "fetched_at": "2026-11-21T23:18:09Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755704785",
+   "category": "room",
+   "description": "Standard Double Room: four-poster with grey sheets, towel ladder, mirror, small window",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    4000,
+    2252
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/20c5fd22-269b-4c94-9034-4cab0cd380ed.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/20c5fd22-269b-4c94-9034-4cab0cd380ed.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/775e2008-b7a4-44ac-b8db-5659fea15b98.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a bedroom with a bed with a blue frame at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:51:39",
+   "booking_room_ids": [
+    1492325603
+   ],
+   "airbnb_space": "Bedroom 6",
+   "sha256": "1c2911a5d616be1d6710814288292e4db676b4d8a066d6fb3fa715da03c51256",
+   "width": 2000,
+   "height": 1127
+  },
+  {
+   "id": "img-010",
+   "file": "assets/img-010.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755704721.jpg?k=6c1659721dc26daa9075bc53822c752c187174641ad5c931e123602eda7b7d9d&o=",
+   "fetched_at": "2026-11-21T23:18:10Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755704721",
+   "category": "room",
+   "description": "room: green 'WC' door beside the bed, towel ladder (bathroom off the room)",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    2252,
+    4000
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/c8c1dd0b-4948-4919-a3a0-3798af4d1034.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/c8c1dd0b-4948-4919-a3a0-3798af4d1034.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/775dbe38-f6ef-4d5b-8883-676a556dc70b.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a green door in a room with a bed and a door at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:51:22",
+   "booking_room_ids": [
+    1492325603
+   ],
+   "airbnb_space": "Bedroom 6",
+   "sha256": "b7453bdc055f13b987f998f1fbeedd5dadeba2097b79feb6d841d44a2fcc6ec1",
+   "width": 1125,
+   "height": 2000
+  },
+  {
+   "id": "img-011",
+   "file": "assets/img-011.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755701977.jpg?k=6b38fd847e47d5e785b2ec21338b7f7e02cf5a11ab66a895ca32ca89e2aef426&o=",
+   "fetched_at": "2026-11-21T23:18:11Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755701977",
+   "category": "bathroom",
+   "description": "bathroom: toilet and grey concrete floor, door ajar",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3402,
+    5103
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/eb3ca052-5669-48fb-82eb-5db0c69c3c89.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a bathroom with a white toilet in a room at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:39:19",
+   "booking_room_ids": [
+    1492325603
+   ],
+   "sha256": "14871c6a2ff310ac6b08e125080ddb9a340fc5de6829565ca6158b69116137c7",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-012",
+   "file": "assets/img-012.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755702003.jpg?k=17cb32b00aff15030d114df739131b7e3bbb7a81327b74a969f7888edaf5d185&o=",
+   "fetched_at": "2026-11-21T23:18:12Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755702003",
+   "category": "room",
+   "description": "Deluxe Double Room: four-poster with lime-green sheets and pillows, timber floor, barred window with shutters",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    5207,
+    3471
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/5176b2bb-9304-4f69-afb1-47bd6cf6d522.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/5176b2bb-9304-4f69-afb1-47bd6cf6d522.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/6d3fd41e-a68b-4306-a4c9-688f9c1e4653.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a bed with a green frame in a room at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:39:25",
+   "booking_room_ids": [
+    1492325601
+   ],
+   "airbnb_space": "Bedroom 5",
+   "sha256": "a971a1284956892fbc5e54b4c53acf81a68abb2640e321e7a8da5ba4762203f8",
+   "width": 2000,
+   "height": 1333
+  },
+  {
+   "id": "img-013",
+   "file": "assets/img-013.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755702019.jpg?k=e7da56f746b3c12cd348ff5e8c30616a19c3db884c1d8ec5bdcbe03fc73ecd52&o=",
+   "fetched_at": "2026-11-21T23:18:12Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755702019",
+   "category": "room",
+   "description": "room: four-poster with green sheets, green mirror shelf, wooden door",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3591,
+    5387
+   ],
+   "also_on": [],
+   "platform_alt": "a bedroom with a green bed and a mirror at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:39:28",
+   "booking_room_ids": [
+    1492325601
+   ],
+   "sha256": "7cbfe8c66a8d4a886938b6678a654d63032f18b9aa0daf2f2f6ef773b939c287",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-014",
+   "file": "assets/img-014.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755291912.jpg?k=7d98ed5a422b7a5cca7cbdbadd6400e47ee213a0da5f2c566b957aaa280affec&o=",
+   "fetched_at": "2026-11-21T23:18:13Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755291912",
+   "category": "bathroom",
+   "description": "shower: rain head and hand shower on grey rail, towel rail",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3439,
+    5159
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1508895627217411616/original/a95df85e-7756-40bc-a7fc-cb8946144fb6.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/4f8f301e-c84a-4014-8bd1-e6196893eb28.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a shower in a bathroom with a shower head at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 12:05:20",
+   "booking_room_ids": [
+    1492325601
+   ],
+   "airbnb_space": "Full bathroom",
+   "sha256": "df7ebb2e618c2b85fddade44b66fd4220351e3098d9da77c6519003cd00b365f",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-015",
+   "file": "assets/img-015.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755701507.jpg?k=94f676e05a7ab306ecb73672c10dd219380f2370c62bff439adcf184484a113b&o=",
+   "fetched_at": "2026-11-21T23:18:14Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755701507",
+   "category": "room",
+   "description": "Deluxe Double Room: four-poster with teal throw and green sheets, grey doors",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    5137,
+    3425
+   ],
+   "also_on": [],
+   "platform_alt": "a bedroom with a green bed with a glass canopy at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:36:46",
+   "booking_room_ids": [
+    1492325601
+   ],
+   "sha256": "f8b4dc6c01744b40e5bcf6acf3a30e4915b5f98985a77f88b501e0e253417762",
+   "width": 2000,
+   "height": 1333
+  },
+  {
+   "id": "img-016",
+   "file": "assets/img-016.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755701533.jpg?k=9f8dbfd9e141d762b59c68f41a55c5f56c0f021f4da341997904cff771b88241&o=",
+   "fetched_at": "2026-11-21T23:18:15Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755701533",
+   "category": "room",
+   "description": "room: bed with teal throw and rolled towel, door open to a balcony with chairs",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3108,
+    4662
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/26b7d529-666b-4b1c-8eb4-b3e42e2a5f16.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/26b7d529-666b-4b1c-8eb4-b3e42e2a5f16.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/f4b2294c-8371-4120-9fe8-dedafd9bfc35.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a bedroom with a bed with a towel on it at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:36:53",
+   "airbnb_space": "Bedroom 4",
+   "sha256": "93db10b891d9ef97243513b664b32df2659a41fbbac3c83059e32db519c28d7a",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-017",
+   "file": "assets/img-017.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755701571.jpg?k=978619003bac7b9caf5f1771eb4fc7b935f6e69fa54a7fafb05a069892a58944&o=",
+   "fetched_at": "2026-11-21T23:18:16Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755701571",
+   "category": "room",
+   "description": "room: lime-green bed with teal throw, view through to the balcony",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    5156,
+    3437
+   ],
+   "also_on": [],
+   "platform_alt": "a green bunk bed with a hat on top of it at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:37:02",
+   "sha256": "e30a1072516834853b52bdc0ed6e2f72a5f82e70bdc2dfb9090bda5a93b52508",
+   "width": 2000,
+   "height": 1333
+  },
+  {
+   "id": "img-018",
+   "file": "assets/img-018.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755701602.jpg?k=6d017b327a572fd65c31c87512e8d5b07065506bb9d077e0453882efc20f392d&o=",
+   "fetched_at": "2026-11-21T23:18:17Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755701602",
+   "category": "detail",
+   "description": "green mirror and cabinet with a potted plant",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3686,
+    5529
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/e0660cd9-5b54-4590-9fb8-321ba0a8dd01.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/e0660cd9-5b54-4590-9fb8-321ba0a8dd01.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/b571380c-1700-4933-a721-052208e0b94c.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a mirror on top of a green cabinet with plants at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:37:09",
+   "airbnb_space": "Bedroom 4",
+   "sha256": "7050353fb1debd58d3256f5da4f043fd1bcad8afa304f0c68f7b84e5b6965a00",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-019",
+   "file": "assets/img-019.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755701093.jpg?k=e37772267b1f1b4b0a3db68bd87fca60bc559eb4d52c7f0d8499afd0638fd61a&o=",
+   "fetched_at": "2026-11-21T23:18:18Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755701093",
+   "category": "bathroom",
+   "description": "bathroom: toilet, terrazzo floor",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3265,
+    4897
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/9826e402-05f2-410e-8cfc-fe6a3b3655a7.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/9826e402-05f2-410e-8cfc-fe6a3b3655a7.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/ee7ab07a-5505-4936-a012-d41c92c3c7cb.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a bathroom with a white toilet and a sink at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:34:39",
+   "airbnb_space": "Bedroom 3",
+   "sha256": "df633ac5a6a50d6a87bf5bbe68cd37902dbefba97f158edddf713711f51587f6",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-020",
+   "file": "assets/img-020.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755701102.jpg?k=7cdef4f94fee19ca8935acf1b570f96ce85feec1b66596a1047d99de03da3c14&o=",
+   "fetched_at": "2026-11-21T23:18:18Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755701102",
+   "category": "bathroom",
+   "description": "bathroom: green-framed mirror over a pedestal sink",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3688,
+    5532
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/ff683dc5-a446-4a8c-a2ad-5b14ec7bbca0.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/ff683dc5-a446-4a8c-a2ad-5b14ec7bbca0.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/6eb2979c-c995-4a97-a443-bf03ecb6bb43.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a white bathroom with a mirror and a sink at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:34:44",
+   "airbnb_space": "Bedroom 3",
+   "sha256": "d8151d834ab83dac8ea8b9a66524333a831fa50d165074ec7a6352c0fe8ee0e8",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-021",
+   "file": "assets/img-021.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755701132.jpg?k=c54283626bb3c78f4950e3fe92f13f74cc2388b847c33ea0e4531f1bde9e46e2&o=",
+   "fetched_at": "2026-11-21T23:18:20Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755701132",
+   "category": "room",
+   "description": "room: bed with teal throw and a green open cabinet with mirror",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3553,
+    5329
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/ca33e7a2-c19a-4718-abdd-64349ce5cf55.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/ca33e7a2-c19a-4718-abdd-64349ce5cf55.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a bed in a room with a green cabinet at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:34:50",
+   "airbnb_space": "Bedroom 3",
+   "sha256": "dcf0413f4e4c9f10b7d4dbcc7cb3853930a5239b8f3ecef4de9d7856a1f36a72",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-022",
+   "file": "assets/img-022.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755701144.jpg?k=6700cd81da2689ab461b3478ce4572f68adde734cbed079bca6aa126cb36ec2c&o=",
+   "fetched_at": "2026-11-21T23:18:20Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755701144",
+   "category": "room",
+   "description": "Deluxe Double Room: bed with lime-green pillows and a plant",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    4469,
+    2979
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/fb1eb93b-ea9d-4512-9992-0521b68d647b.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/fb1eb93b-ea9d-4512-9992-0521b68d647b.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a green bed with a green pillow and a plant at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:34:57",
+   "booking_room_ids": [
+    1492325601
+   ],
+   "airbnb_space": "Bedroom 3",
+   "sha256": "f2815d3a48bdbf265f5fa8a1f66e0360a60c8a08f863abe087bc16c017f25a0e",
+   "width": 2000,
+   "height": 1333
+  },
+  {
+   "id": "img-023",
+   "file": "assets/img-023.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755701150.jpg?k=d28be2e581ddb4c0ab990e8b6f85cf355da753647fc7447f053b82606ba7ae36&o=",
+   "fetched_at": "2026-11-21T23:18:21Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755701150",
+   "category": "detail",
+   "description": "towel ladder, green mirror and cabinet beside a grey door",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3623,
+    5435
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/15be6ffe-9a00-401a-9d34-29eb37587e99.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/15be6ffe-9a00-401a-9d34-29eb37587e99.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/f76e8257-d3fb-4091-829f-5a3882a65362.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a blue cabinet with a mirror on a wall at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:35:02",
+   "airbnb_space": "Bedroom 3",
+   "sha256": "c8898e04c0dba91c8d3ceda2cbec6851e9c4bfa401b3751b0b335ea997e4a87a",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-024",
+   "file": "assets/img-024.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755701160.jpg?k=96763d22ec9164912bd904c9827d7eed1328a9b893dce36d31eb8b6b023e5715&o=",
+   "fetched_at": "2026-11-21T23:18:22Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755701160",
+   "category": "room",
+   "description": "doorway with a carved fanlight into a room with a green cabinet and bed",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3436,
+    5154
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/b0f2b65b-7507-4fa2-87b9-502696efbe7e.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/b0f2b65b-7507-4fa2-87b9-502696efbe7e.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/bc403df2-4569-43d7-9999-c21bf66807f3.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a doorway into a room with a blue cabinet and a mirror at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:35:07",
+   "airbnb_space": "Bedroom 3",
+   "sha256": "5646829acb9104c135248db2fbacb056620bc1ea93a36050dbaa32d99774b1d9",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-025",
+   "file": "assets/img-025.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755700558.jpg?k=71a7c8595ea8ecfbe664f7f9e5daa6b83c4c2efe70186c0ee7366b1affce51d5&o=",
+   "fetched_at": "2026-11-21T23:18:23Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755700558",
+   "category": "detail",
+   "description": "Standard Double Room corner: wooden side table with a tea set, green chair",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3618,
+    5427
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/bff0350b-ce1c-45c6-a66d-c0e9c8761f4c.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/bff0350b-ce1c-45c6-a66d-c0e9c8761f4c.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a table with three cups and a green chair at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:32:01",
+   "booking_room_ids": [
+    1492325603
+   ],
+   "airbnb_space": "Bedroom 2",
+   "sha256": "f0748ed4474f3bba55273bd065816ff7e24b1b62089727b57daabf85dc751074",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-026",
+   "file": "assets/img-026.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755700623.jpg?k=f559d210fe1546ed3b9e8622bacd2888ff28c9e7da51e5a61f725d628844ccfe&o=",
+   "fetched_at": "2026-11-21T23:18:24Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755700623",
+   "category": "room",
+   "description": "Standard Double Room: four-poster with teal throw, ceiling fan",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3563,
+    5345
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/728f65b8-2846-4a48-b8e6-26b77d9d3b8d.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/728f65b8-2846-4a48-b8e6-26b77d9d3b8d.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/f3c3135c-ae5d-4924-a3b9-d3c054f12bc8.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a bed in a room with a green canopy bed at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-29 11:32:13",
+   "booking_room_ids": [
+    1492325603
+   ],
+   "airbnb_space": "Bedroom 2",
+   "sha256": "5bce9b56afcbb839353a9401c7880832117b5efd2094933ea417f35e077acb59",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-027",
+   "file": "assets/img-027.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289514.jpg?k=8604bae2393bf722b3115067cb92f436639cd34c58eae695a5ad21c00e95b3d6&o=",
+   "fetched_at": "2026-11-21T23:18:25Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289514",
+   "category": "common",
+   "description": "entrance: carved grey double door, wall lamp, carved wooden chair",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3553,
+    5329
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/7642acaf-3b9d-4e52-891f-803cce058634.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/7642acaf-3b9d-4e52-891f-803cce058634.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/67642d8a-b4a6-42f0-9541-4c1ccff7fbff.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "an entrance to a white door with a bench next to it at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:17",
+   "booking_room_ids": [
+    1492325603
+   ],
+   "airbnb_space": "Bedroom 2",
+   "sha256": "36108f36d96f349ed9b29f4477f9fe5e4d78c7154987c33a92b0da9491477cde",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-028",
+   "file": "assets/img-028.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755291205.jpg?k=f22e04a3f5b412b86623ffb25c34650e6a9128601c771deab2b1f12bb406db76&o=",
+   "fetched_at": "2026-11-21T23:18:26Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755291205",
+   "category": "bathroom",
+   "description": "shower: electric heater and rain head",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3566,
+    5349
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/e883e680-6b66-4465-8216-0f82eedda283.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1508895627217411616/original/308b5f53-8de7-44cc-bc48-58840a367564.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/e883e680-6b66-4465-8216-0f82eedda283.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/eda9f17b-3ab9-45ef-9877-c9dce1a46688.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a shower in the corner of a room at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 12:00:48",
+   "airbnb_space": "Bedroom 1",
+   "sha256": "3db4d126f6379839e7bf32b0ebccd94c9dc503421001233dbc1a061bdb43a67d",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-029",
+   "file": "assets/img-029.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755292484.jpg?k=e7e8b2d601547f29df8d87768f6ab7d1e3eb58fb1088241d7a712022b5d9a5df&o=",
+   "fetched_at": "2026-11-21T23:18:26Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755292484",
+   "category": "detail",
+   "description": "towel folded into a swan on a teal throw",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3712,
+    5568
+   ],
+   "also_on": [],
+   "platform_alt": "a towel animal is sitting on a bed at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 12:11:38",
+   "sha256": "902e861a98f69b3927c1618f298b03517a0742c38751c173f6e462cef758f23d",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-030",
+   "file": "assets/img-030.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755292512.jpg?k=cedbe07b36d8b1f9bc75e1ef2334e0b3e21cca8271b13f3651bb39479436008e&o=",
+   "fetched_at": "2026-11-21T23:18:27Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755292512",
+   "category": "room",
+   "description": "doorway into a room with bed, large potted plant",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3561,
+    5342
+   ],
+   "also_on": [],
+   "platform_alt": "a green bunk bed in a room with a plant at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 12:11:49",
+   "sha256": "16afda1a3a64b77577f74624909968730c973d33884dccff7a1ab0f1e21c852f",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-031",
+   "file": "assets/img-031.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755292531.jpg?k=dd2655d73f573e37c7ef23e871b96b16fbf86994858ad152ceaab5595b162ba1&o=",
+   "fetched_at": "2026-11-21T23:18:28Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755292531",
+   "category": "detail",
+   "description": "green cabinet with mirror beside a shuttered window",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3455,
+    5183
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/b9a53bb4-01e5-4ed1-b9e0-b7a618ab88c1.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/b9a53bb4-01e5-4ed1-b9e0-b7a618ab88c1.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/c54a4e2b-24f4-4d93-b891-1db63556cced.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a blue cabinet with a mirror on top of it at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 12:11:54",
+   "airbnb_space": "Bedroom 1",
+   "sha256": "bd7ef2523a1287a21db1b71a29b8b39e63656ad5b6be8834b2b2c2d430eaa222",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-032",
+   "file": "assets/img-032.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755291916.jpg?k=8d94725015b65e9cdf87c0751a10fb9f0ee8dab7432c254d2c367e2e033fdaf2&o=",
+   "fetched_at": "2026-11-21T23:18:29Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755291916",
+   "category": "bathroom",
+   "description": "Deluxe bathroom: black-framed mirror, pedestal sink",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3597,
+    5396
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/f73a8b84-0e82-4233-ab4d-934de6a06828.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/f73a8b84-0e82-4233-ab4d-934de6a06828.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/c1b2b6e1-050c-4fc7-bdc9-d8e9a4f91ca5.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a bathroom with a white sink and a mirror at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 12:05:23",
+   "booking_room_ids": [
+    1492325601
+   ],
+   "airbnb_space": "Bedroom 7",
+   "sha256": "c252d3a1af966716ce8c4a513690985da6dce0324b0248aa0559a5ed058ca007",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-033",
+   "file": "assets/img-033.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755291925.jpg?k=234ae13ed6e175887e9a66a2be9e500b1a55a7ffb1d808d7dc73fff0cb7ae0cc&o=",
+   "fetched_at": "2026-11-21T23:18:29Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755291925",
+   "category": "room",
+   "description": "Deluxe Double Room: four-poster corner, white linen, mirror",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3638,
+    5457
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/96a51e3b-5bdd-448c-86ad-a9b2036d7919.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/96a51e3b-5bdd-448c-86ad-a9b2036d7919.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a bedroom with a green and white bed and a mirror at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 12:05:27",
+   "booking_room_ids": [
+    1492325601
+   ],
+   "airbnb_space": "Bedroom 7",
+   "sha256": "3d0a5e048f5d1182cc37f890fa90b656f1aadee14ad1ba5c5503c48fdb702359",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-034",
+   "file": "assets/img-034.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289595.jpg?k=18bc4124c2b782ac83a3dfe6c1db64c856500501141c6d6093e647046fdc790f&o=",
+   "fetched_at": "2026-11-21T23:18:31Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289595",
+   "category": "common",
+   "description": "veranda: three surfboards on a wall rack, plants, a fire extinguisher",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3639,
+    5458
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/eb01b81c-c201-4676-8434-efff3b4d46cb.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    }
+   ],
+   "platform_alt": "four surfboards are lined up against a wall at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:35",
+   "airbnb_space": "Exterior",
+   "sha256": "fc9eaf9e09f0231a9312f438cc2b2d1174c6c5c5b2cfbaa2ae8881f598d15951",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-035",
+   "file": "assets/img-035.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289518.jpg?k=c58d54043317682d42b4a4f3c5e6d0c842bb197a67b742eb23391431f5ad1cd4&o=",
+   "fetched_at": "2026-11-21T23:18:32Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289518",
+   "category": "detail",
+   "description": "carved wooden masks hung beside a grey door, ferns and plants",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3618,
+    5427
+   ],
+   "also_on": [],
+   "platform_alt": "a door with two heads on it next to plants at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:20",
+   "sha256": "b7443eecb8123ecb102b02466041a9d3ea23ba4502e7e85b53e7cef2fa3ff204",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-036",
+   "file": "assets/img-036.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289592.jpg?k=7a46ce6d4f6596b9a95c05fc20af4c07a59c391381339fc65e05e575f5c482ac&o=",
+   "fetched_at": "2026-11-21T23:18:32Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289592",
+   "category": "outdoor",
+   "description": "outdoor shower built into a wooden surfboard fixed to the garden wall (tap and shower head), palms above",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3482,
+    5223
+   ],
+   "also_on": [],
+   "platform_alt": "a skateboard is leaning against a wall at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:35",
+   "sha256": "5eac64998b43f045e7e0cbc3e790b51e0e6f31d0c246768d7d9b2abf60513906",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-037",
+   "file": "assets/img-037.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289608.jpg?k=5930cfa73fdf9e8d81f556f75a7acc636e7a072f4dab09bedf10ddf22dfe0789&o=",
+   "fetched_at": "2026-11-21T23:18:33Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289608",
+   "category": "detail",
+   "description": "chequerboard-top wooden stool on polished concrete",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3563,
+    5344
+   ],
+   "also_on": [],
+   "platform_alt": "a black and white tray sitting on a wooden table at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:36",
+   "sha256": "ec96cb2f7da4895860ab7f7b900714ee762806bc87749234506ff1d8e10e5425",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-038",
+   "file": "assets/img-038.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289523.jpg?k=45b6868b47809d4e274a33fda89d099dcdcf94c70ec57a3dd235615867c6e912&o=",
+   "fetched_at": "2026-11-21T23:18:34Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289523",
+   "category": "detail",
+   "description": "potted pothos on a concrete bench",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3675,
+    5513
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/b0249c98-c9ec-4f83-bc17-c25f89721d71.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    }
+   ],
+   "platform_alt": "a potted plant sitting on top of a concrete table at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:21",
+   "airbnb_space": "Exterior",
+   "sha256": "66769173fe0168c9acbe5a5b95bdc3faa5f66bc8973a59f4ea5a6f1cf2607ca6",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-039",
+   "file": "assets/img-039.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289506.jpg?k=61310d483e11b51e9413cb9326da925163e46d9d0e8af93119f24c86b6e599d6&o=",
+   "fetched_at": "2026-11-21T23:18:35Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289506",
+   "category": "common",
+   "description": "two green chairs and a small wooden table with a tea set",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    4374,
+    2916
+   ],
+   "also_on": [],
+   "platform_alt": "two green chairs and a table with cups on it at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:13",
+   "sha256": "f354c483fdcc4e0ad45e780d524d1e0b3c01b70b64fc80ed6950786148454831",
+   "width": 2000,
+   "height": 1333
+  },
+  {
+   "id": "img-040",
+   "file": "assets/img-040.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289626.jpg?k=ed12709884421c814b6e374724c4b846bc0a8f612ad1a15e724c227104a2a696&o=",
+   "fetched_at": "2026-11-21T23:18:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289626",
+   "category": "detail",
+   "description": "green table with glasses, cups and a small plant against a weathered wall",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3701,
+    5552
+   ],
+   "also_on": [],
+   "platform_alt": "a green table with two glasses and a plant on it at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:39",
+   "sha256": "ece12c2ea9514c3a14f898fa93552c6589bd6367407064ccdd3c71b0883a560a",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-041",
+   "file": "assets/img-041.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289644.jpg?k=52aa5f87bccbc2eb738cf84ae791d74713943d828c8af7531df5487b179e9c0a&o=",
+   "fetched_at": "2026-11-21T23:18:37Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289644",
+   "category": "common",
+   "description": "lounge corner: carved colonial-style settee and coffee table framed by leaves",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    5419,
+    3613
+   ],
+   "also_on": [],
+   "platform_alt": "a living room with a chair and a table at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:42",
+   "sha256": "9e3c76a1afb9b164667fc760e060b79073572e93fd78116164f18516c19c2dc6",
+   "width": 2000,
+   "height": 1333
+  },
+  {
+   "id": "img-042",
+   "file": "assets/img-042.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289530.jpg?k=15acfe54a22b2e50a0d171a77b454f6f91cd17e2469f9d949acc978e257dcd76&o=",
+   "fetched_at": "2026-11-21T23:18:37Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289530",
+   "category": "exterior",
+   "description": "outside stair and white wall with a grey louvred door, plants",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3706,
+    5559
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/5452ae19-8086-445f-aae0-b5199dfca22d.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/5452ae19-8086-445f-aae0-b5199dfca22d.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a door on a white building with a plant at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:24",
+   "airbnb_space": "Exterior",
+   "sha256": "681305bcb0ee4372aa411f50a7b54a83a0ef5ece08a199a76b3ad2346101b936",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-043",
+   "file": "assets/img-043.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289611.jpg?k=b30bc81d403911bb49e26f666e66776c077e9270f9276e3b58c3a9c6759d3412&o=",
+   "fetched_at": "2026-11-21T23:18:38Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289611",
+   "category": "room",
+   "description": "room corner: wooden armchair and stool-table under a barred window",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3510,
+    5265
+   ],
+   "also_on": [],
+   "platform_alt": "a room with a table and a chair and a window at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:37",
+   "sha256": "46f9f3f7dd02bfbf4324c68ef1e032b78e2158e5412e86dc6b6a19d146cc98b8",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-044",
+   "file": "assets/img-044.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289627.jpg?k=7a2daedefdf8dcf8433ccb53ccd9402f20e5db50526cce9c7e0c1e646e8cdf81&o=",
+   "fetched_at": "2026-11-21T23:18:39Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289627",
+   "category": "room",
+   "description": "room: towel ladder, green cabinet and mirror, bed",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3556,
+    5334
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/c82ec8cd-402a-488d-af58-26b1e35266a4.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/c82ec8cd-402a-488d-af58-26b1e35266a4.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/9ada5915-cac9-41e4-af16-aca0c251e6e0.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "platform_alt": "a bedroom with a bunk bed and a mirror at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:39",
+   "airbnb_space": "Bedroom 4",
+   "sha256": "eba11d50a59e68006be1578b2096c2e5b7b5c8dd21bcbb7b957f1c44c5c8d8ee",
+   "width": 1333,
+   "height": 2000
+  },
+  {
+   "id": "img-045",
+   "file": "assets/img-045.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max2000/755289634.jpg?k=c632566228aad44db0b842fcc7a3199cc5d660c229805d70fe4c2110099f7e7f&o=",
+   "fetched_at": "2026-11-21T23:18:40Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the property to its own Booking.com listing (hotel id 14923256), part of a consistent professional set uploaded 2025-09-28/29 and re-used by the host on both Airbnb listings; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "booking-14923256",
+   "harvest_key": "bk-755289634",
+   "category": "outdoor",
+   "description": "balcony: carved wooden armchairs and a round table, low balustrade",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    5258,
+    3505
+   ],
+   "also_on": [],
+   "platform_alt": "a table and two chairs sitting next to a window at Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama",
+   "uploaded": "2025-09-28 11:49:40",
+   "sha256": "4135434cba2af3297bcd93979bce0a6a1485e6046456b1a617d69bbbcb8fff0a",
+   "width": 2000,
+   "height": 1333
+  },
+  {
+   "id": "img-046",
+   "file": "assets/img-046.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1508895627217411616/original/1538acbf-4a76-40ec-a8b5-c831d9227f43.jpeg?im_w=1200",
+   "fetched_at": "2026-11-21T23:18:41Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-001",
+   "category": "exterior",
+   "description": "inner courtyard: room doors with carved fanlights, green-cushioned bench, plants, fire extinguisher; a CCTV camera above (lower-resolution photo)",
+   "flags": [
+    "low_resolution",
+    "cctv_visible"
+   ],
+   "usable": true,
+   "original_size": [
+    1280,
+    714
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1508895627217411616/original/1538acbf-4a76-40ec-a8b5-c831d9227f43.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Exterior",
+   "sha256": "ca572a5d4d9f8635c8fc7f2173b44ed239a53f65278d96937979474211c35158",
+   "width": 1200,
+   "height": 669
+  },
+  {
+   "id": "img-047",
+   "file": "assets/img-047.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1508895627217411616/original/17044f16-9ffc-4644-bdd1-244a7866f42d.jpeg?im_w=720",
+   "fetched_at": "2026-11-21T23:18:41Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-002",
+   "category": "exterior",
+   "description": "covered corridor/veranda with a carved settee and plants (lower-resolution photo)",
+   "flags": [
+    "low_resolution"
+   ],
+   "usable": true,
+   "original_size": [
+    914,
+    1280
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1508895627217411616/original/17044f16-9ffc-4644-bdd1-244a7866f42d.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Exterior",
+   "sha256": "9a10236dfa9c49aa5a88e5a9c90ca23c59ee3a53f224f7f956c603bf7ea9b411",
+   "width": 720,
+   "height": 1008
+  },
+  {
+   "id": "img-048",
+   "file": "assets/img-048.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1508895627217411616/original/1469606f-ddaf-4af4-bb3c-67b6abed8e98.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:18:43Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-003",
+   "category": "bathroom",
+   "description": "bathroom: shower heater, sink and mirror",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    2252,
+    4000
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1508895627217411616/original/1469606f-ddaf-4af4-bb3c-67b6abed8e98.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Full bathroom",
+   "sha256": "565833932c01ffbda2f16b7a7bc3e6cdc2f035eab6c832879630aef50731f031",
+   "width": 1126,
+   "height": 2000
+  },
+  {
+   "id": "img-049",
+   "file": "assets/img-049.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/bb97901b-afc0-4863-b076-e8bdd6543683.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:18:43Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-004",
+   "category": "room",
+   "description": "room: bed, WC door, towel ladder",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3628,
+    5442
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/bb97901b-afc0-4863-b076-e8bdd6543683.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/cd150b5e-944e-47ed-9484-b377199274a0.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 1",
+   "sha256": "dd1b56b8c8f74036777ee714aa66e24fa67cb43e7e6569182d0dbe2cdf6bb812",
+   "width": 1334,
+   "height": 2000
+  },
+  {
+   "id": "img-050",
+   "file": "assets/img-050.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/d2f88b70-c789-42b8-a90a-6b503b4d9bdf.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:18:44Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-005",
+   "category": "room",
+   "description": "bed with teal throw, open door to the courtyard",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3490,
+    5236
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/d2f88b70-c789-42b8-a90a-6b503b4d9bdf.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/8d806391-e5d8-4a84-9437-d79c26cb0a3e.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 1",
+   "sha256": "111df1b197bb0b7b6bfb51fdc252443f38d681bd967a34716c571e2d3b917dea",
+   "width": 1332,
+   "height": 2000
+  },
+  {
+   "id": "img-051",
+   "file": "assets/img-051.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/a60de6d1-ff75-4279-8f0a-42f1da22e3ff.jpeg?im_w=1920",
+   "fetched_at": "2026-11-21T23:18:45Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-008",
+   "category": "room",
+   "description": "room seen through a carved doorway: bed, barred window, plant",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    5528,
+    3686
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/a60de6d1-ff75-4279-8f0a-42f1da22e3ff.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/3b8b00ad-b3bd-4296-9b59-9e35b68b945d.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 1",
+   "sha256": "bf136553fb31e7c4a8ba74a03712ea3be35cc1275ad754b6a701b6c606f507a8",
+   "width": 1920,
+   "height": 1280
+  },
+  {
+   "id": "img-052",
+   "file": "assets/img-052.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/30153008-a4e3-4a6e-8961-bbe4d2db09f3.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:18:46Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-009",
+   "category": "detail",
+   "description": "rolled towels on the bed, towel ladder",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    2186,
+    3744
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/30153008-a4e3-4a6e-8961-bbe4d2db09f3.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/2e015734-378d-42f1-b962-72ae6d14d03b.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 2",
+   "sha256": "fdc939203c22571f3af9f399d2f243e63ffa9132e83bfecc7d6fbacd11d3e4ed",
+   "width": 1168,
+   "height": 2000
+  },
+  {
+   "id": "img-053",
+   "file": "assets/img-053.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/35785b15-6989-4d56-a131-8bb4499711b2.jpeg?im_w=1920",
+   "fetched_at": "2026-11-21T23:18:47Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-011",
+   "category": "room",
+   "description": "room: four-poster with teal throw, shuttered window",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    5233,
+    3489
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/35785b15-6989-4d56-a131-8bb4499711b2.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/e21dcec4-4d44-4bc6-9c39-1149baa972c5.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 2",
+   "sha256": "8258dd66ab714c5f33eb4a269c9a866b6667902488323af12b820ceed9d6490e",
+   "width": 1920,
+   "height": 1280
+  },
+  {
+   "id": "img-054",
+   "file": "assets/img-054.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/f597ea13-f350-45c6-af2b-68ca18faf873.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:18:47Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-014",
+   "category": "detail",
+   "description": "timber towel ladder with white towels",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3712,
+    5568
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/f597ea13-f350-45c6-af2b-68ca18faf873.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 2",
+   "sha256": "845f25c7f1e9c6b2f11e37464b738bb28b82be7474e5db797e973a4e997178ee",
+   "width": 1334,
+   "height": 2000
+  },
+  {
+   "id": "img-055",
+   "file": "assets/img-055.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/d40cd268-7b49-4255-b375-5a145447c700.jpeg?im_w=1920",
+   "fetched_at": "2026-11-21T23:18:48Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-019",
+   "category": "room",
+   "description": "room: four-poster and towel ladder in bright light",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3978,
+    2240
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/d40cd268-7b49-4255-b375-5a145447c700.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/6405c57c-36fb-4f89-8fd2-591603fb47a4.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 3",
+   "sha256": "eb7af110934a786d91a496dd5a329ad68343c181d5c9a5ff0627c44e5bc91dfc",
+   "width": 1920,
+   "height": 1082
+  },
+  {
+   "id": "img-056",
+   "file": "assets/img-056.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/30b28396-04b5-444a-8115-83956c76b4bd.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:18:49Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-024",
+   "category": "room",
+   "description": "bed with green pillows, plant in the foreground",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3587,
+    5381
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/30b28396-04b5-444a-8115-83956c76b4bd.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 4",
+   "sha256": "2b42fd8e470e7db7344bc556954d82a1f3fb5b2614e008d26dc7ad13a6490227",
+   "width": 1334,
+   "height": 2000
+  },
+  {
+   "id": "img-057",
+   "file": "assets/img-057.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/37acc8e2-fcb8-4a7d-a780-695e1d450cc8.jpeg?im_w=1920",
+   "fetched_at": "2026-11-21T23:18:50Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-026",
+   "category": "room",
+   "description": "bed with lime-green and striped pillows",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    5212,
+    3475
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/37acc8e2-fcb8-4a7d-a780-695e1d450cc8.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/1d932920-4225-49be-a034-d35b33762fee.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 4",
+   "sha256": "65b7d4fedaae7d05bb062143d577147886d290a48ce27b029c3981baa33d87a6",
+   "width": 1920,
+   "height": 1280
+  },
+  {
+   "id": "img-058",
+   "file": "assets/img-058.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/cccaf454-ae88-43a9-a1f3-6391c9b6ec89.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:18:50Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-028",
+   "category": "room",
+   "description": "bed, towel ladder and doorway",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3643,
+    5465
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/cccaf454-ae88-43a9-a1f3-6391c9b6ec89.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 4",
+   "sha256": "d6909355414f86d505bd9adebd3d5205eb59a3d858dd9c38023253095c690f24",
+   "width": 1334,
+   "height": 2000
+  },
+  {
+   "id": "img-059",
+   "file": "assets/img-059.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/5cd8fdb0-d396-4ec8-b1aa-11f75d8e1447.jpeg?im_w=1920",
+   "fetched_at": "2026-11-21T23:18:51Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-029",
+   "category": "room",
+   "description": "room: four-poster with teal throw and grey doors",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    5346,
+    3564
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/5cd8fdb0-d396-4ec8-b1aa-11f75d8e1447.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/594d323b-92ac-4940-bf27-21fff37cf4a6.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 4",
+   "sha256": "55726fa2f5496ca028cabdc8abfb1f4bc36bb06b066800ddb690758b1e564823",
+   "width": 1920,
+   "height": 1280
+  },
+  {
+   "id": "img-060",
+   "file": "assets/img-060.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/fd638109-b4d9-4b70-ab5b-86f2f0cb89dc.jpeg?im_w=1920",
+   "fetched_at": "2026-11-21T23:18:52Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-030",
+   "category": "bathroom",
+   "description": "bathroom: rain shower, green mirror and sink",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    5375,
+    3583
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1508895627217411616/original/e36f6bf6-dc7f-48a7-91d8-1f552f53d674.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/fd638109-b4d9-4b70-ab5b-86f2f0cb89dc.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 5",
+   "sha256": "163097b5c9015a4a6abe460ed4a5ffcf5ef6d5f3d42e30923e1b0697e4756974",
+   "width": 1920,
+   "height": 1280
+  },
+  {
+   "id": "img-061",
+   "file": "assets/img-061.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/37153ab3-70e4-4cab-a0d6-7cd563192283.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:18:52Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-031",
+   "category": "room",
+   "description": "bed with green pillows, towel ladder, barred window",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3517,
+    5275
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/37153ab3-70e4-4cab-a0d6-7cd563192283.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 5",
+   "sha256": "3ff457667da5530d43984dd4771ad90371c9f06c0fd96d8c59e062b01b13fc4f",
+   "width": 1334,
+   "height": 2000
+  },
+  {
+   "id": "img-062",
+   "file": "assets/img-062.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/eba63d0d-c83c-4117-9aa7-93f9bfb21c57.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:18:54Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-033",
+   "category": "room",
+   "description": "small room: bed and green cabinet, timber floor",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3553,
+    5329
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/eba63d0d-c83c-4117-9aa7-93f9bfb21c57.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/1ca80412-9215-4def-93b4-96efb4562565.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 5",
+   "sha256": "28a550a5211a1836ea3ae105186ff1bf4ab4afb0960a9f3e9b29dfe9a8e12eaf",
+   "width": 1334,
+   "height": 2000
+  },
+  {
+   "id": "img-063",
+   "file": "assets/img-063.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/817d5881-ad6a-4944-a618-169918278330.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:18:54Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-034",
+   "category": "room",
+   "description": "room: bed, towel ladder, WC door, carved window",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3456,
+    5185
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/817d5881-ad6a-4944-a618-169918278330.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/7411ea72-ebde-43db-851f-5c015293a16b.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 6",
+   "sha256": "8fda53ca248be03eca08ce559cbd625440bd45eef3dbcf077248501e784ddab5",
+   "width": 1332,
+   "height": 2000
+  },
+  {
+   "id": "img-064",
+   "file": "assets/img-064.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/9701978c-c1e2-47f8-8ae3-e5cee0a91384.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:18:55Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-037",
+   "category": "room",
+   "description": "room: four-poster with grey linen, ceiling fan",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3338,
+    5008
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/9701978c-c1e2-47f8-8ae3-e5cee0a91384.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/c4b55d97-d412-4bc5-a5ba-eafcc7879598.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 6",
+   "sha256": "04b7e625a1a057d4b14f8156f71703f05d9c7903771aee39582c2fc1283f2bc1",
+   "width": 1332,
+   "height": 2000
+  },
+  {
+   "id": "img-065",
+   "file": "assets/img-065.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/e245d3e3-5a16-4414-84ad-2c9f90e72d6e.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:18:56Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-038",
+   "category": "bathroom",
+   "description": "bathroom: WC door, pedestal sink, small window",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3678,
+    5518
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/e245d3e3-5a16-4414-84ad-2c9f90e72d6e.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/73d4dc74-b74b-4295-93ed-93455abbfc86.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 6",
+   "sha256": "b2f7adf9896eecf873a6dbcd0197d74937c5c952cdb222b60525fd03b8ece567",
+   "width": 1332,
+   "height": 2000
+  },
+  {
+   "id": "img-066",
+   "file": "assets/img-066.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/7ac1bb7e-67cd-4a59-967e-50c8f356b06f.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:18:57Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-039",
+   "category": "room",
+   "description": "room: four-poster with white linen",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3692,
+    5538
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/7ac1bb7e-67cd-4a59-967e-50c8f356b06f.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/8f9e13a0-6a0f-4add-8950-91ed69197ae1.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 7",
+   "sha256": "acc087b21a6cf8a2049383bf081eead1a7b5911c4ef7c5fc4c3f343375792d60",
+   "width": 1334,
+   "height": 2000
+  },
+  {
+   "id": "img-067",
+   "file": "assets/img-067.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/2290f1d0-1ea8-4e35-9592-16c5ab6098c3.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:18:57Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-040",
+   "category": "bathroom",
+   "description": "bathroom: rain shower and toilet",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3441,
+    5161
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1508895627217411616/original/c05ca5cb-0e9a-4f07-be43-5459872ba049.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/2290f1d0-1ea8-4e35-9592-16c5ab6098c3.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/23f6fe2f-9143-4d33-9fe7-10d26c797ce9.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 7",
+   "sha256": "5b9185bdd91aad392a6d811f9dab5812aa5d5d1cbd143831489606e2102cc88d",
+   "width": 1334,
+   "height": 2000
+  },
+  {
+   "id": "img-068",
+   "file": "assets/img-068.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/8148cff1-c657-47ec-bcdc-3d53cd7a0040.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:18:58Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-041",
+   "category": "room",
+   "description": "room corner: wooden armchair and stool-table",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3259,
+    4670
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/8148cff1-c657-47ec-bcdc-3d53cd7a0040.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    },
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/53fb070d-024b-49dd-8eba-1af7bb943fb9.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Bedroom 7",
+   "sha256": "6fdaa10a338faad0693f605875feca20ec5c380b4de4037e8ff6f4849f00141d",
+   "width": 1396,
+   "height": 2000
+  },
+  {
+   "id": "img-069",
+   "file": "assets/img-069.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/a6cf3874-8574-4b1c-9445-8044615dfaad.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:18:59Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-045",
+   "category": "detail",
+   "description": "close-up of carved pipe-smoking masks",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    2130,
+    3750
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/a6cf3874-8574-4b1c-9445-8044615dfaad.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Exterior",
+   "sha256": "b1a755c09a672607a65b964d9e365c3f673fd7f85615c4489266c3c0fd62289f",
+   "width": 1136,
+   "height": 2000
+  },
+  {
+   "id": "img-070",
+   "file": "assets/img-070.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/3ece9f49-a4df-42d4-a86e-7334219bda9a.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:19:00Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-046",
+   "category": "detail",
+   "description": "brass oil lamp, plant and masks",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    2148,
+    3460
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/3ece9f49-a4df-42d4-a86e-7334219bda9a.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Exterior",
+   "sha256": "2f4911afff65310f8fb968f19e1908777107ae080421662622669803c8b3fe1b",
+   "width": 1242,
+   "height": 2000
+  },
+  {
+   "id": "img-071",
+   "file": "assets/img-071.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/fa4890ac-5216-41b3-8849-7763c3ce4ceb.jpeg?im_w=1920",
+   "fetched_at": "2026-11-21T23:19:00Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-047",
+   "category": "exterior",
+   "description": "courtyard: concrete bench with a teal cushion, garden and palms beyond",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    4000,
+    2252
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/fa4890ac-5216-41b3-8849-7763c3ce4ceb.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Exterior",
+   "sha256": "2fea70d4c9ba15570775ce7ea43b8d6996b9d5fa13f04225018632e6efe091e1",
+   "width": 1920,
+   "height": 1081
+  },
+  {
+   "id": "img-072",
+   "file": "assets/img-072.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/f605ee49-e603-4d59-8b80-4aabefb1bc79.jpeg?im_w=1920",
+   "fetched_at": "2026-11-21T23:19:01Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-048",
+   "category": "common",
+   "description": "veranda at night: three surfboards on a wall rack, lit from below, plants and a fire extinguisher",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3950,
+    2224
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/f605ee49-e603-4d59-8b80-4aabefb1bc79.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Exterior",
+   "sha256": "fb949be555062ba9b21283d38d585f5955b1b558f9cb0ea9c75144c1416b6803",
+   "width": 1920,
+   "height": 1081
+  },
+  {
+   "id": "img-073",
+   "file": "assets/img-073.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/3735db32-04e0-4fcd-973f-c4fb31e933e7.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:19:02Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-049",
+   "category": "outdoor",
+   "description": "veranda: bench, plant, garden view",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    2252,
+    4000
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/3735db32-04e0-4fcd-973f-c4fb31e933e7.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "airbnb_space": "Exterior",
+   "sha256": "a4ef8fe49a003b8b331655a518aaeed83fe4f6ed82fd5f3bca33b4b21b63cce2",
+   "width": 1126,
+   "height": 2000
+  },
+  {
+   "id": "img-074",
+   "file": "assets/img-074.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTUwODg5NTYyNzIxNzQxMTYxNg==/original/0e3dcb5a-2172-48f0-8b56-c3caf0216759.jpeg?im_w=1920",
+   "fetched_at": "2026-11-21T23:19:02Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-054",
+   "category": "outdoor",
+   "description": "green table and chairs on a red-oxide floor",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    5158,
+    3439
+   ],
+   "also_on": [],
+   "airbnb_space": "Workspace",
+   "sha256": "8dcec14f6d99e7a598a5568f7a952088f499a821339e9f83e2540f9a94ecc2cc",
+   "width": 1920,
+   "height": 1280
+  },
+  {
+   "id": "img-075",
+   "file": "assets/img-075.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1508895627217411616/original/653b1b1f-ac9d-4873-b375-704e0ca05443.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:19:03Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-059",
+   "category": "bathroom",
+   "description": "bathroom: pedestal sink and green mirror",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3649,
+    5474
+   ],
+   "also_on": [],
+   "airbnb_space": "Full bathroom",
+   "sha256": "90d912227b4ee43ec22d230d105f923f621546781e680700064cec727fd4afac",
+   "width": 1334,
+   "height": 2000
+  },
+  {
+   "id": "img-076",
+   "file": "assets/img-076.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1508895627217411616/original/e26a8e2b-1ecf-4d2a-a0d4-cf0d0d77cfe3.jpeg?im_w=1920",
+   "fetched_at": "2026-11-21T23:19:04Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-061",
+   "category": "outdoor",
+   "description": "upstairs balcony: two colonial easy chairs and a round table, coconut palms beyond; HDR phone-style shot",
+   "flags": [
+    "hdr_phone_look"
+   ],
+   "usable": true,
+   "original_size": [
+    3376,
+    2252
+   ],
+   "also_on": [],
+   "airbnb_space": "Living room",
+   "sha256": "487aec672a58df471eaba3e82108e44fe25ea47e851ac5bddb500ecadb0d14a4",
+   "width": 1920,
+   "height": 1281
+  },
+  {
+   "id": "img-077",
+   "file": "assets/img-077.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1508895627217411616/original/2e883b5d-4c57-4573-990b-6cf98bff2aba.jpeg?im_w=1920",
+   "fetched_at": "2026-11-21T23:19:05Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1508895627217411616; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1508895627217411616",
+   "harvest_key": "ab1-062",
+   "category": "outdoor",
+   "description": "long upstairs balcony with a green-cushioned settee, mint tables and chairs, ochre wall, garden and palms beyond; HDR phone-style shot",
+   "flags": [
+    "hdr_phone_look"
+   ],
+   "usable": true,
+   "original_size": [
+    3768,
+    2122
+   ],
+   "also_on": [],
+   "airbnb_space": "Workspace",
+   "sha256": "b251ef81609e53153c9d31ceb5372a4d5b270cfd0ff558f4a72a784c4e9fcf57",
+   "width": 1920,
+   "height": 1082
+  },
+  {
+   "id": "img-078",
+   "file": "assets/img-078.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1793988904511877292",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/c9a16607-0008-41b8-badd-469333bc9e68.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:19:05Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1793988904511877292; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1793988904511877292",
+   "harvest_key": "ab2-051",
+   "category": "bathroom",
+   "description": "bathroom: toilet, beige tiles",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3295,
+    4598
+   ],
+   "also_on": [
+    {
+     "url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/ff1d2bc6-fe3b-476a-a83c-d42307b04637.jpeg",
+     "page": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "sha256": "fcf92aeeb2280aad737e712773691d0ad523bfa123e35c5af0753c79bd126587",
+   "width": 1434,
+   "height": 2000
+  },
+  {
+   "id": "img-079",
+   "file": "assets/img-079.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1793988904511877292",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/323ac518-7551-46ec-871b-45a3a632909d.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:19:06Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1793988904511877292; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1793988904511877292",
+   "harvest_key": "ab2-060",
+   "category": "room",
+   "description": "dim room with an open arched door to outside, bed with teal throw",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    2252,
+    3302
+   ],
+   "also_on": [],
+   "sha256": "0f1b0a89351de262f4480c309953c72d724b8e5cd846ffa5fc9689cfffd650b3",
+   "width": 1364,
+   "height": 2000
+  },
+  {
+   "id": "img-080",
+   "file": "assets/img-080.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1793988904511877292",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/ae9f93cb-4396-4d07-a1c3-3de45487e5d3.jpeg?im_w=1920",
+   "fetched_at": "2026-11-21T23:19:07Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1793988904511877292; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1793988904511877292",
+   "harvest_key": "ab2-064",
+   "category": "room",
+   "description": "bed with lime-green pillows and teal throw",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    4252,
+    2835
+   ],
+   "also_on": [],
+   "sha256": "2c903fdbbd61d7c9b2a77eb72102edb79105a1d2de789968fc5eb020c78572b3",
+   "width": 1920,
+   "height": 1280
+  },
+  {
+   "id": "img-081",
+   "file": "assets/img-081.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1793988904511877292",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/226148ce-5304-4f40-96ab-4808dc728475.jpeg?im_w=1440",
+   "fetched_at": "2026-11-21T23:19:08Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1793988904511877292; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1793988904511877292",
+   "harvest_key": "ab2-065",
+   "category": "room",
+   "description": "four-poster with teal throw and a plant",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    3659,
+    5488
+   ],
+   "also_on": [],
+   "sha256": "527ebe9d5d8aa9968ac0dbfc39eeec7a50d0dc18754288579c619980cb32c1a2",
+   "width": 1334,
+   "height": 2000
+  },
+  {
+   "id": "img-082",
+   "file": "assets/img-082.jpg",
+   "source_url": "https://www.airbnb.co.uk/rooms/1793988904511877292",
+   "photo_url": "https://a0.muscache.com/im/pictures/hosting/Hosting-1793988904511877292/original/7ccd6671-e3c0-4d49-a65d-5ea4a2b064c2.jpeg?im_w=1920",
+   "fetched_at": "2026-11-21T23:19:09Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the host (Ashly) to the business's own Airbnb listing 1793988904511877292; Shahar approved OTA listing photos as usable 2026-09-19",
+   "found_on": "airbnb-1793988904511877292",
+   "harvest_key": "ab2-087",
+   "category": "room",
+   "description": "bed with white and striped pillows beside a carved door",
+   "flags": [],
+   "usable": true,
+   "original_size": [
+    5485,
+    3657
+   ],
+   "also_on": [],
+   "sha256": "065837f06acba2a204810ceb2ebbcef767585cc29e2bd80ca0cbe8de5d9a1497",
+   "width": 1920,
+   "height": 1280
+  }
+ ],
+ "images_note": "82 distinct photos kept from 198 gallery files (Booking 45; Airbnb listing 1508895627217411616: 62; Airbnb listing 1793988904511877292: 91 incl. re-uploads). 116 re-uploads of the same photo across the three listings were dropped (24×24 grey-thumbnail correlation ≥ 0.985, every merged group has identical original pixel sizes, and no photo repeats on the contact sheets); the kept copy is Booking's where one exists, and the others are listed under also_on. Licence: all 82 business-owned (property/host uploads to its own listings). Apart from two lower-resolution courtyard/veranda shots (img-046 1280×714 original, img-047 914×1280) and two HDR phone-style balcony shots (img-076, img-077), they are one consistent professional set uploaded to Booking on 2025-09-28/29 (originals 3000–5568 px). No stock or third-party image found, and no identifiable person in any photo (no guests, staff or children). Flags: img-001 shows the phone number on the sign; img-046 shows a CCTV camera. Pixel sizes as stored: long edge ≤ 2000 px. 27 landscape, 55 portrait. 26 landscape at ≥ 1920 px wide: img-002, 003, 004, 006, 007, 009, 012, 015, 017, 022, 039, 041, 045, 051, 053, 055, 057, 059, 060, 071, 072, 074, 076, 077, 080, 082. Of those, the outdoor ones are img-003 (upstairs balcony, green table, palms), img-007 and img-074 (green table on the red-oxide terrace), img-045 (balcony, carved chairs), img-071 (courtyard bench with garden), img-076 and img-077 (upstairs balconies over the palms, HDR phone look). No photo shows the house from the street, the sea, the beach or a surf break; the 'exterior' set is the sign (img-001, portrait), the courtyard (img-046, 071), a stair (img-042) and verandas. Strongest: the mint-green four-poster rooms with teal throws (img-002, 012, 015, 017, 022), the surfboard rack (img-034 portrait, img-072 night), the surfboard outdoor shower (img-036), the carved doors and masks (img-027, 035), and the lounge with surfboards (img-004). Weak: few landscapes outside, nothing of the water.",
+ "videos": [],
+ "videos_note": "The business publishes no video: no website, no YouTube/Vimeo channel, no Instagram or Facebook found; Booking, Agoda and both Airbnb listings hold stills only. YouTube searches (yt-dlp ytsearch10 'Sea You Surfers Nest Midigama', ytsearch6 'Surf sick Midigama homestay') return only generic Midigama surf clips from other channels (Surfers of Sri Lanka, Lotus Surf Camp, …), none of this house. No hero video: the first screen leads with a photograph.",
+ "existing_site": {
+  "url": null,
+  "status": null,
+  "notes": "no website: the Google listing shows 'Add website' and is unclaimed; no own domain found. The web presence is the Booking.com listing (mirrored on Agoda, MapQuest and Booking white-labels), two Airbnb listings and the unclaimed Google listing."
+ },
+ "languages": {
+  "seen": [
+   "en"
+  ],
+  "owner_language_hint": "si"
+ },
+ "same_address_neighbour": {
+  "slug": "surf-sick",
+  "finding": "A separate operation, not a rename or a second listing of Sea You Surfers Nest. Relationship (if any) unknown.",
+  "evidence": [
+   {
+    "value": "Surf sick — Google: 'Homestay', 5.0 from 2 reviews, address '151 Weliwaththa Rd, Weligama, Sri Lanka' (no postcode), phone '+94 74 243 2996', check-out 12:00, sold on Agoda and Bluepillow; pin 5.9622133, 80.397628 (≈26 m from Sea You's pin)",
+    "source_url": "https://www.google.com/maps/place/Surf+sick/data=!4m10!3m9!1s0x3ae1150075bb216b:0x655114d49a4447c!5m2!4m1!1i2!8m2!3d5.9622133!4d80.397628!16s%2Fg%2F11nvwwlwvz!19sChIJayG7dQAV4ToRfESkSU0RVQY?hl=en",
+    "fetched_at": "2026-11-21T22:56:37Z"
+   },
+   {
+    "value": "Surf sick — Booking.com: homestay '151 Weliwaththa Road, 81000 Weligama', no reviews yet, rooms 'Double Room with Garden View' and 'Single Room', private bathrooms, check-in 12:00–15:00, check-out 11:00–12:00, languages English and French; its 12 photos were all uploaded 2026-08-31",
+    "source_url": "https://www.booking.com/hotel/lk/surf-sick.en-gb.html",
+    "fetched_at": "2026-11-21T23:00:40Z"
+   },
+   {
+    "value": "Surf sick — Agoda id 94551871 'Homestay', 'Managed by a private host', host experience flag set; Booking-fed; address '151 Weliwaththa Road, Midigama Beach, Mirissa, Sri Lanka, 81000'",
+    "source_url": "https://www.agoda.com/en-gb/surf-sick/hotel/all/midigama-east-lk.html",
+    "fetched_at": "2026-11-21T23:09:21Z"
+   },
+   {
+    "value": "Sea You Surfers Nest — Booking hotel 14923256 'Hotel', postcode 81700, English only, check-in 14:00–18:00; 45 photos uploaded 2025-09-28/29; Airbnb host Ashly lists exactly two listings, both Sea You (no Surf sick)",
+    "source_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+    "fetched_at": "2026-11-21T22:57:19Z"
+   }
+  ],
+  "comparison": "Different names, different phone numbers (+94742432996 on Surf sick's Google listing vs +94715880052 on Sea You's sign), different Booking listings and postcodes (81000 vs 81700), different languages (EN+FR vs EN), different check-in times, different Google categories (Homestay vs Bed & breakfast). Their photos show different buildings: Surf sick's are phone snapshots of a timber-ceilinged room, a shade-sail garden with a green mesh fence, a dog, food and the beach; Sea You's are a professional set of a white two-storey house with mint-green four-poster beds, carved doors and balconies — no room, wall or object appears in both sets. Surf sick listed on Booking eleven months after Sea You. They share the street number '151 Weliwaththa Rd', which in this area is likely a lane/plot number used by neighbouring houses. Nothing public links the two hosts; a family or landlord connection cannot be ruled out from public material.",
+  "note": "Recorded for the run: Surf sick is its own candidate; this harvest does not cover it."
+ },
+ "contradictions": [
+  {
+   "what": "check-in time",
+   "values": [
+    "Booking/Agoda: check-in 14:00–18:00, check-out 06:00–10:00",
+    "Airbnb (both listings): check in after 15:00"
+   ],
+   "sources": [
+    "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+    "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "https://www.airbnb.co.uk/rooms/1793988904511877292"
+   ],
+   "resolution": "none — the site should not state times until the owner confirms (gap)"
+  },
+  {
+   "what": "postcode",
+   "values": [
+    "Google: Midigama 80650",
+    "Booking/Agoda/MapQuest: 81700 (Kumbalgama)"
+   ],
+   "sources": [
+    "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0?hl=en",
+    "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+    "https://www.agoda.com/en-gb/sea-you-surfers-nest/hotel/all/midigama-east-lk.html"
+   ],
+   "resolution": "use Google's address with 80650 (playbook §6); 81700 noted"
+  },
+  {
+   "what": "distance to the beach",
+   "values": [
+    "name: 'Hello to waves in a minute walk'",
+    "Booking: Midigama Beach 500 m / 6-minute walk",
+    "Agoda: 330 m straight line",
+    "scout: 91 m to shore",
+    "guests: '2 minutes walk', 'steps away from the sea'"
+   ],
+   "sources": [
+    "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+    "https://www.agoda.com/en-gb/sea-you-surfers-nest/hotel/all/midigama-east-lk.html",
+    "reports/2026-10-midigama-01/candidates.json",
+    "https://www.airbnb.co.uk/rooms/1508895627217411616"
+   ],
+   "resolution": "use the guests' and owner's words ('a minute's walk' / 'steps from the sea'), no metre figure"
+  },
+  {
+   "what": "air conditioning",
+   "values": [
+    "Booking: 'family rooms with air-conditioning', AC an 'Additional charge'; Deluxe Double Room 'features air conditioning'",
+    "owner (Airbnb): 'one A/C room & Six Non A/C rooms'"
+   ],
+   "sources": [
+    "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+    "https://www.airbnb.co.uk/rooms/1508895627217411616"
+   ],
+   "resolution": "one A/C room (the owner's words); never 'air-conditioned rooms'"
+  },
+  {
+   "what": "restaurant",
+   "values": [
+    "Booking: '1 restaurant on site … Open for Breakfast', 'family-friendly restaurant serving Asian and European cuisines'",
+    "Airbnb + guests: a shared guest kitchen and food cooked by the hosts; no guest mentions a restaurant"
+   ],
+   "sources": [
+    "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+    "https://www.airbnb.co.uk/rooms/1508895627217411616"
+   ],
+   "resolution": "breakfast and home-cooked food on request; no restaurant claim"
+  },
+  {
+   "what": "bathrooms",
+   "values": [
+    "Airbnb listing 1: 'Private attached bathroom'",
+    "Booking Standard Double Room: 0 bathrooms in the unit; Marina: bathroom outside the room, sometimes used by others",
+    "Airbnb listing 2: '0 bathrooms'"
+   ],
+   "sources": [
+    "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+    "https://www.airbnb.co.uk/rooms/1793988904511877292"
+   ],
+   "resolution": "say 'private bathroom' only for the Deluxe room; the rest is a gap"
+  },
+  {
+   "what": "number of rooms / beds",
+   "values": [
+    "owner: 7 rooms (1 A/C + 6 non-A/C), 14 guests",
+    "Airbnb listing 2: 7 bedrooms, 6 beds, shows 6 bedrooms",
+    "Booking: two room types"
+   ],
+   "sources": [
+    "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "https://www.airbnb.co.uk/rooms/1793988904511877292",
+    "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"
+   ],
+   "resolution": "use the owner's 'seven rooms, sleeps 14'"
+  }
+ ],
+ "gaps": [
+  {
+   "field": "contact.phone (verification)",
+   "why": "the only direct number (+94715880052) is read from the business's own sign in its own photo; it is published as text nowhere (Google says 'Add place's phone number'). Usable as found, but a human should confirm it before it becomes the site's call button",
+   "pitch_point": true,
+   "blocking": false,
+   "human_decision": true
+  },
+  {
+   "field": "contact.whatsapp",
+   "why": "no WhatsApp number or link anywhere",
+   "pitch_point": true
+  },
+  {
+   "field": "contact.email",
+   "why": "not published",
+   "pitch_point": false
+  },
+  {
+   "field": "existing_site",
+   "why": "no website; Google listing unclaimed (no phone, no website on it); bookings run through Booking.com, Agoda and Airbnb with commission",
+   "pitch_point": true
+  },
+  {
+   "field": "socials",
+   "why": "no Instagram/Facebook found (Instagram not checkable without login)",
+   "pitch_point": true
+  },
+  {
+   "field": "offers / prices",
+   "why": "no price published by the business; only live OTA rates (₪63 a night on Google/Booking/Agoda, £18 a night on Airbnb, seen 2026-11-21)",
+   "pitch_point": true
+  },
+  {
+   "field": "stay_info.check_in / check_out",
+   "why": "Booking/Agoda 14:00–18:00 / 06:00–10:00 vs Airbnb after 15:00",
+   "pitch_point": true
+  },
+  {
+   "field": "stay_info.min_nights",
+   "why": "not published",
+   "pitch_point": false
+  },
+  {
+   "field": "room_types mapping",
+   "why": "owner says seven rooms (one A/C); Booking sells two types; which photos show the A/C room and which rooms are en-suite is not stated",
+   "pitch_point": false
+  },
+  {
+   "field": "surf (lessons, rental, storage, spot)",
+   "why": "no surf service published; one guest mentions surf rental; surfboards on a rack in photos; no named break",
+   "pitch_point": true
+  },
+  {
+   "field": "season",
+   "why": "no season published",
+   "pitch_point": false
+  },
+  {
+   "field": "business.description / tagline",
+   "why": "the owner's Airbnb text is short and generic (and ends in a stray '– adds a surf vibe.'); no tagline. Not blocking: the copywriter writes from the facts",
+   "pitch_point": false
+  },
+  {
+   "field": "images: exterior and the sea",
+   "why": "no photo of the house front from the street, of the sea, the beach or a surf break; the strongest outdoor shots are the balconies and courtyard. Photos are mostly portrait (55 of 82)",
+   "pitch_point": true
+  },
+  {
+   "field": "videos",
+   "why": "no video of its own anywhere",
+   "pitch_point": true
+  },
+  {
+   "field": "reviews.google texts",
+   "why": "not visible in Google's signed-out limited view",
+   "pitch_point": false
+  },
+  {
+   "field": "reviews.critical_themes HOST CONDUCT",
+   "why": "two Booking complaints about host/business conduct (overbooking with refund refused; unfriendly owner). Neither is a safety allegation; a human should glance at them before pitching",
+   "pitch_point": false,
+   "blocking": false,
+   "human_decision": true
+  }
+ ],
+ "must_have_check": {
+  "type": "beach_lodging",
+  "rooms_min_1": "met (Booking: Deluxe Double Room 13 m² and Standard Double Room 12 m², 1 large double, 2 guests; owner: seven rooms, one with A/C, sleeps 14)",
+  "photos_min_6": "met (82 distinct business-owned photos: rooms, bathrooms, balconies, courtyard, surfboard rack, the sign)",
+  "bookingLinks_min_1": "met (Booking.com 14923256; Airbnb 1508895627217411616 and 1793988904511877292; Agoda 79261807)",
+  "core_contact": "met, with a caveat: +94715880052 from the business's own sign (in its own listing photo); not published as text anywhere, so a human should confirm it. Airbnb messaging is the platform fallback",
+  "core_facts_for_copy": "met (what and where, seven rooms, balconies, kitchen, breakfast, hosts by name, 18 review texts)",
+  "verdict": "buildable in test mode; no blocking fact gap. Two things for a human: confirm the sign's phone number is the one to publish, and glance at two host-conduct complaints (no safety allegation)."
+ }
+}
