@@ -206,3 +206,65 @@ Deliberately empty, each with a stated reason: `featureLine`, `season`, `opening
 Round 2 is a full re-check of every sentence (hard constraint 6), not only these two.
 
 Ledger line due (not written by me): `copy_humanised → copy_failed`, note "round 1 FAIL (copyeditor 0.4.2): 72 rows, 55 sourced / 1 shared-context / 6 framing / 8 correctly empty, 1 unsourced, 1 contradicted. Offer ¶1 'Airbnb’s rates are for a room without it' widens listing 2's note to all Airbnb (contradicted, dropped qualifier); carved ¶1 'The front door is…' places img-027, tagged to the Standard Double Room / Airbnb Bedroom 2, as the house's front door (unsourced). Both from the draft, back to copywriter. Draft→final diff clean; 5 testimonials machine-checked verbatim; voice 8.5/10".
+
+---
+
+# copy review — sea-you-surfers-nest · en · round 2
+
+Reviewer: copyeditor 0.4.2. Runtime prompt from `tools/prompt.mjs copyeditor`, read in full. Run `2026-10-midigama-01`, state `copy_failed` (round 1, `039fa5a`), 2026-11-22. Input: the copywriter's fix round `cc1f29c`.
+
+Scope: a **full re-check of every sentence and field** of `copy/en.json` against `dossier/sea-you-surfers-nest/dossier.json` (hard constraint 6), not only the fixed strings. The dossier has not changed since round 1 (last commit `71f0c22`). `en.draft.json` and `humanizer-notes.md` are unchanged since the humanizer pass. A field-by-field diff of `en.json` against the round-1 input `4b1dbb0` shows exactly four changed strings: `copyBlocks[2].body`, `copyBlocks[4].body`, `copyBlocks[5].body` and `testimonials[1].quote`. Every other value is byte-identical. I re-read each unchanged sentence against its dossier key again and every round-1 verdict for it stands (rows 1–26, 28–32, 34–38, 40–72 above).
+
+## Verdict: **PASS** (round 2 of 2)
+
+72 rows: 57 `sourced`, 1 `shared-context`, 6 `framing`, 8 correctly empty, **0 `unsourced`, 0 `contradicted`**. The voice audit is clean, with notes only. The `beach_lodging` must-haves are covered.
+
+## Changed rows
+
+| # | Field | Sentence (round 2) | Dossier key | Verdict |
+|---|---|---|---|---|
+| 27 | `copyBlocks[2]` ¶1 S2 (was S2 + S3) | Only one has air conditioning, so ask when you book if you want the one that has it. | `business.description_rooms_note.value` (listing 1: "one A/C room & Six Non A/C rooms … Pls inquire for per room rate") and `.note` (listing 2: "ONLY ONE A/C room … Pls inquire when booking"); `contradictions[3]` resolution. The rate clause that widened listing 2's note to all of Airbnb is gone. The advice to ask rests on both listings. | sourced (B1 resolved) |
+| 33 | `copyBlocks[4]` ¶1 S1 | One of the rooms has a carved grey double door, and the wooden chair beside it is carved too. | img-027 ("entrance: carved grey double door, wall lamp, carved wooden chair"), which the property tagged to a room on both platforms: `booking_room_ids` [1492325603] (the Standard Double Room, which has "a private entrance", `room_types[1]`) and `airbnb_space` "Bedroom 2". "One of the rooms" claims no particular room and does not say it is the only one. See R7. | sourced (B2 resolved) |
+| 39 | `copyBlocks[5]` ¶2 | Midigama railway station is 950 m away on foot and Weligama Beach is 3.4 km, both by Booking.com’s count. | `location.nearby.value` (Booking: 950 m walking; 3.4 km). "Both" now attributes the two figures to Booking.com. | sourced (N1 resolved) |
+| 62 | `testimonials[1]` (Kenza) | "…just steps away from the sea and restaurants.\nWe would definitely recommend staying here!" | `reviews.quotes[2].text` = `all_airbnb[0].text`. The words and punctuation are identical. Only the space before the line break was removed. See R8. | sourced |
+
+Testimonials, re-checked by script: Niamh, Marina, Molly Jayne and Raul are byte-identical to `reviews.quotes[1, 3, 4, 11].text`. Kenza is identical after whitespace normalisation. Author, source and date are identical for all five. Lengths are within the schema: offer body 332, carved body 297, info body 209 (≤ 1500), Kenza 259 (≤ 600). `tagline` 60, `closing` 125 and `spot` 64 are unchanged.
+
+`sources.md`: the round-2 rows and the "Round 2 changes" table match `en.json` exactly. Its reasoning for rows 27 and 33 uses the same dossier keys I checked. The "Each fact once" table still holds: one claim was removed and one was moved to the right place, and no fact now appears twice.
+
+## Rulings (round 2)
+
+**R7. "One of the rooms has a carved grey double door" is `sourced`.** The dossier does not have a sentence saying which door it is, but the property itself filed this photo under a room on both platforms: Booking room 1492325603 and Airbnb "Bedroom 2". The harvester's description calls it an "entrance", and Booking gives that room "a private entrance". "One of the rooms" claims only what the tags show. It names no room and claims no exclusivity. The round-1 owner item, where the door really is, stays open.
+
+**R8. Kenza's quote with the stray space removed is still verbatim.** The schema's rule is "verbatim guest words only; never paraphrased, never invented, never trimmed into a different meaning". Removing a space before a line break changes no word, no mark and no meaning. Round 1's N4 asked only that the template render the line break cleanly, not for this edit, but the edit is harmless. From now on, machine checks of this quote must compare after whitespace normalisation, or they will report it as different.
+
+Round-1 rulings R1–R6 stand unchanged: check-out time, "usually replies", "white two-storey house", "south coast", "ask Ashly … call", and Marina's positive half.
+
+## Voice (changed sentences)
+
+- **Offer ¶1:** "Only one has air conditioning, so ask when you book if you want the one that has it." The "one … the one that has it" echo is a little clunky (round-1 note, now in one sentence instead of two). It is short, plain and honest about the limit. Taste only.
+- **Carved ¶1:** "One of the rooms has a carved grey double door…" is plain and concrete. "Carved" still appears four times in the block (round-1 N3). Taste only.
+- **Info ¶2:** "…both by Booking.com’s count." Clear, and the attribution now reads naturally.
+
+Voice score: **8 / 8 criteria met; 8.5 / 10.** The round-1 notes N2 (Ashly's quote sounds generated, but it is his own words) and N3 stand as taste notes. None fails the copy.
+
+## Completeness
+
+Unchanged from round 1. `rooms[]` has 2 rows, `bookingLinks[]` has 3, `stayInfo`, `amenities[]` (8), `ratings[]` (3), `testimonials[]` (5) and `spot` are filled, and every empty field has a stated reason. No section is padded and no fact is duplicated.
+
+## For a person before go-live (not copy failures)
+
+- **Phone +94715880052** was read from the business's own sign and is not yet confirmed (`gaps[0]`, a human decision). Confirm it before it becomes the tap-to-call button and the closing's "call". Also check whether it takes WhatsApp.
+- **Live platform stats:** Superhost, "replies within a few hours" and the three ratings were captured 2026-11-21. Re-read them at deploy.
+- **Check-out 06:00–10:00** is stated, and check-in is left out (R1). The owner should confirm both, since Booking and Airbnb give different check-in times.
+- **Breakfast:** the line is platform text, and whether breakfast is in the rate is unknown. The tagline "bed and breakfast" (Google's category) implies it is.
+- **Rooms:** which room has the A/C (Booking sells the Deluxe Double "with air conditioning"), which rooms have their own bathroom, and where the carved double door is (R7).
+- **Airbnb rates:** what each listing's rate covers, including the whole-house listing's "rates are for Non A/C double room".
+- **Template:** Kenza's quote still contains a line break (`\n`). Render it as a line break or a space, never as literal characters.
+- **Surf:** the break, the season, and board storage or rental are not stated (owner items, pitch points).
+
+## Verdict: **PASS** (round 2, full-file check)
+
+0 `unsourced`, 0 `contradicted`, voice clean (8.5/10), required fields covered. Both round-1 blocking sentences are fixed with no new claim, and no other field changed.
+
+Ledger line due (not written by me): `copy_failed → copy_passed`, note "round 2 PASS (copyeditor 0.4.2), full re-check: 72 rows, 57 sourced / 1 shared-context / 6 framing / 8 correctly empty, 0 unsourced, 0 contradicted. B1 fixed (Airbnb rate clause cut; advice to ask rests on both listings), B2 fixed ('one of the rooms' per img-027's Booking/Airbnb room tags), N1 fixed (both distances attributed to Booking.com); Kenza's quote whitespace-only change, words verbatim; voice 8.5/10. Before go-live: confirm the sign's phone number, re-read the live stats, owner to confirm check-in/out, breakfast, A/C room and bathrooms".
