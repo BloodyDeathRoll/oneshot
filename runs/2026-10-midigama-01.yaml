@@ -15,7 +15,7 @@ area:
   shore_buffer_m: 200            # many Midigama guesthouses sit across the A2 coast road or up the hill
 types: [surf_school, board_rental, surf_shop, surf_camp, beach_lodging, shaper]
 presence_threshold: 2            # shortlist businesses scoring <= this (0–5), as in ahangama-02
-max_sites: 3
+max_sites: 6                     # 2026-11-22: was 3 on main (4 on alon/sanjee-surf-school, PR #81); Alon approved colonial-surfing-villa and surf-swell-hostel-midigama as sites 5 and 6
 languages: [en]
 budget:
   tokens_per_business: 2_000_000
