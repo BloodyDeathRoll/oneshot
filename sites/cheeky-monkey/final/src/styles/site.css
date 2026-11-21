@@ -6,7 +6,7 @@
      fins img-108: red #E53034, yellow #DBB912, green #25833D, blue #36A4EC */
   --sky:#CADFFA; --sky-2:#85BAFA; --sea:#7DD2F4; --sea-far:#36A4EC; --sand:#F2E8D7; --sand-wet:#E4D0AE;
   --aqua:#E4F6FD; --skyg:#EAF3FE; --fin-r:#E53034; --fin-y:#DBB912; --fin-g:#25833D; --fin-b:#36A4EC;
-  --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 40' preserveAspectRatio='none'%3E%3Cpath d='M0 22C60 8 110 6 170 16S270 34 330 26 430 4 500 12 570 30 600 22V40H0Z'/%3E%3C/svg%3E"); --ink:#143746; --ink-2:#3d5865; --place:#D3AAAE;
+  --ink:#143746; --ink-2:#3d5865; --place:#D3AAAE;
   --book:#0B72C4; --book-deep:#095EA2;
   --body:'Rethink Sans','Rethink Fallback',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
   --hand:'Permanent Marker','Marker Fallback',sans-serif;
@@ -63,9 +63,12 @@ html.js .top:not(.solid) .btn-ghost svg{color:#fff}
 /* round 3 (critic r2 dim 6): full-white subtitle and a firmer shadow; the hero's top shade (below) is deeper too */
 html.js .top:not(.solid) .nav a.l{text-shadow:0 1px 2px rgba(10,32,44,.5),0 1px 10px rgba(10,32,44,.45)}
 html.js .top:not(.solid) .mark{text-shadow:0 1px 2px rgba(10,32,44,.5),0 1px 12px rgba(10,32,44,.45)}
-.top.solid{background:rgba(255,255,255,.94);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);box-shadow:0 1px 0 rgba(20,55,70,.06)}
+/* round 4 (visual v1 fix 4): no hairline under the scrolled header (calibration: no rules under the header) */
+.top.solid{background:rgba(255,255,255,.94);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);box-shadow:none}
 .mark-h{margin:0 auto 0 0;font:inherit}
-.mark{display:flex;flex-direction:column;justify-content:center;min-height:46px;text-decoration:none;line-height:1.1}
+.mark{display:flex;flex-direction:column;justify-content:center;min-height:46px;text-decoration:none;line-height:1.1;transition:transform .16s var(--ease),opacity .2s ease}
+.mark:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.mark:hover{opacity:.78}}
 .mark b{font:400 22px/1 var(--hand);letter-spacing:.01em}
 .mark span{font-size:13px;color:var(--ink-2);margin-top:4px}
 .nav{display:flex;align-items:center;gap:6px}
@@ -106,11 +109,28 @@ html.js .hero:not(.lit)::after{opacity:0}
 .hero-in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:24px;padding:96px var(--gut) clamp(36px,6.5vh,72px)}
 .hero-line{font:400 clamp(32px,3.6vw,52px)/1.12 var(--hand);margin:0;max-width:none;
   text-shadow:0 1px 2px rgba(10,32,44,.45),0 2px 24px rgba(10,32,44,.4)}
+/* round 4: the videos' pause control, bottom right of the hero, as quiet as the header's icon buttons */
+.vid-ctl{position:absolute;right:var(--gut);bottom:64px;z-index:3;background:rgba(255,255,255,.16);color:#fff;
+  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.vid-ctl[hidden]{display:none}
+.vid-ctl svg{width:18px;height:18px;transition:transform .2s var(--ease),opacity .2s ease}
+.vid-ctl svg + svg{position:absolute;opacity:0;transform:scale(.6)}
+.vid-ctl[aria-pressed="true"] svg:first-child{opacity:0;transform:scale(.6)}
+.vid-ctl[aria-pressed="true"] svg + svg{opacity:1;transform:none}
+.vid-ctl svg:last-child{fill:currentColor;stroke:none}
+@media (hover:hover) and (pointer:fine){.vid-ctl:hover{background:rgba(255,255,255,.3);color:#fff}}
+/* on a phone the line and the button fill the foot of the frame: the control sits under the header's call button */
+@media (max-width:860px){.vid-ctl{width:44px;height:44px;right:15px;top:76px;bottom:auto}}
 .btn-hero{--bh:56px;min-height:56px;padding:0 28px;font-size:17px;min-width:min(324px,100%)}
 /* round 3: the block spans the hero and the button has a min-width that holds the label in either font, so the font
    swap (Rethink Sans is 6 px narrower than its fallback here) moves nothing (scroll CLS early 0) */
 .hero-in{width:100%}
 @media (max-width:860px){.hero-in{gap:18px;padding:88px 20px clamp(32px,6vh,56px)}.hero-line{font-size:clamp(26px,7.4vw,34px)}}
+/* round 4 (critic v1, scroll.early.cls 0.0288 on a plain server): a part-parsed first paint drew the line before the
+   button existed, then the block grew 74 px upwards. The block now reserves its full height from the first paint:
+   padding + two lines of the line + the gap + the button (it still grows if the line ever wraps to three) */
+.hero-in{min-height:calc(96px + clamp(36px,6.5vh,72px) + 2.24 * clamp(32px,3.6vw,52px) + 24px + 56px)}
+@media (max-width:860px){.hero-in{min-height:calc(88px + clamp(32px,6vh,56px) + 2.24 * clamp(26px,7.4vw,34px) + 18px + 56px)}}
 
 /* ---------- shared ---------- */
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
@@ -165,7 +185,8 @@ section{scroll-margin-top:80px}
 
 /* ---------- the counter: four board cards ---------- */
 .counter{padding:clamp(40px,6vw,72px) 0 clamp(72px,9vw,120px)}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+/* round 4 (visual v1): the row ran 23 px past the column (1fr let the dated pill's min-content widen the cards) */
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
 /* round 2 (visual r1 fix 3): no primary-colour blocks; each card leads with its photograph, whole at the card's width */
 .card{display:flex;flex-direction:column;gap:12px;background:#fff;border-radius:22px;padding:12px 12px 22px;
   transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
@@ -178,7 +199,7 @@ section{scroll-margin-top:80px}
 .card .line{font-size:15px;line-height:1.5;margin:0;flex:1}
 .card .card-act{margin-top:6px}
 .card .btn-sm{flex:1;padding:0 14px;white-space:nowrap}
-.card .dated{font-size:13px;padding:6px 11px 6px 8px;align-self:flex-start;white-space:nowrap}
+.card .dated{font-size:13px;padding:6px 10px 6px 8px;gap:6px;align-self:flex-start;white-space:nowrap;margin-left:4px;margin-right:0}
 @media (hover:hover) and (pointer:fine){.card:hover{transform:translateY(-4px);box-shadow:0 26px 50px -30px rgba(20,55,70,.38)}}
 .incl{margin-top:clamp(48px,6vw,72px);display:grid;grid-template-columns:240px 1fr;gap:24px 48px;align-items:start}
 .ic-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px 28px}
@@ -231,14 +252,17 @@ section{scroll-margin-top:80px}
 html.motion .m.pre img{transform:scale(.98)}
 
 /* ---------- roof ---------- */
-.roof{padding:0 0 clamp(72px,9vw,120px)}
-.roof-band{display:block;max-width:1500px;margin:0 auto}
-.roof-band img{width:100%;aspect-ratio:16/9;object-fit:cover}
-.roof-g{display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:center;margin-top:clamp(48px,6vw,80px)}
+.roof{padding:clamp(72px,9vw,120px) 0}
+.roof-g{display:grid;grid-template-columns:5fr 6fr;gap:56px;align-items:center}
 .roof-t .t-hand{margin-bottom:18px}
 .roof-t p{font-size:18px}
 .amen{font-size:15px!important;margin-top:20px}
-.roof-side{width:100%;border-radius:22px;aspect-ratio:4/5;object-fit:cover}
+/* round 4: the two roof photographs as one overlapping pair: the sunset portrait whole (3:4), the roof bar (4:5)
+   over its lower left corner, set off by a ring of the section's own pink */
+.roof-ph{position:relative;padding-bottom:clamp(64px,7vw,96px)}
+.roof-band{display:block;width:76%;margin-left:auto}
+.roof-band img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:22px}
+.roof-side{position:absolute;left:0;bottom:0;width:46%;border-radius:20px;aspect-ratio:4/5;object-fit:cover;outline:10px solid var(--tint)}
 
 /* ---------- Baba ---------- */
 /* round 3 (visual r2 fix 5): Baba's bottom and the guests' top padding stacked into a ~250 px empty band; halved */
@@ -247,7 +271,9 @@ html.motion .m.pre img{transform:scale(.98)}
 .baba-p{width:100%;border-radius:22px;aspect-ratio:4/5;object-fit:cover}
 .baba-t .t-hand{margin-bottom:18px}
 .baba-t p{font-size:18px;max-width:34em}
-.print{width:min(320px,70%);margin-top:28px;border-radius:6px;background:#fff;padding:10px;box-shadow:0 1px 2px rgba(20,55,70,.08),0 16px 30px -18px rgba(20,55,70,.35);transform:rotate(-2deg)}
+/* round 4 (visual v1 fix 5): a white mat (the slot's mean-colour placeholder had turned it grey), and a 4:5 crop that
+   ends cleanly after "BABA'S SURF" with the Cheeky Monkey signpost (the source itself cuts the sign at "SU") */
+.print{width:min(232px,60%);margin-top:28px;border-radius:6px;background:#fff!important;padding:10px;box-shadow:0 1px 2px rgba(20,55,70,.08),0 16px 30px -18px rgba(20,55,70,.35);transform:rotate(-2deg)}
 
 /* ---------- guests ---------- */
 .guests{padding:clamp(36px,4vw,56px) 0 clamp(72px,9vw,120px)}
@@ -301,7 +327,7 @@ html.motion .m.pre img{transform:scale(.98)}
 @media (hover:hover){.ig-t:hover img{transform:scale(1.04)}}
 /* round 2 (visual r1): the follow tile is a tile like the photos, not a blue ellipse */
 .ig-follow{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;aspect-ratio:1;border-radius:16px;background:var(--book);
-  color:#fff;text-decoration:none;font-weight:600;font-size:15px;line-height:1.3;text-align:center;padding:12px;overflow-wrap:anywhere;transition:background-color .2s ease,transform .16s var(--ease)}
+  color:#fff;text-decoration:none;font-weight:600;font-size:15px;line-height:1.3;text-align:center;padding:12px;transition:background-color .2s ease,transform .16s var(--ease)}
 .ig-follow svg{width:28px;height:28px}
 .ig-follow:active{transform:scale(.97)}
 @media (hover:hover){.ig-follow:hover{background:var(--book-deep)}}
@@ -348,8 +374,10 @@ html.motion .m.pre img{transform:scale(.98)}
 .tile.ph{padding:0 0 14px;overflow:hidden}
 .tile.ph img{width:100%;aspect-ratio:3/2;object-fit:cover;margin-bottom:8px}
 .tile.ph b,.tile.ph span{padding:0 14px}
+.tile .x{font-size:13.5px;color:var(--ink);margin-top:2px}
 .tile[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--book);background:#fff}
 .handoff{margin-top:18px;background:var(--tint);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.handoff[hidden]{display:none}
 .handoff .sum{margin:0}
 .plain-only{margin-top:16px}
 .seg{display:flex;flex-wrap:wrap;gap:8px}
@@ -397,44 +425,76 @@ html.js .plain-only{display:none}
   .facts-w{grid-template-columns:1fr}
   .w1{aspect-ratio:4/5}
 }
-/* ---------- the Rosa forecast (2026-11-04; playbook §4 exception, port of sites/layday-surf-ahangama/final) ----------
-   Left: the site's headline as a white card like the lesson card; right: Rosa's widget exactly as Rosa ships it
-   (theme=light, never restyled). Both boxes have fixed sizes (420 × 500 at desktop widths; the column × 340 for the
-   headline on a phone), so nothing shifts when the data arrives, fails or goes stale; only the headline's contents
-   are hidden until fresh data is drawn. */
-.fc{display:grid;grid-template-columns:minmax(0,420px) minmax(0,420px);justify-content:center;gap:clamp(24px,4vw,56px);margin-top:clamp(48px,6vw,80px)}
-.fc-now{background:#fff;border-radius:22px;padding:30px 30px 28px;height:500px;display:flex;flex-direction:column;overflow:hidden}
-.credit-rosa{display:flex;align-items:center;gap:10px;margin:0;font-weight:600;font-size:16px}
-.credit-rosa svg{width:22px;height:22px;flex:none;color:var(--book)}
-.credit-rosa a{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;text-decoration-color:rgba(20,55,70,.3)}
-.credit-rosa a:hover{text-decoration-color:var(--book)}
-.fc-now .live{display:flex;flex-direction:column;flex:1;min-width:0;visibility:hidden}
-.fc.live .fc-now .live{visibility:visible}
-.now{margin:auto 0 0}
-.nh{display:inline-block;white-space:nowrap;font-weight:600;font-size:clamp(64px,7vw,92px);line-height:.95;letter-spacing:-.035em;color:var(--ink)}
+/* ---------- the Rosa forecast (2026-11-04; playbook §4 exception) ----------
+   Round 4 (verification 1): rebuilt on the page column. Left, a tight stack in the site's own type: a short title, one
+   factual line about Rams, the headline card (labelled with its time; Rosa's update time as plain text, never the
+   pink "call to confirm" pill) and the credit line, which carries the plain link at all times. Right, Rosa's widget
+   at Rosa's 420 x 500, exactly as Rosa ships it (theme=light, never restyled). Both boxes have fixed sizes, so nothing
+   shifts when the data arrives, fails or goes stale. States: loading (a short line in the card), live, off (failed,
+   stale, timed out: a line in the card, and the composed card .fc-alt in the widget's box), solo (failed while still
+   below the screen) and JS off: no headline card, the composed card at its own height beside the stack. */
+.fc{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:clamp(24px,4vw,56px);align-items:center;min-height:500px;margin-top:clamp(56px,7vw,96px)}
+.fc-now{max-width:560px;display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+.fc-h{margin:0 0 10px}
+.fc-intro{font-size:17px;line-height:1.55;color:var(--ink-2);margin:0 0 22px}
+.fc-read{display:grid;width:100%;height:248px;background:#fff;border-radius:22px;padding:24px 28px 22px}
+.fc-read > *{grid-area:1/1;min-width:0}
+.fc-read .live{display:flex;flex-direction:column;visibility:hidden}
+.fc.live .fc-read .live{visibility:visible}
+/* loading and failed are two layers of the same cell, switched by visibility, so a state change moves nothing */
+.fc-none{align-self:center;margin:0;color:var(--ink)}
+.fc-wait{display:flex;align-items:center;gap:14px;font-weight:600;font-size:17px;line-height:1.4}
+.fc-wait svg{width:30px;height:30px;flex:none;color:var(--book)}
+/* failed or stale: the card says so in the site's hand, with where the forecast is, never as an empty box */
+.fc-off{visibility:hidden}
+.fc-off span{display:block;font:400 clamp(24px,2.2vw,28px)/1.2 var(--hand)}
+.fc-off small{display:block;font-size:16px;line-height:1.5;color:var(--ink-2);margin-top:8px}
+.fc.off .fc-off{visibility:visible}
+.fc.off .fc-wait,.fc.live .fc-wait{visibility:hidden}
+.fc-when{margin:0;font-weight:600;font-size:15px;color:var(--ink)}
+.now{margin:8px 0 0}
+.nh{display:inline-block;white-space:nowrap;font-weight:600;font-size:clamp(60px,6vw,80px);line-height:.95;letter-spacing:-.035em;color:var(--ink)}
 .nh small{font-size:.32em;letter-spacing:0;font-weight:500;color:var(--ink-2)}
-.nd{display:flex;flex-direction:column;gap:2px;margin:18px 0 0;font-size:16px;line-height:1.5;color:var(--ink-2)}
-.nd span:first-child{color:var(--ink);font-weight:600}
-.nd span[hidden],.upd [hidden]{display:none}
-.fc-now .upd{align-self:flex-start;margin-top:auto}
-.fc-rosa{position:relative;width:420px;max-width:100%;height:500px}
-.fc-link{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:32px;background:#fff;border-radius:22px;
-  text-align:center;font-weight:600;font-size:18px;line-height:1.45;color:var(--ink);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px}
+.nd{display:flex;flex-direction:column;gap:0;margin:12px 0 0;font-size:16px;line-height:1.5;color:var(--ink-2)}
+.nd span[hidden],.fc-read [hidden]{display:none}
+.fc-upd{margin:auto 0 0;font-size:13.5px;color:var(--ink-2)}
+.fc-credit{display:flex;align-items:center;flex-wrap:wrap;gap:6px 18px;margin-top:18px}
+.credit-rosa{display:flex;align-items:center;gap:10px;margin:0;font-weight:600;font-size:15px}
+.credit-rosa svg{width:20px;height:20px;flex:none;color:var(--book)}
+.credit-rosa a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;
+  text-decoration-color:rgba(20,55,70,.3);transition:text-decoration-color .2s ease,color .2s ease}
+@media (hover:hover){.credit-rosa a:hover{text-decoration-color:var(--book);color:var(--book-deep)}}
+.fc-plain{white-space:nowrap}
+.fc-rosa{position:relative;width:420px;max-width:100%;height:500px;justify-self:end}
+/* the composed card under the frame: what the box shows before, without and instead of Rosa's widget. It sits under
+   the iframe at all times, 4 px short of the widget's foot, so a frame that loads blank still shows it */
+.fc-alt{position:absolute;inset:0 0 4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:36px 32px;
+  background:#fff;border-radius:16px;text-align:center}
+.fc-alt-i{display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:var(--aqua);color:var(--book)}
+.fc-alt-i svg{width:40px;height:40px}
+.fc-alt-t{margin:0;font:400 clamp(24px,2.2vw,28px)/1.2 var(--hand);color:var(--ink);text-wrap:balance;max-width:12em}
+.fc-alt .btn{white-space:normal;text-align:center;line-height:1.25;padding:10px 22px}
+.fc-alt-c{margin:0;font-size:14px}
+.fc-alt-c a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink-2);text-decoration:none;transition:color .2s ease}
+@media (hover:hover){.fc-alt-c a:hover{color:var(--ink)}}
 .fc-rosa iframe{position:relative;visibility:hidden}
 .fc-rosa.on iframe{visibility:visible}
-.fc-rosa.on .fc-link{visibility:hidden}
-/* fallback: with JS off the link stands alone; after a failure the headline's box stays (hidden) unless the block
-   was still below the screen (.solo, set by the script), so a failure never moves what the visitor sees */
-html:not(.js) .fc,.fc.solo{grid-template-columns:minmax(0,420px)}
-html:not(.js) .fc-now,.fc.solo .fc-now{display:none}
-.fc.off .fc-now{visibility:hidden}
+html:not(.js) .fc-read,.fc.solo .fc-read{display:none}
+html:not(.js) .fc,.fc.solo{min-height:0}
+html:not(.js) .fc-rosa,.fc.solo .fc-rosa{height:auto}
+html:not(.js) .fc-alt,.fc.solo .fc-alt{position:static;padding:40px 32px}
+html:not(.js) .fc-plain,.fc.solo .fc-plain{display:none} /* the composed card carries the link there */
+html:not(.js) .fc-rosa iframe,.fc.solo .fc-rosa iframe{display:none!important} /* the frame's inline display:block (as Rosa ships it) */
 @media (max-width:860px){
-  .fc{grid-template-columns:minmax(0,1fr);justify-items:center;gap:20px}
-  .fc-now{width:100%;max-width:420px;height:340px;padding:24px 22px 22px}
-  .nh{font-size:64px}
-  .nd{font-size:15px;margin-top:14px}
-  .credit-rosa a{padding:11px 0}
-  .fc-now{padding-top:14px}
+  .fc{grid-template-columns:minmax(0,1fr);min-height:0;gap:24px}
+  .fc-now{max-width:none}
+  .fc-intro{font-size:16px;margin-bottom:18px}
+  .fc-read{height:214px;padding:20px 22px 18px}
+  .nh{font-size:58px}
+  .nd{font-size:15px;margin-top:10px}
+  .fc-credit{margin-top:12px;gap:4px 18px}
+  .fc-plain{white-space:normal;text-align:left;line-height:1.3;padding:8px 18px}
+  .fc-rosa{justify-self:center;width:100%}
 }
 /* ---------- phone ---------- */
 @media (max-width:860px){
@@ -446,7 +506,11 @@ html:not(.js) .fc-now,.fc.solo .fc-now{display:none}
   .ic-grid{grid-template-columns:1fr 1fr;gap:16px}
   .shop-t{position:static}
   .masonry{columns:2;column-gap:10px}.m{margin-bottom:10px;border-radius:14px}
-  .roof-band img{aspect-ratio:4/5}
+  .roof{padding-top:0}
+  .roof-ph{display:contents}
+  .roof-band{order:-1;width:auto;margin:0 calc(-1 * var(--gut)) 16px}
+  .roof-band img{aspect-ratio:4/5;border-radius:0}
+  .roof-side{position:static;width:100%;border-radius:22px;outline:0}
   .roof-g,.baba-g,.road-g{gap:32px}
   .stay{padding:24px}
   .ig-g{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
@@ -457,9 +521,31 @@ html:not(.js) .fc-now,.fc.solo .fc-now{display:none}
   .rating b{font-size:40px}
 }
 
-.edge{position:relative}
+/* round 4 (visual v1 fix 4): the joins between sections were one 900 px curve, repeated, with a small cusp at each
+   seam (x ~870 at 1440). Now four curves, each a smooth periodic tile (every crest and trough has a level tangent, the
+   seam included) wider than most of what it spans, set per section with its own offset, so no two joins in a row look
+   alike and none has a cusp */
+:root{
+  --wave-a:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 40' preserveAspectRatio='none'%3E%3Cpath d='M0 12C139 12 191 27 330 27C494 27 556 13 720 13C880 13 940 26 1100 26C1310 26 1390 12 1600 12V40H0Z'/%3E%3C/svg%3E");
+  --wave-b:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1100 40' preserveAspectRatio='none'%3E%3Cpath d='M0 26C126 26 174 11 300 11C434 11 486 24 620 24C729 24 771 14 880 14C972 14 1008 26 1100 26V40H0Z'/%3E%3C/svg%3E");
+  --wave-c:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1900 40' preserveAspectRatio='none'%3E%3Cpath d='M0 16C176 16 244 28 420 28C622 28 698 10 900 10C1110 10 1190 25 1400 25C1610 25 1690 16 1900 16V40H0Z'/%3E%3C/svg%3E");
+  --wave-d:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 40' preserveAspectRatio='none'%3E%3Cpath d='M0 22C118 22 162 12 280 12C431 12 489 27 640 27C783 27 837 9 980 9C1114 9 1166 22 1300 22V40H0Z'/%3E%3C/svg%3E");
+}
+.edge{position:relative;--wv:var(--wave-a);--ww:1600px;--wx:0px}
 .edge::before{content:"";position:absolute;left:0;right:0;top:-39px;height:40px;background:var(--bg);pointer-events:none;
-  -webkit-mask:var(--wave) 0 100%/900px 40px repeat-x;mask:var(--wave) 0 100%/900px 40px repeat-x}
+  -webkit-mask:var(--wv) calc(var(--wx) * var(--wk,1)) 100%/calc(var(--ww) * var(--wk,1)) 40px repeat-x;mask:var(--wv) calc(var(--wx) * var(--wk,1)) 100%/calc(var(--ww) * var(--wk,1)) 40px repeat-x}
+@media (max-width:860px){.edge{--wk:.5}}
+.intro-s{--wv:var(--wave-a);--ww:1600px;--wx:-140px}
+#water{--wv:var(--wave-c);--ww:1900px;--wx:-380px}
+#counter{--wv:var(--wave-b);--ww:1100px;--wx:-120px}
+#rooms{--wv:var(--wave-d);--ww:1300px;--wx:-520px}
+#shop{--wv:var(--wave-a);--ww:1600px;--wx:-900px}
+#roof{--wv:var(--wave-c);--ww:1900px;--wx:-1100px}
+#baba{--wv:var(--wave-b);--ww:1100px;--wx:-640px}
+#guests{--wv:var(--wave-d);--ww:1300px;--wx:-160px}
+#road{--wv:var(--wave-a);--ww:1600px;--wx:-1240px}
+.closing{--wv:var(--wave-c);--ww:1900px;--wx:-720px}
+.foot{--wv:var(--wave-b);--ww:1100px;--wx:-330px}
 .sandg{--bg:var(--sand);background:var(--sand)}
 .aquag{--bg:var(--aqua);background:var(--aqua)}
 .skyg{--bg:var(--skyg);background:var(--skyg)}

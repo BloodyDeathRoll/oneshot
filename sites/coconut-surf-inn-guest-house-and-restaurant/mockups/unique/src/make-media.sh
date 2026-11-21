@@ -2,7 +2,9 @@
 # Every image of the Coconut Surf Inn unique mockup ("Round the clock", designer 0.7.1, station 4e), made from
 # the business's own Booking.com / Airbnb uploads in dossier/coconut-surf-inn-guest-house-and-restaurant/assets
 # (tools/setup.sh / tools/link-assets.sh first). Needs ffmpeg, cwebp and python3. Run from anywhere.
-# Crops only, scaled down never up; no colour grading; nothing is shown wider than its source. No video (none usable).
+# Crops only, scaled down never up; nothing is shown wider than its source. No video (none usable).
+# One adaptation: the first screen uses calm's view-from-the-roof frame and grade (Alon, 2026-11-05: "take the one
+# from Calm and put it as the top image for Unique"); every other photo is ungraded.
 # media: sites/coconut-surf-inn-guest-house-and-restaurant/mockups/unique/dist/img/**
 set -euo pipefail
 cd "$(dirname "$0")/../../../../.."
@@ -30,10 +32,22 @@ w-=w%2; h-=h%2
 print(f"{int(w)}:{int(h)}:{int((W-w)*fx)}:{int((H-h)*fy)}")' "$@"
 }
 
-# ---- first screen: img-009, the view from the roof. Desktop 16:9 (1920x1080 native), phone 9:16 on the reef.
-img 009 hero-img-009-1920 "1920:1080:0:160" 1920 70
-img 009 hero-img-009-1280 "1920:1080:0:160" 1280 70
-img 009 hero-img-009-phone "700:1244:520:0" 700 66
+# ---- first screen: img-009, the view from the roof, as calm cuts and grades it (calm/src/make-media.sh, round 3).
+# Desktop 1440x810 from (380, 290): the bottom edge stops at y 1100, on the beach under the reef, above the wires
+# (y 1110+), the tin roofs and the tarp roof; the horizon sits at ~80%, sea, reef whitewater and green below it.
+# Phone 560x1100 from (800, 0): blue sky over the centre palms, down to the reef whitewater at x ~1160, left of the
+# poles in the dark trees (x 1373+), bottom edge above the wires. +6% contrast / +10% saturation, as calm.
+GRADE="eq=contrast=1.06:saturation=1.10,curves=all='0/0.02 0.35/0.37 1/1'"
+hero() { # <crop> <out-name> <width> <quality> [extra vf]
+  ff -i "$A/img-009.jpg" -vf "crop=$1,scale='min($3,iw)':-2:flags=lanczos,$GRADE${5:+,$5}" "$T/x.png"
+  cwebp -quiet -q "$4" -m 6 -sharp_yuv "$T/x.png" -o "$D/img/$2.webp"
+}
+hero 1440:810:380:290 hero-img-009-1440 1440 74
+hero 1440:810:380:290 hero-img-009-1280 1280 72
+hero 560:1100:800:0   hero-img-009-phone-560 560 74
+# tiny placeholders of the same crops, inlined by build.py under the photo (never a flat box on a slow load)
+hero 1440:810:380:290 hero-img-009-lq 40 40 gblur=sigma=1
+hero 560:1100:800:0   hero-img-009-phone-lq 40 40 gblur=sigma=1
 
 size() { ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 "$A/img-$1.jpg" | tr ',' ' '; }
 
@@ -43,7 +57,8 @@ fr 103 .30
 fr 008 .50
 fr 099 .40
 fr 105 .62
-fr 009 .45
+# the break: 14:15 from the top 1150 rows only, so the frame ends above the tin roofs and the tuk-tuks
+c=1072:1150:520:0; img 009 clock-img-009 "$c" 1280 70; img 009 clock-img-009-760 "$c" 760 68
 
 # ---- rooms: every slide 3:2 (house rule 2: one ratio, no padded boxes)
 r32() { img "$1" "room-img-$1" "$(rc $(size "$1") 3 2 .5 "${2:-.55}")" 1200 70; }
@@ -51,9 +66,11 @@ for n in 076 073 079 068 077 074 035 034 037 017 064 040 036 053 031 045 022 027
 
 # ---- inside the house: true masonry, each photograph keeps its own ratio
 mas() { img "$1" "house-img-$1" - 720 72; }
-for n in 006 007 011 030 019 016; do mas $n; done
+for n in 006 007 011 030 019; do mas $n; done
+# img-016 cropped to 2:3 so the three masonry columns end flush (006+007 | 019+011 | 016+030)
+img 016 house-img-016 "1280:1920:80:0" 720 72
 
-# ---- getting here: the sign as a matted print, 4:3
+# ---- getting here: the sign, 4:3
 img 002 sign-img-002 "840:630:322:252" 840 74
 
 ls -la "$D/img" | awk '{s+=$5} END {print "total bytes", s}'

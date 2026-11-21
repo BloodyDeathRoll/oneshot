@@ -263,3 +263,57 @@ No section is padded. For overlaps, see N2.
 0 `unsourced`, 0 `contradicted`, voice clean, required fields covered. For the human, the closest calls are R1 (the surf school, held open by "call … to make sure lessons are running") and N2 (intro ¶1 against `spot`).
 
 Ledger line due (not written by me): `copy_humanised → copy_passed`, note "round 1 PASS (copyeditor 0.4.2): 97 rows, 89 sourced / 5 framing / 3 correctly empty, 0 unsourced, 0 contradicted; draft→final diff clean apart from the operator-removed 2021 A/C add-on row (sources.md renumbered, nothing else moved); voice 9/10; owner items carried (status, lessons running, 2021 prices, bar/restaurant, party night)".
+
+## Fix round 2026-11-09
+
+Reviewer: copyeditor 0.4.2 (runtime prompt from `tools/prompt.mjs copyeditor`, read in full), run `2026-10-midigama-01`. Scope: only the words a visitor reads that changed in the fix round (`git diff -- sites/cheeky-monkey`: `labels.json`, `gaps.json`, `content.json`, `scripts/seed-from-dossier.mjs`, `index.astro`, alt text), checked in the rebuilt `final/dist/index.html` as well as in source. Code, CSS and notes were not reviewed. The earlier sections above stand. They cover `copy/en.json`, and none of its fields changed except `closing`, which the seed script now overrides.
+
+Rosa check: I downloaded `https://rosa-data-opal.vercel.app/data/index.json` on 2026-11-09 and computed haversine distances from dossier `location.lat_lng` (5.9617986, 80.3967609) to every spot. Results: Rams 360 m, Coconut (`weligama-west`) 578 m, Lazy Left 679 m, Lazy Right 980 m. Rams is the nearest of all Rosa spots, which matches the `concepts.md` amendment.
+
+### Verdict: **FAIL**, on one wording issue
+
+The facts in the fix round are sourced. One label wording calls Rosa's numbers a "reading", in three strings. Rosa's file is model output (`model_run`: GFS-Wave and ECMWF; `agents/designer/tools.md`: `current` is the forecast hour that is now), so "reading" implies a measured observation that does not exist. The block's own credit calls it a "Forecast". This goes back to the designer, because the strings are template labels. Everything else passes.
+
+### Per-line audit
+
+| # | Where | Rendered text | Source | Verdict |
+|---|---|---|---|---|
+| 1 | `content.json` `closing` (seed override) | "Book a room online, or call us about lessons and surf weeks." | rooms online: `booking.engine_url` (Booking.com, live); call: `contact.phone`; surf weeks: `packages[]`. The line asks the reader to call. It does not say lessons run now, so R1 stays open (lessons ¶2 still says "make sure lessons are running") | sourced / framing |
+| 2 | `labels.forecast.title` | "Waves at Rams" | Rosa spot `rams`, `spot.name` "Rams"; Alon's mapping, 2026-11-04 (`concepts.md` amendment). It does not call Rams the business's break | framing |
+| 3 | `gaps.forecast.line` | "Rams is the nearest spot Rosa covers, about 360 m from the shop." | Rosa `index.json` against dossier `location.lat_lng`: 360 m, nearest of all spots (superlative recomputed above). The shop's own Google pin (`address_other_platforms[3]`) is 369 m away, so "about 360 m" holds for both pins. The line names no break | sourced |
+| 4 | `labels.forecast.when` | "Latest reading, {day} {time}" (e.g. "Latest reading, Fri 20:30") | Rosa `current.t` is a forecast hour, not a reading | **contradicted** |
+| 5 | `labels.forecast.wait` | "Getting Rosa's latest reading for Rams" | same | **contradicted** |
+| 6 | `labels.forecast.off` | "No fresh reading just now" | same | **contradicted** |
+| 7 | `labels.forecast.off_more` | "Rosa's own page for Rams has today's forecast." | `rosa.surf/spot/rams` (the playbook §4 plain link) | sourced |
+| 8 | `labels.forecast.upd` | "Rosa updated it on {day} {month} at {time}" | Rosa `generated_at` | sourced |
+| 9 | `labels.forecast.credit` / `.link` | "Forecast for Rams by Rosa" / "See today's forecast for Rams on Rosa" | playbook §4 wording, verbatim | sourced |
+| 10 | `labels.forecast.alt` | "Wave height, swell and wind for Rams" | describes what Rosa's widget and page show (`tools.md` fields) | framing |
+| 11 | `labels.ig.follow` | "Follow us on Instagram" | `contact.socials.instagram` (link target) | sourced |
+| 12 | drawer room tiles (`roomExtra`, from `rooms[].note`) | Superior Double "With a desk, a seating area and a garden view"; Classic Triple "With a sea view"; Double "With a garden view"; Small Double "On the top floor, with a small desk"; Small Twin (none) | passed `rooms[0–4].note` (audit rows 62–66, `room_types[]`). These are the first sentence after the m², with nothing added. "9 m²" is unchanged | sourced |
+| 13 | `labels.drawer.handoff_look` | "Live dates and prices for every room are on Booking.com. Look for the Classic Triple Room on the list." | the room label equals Booking.com's `room_types[2].value.label` exactly, and the same holds for all five labels | sourced |
+| 14 | `labels.pause` | "Pause the videos" (toggle, `aria-pressed`) | `heroVideo` plus one `videos[]` row: two looping videos, so the plural is correct | framing (control) |
+| 15 | alt `img-121` | "An earlier view of the shop front: the Cheeky Monkey signpost and the Baba's Surf sign, boards outside" | dossier `images[img-121].description` "Front view of Baba's surf shop near Cheeky Monkey". I checked the new 4:5 crop (`public/photos/img-121-r1.25-480.webp`) by eye: the Cheeky Monkey signpost is on the left, the sign reads "BABA'S SURF", and boards stand outside and in the doorway. "Earlier" was already passed (uploaded 2020) | sourced |
+
+Counts: 15 rows, 3 **contradicted**, 0 unsourced.
+
+### Replacements (designer, `src/lib/labels.json` `forecast`)
+
+- `when`: "Latest reading, {day} {time}" → **"Forecast for {day} {time}"**
+- `wait`: "Getting Rosa's latest reading for {spot}" → **"Getting Rosa's latest forecast for {spot}"**
+- `off`: "No fresh reading just now" → **"No fresh forecast just now"**
+
+### Owner items and the forecast rule
+
+- **The name of the break** (an open owner item) stays unclaimed. Rams appears only as "the nearest spot Rosa covers" and in Rosa's credit, never as the business's own break. No walking time and no "in front of" claim appear.
+- **Lessons running** (R1) stays open. See row 1.
+
+### Voice
+
+The new lines are short and plain, with no padding words and no triads. "Book a room online, or call us about lessons and surf weeks." reads aloud cleanly and is better in the marker hand than the two-sentence version. "Waves at Rams" fits the page's register. Clean.
+
+### Notes (not failing)
+
+- **F1.** The closing now differs from the passed `copy/en.json` (`closing` is still the old line), because `seed-from-dossier.mjs` overrides it. `sources.md` has no row for the new line. The sources are recorded in the seed script's comment and in this section; `sources.md` should get a row when the copy is next touched.
+- **F2.** The forecast block as a whole rests on Alon's 2026-11-04 decision. The `concepts.md` amendment records that it is pending Shahar's decision on proposal `2026-10-midigama-01/003` item 1. If that item is rejected, the block goes, and rows 2–10 go with it.
+
+Applied 2026-11-09 (orchestrator): every replacement above, word for word, in `final/src/lib/labels.json`. The fix round's copy passes with them.

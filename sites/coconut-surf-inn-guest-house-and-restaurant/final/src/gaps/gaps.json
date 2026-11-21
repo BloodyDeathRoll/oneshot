@@ -1,0 +1,175 @@
+{
+ "_about": "SCHEMA GAP content: what the picked design shows and schemas/site-content.md v0.11 has no field for. Written by scripts/seed-from-dossier.mjs from copy/en.json and dossier.json; listed in notes.md \"schema gaps\". Edit there, not here.",
+ "heroLine": {
+  "value": "A guesthouse in Gurubebila, between Midigama and Weligama",
+  "_source": "the first-screen line (concepts.md §6 heroLine gap): the tagline cut before \", on the south coast of Sri Lanka.\" (4f round 1: type and place on the first screen). The full tagline opens the check-in paragraph."
+ },
+ "roomFeature": {
+  "Deluxe Double Room with Balcony": "ac",
+  "Superior Double Room": "ac",
+  "Deluxe Double Room (2 Adults + 1 Child)": "ac",
+  "Deluxe Family Room": "ac",
+  "Budget Double Room": "fan",
+  "Budget Single Room": "fan"
+ },
+ "_roomFeature": "the chip on each room's photos (\"A/C | Hot water\" or \"Fan\"): dossier room_types[].air_conditioning, checked against the room note; rooms[] has no features field",
+ "roomGalleries": {
+  "Deluxe Double Room with Balcony": [
+   {
+    "file": "img-073.jpg",
+    "alt": "Double bed with red cushions against a rust-red wall, a ceiling fan and an air conditioner above",
+    "width": 1440,
+    "height": 1920
+   },
+   {
+    "file": "img-079.jpg",
+    "alt": "Double doors open onto the balcony, rattan chairs and banana plants beyond",
+    "width": 1440,
+    "height": 1920
+   },
+   {
+    "file": "img-068.jpg",
+    "alt": "The balcony: two rattan chairs with magenta cushions and a round rattan table beside the room door",
+    "width": 1440,
+    "height": 1920
+   },
+   {
+    "file": "img-077.jpg",
+    "alt": "Rattan chairs with magenta cushions on the balcony above banana plants",
+    "width": 1440,
+    "height": 1920
+   },
+   {
+    "file": "img-074.jpg",
+    "alt": "Bathroom with grey polished walls, a wall-hung basin, a timber-framed mirror and a toilet",
+    "width": 1440,
+    "height": 1920
+   }
+  ],
+  "Superior Double Room": [
+   {
+    "file": "img-035.jpg",
+    "alt": "Double bed with a green towel beside red-framed glass doors and white curtains",
+    "width": 1920,
+    "height": 1440
+   },
+   {
+    "file": "img-034.jpg",
+    "alt": "Red-framed double doors open into the room in the evening, a towel ladder beside them",
+    "width": 1920,
+    "height": 1440
+   },
+   {
+    "file": "img-017.jpg",
+    "alt": "A hammock on the veranda in front of the red-framed glass doors",
+    "width": 1066,
+    "height": 1600
+   },
+   {
+    "file": "img-064.jpg",
+    "alt": "Bathroom with an electric water heater above the shower, and a toilet",
+    "width": 1440,
+    "height": 1920
+   }
+  ],
+  "Deluxe Double Room (2 Adults + 1 Child)": [
+   {
+    "file": "img-040.jpg",
+    "alt": "Double bed under a wall lamp, with a chair and a bedside table, grey walls",
+    "width": 1920,
+    "height": 1440
+   },
+   {
+    "file": "img-053.jpg",
+    "alt": "Grey concrete bathroom with a shower and a toilet",
+    "width": 1066,
+    "height": 1600
+   }
+  ],
+  "Deluxe Family Room": [
+   {
+    "file": "img-031.jpg",
+    "alt": "Room with two beds, a red feature wall and a ceiling fan",
+    "width": 1440,
+    "height": 1920
+   },
+   {
+    "file": "img-022.jpg",
+    "alt": "A long room with concrete walls, a wall-mounted desk and stool, and a red wall",
+    "width": 1440,
+    "height": 1920
+   },
+   {
+    "file": "img-027.jpg",
+    "alt": "The room entrance: a red wall, a wooden ladder rail and a wall lantern",
+    "width": 1440,
+    "height": 1920
+   }
+  ],
+  "Budget Double Room": [
+   {
+    "file": "img-047.jpg",
+    "alt": "Bed with a rolled purple towel under a mosquito net",
+    "width": 1920,
+    "height": 1440
+   },
+   {
+    "file": "img-048.jpg",
+    "alt": "Doorway into a bedroom with a net canopy",
+    "width": 1440,
+    "height": 1920
+   },
+   {
+    "file": "img-049.jpg",
+    "alt": "Room doors with frosted panels, standing open",
+    "width": 1920,
+    "height": 1440
+   }
+  ],
+  "Budget Single Room": [
+   {
+    "file": "img-057.jpg",
+    "alt": "Net-canopy bed beside a driftwood rail hung on ropes",
+    "width": 1920,
+    "height": 1440
+   },
+   {
+    "file": "img-059.jpg",
+    "alt": "Bed with a mosquito net and a wall shelf",
+    "width": 1920,
+    "height": 1440
+   },
+   {
+    "file": "img-061.jpg",
+    "alt": "A plain older bathroom with a white pedestal basin",
+    "width": 1440,
+    "height": 1920
+   }
+  ]
+ },
+ "_roomGalleries": "rooms[].photo holds one photo (the first slide); the other slides have no field (concepts.md §6, rooms[].photos[]). Files in src/gaps/media/; every one is tied to its room by dossier images[].room_types",
+ "momentQuotes": {
+  "afternoon": "Erin, Germany",
+  "morning": "Janno, Estonia"
+ },
+ "_momentQuotes": "which testimonials[] sit in the clock set-piece (by author), beside \"On the roof\" and \"The Eranga family home\"; each review shows once on the page, so the guests slideshow holds the others. testimonials[] has no placement field",
+ "restaurantHours": {
+  "opens": "7:30",
+  "closes": "22:00",
+  "_source": "hoursNote (\"The restaurant upstairs is open every day from 7:30 to 22:00.\"); dossier restaurant_hours"
+ },
+ "geo": {
+  "lat": 5.9606427,
+  "lng": 80.4028521,
+  "_source": "dossier location.lat_lng (the Google pin, https://www.google.com/maps/place/Coconut+Surf+Inn+Guest+House+and+Restaurant/data=!4m10!3m9!1s0x3ae114e71b426f23:0xe26a608b9e3c1b42!5m2!4m1!1i2!8m2!3d5.9606427!4d80.4028521!16s%2Fg%2F11c0q0glzw!19sChIJI29CG-cU4ToRQhs8notgauI?hl=en, fetched 2026-11-04T21:51:27Z)"
+ },
+ "listings": {
+  "alternateName": [
+   "Coconut Surf Inn Guest House and Restaurant"
+  ],
+  "sameAs": [
+   "https://www.tripadvisor.com/Hotel_Review-g2492996-d7744329-Reviews.html"
+  ],
+  "_source": "alternateName: dossier business.google_listing_name (https://www.google.com/maps/place/Coconut+Surf+Inn+Guest+House+and+Restaurant/data=!4m10!3m9!1s0x3ae114e71b426f23:0xe26a608b9e3c1b42!5m2!4m1!1i2!8m2!3d5.9606427!4d80.4028521!16s%2Fg%2F11c0q0glzw!19sChIJI29CG-cU4ToRQhs8notgauI?hl=en, fetched 2026-11-04T21:51:27Z); sameAs: dossier contact.socials.tripadvisor (the entity Google's listing shows, reviews.tripadvisor). JSON-LD only; the other listings (Booking.com, Google, Airbnb) come from ratings[].url"
+ }
+}

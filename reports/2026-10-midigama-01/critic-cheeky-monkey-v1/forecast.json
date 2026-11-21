@@ -1,0 +1,1493 @@
+{
+ "normal_m": {
+  "thirdPartyAtLoad": 0,
+  "reqs": [
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://rosa-data-opal.vercel.app/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "https://cheeky-monkey-surf-camp.os1.workers.dev/"
+   },
+   {
+    "phase": "scroll",
+    "m": "HEAD",
+    "u": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "type": "fetch",
+    "frame": "https://cheeky-monkey-surf-camp.os1.workers.dev/"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "type": "document",
+    "frame": "about:blank"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+    "type": "stylesheet",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://rosa-data-opal.vercel.app/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://rosa.surf/favicon.svg",
+    "type": "image",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+    "type": "font",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924",
+    "type": "image",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5924",
+    "type": "image",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925",
+    "type": "image",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5925",
+    "type": "image",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5926",
+    "type": "image",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5926",
+    "type": "image",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   }
+  ],
+  "sizes": [
+   {
+    "u": "https://rosa-data-opal.vercel.app/data/spots/rams.json",
+    "type": "fetch",
+    "bytes": 10014
+   },
+   {
+    "u": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "type": "document",
+    "bytes": 7863
+   },
+   {
+    "u": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+    "type": "stylesheet",
+    "bytes": 1234
+   },
+   {
+    "u": "https://rosa-data-opal.vercel.app/data/spots/rams.json",
+    "type": "fetch",
+    "bytes": 95
+   },
+   {
+    "u": "https://rosa.surf/favicon.svg",
+    "type": "image",
+    "bytes": 2386
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924",
+    "type": "image",
+    "bytes": 12125
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5924",
+    "type": "image",
+    "bytes": 1287
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5925",
+    "type": "image",
+    "bytes": 4536
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5926",
+    "type": "image",
+    "bytes": 14785
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925",
+    "type": "image",
+    "bytes": 13372
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5926",
+    "type": "image",
+    "bytes": 5592
+   },
+   {
+    "u": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+    "type": "font",
+    "bytes": 48982
+   }
+  ],
+  "totalThirdPartyBytes": 122271,
+  "before": {
+   "fcClass": "fc",
+   "rosaClass": "fc-rosa",
+   "fcBox": {
+    "w": 350,
+    "h": 860,
+    "top": 3469,
+    "left": 20
+   },
+   "now": {
+    "w": 350,
+    "h": 340,
+    "top": 3469,
+    "left": 20
+   },
+   "rosa": {
+    "w": 350,
+    "h": 500,
+    "top": 3829,
+    "left": 20
+   },
+   "frame": {
+    "w": 350,
+    "h": 500,
+    "top": 3829,
+    "left": 20
+   },
+   "nowVis": "visible",
+   "nowDisp": "flex",
+   "liveVis": "hidden",
+   "linkVis": "visible",
+   "linkText": "See today's forecast for Rams on Rosa",
+   "linkHref": "https://rosa.surf/spot/rams",
+   "linkBox": {
+    "w": 350,
+    "h": 500,
+    "top": 3829,
+    "left": 20
+   },
+   "frameVis": "hidden",
+   "frameSrc": null,
+   "nh": "m",
+   "fields": {
+    "t": "",
+    "swell": "",
+    "wind": "",
+    "upd": ""
+   },
+   "nowText": "Forecast for Rams by Rosa",
+   "credit": "Forecast for Rams by Rosa",
+   "creditHref": "https://rosa.surf/spot/rams",
+   "creditBox": {
+    "w": 192,
+    "h": 48,
+    "top": 3483,
+    "left": 74
+   },
+   "doc": 17165,
+   "sw": 390,
+   "loading": 0,
+   "shifts": [],
+   "cookie": ""
+  },
+  "after": {
+   "fcClass": "fc live",
+   "rosaClass": "fc-rosa on",
+   "fcBox": {
+    "w": 350,
+    "h": 860,
+    "top": 3469,
+    "left": 20
+   },
+   "now": {
+    "w": 350,
+    "h": 340,
+    "top": 3469,
+    "left": 20
+   },
+   "rosa": {
+    "w": 350,
+    "h": 500,
+    "top": 3829,
+    "left": 20
+   },
+   "frame": {
+    "w": 350,
+    "h": 500,
+    "top": 3829,
+    "left": 20
+   },
+   "nowVis": "visible",
+   "nowDisp": "flex",
+   "liveVis": "visible",
+   "linkVis": "hidden",
+   "linkText": "See today's forecast for Rams on Rosa",
+   "linkHref": "https://rosa.surf/spot/rams",
+   "linkBox": {
+    "w": 350,
+    "h": 500,
+    "top": 3829,
+    "left": 20
+   },
+   "frameVis": "visible",
+   "frameSrc": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+   "nh": "0.9–1.3 m",
+   "fields": {
+    "t": "Friday 6 November, 20:30",
+    "swell": "Swell 16.6 s from the south",
+    "wind": "Wind 5.1 km/h from the north, offshore",
+    "upd": "Rosa, updated 6 November 2026, 19:56"
+   },
+   "nowText": "Forecast for Rams by Rosa\n\n0.9–1.3 m\n\nFriday 6 November, 20:30\nSwell 16.6 s from the south\nWind 5.1 km/h from the north, offshore\n\nRosa, updated 6 November 2026, 19:56",
+   "credit": "Forecast for Rams by Rosa",
+   "creditHref": "https://rosa.surf/spot/rams",
+   "creditBox": {
+    "w": 192,
+    "h": 48,
+    "top": 3483,
+    "left": 74
+   },
+   "doc": 17165,
+   "sw": 390,
+   "loading": 0,
+   "shifts": [],
+   "cookie": ""
+  },
+  "covered": {
+   "vh": 844,
+   "frame": {
+    "top": 479.71875,
+    "bottom": 979.71875
+   },
+   "hit": [
+    "IFRAME.",
+    "IFRAME.",
+    "IFRAME.",
+    "IFRAME.",
+    "IFRAME.",
+    "IFRAME.",
+    null,
+    null,
+    null
+   ]
+  },
+  "attrs": {
+   "a": {
+    "data-src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "title": "Rosa surf forecast - Rams",
+    "width": "100%",
+    "height": "500",
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "loading": "lazy",
+    "referrerpolicy": "strict-origin-when-cross-origin",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   "filter": "none",
+   "opacity": "1",
+   "transform": "none",
+   "clip": "none",
+   "overflow": "visible",
+   "mix": "normal"
+  },
+  "errs": [],
+  "cookies": [],
+  "frames": [
+   "https://cheeky-monkey-surf-camp.os1.workers.dev/",
+   "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+  ],
+  "iframeCount": 1,
+  "tabs": [
+   "IFRAME:",
+   "DIV:Full Surf Lesson Package USD 3",
+   "A:Call to book",
+   "A:",
+   "A:Call to book",
+   "A:"
+  ]
+ },
+ "normal_d": {
+  "thirdPartyAtLoad": 0,
+  "reqs": [
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://rosa-data-opal.vercel.app/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "https://cheeky-monkey-surf-camp.os1.workers.dev/"
+   },
+   {
+    "phase": "scroll",
+    "m": "HEAD",
+    "u": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "type": "fetch",
+    "frame": "https://cheeky-monkey-surf-camp.os1.workers.dev/"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "type": "document",
+    "frame": "about:blank"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+    "type": "stylesheet",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://rosa-data-opal.vercel.app/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://rosa.surf/favicon.svg",
+    "type": "image",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+    "type": "font",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924",
+    "type": "image",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5924",
+    "type": "image",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925",
+    "type": "image",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5925",
+    "type": "image",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5926",
+    "type": "image",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   {
+    "phase": "scroll",
+    "m": "GET",
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5926",
+    "type": "image",
+    "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   }
+  ],
+  "sizes": [
+   {
+    "u": "https://rosa-data-opal.vercel.app/data/spots/rams.json",
+    "type": "fetch",
+    "bytes": 10014
+   },
+   {
+    "u": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "type": "document",
+    "bytes": 7862
+   },
+   {
+    "u": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+    "type": "stylesheet",
+    "bytes": 1234
+   },
+   {
+    "u": "https://rosa-data-opal.vercel.app/data/spots/rams.json",
+    "type": "fetch",
+    "bytes": 95
+   },
+   {
+    "u": "https://rosa.surf/favicon.svg",
+    "type": "image",
+    "bytes": 2364
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5924",
+    "type": "image",
+    "bytes": 1287
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925",
+    "type": "image",
+    "bytes": 13372
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5926",
+    "type": "image",
+    "bytes": 5592
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5926",
+    "type": "image",
+    "bytes": 14785
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5925",
+    "type": "image",
+    "bytes": 4536
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924",
+    "type": "image",
+    "bytes": 12125
+   },
+   {
+    "u": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+    "type": "font",
+    "bytes": 48983
+   }
+  ],
+  "totalThirdPartyBytes": 122249,
+  "before": {
+   "fcClass": "fc",
+   "rosaClass": "fc-rosa",
+   "fcBox": {
+    "w": 1104,
+    "h": 500,
+    "top": 3485,
+    "left": 168
+   },
+   "now": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 272
+   },
+   "rosa": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "frame": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "nowVis": "visible",
+   "nowDisp": "flex",
+   "liveVis": "hidden",
+   "linkVis": "visible",
+   "linkText": "See today's forecast for Rams on Rosa",
+   "linkHref": "https://rosa.surf/spot/rams",
+   "linkBox": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "frameVis": "hidden",
+   "frameSrc": null,
+   "nh": "m",
+   "fields": {
+    "t": "",
+    "swell": "",
+    "wind": "",
+    "upd": ""
+   },
+   "nowText": "Forecast for Rams by Rosa",
+   "credit": "Forecast for Rams by Rosa",
+   "creditHref": "https://rosa.surf/spot/rams",
+   "creditBox": {
+    "w": 192,
+    "h": 26,
+    "top": 3515,
+    "left": 334
+   },
+   "doc": 14206,
+   "sw": 1440,
+   "loading": 0,
+   "shifts": [],
+   "cookie": ""
+  },
+  "after": {
+   "fcClass": "fc live",
+   "rosaClass": "fc-rosa on",
+   "fcBox": {
+    "w": 1104,
+    "h": 500,
+    "top": 3485,
+    "left": 168
+   },
+   "now": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 272
+   },
+   "rosa": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "frame": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "nowVis": "visible",
+   "nowDisp": "flex",
+   "liveVis": "visible",
+   "linkVis": "hidden",
+   "linkText": "See today's forecast for Rams on Rosa",
+   "linkHref": "https://rosa.surf/spot/rams",
+   "linkBox": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "frameVis": "visible",
+   "frameSrc": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+   "nh": "0.9–1.3 m",
+   "fields": {
+    "t": "Friday 6 November, 20:30",
+    "swell": "Swell 16.6 s from the south",
+    "wind": "Wind 5.1 km/h from the north, offshore",
+    "upd": "Rosa, updated 6 November 2026, 19:56"
+   },
+   "nowText": "Forecast for Rams by Rosa\n\n0.9–1.3 m\n\nFriday 6 November, 20:30\nSwell 16.6 s from the south\nWind 5.1 km/h from the north, offshore\n\nRosa, updated 6 November 2026, 19:56",
+   "credit": "Forecast for Rams by Rosa",
+   "creditHref": "https://rosa.surf/spot/rams",
+   "creditBox": {
+    "w": 192,
+    "h": 26,
+    "top": 3515,
+    "left": 334
+   },
+   "doc": 14206,
+   "sw": 1440,
+   "loading": 0,
+   "shifts": [],
+   "cookie": ""
+  },
+  "covered": {
+   "vh": 900,
+   "frame": {
+    "top": 120.4375,
+    "bottom": 620.4375
+   },
+   "hit": [
+    "IFRAME.",
+    "IFRAME.",
+    "IFRAME.",
+    "IFRAME.",
+    "IFRAME.",
+    "IFRAME.",
+    "IFRAME.",
+    "IFRAME.",
+    "IFRAME."
+   ]
+  },
+  "attrs": {
+   "a": {
+    "data-src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "title": "Rosa surf forecast - Rams",
+    "width": "100%",
+    "height": "500",
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "loading": "lazy",
+    "referrerpolicy": "strict-origin-when-cross-origin",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+   },
+   "filter": "none",
+   "opacity": "1",
+   "transform": "none",
+   "clip": "none",
+   "overflow": "visible",
+   "mix": "normal"
+  },
+  "errs": [],
+  "cookies": [],
+  "frames": [
+   "https://cheeky-monkey-surf-camp.os1.workers.dev/",
+   "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+  ],
+  "iframeCount": 1,
+  "tabs": [
+   "IFRAME:",
+   "DIV:Full Surf Lesson Package USD 3",
+   "A:Call to book",
+   "A:",
+   "A:Call to book",
+   "A:"
+  ],
+  "wheelOverFrame": {
+   "before": 3285,
+   "after": 3685
+  }
+ },
+ "freshJson": {
+  "generated_at": "2026-11-06T14:26:34+00:00",
+  "t": "2026-11-06T20:30+05:30",
+  "h": [
+   0.9,
+   1.3
+  ],
+  "wind": {
+   "kph": 5.1,
+   "dir": 352,
+   "class": "offshore"
+  },
+  "swell": {
+   "h": 0.86,
+   "period": 16.6,
+   "peak_period": null,
+   "dir": 201.44,
+   "kind": "swell",
+   "in_window": true,
+   "spread": 24
+  }
+ },
+ "jsoff_m": {
+  "state": {
+   "linkText": "See today's forecast for Rams on Rosa",
+   "linkHref": "https://rosa.surf/spot/rams",
+   "linkVis": "visible",
+   "linkBox": {
+    "w": 350,
+    "h": 500
+   },
+   "nowDisp": "none",
+   "frameSrc": null
+  },
+  "docHeightBefore": null,
+  "reqs": []
+ },
+ "jsonBlocked_m": {
+  "state": {
+   "fcClass": "fc off solo",
+   "rosaClass": "fc-rosa",
+   "fcBox": {
+    "w": 350,
+    "h": 500,
+    "top": 3469,
+    "left": 20
+   },
+   "now": {
+    "w": 0,
+    "h": 0,
+    "top": 3349,
+    "left": 0
+   },
+   "rosa": {
+    "w": 350,
+    "h": 500,
+    "top": 3469,
+    "left": 20
+   },
+   "frame": {
+    "w": 350,
+    "h": 500,
+    "top": 3469,
+    "left": 20
+   },
+   "nowVis": "hidden",
+   "nowDisp": "none",
+   "liveVis": "hidden",
+   "linkVis": "visible",
+   "linkText": "See today's forecast for Rams on Rosa",
+   "linkHref": "https://rosa.surf/spot/rams",
+   "linkBox": {
+    "w": 350,
+    "h": 500,
+    "top": 3469,
+    "left": 20
+   },
+   "frameVis": "hidden",
+   "frameSrc": null,
+   "nh": "m",
+   "fields": {
+    "t": "",
+    "swell": "",
+    "wind": "",
+    "upd": ""
+   },
+   "nowText": " Forecast for Rams by Rosa    m    ",
+   "credit": "Forecast for Rams by Rosa",
+   "creditHref": "https://rosa.surf/spot/rams",
+   "creditBox": {
+    "w": 0,
+    "h": 0,
+    "top": 3349,
+    "left": 0
+   },
+   "doc": 16805,
+   "sw": 390,
+   "loading": 0,
+   "shifts": [],
+   "cookie": ""
+  },
+  "docHeightBefore": 17165,
+  "reqs": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/rams.json"
+  ]
+ },
+ "widgetBlocked_m": {
+  "state": {
+   "fcClass": "fc live",
+   "rosaClass": "fc-rosa",
+   "fcBox": {
+    "w": 350,
+    "h": 860,
+    "top": 3469,
+    "left": 20
+   },
+   "now": {
+    "w": 350,
+    "h": 340,
+    "top": 3469,
+    "left": 20
+   },
+   "rosa": {
+    "w": 350,
+    "h": 500,
+    "top": 3829,
+    "left": 20
+   },
+   "frame": {
+    "w": 350,
+    "h": 500,
+    "top": 3829,
+    "left": 20
+   },
+   "nowVis": "visible",
+   "nowDisp": "flex",
+   "liveVis": "visible",
+   "linkVis": "visible",
+   "linkText": "See today's forecast for Rams on Rosa",
+   "linkHref": "https://rosa.surf/spot/rams",
+   "linkBox": {
+    "w": 350,
+    "h": 500,
+    "top": 3829,
+    "left": 20
+   },
+   "frameVis": "hidden",
+   "frameSrc": null,
+   "nh": "0.9–1.3 m",
+   "fields": {
+    "t": "Friday 6 November, 20:30",
+    "swell": "Swell 16.6 s from the south",
+    "wind": "Wind 5.1 km/h from the north, offshore",
+    "upd": "Rosa, updated 6 November 2026, 19:56"
+   },
+   "nowText": "Forecast for Rams by Rosa\n\n0.9–1.3 m\n\nFriday 6 November, 20:30\nSwell 16.6 s from the south\nWind 5.1 km/h from the north, offshore\n\nRosa, updated 6 November 2026, 19:56",
+   "credit": "Forecast for Rams by Rosa",
+   "creditHref": "https://rosa.surf/spot/rams",
+   "creditBox": {
+    "w": 192,
+    "h": 48,
+    "top": 3483,
+    "left": 74
+   },
+   "doc": 17165,
+   "sw": 390,
+   "loading": 0,
+   "shifts": [],
+   "cookie": ""
+  },
+  "docHeightBefore": 17165,
+  "reqs": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/rams.json",
+   "HEAD https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+  ]
+ },
+ "allBlocked_m": {
+  "state": {
+   "fcClass": "fc off solo",
+   "rosaClass": "fc-rosa",
+   "fcBox": {
+    "w": 350,
+    "h": 500,
+    "top": 3469,
+    "left": 20
+   },
+   "now": {
+    "w": 0,
+    "h": 0,
+    "top": 3349,
+    "left": 0
+   },
+   "rosa": {
+    "w": 350,
+    "h": 500,
+    "top": 3469,
+    "left": 20
+   },
+   "frame": {
+    "w": 350,
+    "h": 500,
+    "top": 3469,
+    "left": 20
+   },
+   "nowVis": "hidden",
+   "nowDisp": "none",
+   "liveVis": "hidden",
+   "linkVis": "visible",
+   "linkText": "See today's forecast for Rams on Rosa",
+   "linkHref": "https://rosa.surf/spot/rams",
+   "linkBox": {
+    "w": 350,
+    "h": 500,
+    "top": 3469,
+    "left": 20
+   },
+   "frameVis": "hidden",
+   "frameSrc": null,
+   "nh": "m",
+   "fields": {
+    "t": "",
+    "swell": "",
+    "wind": "",
+    "upd": ""
+   },
+   "nowText": " Forecast for Rams by Rosa    m    ",
+   "credit": "Forecast for Rams by Rosa",
+   "creditHref": "https://rosa.surf/spot/rams",
+   "creditBox": {
+    "w": 0,
+    "h": 0,
+    "top": 3349,
+    "left": 0
+   },
+   "doc": 16805,
+   "sw": 390,
+   "loading": 0,
+   "shifts": [],
+   "cookie": ""
+  },
+  "docHeightBefore": 17165,
+  "reqs": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/rams.json"
+  ]
+ },
+ "stale30h_m": {
+  "state": {
+   "fcClass": "fc off solo",
+   "rosaClass": "fc-rosa",
+   "fcBox": {
+    "w": 350,
+    "h": 500,
+    "top": 3469,
+    "left": 20
+   },
+   "now": {
+    "w": 0,
+    "h": 0,
+    "top": 3349,
+    "left": 0
+   },
+   "rosa": {
+    "w": 350,
+    "h": 500,
+    "top": 3469,
+    "left": 20
+   },
+   "frame": {
+    "w": 350,
+    "h": 500,
+    "top": 3469,
+    "left": 20
+   },
+   "nowVis": "hidden",
+   "nowDisp": "none",
+   "liveVis": "hidden",
+   "linkVis": "visible",
+   "linkText": "See today's forecast for Rams on Rosa",
+   "linkHref": "https://rosa.surf/spot/rams",
+   "linkBox": {
+    "w": 350,
+    "h": 500,
+    "top": 3469,
+    "left": 20
+   },
+   "frameVis": "hidden",
+   "frameSrc": null,
+   "nh": "m",
+   "fields": {
+    "t": "",
+    "swell": "",
+    "wind": "",
+    "upd": ""
+   },
+   "nowText": " Forecast for Rams by Rosa    m    ",
+   "credit": "Forecast for Rams by Rosa",
+   "creditHref": "https://rosa.surf/spot/rams",
+   "creditBox": {
+    "w": 0,
+    "h": 0,
+    "top": 3349,
+    "left": 0
+   },
+   "doc": 16805,
+   "sw": 390,
+   "loading": 0,
+   "shifts": [],
+   "cookie": ""
+  },
+  "docHeightBefore": 17165,
+  "reqs": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/rams.json"
+  ]
+ },
+ "noCurrent_m": {
+  "state": {
+   "fcClass": "fc off solo",
+   "rosaClass": "fc-rosa",
+   "fcBox": {
+    "w": 350,
+    "h": 500,
+    "top": 3469,
+    "left": 20
+   },
+   "now": {
+    "w": 0,
+    "h": 0,
+    "top": 3349,
+    "left": 0
+   },
+   "rosa": {
+    "w": 350,
+    "h": 500,
+    "top": 3469,
+    "left": 20
+   },
+   "frame": {
+    "w": 350,
+    "h": 500,
+    "top": 3469,
+    "left": 20
+   },
+   "nowVis": "hidden",
+   "nowDisp": "none",
+   "liveVis": "hidden",
+   "linkVis": "visible",
+   "linkText": "See today's forecast for Rams on Rosa",
+   "linkHref": "https://rosa.surf/spot/rams",
+   "linkBox": {
+    "w": 350,
+    "h": 500,
+    "top": 3469,
+    "left": 20
+   },
+   "frameVis": "hidden",
+   "frameSrc": null,
+   "nh": "m",
+   "fields": {
+    "t": "",
+    "swell": "",
+    "wind": "",
+    "upd": ""
+   },
+   "nowText": " Forecast for Rams by Rosa    m    ",
+   "credit": "Forecast for Rams by Rosa",
+   "creditHref": "https://rosa.surf/spot/rams",
+   "creditBox": {
+    "w": 0,
+    "h": 0,
+    "top": 3349,
+    "left": 0
+   },
+   "doc": 16805,
+   "sw": 390,
+   "loading": 0,
+   "shifts": [],
+   "cookie": ""
+  },
+  "docHeightBefore": 17165,
+  "reqs": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/rams.json"
+  ]
+ },
+ "jsoff_d": {
+  "state": {
+   "linkText": "See today's forecast for Rams on Rosa",
+   "linkHref": "https://rosa.surf/spot/rams",
+   "linkVis": "visible",
+   "linkBox": {
+    "w": 420,
+    "h": 500
+   },
+   "nowDisp": "none",
+   "frameSrc": null
+  },
+  "docHeightBefore": null,
+  "reqs": []
+ },
+ "jsonBlocked_d": {
+  "state": {
+   "fcClass": "fc off",
+   "rosaClass": "fc-rosa",
+   "fcBox": {
+    "w": 1104,
+    "h": 500,
+    "top": 3485,
+    "left": 168
+   },
+   "now": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 272
+   },
+   "rosa": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "frame": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "nowVis": "hidden",
+   "nowDisp": "flex",
+   "liveVis": "hidden",
+   "linkVis": "visible",
+   "linkText": "See today's forecast for Rams on Rosa",
+   "linkHref": "https://rosa.surf/spot/rams",
+   "linkBox": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "frameVis": "hidden",
+   "frameSrc": null,
+   "nh": "m",
+   "fields": {
+    "t": "",
+    "swell": "",
+    "wind": "",
+    "upd": ""
+   },
+   "nowText": "",
+   "credit": "Forecast for Rams by Rosa",
+   "creditHref": "https://rosa.surf/spot/rams",
+   "creditBox": {
+    "w": 192,
+    "h": 26,
+    "top": 3515,
+    "left": 334
+   },
+   "doc": 14206,
+   "sw": 1440,
+   "loading": 0,
+   "shifts": [],
+   "cookie": ""
+  },
+  "docHeightBefore": 14206,
+  "reqs": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/rams.json"
+  ]
+ },
+ "widgetBlocked_d": {
+  "state": {
+   "fcClass": "fc live",
+   "rosaClass": "fc-rosa",
+   "fcBox": {
+    "w": 1104,
+    "h": 500,
+    "top": 3485,
+    "left": 168
+   },
+   "now": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 272
+   },
+   "rosa": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "frame": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "nowVis": "visible",
+   "nowDisp": "flex",
+   "liveVis": "visible",
+   "linkVis": "visible",
+   "linkText": "See today's forecast for Rams on Rosa",
+   "linkHref": "https://rosa.surf/spot/rams",
+   "linkBox": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "frameVis": "hidden",
+   "frameSrc": null,
+   "nh": "0.9–1.3 m",
+   "fields": {
+    "t": "Friday 6 November, 20:30",
+    "swell": "Swell 16.6 s from the south",
+    "wind": "Wind 5.1 km/h from the north, offshore",
+    "upd": "Rosa, updated 6 November 2026, 19:56"
+   },
+   "nowText": "Forecast for Rams by Rosa\n\n0.9–1.3 m\n\nFriday 6 November, 20:30\nSwell 16.6 s from the south\nWind 5.1 km/h from the north, offshore\n\nRosa, updated 6 November 2026, 19:56",
+   "credit": "Forecast for Rams by Rosa",
+   "creditHref": "https://rosa.surf/spot/rams",
+   "creditBox": {
+    "w": 192,
+    "h": 26,
+    "top": 3515,
+    "left": 334
+   },
+   "doc": 14206,
+   "sw": 1440,
+   "loading": 0,
+   "shifts": [],
+   "cookie": ""
+  },
+  "docHeightBefore": 14206,
+  "reqs": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/rams.json",
+   "HEAD https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+  ]
+ },
+ "allBlocked_d": {
+  "state": {
+   "fcClass": "fc off",
+   "rosaClass": "fc-rosa",
+   "fcBox": {
+    "w": 1104,
+    "h": 500,
+    "top": 3485,
+    "left": 168
+   },
+   "now": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 272
+   },
+   "rosa": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "frame": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "nowVis": "hidden",
+   "nowDisp": "flex",
+   "liveVis": "hidden",
+   "linkVis": "visible",
+   "linkText": "See today's forecast for Rams on Rosa",
+   "linkHref": "https://rosa.surf/spot/rams",
+   "linkBox": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "frameVis": "hidden",
+   "frameSrc": null,
+   "nh": "m",
+   "fields": {
+    "t": "",
+    "swell": "",
+    "wind": "",
+    "upd": ""
+   },
+   "nowText": "",
+   "credit": "Forecast for Rams by Rosa",
+   "creditHref": "https://rosa.surf/spot/rams",
+   "creditBox": {
+    "w": 192,
+    "h": 26,
+    "top": 3515,
+    "left": 334
+   },
+   "doc": 14206,
+   "sw": 1440,
+   "loading": 0,
+   "shifts": [],
+   "cookie": ""
+  },
+  "docHeightBefore": 14206,
+  "reqs": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/rams.json"
+  ]
+ },
+ "stale30h_d": {
+  "state": {
+   "fcClass": "fc off",
+   "rosaClass": "fc-rosa",
+   "fcBox": {
+    "w": 1104,
+    "h": 500,
+    "top": 3485,
+    "left": 168
+   },
+   "now": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 272
+   },
+   "rosa": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "frame": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "nowVis": "hidden",
+   "nowDisp": "flex",
+   "liveVis": "hidden",
+   "linkVis": "visible",
+   "linkText": "See today's forecast for Rams on Rosa",
+   "linkHref": "https://rosa.surf/spot/rams",
+   "linkBox": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "frameVis": "hidden",
+   "frameSrc": null,
+   "nh": "m",
+   "fields": {
+    "t": "",
+    "swell": "",
+    "wind": "",
+    "upd": ""
+   },
+   "nowText": "",
+   "credit": "Forecast for Rams by Rosa",
+   "creditHref": "https://rosa.surf/spot/rams",
+   "creditBox": {
+    "w": 192,
+    "h": 26,
+    "top": 3515,
+    "left": 334
+   },
+   "doc": 14206,
+   "sw": 1440,
+   "loading": 0,
+   "shifts": [],
+   "cookie": ""
+  },
+  "docHeightBefore": 14206,
+  "reqs": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/rams.json"
+  ]
+ },
+ "noCurrent_d": {
+  "state": {
+   "fcClass": "fc off",
+   "rosaClass": "fc-rosa",
+   "fcBox": {
+    "w": 1104,
+    "h": 500,
+    "top": 3485,
+    "left": 168
+   },
+   "now": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 272
+   },
+   "rosa": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "frame": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "nowVis": "hidden",
+   "nowDisp": "flex",
+   "liveVis": "hidden",
+   "linkVis": "visible",
+   "linkText": "See today's forecast for Rams on Rosa",
+   "linkHref": "https://rosa.surf/spot/rams",
+   "linkBox": {
+    "w": 420,
+    "h": 500,
+    "top": 3485,
+    "left": 748
+   },
+   "frameVis": "hidden",
+   "frameSrc": null,
+   "nh": "m",
+   "fields": {
+    "t": "",
+    "swell": "",
+    "wind": "",
+    "upd": ""
+   },
+   "nowText": "",
+   "credit": "Forecast for Rams by Rosa",
+   "creditHref": "https://rosa.surf/spot/rams",
+   "creditBox": {
+    "w": 192,
+    "h": 26,
+    "top": 3515,
+    "left": 334
+   },
+   "doc": 14206,
+   "sw": 1440,
+   "loading": 0,
+   "shifts": [],
+   "cookie": ""
+  },
+  "docHeightBefore": 14206,
+  "reqs": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/rams.json"
+  ]
+ },
+ "jsonHang12s_m": {
+  "state": {
+   "fcClass": "fc off",
+   "rosaClass": "fc-rosa",
+   "fcBox": {
+    "w": 350,
+    "h": 860,
+    "top": 3469,
+    "left": 20
+   },
+   "now": {
+    "w": 350,
+    "h": 340,
+    "top": 3469,
+    "left": 20
+   },
+   "rosa": {
+    "w": 350,
+    "h": 500,
+    "top": 3829,
+    "left": 20
+   },
+   "frame": {
+    "w": 350,
+    "h": 500,
+    "top": 3829,
+    "left": 20
+   },
+   "nowVis": "hidden",
+   "nowDisp": "flex",
+   "liveVis": "hidden",
+   "linkVis": "visible",
+   "linkText": "See today's forecast for Rams on Rosa",
+   "linkHref": "https://rosa.surf/spot/rams",
+   "linkBox": {
+    "w": 350,
+    "h": 500,
+    "top": 3829,
+    "left": 20
+   },
+   "frameVis": "hidden",
+   "frameSrc": null,
+   "nh": "m",
+   "fields": {
+    "t": "",
+    "swell": "",
+    "wind": "",
+    "upd": ""
+   },
+   "nowText": "",
+   "credit": "Forecast for Rams by Rosa",
+   "creditHref": "https://rosa.surf/spot/rams",
+   "creditBox": {
+    "w": 192,
+    "h": 48,
+    "top": 3483,
+    "left": 74
+   },
+   "doc": 17165,
+   "sw": 390,
+   "loading": 0,
+   "shifts": [],
+   "cookie": ""
+  },
+  "docHeightBefore": 17165,
+  "reqs": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/rams.json"
+  ]
+ }
+}

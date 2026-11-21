@@ -1,0 +1,26 @@
+## Rosa blocked: fallback link hit test, 390 (blk2.mjs)
+calm [{"text":"See today's forecast for Coconuts on Rosa","w":302,"h":52,"hit":"link"}]
+interactive [{"text":"See today's forecast for Coconuts on Rosa","w":320,"h":50,"hit":"link"}]
+## Rosa blocked: touch tap on the fallback link, 390 (tap.mjs)
+calm {"x":195,"y":463.5,"target":"","ifr":"none"} url after: https://rosa.surf/spot/weligama-west navs: ["https://rosa.surf/spot/weligama-west"]
+interactive {"x":195,"y":463.984375,"target":"","ifr":"none"} url after: https://rosa.surf/spot/weligama-west navs: ["https://rosa.surf/spot/weligama-west"]
+## Rosa blocked: mouse click on the fallback link, 1440 (tap1440.mjs)
+calm {"x":1028.6796875,"y":491.984375,"target":"","ifr":"none"} url after: https://rosa.surf/spot/weligama-west navs: ["https://rosa.surf/spot/weligama-west"]
+interactive {"x":1110,"y":491.578125,"target":"","ifr":"none"} url after: https://rosa.surf/spot/weligama-west navs: ["https://rosa.surf/spot/weligama-west"]
+## Rosa headline with Date.now shifted (stale.mjs): fixture generated_at 2026-11-04T20:26:28Z
+calm +0h {"vis":true,"text":"Coconuts, now 0.4–0.6m Knee-high Thu 5 Nov, 02:30 Swell 9 s from the S Wind 4 km/h, cross-shore Forecast for Coconuts by"}
+calm +30h {"vis":false,"text":" Coconuts, now 0.4–0.6m Knee-high Thu 5 Nov, 02:30 Swell 9 s from the S Wind 4 km/h, cross-shore Forecast for Coconuts b"}
+interactive +0h {"vis":true,"text":"0.4–0.6m Knee-high at Coconuts | Thu 5 Nov, 02:30 Swell 1.0 m 9 s from the S Wind 4 km/h cross-shore Forecast for Coconu"}
+interactive +30h {"vis":true,"text":"0.4–0.6m Knee-high at Coconuts | Thu 5 Nov, 02:30 Swell 1.0 m 9 s from the S Wind 4 km/h cross-shore Forecast for Coconu"}
+## keyboard: off-screen/faded/outline-less tab stops, 250 ms settle (tabs.mjs)
+interactive 1440 [{"i":34,"t":"IFRAME","cls":"","top":83,"inView":true,"op":0.07,"outline":"none 3px","shadow":"none"},{"i":35,"t":"IFRAME","cls":"","top":492,"inView":true,"op":0.96,"outline":"none 3px","shadow":"none"}]
+ aria-prohibited incomplete: []
+interactive 390 [{"i":30,"t":"IFRAME","cls":"","top":518,"inView":true,"op":0,"outline":"none 3px","shadow":"none"},{"i":31,"t":"IFRAME","cls":"","top":518,"inView":true,"op":0.97,"outline":"none 3px","shadow":"none"}]
+ aria-prohibited incomplete: []
+calm 390 [{"i":56,"t":"IFRAME","cls":"","top":518,"inView":true,"op":1,"outline":"none 3px","shadow":"none"},{"i":57,"t":"IFRAME","cls":"","top":518,"inView":true,"op":1,"outline":"none 3px","shadow":"none"}]
+ aria-prohibited incomplete: []
+calm 1440 []
+ aria-prohibited incomplete: []
+## interactive 1440, 60 ms vs 250 ms settle, Rosa blocked (inv.mjs)
+wait 60 [{"i":16,"t":"Previous photo","tag":"BUTTON","top":577,"bottom":621,"inView":true,"op":0.22},{"i":26,"t":"Previous photo","tag":"BUTTON","top":470,"bottom":514,"inView":true,"op":0.41}]
+wait 250 []

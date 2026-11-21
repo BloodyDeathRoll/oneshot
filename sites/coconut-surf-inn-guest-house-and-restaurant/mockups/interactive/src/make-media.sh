@@ -17,9 +17,10 @@ ff() { ffmpeg -v error -y "$@"; }
 
 # img <asset> <out-name> <crop w:h:x:y or -> <max width> [quality]
 img() {
-  local src="$A/$1.jpg" out="$D/img/$2.webp" crop="$3" w="$4" q="${5:-72}" vf=""
+  local src="$A/$1.jpg" out="$D/img/$2.webp" crop="$3" w="$4" q="${5:-72}" extra="${6:-}" vf=""
   [ "$crop" != "-" ] && vf="crop=$crop,"
   vf="${vf}scale='min($w,iw)':-2:flags=lanczos"
+  [ -n "$extra" ] && vf="$vf,$extra"
   ff -i "$src" -vf "$vf" "$T/x.png"
   cwebp -quiet -q "$q" -m 6 -sharp_yuv "$T/x.png" -o "$out"
 }
@@ -39,29 +40,35 @@ cut() { # cut <asset> <ratio-tag> rw rh fx fy <width...>: one crop, several widt
 }
 
 # ---- first screen: img-102, under the thatch (1920x1440). The shader reads the same files.
-HW=1920:1080:0:120     # desktop 16:9: the whole thatch fringe, both pillars, the swing, the sea
-HT=1152:1440:40:0      # phone 4:5: the left pillar, the palms and the sea, the fringe across the top
+HW=1920:1080:0:40      # desktop 16:9: the whole thatch fringe, both pillars, the swing, the sea
+                       # (round 3: y 40, not 120, so less of the concrete floor shows under the title)
+HT=600:1120:152:0      # phone (round 2): the pillar edge, the fringe, the palms, the sea and the parapet;
+                       # the bare concrete floor below y 1120 is left out
 img img-102 hero-wide-1920 "$HW" 1920 70
 img img-102 hero-wide-1440 "$HW" 1440 70
-img img-102 hero-tall-1152 "$HT" 1152 68
-img img-102 hero-tall-864  "$HT" 864 68
+img img-102 hero-tall-600 "$HT" 600 74
+img img-102 hero-tall-450 "$HT" 450 72
+# round 3: tiny blurred placeholders of the same two crops, inlined by build.py under the hero photo,
+# so a slow first load paints the place (blurred), never a grey box; dropped once the photo is in
+img img-102 hero-wide-lq "$HW" 40 40 "gblur=sigma=1"
+img img-102 hero-tall-lq "$HT" 24 40 "gblur=sigma=1"
 # the depth map, painted at a quarter of the original and cropped exactly as the photographs
 python3 "$M/src/paint-depth.py" "$T/depth.pgm"
-ff -i "$T/depth.pgm" -vf "crop=480:270:0:30" -pix_fmt gray "$D/img/depth-wide.png"
-ff -i "$T/depth.pgm" -vf "crop=288:360:10:0" -pix_fmt gray "$D/img/depth-tall.png"
+ff -i "$T/depth.pgm" -vf "crop=480:270:0:10" -pix_fmt gray "$D/img/depth-wide.png"
+ff -i "$T/depth.pgm" -vf "crop=150:280:38:0" -pix_fmt gray "$D/img/depth-tall.png"
 
 # ---- rooms: every gallery at 4:3 (one ratio for the stage), last slide the bathroom
 r43() { cut "$1" r43 4 3 .5 "${2:-.5}" 1200 720; }
 for a in img-076:.55 img-073:.6 img-079:.55 img-068:.6 img-077:.55 img-074:.5 \
          img-035:.5 img-034:.5 img-037:.5 img-030:.5 img-017:.55 img-064:.6 \
          img-040:.5 img-036:.5 img-038:.5 img-053:.7 \
-         img-031:.6 img-045:.6 img-022:.55 img-027:.5 img-089:.7 \
+         img-031:.6 img-045:.6 img-022:.55 img-027:.5 \
          img-047:.5 img-046:.5 img-048:.55 img-049:.5 \
          img-056:.5 img-057:.5 img-059:.5 img-061:.6; do r43 "${a%%:*}" "${a##*:}"; done
 
 # ---- inside the house: the light-well at 3:2; the verandas at 4:5 for the swipe row
 cut img-007 r32 3 2 .5 .5 1440 900
-for a in img-030 img-017 img-024 img-020 img-005 img-016; do cut "$a" r45 4 5 .5 .5 720; done
+for a in img-024 img-020 img-005 img-016; do cut "$a" r45 4 5 .5 .5 720; done
 
 # ---- on the roof: img-104 at 16:9; the slideshow at 3:2
 cut img-104 r169 16 9 .5 .45 1440 900

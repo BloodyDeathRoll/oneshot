@@ -1,0 +1,206 @@
+{
+ "onscreen-stale-m": {
+  "before": {
+   "link": {
+    "x": 20,
+    "y": 356.15625,
+    "width": 350,
+    "height": 48,
+    "top": 356.15625,
+    "right": 370,
+    "bottom": 404.15625,
+    "left": 20
+   },
+   "card": {
+    "x": 20,
+    "y": 150.15625,
+    "width": 350,
+    "height": 254,
+    "top": 150.15625,
+    "right": 370,
+    "bottom": 404.15625,
+    "left": 20
+   },
+   "cls": "wrap fc",
+   "txt": "Forecast for Lazy Left by Rosa See today's forecast for Lazy Left on Rosa"
+  },
+  "after": {
+   "link": {
+    "x": 20,
+    "y": 150.15625,
+    "width": 350,
+    "height": 254,
+    "top": 150.15625,
+    "right": 370,
+    "bottom": 404.15625,
+    "left": 20
+   },
+   "card": {
+    "x": 20,
+    "y": 150.15625,
+    "width": 350,
+    "height": 254,
+    "top": 150.15625,
+    "right": 370,
+    "bottom": 404.15625,
+    "left": 20
+   },
+   "cls": "wrap fc off",
+   "txt": "See today's forecast for Lazy Left on Rosa",
+   "shifts": [
+    {
+     "v": 0.0659,
+     "t": 5045,
+     "input": false,
+     "src": [
+      "fc-link [356,150,48,254]"
+     ]
+    }
+   ]
+  },
+  "rosaReqs": [
+   {
+    "url": "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json",
+    "main": true
+   },
+   {
+    "url": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "main": false
+   },
+   {
+    "url": "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json",
+    "main": false
+   },
+   {
+    "url": "https://rosa.surf/favicon.svg",
+    "main": false
+   }
+  ]
+ },
+ "stale-both-m": {
+  "widgetText": "Imagery © Esri\nrosa.surf\nLazy Left\nEpic\nair 24°C\nwater 30°C\nrashguard\nToday, 11/9\nSURF M\nSWELL\nWIND KM/H\nKJ\nHPA\n06:00\n0.5-0.8\n0.7 m\n14s\nSSE\n3\nENE\nOFFSHORE\n105\n1012\n12:00\n0.4-0.7\n0.7 m\n12s\nSSE\n6\nSE\nCROSS\n83\n1011\n18:00\n0.4-0.6\n0.7 m\n12s\nSSE\n3\nSE\nCROSS\n88\n1011\nTomorrow, 11/10\nSURF M\nSWELL\nWIND KM/H\nKJ\nHPA\n06:00\n0.4-0.5\n0.8 m\n12s\nSSE\n3\nENE\nOFFSHORE\n82\n1012\n12:00\n0.4-0.6\n0.7 m\n15s\nSSE\n5\nSW\nONSHORE\n110\n",
+  "cover": {
+   "rect": {
+    "x": 20,
+    "y": 120.15625,
+    "width": 350,
+    "height": 500,
+    "top": 120.15625,
+    "right": 370,
+    "bottom": 620.15625,
+    "left": 20
+   },
+   "pts": [
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe"
+   ],
+   "vh": 844
+  },
+  "siteCard": "See today's forecast for Lazy Left on Rosa"
+ },
+ "onscreen-stale-d": {
+  "before": {
+   "link": {
+    "x": 144,
+    "y": 322.453125,
+    "width": 620,
+    "height": 48,
+    "top": 322.453125,
+    "right": 764,
+    "bottom": 370.453125,
+    "left": 144
+   },
+   "card": {
+    "x": 144,
+    "y": 150.453125,
+    "width": 620,
+    "height": 220,
+    "top": 150.453125,
+    "right": 764,
+    "bottom": 370.453125,
+    "left": 144
+   },
+   "cls": "wrap fc",
+   "txt": "Forecast for Lazy Left by Rosa See today's forecast for Lazy Left on Rosa"
+  },
+  "after": {
+   "link": {
+    "x": 144,
+    "y": 150.453125,
+    "width": 620,
+    "height": 220,
+    "top": 150.453125,
+    "right": 764,
+    "bottom": 370.453125,
+    "left": 144
+   },
+   "card": {
+    "x": 144,
+    "y": 150.453125,
+    "width": 620,
+    "height": 220,
+    "top": 150.453125,
+    "right": 764,
+    "bottom": 370.453125,
+    "left": 144
+   },
+   "cls": "wrap fc off",
+   "txt": "See today's forecast for Lazy Left on Rosa",
+   "shifts": [
+    {
+     "v": 0.0126,
+     "t": 4683,
+     "input": false,
+     "src": [
+      "fc-link [322,150,48,220]"
+     ]
+    }
+   ]
+  },
+  "rosaReqs": [
+   {
+    "url": "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json",
+    "main": true
+   },
+   {
+    "url": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "main": false
+   },
+   {
+    "url": "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json",
+    "main": false
+   },
+   {
+    "url": "https://rosa.surf/favicon.svg",
+    "main": false
+   }
+  ]
+ },
+ "stale-both-d": {
+  "widgetText": "Imagery © Esri\nrosa.surf\nLazy Left\nEpic\nair 24°C\nwater 30°C\nrashguard\nToday, 11/9\nSURF M\nSWELL\nWIND KM/H\nKJ\nHPA\n06:00\n0.5-0.8\n0.7 m\n14s\nSSE\n3\nENE\nOFFSHORE\n105\n1012\n12:00\n0.4-0.7\n0.7 m\n12s\nSSE\n6\nSE\nCROSS\n83\n1011\n18:00\n0.4-0.6\n0.7 m\n12s\nSSE\n3\nSE\nCROSS\n88\n1011\nTomorrow, 11/10\nSURF M\nSWELL\nWIND KM/H\nKJ\nHPA\n06:00\n0.4-0.5\n0.8 m\n12s\nSSE\n3\nENE\nOFFSHORE\n82\n1012\n12:00\n0.4-0.6\n0.7 m\n15s\nSSE\n5\nSW\nONSHORE\n110\n",
+  "cover": {
+   "rect": {
+    "x": 876,
+    "y": 119.546875,
+    "width": 420,
+    "height": 500,
+    "top": 119.546875,
+    "right": 1296,
+    "bottom": 619.546875,
+    "left": 876
+   },
+   "pts": [
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe"
+   ],
+   "vh": 900
+  },
+  "siteCard": "See today's forecast for Lazy Left on Rosa"
+ }
+}

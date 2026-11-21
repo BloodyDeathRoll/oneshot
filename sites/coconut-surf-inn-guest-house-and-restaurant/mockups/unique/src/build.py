@@ -9,7 +9,7 @@ fetched 2026-11-05) and refreshed live, lazily, by page.js. Media: src/make-medi
 page.js (inlined).
 Run: python3 sites/coconut-surf-inn-guest-house-and-restaurant/mockups/unique/src/build.py
 """
-import html, json, pathlib, struct, datetime
+import html, json, pathlib, struct, datetime, base64
 
 HERE = pathlib.Path(__file__).resolve().parent
 SITE = HERE.parents[2]
@@ -32,7 +32,7 @@ def webp_size(p):
 # ---------------------------------------------------------------- facts from the copy
 NAME = C['businessName']
 TAGLINE = C['tagline']
-WHERE = 'Gurubebila, between Midigama and Weligama'          # words of the tagline (concepts.md §2, §6)
+WHERE = 'A guesthouse in Gurubebila, between Midigama and Weligama'   # words of the tagline: type + place on the first screen (4f r1)
 assert WHERE in TAGLINE
 BLOCKS = {b['heading']: [p.strip() for p in b['body'].split('\n\n')] for b in C['copyBlocks']}
 SPOT, SEASON, CLOSING, HOURS = C['spot'], C['season'], C['closing'], C['hoursNote']
@@ -63,7 +63,7 @@ ROOMS = [
     ('Superior Double Room', 'ac', ['035', '037', '034', '017', '064']),
     ('Deluxe Double Room (2 Adults + 1 Child)', 'ac', ['040', '036', '053']),
     ('Deluxe Family Room', 'ac', ['031', '045', '022', '027']),
-    ('Budget Double Room', 'fan', ['047', '046', '048', '049']),
+    ('Budget Double Room', 'fan', ['046', '047', '048', '049']),
     ('Budget Single Room', 'fan', ['056', '057', '059', '061']),
 ]
 for label, kind, _ in ROOMS:
@@ -147,6 +147,7 @@ def pipe(items): return f' {SEP} '.join(f'<span>{i}</span>' for i in items)
 
 def src(name, pre=''): return f'{pre}img/{name}.webp'
 def wh(name): return webp_size(DIST / src(name))
+def b64(name): return 'data:image/webp;base64,' + base64.b64encode((DIST / src(name)).read_bytes()).decode()
 def img(name, alt, lazy=True, cls='', sizes=None, set_=None, pre='', extra=''):
     w, h = wh(name)
     load = ' loading="lazy" decoding="async"' if lazy else ' fetchpriority="high" decoding="async"'
@@ -206,8 +207,8 @@ hero = f'''
 <section class="hero" aria-labelledby="h1">
   <div class="hero-pic">
     <picture>
-      <source media="(max-width: 767px)" srcset="img/hero-img-009-phone.webp" width="{wh('hero-img-009-phone')[0]}" height="{wh('hero-img-009-phone')[1]}">
-      {img('hero-img-009-1920', ALT['009'], lazy=False, sizes='100vw', set_=['hero-img-009-1280', 'hero-img-009-1920'])}
+      <source media="(max-width: 767px)" srcset="img/hero-img-009-phone-560.webp" width="{wh('hero-img-009-phone-560')[0]}" height="{wh('hero-img-009-phone-560')[1]}">
+      {img('hero-img-009-1440', ALT['009'], lazy=False, sizes='100vw', set_=['hero-img-009-1280', 'hero-img-009-1440'])}
     </picture>
   </div>
   <div class="hero-in">
@@ -232,7 +233,7 @@ def room_card(label, kind, nums, i):
     r = ROOM[label]
     sid = f'room-{i}'
     meta = pipe([E(r['beds']), f"Sleeps {r['sleeps']}"])
-    return (f'<article class="room" id="r{i}" data-sleeps="{r["sleeps"]}">{show(sid, nums, label + ", photos", CHIP[kind])}'
+    return (f'<article class="room room-{kind}" id="r{i}" data-sleeps="{r["sleeps"]}">{show(sid, nums, label + ", photos", CHIP[kind])}'
             f'<div class="rtxt"><h3>{E(label)}</h3><p class="meta">{meta}</p><p class="note">{E(r["note"])}</p>'
             f'{book("btn-sm")}</div></article>')
 
@@ -250,7 +251,8 @@ rooms = f'''
   </div>
 </section>'''
 
-house_imgs = ['006', '007', '011', '030', '019', '016']
+# three columns that end flush (each a 2:3 portrait over a 3:2 landscape); on phones 016 drops and 030 runs full width
+HOUSE_COLS = [['006', '007'], ['019', '011'], ['016', '030']]
 house = f'''
 <section class="house" id="house" aria-labelledby="h-house">
   <div class="wrap house-grid">
@@ -258,7 +260,7 @@ house = f'''
       <h2 class="script" id="h-house">Inside the house</h2>
       {paras(BLOCKS['Inside the house'])}
     </div>
-    <div class="masonry">{''.join(f'<div class="m">{img("house-img-" + n, ALT[n])}</div>' for n in house_imgs)}</div>
+    <div class="masonry">{''.join('<div class="mcol">' + ''.join(f'<div class="m m-{n}">{img("house-img-" + n, ALT[n])}</div>' for n in col) + '</div>' for col in HOUSE_COLS)}</div>
   </div>
 </section>'''
 
@@ -323,7 +325,7 @@ forecast = f'''
   </div>
 </section>'''
 
-qs = C['testimonials']
+qs = [q for q in C['testimonials'] if q['author'].split(',')[0] not in ('Erin', 'Janno')]   # those two sit in the set-piece; each review once
 guests = f'''
 <section class="guests tint" id="guests" aria-labelledby="h-guests">
   <div class="wrap">
@@ -390,12 +392,15 @@ sheet = f'''
     </div>
     <div class="answer" aria-live="polite">
       <ul class="picks">{''.join(room_row(l) for l, _, _ in ROOMS)}</ul>
-      <div class="notsure" hidden><p>{E(CLOSING)}</p><div class="actions">{call()}{sun_call()}</div></div>
+      <div class="notsure" hidden><p>{E(CLOSING)}</p><div class="actions">{call()}</div></div>
     </div>
   </div>
 </div>'''
 
 CSS = (HERE / 'page.css').read_text()
+# the hero's own blurred 40 px copy, painted under the photo until it arrives
+HERO_LQ = (f".hero-pic img:not(.loaded){{background-image:url({b64('hero-img-009-lq')})}}"
+           f"@media (max-width:767px){{.hero-pic img:not(.loaded){{background-image:url({b64('hero-img-009-phone-lq')})}}}}")
 JS = (HERE / 'page.js').read_text()
 # Fonts: Google Fonts at 4e (4g self-hosts). Latin files only, preloaded so they land before first paint, with
 # metric-matched fallbacks in page.css; Red Hat Text is one variable file for 400-600.
@@ -408,7 +413,7 @@ FONTS = (f'<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          f"@font-face{{font-family:'Red Hat Text';font-style:normal;font-weight:400 600;font-display:swap;src:url({F_RHT}) format('woff2')}}"
          f"@font-face{{font-family:'Caveat';font-style:normal;font-weight:600;font-display:swap;src:url({F_CAV}) format('woff2')}}"
          '</style>')
-HEADJS = ("<script>(function(d){var c=d.documentElement.classList;c.add('js');"
+HEADJS = ("<script>(function(d){var c=d.documentElement.classList;c.add('js');c.add('at-hero');"
           "if(matchMedia('(prefers-reduced-motion: no-preference)').matches&&!/[?&]still\\b/.test(location.search))c.add('pin')})(document)</script>")
 DESC = f'{NAME}: {TAGLINE} Six kinds of room, a restaurant upstairs and a roof terrace; Coconuts reef break in front.'
 
@@ -425,7 +430,7 @@ def page(title, body, pre='', extra_head=''):
 {HEADJS}
 {FONTS}
 {extra_head}
-<style>{CSS}</style>
+<style>{CSS}{HERO_LQ}</style>
 </head>
 <body>
 {body}
@@ -452,7 +457,7 @@ rp = (header('../') + '<main id="main" class="roomspage"><div class="wrap">'
       + '<h1 class="script">How many are coming?</h1>'
       + ''.join(f'<section class="rp-group" aria-labelledby="g{n}"><h2 id="g{n}">{E(t)}</h2><ul class="picks">'
                 + ''.join(room_row(l, '../') for l in fits(n)) + '</ul></section>' for n, t in groups)
-      + f'<section class="rp-group" aria-labelledby="g0"><h2 id="g0">Not sure</h2><p>{E(CLOSING)}</p><div class="actions">{call()}{sun_call()}</div></section>'
+      + f'<section class="rp-group" aria-labelledby="g0"><h2 id="g0">Not sure</h2><p>{E(CLOSING)}</p><div class="actions">{call()}</div></section>'
       + '</div></main>' + footer('../') + bar('../'))
 rp = rp.replace('href="rooms/"', 'href="./"')
 (DIST / 'rooms').mkdir(exist_ok=True)

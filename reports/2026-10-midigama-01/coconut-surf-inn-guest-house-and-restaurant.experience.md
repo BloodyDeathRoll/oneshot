@@ -222,3 +222,427 @@ The first screen is clean and bright with one action. The middle is the only str
 All three pages tell the house well and book in one tap. All three also lose the traveller in the same place: the six-room run on a phone, about seven screens of full-width slideshows that look alike, four of them led by a bed close-up or a dim mosquito net. The designer should be told to compress lodging offers on the phone to one block per room group, and to lead with each room's widest, brightest photograph. Two process notes:
 - Calm and unique were built in parallel on the same hero photograph with near-identical crops, so the human is shown two of the same first screens. The concepts must keep the first-screen photograph distinct across variants, not only the first-screen device.
 - The interactive main item was tuned for the pointer. On the phone, where the persona lives, it is a 6 s drift and then a still. A main item has to be felt on a phone without a permission tap.
+
+---
+
+## Round 2 (station 4f)
+
+experience-critic 0.2.0 · station 4f (quick), round 2 · 2026-11-05 · after the 4e loop-back (designer 0.7.1, commit 694b188).
+Pages: the same three `sites/coconut-surf-inn-guest-house-and-restaurant/mockups/{calm,interactive,unique}/dist/index.html`, served on :8921 / :8922 / :8923 (unique also `/rooms/`). Inputs read: my round-1 section above and each mockup's `notes.md` round-2 section. Comparison bar unchanged: the Booking.com, Google and Airbnb folds (`dossier/…/funnel/walk/01`, `05`, `06`). Written without reading the round-2 critic or visual-critic reports.
+
+Evidence is in `reports/2026-10-midigama-01/experience/coconut-surf-inn-guest-house-and-restaurant/r2/` (git-ignored PNGs): `<variant>-walk.log` and `states.log`, the frames, and contact sheets in `r2/sheets/`. The recipes are the same scratch Playwright scripts as round 1, re-run unchanged (`walk.mjs`: cold phone load on CDP 1.6 Mbps / 150 ms / 4× CPU, human-pace scroll at 0.7 screen per step, laptop 1440×900, hover, reduced motion, JS off; `states.mjs`: calm pan, interactive depth on pointer and drift, sleep tiles, phone bar, unique set-piece in 14 steps on both widths, the "Find your room" sheet, `/rooms/` with JS off, hero tap-through). One addition, `drift.mjs`: the interactive phone hero at 8, 12, 16 and 24 s. Chromium with SwiftShader WebGL.
+
+### Summary, round 2
+
+| | calm "The view from the roof" | interactive "Under the thatch" | unique "Round the clock" |
+|---|---|---|---|
+| **Dimension 8 (experience)** | **8 / 10** (r1: 8) | **8 / 10** (r1: 7) | **8 / 10** (r1: 8) |
+| Better than the current presence | **yes** | **yes** | **yes** |
+| Pass / fail (this critic) | **pass** | **pass** | **pass** |
+| Taps to book | 1 (hero → Booking.com listing) | 1 | 1 |
+| Hard fails (dimension-8 side) | none | none | none |
+| Phone page length | 14,214 px, about 17 screens (r1: 16,300) | 12,398 px, about 15 (r1: 12,848) | 12,830 px, about 15 (r1: 14,094) |
+
+**Experience ranking at 4f, round 2: 1 unique · 2 interactive · 3 calm.** All three now pass, none at 9.
+- **Unique** fixed all five items on my list. The set-piece is still the one moment in the three pages that a traveller would remember. It is held at 8 by the A/C room run, which still opens on bed close-ups.
+- **Interactive** moved the most. The floor is gone from the phone hero, the title face is a real sign-painted hand, the depth now moves on a phone without a tap, and the check-in cards are gone. It is the shortest page and has the best booking tool.
+- **Calm** fixed the cold paint, the room run and the JS-off header, and its middle now has a rhythm. But the new crop that got rid of the wires also took away most of the sea. Its first screen is now mostly sky on both widths, and it pulls less than it did in round 1.
+
+**The current presence, round 2.** Unchanged since round 1, and each mockup still beats it at a glance: none of the listings shows the sea. Two things on the listings are still better:
+- Google's labelled **Call** is on its first screen. On all three mockups the header's call icon is now *hidden* while the hero is in view (calm notes, round 12; interactive R2-3; unique round 7). My round-1 fix 5 asked for the opposite. A labelled Call now arrives one scroll down (calm s02, interactive s01, unique s02).
+- Airbnb's host face is still not matched. There is no own photograph of the hosts (gaps), so this is not a design defect.
+
+**Video and photo hard fail: still does not apply.** There is no usable own video, and every first screen carries img-009 or img-102 at 1920 px.
+
+---
+
+### R2.1 Calm, 8/10: pass, better than the current presence: yes
+
+**Round-1 fixes, checked**
+| # | Round-1 complaint | Round 2 | Evidence |
+|---|---|---|---|
+| 1 | Seven screens of near-identical room slideshows, led by bed close-ups | **Fixed.** The A/C rooms stack with 3:2 photos, and the two fan rooms sit side by side at half width with dots only. The run is s03–s07, about 4.5 phone screens. On the laptop it is one 4-up row plus one fan row, about 1.9 screens. Leads: the rattan balcony, the veranda with hammock and board, the whole 2+1 room. | `calm-phone-s03…s07.png`, `calm-laptop-s02/s03.png`, `sheets/calm-walk-a.png` |
+| 2 | Slow hero paint: a flat blue box for ~3 s on slow 4G | **Fixed.** At 0.5 s the foot of the hero is a blurred image of the view, not a flat box. At 1.5 s the photograph is complete. | `calm-phone-t500/t1500.png`, `sheets/calm-cold.png` |
+| 3 | Laptop: title on the palm crown; power line and tin roofs at the foot | **Fixed, at a cost.** The title is now ink on open sky and the wires are gone. But the crop stops at the horizon, so about 85% of the laptop first screen is sky and the sea is a thin strip at the foot. The reef whitewater is barely in frame. | `calm-laptop-t2000.png`, `sheets/laps.png` |
+| 4 | JS off: the white wordmark overprinted body text | **Fixed.** With JS off the header scrolls away, and nothing overprints. | `calm-phone-nojs-s1.png` |
+| 5 | A labelled Call on the first phone screen | **Not done, deliberately.** The call icon is hidden during the hero. The labelled Call comes at s02. | `calm-phone-s00/s02.png`, notes round 12 |
+
+**Timeline (phone, throttled):**
+- 0.5 s: the type and the leaf-green button are on the sky, over a soft blurred view.
+- 1.5 s: the full photograph, with palms against blue and a strip of sea at y ≈ 790 of 844.
+- 0 → 15 s: the pan moves from the left palms to the right palms and the green, and ends with the sea along the foot (`calm-phone-pan-0…15000.png`, PSNR 12.2 dB start to end). The whitewater is faint at the end frame.
+
+In round 1 the pan ended on the reef breaking white, and that was the hook. Now the frame is palms and sky, with the sea as a band. It is still clean, still one action, and still not a template section, so the method-5 cap does not apply. But it is a postcard of palms more than "the sea from the roof".
+
+**Walk (phone, `calm-phone-s00…s25`):**
+- s01–s02: check-in, the " | " details line, the two rating cards, and Book + Call.
+- s03–s07: rooms (above). Attention holds this time.
+- s08: inside the house.
+- s09–s10: the roof band. Fixed: the hammock is now whole.
+- s11: **the sunset, full-bleed.**
+- s13: **the house lit at night, full-bleed,** with "Until 22:00 / The restaurant upstairs" in white on its black sky. It is the best new moment on the page: day, sunset, then night, as the concept intends.
+- s14–s16: the restaurant slideshow, then the Eranga family with Meagan's quote. This is the one remaining text-heavy stretch, about 1.5 screens of grey text.
+- s16–s18: the break and Rosa.
+- s19–s20: check-out, with one quote at a time. The quote fills a whole screen.
+- s21–s23: getting here, the closing line, the footer.
+- Phone bar: visible from s02 (y 1182) to the end, and it covers nothing (`calm-walk.log`).
+
+**Booking:** 1 tap. The hero link goes to the dossier's Booking.com URL, and that is the first request after the tap (`states.log`). There are 14 Booking.com links and one `tel:+94778921396`.
+
+**Motion:**
+- On the laptop, 86 of 93 links and buttons carry transitions. The exceptions are the skip link, the wordmark, three nav links, the top Call and the Rosa credit.
+- The hero CTA lifts 1 px with a deeper shadow (`calm-laptop-hover-cta.png`). Slides slide.
+- Reduced motion: no pan, a composed still (`calm-phone-reduced-hero.png`).
+
+**Score: 8, better than the current presence: yes.** The middle is now the best-paced of the three: rooms in about four screens, then the roof, the sunset and the night house as three full-bleed beats. What keeps it at 8, and stops it climbing, is the first screen. It has lost its sea. A traveller sees palms and sky, and the surf that the concept is named for is a strip.
+
+**Fix list (biggest effect first)**
+1. Give the sea back to the first screen without bringing back the wires. On the phone, let the pan end lower or later on the reef whitewater (the round-1 end frame minus the tuk-tuks). On the laptop, crop so the horizon sits near two-thirds, not at the foot. A bottom gradient into the page, or a crop that ends on the sea and the green just above the tarp line, are both cleaner than 85% sky.
+2. A labelled Call in the first phone screen, a small ghost button under the CTA. The audit's secondary action is `tel`, and Google already shows it there. Hiding the icon is the opposite of the round-1 fix.
+3. The Eranga block on the phone: shorten it to two short paragraphs, or set Meagan's quote as the block's lead in a larger size, so s14–s16 is not three screens of body text.
+4. Check-out reviews on the phone: cap the quote height (or use a smaller size) so one review is not a whole screen (s19–s20).
+5. Header: the white wordmark plus the script title say the name twice on the first screen (`calm-phone-s00.png`). Unique solved this by hiding the wordmark until the hero is gone. Do the same here.
+
+**Keep:** the blurred placeholder; the 4-up / fan-row rooms and the wide leads; the sunset and the night-house full-bleed bands; the JS-off header; the one-time pan.
+
+---
+
+### R2.2 Interactive, 8/10: pass, better than the current presence: yes
+
+**Round-1 fixes, checked**
+| # | Round-1 complaint | Round 2 | Evidence |
+|---|---|---|---|
+| 1 | The phone hero was 40% concrete floor | **Fixed.** The 600×1120 crop runs from the thatch fringe to the sea and the parapet, and the title sits on the parapet. No dead floor screen follows: s01 is already check-in. | `interactive-phone-t1500…t6000.png`, `-s00/s01.png` |
+| 2 | Thin marker-pen title face | **Fixed.** Merienda 700 is a full-bodied, sign-painted hand. It is readable at 40 px on the phone and suits a thatched roof. | `sheets/interactive-cold.png` |
+| 3 | The main item barely registered on a phone | **Fixed.** The idle drift now runs continuously while the hero is in view. PSNR between phone frames is 18.7 dB (0→3 s), 17.5 dB (3→6.5 s), 17.4 dB (8→12 s) and 18.4 dB (16→24 s), as large as the laptop pointer sweep (16.4 dB, `interactive-laptop-depth-left/right.png`). There is no tearing at the fringe or the pillar. The canvas is live (`depth live op=1`) on both widths without `?depth=force` (`states.log`). | `interactive-phone-drift-*.png` |
+| 4 | Four stacked grey fact cards | **Fixed.** Check-in is now the tagline, one " | " line, Book + Call, and the two ratings set large (8.5/10, 4.8/5) as links. | `interactive-phone-s01/s02.png` |
+| 5 | A labelled Call on the first screen | **Not done.** The icon is hidden in the hero. A labelled "Call +94 77 892 1396" comes at s01. | `interactive-phone-s01.png` |
+
+**Timeline (phone, throttled):**
+- **0.5 s: a flat grey box with a dark blurred shade blob** in the lower third, and the title in the fallback sans (`interactive-phone-t500.png`). Below the photo, the scrim shows on its own as a smudge. This is the one new flaw.
+- 1.5 s: the photograph is complete. The thatch fringe frames palms and sea, with Merienda on the parapet and the saffron button at y 684.
+- 6 s: the canvas is live (`interactive-walk.log`).
+
+From 1.5 s the first screen pulls you in: you stand under the roof looking at the sea, and the layers breathe. In round 1 this was the weakest phone first screen. It is now the strongest of the three on a phone.
+
+**Walk (phone, `interactive-phone-s00…s25`):**
+- s01–s02: check-in.
+- s02–s04: "How do you like to sleep?". The rooms now take about 1.5 screens: tiles, pick chips, then one edge-to-edge stage.
+  - Fan: the two budget rooms with "Fan / No A/C / No hot water" chips.
+  - Three or four: the 2+1 room and the family room (`interactive-phone-sleep-*`, `states.log`).
+- s05–s06: inside the house and the veranda row.
+- s06–s08: the roof, with Erin's quote.
+- s08–s09: **the sunset band.**
+- s10: by the beach.
+- s11–s12: the restaurant, with Janno.
+- s13: the night house and the Eranga family.
+- s14–s15: the break and Rosa.
+- s16: amenities and check-out, with three ratings on one line, then quotes.
+- s18–s20: getting here, the closing line in the text face, the footer.
+- The phone bar is visible from s02. Its ˄ opens the audit-ordered summary (`interactive-phone-bar-open.png`).
+
+**Booking:**
+- 1 tap from the hero to the dossier's Booking.com URL (`states.log`).
+- 2 taps from a tile ("A fan and cold water" → "Check dates on Booking.com").
+- Fan vs A/C is clear before the tap.
+
+**Motion:**
+- On the laptop, 85 of 88 interactive elements carry transitions. The exceptions are the skip link, the wordmark and the Rosa credit.
+- The CTA lifts 2 px on hover (`interactive-laptop-hover-cta.png`). The tile fill and the stage cross-fade are smooth.
+- Reduced motion: the canvas stays at opacity 0, and the still shows (`interactive-phone-reduced-hero.png`).
+- JS off: the rooms stack in their two groups (`interactive-phone-nojs-s1.png`).
+
+**Score: 8, better than the current presence: yes.** The phone first screen now has a felt main item from the business's own photograph. The booking moment is the best in the set, and the page is the shortest. It is held at 8 by:
+- the grey-box-plus-smudge first half-second;
+- the name said twice in the same face on the hero (the Merienda wordmark at 22 px over the Merienda title at 40 px, `interactive-phone-s00.png`), which is the same echo I marked on unique in round 1;
+- a laptop first screen that is still half grey concrete and planter box under the title (`interactive-laptop-t2000.png`).
+
+**Fix list (biggest effect first)**
+1. Cold paint: give the hero the same blurred placeholder calm now has (a ~40 px blurred img-102 as the hero background). Hide the text scrim until the photo has loaded, so the first half-second is the place, not a grey box with a dark blob.
+2. Hide the header wordmark while the hero title is in view, as unique does. One name on the first screen.
+3. Laptop crop: lift the frame so the parapet and the sea sit lower and less of the concrete floor and the planter box shows under the title. Or set the title block a little higher, on the parapet line, to cover less floor.
+4. A labelled Call on the first phone screen (as for calm).
+5. The phone bar label is 14.5 px in a narrow pill. Give it the room the ˄ and the phone icon leave, or drop the ˄ to the summary sheet, so "Check dates on Booking.com" is set at body size.
+
+**Keep:** the continuous drift on the phone and pointer depth on the laptop; Merienda; the sleep tiles, chips and single stage; the large rating pair; the sunset band and the night house; the bar's ˄ summary.
+
+---
+
+### R2.3 Unique, 8/10: pass, better than the current presence: yes
+
+**Round-1 fixes, checked**
+| # | Round-1 complaint | Round 2 | Evidence |
+|---|---|---|---|
+| 1 | The name was on the first screen twice | **Fixed with JS.** The header wordmark and the round Call are hidden until the hero button has scrolled away. On the first screen: one Caveat title, one line, one button. With JS off the echo is back (`unique-phone-nojs-hero.png`), which is a minor point. | `unique-phone-t500…t6000.png`, `-s00/s01.png` |
+| 2 | Phone crop: the sea was a strip at the foot | **Fixed.** The type sits on white, then the picture fills the rest. Palms stand crisp against the white sky, and the sea, the reef and the green take the lower third. The fade no longer reads as fog. | `sheets/unique-cold.png` |
+| 3 | The mid-wipe read as a reddish smudge rising from the bottom | **Fixed.** Mid-change, a clean horizontal slit opens across the full frame width at the horizon: the sunset under the thatch (`unique-laptop-pin-02.png`), and the break opening through the restaurant (`-pin-10.png`). It reads as a deliberate double exposure along the horizon, and it is brief. Phone frames show the same (`unique-phone-pin-03.png`). | `sheets/u-wipe.png`, `sheets/u-pin-lap.png` |
+| 4 | Rooms too long on the phone | **Fixed in part.** The fan rooms are compact rows with a 112 px thumbnail. The run is s03–s07, about 4 phone screens (r1: 6). The A/C rooms still lead with bed close-ups: Superior with the green towel (s04), the 2+1 (s05). | `unique-phone-s03…s07.png` |
+| 5 | Small finishes: text window under the pin, the second Call in "Not sure", a flat CTA hover | **All fixed.** The pinned frame is 44 svh plus the dial, with about 40% of the screen to read in (`unique-phone-pin-01…13.png`). "Not sure" has one Call (`unique-phone-finder-ns.png`). The hero CTA lifts 1 px (`unique-walk.log`). | |
+
+**Timeline (phone, throttled):** complete in the first frame at 0.5 s and still at 6 s, with nothing late (`unique-phone-t500…t6000.png`). The button is the sign's ink black, at y 222.
+
+The black pill is quieter and less warm than round 1's vermilion, but it is unmistakable on white and it leaves the sun disc as the one orange thing on the page. Not a defect.
+
+**Walk (phone, `unique-phone-s00…s21`):**
+- s01–s02: check-in, the cleanest booking head of the three (one paragraph, three dated rating pills, Book + Call).
+- s03–s07: rooms, with the "A/C | Hot water" chips on the photos. The "Find your room" pill sits above them.
+- s08–s09: inside the house, three flush columns, now without a hole.
+- s09–s14: the set-piece. Afternoon → sunset → 22:00 → 7:30 → the break, with the sun stepping down the dial. It hands straight to "Today on Coconuts" with the forecast (`unique-phone-pin-13/14.png`).
+  - One small flaw: as a block enters, its script title passes under the dial's white fade and is half-clipped for a frame ("The afternoon", `unique-phone-pin-01.png`).
+- s15–s16: Rosa and the amenities.
+- s16–s18: check-out with one quote at a time.
+- s18–s19: the sign as a plain rounded photograph by "Getting here".
+- s20–s21: the closing line and the footer.
+- The bar is visible from s01 (`unique-walk.log`).
+
+**Booking:**
+- 1 tap from the hero (`states.log`).
+- Finder: bar → "2" → "Check dates" is 3 taps. Focus lands on "1 Just me", Esc closes the sheet and returns focus, and "2" lists the four doubles plus the 2+1 room (`unique-phone-finder-2.png`, `states.log`).
+- `/rooms/` with JS off is a real list by group size (`unique-phone-nojs-rooms.png`).
+
+**Motion:**
+- On the laptop, 62 of 100 elements carry their own transition. The other 38 are the slideshow and review dots, which animate through `::before` as in round 1.
+- Reduced motion: no pin, and the moments stack (`unique-phone-reduced-s2.png`).
+- JS off: clean, with the bar static.
+
+**Score: 8, better than the current presence: yes.** This is the strongest page of the three. The first screen is now decisive: one name, one button, the palms standing on white over the sea. The day-at-the-house set-piece is felt on both widths, and its wipe now looks intended. It is not a 9 because:
+- the A/C room run still opens two of four rooms on bed close-ups (s04–s05), the same deflation I named in round 1;
+- the laptop first screen still shows the blue tarp shacks along its foot (`unique-laptop-t2000.png`);
+- block titles clip under the dial's fade on the phone.
+
+**Fix list (biggest effect first)**
+1. Lead every A/C room with its widest, brightest frame, as calm did this round. Superior should lead with the veranda (img-030 or the doorway), not the green towel. The 2+1 should lead with the room seen whole (img-040).
+2. Laptop crop: end the frame above the blue-tarp shacks, or let the white page rise from the foot as well, so the last thing you see is the sea and the green.
+3. Phone set-piece: start each block's title below the dial's fade (more top padding on the block, or a shorter fade), so no script title is ever half-clipped.
+4. JS off: show the header wordmark only from the second screen (CSS `position:absolute` header, or the hero title as the only name), so the no-JS first screen also says the name once.
+5. Give the slideshow and review dots a transition on the element, not only on `::before`, so the hover and focus state is felt as well as the active one.
+
+**Keep:** the set-piece and its horizon slit; the sun disc on the dial; the keyed white sky; one name on the first screen; the black booking pill with the vermilion reserved for the sun and Call; the compact fan rows; the finder sheet and `/rooms/`; the pin handing straight to today's forecast.
+
+---
+
+### What the designer prompt got wrong, round 2 (quotable)
+The loop-back worked: every page fixed what it was told to fix. Two lessons:
+- **A crop fix must not cost the hook.** Calm removed the wires by cutting at the horizon, and lost the sea that made its first screen. When a crop moves, re-ask "is the thing that pulls you in still on the first screen?", not only "is the flaw gone?".
+- **A fix given to one variant is a rule for all three.** The doubled name was fixed on unique and is still on calm and interactive. The bed-close-up lead was fixed on calm and is still on unique. The prompt should turn any first-screen or lodging fix from a 4f report into a check for every variant.
+
+---
+
+## Round 3 (station 4f)
+
+experience-critic 0.2.0 · station 4f (quick), round 3, the last allowed round · 2026-11-05 · after the 4e loop-back (designer 0.7.1, commit 032ed8d).
+Pages: `sites/coconut-surf-inn-guest-house-and-restaurant/mockups/calm/dist/index.html` (:8921) and `…/mockups/interactive/dist/index.html` (:8922). Only these two were revised. Unique passed round 2 at 8, is unchanged and is not re-scored here. Inputs read: my round-2 section above and the round-3 parts of each `notes.md` (calm look-log rounds 15–16 and its round-3 conflicts; interactive R3-1 to R3-3). Comparison bar unchanged: the Booking.com, Google and Airbnb folds. Written without reading the round-3 critic or visual-critic reports.
+
+Evidence is in `reports/2026-10-midigama-01/experience/coconut-surf-inn-guest-house-and-restaurant/r3/` (git-ignored PNGs): `calm-walk.log`, `interactive-walk.log`, `states.log`, the frames, and contact sheets in `r3/sheets/`. Recipes (scratch, not committed):
+- `walk.mjs`, unchanged from rounds 1–2: cold phone load on CDP 1.6 Mbps / 150 ms / 4× CPU, frames at 0.5 / 1.5 / 3 / 6 s, human-pace scroll at 0.7 screen per step, laptop 1440×900, CTA hover, transition count, reduced motion, JS off.
+- `states3.mjs`, new this round: the calm pan at 0 / 4 / 8 / 13 s; the hero buttons measured on both widths; the wordmark state in and after the hero; hover on the new hero Call; the interactive drift on the phone and pointer depth on the laptop; the new review carousel tapped and clicked on both widths; the hero photos aborted (failed-load state); the phone bar at the page end; the hero tap-through.
+- Chromium with SwiftShader WebGL. PSNR with ffmpeg.
+
+### Summary, round 3
+
+| | calm "The view from the roof" | interactive "Under the thatch" |
+|---|---|---|
+| **Dimension 8 (experience)** | **8 / 10** (r2: 8, r1: 8) | **8 / 10** (r2: 8, r1: 7) |
+| Better than the current presence | **yes** | **yes** |
+| Pass / fail (this critic) | **pass** | **pass** |
+| Taps to book | 1 (hero → Booking.com listing) | 1 |
+| Hard fails (dimension-8 side) | none | none |
+| Regressions from round 3 | none that a traveller meets; one failed-load edge (below) | none |
+| Phone page length | 13,394 px, about 16 screens (r2: 14,214) | 12,450 px, about 15 (r2: 12,398) |
+
+**Experience ranking at 4f, final (unique carried from round 2): 1 unique · 2 interactive · 3 calm**, all three at 8. The gap between calm and interactive is now small: calm got its sea back, and on the laptop it is now the calmer and cleaner first screen of the two.
+
+**The current presence, round 3.** Unchanged. Round 3 closed the one thing Google's listing still did better: **both pages now have a labelled Call on the first screen**, after the booking button and visibly quieter than it (calm: ink outline on a faint sky-white pill, 114×56 at y 334 on the phone; interactive: white text on a 16 % white pill, 94×54 at y 715; `states.log`). Booking.com's live prices once dates are in and Airbnb's host face remain the only things the listings have that the pages do not, and both are by design or by gap.
+
+**Video and photo hard fail: still does not apply.** No usable own video; both first screens carry img-009 or img-102 at ≥ 1200 px source.
+
+---
+
+### R3.1 Calm, 8/10: pass, better than the current presence: yes
+
+**Round-2 fixes, checked**
+| # | Round-2 complaint | Round 3 | Evidence |
+|---|---|---|---|
+| 1 | The crop lost the sea: about 85 % sky on the laptop, sea a strip on the phone | **Fixed.** Laptop: the horizon now sits at about 80 % (y ≈ 715 of 900). Below it are the sea, the reef breaking white in two lines, the beach shelter under its blue roof, the sand and the green. The wires and tin roofs are out of frame. Phone: the sea and the whitewater fill the bottom fifth through the whole pan. | `calm-laptop-t2000.png`, `sheets/calm-pan.png`, `sheets/calm-cold.png` |
+| 2 | No labelled Call on the first phone screen | **Fixed.** Book, then a quieter outlined **Call** under it, both inside the first screen on both widths. Hover turns the Call pill to solid ink with white text (`calm-laptop-hover-call.png`). | `calm-phone-s00.png`, `states.log` |
+| 3 | The Eranga block was three screens of grey text | **Fixed.** Family + Meagan's quote now run about one phone screen (s16–s17). | `sheets/calm-walk-b.png` |
+| 4 | One review filled a whole phone screen | **Fixed.** Reviews are 16 px on the phone; the longest holds about half a screen (s18–s19). | `calm-phone-s18/s19.png` |
+| 5 | The name twice on the first screen | **Fixed.** The wordmark is `opacity 0 / hidden` in the hero and `1 / visible` after it (`states.log`). One name on the first screen. | `calm-phone-s00.png` |
+
+**Timeline (phone, throttled):**
+- 0.5 s: the title (Satisfy not yet loaded, fallback script), line, Book and Call on the sky, over the blurred view. No flat box.
+- 1.5 s: the photograph is complete. Palms over the sea, whitewater on the reef along the foot. Fonts loaded.
+- 0 → 13 s: the pan moves from the centre palms right to the reef and the beach shelter (PSNR 14.3 dB start to end; r2: 12.2). It is gentler than round 1's, but it now ends on the sea breaking white, which was round 1's hook.
+- LCP-side: the title is `nowrap` with a locked height, and no reflow is visible between the 0.5 s and 1.5 s frames.
+
+The first screen is back to what pulled me in round 1: you are on the roof looking at the break, with one name, one line and one green button. The phone frame is a little soft (the notes say it is drawn at about 2× its source); at arm's length on a phone it reads as haze over the sea, not as blur. Method-5 cap does not apply: clean, slick, one clear CTA, not a template section.
+
+**Walk (phone, `calm-phone-s00…s22`):** no regressions against round 2.
+- s01–s02: check-in, the " | " lines, two dated rating cards, Book + Call.
+- s03–s08: rooms. The A/C cards lead wide (balcony, veranda with hammock and board, the 2+1 room whole); the fan pair sits side by side. Arrows are 44 px.
+- s08–s10: inside the house; the roof band and hammock.
+- s11–s12: **the sunset, full-bleed.** s13: **the house lit at night.** Still the best run on the page.
+- s14–s17: the restaurant slideshow, then the family and Meagan, now about one screen.
+- s17–s19: the break with Rosa (the headline and the widget both drawn), then check-out with three dated ratings and one shorter quote at a time.
+- s20–s22: getting here, the closing line, the footer.
+- Phone bar: visible from s02 (y 1182), and new this round it steps aside over the closing section and the footer, which carry their own Book and Call (`calm-walk.log`, s20–s22 `bar=false`). Below 900 px the header hides on the way down and returns on the way up.
+
+**Booking:** 1 tap. The hero link is the dossier's Booking.com URL and is the first request after the tap (`states.log`). 14 Booking.com links, one `tel:+94778921396`.
+
+**Motion:**
+- On the laptop, 45 of 94 links and buttons carry a transition on the element (r2: 86 of 93). This is not a loss: the 44 px dot buttons added this round animate through `::before` (0.35 s, `states.log`), as unique's do. The others without one are the skip link, three nav links, the header Call and the Rosa credit. Calm's concept is micro-motion only, so the method-5 micro-animation cap does not bind it in any case.
+- Hero CTA lifts 1 px with a deeper shadow; the hero Call inverts to ink.
+- Reduced motion: no pan, a composed still on the reef end frame (`calm-phone-reduced-hero.png`).
+- JS off: no wordmark, every slideshow a swipeable row, one Rosa link. One small flaw: two " | " separators start a wrapped line in the check-in details ("| Roof terrace", `calm-phone-nojs-s1.png`); with JS on, `page.js` hides them.
+
+**Failed-load state (new check, `calm-phone-heroblocked-onlyfull.png`):** with the hero photos aborted, the blurred placeholder does not stay, the hero is flat blue, and the image's alt text prints in two lines across the top edge, clipped at both sides. Type and both buttons stay usable. This is an edge (a failed request, not slow 4G), but interactive handles it cleanly (`sheets/heroblocked.png`).
+
+**Score: 8, better than the current presence: yes.** Every item on my round-2 list is done, and nothing a traveller meets regressed. It is still 8, not 9: the page after the first screen is the same well-paced, quiet page as round 2, there is no moment you would remember the next day except the sunset and the night house, and the phone hero is visibly soft.
+
+**Fix list (for 4g, biggest effect first)**
+1. Phone hero sharpness: if no sharper own frame exists, crop a little less tall so the image is drawn nearer 1.5× than 2×, or sharpen the 800 px rendition lightly. The first screen is the one place softness is felt.
+2. Failed load: keep the blurred placeholder as a CSS background of `.hero-media` (as interactive does), and hide the `<img>` alt text visually on error, so a failed photo leaves the blurred view, not a printed caption.
+3. JS off: hide a separator that starts a line with CSS (or render the separators only from JS), so the details line never starts with " | ".
+4. The A/C room run on the phone is still four stacked cards (s03–s07). A peek of the next card or a 2-up at 390 would shorten it by a screen.
+5. Give the header Call and the three nav links the same 120–200 ms colour transition as the rest, so the header feels part of the system.
+
+**Keep:** the sea-and-reef crop on both widths; one name on the first screen; the outlined hero Call; the pan ending on the reef; the sunset and night-house bands; the shortened family and review stretch; the phone bar stepping aside at the footer; the hide-on-scroll header below 900 px.
+
+---
+
+### R3.2 Interactive, 8/10: pass, better than the current presence: yes
+
+**Round-2 fixes, checked**
+| # | Round-2 complaint | Round 3 | Evidence |
+|---|---|---|---|
+| 1 | Cold paint: a grey box with a dark smudge for the first half-second | **Fixed.** At 0.5 s the hero is a blurred terrace (thatch, sky, sea), with the title, line, Book and Call already set. With the hero photos aborted, both widths keep the blurred terrace and both buttons. | `sheets/interactive-cold.png`, `sheets/heroblocked.png` |
+| 2 | The name twice on the hero | **Fixed.** The wordmark is hidden in the hero (`states.log`) and fades in with the stuck header. | `interactive-phone-s00.png` |
+| 3 | Laptop: half the first screen was grey concrete | **Partly fixed.** The crop moved up 80 source px and the title now sits on the parapet line with the sea behind it. Concrete and the planter still take roughly the bottom third under the buttons. | `interactive-laptop-t2000.png` |
+| 4 | No labelled Call on the first phone screen | **Fixed.** Translucent white **Call** under the booking button (94×54), clearly secondary. Hover lifts it 2 px and brightens it. | `interactive-phone-t1500.png`, `states.log` |
+| 5 | Phone bar label at 14.5 px | **Fixed.** 16 px, fits beside the call and ˄ buttons. | `sheets/interactive-walk-a.png` |
+
+**Timeline (phone, throttled):**
+- 0.5 s: the blurred terrace with the type in the fallback sans (Merienda not yet in). Not a box; it reads as the place coming into focus.
+- 1.5 s: the photograph is complete, Merienda is in, the saffron button at y 649 and Call at y 715.
+- 6 s: the canvas is live (`depth live op=1`, `interactive-walk.log`). The drift runs without a tap: PSNR 17.7 dB (0 → 4 s) and 18.1 dB (4 → 8 s) on the phone, 16.6 dB for the laptop pointer sweep left to right. Same strength as round 2; no tearing at the fringe or the pillar.
+
+From 1.5 s this is still the strongest phone first screen of the three revised pages: you stand under the thatch looking at the sea, and the layers breathe. The new Call does not crowd it.
+
+**Walk (phone, `interactive-phone-s00…s20`):** no regressions against round 2.
+- s01–s02: check-in, Book + Call, the two large ratings.
+- s02–s05: "How do you like to sleep?" on white: three tiles, chips, one stage with Fan / A/C / Hot water chips. Clear.
+- s05–s06: inside the house, then the verandas as a flush 2×2 (no more row running off the edge).
+- s06–s08: the roof, Erin's quote, the sunset band.
+- s09–s12: by the beach, the restaurant (one 4:5 photo), the house at night as one full-bleed band, the Eranga family.
+- s13–s15: the break, the Rosa headline and widget, amenities.
+- s16–s18: check-out with three large dated ratings, then **the new review carousel**: one review per page with 48 px round arrows and a "1 of 10" counter. Tapping Next slides to "2 of 10" in about half a second, Previous enables, and the slide is a clean horizontal move (`sheets/int-reviews.png`). On the laptop it is 3 up with four 44 px dots; Next moves a page and the active dot follows (`sheets/int-lap-reviews.png`).
+- s18–s20: getting here, the closing line, the footer.
+- Phone bar: visible from s02 to the end. Unlike calm it stays over the footer, which has its own buttons (`states.log`: `bar at end 774 vis=visible`). Minor.
+
+**Booking:** 1 tap from the hero to the dossier's Booking.com URL (`states.log`). 2 taps from a tile. Fan vs A/C is clear before the tap.
+
+**Motion:**
+- On the laptop, 90 of 95 links and buttons carry transitions (r2: 85 of 88). The exceptions are the skip link, three nav links and the Rosa credit.
+- Buttons are flat now: the hero CTA lifts 2 px and steps to a darker saffron, no shadow (`interactive-laptop-hover-cta.png`). The carousel arrows and dots animate.
+- Reduced motion: the canvas stays at opacity 0, the still shows (`interactive-phone-reduced-hero.png`).
+- JS off: the reviews are a plain grid, the rooms stack in two groups. The header wordmark shows over the hero with JS off, so the name is said twice there (`interactive-phone-nojs-hero.png`). Minor, as it was for unique in round 2.
+
+**Score: 8, better than the current presence: yes.** Every round-2 item is done or partly done and nothing regressed; the carousels are an improvement on the rows that ran off the edge, and the cold paint is now the place, not a box. It is still 8, not 9: the laptop first screen still spends its lower third on concrete and a planter, the main item is a subtle breathing rather than a moment, and the middle of the page is well made but not memorable.
+
+**Fix list (for 4g, biggest effect first)**
+1. Laptop first screen: the lower third is still concrete. A crop that ends at the parapet top (the title then sits on the sea band), or a soft fade from the parapet into the page, would make the laptop as strong as the phone.
+2. Laptop hero Call: at 16 % white over the planter and concrete its edge nearly disappears (`interactive-laptop-t2000.png`). Raise the fill to about 24 % or add a 1 px white edge, so it reads as a button at a glance.
+3. Phone bar: step it aside over the closing section and the footer, as calm now does, so the footer's own Book and Call are not doubled.
+4. JS off: hide the wordmark until the hero has scrolled away (CSS only), so the no-JS first screen says the name once.
+5. Give the three nav links and the Rosa credit the same colour transition as the rest (the last five elements without one).
+
+**Keep:** the blurred placeholder; the continuous drift and pointer depth; Merienda; one name on the first screen; the translucent hero Call; the sleep tiles and single stage on white; the 2×2 verandas; the paged review carousel with the counter on the phone; flat buttons with the 2 px lift.
+
+---
+
+### What the designer prompt got wrong, round 3 (quotable)
+Little this round: both pages did what the round-2 lists asked, and the round-2 lesson ("a crop fix must not cost the hook") was applied: calm measured its photograph and found the one crop that keeps the sea and drops the wires. Two small lessons remain:
+- **A fix on one variant is still not carried to its siblings in its no-JS and failed-load states.** Interactive got the failed-load placeholder right and calm did not; calm hides its wordmark with JS off and interactive does not. The hand-off check should walk the JS-off and hero-failed states for every variant, not only the one the report named.
+- **The phone bar's behaviour at the footer is a shared rule, not a per-variant choice.** Calm steps it aside over the closing section and footer; interactive keeps it. Pick one rule for all three.
+
+---
+
+## Round 1 — full (station 5)
+
+experience-critic 0.2.0 · station 5 (full), round 1 · run `2026-10-midigama-01` (test, operator alon) · 2026-11-05.
+Page: the built site `sites/coconut-surf-inn-guest-house-and-restaurant/final/dist/` (home and `/rooms/`), served on http://localhost:8970/. It is the Astro port of the picked unique "Round the clock", with calm's view-from-the-roof hero (Alon's tweak at gate b). Inputs read: `final/notes.md` (the six 4f fixes, the port comparison, performance) and my 4f rounds above. Comparison bar: the business's current presence (no website), i.e. the Booking.com, Google and Airbnb folds (`dossier/coconut-surf-inn-guest-house-and-restaurant/funnel/walk/05-booking-com-fold.png`, `01-google-listing-fold.png`, `06-airbnb-fold.png`). Written without reading the critic's or the visual-critic's station-5 report.
+
+Evidence is in `reports/2026-10-midigama-01/experience/coconut-surf-inn-guest-house-and-restaurant/full-r1/` (git-ignored PNGs): `final-walk.log`, `states.log`, `states2.log`, `inspect.txt`, the frames and contact sheets in `sheets/`. Recipes (scratch, not committed):
+- `walk.mjs`, unchanged from 4f: cold phone load (390×844 @2x, touch, CDP 1.6 Mbps / 150 ms, 4× CPU), frames at 0.5 / 1.5 / 3 / 6 s, human-pace scroll at 0.7 screen per step, CTA hover, transition count, reduced motion, JS off.
+- `states.mjs` / `states2.mjs`: the set-piece in 14 steps at 1440, 768 and 390, mid-wipe steps on the laptop, the "Find your room" sheet (2, Not sure, Esc, the sheet's Check dates tapped through), `/rooms/` with JS on and off, the forecast with JS off, with `rosa.surf` blocked (12 s wait) and live, the hero tap-through, keyboard focus.
+- `lapwalk.mjs`: the laptop page at 1440×900 in 16 steps.
+- The tasteskill inspector (`inspect.txt`), run from the scratchpad; its `.taste-skill/` was removed.
+
+### Summary
+
+| | final "Round the clock" (unique + calm's hero) |
+|---|---|
+| **Dimension 8 (experience)** | **8 / 10** (4f unique: r1 8, r2 8) |
+| Better than the current presence (Booking.com + Google + Airbnb) | **yes** |
+| Pass / fail (this critic) | **pass** |
+| Taps to book | **1** (hero → Booking.com listing; the first request after the tap is `https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html`, `states2.log`). Finder path: 3 (bar → "2" → Check dates, `states.log`) |
+| Hard fails (dimension-8 side) | none. No usable own video (concepts §2, notes "Hero video"); the first screen carries img-009, business-owned, ≥ 1920 px |
+| Phone page length | 12,774 px, about 15 screens (4f r2 unique: 14,094) |
+
+### Timeline (phone, throttled; `final-phone-t500…t6000.png`, `sheets/cold.png`)
+| t | On screen |
+|---|---|
+| 0.5 s | Complete: the roof view full-bleed (sky, the palm crowns, the sea and the reef whitewater along the foot), "Coconut Surf Inn" in Caveat, the place line, and the ink-black "Check dates on Booking.com" at y 264. No header wordmark (one name). |
+| 1.5 / 3 / 6 s | Identical. Nothing late, nothing moves. The `load` event at 6.2 s; 0 requests off localhost (`final-walk.log`). |
+
+Feeling: bright, open, clearly by the sea, and immediate. It is the fastest first screen of the run (notes: LCP 460 ms). The choice of the roof view gives the page the one thing the 4f unique hero lacked: you are standing on the house, looking at the break. Two weaknesses:
+- **On the phone the frame is 70 % sky.** The sea, the reef and the whitewater sit in the bottom ~15 % (`final-phone-t6000.png`), half under where the phone bar arrives. The palms carry it. It is the same "sea as a strip at the foot" I flagged on the 4f r1 unique crop, now on calm's photograph.
+- **It is still.** Calm's version of this photograph panned once along the beach; here the photograph does not move, so the first screen is a title-and-button over a photo. It is clean, slick and has one action, so it is not capped, but it is the most conventional moment on an otherwise singular page.
+
+On the laptop (`final-laptop-s00.png`) the view is wide and good: the horizon at two-thirds, the reef lines visible, title + line + one button centred in the sky, header showing only the nav and "Check dates". The blue-tarp beach shacks and a wire still sit along the bottom-left edge.
+
+### Walk (phone: `final-phone-s00…s21.png`, `sheets/walk-0/1/2.png`)
+- **s01–s02, 13:00 check-in:** one paragraph (what, where, Coconuts in front, the restaurant hours, "Booking.com has the live dates"), three dated rating pills, then "See rooms and live dates on Booking.com" + Call. Trust and action in two scrolls. The button label wraps to two lines inside its pill (s02), the only clumsy button on the page.
+- **s03–s07, Six kinds of room:** **the 4f fix holds**: Balcony opens on the balcony door and the red cushions, Superior on the room seen whole, the 2 + 1 on the carved bed, the family room wide on both beds (s03–s06). Budget rooms are compact rows with a thumbnail. About four screens, and the run no longer deflates. The rooms are dim, ground-floor photographs; that is the material, not the design.
+- **s07–s09, Inside the house:** the light-well with its jade channel, the veranda hammock with a surfboard, a masonry of prints. A lift.
+- **s09–s14, the set-piece:** afternoon under the thatch → sunset → the house lit at 22:00 → the restaurant at 7:30 → the break, the red sun stepping down the dial (`phone-pin-00…14.png`, `sheets/pin-phone.png`). The two guest quotes sit inside their moments. It hands straight to "Today on Coconuts" (`phone-pin-14.png`). This is still the moment a traveller remembers.
+  - Fix 4 is in: no title is half cut under the fade. The price: for a few steps a block shows its body text with no title above it (`phone-pin-08/10.png`; on the tablet "On the roof" and "The restaurant upstairs" stand alone, `tablet-pin-01/05.png`). It reads as a missing heading for a moment, not as a defect anyone would report.
+- **s14–s16, Today on Coconuts:** 0.3–0.5 m, knee-high, the time, swell and wind in the site's type, then Rosa's widget (live run) and the amenities as one " | " paragraph.
+- **s17–s18, 11:00 check-out:** the three rating pills again and one review at a time (1/10, arrows).
+- **s19–s21:** the sign as a print by "Getting here" (airport, train stations, the Google listing name, address, Maps + Call pills), the closing in Caveat with the black button and the round red Call, the footer.
+- **Phone bar** ("Check dates on Booking.com" + "Find your room"): hidden on the first screen, visible from s01 (y 591) to the end; nothing covers content (`final-walk.log`).
+
+### The story after one scroll
+What (a guesthouse with a restaurant upstairs), where (Gurubebila, between Midigama and Weligama), why (the sea from the roof, a reef break in front), and cost (honestly "live dates on Booking.com"): yes, by s02. Told through the photograph and one paragraph, not a table.
+
+### Wanting to go
+Lifts: the roof view (s00), the light-well (s08), the whole set-piece (sunset and the lit house most of all), the break handing to today's surf. Deflates: nothing sustained now that the room run is short and leads wide. The forecast + amenities stretch (s15–s16) is the flattest two screens.
+
+### Booking
+- 1 tap from the hero; the first request is the dossier's Booking.com URL (`states2.log`). 20 Booking links on `/`, one URL; every `tel:` is `+94778921396`. Matches the audit (engine, 1 click).
+- "Find your room": focus lands on "1 Just me"; "2" lists Balcony, Superior, 2 + 1 and the Budget Double with chips and their own button; the sheet's Check dates goes to Booking.com; "Not sure" shows the closing line and one Call; Esc closes and returns focus (`phone-finder*.png`, `states.log`).
+- `/rooms/` with JS off is a real page grouped by party size, with "Back to Coconut Surf Inn" (`phone-rooms-jsfalse.png`); with JS off the home page's "Find your room" links point there (`states2.log`).
+- Against the current presence: Booking.com has live prices once dates are in, and the page sends you there in 1 tap with fan vs A/C already understood (which Booking.com's own description muddles). Google's labelled Call is matched at s02 and in the header's round red button.
+
+### Motion and states
+- Laptop: 62 of 100 interactive elements carry their own transition; the rest are the slideshow and review dots (animated through `::before`), the skip link and the Rosa credit. The hero CTA lifts 1 px and its shadow deepens (`final-walk.log`).
+- The set-piece wipe on the laptop is a clean horizon slit, sunset opening through the hammock frame (`laptop-wipe-0…6.png`, `sheets/wipe.png`); at 768 the stacked layout (fix 2) works with no overflow (`tablet-pin-*.png`, sw 768).
+- Reduced motion: no pin, the moments stacked (`final-phone-reduced-*.png`). JS off: a clean page, the bar static, the forecast a plain "See today's forecast for Coconuts on Rosa" pill (`phone-nojs-forecast.png`); the no-JS first screen shows the header wordmark and the title (the name twice, as in 4f r2).
+- **Rosa blocked** (`rosa.surf` aborted): 0 third-party requests on load; near the block the widget frame is never created (0 iframes), the link is tappable and on top (`elementFromPoint` hits it, `states2.log`). Fix 1 works. But what the visitor sees is a **~260 px empty grey box with the link at its very foot**, partly under the phone bar (`phone-rosa-blocked-link.png`, `sheets/rosa.png`). The playbook asks for "never an empty box". (The headline still drew, because the JSON is on `rosa-data-opal.vercel.app`, which my route did not block.)
+- Rosa live: 0 third-party requests on load; after the scroll the widget loads Rosa, its Google fonts and ArcGIS tiles inside its frame (`states2.log`).
+- Inspector (`inspect.txt`, 4 FAIL / 4 WARN): the closing line runs 3 lines at 390 and 768 (a stated choice in notes fix 5); "142 reviews" read as an eyebrow over the rating pills (a false positive, the pills are one line); "8.5/10" hidden under another element at one scroll position on the phone (the phone bar over the check-out pills, momentary); no video (accepted, none usable). None changes the score.
+
+### Against the current presence, honestly
+Unchanged from 4f: none of Booking.com, Google or Airbnb shows the sea; the site opens on it, tells the day at the house, and books in 1 tap. The listings still do two things better: Booking.com shows live prices once dates are in (by design, the site hands off to it), and Airbnb shows Chinthaka's face on its first screen (the site names him in the 7:30 block only; no host photograph in the dossier).
+
+### Score: 8, better than the current presence: yes
+The port is faithful, faster than the mockup, and fixed what 4f asked: the room run now leads wide and is four screens, titles never half-cut, the set-piece works at 768. The first screen is clean and immediate with one action, and the set-piece is the moment no listing can give. It is not a 9 because the phone hero is mostly sky with the sea at its foot and nothing moving, the Rosa-down state is an empty grey box, and the forecast/amenities stretch is flat.
+
+**Fix list (biggest effect first)**
+1. **Phone hero crop:** bring the sea up. Anchor the 9:16 crop lower on img-009 (or set its focal point at the reef) so the horizon sits around 55–60 % and the whitewater is above the phone bar's line, not in the bottom 15 % (`final-phone-t6000.png`).
+2. **Give the first screen one slow movement**, as calm had: a single 10–15 s pan or push along the roof view, ending on the reef, poster-still under reduced motion. It would make the first screen as felt as the set-piece without adding a second device.
+3. **Rosa down = no empty box.** When the widget is removed, collapse its reserved space to the link pill (as with JS off), or put the "See today's forecast for Coconuts on Rosa" pill centred in the box with Rosa's mark (`phone-rosa-blocked-link.png`).
+4. **Shorten the check-in button label** to "See rooms and dates" (or the hero's own "Check dates on Booking.com") so it sits on one line in its pill at 390 (s02).
+5. **Small finishes:** during the pin, fade a block's sub-title with its title so no "On the roof" / "The restaurant upstairs" stands alone (`tablet-pin-01/05.png`); crop the laptop hero's foot above the blue-tarp shacks; with JS off, hide the header wordmark on the first screen.
+
+**Keep:** the roof view as the first screen with one name and one black button; the set-piece with the horizon slit and the sun on the dial; the guest quotes inside their moments; the wide room leads and compact budget rows; the "Find your room" sheet and `/rooms/`; the forecast headline in the site's type; the 460 ms first paint and 0 third-party requests on load.

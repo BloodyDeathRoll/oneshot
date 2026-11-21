@@ -1,34 +1,34 @@
 {
  "slug": "lotus-surf-house",
  "variant": "../final",
- "measured_at": "2026-11-04T13:30:42.499Z",
+ "measured_at": "2026-11-09T13:58:42.180Z",
  "first_load": {
   "requests": 13,
   "hosts": [
    "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 903716,
-  "bytes_html": 58212,
+  "bytes_total": 918984,
+  "bytes_html": 73480,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 56996,
   "bytes_images": 788508,
   "largest_image_bytes": 228380,
-  "lcp_ms": 424,
+  "lcp_ms": 448,
   "cls": 0,
-  "dcl_ms": 854
+  "dcl_ms": 1264
  },
  "scroll": {
   "early": {
-   "cls": 0.0016,
+   "cls": 0.0018,
    "shifts": [
     {
-     "value": 0.0016,
-     "at_ms": 859,
-     "y": 675,
+     "value": 0.0018,
+     "at_ms": 833,
+     "y": 0,
      "sources": [
-      "#text"
+      "h1.script"
      ]
     }
    ]
@@ -41,7 +41,8 @@
  "booking": {
   "external_booking_hrefs": [
    "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
-   "https://www.google.com/maps/place/?q=place_id:ChIJBR_cQfoV4ToRQhXcrYmPyU0"
+   "https://www.google.com/maps/place/?q=place_id:ChIJBR_cQfoV4ToRQhXcrYmPyU0",
+   "https://rosa.surf/spot/lazy-left"
   ],
   "tel_hrefs": [
    "tel:+94774647541"
@@ -61,7 +62,7 @@
   "images": 18,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
-  "tapables": 41,
+  "tapables": 43,
   "tapables_under_44px": 20,
   "tapables_under_44px_examples": [
    " 36x44",
@@ -84,13 +85,15 @@
    "H2",
    "H2",
    "H2",
-   "H3"
+   "H3",
+   "H2",
+   "H2"
   ],
   "has_skip_link": true,
   "lang": "en"
  },
  "no_js": {
-  "text_length": 7624,
+  "text_length": 7773,
   "booking_links_reachable": 2,
   "visible_images": 18
  },
@@ -100,7 +103,7 @@
   "photograph_visible": true
  },
  "facts": {
-  "numbers_on_page": 27,
+  "numbers_on_page": 28,
   "numbers_not_in_passed_copy": [
    "9.0",
    "2026."

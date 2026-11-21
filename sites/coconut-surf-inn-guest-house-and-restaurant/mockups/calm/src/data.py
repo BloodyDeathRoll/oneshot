@@ -26,7 +26,8 @@ def paras(h, sl=slice(None), cls=''):
 NAME = copy['businessName']
 TAGLINE = copy['tagline']
 # The hero line is a fragment of the tagline's own words (concepts §2 "Words", §6 schema gap heroLine).
-HERO_LINE = 'Gurubebila, between Midigama and Weligama'
+# Round 2: it starts with "A guesthouse" so the first phone screen says what the place is (4f round 1).
+HERO_LINE = 'A guesthouse in Gurubebila, between Midigama and Weligama'
 assert HERO_LINE in TAGLINE
 CLOSING = copy['closing']
 SPOT = copy['spot']
@@ -67,15 +68,22 @@ STAY = copy['stayInfo']
 AMENITIES = [a['label'] + (f" ({a['note']})" if a.get('note') else '') for a in copy['amenities']]
 
 # Which photographs belong to which room (dossier images[].room_types; concepts §4.1 galleries).
-# img-089 carries no room type in the dossier; it is the Deluxe Family's bathroom in the concept's list.
+# Round 2: each room leads with its best wide frame (the balcony, the veranda, the room seen whole), never a bed
+# close-up or the dim net where a better one exists. img-089 is dropped: the dossier ties it to no room.
 GALLERIES = {
- 'Deluxe Double Room with Balcony': ['img-076', 'img-073', 'img-079', 'img-068', 'img-077', 'img-074'],
- 'Superior Double Room': ['img-035', 'img-034', 'img-037', 'img-030', 'img-017', 'img-064'],
+ 'Deluxe Double Room with Balcony': ['img-068', 'img-076', 'img-073', 'img-079', 'img-077', 'img-074'],
+ 'Superior Double Room': ['img-030', 'img-035', 'img-034', 'img-037', 'img-017', 'img-064'],
  'Deluxe Double Room (2 Adults + 1 Child)': ['img-040', 'img-036', 'img-038', 'img-053'],
- 'Deluxe Family Room': ['img-031', 'img-045', 'img-022', 'img-027', 'img-089'],
- 'Budget Double Room': ['img-047', 'img-046', 'img-048', 'img-049'],
+ 'Deluxe Family Room': ['img-045', 'img-031', 'img-022', 'img-027'],
+ 'Budget Double Room': ['img-046', 'img-048', 'img-049', 'img-047'],
  'Budget Single Room': ['img-056', 'img-057', 'img-059', 'img-061'],
 }
+for label, imgs in GALLERIES.items():
+    for a in imgs:
+        rt = next(i for i in dossier['images'] if i['id'] == a)['room_types']
+        assert label in rt, (label, a)
+# where a crop should sit (object-position), when the centre is not the room
+POS = {'img-030': '40% 50%', 'img-068': '50% 60%', 'img-046': '35% 50%'}
 
 # Alt texts, written from each photograph, not from the dossier line alone.
 ALT = {
@@ -100,7 +108,6 @@ ALT = {
  'img-045': 'The family room seen from the corner: two beds, a red wall, a lantern on the grey wall',
  'img-022': 'A long room with grey concrete walls, a wall-mounted desk and a stool, a red wall at the far end',
  'img-027': 'The entrance of a room: a red wall, a wooden ladder towel rail and a wall lantern',
- 'img-089': 'A grey concrete bathroom with a shower and a toilet under a vent window',
  'img-047': 'A rolled purple towel on a white bed, a mosquito net tied up above it',
  'img-046': 'An open door onto a plain room with a bed under a mosquito-net canopy',
  'img-048': 'Through a doorway, a bed under a white mosquito-net canopy and a blue mat on the floor',
@@ -111,6 +118,8 @@ ALT = {
  'img-061': 'A white pedestal basin in a plain bathroom',
  'img-007': 'The skylit courtyard in the middle of the house: palms growing out of a shallow jade channel of water between red-framed windows',
  'img-006': 'The light-well from below: palms in the water channel, red-framed windows and the skylight above',
+ 'img-016': 'A side lawn under the trees, with five surfboards standing in a wooden rack against the garden wall',
+ 'img-099': 'The house at night: the roof terrace and the long restaurant floor below it lit by string lights, guests at the tables, palm fronds in the dark',
  'img-003': 'An outdoor shower among climbing plants and ferns in the garden',
  'img-103': 'The thatched roof terrace: a hammock slung between timber pillars, a swing frame, and the sea and palms beyond the parapet',
  'img-015': 'A guest in sunglasses reading a book, stretched out on a cushioned bench under the thatched roof',

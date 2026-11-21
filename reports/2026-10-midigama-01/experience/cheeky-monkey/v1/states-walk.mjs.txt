@@ -1,0 +1,127 @@
+import { createRequire } from 'module';
+import fs from 'fs';
+const require = createRequire(process.cwd() + '/');
+const { chromium, devices } = require('playwright');
+const URL_ = 'https://cheeky-monkey-surf-camp.os1.workers.dev/';
+const CUR = 'https://cheekymonkeymidigama.com/';
+const OUT = process.argv[2];
+const log = [];
+const L = (...a) => { const s = a.map(x => typeof x === 'string' ? x : JSON.stringify(x)).join(' '); log.push(s); console.log(s); fs.writeFileSync(`${OUT}/states-walk.log`, log.join('\n')); };
+const browser = await chromium.launch({ timeout: 280000 });
+const phone = { ...devices['iPhone 13'], viewport: { width: 390, height: 844 } };
+const noEngine = async c => c.route(/booking\.com/, r => r.abort());
+const fcInfo = p => p.evaluate(() => { const f = document.querySelector('.fc'); if (!f) return null; const n = f.querySelector('.fc-now'), l = f.querySelector('.fc-link'), i = f.querySelector('iframe'); return { cls: f.className, nowH: n && Math.round(n.getBoundingClientRect().height), now: n?.innerText.replace(/\n+/g, ' | ').slice(0, 220), linkVisible: l ? getComputedStyle(l).display + '/' + getComputedStyle(l).visibility + '/' + getComputedStyle(l).opacity : null, linkH: l && Math.round(l.getBoundingClientRect().height), iframeSrc: i?.getAttribute('src'), iframeH: i && Math.round(i.getBoundingClientRect().height), iframeDisp: i && getComputedStyle(i).display, cls2: window.__cls }; });
+const clsInit = () => { window.__cls = 0; new PerformanceObserver(l => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value; }).observe({ type: 'layout-shift', buffered: true }); };
+async function section(name, fn) { try { await fn(); } catch (e) { L(`ERROR in ${name}:`, e.message.slice(0, 300)); } }
+
+await section('missing frames + touch over widget', async () => {
+  const c = await browser.newContext(phone); await noEngine(c); const p = await c.newPage(); await p.addInitScript(clsInit);
+  await p.goto(URL_, { waitUntil: 'load', timeout: 120000 });
+  const cdp = await c.newCDPSession(p);
+  await p.evaluate(() => scrollTo(0, 14400)); await p.waitForTimeout(1800); await p.screenshot({ path: `${OUT}/phone-scroll-23.png` });
+  await p.evaluate(() => scrollTo(0, 15600)); await p.waitForTimeout(1800); await p.screenshot({ path: `${OUT}/phone-scroll-25.png` });
+  L('closing text', await p.evaluate(() => document.querySelector('.closing')?.innerText.replace(/\n+/g, ' | ').slice(0, 500)));
+  // forecast: arrive by touch and scroll across the iframe
+  const y = await p.evaluate(() => document.querySelector('.fc').getBoundingClientRect().top + scrollY);
+  await p.evaluate(v => scrollTo(0, v - 120), y); await p.waitForTimeout(5000);
+  await p.screenshot({ path: `${OUT}/fc-phone-headline.png` });
+  L('forecast live', await fcInfo(p));
+  const iy = await p.evaluate(() => { const r = document.querySelector('.fc iframe').getBoundingClientRect(); return r.top + scrollY; });
+  await p.evaluate(v => scrollTo(0, v - 80), iy); await p.waitForTimeout(3000);
+  await p.screenshot({ path: `${OUT}/fc-phone-widget.png` });
+  const before = await p.evaluate(() => scrollY);
+  await cdp.send('Input.synthesizeScrollGesture', { x: 195, y: 500, yDistance: -350, gestureSourceType: 'touch', speed: 800 });
+  await p.waitForTimeout(800);
+  const after = await p.evaluate(() => scrollY);
+  L('vertical touch drag over widget', { before, after, moved: after - before });
+  await p.evaluate(v => scrollTo(0, v - 80), iy); await p.waitForTimeout(700);
+  const b2 = await p.evaluate(() => scrollY);
+  await cdp.send('Input.synthesizeScrollGesture', { x: 300, y: 450, xDistance: -220, gestureSourceType: 'touch', speed: 800 });
+  await p.waitForTimeout(1000); await p.screenshot({ path: `${OUT}/fc-phone-widget-swiped.png` });
+  L('horizontal swipe over widget', { pageY: await p.evaluate(() => scrollY) - b2, pageX: await p.evaluate(() => scrollX) });
+  L('horizontal overflow', await p.evaluate(() => ({ sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth })));
+  L('cls forecast walk', await p.evaluate(() => window.__cls));
+  await c.close();
+});
+
+await section('forecast failed', async () => {
+  const c = await browser.newContext(phone); await noEngine(c);
+  await c.route(/rosa-data-opal|rosa\.surf/, r => r.abort()); const p = await c.newPage(); await p.addInitScript(clsInit);
+  await p.goto(URL_, { waitUntil: 'load', timeout: 120000 });
+  const y = await p.evaluate(() => document.querySelector('.fc').getBoundingClientRect().top + scrollY);
+  await p.evaluate(v => scrollTo(0, v - 120), y); await p.waitForTimeout(3500);
+  await p.screenshot({ path: `${OUT}/fc-failed.png` }); L('forecast requests refused', await fcInfo(p)); await c.close();
+});
+
+await section('forecast stale', async () => {
+  const c = await browser.newContext(phone); await noEngine(c);
+  const live = JSON.parse(fs.readFileSync('../crit-exp/rams.json'));
+  const old = JSON.parse(JSON.stringify(live)); old.fetched_at = '2026-11-01T00:00:00+00:00'; old.generated_at = '2026-11-01T00:00:00+00:00'; old.current.t = '2026-11-01T05:30+05:30';
+  await c.route(/rosa-data-opal/, r => r.fulfill({ json: old, headers: { 'access-control-allow-origin': '*' } })); await c.route(/rosa\.surf/, r => r.abort());
+  const p = await c.newPage(); await p.goto(URL_, { waitUntil: 'load', timeout: 120000 });
+  const y = await p.evaluate(() => document.querySelector('.fc').getBoundingClientRect().top + scrollY);
+  await p.evaluate(v => scrollTo(0, v - 120), y); await p.waitForTimeout(3000);
+  await p.screenshot({ path: `${OUT}/fc-stale.png` }); L('forecast stale data', await fcInfo(p)); await c.close();
+});
+
+await section('js off', async () => {
+  const c = await browser.newContext({ ...phone, javaScriptEnabled: false }); const reqs = []; c.on('request', r => reqs.push(r.url()));
+  await noEngine(c); const p = await c.newPage(); await p.goto(URL_, { waitUntil: 'load', timeout: 120000 }); await p.waitForTimeout(1200);
+  await p.screenshot({ path: `${OUT}/nojs-hero.png` });
+  const fc = p.locator('.fc'); await fc.scrollIntoViewIfNeeded(); await p.waitForTimeout(1500); await p.screenshot({ path: `${OUT}/nojs-forecast.png` });
+  L('nojs forecast box', await fc.boundingBox(), 'link visible', await p.locator('.fc-link').isVisible(), 'rosa requests', reqs.filter(u => /rosa/.test(u)).length, 'now text', await p.locator('.fc-now').innerText());
+  await p.locator('#book').scrollIntoViewIfNeeded(); await p.waitForTimeout(800); await p.screenshot({ path: `${OUT}/nojs-plan.png` });
+  L('nojs plan', { h: (await p.locator('#book').boundingBox())?.height, roomLinkVisible: await p.locator('#plan-room a.plain-only').isVisible(), pageH: await p.locator('html').evaluate ? 'n/a' : 0 });
+  await c.close();
+});
+
+await section('reduced motion', async () => {
+  const c = await browser.newContext({ ...phone, reducedMotion: 'reduce' }); await noEngine(c); const p = await c.newPage();
+  await p.goto(URL_, { waitUntil: 'load', timeout: 120000 }); await p.waitForTimeout(2500); await p.screenshot({ path: `${OUT}/reduced-hero.png` });
+  L('reduced', await p.evaluate(() => { const v = document.querySelector('video'); return { src: v?.currentSrc, paused: v?.paused }; }));
+  await p.evaluate(() => scrollTo(0, 1100)); await p.waitForTimeout(800); await p.screenshot({ path: `${OUT}/reduced-1100.png` }); await c.close();
+});
+
+await section('hero loop + scroll motion', async () => {
+  const c = await browser.newContext(phone); await noEngine(c); const p = await c.newPage();
+  await p.goto(URL_, { waitUntil: 'load', timeout: 120000 });
+  const seen = [];
+  for (let i = 0; i < 8; i++) { await p.waitForTimeout(2500); const s = await p.evaluate(() => { const v = document.querySelector('video'); return { t: +v.currentTime.toFixed(1), dur: +v.duration.toFixed(1), src: v.currentSrc.split('/').pop(), vw: v.videoWidth, vh: v.videoHeight }; }); seen.push(s); await p.screenshot({ path: `${OUT}/hero-loop-${i}.png` }); }
+  L('hero loop', seen);
+  const sizes = await p.evaluate(() => performance.getEntriesByType('resource').filter(e => /video|\.webm|\.mp4/.test(e.name)).map(e => ({ n: e.name.split('/').pop(), kb: Math.round(e.transferSize / 1024) })));
+  L('video resources', sizes);
+  // board scroll set piece at y≈1000
+  for (const yy of [900, 1000, 1100, 1200, 1300, 1500]) { await p.evaluate(v => scrollTo(0, v), yy); await p.waitForTimeout(500); await p.screenshot({ path: `${OUT}/motion-board-${yy}.png` }); }
+  // cards swipe + room slideshow + review arrows
+  L('tap targets under 44', await p.evaluate(() => [...document.querySelectorAll('a,button')].filter(e => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && (r.height < 44 || r.width < 44) && !e.closest('#book'); }).slice(0, 30).map(e => ({ t: (e.innerText || e.getAttribute('aria-label') || '').trim().slice(0, 30), w: Math.round(e.getBoundingClientRect().width), h: Math.round(e.getBoundingClientRect().height) }))));
+  await c.close();
+});
+
+await section('laptop', async () => {
+  const c = await browser.newContext({ viewport: { width: 1440, height: 900 } }); await noEngine(c); const p = await c.newPage(); await p.addInitScript(clsInit);
+  await p.goto(URL_, { waitUntil: 'load', timeout: 120000 }); await p.waitForTimeout(4000); await p.screenshot({ path: `${OUT}/laptop-00-hero.png` });
+  const H = await p.evaluate(() => document.documentElement.scrollHeight); L('laptop height', H);
+  let i = 1; for (let y = 800; y < H - 800; y += 800) { await p.mouse.move(720, 450); await p.mouse.wheel(0, 800); await p.waitForTimeout(1100); await p.screenshot({ path: `${OUT}/laptop-${String(i++).padStart(2, '0')}.png` }); }
+  L('laptop cls', await p.evaluate(() => window.__cls));
+  const y = await p.evaluate(() => document.querySelector('.fc').getBoundingClientRect().top + scrollY); await p.evaluate(v => scrollTo(0, v - 120), y); await p.waitForTimeout(3500); await p.screenshot({ path: `${OUT}/laptop-forecast.png` }); L('laptop forecast', await fcInfo(p));
+  await p.evaluate(() => scrollTo(0, 0)); await p.waitForTimeout(600);
+  await p.locator('.top [data-plan]').hover(); await p.waitForTimeout(350); await p.screenshot({ path: `${OUT}/laptop-hover-plan.png` });
+  await p.locator('.top [data-plan]').click(); await p.waitForTimeout(800); await p.screenshot({ path: `${OUT}/laptop-plan-start.png` });
+  await p.locator('#book .tile[data-go="room"]').click(); await p.waitForTimeout(600); await p.screenshot({ path: `${OUT}/laptop-plan-room.png` });
+  L('laptop handoff hidden before pick', await p.locator('#plan-room .handoff').isHidden());
+  await p.locator('#book .step.on [data-room]').nth(0).click(); await p.waitForTimeout(800); await p.screenshot({ path: `${OUT}/laptop-plan-picked.png` });
+  L('laptop handoff after pick', await p.locator('#plan-room .handoff').innerText());
+  await p.keyboard.press('Tab'); await p.waitForTimeout(200); L('focus after tab', await p.evaluate(() => document.activeElement?.innerText?.slice(0, 40) || document.activeElement?.getAttribute('aria-label')));
+  await c.close();
+});
+
+await section('current site', async () => {
+  const c = await browser.newContext(phone); const p = await c.newPage();
+  await p.goto(CUR, { waitUntil: 'load', timeout: 120000 }); await p.waitForTimeout(2500); await p.screenshot({ path: `${OUT}/current-phone-00.png` });
+  L('current', await p.evaluate(() => ({ h: document.documentElement.scrollHeight, sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth, title: document.title, bookingLinks: [...document.querySelectorAll('a[href*="booking.com"]')].length, tel: [...document.querySelectorAll('a[href^="tel:"]')].length, videos: document.querySelectorAll('video').length, nav: [...document.querySelectorAll('nav a')].slice(0, 12).map(a => a.innerText.trim()), first: document.body.innerText.replace(/\n+/g, ' | ').slice(0, 500) })));
+  const H = await p.evaluate(() => document.documentElement.scrollHeight);
+  let i = 1; for (let y = 800; y < H && i < 8; y += Math.max(800, Math.floor(H / 8))) { await p.evaluate(v => scrollTo(0, v), y); await p.waitForTimeout(900); await p.screenshot({ path: `${OUT}/current-phone-${String(i++).padStart(2, '0')}.png` }); }
+  await c.close();
+  const d = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const q = await d.newPage(); await q.goto(CUR, { waitUntil: 'load', timeout: 120000 }); await q.waitForTimeout(2500); await q.screenshot({ path: `${OUT}/current-laptop-00.png` }); await d.close();
+});
+await browser.close();

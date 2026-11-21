@@ -7,6 +7,95 @@ made both changes in the mockup: the beach-colour grounds, and "Down at the wate
 surf photos. Both were carried over unchanged in round 1. **Round 2** (below) replaced the drawn first screen with the
 drone loop, on Alon's decision, and dropped stock-003.
 
+## Round 4 (fix round after verification 1: critic 68.5/80, visual-critic 7.5, experience-critic 7, total 81.9 < 85) — 2026-11-09
+
+designer 0.7.1 (the run's pin). Fixed against the "Verification 1" sections of `reports/2026-10-midigama-01/
+cheeky-monkey.md`, `.visual.md` and `.experience.md`, in the order of Alon's fix list. Not required this round:
+micro-animations on plain text links (Alon, 2026-11-09: the cap covers controls only); every control keeps its motion.
+Kept as the critics praised it: the first screen, the shop, Plan a stay with its `.handoff[hidden]` fix, 1 tap to book,
+the facts. The vid-001 preview-only waiver (conflicts 6) is unchanged. Still a preview build (noindex, robots
+Disallow, no sitemap).
+
+| Fix-list item | Change |
+|---|---|
+| **1. Forecast: grid** | The pair now sits on the page column: at 1440 the headline stack starts at 168 and the widget box is 852–1272 (was 272–1168). `.fc` is `minmax(0,1fr) 420px`, gap 56, `min-height:500px`, stack vertically centred |
+| **1. Forecast: tight stack** | A script title ("Waves at Rams", `labels.forecast.title`), one factual line (below), the headline card (248 px desktop / 214 px phone, fixed), then the credit line. The card holds "Latest reading, Mon 14:30", the height range (80 px desktop, 58 px phone), the swell and the wind, and Rosa's update time. No stretched gaps. Widget at Rosa's 420 × 500, unmodified (`theme=light`, attributes as `tools.md`) |
+| **1. Forecast: update marker** | Plain 13.5 px ink-2 text, "Rosa updated it on 9 November at 13:56". The pink clock pill stays only on prices ("Published 2021, call to confirm") |
+| **1. Forecast: time label** | "Latest reading, {weekday} {HH:MM}" from `current.t` in the spot's timezone (`labels.forecast.when`). The swell is still the first in-window swell's mean period (`tools.md`) |
+| **1. Forecast: HEAD gate removed** | `site.js` requests only the JSON, then sets the frame's `src`; the frame shows on `load` within 10 s, otherwise loses its `src`. Measured on a scroll to the block: GET rams.json, GET the widget document, then only the frame's own requests. No HEAD |
+| **1. Forecast: plain link always visible** | "See today's forecast for Rams on Rosa" is a ghost button in the credit line, beside "Forecast for Rams by Rosa", in every JS-on state (live, loading, failed, stale, refused frame). A refused frame cannot be detected from outside (a cross-origin frame fires `load` on an error page too), so the link never depends on it. The composed card (`.fc-alt`) sits under the iframe, 4 px short of its foot, so a frame that loads blank (an aborted document) still shows the card. Under a shown frame the card is `inert` and `aria-hidden` (no hidden tab stop) |
+| **1. Forecast: failure states** | Loading: the card says "Getting Rosa's latest reading for Rams". Failed / stale / 10 s timeout, in or above the screen: the card says, in the hand, "No fresh reading just now" + "Rosa's own page for Rams has today's forecast.", and the widget box shows `.fc-alt`: a wave icon, "Wave height, swell and wind for Rams", the blue "See today's forecast for Rams on Rosa" button and the credit. Every box keeps its size: CLS 0 measured for failed, stale and hung (12 s) at 390 and 1440. Failed while still below the screen (`.solo`) and JS off: no headline card, the stack (title, line, credit) beside / above `.fc-alt` at its own height, one link button (the duplicate in the credit line is dropped there). Loading and failed are two layers of the same cell switched by `visibility` (a first version that changed one element's layout scored CLS 0.0043 at 390; now 0) |
+| **1. Forecast: introduction** | "Rams is the nearest spot Rosa covers, about 360 m from the shop." (`gaps.forecast.line`, SCHEMA GAP 12). Checked today: Rosa `data/index.json` rams (5.962565, 80.393597) against dossier `location.lat_lng` (5.9617986, 80.3967609) = 360 m haversine; 369 m from the shop's own Google listing; Booking.com pin 364 m. Next Rosa spots: Coconut 578 m, Lazy Left 679 m, Lazy Right 980 m. Rams is never called the business's break |
+| **1. concepts.md** | §3 gets the amendment dated 2026-11-09 (Alon's choice of 2026-11-04, `rams`, nearest Rosa spot, 360 m, never their break, pending proposal 2026-10-midigama-01/003 item 1). Nothing else in concepts.md changed |
+| **2. Early-scroll CLS** | `.hero-in` reserves its full height from the first paint: `min-height` = its padding + two lines of the line + the gap + the button, at both breakpoints (it still grows if the line wraps to three). Reproduced first on the plain server (early pass, 1 of 3 runs 0.0288, `div.hero-in` 203 → 277 px); after: 0 in 6 of 6 runs, and `audit-mockup` early 0 / settled 0 |
+| **3. Hero title height** | **Not changed; Alon decides** (conflicts 9, updated below). No framing works: at 1440 × 900 the 16:9 loop fills the height exactly (no vertical slack), and the riders cross 33–62 % of the frame's height. Raising the line needs the video drawn about 1.2× larger with its top cropped: that buys about 90 px (the block would sit at ~60–82 % instead of 71–94 %), still not centred, crops the sea band off the village shots, and upscales the footage on every retina screen (the reason round 3 refused it). The phone's portrait tier has no vertical slack either. **Phone cut towards the drone shot: not done.** The master holds 1.8 s of drone footage and 4.4 s of the surf shot; a loop of at least 6 s weighted to the drone shot needs a new cut from vid-001 (slow motion re-interpolated), which is a re-encode of the hero, outside this round's limits |
+| **4. Wave dividers** | Four curves (`--wave-a…d`, tiles 1100–1900 px), each periodic and smooth: every crest and trough, the tile seam included, has a level tangent, so there is no cusp anywhere (the old 900 px tile had one at each seam, x ≈ 870 at 1440). Each section sets its curve and offset (`#water`, `#counter`, … `.foot`), so no two joins in a row match. On phones the tiles are drawn at half width so the curve still reads |
+| **4. Header hairline** | `.top.solid` has no box-shadow any more |
+| **5. Sunset surfer** | Desktop: the whole portrait (3:4, 900 px file from the 1500 px source, drawn 434 px wide) beside the roof text, with the roof bar photo (4:5) over its lower left corner, set off by a 10 px ring of the section's pink (an `outline`). Phone: unchanged, the full-bleed 4:5 band at the top of the section (`.roof-ph{display:contents}`, band first) |
+| **5. Water photo** | img-100 is cut in to the water: 5:8 at `zoom: 1.6`, bottom-aligned (781 × 1250 of the 1500 × 2000 source): the sky above the horizon is a 12 % strip, the surfer sits at 36–65 % of the height |
+| **5. Sign print** | img-121's source itself cuts the sign at "SU". Re-cropped 4:5 at `zoom: 1.5` from the left: it ends cleanly after "BABA'S SURF" and now shows the Cheeky Monkey signpost (the monkey logo, which the visual critic missed on the page). The grey frame was the slot's mean-colour placeholder painted on the mat: `.print` now has a white mat. Alt rewritten from the new crop: "An earlier view of the shop front: the Cheeky Monkey signpost and the Baba's Surf sign, boards outside" |
+| **6. Package row** | `.cards` is `repeat(4,minmax(0,1fr))`; the dated pill fits (13 px, 4 px left margin). Measured at 1440: cards 168–1272, no overflow at 320, 390, 1440 |
+| **6. Instagram tile** | "Follow us on Instagram" (no handle), breaks between words only |
+| **6. Closing line** | "Book a room online, or call us about lessons and surf weeks." (was 87 characters, three marker lines on a phone). Same two facts as the copy's line (rooms on Booking.com; lessons and weeks by phone). Set in `scripts/seed-from-dossier.mjs`, not in `copy/en.json` (the copy station's file) |
+| **6. Room tiles** | A third line from `rooms[].note` (`roomExtra`): "With a desk, a seating area and a garden view" vs "With a garden view"; "9 m²" never splits (no-break space), and "\| 9 m²" moves to the next line as a unit |
+| **6. Hand-off line** | "Live dates and prices for every room are on Booking.com. Look for the **Classic Triple Room** on the list." The room name updates on each pick (`[data-sum]`) |
+| **6. Video pause control** | One toggle button (`.vid-ctl`, "Pause the videos", `aria-pressed`) pauses and plays both loops (hero and shop reel); the on-screen autoplay respects it. Bottom right of the hero at desktop widths (x 1346–1392, y 790–836 at 1440, clear of the centred button and the wave edge); under the header's call button on phones (x 331–375, y 76–120 at 390; the foot of the phone frame is full). Shown only once the hero loop is attached: never under reduced motion, Save-Data or JS off. Icon swap with a .2 s scale/fade, `:active` scale from `.icon-btn` |
+
+Files: `src/pages/index.astro`, `src/styles/site.css`, `src/scripts/site.js`, `src/lib/site.mjs` (`roomSize`,
+`roomExtra`), `src/lib/slots.mjs` (slots 0, 14, 17), `src/lib/labels.json` (`forecast.*`, `pause`, `ig.follow`,
+`drawer.handoff_look`), `src/lib/icons.svg.txt` (pause, play), `scripts/photos.mjs` (`zoom`),
+`scripts/seed-from-dossier.mjs` (closing, img-121 alt, `gaps.forecast`), and its outputs `src/tenant/content.json`
+and `src/gaps/gaps.json` (re-run: only those three values changed; the copied media are byte-identical).
+`sites/cheeky-monkey/concepts.md` §3 (amendment only).
+
+**Media this round:** no video touched. New photo files, written by `scripts/photos.mjs` during `npm run build` (its
+output is covered by `make-media.sh`'s `# media: sites/cheeky-monkey/final/public/photos/*` header):
+`public/photos/img-100-r1.6-781.webp` (was `-1000`), `img-134-r1.333-900.webp` (was `img-134-r0.563-1500.webp`),
+`img-121-r1.25-480.webp` (was `img-121-r0.667-640.webp`). `src/tenant/media` and `src/gaps/media` were re-copied by
+the seed script and are byte-identical (md5 of both folders before = after).
+
+### Look loop (round 4)
+
+- **R4-1** (forecast, 1440 + 390, live / failed / JS off): the first rebuild stacked the credit and the button on two
+  rows inside 520 px; the stack is now 560 px wide and the credit line is one row at 1440. With JS off the frame's
+  inline `display:block` (as Rosa ships it) kept an empty 500 px below the composed card: hidden with `!important`
+  in the JS-off and `.solo` states only. The failed card first held one line in a 248 px white card (the "mostly empty
+  card" the critics named); it now carries a hand-set line and where the forecast is.
+- **R4-2** (whole page, `tools/shoot.mjs` over http, desktop 17 + phone 23 captures, 13,597 / 17,347 px): the joins
+  differ section to section and none shows a cusp; no line under the scrolled header; the roof reads as a moment
+  with the sunset portrait whole; the water photo is water, not sky; the print ends on a word with the monkey sign;
+  the card row ends at 1272. On the phone the closing line is three short marker lines (was three long ones).
+- **R4-3** (hero): the pause control first sat over the hero button and the wave at 390; moved under the header's
+  call button on phones. Against the current site (`old-site-*.png`: PHP notice, 470 px layout on a 390 phone, no
+  booking link) the page is still clearly better at a glance; nothing on the first screen changed except the small
+  control.
+- Inspector (`design-taste-frontend/scripts/inspect.mjs`, out to scratch): new against this round, two lines kept on
+  purpose: `eyebrow` on "Latest reading, Mon 14:30" (Alon's fix list asks for exactly that label) and `covered-text`
+  on `.fc-alt` (it sits under Rosa's frame by design, as the refused-frame fallback). The roof ring was a box-shadow
+  and is now an outline. The other FAIL / WARN lines (hero colour-band gradient, header text-shadows, the review's
+  verbatim emoji, the drawer hidden under reduced motion, 19 sizes, the sand ground) predate this round and are
+  recorded in rounds 2–3.
+
+### Checks (round 4)
+
+| Check | Result |
+|---|---|
+| `env -u SITE_URL npm run build` | **pass**, 1 page, `dist/index.html` 116,460 B; `noindex, nofollow`, robots `Disallow: /`, no sitemap |
+| `tools/check-design.mjs sites/cheeky-monkey/final/dist/index.html` | **ok**, 0 problems, 0 warnings |
+| `tools/check-places.mjs cheeky-monkey` | **ok**, 1 borrowed use checked (mockups), 0 failing |
+| `tools/audit-mockup.mjs cheeky-monkey ../final` | first load 533,116 B in 8 requests, LCP 648 ms, CLS 0, **scroll early 0 / settled 0**, 0 third-party, largest image 119,050 B, fonts 64,900 B, 0 tap targets under 44 px, 0 images without alt, drawer opens / closes / returns focus. Facts: 49 numbers, 2 not in the passed copy: "2018" (footer credit, as before) and "360" (`gaps.forecast`, sourced above) |
+| Early scroll, plain server, audit's method (scratch script) | 0.0000 in 6 of 6 runs (before: 0.0288 in 1 of 3) |
+| Forecast states (scratch script, 390 + 1440) | 0 third-party requests before the scroll. Live: GET JSON + widget document, `fc live`, `fc-rosa on`, CLS 0. JSON aborted / stale (30 h) / hung 12 s: `fc off`, no frame request, boxes unchanged (500 / 949 px), CLS 0. Widget document aborted / `X-Frame-Options: DENY`: `fc-rosa on` (undetectable, as expected), credit-line link visible, `.fc-alt` under the frame. Failed below the screen: `fc off solo`, the document shortens off screen, CLS 0 |
+| axe-core 4.10.2 (WCAG 2.0/2.1 A + AA, full scroll, third-party blocked) | **0 violations** at 390 and 1440, 27 rule sets pass; incomplete `color-contrast` 179 / 181 (text over photos and footage) |
+| Keyboard (1440) | skip link, wordmark, nav, Plan a stay, Book, Call, **Pause the videos**, hero button, See the surf weeks, Forecast for Rams by Rosa, See today's forecast…, the frame, the cards. `.fc-alt` is skipped while covered |
+| Pause control (390 + 1440) | hero plays; press: hero paused, `aria-pressed=true`; the reel, scrolled to, stays paused; press again: the hero plays |
+| Reduced motion / JS off (390 + 1440) | 0 video requests over a full scroll, control hidden; JS off shows the composed forecast card |
+| `tools/funnel.mjs http://localhost:8971/ --depth 3` (out to scratch) | clicks_to_book 1, primary engine ("Book"), hero engine (0 taps to flow), CTA above the fold, 0 broken. 23 Booking.com links, all `booking.engine_url` |
+| Drawer | Room tiles carry the third line; pick "Classic Triple Room": the hand-off says "Look for the Classic Triple Room on the list." at 390 and 1440 |
+| Overflow | none at 320, 390, 1440 |
+
+`shots/` in this folder still holds round 3's sheets; this round's sheets were shot to scratch and deleted.
+
 ## Round 3 (critique r2: critic 70.4/75 + the vid-001 licence hard fail, visual-critic 8/10, experience-critic 8/10) — 2026-11-04
 
 designer 0.7.1, the last allowed round. Fixed against the "## Round 2" sections of `reports/2026-10-midigama-01/
@@ -257,6 +346,7 @@ slides 2–6, the hero footage's credit line, the socials, the place line and th
 10. **The drawer's board step** ("400 boards to rent" …): the shop ¶1 plus `rentals[]` as the drawer's words
     (`gaps.drawer`).
 11. **SEO title** (not in v0.1): `gaps.seo.title`, which is the mockup's title.
+12. **The forecast's introduction** (round 4): schema v0.3 `forecast` has `enabled`, `rosaSpotId`, `spotName`, no line. "Rams is the nearest spot Rosa covers, about 360 m from the shop." is `gaps.forecast.line`, sourced in its `_source`.
 
 ## Facts (every checkable claim → field → dossier; the copy's audit is `copy/review.md`, 0 unsourced / 0 contradicted)
 
@@ -279,6 +369,8 @@ slides 2–6, the hero footage's credit line, the socials, the place line and th
 | Address; +94 71 924 8686; cheekymonkeymidi@gmail.com; map; Booking.com; Instagram; Facebook; site | `contact`, `bookingLinks`, gap socials | `location.address`, `contact.*`, `booking.engine_url`, `contact.socials` |
 | Spot and season | `spot`, `season` | `location.spot`, `season` |
 | Drone footage credit (Lorenzo Marzocca, 2018 promo film) | gap heroCredit | `videos[]` vid-001 `found_on`, `source_url` |
+| Round 4: "Rams is the nearest spot Rosa covers, about 360 m from the shop" | gap forecast.line | Rosa `data/index.json` (rams lat/lon; next Coconut 578 m) + `location.lat_lng`, 360 m haversine (369 m from the shop listing in `location.address_other_platforms`) |
+| Round 4 closing: "Book a room online, or call us about lessons and surf weeks." | `closing` | `booking.engine_url`, `contact.phone` (the copy's own line, shortened) |
 | No generator; taxi, safari, cooking class | `copyBlocks info[1]` | as in `copy/review.md` |
 
 ## images
@@ -302,6 +394,7 @@ same ratios, crop centres, widths and qualities.
 - **Round 3:** img-155 is replaced in "Down at the water" by **img-151** (business-owned, the business's own site,
   uploaded 2020-05-28). The alt was written from the photograph: "Cheeky Monkey surfers on the sand with coconuts,
   lined up in front of their colourful soft boards, palms behind".
+- **Round 4 crops:** img-100 cut in to the water (5:8, zoom 1.6, bottom-aligned); img-134 shown whole at 3:4 on desktop (the 4:5 phone crop unchanged); img-121 re-cropped 4:5 (zoom 1.5, from the left) to end after "BABA'S SURF", with the new alt written from that crop (above).
 - **Atmosphere:** none since round 2. stock-003 is dropped.
 - **Alt text:** the mockup's, word for word (`scripts/seed-from-dossier.mjs` ALT).
 
@@ -312,7 +405,7 @@ The same as in the mockup:
 - Rooms go to Booking.com. Weeks, lessons and boards go to `tel:`, prefilled `mailto:` and Instagram.
 - Every price is dated 2021.
 - The Booking.com date parameters are not built (they cannot be tap-tested in a test run).
-- No break name, so no forecast.
+- No break name. The forecast shows Rosa's nearest spot, Rams, by Alon's decision (2026-11-04; concepts.md §3 amendment), never as the business's break.
 - No shop hours.
 - No instructor names.
 - Open status is unclear, so the page says nothing about it.
@@ -360,7 +453,7 @@ Copyeditor N1 (the rooftop quote fragment, with Mihrican's full quote in the sli
    tier at the source's full height, about 1.3 device px per source px at DPR 3 (m1280 drew about 2.5), so it is as
    sharp as the source allows. It is native on every tier and never upscaled. Raw footage from the owner or the
    filmmaker would lift it further (pitch point).
-9. **The hero type is no longer vertically centred (round 3).** The calibration notes (references.md) ask for text
+9. **The hero type is no longer vertically centred (round 3; open for Alon, round 4).** Round 4 tried the framing again (visual-critic v1 fix 3) and found none that works: see the round 4 table, item 3. **Alon decides:** record the low title as a decision (which removes the calibration point), or accept a ~1.2× upscale of the footage for about 90 px of lift. The calibration notes (references.md) ask for text
    over video "centred and vertically centred". The visual critic's round-2 fix 1 asks that the surfer never sits
    under the line or the button. Across the surf shot he rides through the middle of the frame (33–62% of its
    height), so both cannot hold. The line and the button stay centred horizontally and sit in the lower band
@@ -391,8 +484,8 @@ because none is sourced. No wave fact is content: the numbers come only from Ros
 |---|---|
 | `forecast: {enabled: true, rosaSpotId: "rams", spotName: "Rams"}` | `src/tenant/content.json`, and `scripts/seed-from-dossier.mjs` carries the same value with the decision in a comment, so a reseed keeps it |
 | The block | `src/pages/index.astro`, at the end of "Down at the water" (`#water`), under its photo grid and above "The surf weeks". It renders nothing unless `enabled` and a valid `rosaSpotId` |
-| Logic | `src/scripts/site.js`, ported from `sites/layday-surf-ahangama/final` (the same as KA / Lavish). One JSON request when the block is within 400 px of the screen. The headline is drawn only from data under 24 h old. After that the widget gets its `src`, but only after a HEAD 200 and the frame's `load`, within 10 s. Otherwise the plain link stays. New: if it fails while the block is still below the screen (`.solo`), the empty headline box is dropped (no visible shift). If the block is in view, the box stays reserved |
-| Look | `src/styles/site.css`. The headline is a white 22 px-radius card like the lesson card, on the aqua ground. It has the blue wave icon and the credit link, the height range in Rethink Sans 600 (92 px desktop, 64 px phone), the time in ink 600 with swell and wind in ink-2, and Rosa's update time in the site's pink `.dated` pill. The two boxes are 420 × 500 side by side, centred, at desktop widths. On a phone they stack: card 340 px high, widget box 500 px. Rosa's widget is `theme=light`, embedded exactly as Rosa ships it |
+| Logic (superseded in round 4: no HEAD; see the round 4 table) | `src/scripts/site.js`, ported from `sites/layday-surf-ahangama/final` (the same as KA / Lavish). One JSON request when the block is within 400 px of the screen. The headline is drawn only from data under 24 h old. After that the widget gets its `src`, but only after a HEAD 200 and the frame's `load`, within 10 s. Otherwise the plain link stays. New: if it fails while the block is still below the screen (`.solo`), the empty headline box is dropped (no visible shift). If the block is in view, the box stays reserved |
+| Look (superseded in round 4) | `src/styles/site.css`. The headline is a white 22 px-radius card like the lesson card, on the aqua ground. It has the blue wave icon and the credit link, the height range in Rethink Sans 600 (92 px desktop, 64 px phone), the time in ink 600 with swell and wind in ink-2, and Rosa's update time in the site's pink `.dated` pill. The two boxes are 420 × 500 side by side, centred, at desktop widths. On a phone they stack: card 340 px high, widget box 500 px. Rosa's widget is `theme=light`, embedded exactly as Rosa ships it |
 | llms.txt | "Pages" lists `Forecast for Rams by Rosa` → rosa.surf/spot/rams, as the Ahangama sites do |
 
 Checks (local preview, `astro preview` on :8950): `node tools/site-check.mjs cheeky-monkey --url http://localhost:8950/`
@@ -402,3 +495,5 @@ Playwright check found no rosa.surf or rosa-data request on first load, no conso
 only the link, in the 420 × 500 box. JSON blocked and stale data (30 h): link shown, no numbers, no widget request.
 Cost: about 3.5 KB gzip of inline HTML (CSS + JS + markup), no new requests. The embed count is 1 of 2 (the page has no map
 iframe).
+
+**Hero title, decided by Alon 2026-11-09:** the title stays in the lower third. No framing lifts it without covering the surfers, and the alternative (drawing the video ~1.2x larger for ~90 px) crops the sea and upscales the footage. This is a recorded design decision, not an open defect.

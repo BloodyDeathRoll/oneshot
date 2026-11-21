@@ -305,3 +305,174 @@ None. vid-001 leads (licence waived by Alon for the preview, per `notes.md`, not
 ### Report
 
 Score **8/10**: **pass**. Better than the current site: **yes**. Top three remaining fixes (polish only): (1) recrop img-100 off the sky, (2) give the package row a lead card, (3) enlarge or drop the closing board.
+
+
+## Verification 1
+
+Run `2026-10-midigama-01` · station 5 (full, final site) · verification 1 · visual-critic 0.2.0 · 2026-11-06.
+Page: live preview `https://cheeky-monkey-surf-camp.os1.workers.dev/`. Variant: unique ("Pick your board"), per the ledger's `picked` line. Changes since the last full round: a Rosa forecast block for Rams, and the Plan a stay hand-off box stays closed until a room is picked.
+
+Shot set: `reports/2026-10-midigama-01/verify-1-cheeky-monkey/shots/` desktop-00…17 and mobile-00…22, plus both sheets (reused, not re-shot). My own walks are scratch files outside the repo, so they are described in words below as "live". Current site: `dossier/cheeky-monkey/assets/old-site-*.png` plus a fresh live first screen at 1440 and 390. Gold: `ka-surf-hostel.html` and `the-lavish-haven.html` first screens, plus the notes for KA, Layday and Global Surf.
+
+Independence: I did not open this round's critic or experience-critic reports. While checking how this file ends I saw its section headings and the last lines of Round 3, including that round's score. My looking was finished by then, but I set the number afterwards, so this is not fully blind.
+
+### Three-second test
+
+- **Desktop (desktop-00, live hero frames):** warm and immediately a place. A drone shot over red roofs and palms to the sea, then a cut to surfers on a green wave. I see the water first, then the white script line, then the blue button. I would keep scrolling.
+- **Phone (mobile-00, live hero frames):** same feeling, and the portrait crop works. The surf shot is visibly soft (the water smears); the drone shot holds up better.
+
+### Checklist (both widths)
+
+- **Media:** strong and real, and video leads. The live hero is a 6.2 s two-shot loop, playing `cm-drone.d1920.webm` on desktop and `cm-drone.p1080.webm` (608×1080) on the phone. Yellow fish full-bleed (desktop-02) is sharp and is the best still on the page. Shop grid (desktop-09, mobile-13) is the most colourful moment. Weak spots: the sunset surfer full-bleed at 1440 is soft, with a blocky face (desktop-11); the water photo is half empty sky (desktop-03); the tilted sign photo cuts off at "SURF SHOP & SU" inside a grey frame (desktop-13, mobile-17).
+- **Composition and grid:** a consistent 168–1272 column with good full-bleed breaks. Three breaks in it: the forecast pair sits at 272–1168 (desktop-04); the package row runs to 1295, 23 px past the column (`.cards` is 1127 wide in 1104, desktop-05); the mid-page leans on rounded white cards.
+- **Typography:** brush script for titles and a clean sans for reading suit the place and match the bar's "readable face + handwritten titles". Weak spots: the long closing sentence in script is hard to read, especially "Booking.com" (desktop-17, mobile-20); the Instagram handle breaks mid-word as "@cheekymonkeysrila / nka" (desktop-17) and "@cheekymon / keysrilanka" (mobile-22).
+- **Colour:** sand, pale water blue and sunset pink belong to a beach and answer Alon's "more colorful" note. The booking blue is unmistakable on every pale ground, a little less so on the teal wave (live hero frame). Pink carries two meanings: soft tiles in the planner, and a caution pill on prices.
+- **Hierarchy and rhythm:** sections change ground and pace well down to the rooms, then grow similar. Every section ends in the same wave divider, the same curve each time, with a small visible cusp near x≈870 (desktop-09, desktop-13, desktop-14). That repetition is the page's main template tell.
+- **Polish:** mostly clean. A hairline sits under the scrolled header (y≈72 on every desktop shot), which the calibration bars. Four identical pink "Published 2021, call to confirm" pills sit in one row (desktop-05), below an intro that already says it.
+- **Distinctiveness:** the board-shaped video windows (desktop-01, mobile-20) and the 400-board shop feel like this business. The monkey logo from the current site is absent from the page, apart from the vest in the yellow fish photo.
+- **Hero and motion:** the hero is clean and has one clear button, and the video cut is a real main item. Elsewhere motion is modest. Live I found the hero crossfade, header and button colour changes, a 4 px card lift on hover, slideshow transforms and the looping board videos. There is no canvas and nothing scroll-linked; the board windows hold still relative to the page. Reduced motion falls back to a good still with no video attached.
+
+### The forecast block
+
+**How it sits:** it belongs, and it helps a little. White cards on pale blue continue "The spot / The season", and it lands logically after the water photos and before the prices. The big height figure gives the mid-page the scale contrast it otherwise lacks. It also gives a surfer a real reason to trust and return. Rosa's widget stays recognisable, and its satellite strip is an acceptable dark accent. Live: no Rosa request before scrolling, the iframe's space is reserved at 420×500 (350×500 on the phone), CLS 0 at both widths, and the column holds at 1525.
+
+**What holds it back:**
+- **Stretched spacing (a named calibration point):** the left card spreads credit, number, details and pill across 500 px to match the widget, with large gaps between them (desktop-04).
+- **Off the grid:** at 272–1168 it is inset 104 px each side from the photos directly above and the heading directly below (desktop-04).
+- **The two halves disagree:** in the shared shots the headline says swell 8.6 s while the widget says 15 s (desktop-04). Live six hours later the headline said 16.6 s from the south beside 9 s, 9 s and 16 s. Rosa publishes several swells and the rule takes the first in-window one, so this follows the spec, but side by side it reads as a mistake.
+- **Wrong signal:** the "Rosa, updated…" pill uses the same pink and clock as the "Published 2021, call to confirm" pill, so fresh data looks like a warning.
+- **No introduction:** nothing on the page says what Rams is. "The spot" names no break (desktop-03), so a newcomer meets the name cold. A line needs a dossier entry first. `concepts.md` also still says "Forecast: no".
+- **Failure states:** with Rosa blocked and JS on, the left half vanishes, leaving a hole beside a lone 500 px white card holding one link (live desktop); on the phone it is one mostly blank 500 px card. With JS off it is one centred card, cleaner but just as empty. The rule is "never an empty box".
+- **Phone length:** the block is just over one phone screen (mobile-04, mobile-05), and the package cards already start about 4,700 px down.
+
+### Plan a stay hand-off
+
+Confirmed live at both widths: choosing "A room" shows five room tiles and no hand-off box. Picking one outlines that tile and only then shows the box with "Check dates on Booking.com". This is a clean improvement and feels like part of the site. Small issues: the first step leaves the lower half of the drawer empty, more so on the phone; at 1440×900 the picked state sits tight, with the back button at the top edge and the button at the bottom edge.
+
+### Not defects (shot timing)
+
+- The empty olive Small Twin tile (desktop-08, desktop-09) is a loading placeholder. Live, the photo is there once it loads (mobile-11 shows it too). On a throttled phone, tiles start as matched flat colours and paint in without shifting.
+- The raised fourth package card (desktop-05) is the hover lift, not misalignment. The 23 px overrun is real.
+
+## Score: **7.5 / 10**
+
+Fail, narrowly. The first screen and the shop section are at the bar, but the calibration says any listed point puts a page below 8, and three are visible: the hero title sits in the lower third rather than vertically centred (desktop-00, mobile-00), the forecast's stretched spacing, and the rule under the header. Below the hero the page is attractive but more card-and-wave than the Global Surf standard's "each section its own moment". Closest reference: above KA and Lavish on real media, below them on having one strong idea carried down the page. I could only judge Global Surf from its notes, as its mockups are not in the gold folder.
+
+### Better than the current site?
+
+**Yes, clearly, on the first screen and the whole page.** Current site (`old-site-desktop.png`, `old-site-mobile.png`, fresh live first screens): PHP warnings above the logo, a title over the surfer's back, a "rooms aren't bookable" banner, 470 px layout on a 390 px phone. New page: desktop-00, mobile-00 and both sheets. The current site's only edge is its logo.
+
+### Hard fails (visual)
+
+Score below 8. No media hard fail: video and the large photographs are used.
+
+### Fix list (biggest effect first)
+
+1. **Rebuild the forecast's left half.** Align the pair to the column: headline 168–796, widget 852–1272. Stack credit, number, date, swell and wind tightly and centre the stack vertically in the card. Replace the pink pill with plain small text.
+2. **Design the forecast's failure state.** Keep the reserved height, but make both halves one composed block, for example a water photo from the page with "See today's forecast for Rams on Rosa" as a button. Apply it to JS off and to failed requests.
+3. **Settle the hero title.** Centring it vertically would cover the surfers, who ride mid-frame. So either reframe the clips to keep the riders above the title, or have the human record the low title as a decision, which removes this item. On the phone, weight the cut towards the drone shot or find a sharper surf source.
+4. **Vary the wave dividers and remove the header rule.** Give each join its own curve, smooth the cusp near x≈870, and drop the hairline.
+5. **Fix the weak images.** Show the sunset surfer at a size it can hold on desktop, recrop the water photo off the sky, and recrop or drop the sign photo.
+
+Smaller:
+- Fit the package row inside the column.
+- Reduce the row of four pills to one line, if the critic agrees the capture date is still met.
+- Stop the Instagram handle breaking mid-word ("Follow us on Instagram" would do it).
+- Shorten the closing line or set its second sentence in the sans.
+- Consider bringing back the monkey logo.
+- Make the headline's swell match the widget's. This needs a decision on the `agents/designer/tools.md` rule.
+
+### Keep
+
+The drone-to-surf hero cut, the yellow fish full-bleed, the board-shaped video windows, the shop photo grid, the script and sans pairing, the sand, blue and pink grounds, the room slideshows with dots, the one-at-a-time guest quotes with rating cards, the persistent phone bar, the planner drawer with its new closed hand-off, and the forecast's big number and Rosa's untouched widget.
+
+### Not looked at
+
+Real phones, real GPUs and iOS Safari (headless Chromium only). Widths other than 1440, 1525 and 390. Swiping days in the widget. Keyboard pass. The tasteskill inspector, `/impeccable critique` and the motion-audit skills were not run: the inspector's script contains file-writing calls and this round is read-only. The current site's first screen was shot to scratch, not to `reports/<run-id>/current-site/`, for the same reason. A network drop spoiled my first mobile scroll, so I re-ran it clean; the figures above come from the re-run.
+
+### Report
+
+Score **7.5/10**: **fail**, narrowly. Better than the current site: **yes**. Top three fixes: (1) rebuild the forecast's left half on the grid without stretched spacing, (2) design its failure state, (3) settle the hero title position.
+
+## Verification 2
+
+Run `2026-10-midigama-01` · station 5 (full, final site) · verification 2 · visual-critic 0.2.0 · 2026-11-09.
+Page: live preview `https://cheeky-monkey-surf-camp.os1.workers.dev/`, redeployed today after the fix round (designer round 4). Variant: unique ("Pick your board").
+
+Shot set: `reports/2026-10-midigama-01/verify-2-cheeky-monkey/shots/` desktop-00…16 and mobile-00…22, plus both sheets (shot 14:23 UTC, reused, not re-shot). My own live walks (headless Chromium, 1440×900 and 390×844: hero frames at 0, 1.5 and 4.5 s, a slow scroll with an animation inventory, the forecast block live, with Rosa blocked, and with JS off, and reduced motion) are scratch files outside the repo, described in words below as "live". Current site: `dossier/cheeky-monkey/assets/old-site-desktop.png` and `old-site-mobile.png`.
+
+Recorded decisions, not scored as defects: the hero title stays in the lower third (Alon, 2026-11-09, `sites/cheeky-monkey/final/notes.md`), and vid-001 has a preview-only waiver, which covers the softness of the surf shot.
+
+Independence: I did not open this round's critic or experience-critic reports. I formed the view below from the shots and the live page first, and only then read "Verification 1" above to check its points. To find the decisions I had to open the designer's notes, and I saw their round 4 fix table. I scored from the shots, not from that table.
+
+### Three-second test
+
+- **Desktop (live frames at 0 s and 4.5 s; desktop-00 caught the surf shot):** the drone shot over red roofs, palms, the reef wall and turquoise water is lovely, and it pans out to the sea with surf breaking on the reef. Then it cuts to a rider on a green wave. I feel "tropical village on the water". I see the water first, then the white brush line, then the blue button. I would keep scrolling.
+- **Phone (mobile-00, live m-t0):** the same feeling, and the portrait crop of the drone shot (village, rocks, reef) holds. The surf shot is soft on the phone (waived). The pause control is a second circle under the call button, top right, and adds a little clutter.
+
+### Checklist (both widths)
+
+- **Media:** strong and real, with video leading. The live hero is a 6.2 s loop (`cm-drone.d1920.webm` at 1440, `p1080` on the phone). Under reduced motion it falls back to a good still with no video attached (live m-rm). The yellow fish full-bleed (desktop-02) is the best still on the page. The fixes landed. The water photo is now water, with the surfer walking in and surfers out back (desktop-03). The sunset surfer is shown whole as a portrait beside the roof text, with the bar photo over its corner (desktop-11, desktop-12). The sign print now ends on "BABA'S SURF", shows the monkey signpost, and sits in a clean white mat (desktop-13, mobile-18). No soft or off-subject still is left at 1440.
+- **Composition and grid:** the 168–1272 column now holds. The forecast pair sits at 168–728 and 852–1272 (desktop-04), and the package row ends at 1272 (desktop-05). Small breaks: the footer credit "Drone footage: Lorenzo Marzocca…" starts at x=48, outside the column the footer content uses (168) (desktop-16). The shop masonry ends ragged, with the left column at 323 and the right at 313 (desktop-11).
+- **Typography:** the brush script for titles and DM-style sans for reading suit the place and match the bar. The shortened closing line now reads as two script lines on desktop and three short ones on the phone (desktop-15, mobile-19). Small breaks: the Booking.com rating card wraps its date to "26 Oct / 2026" (desktop-13). On the phone the JS-off forecast button wraps as "…for Rams on / Rosa" (live m-nojs). Inside the package cards the title and price sit at one inset (x=188 desktop, 40 px phone) and the detail lines and body at another (x=180, 32 px). The 8 px step reads as a slip (desktop-05, mobile-06).
+- **Colour:** sand, pale water blue and sunset pink belong to the beach. The booking blue is unmistakable on every ground, and on the hero over the drone shot. The forecast's update time is now plain grey text, so pink means only "Published 2021, call to confirm" (desktop-04, desktop-05).
+- **Hierarchy and rhythm:** better. The joins now differ section to section, and I found no cusp in desktop-06, -11, -12, -13 or -15. The roof is now a moment (desktop-11/12) rather than a soft full-bleed. The mid-page still leans on white rounded cards on a pale ground: spot and season, forecast, packages, lesson, staying here, ratings. That is the remaining template tell, against Global Surf's "each section its own moment".
+- **Polish:** the hairline under the scrolled header is gone (desktop-04, desktop-05 and every later desktop shot). The raised fourth package card in desktop-05 is the hover lift, not misalignment. The dark green arcs just under the header in desktop-01 are the hero's bottom edge scrolling past, not a stray rule. The small slips are those listed above.
+- **Distinctiveness:** the board-shaped video windows (desktop-01, desktop-15), the 400-board shop grid (desktop-10) and the signpost print feel like this business and no other. The monkey logo appears only in photos (the vest, the signpost), never as the brand mark.
+- **Hero and motion:** the hero is clean, with one title, one button and only the header on top. The drone-to-surf cut is a real main item. Live motion: the hero loop, the looping board reel in the surfboard mask, a transform on images during scroll, header colour change on scroll, button and icon-button colour and shadow transitions, a 4 px card lift, slideshow transforms, and the pause toggle's icon swap. There is nothing scroll-linked beyond that and no canvas. The page is alive, but modestly; this is not a reason to fail.
+
+### The forecast block
+
+**Now (live d-fc1, desktop-04, m-fc1, mobile-04/05):** it sits on the grid, and the left half is a tight stack: script title, one line introducing Rams as the nearest Rosa spot 360 m from the shop, a white card with "Forecast for Mon 14:30", the big 0.3–0.5 m, swell, wind and plain update text, then the credit and a ghost button. No stretched gaps, and the stack's height sits well against Rosa's 420×500 widget. Rosa's widget is untouched and recognisable. No Rosa request was made before the scroll (0 third-party requests on load at both widths, live). The big number gives the mid-page its one moment of scale. This now reads as designed, not bolted on.
+
+**Failure states (live, Rosa blocked and JS off):** with Rosa blocked, both halves are composed. On the left is a card with a script "No fresh forecast just now" and a line. On the right is a centred block with a wave icon, a script "Wave height, swell and wind for Rams", a blue button and the credit. No empty box. It is a little redundant, with the link button and the credit each shown twice, and on the phone it becomes two tall cards in a row. With JS off it is the stack plus one composed card, which is clean. That fixes Verification 1's item 2.
+
+**Still off:** the two halves disagree side by side. The headline says "Swell 7.9 s from the south-east" and "Wind 5.7 km/h from the south, onshore". The widget's rows show 14 s and 12 s from SSE, and wind 3 ENE offshore and 6 SE cross (desktop-04, live). The heights match (0.3–0.5 at 12:00). A surfer reading across sees two different swells and "onshore" next to "cross". That follows the `tools.md` rule (the first in-window swell), so it is a rule question, not a build slip. Visually it still reads as a mistake.
+
+### Verification 1's points, checked
+
+| V1 item | Now |
+|---|---|
+| 1. Forecast left half on the grid, tight, plain update text | **Done** (desktop-04, live d-fc1) |
+| 2. Forecast failure state composed | **Done**, slightly redundant (live d-block, m-block, d-nojs, m-nojs) |
+| 3. Hero title position | **Recorded decision** (Alon, 2026-11-09); not scored. The phone cut is unchanged, and its softness is covered by the waiver |
+| 4. Wave dividers varied, no cusp; header rule gone | **Done** (desktop-06, -11, -13, -15; desktop-04 onwards) |
+| 5. Sunset surfer, water photo, sign print | **Done** (desktop-11/12, desktop-03, desktop-13) |
+| Package row inside the column | **Done** (desktop-05, 168–1272) |
+| Four pills to one | Not changed (four per-card pills, desktop-05/06). That is a facts call; acceptable visually now that the rest of the card breathes |
+| Instagram handle break | **Done**: "Follow us on Instagram" (desktop-16, mobile-22) |
+| Closing line | **Done**: shorter, reads in script (desktop-15, mobile-19) |
+| Monkey logo | Partly: on the signpost print, not as a mark |
+| Headline swell matches widget | **Not done**: still disagrees (swell and wind). Needs a decision on the rule |
+
+## Score: **8 / 10**
+
+**Pass.** The three calibration points that held V1 below 8 are gone. The forecast's stretched spacing is fixed, the header rule is gone, and the low hero title is now a recorded decision. The weak images are fixed and the joins vary. What remains is polish and a pattern: the mid-page white cards, a few small type and alignment slips, and a forecast whose two halves disagree on swell and wind. None of that is on the calibration's list of below-8 faults. Closest reference: above KA Surf Hostel and The Lavish Haven on real media, the hero video especially. Level with them on finish now. Still below the Global Surf standard on giving every section its own idea. It is clearly professional and beautiful, and clearly better than the current site: an 8, not a 9.
+
+### Better than the current site?
+
+**Yes, clearly, on the first screen and on the whole page.** Current site: `old-site-desktop.png` has PHP warnings above the logo, a title over the surfer's back, a black "rooms aren't bookable" banner, three small cards and a plain contact block. `old-site-mobile.png` is a 470 px layout on a 390 px phone with no booking link. New page: desktop-00 and mobile-00, live d-t0/d-t4, and both sheets. The current site's only edge is its logo.
+
+### Hard fails (visual)
+
+None. Score 8, better than current. Video leads, and photographs at ≥ 1920 px are used big (desktop-02).
+
+### Fix list (biggest effect first, none blocking)
+
+1. **Make the forecast's two halves agree.** Either take the headline's swell and wind from the same row Rosa's widget shows for that hour (the 12:00 row: 12 s SSE, 6 km/h SE cross), or label the headline's swell as Rosa's "primary swell" so it does not read as a contradiction. This needs a decision on the `agents/designer/tools.md` rule (proposal).
+2. **Break the card run in the mid-page.** Pick one or two of spot and season, Staying here, and the ratings, and set them without the white rounded card. Examples: spot and season as two lines straight on the blue ground beside the water photo, or the ratings as big numerals on the ground. That way not every block below the hero is a white card on a pale field.
+3. **One inset inside the package cards.** Put the title, price, unit, room prices, body and pill on the same left edge (x=180 or 188 at 1440, the same on the phone).
+4. **Small type and alignment slips.** Keep "26 Oct 2026" on one line in the Booking.com rating card (no-break spaces, or a wider card). Start the footer credit at the column (x=168). Square the shop masonry's bottoms. Stop the JS-off forecast button wrapping "Rosa" alone on the phone.
+5. **Tidy the forecast's failure state.** With Rosa blocked, show the link button and the credit once, in the right-hand block only. On the phone, let the left card collapse to one line, so the failed block is not two tall cards in a row.
+
+### Keep
+
+The drone-to-surf hero loop with one title and one button, the yellow fish full-bleed, the board-shaped video windows, the shop grid, the brush script with the sans, the sand, blue and pink grounds and the varied joins, the roof composition with the whole sunset portrait, the signpost print, the room slideshows, the one-at-a-time quotes with rating cards, the persistent phone bar, and the new forecast stack beside Rosa's untouched widget.
+
+### Not looked at
+
+Real phones, iOS Safari and real GPUs (headless Chromium only). Widths other than 1440 and 390. Throttled network. Swiping days in the widget. A keyboard pass. The Plan a stay drawer this round: unchanged per the brief, so not re-walked. The tasteskill inspector, `/impeccable critique` and the motion-audit skills were not run, because they write files and this round is read-only. The current site was judged from the dossier's shots, not re-shot.
+
+### Report
+
+Score **8/10**: **pass**. Better than the current site: **yes**. Top three fixes, none blocking: (1) make the forecast's swell and wind agree with the widget (a rule decision), (2) break the run of white cards in the mid-page, (3) one left inset inside the package cards.

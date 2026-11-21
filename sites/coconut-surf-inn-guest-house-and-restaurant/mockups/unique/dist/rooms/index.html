@@ -7,7 +7,7 @@
 <meta name="description" content="Coconut Surf Inn: A guesthouse in Gurubebila, between Midigama and Weligama, on the south coast of Sri Lanka. Six kinds of room, a restaurant upstairs and a roof terrace; Coconuts reef break in front.">
 <meta property="og:title" content="Find your room | Coconut Surf Inn"><meta property="og:description" content="Coconut Surf Inn: A guesthouse in Gurubebila, between Midigama and Weligama, on the south coast of Sri Lanka. Six kinds of room, a restaurant upstairs and a roof terrace; Coconuts reef break in front.">
 <meta property="og:image" content="../img/hero-img-009-1280.webp"><meta name="theme-color" content="#ffffff">
-<script>(function(d){var c=d.documentElement.classList;c.add('js');if(matchMedia('(prefers-reduced-motion: no-preference)').matches&&!/[?&]still\b/.test(location.search))c.add('pin')})(document)</script>
+<script>(function(d){var c=d.documentElement.classList;c.add('js');c.add('at-hero');if(matchMedia('(prefers-reduced-motion: no-preference)').matches&&!/[?&]still\b/.test(location.search))c.add('pin')})(document)</script>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/redhattext/v19/RrQXbohi_ic6B3yVSzGBrMxQaKctMc-JPQ.woff2" crossorigin><link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/caveat/v23/WnznHAc5bAfYB2QRah7pcpNvOx-pjSx6eIWpYT5Kmgq3sw.woff2" crossorigin><style>@font-face{font-family:'Red Hat Text';font-style:normal;font-weight:400 600;font-display:swap;src:url(https://fonts.gstatic.com/s/redhattext/v19/RrQXbohi_ic6B3yVSzGBrMxQaKctMc-JPQ.woff2) format('woff2')}@font-face{font-family:'Caveat';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/caveat/v23/WnznHAc5bAfYB2QRah7pcpNvOx-pjSx6eIWpYT5Kmgq3sw.woff2) format('woff2')}</style>
 
 <style>/* Coconut Surf Inn, unique: "Round the clock". Colours sampled in concepts.md (img-009, img-002). */
@@ -15,7 +15,7 @@
 @font-face{font-family:"Caveat fb";src:local("Arial"),local("Helvetica"),local("Roboto");size-adjust:77.8%}
 :root{
   --ground:#fff; --tint:#F1F1F3; --ink:#252323; --muted:#5A5656; --place:#4D6F7A;
-  --sun:#BE4532; --sun-press:#A33A29;
+  --sun:#BE4532; --book:#252323; --book-press:#4A4646;
   --text:"Red Hat Text", "RHT fb", "Segoe UI", system-ui, -apple-system, sans-serif;
   --script:"Caveat", "Caveat fb", "Segoe Print", "Bradley Hand", cursive;
   --ease:cubic-bezier(.23,1,.32,1); --drawer:cubic-bezier(.32,.72,0,1);
@@ -44,15 +44,15 @@ ul,ol{margin:0;padding:0;list-style:none}
   font:500 16px/1.2 var(--text);text-decoration:none;white-space:nowrap;cursor:pointer;border:0;
   transition:transform .16s var(--ease),background-color .2s ease,box-shadow .2s ease}
 .btn:active{transform:scale(.97)}
-.btn-book{background:var(--sun);color:#fff}
-.btn-book::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--sun-press);transform:scaleX(0);transform-origin:left;transition:transform .16s var(--ease)}
+.btn-book{background:var(--book);color:#fff}
+.btn-book::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--book-press);transform:scaleX(0);transform-origin:left;transition:transform .16s var(--ease)}
 .btn-book:active::before{transform:scaleX(1)}
 .btn-ghost{background:var(--tint);color:var(--ink)}
 .tint .btn-ghost,.sheet .tint .btn-ghost{background:#fff}
 .btn-sm{min-height:44px;padding:0 18px;font-size:15px}
 .btn-hero{min-height:56px;padding:0 30px;font-size:17px}
 @media (hover:hover) and (pointer:fine){
-  .btn-book:hover{box-shadow:0 8px 22px -8px rgba(190,69,50,.55)}
+  .btn-book:hover{transform:translateY(-1px);box-shadow:0 10px 22px -10px rgba(37,35,35,.5)}
   .btn-ghost:hover{background:#E6E6EA}
   .tint .btn-ghost:hover{background:#fafafa}
 }
@@ -66,20 +66,23 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 /* ---- header */
 .top{position:sticky;top:0;z-index:60;height:var(--top);display:flex;align-items:center;gap:24px;padding:0 32px;background:rgba(255,255,255,.94);-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px)}
-.mark{font:600 30px/1 var(--script);text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;min-height:44px}
+.mark{font:600 18px/1 var(--text);letter-spacing:.01em;text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;min-height:44px}
 .nav{margin-left:auto;font-size:15px;color:var(--muted)}
 .nav a{text-decoration:none;padding:12px 4px;transition:color .15s ease}
 .nav a:hover{color:var(--ink)}
 .top-act{display:flex;align-items:center;gap:10px}
 .top .sun-sm{display:none}
+.top .mark,.top .sun-sm{transition:opacity .3s ease,transform .3s var(--ease),visibility 0s 0s}
+.at-hero .top .mark{opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .2s ease,transform .2s ease,visibility 0s .2s}
+.at-hero .top .sun-sm{opacity:0;visibility:hidden;transform:scale(.6);transition:opacity .2s ease,transform .2s ease,visibility 0s .2s}
+.top{transition:background-color .3s ease}
+.at-hero .top{background:rgba(255,255,255,0);-webkit-backdrop-filter:none;backdrop-filter:none}
 
-/* ---- first screen: the view, its sky dissolving into the page */
-.hero{position:relative;height:calc(100svh - var(--top));min-height:600px;max-height:1100px;overflow:hidden;background:#fff}
+/* ---- first screen: the view from the roof, calm's frame (Alon, 2026-11-05); the header floats on its sky */
+.hero{position:relative;height:100svh;min-height:600px;max-height:1100px;margin-top:calc(-1 * var(--top));overflow:hidden;background:#9fbde0}
 .hero-pic{position:absolute;inset:0}
-.hero-pic img{width:100%;height:100%;object-fit:cover;object-position:50% 100%;
-  -webkit-mask-image:linear-gradient(180deg,transparent 0,transparent 6%,rgba(0,0,0,.3) 20%,rgba(0,0,0,.8) 33%,#000 42%);
-          mask-image:linear-gradient(180deg,transparent 0,transparent 6%,rgba(0,0,0,.3) 20%,rgba(0,0,0,.8) 33%,#000 42%)}
-.hero-in{position:relative;z-index:1;text-align:center;padding-top:min(7vh,64px)}
+.hero-pic img{width:100%;height:100%;object-fit:cover;object-position:50% 100%;background:#9fbde0 50% 100%/cover no-repeat}
+.hero-in{position:relative;z-index:1;text-align:center;padding-top:calc(var(--top) + min(14vh,130px))}
 .hero h1{font-size:72px;line-height:80px;height:80px}
 .where{font-size:18px;color:var(--ink);margin:6px 0 22px;font-weight:500}
 
@@ -136,8 +139,9 @@ html:not(.js) .slide img[data-src]{display:none}
 .house-grid{display:grid;grid-template-columns:4fr 8fr;gap:64px;align-items:start}
 .house-txt{position:sticky;top:calc(var(--top) + 48px);padding-top:24px}
 .house-txt p{font-size:18px}
-.masonry{columns:3;column-gap:16px}
-.m{break-inside:avoid;margin-bottom:16px;border-radius:16px;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s ease}
+.masonry{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start}
+.mcol{display:grid;gap:16px}
+.m{border-radius:16px;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s ease}
 .m img{width:100%;height:auto}
 @media (hover:hover) and (pointer:fine){.m:hover{transform:translateY(-4px);box-shadow:0 14px 30px -14px rgba(37,35,35,.35)}}
 
@@ -163,8 +167,9 @@ html:not(.js) .slide img[data-src]{display:none}
 .pin .blk .ph{display:none}
 .pin .blk:first-child{min-height:calc(100vh - var(--top))}
 .pin .blk:last-child{min-height:calc(100vh - var(--top))}
-.blk .btxt{transition:opacity .5s ease}
-.pin .blk:not(.cur) .btxt{opacity:.38}
+.blk .btxt{transition:color .5s ease}
+.blk .btxt *{transition:color .5s ease}
+.pin .blk:not(.cur) .btxt,.pin .blk:not(.cur) .btxt .q figcaption{color:var(--muted)}
 .frames{position:relative;overflow:hidden;border-radius:28px 0 0 28px;background:#DCDFE2}
 .fr{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease}
 .fr.on{opacity:1;z-index:1}
@@ -180,7 +185,7 @@ html:not(.js) .slide img[data-src]{display:none}
 .sun::before{content:"";position:absolute;left:13px;top:-11px;width:22px;height:22px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 6px rgba(190,69,50,.14)}
 
 /* ---- today on Coconuts */
-.break{padding:120px 0 104px}
+.break{padding:56px 0 104px}
 .break h2{text-align:left}
 .fc{display:grid;grid-template-columns:1fr 420px;gap:72px;align-items:center}
 .fc-now{min-height:320px}
@@ -199,7 +204,9 @@ html:not(.js) .slide img[data-src]{display:none}
 .credit{font-size:14px;color:var(--muted);margin-top:12px}
 .credit a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;color:var(--place);font-weight:500}
 .rosa-box{position:relative;width:100%;max-width:420px;height:500px;border-radius:16px;background:var(--tint);display:grid;place-items:center;overflow:hidden;justify-self:end}
-.rosa-box iframe{position:absolute;inset:0;width:100%;height:500px;border:0;border-radius:16px;display:block}
+.rosa-box iframe{position:absolute;inset:0;width:100%;height:500px;border:0;border-radius:16px;display:block;opacity:0;transition:opacity .4s ease}
+.rosa-box.loaded iframe{opacity:1}
+.fc-plain .btn,.rosa-box .fallback{white-space:normal;text-align:center;max-width:100%;padding-top:10px;padding-bottom:10px;line-height:1.3}
 .rosa-box.loaded{background:none}
 .amen{margin:72px 0 0;font-size:16px;color:var(--muted);max-width:900px}
 .amen-k{display:block;font-weight:600;color:var(--ink);margin-bottom:4px}
@@ -221,9 +228,7 @@ html:not(.js) .slide img[data-src]{display:none}
 /* ---- getting here */
 .here{padding:120px 0}
 .here-grid{display:grid;grid-template-columns:420px 1fr;gap:80px;align-items:center}
-.print{background:#fff;padding:16px;border-radius:6px;box-shadow:0 22px 50px -22px rgba(37,35,35,.32),0 2px 6px rgba(37,35,35,.06);transform:rotate(-1.2deg);transition:transform .4s var(--ease)}
-@media (hover:hover) and (pointer:fine){.print:hover{transform:rotate(0)}}
-.print img{width:100%;height:auto;border-radius:2px}
+.print img{width:100%;height:auto;border-radius:20px}
 .here-txt h2{margin-bottom:22px}
 .addr{display:flex;gap:12px;align-items:flex-start;font-weight:500}
 .addr .ic{color:var(--place);margin-top:3px}
@@ -299,19 +304,20 @@ html:not(.js) .slide img[data-src]{display:none}
 @media (max-width: 767px){
   :root{--top:58px}
   body{font-size:16.5px}
+  .btn{max-width:100%;white-space:normal;text-align:center;line-height:1.2;padding-top:8px;padding-bottom:8px}
+  .btn>span{min-width:0}
+  .actions .btn{padding-left:18px;padding-right:18px}
   .wrap{padding:0 16px}
   .top{padding:0 10px 0 16px;gap:10px}
-  .mark{font-size:27px}
+  .mark{font-size:17px}
   .nav,.top .btn-sm{display:none}
   .top-act{margin-left:auto}
   .top .sun-sm{display:inline-grid}
-  .hero{height:calc(100svh - var(--top));min-height:560px}
-  .hero-pic img{object-position:50% 100%;
-    -webkit-mask-image:linear-gradient(180deg,transparent 0,transparent 14%,rgba(0,0,0,.25) 30%,rgba(0,0,0,.75) 44%,#000 56%);
-            mask-image:linear-gradient(180deg,transparent 0,transparent 14%,rgba(0,0,0,.25) 30%,rgba(0,0,0,.75) 44%,#000 56%)}
-  .hero-in{padding-top:5.5svh}
+  .hero{height:100svh;min-height:560px}
+  .hero-in{padding:calc(var(--top) + 9svh) 16px 0}
+  .hero-pic picture{position:absolute;inset:0;display:block}
   .hero h1{font-size:50px;line-height:56px;height:56px}
-  .where{font-size:16px;margin:4px 0 18px}
+  .where{font-size:18px;line-height:1.4;margin:6px auto 18px;max-width:340px}
   .btn-hero{min-height:52px;padding:0 24px;font-size:16px}
   h2.script{font-size:46px;margin-bottom:20px}
   .checkin{padding:72px 0}
@@ -320,36 +326,55 @@ html:not(.js) .slide img[data-src]{display:none}
   .rating{padding:12px 16px;gap:10px;width:100%;justify-content:center}
   .rmeta{font-size:13px}
   .rooms,.house,.guests,.here{padding:80px 0}
-  .room-grid{grid-template-columns:1fr;gap:48px}
+  .room-grid{grid-template-columns:1fr;gap:36px}
+  .rooms-head{margin-bottom:36px}
+  .rtxt{padding:14px 2px 0}
+  .rtxt h3{font-size:20px}
+  .meta{margin-bottom:4px}
+  .note{margin-bottom:12px;font-size:15.5px;line-height:1.5}
+  .show .arw{display:none}
+  /* fan rooms: a compact row, thumbnail beside the text (the photographs are the weakest, the facts are what matter) */
+  .room-fan{display:grid;grid-template-columns:112px minmax(0,1fr);gap:14px;align-items:start}
+  .room-fan .track{border-radius:12px}
+  .room-fan .show .ctrl,.room-fan .show .chip{display:none}
+  .room-fan .rtxt{padding:0}
+  .room-fan .rtxt h3{font-size:18px}
+  .room-fan .note{font-size:15px}
+  .room-fan .btn-sm{padding:0 12px;font-size:14px;white-space:nowrap}
+  .room-fan .btn-sm .ic{display:none}
+  .stayinfo{margin-top:40px}
   .track{border-radius:16px}
   .qctrl .dots{display:none}
   .qn{display:inline-block !important}
-  .masonry{columns:2;column-gap:10px}
-  .m{margin-bottom:10px;border-radius:12px}
+  .masonry{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .mcol{gap:10px}
+  .mcol:last-child{grid-column:1/-1}
+  .m-016{display:none}
+  .m{border-radius:12px}
   .blk{grid-template-columns:1fr;gap:20px;padding:0 16px;margin-bottom:64px}
   .btxt h3.script{font-size:46px}
   .pin .clock-grid{display:block}
-  .pin .clock-media{display:grid;grid-template-columns:1fr;grid-template-rows:1fr 52px;position:sticky;top:var(--top);height:calc(50svh + 52px);z-index:5;background:#fff}
+  .pin .clock-media{display:grid;grid-template-columns:1fr;grid-template-rows:1fr 52px;position:sticky;top:var(--top);height:calc(44svh + 52px);z-index:5;background:#fff}
   .frames{border-radius:0}
   .pin .clock-media::after{content:"";position:absolute;left:0;right:0;top:100%;height:28px;background:linear-gradient(#fff,rgba(255,255,255,0));pointer-events:none}
   .pin .clock-media .dial{order:2}
-  .ticks{height:52px;width:auto;margin:0 11%;flex:1}
+  .ticks{height:52px;width:auto;margin:0 15%;flex:1}
   .ticks::before{left:0;right:0;top:15px;bottom:auto;width:auto;height:2px;margin:0}
   .tick{top:auto;bottom:4px;left:calc(var(--i) * 25%);right:auto;transform:translateX(-50%);padding:0;font-size:12.5px;white-space:nowrap}
   .tick::before{left:50%;top:-23px;margin:0 0 0 -3px}
-  .sun{left:11%;right:11%;top:0;height:52px;transform:translateX(calc(var(--k, 0) * 25%))}
+  .sun{left:15%;right:15%;top:0;height:52px;transform:translateX(calc(var(--k, 0) * 25%))}
   .sun::before{left:-10px;top:5px;width:20px;height:20px;box-shadow:0 0 0 5px rgba(190,69,50,.14)}
-  .pin .blk{min-height:64svh;padding:36px 16px 48px;align-items:flex-start}
-  .pin .blk:first-child,.pin .blk:last-child{min-height:64svh}
-  .pin .blk:last-child{padding-bottom:72px}
-  .break{padding:80px 0}
+  .pin .blk{min-height:0;padding:40px 16px 36px;align-items:flex-start}
+  .pin .blk:first-child,.pin .blk:last-child{min-height:0}
+  .pin .blk:last-child{padding-bottom:56px}
+  .break{padding:40px 0 80px}
   .fc-h{font-size:60px}
   .fc-now{min-height:0}
   .rosa-box{justify-self:stretch;max-width:none}
   .amen{margin-top:48px}
   .q-big blockquote p{font-size:21px}
   .here-grid{grid-template-columns:1fr;gap:40px}
-  .print{max-width:340px}
+  .print{max-width:420px}
   .closing{padding:72px 16px 88px}
   .close-line{font-size:38px}
   .foot{padding:48px 0 40px}
@@ -360,9 +385,10 @@ html:not(.js) .slide img[data-src]{display:none}
 
   .js .bar{opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .24s ease,transform .24s var(--ease),visibility 0s .24s}
   .js .bar.up{opacity:1;visibility:visible;transform:none;transition:opacity .24s ease,transform .24s var(--ease)}
-  .bar .btn{min-height:50px;padding:0 12px;font-size:14px}
+  .bar .btn{min-height:50px;padding:0 12px;font-size:14px;min-width:0}
+  .bar .btn-book{white-space:normal;text-align:center;line-height:1.2}
   .bar .btn-ghost .ic{display:none}
-  .bar .btn-book{flex:1 1 auto}
+  .bar .btn-book{flex:1 1 0}
   .bar .btn-book .ic{display:none}
   .bar .btn-ghost{flex:0 0 auto}
   .sheet{left:0;right:0;top:auto;bottom:0;width:auto;max-height:90svh;border-radius:26px 26px 0 0;transform:translateY(100%);opacity:1}
@@ -384,7 +410,9 @@ html:not(.js) .slide img[data-src]{display:none}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
 }
-</style>
+.rosa-box.loaded .fallback{visibility:hidden}
+@media (max-width: 380px){ .room-fan .btn-sm{white-space:normal} }
+.hero-pic img:not(.loaded){background-image:url(data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAADwBQCdASooABYAPu1ssFGppaSipWsxMB2JQBWAAUrWwyPDKhmT+UYV6MR1rambC3CDZ+DCYA3AAAD8XIaJBUqHq3rVY5nfYO1q9WbG91SEJjCaRMAxBBHaSqS8Fv/eGv/b7wBgT1hJO2SAeCVTJjEk1F16ZeeoIPFhlLs5mUkS6ERVn+pVdU6NbU7//+gl0c7Jo8Q5nWtLWAYO+oVYEo1JYdhhV1oAAAA=)}@media (max-width:767px){.hero-pic img:not(.loaded){background-image:url(data:image/webp;base64,UklGRgQBAABXRUJQVlA4IPgAAABwCACdASooAE4APu1qqFApqzEqLNgJyiAdiWUAvch4TzMnDTuFd6u0QgdKozCjtEvZVGp0C63Wf66qWH717gvjQHHoy2bYPGiXrEAAAP7sG8XeTqkFz2ZUtbXH8Cwsu5YyrXla5aRKdA/xSZkWo1G6C1xxFZGRk6K96nUTIDOIiUoEes5KrN94En+9sAwzI4IG8j3hRnISwvKlwY3feobuLmChB0R8ODZKM40eHu+OATWHXeF/mrGnykl6aX7fIFfqh+6DUKi1T+venthxe3bGIAc0DIbo3DiHZWGFy1MjR4eyzkLiJ6YQ5wLzXU7Z0JK7v0ZLsCkgAA==)}}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -392,7 +420,7 @@ html:not(.js) .slide img[data-src]{display:none}
   <a class="mark" href="../">Coconut Surf Inn</a>
   <nav class="nav" aria-label="Sections"><span><a href="../#rooms">Rooms</a></span> <span class="sep" aria-hidden="true">|</span> <span><a href="../#stay">The stay</a></span> <span class="sep" aria-hidden="true">|</span> <span><a href="../#break">The break</a></span></nav>
   <div class="top-act"><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates</span></a><a class="sun-call sun-sm" href="tel:+94778921396" aria-label="Call +94 77 892 1396"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></a></div>
-</header><main id="main" class="roomspage"><div class="wrap"><p><a class="btn btn-ghost btn-sm" href="../"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"/></svg><span>Back to Coconut Surf Inn</span></a></p><h1 class="script">How many are coming?</h1><section class="rp-group" aria-labelledby="g1"><h2 id="g1">Just me</h2><ul class="picks"><li class="pick" data-sleeps="1"><div class="pick-pic"><img src="../img/room-img-056.webp" width="1200" height="800" alt="Bed under a white mosquito-net canopy" loading="lazy" decoding="async"><span class="chip">Fan</span></div><div class="pick-txt"><h3>Budget Single Room</h3><p class="meta"><span class="kind">Fan <span class="sep" aria-hidden="true">|</span> </span><span>1 single bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 1</span></p><p class="note">Upstairs, 9 m². Fan and mosquito net; no air conditioning and no hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li><li class="pick" data-sleeps="2"><div class="pick-pic"><img src="../img/room-img-076.webp" width="1200" height="800" alt="Double bed with a grey cover and red cushions, a ceiling fan and an air conditioner, the balcony doors open onto green" loading="lazy" decoding="async"><span class="chip">A/C | Hot water</span></div><div class="pick-txt"><h3>Deluxe Double Room with Balcony</h3><p class="meta"><span class="kind">A/C | Hot water <span class="sep" aria-hidden="true">|</span> </span><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 2</span></p><p class="note">Upstairs, 15 m², with a balcony. Air conditioning, fan and hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li><li class="pick" data-sleeps="2"><div class="pick-pic"><img src="../img/room-img-035.webp" width="1200" height="800" alt="Double bed with a green towel beside red-framed glass doors and white curtains" loading="lazy" decoding="async"><span class="chip">A/C | Hot water</span></div><div class="pick-txt"><h3>Superior Double Room</h3><p class="meta"><span class="kind">A/C | Hot water <span class="sep" aria-hidden="true">|</span> </span><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 2</span></p><p class="note">Ground floor, 14 m². Air conditioning, fan and hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li><li class="pick" data-sleeps="2"><div class="pick-pic"><img src="../img/room-img-047.webp" width="1200" height="800" alt="Bed with a rolled purple towel under a mosquito net" loading="lazy" decoding="async"><span class="chip">Fan</span></div><div class="pick-txt"><h3>Budget Double Room</h3><p class="meta"><span class="kind">Fan <span class="sep" aria-hidden="true">|</span> </span><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 2</span></p><p class="note">12 m². Fan and mosquito net; no air conditioning and no hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li></ul></section><section class="rp-group" aria-labelledby="g2"><h2 id="g2">Two of us</h2><ul class="picks"><li class="pick" data-sleeps="2"><div class="pick-pic"><img src="../img/room-img-076.webp" width="1200" height="800" alt="Double bed with a grey cover and red cushions, a ceiling fan and an air conditioner, the balcony doors open onto green" loading="lazy" decoding="async"><span class="chip">A/C | Hot water</span></div><div class="pick-txt"><h3>Deluxe Double Room with Balcony</h3><p class="meta"><span class="kind">A/C | Hot water <span class="sep" aria-hidden="true">|</span> </span><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 2</span></p><p class="note">Upstairs, 15 m², with a balcony. Air conditioning, fan and hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li><li class="pick" data-sleeps="2"><div class="pick-pic"><img src="../img/room-img-035.webp" width="1200" height="800" alt="Double bed with a green towel beside red-framed glass doors and white curtains" loading="lazy" decoding="async"><span class="chip">A/C | Hot water</span></div><div class="pick-txt"><h3>Superior Double Room</h3><p class="meta"><span class="kind">A/C | Hot water <span class="sep" aria-hidden="true">|</span> </span><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 2</span></p><p class="note">Ground floor, 14 m². Air conditioning, fan and hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li><li class="pick" data-sleeps="2"><div class="pick-pic"><img src="../img/room-img-047.webp" width="1200" height="800" alt="Bed with a rolled purple towel under a mosquito net" loading="lazy" decoding="async"><span class="chip">Fan</span></div><div class="pick-txt"><h3>Budget Double Room</h3><p class="meta"><span class="kind">Fan <span class="sep" aria-hidden="true">|</span> </span><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 2</span></p><p class="note">12 m². Fan and mosquito net; no air conditioning and no hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li><li class="pick" data-sleeps="3"><div class="pick-pic"><img src="../img/room-img-040.webp" width="1200" height="800" alt="Double bed under a wall lamp, with a chair and a bedside table, grey walls" loading="lazy" decoding="async"><span class="chip">A/C | Hot water</span></div><div class="pick-txt"><h3>Deluxe Double Room (2 Adults + 1 Child)</h3><p class="meta"><span class="kind">A/C | Hot water <span class="sep" aria-hidden="true">|</span> </span><span>1 double bed and 1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 3</span></p><p class="note">Ground floor, 19 m². Air conditioning, fan and hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li></ul></section><section class="rp-group" aria-labelledby="g3"><h2 id="g3">Three of us</h2><ul class="picks"><li class="pick" data-sleeps="3"><div class="pick-pic"><img src="../img/room-img-040.webp" width="1200" height="800" alt="Double bed under a wall lamp, with a chair and a bedside table, grey walls" loading="lazy" decoding="async"><span class="chip">A/C | Hot water</span></div><div class="pick-txt"><h3>Deluxe Double Room (2 Adults + 1 Child)</h3><p class="meta"><span class="kind">A/C | Hot water <span class="sep" aria-hidden="true">|</span> </span><span>1 double bed and 1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 3</span></p><p class="note">Ground floor, 19 m². Air conditioning, fan and hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li><li class="pick" data-sleeps="4"><div class="pick-pic"><img src="../img/room-img-031.webp" width="1200" height="800" alt="Room with two beds, a red feature wall and a ceiling fan" loading="lazy" decoding="async"><span class="chip">A/C | Hot water</span></div><div class="pick-txt"><h3>Deluxe Family Room</h3><p class="meta"><span class="kind">A/C | Hot water <span class="sep" aria-hidden="true">|</span> </span><span>1 single bed and 1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 4</span></p><p class="note">28 m², with a balcony and a garden view. Air conditioning, fan and hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li></ul></section><section class="rp-group" aria-labelledby="g4"><h2 id="g4">Four of us</h2><ul class="picks"><li class="pick" data-sleeps="4"><div class="pick-pic"><img src="../img/room-img-031.webp" width="1200" height="800" alt="Room with two beds, a red feature wall and a ceiling fan" loading="lazy" decoding="async"><span class="chip">A/C | Hot water</span></div><div class="pick-txt"><h3>Deluxe Family Room</h3><p class="meta"><span class="kind">A/C | Hot water <span class="sep" aria-hidden="true">|</span> </span><span>1 single bed and 1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 4</span></p><p class="note">28 m², with a balcony and a garden view. Air conditioning, fan and hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li></ul></section><section class="rp-group" aria-labelledby="g0"><h2 id="g0">Not sure</h2><p>Booking.com has the live dates and prices. If you&#x27;d rather ask something first, call us.</p><div class="actions"><a class="btn btn-ghost " href="tel:+94778921396"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>Call +94 77 892 1396</span></a><a class="sun-call " href="tel:+94778921396" aria-label="Call +94 77 892 1396"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></a></div></section></div></main><footer class="foot tint">
+</header><main id="main" class="roomspage"><div class="wrap"><p><a class="btn btn-ghost btn-sm" href="../"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"/></svg><span>Back to Coconut Surf Inn</span></a></p><h1 class="script">How many are coming?</h1><section class="rp-group" aria-labelledby="g1"><h2 id="g1">Just me</h2><ul class="picks"><li class="pick" data-sleeps="1"><div class="pick-pic"><img src="../img/room-img-056.webp" width="1200" height="800" alt="Bed under a white mosquito-net canopy" loading="lazy" decoding="async"><span class="chip">Fan</span></div><div class="pick-txt"><h3>Budget Single Room</h3><p class="meta"><span class="kind">Fan <span class="sep" aria-hidden="true">|</span> </span><span>1 single bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 1</span></p><p class="note">Upstairs, 9 m². Fan and mosquito net; no air conditioning and no hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li><li class="pick" data-sleeps="2"><div class="pick-pic"><img src="../img/room-img-076.webp" width="1200" height="800" alt="Double bed with a grey cover and red cushions, a ceiling fan and an air conditioner, the balcony doors open onto green" loading="lazy" decoding="async"><span class="chip">A/C | Hot water</span></div><div class="pick-txt"><h3>Deluxe Double Room with Balcony</h3><p class="meta"><span class="kind">A/C | Hot water <span class="sep" aria-hidden="true">|</span> </span><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 2</span></p><p class="note">Upstairs, 15 m², with a balcony. Air conditioning, fan and hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li><li class="pick" data-sleeps="2"><div class="pick-pic"><img src="../img/room-img-035.webp" width="1200" height="800" alt="Double bed with a green towel beside red-framed glass doors and white curtains" loading="lazy" decoding="async"><span class="chip">A/C | Hot water</span></div><div class="pick-txt"><h3>Superior Double Room</h3><p class="meta"><span class="kind">A/C | Hot water <span class="sep" aria-hidden="true">|</span> </span><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 2</span></p><p class="note">Ground floor, 14 m². Air conditioning, fan and hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li><li class="pick" data-sleeps="2"><div class="pick-pic"><img src="../img/room-img-046.webp" width="1200" height="800" alt="An open door onto an older room with a mosquito-net bed" loading="lazy" decoding="async"><span class="chip">Fan</span></div><div class="pick-txt"><h3>Budget Double Room</h3><p class="meta"><span class="kind">Fan <span class="sep" aria-hidden="true">|</span> </span><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 2</span></p><p class="note">12 m². Fan and mosquito net; no air conditioning and no hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li></ul></section><section class="rp-group" aria-labelledby="g2"><h2 id="g2">Two of us</h2><ul class="picks"><li class="pick" data-sleeps="2"><div class="pick-pic"><img src="../img/room-img-076.webp" width="1200" height="800" alt="Double bed with a grey cover and red cushions, a ceiling fan and an air conditioner, the balcony doors open onto green" loading="lazy" decoding="async"><span class="chip">A/C | Hot water</span></div><div class="pick-txt"><h3>Deluxe Double Room with Balcony</h3><p class="meta"><span class="kind">A/C | Hot water <span class="sep" aria-hidden="true">|</span> </span><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 2</span></p><p class="note">Upstairs, 15 m², with a balcony. Air conditioning, fan and hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li><li class="pick" data-sleeps="2"><div class="pick-pic"><img src="../img/room-img-035.webp" width="1200" height="800" alt="Double bed with a green towel beside red-framed glass doors and white curtains" loading="lazy" decoding="async"><span class="chip">A/C | Hot water</span></div><div class="pick-txt"><h3>Superior Double Room</h3><p class="meta"><span class="kind">A/C | Hot water <span class="sep" aria-hidden="true">|</span> </span><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 2</span></p><p class="note">Ground floor, 14 m². Air conditioning, fan and hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li><li class="pick" data-sleeps="2"><div class="pick-pic"><img src="../img/room-img-046.webp" width="1200" height="800" alt="An open door onto an older room with a mosquito-net bed" loading="lazy" decoding="async"><span class="chip">Fan</span></div><div class="pick-txt"><h3>Budget Double Room</h3><p class="meta"><span class="kind">Fan <span class="sep" aria-hidden="true">|</span> </span><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 2</span></p><p class="note">12 m². Fan and mosquito net; no air conditioning and no hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li><li class="pick" data-sleeps="3"><div class="pick-pic"><img src="../img/room-img-040.webp" width="1200" height="800" alt="Double bed under a wall lamp, with a chair and a bedside table, grey walls" loading="lazy" decoding="async"><span class="chip">A/C | Hot water</span></div><div class="pick-txt"><h3>Deluxe Double Room (2 Adults + 1 Child)</h3><p class="meta"><span class="kind">A/C | Hot water <span class="sep" aria-hidden="true">|</span> </span><span>1 double bed and 1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 3</span></p><p class="note">Ground floor, 19 m². Air conditioning, fan and hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li></ul></section><section class="rp-group" aria-labelledby="g3"><h2 id="g3">Three of us</h2><ul class="picks"><li class="pick" data-sleeps="3"><div class="pick-pic"><img src="../img/room-img-040.webp" width="1200" height="800" alt="Double bed under a wall lamp, with a chair and a bedside table, grey walls" loading="lazy" decoding="async"><span class="chip">A/C | Hot water</span></div><div class="pick-txt"><h3>Deluxe Double Room (2 Adults + 1 Child)</h3><p class="meta"><span class="kind">A/C | Hot water <span class="sep" aria-hidden="true">|</span> </span><span>1 double bed and 1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 3</span></p><p class="note">Ground floor, 19 m². Air conditioning, fan and hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li><li class="pick" data-sleeps="4"><div class="pick-pic"><img src="../img/room-img-031.webp" width="1200" height="800" alt="Room with two beds, a red feature wall and a ceiling fan" loading="lazy" decoding="async"><span class="chip">A/C | Hot water</span></div><div class="pick-txt"><h3>Deluxe Family Room</h3><p class="meta"><span class="kind">A/C | Hot water <span class="sep" aria-hidden="true">|</span> </span><span>1 single bed and 1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 4</span></p><p class="note">28 m², with a balcony and a garden view. Air conditioning, fan and hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li></ul></section><section class="rp-group" aria-labelledby="g4"><h2 id="g4">Four of us</h2><ul class="picks"><li class="pick" data-sleeps="4"><div class="pick-pic"><img src="../img/room-img-031.webp" width="1200" height="800" alt="Room with two beds, a red feature wall and a ceiling fan" loading="lazy" decoding="async"><span class="chip">A/C | Hot water</span></div><div class="pick-txt"><h3>Deluxe Family Room</h3><p class="meta"><span class="kind">A/C | Hot water <span class="sep" aria-hidden="true">|</span> </span><span>1 single bed and 1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 4</span></p><p class="note">28 m², with a balcony and a garden view. Air conditioning, fan and hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span>Check dates on Booking.com</span></a></div></li></ul></section><section class="rp-group" aria-labelledby="g0"><h2 id="g0">Not sure</h2><p>Booking.com has the live dates and prices. If you&#x27;d rather ask something first, call us.</p><div class="actions"><a class="btn btn-ghost " href="tel:+94778921396"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>Call +94 77 892 1396</span></a></div></section></div></main><footer class="foot tint">
   <div class="wrap foot-grid">
     <div><p class="mark">Coconut Surf Inn</p><p>Kadabeddagama Road Gurubebila, Weligama 81700, Sri Lanka</p><p class="small">The restaurant upstairs is open every day from 7:30 to 22:00.</p></div>
     <div class="foot-act"><a class="btn btn-ghost " href="tel:+94778921396"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>Call +94 77 892 1396</span></a><a class="btn btn-ghost" href="https://www.google.com/maps/place/?q=place_id:ChIJI29CG-cU4ToRQhs8notgauI" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Map</span></a></div>
@@ -406,6 +434,10 @@ html:not(.js) .slide img[data-src]{display:none}
   var $$ = function (s, c) { return Array.prototype.slice.call((c || d).querySelectorAll(s)); };
   var reduce = W.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var phone = W.matchMedia('(max-width: 767px)');
+
+  /* ---------------- hero: the blurred placeholder under the photograph is a loading state only, dropped once it is in */
+  var hero = $('.hero-pic img');
+  if (hero) { var lit = function () { hero.classList.add('loaded'); }; if (hero.complete && hero.naturalWidth) lit(); else hero.addEventListener('load', lit, { once: true }); }
 
   /* ---------------- room slideshows: scroll-snap tracks with stretching dots */
   $$('[data-show]').forEach(function (show) {
@@ -445,8 +477,13 @@ html:not(.js) .slide img[data-src]{display:none}
   /* ---------------- phone bar: slides up once the hero's button has left the screen */
   var bar = $('#bar'), heroBtn = $('.hero .btn-hero');
   if (bar) {
-    if (!heroBtn || !('IntersectionObserver' in W)) bar.classList.add('up');
-    else new IntersectionObserver(function (es) { bar.classList.toggle('up', !es[0].isIntersecting && es[0].boundingClientRect.top < 0); }).observe(heroBtn);
+    // the header's wordmark and call wait until the hero's title and button have gone, so the first screen says the
+    // name once and its first action is the booking button
+    if (!heroBtn || !('IntersectionObserver' in W)) { bar.classList.add('up'); root.classList.remove('at-hero'); }
+    else new IntersectionObserver(function (es) {
+      var past = !es[0].isIntersecting && es[0].boundingClientRect.top < 0;
+      bar.classList.toggle('up', past); root.classList.toggle('at-hero', !past);
+    }).observe(heroBtn);
   }
 
   /* ---------------- the stay, round the clock */
@@ -499,13 +536,14 @@ html:not(.js) .slide img[data-src]{display:none}
       'void main(){',
       ' vec2 u=(v-.5)*S+.5;',
       ' vec4 a=texture2D(A,u),b=texture2D(B,u);',
-      ' float n=sin(u.x*15.+P*4.)*.012+sin(u.x*37.-P*6.)*.006;',
-      ' float mx=max(H,1.-H)+.14;',
-      ' float e=mix(-.1,mx,P);',
-      ' float d=abs(u.y-H)+n;',
-      ' float m=1.-smoothstep(e-.09,e,d);',
-      ' float glow=smoothstep(.07,0.,abs(d-e+.035))*sin(P*3.14159)*.16;',
-      ' vec3 c=mix(a.rgb,b.rgb,m)+glow*vec3(1.,.86,.7);',
+      ' float h=clamp(H,.38,.62);',
+      ' float n=sin(u.x*9.+P*3.)*.008;',
+      ' float mx=max(h,1.-h)+.2;',
+      ' float e=mix(.0,mx,P);',
+      ' float d=abs(u.y-h)+n;',
+      ' float m=1.-smoothstep(e-.05,e,d);',
+      ' float edge=smoothstep(.035,0.,abs(d-e+.012))*sin(P*3.14159)*.22;',
+      ' vec3 c=mix(a.rgb,b.rgb,m)+edge;',
       ' gl_FragColor=vec4(c,1.);}'
     ].join('\n');
     function sh(t, s) { var o = g.createShader(t); g.shaderSource(o, s); g.compileShader(o); if (!g.getShaderParameter(o, g.COMPILE_STATUS)) throw new Error(g.getShaderInfoLog(o)); return o; }
@@ -599,7 +637,11 @@ html:not(.js) .slide img[data-src]{display:none}
           f.setAttribute('style', 'max-width:420px;border:0;border-radius:16px;display:block');
           f.loading = 'lazy'; f.referrerPolicy = 'strict-origin-when-cross-origin';
           f.setAttribute('sandbox', 'allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin');
-          f.addEventListener('load', function () { box.classList.add('loaded'); var fb = $('.fallback', box); if (fb) fb.remove(); });
+          // the plain link stays in the box until the frame has loaded AND Rosa answered a probe: a blocked host
+          // still fires 'load' on Chrome's error page, which must never replace the link with an empty box
+          var got = 0, show = function () { if (++got === 2) box.classList.add('loaded'); };
+          f.addEventListener('load', show, { once: true });
+          fetch(box.getAttribute('data-rosa'), { mode: 'no-cors', cache: 'force-cache' }).then(show, function () {});
           f.src = box.getAttribute('data-rosa');
           box.appendChild(f);
         }

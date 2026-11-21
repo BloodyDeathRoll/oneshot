@@ -15,7 +15,7 @@ Short names: D = `dossier/cheeky-monkey/dossier.json`; A = `dossier/cheeky-monke
 | 5 | Private preview, search engines told not to list it; cheekymonkeymidigama.com unchanged | H, E | L (noindex,nofollow meta; robots Disallow; no sitemap); only the preview Worker was deployed |
 | 6 | Old first phone screen: nine-line WordPress "Notice" over the top half, then logo, no button | H | A F9, F1; `before-home-390.jpg` (= A evidence `funnel/landing-fold.png`) |
 | 7 | Menu reaches Home, About us, Surf Shop & Activities, Contact us; none has a booking button or a price | H | A F1 (click path), audit.md intro; `walk/01-home-menu-open.png` |
-| 8 | No booking button on any of the 8 pages the menu reaches; only action an email link 5,360 px down; nothing leads to Booking.com | H, W, E | A F1 (`measured.pages_crawled` 8, `clicks_to_book` null) |
+| 8 | No booking button on any of the 4 pages the menu reaches; only action an email link 5,360 px down; nothing leads to Booking.com | H, W, E | A intro ("The menu reaches four pages"); A F1 (`clicks_to_book` null; `pages_crawled` 8 counts crawl URLs, not menu pages) |
 | 9 | Phone plain text 5,410 px down the home page and on the contact page; tap does nothing; no call or WhatsApp link on any page | H, E | A F4 (0 tel:, 0 WhatsApp on 8 pages); `before-phone-390.jpg` (= `walk/01-home-phone-text.png`) |
 | 10 | Prices only on /our-services/ and /surf-camp-packages-sri-lanka/, not linked from the menu; table in a closed "Prices" accordion | H, W, E | A F2; `before-prices-390.jpg` (= `walk/04-packages-price-table.png`) |
 | 11 | Banner: rooms "aren't bookable right now"; Booking.com sells them, 45 reviews of stays Sept 2025 – Sept 2026 | H, W, E | A F3; D `status_flag`, `reviews.booking.note`; `before-banner-390.jpg` (= `walk/01-home-renovation-banner.png`) |
@@ -88,3 +88,5 @@ All made by `make-pitch-media.sh` (`# media:` headers). Git-ignored by the repo'
 - **No fee amounts anywhere.**
 - **Shared phone and owner** with Surf Swell Hostel (notes/cheeky-monkey.md): the same number receives both businesses' pitches if both are sent.
 - The pitch names no other business; the Google crop leaves out the "Similar hotels nearby" panel.
+
+Revised 2026-11-09 after the fix round and verification 2: five after-*.jpg re-shot from the live preview by make-pitch-media.sh (after-390-plan and before-*.jpg unchanged); three alt texts updated to the new shots (the pause button on both drone shots; the surf-weeks card shows its range, not the per-room rows); the sources line now includes the forecast, which verification 2's facts check covered (0 mismatches).

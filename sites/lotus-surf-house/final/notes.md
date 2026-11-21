@@ -116,7 +116,7 @@ Sheets: `shots/desktop-sheet.png`, `shots/mobile-sheet.png`. These are scratch, 
 |---|---|---|
 | Basics | `businessName` | header wordmark, h1, footer script name, `<title>` |
 | Basics | `tagline` | the hero line under the name; meta description; llms.txt |
-| Basics | `closing` | the closing script line above the last Book / Call |
+| Basics | `closing` | the closing sentence (text face) under the template's script title "Come and stay", above the last Book / Call (2026-11-09) |
 | Text | `copyBlocks` intro 0 ("In the garden") | garden title + lede |
 | Text | `copyBlocks` offer 0 ("Old rooms and new") | ¶1 = Yelum's quote beside the garden lede; ¶2 = the line on the King band |
 | Text | `copyBlocks` about 0 / 1 / 2 | Yelum, Breakfast (the porch), Up on the roof |
@@ -125,8 +125,8 @@ Sheets: `shots/desktop-sheet.png`, `shots/mobile-sheet.png`. These are scratch, 
 | Photos & video | `heroVideo` + `heroVideoPoster` | Optional. When set, the poster replaces the gate and the video plays after first paint (not under reduced motion or Save-Data). There is none today |
 | Rooms & stay | `rooms[]` label, beds, sleeps, note | the King block (the row named in gaps `featuredRoom.label`) and the garden list (every other row, with its count) |
 | Rooms & stay | `stayInfo.checkOutFrom/To`, `stayInfo.note` | "Check-out 11:00–12:00" under the King buttons; "Good to know" |
-| Amenities | `amenities[]` | the line under the address |
-| Reviews | `ratings[]` (deployer) | the two dated cards; the "Read all 125 reviews" link; the footer's fine print |
+| Amenities | `amenities[]` | under the address: a two-column list on desktop, a " \| " flow on the phone; rows sharing a note are grouped under it (2026-11-09) |
+| Reviews | `ratings[]` (deployer) | the two dated cards; the small dated line under the King facts (2026-11-09); the "Read all 125 reviews" link; the footer's fine print |
 | Reviews | `testimonials[]` (deployer) | the Guests slideshow, in the admin's order |
 | Contact & booking | `contact.phone` | every Call button, the phone bar, the footer |
 | Contact & booking | `contact.address`, `contact.mapUrl` | Getting here, the footer, "Open in Google Maps" |
@@ -176,8 +176,8 @@ All 18 are Booking.com property uploads, `business-owned` (`dossier/lotus-surf-h
 | 7 | img-021 | 4:5 | 840 |
 | 8–9 | img-022, img-004 | 4:5 | 560 |
 | 10 | img-020 | 16:9 | 960 / 1600 |
-| 11–16 | img-029, 043, 030, 009, 028, 044 | 4:5 | ≤ 960 (native when smaller) |
-| 17 | img-032 | 4:5 below the ceiling line | 840 |
+| 11–16 | img-043, 029, 030, 009, 028, 044 (2026-11-09: img-043 first) | 4:5 | ≤ 960 (native when smaller) |
+| 17 | img-032 | 4:5 inside the print border, colour-corrected (2026-11-09, below) | 840 |
 
 ## gaps
 
@@ -217,9 +217,9 @@ Rosa's live JSON.
 | What | Where |
 |---|---|
 | `forecast: {enabled: true, rosaSpotId: "lazy-left", spotName: "Lazy Left"}` | `src/tenant/content.json`; `scripts/seed-from-dossier.mjs` carries the same value with the decision in a comment, so a reseed keeps it |
-| The block | `src/pages/index.astro`, at the end of "Getting here" (`#getting-here`), under the address / map / good-to-know grid and above the closing. A hairline (`--line`) separates it from the section's text. It renders nothing unless `enabled` and a valid `rosaSpotId`. Words in `src/lib/labels.json` (`fc_credit`, `fc_link`, `fc_title`) |
-| Logic | `src/scripts/site.js`, ported from `sites/cheeky-monkey/final` (itself from `sites/layday-surf-ahangama/final`). One JSON request when the block is within 400 px of the screen. The headline is drawn only from data under 24 h old. Then the widget gets its `src`, only after a HEAD 200 and the frame's `load`, within 10 s. Otherwise the plain link stays. A failure while the block is still below the screen (`.solo`) drops the empty headline box. In view, the box stays reserved |
-| Look | `src/styles/site.css`, in this page's calm language. The headline is a `--tint` card with a 22 px radius, like the rating cards. The credit has the leaf-green wave icon (`wave` and `clock` added to `src/lib/icons.mjs`). The height range is Hanken Grotesk 600 in ink (88 px desktop, 64 px phone), with "m" in muted 400. The time is ink 600, swell and wind are muted, and Rosa's update time is a muted 13.5 px line with the wood clock icon, like `.rday`. Two 420 × 500 boxes sit side by side, centred, at desktop widths. On a phone (≤ 899 px) they stack: card 340 px high, widget box 500 px. The JS-off / failed link sits on the same tint card. Rosa's widget is `theme=light` (white page), embedded exactly as Rosa ships it |
+| The block (superseded 2026-11-09: own section `#surf`, no hairline) | `src/pages/index.astro`, at the end of "Getting here" (`#getting-here`), under the address / map / good-to-know grid and above the closing. A hairline (`--line`) separates it from the section's text. It renders nothing unless `enabled` and a valid `rosaSpotId`. Words in `src/lib/labels.json` (`fc_credit`, `fc_link`, `fc_title`) |
+| Logic (superseded 2026-11-09, see below: no HEAD gate, link always visible) | `src/scripts/site.js`, ported from `sites/cheeky-monkey/final` (itself from `sites/layday-surf-ahangama/final`). One JSON request when the block is within 400 px of the screen. The headline is drawn only from data under 24 h old. Then the widget gets its `src`, only after a HEAD 200 and the frame's `load`, within 10 s. Otherwise the plain link stays. A failure while the block is still below the screen (`.solo`) drops the empty headline box. In view, the box stays reserved |
+| Look (superseded 2026-11-09, see below) | `src/styles/site.css`, in this page's calm language. The headline is a `--tint` card with a 22 px radius, like the rating cards. The credit has the leaf-green wave icon (`wave` and `clock` added to `src/lib/icons.mjs`). The height range is Hanken Grotesk 600 in ink (88 px desktop, 64 px phone), with "m" in muted 400. The time is ink 600, swell and wind are muted, and Rosa's update time is a muted 13.5 px line with the wood clock icon, like `.rday`. Two 420 × 500 boxes sit side by side, centred, at desktop widths. On a phone (≤ 899 px) they stack: card 340 px high, widget box 500 px. The JS-off / failed link sits on the same tint card. Rosa's widget is `theme=light` (white page), embedded exactly as Rosa ships it |
 | llms.txt | "Pages" lists `Forecast for Lazy Left by Rosa` → rosa.surf/spot/lazy-left, as on Cheeky Monkey |
 
 Embeds: 1 of 2 (the page has no map iframe; "Open in Google Maps" is a link).
@@ -232,3 +232,77 @@ Playwright check at 390 and 1440 found no rosa.surf or rosa-data request on firs
 horizontal overflow. JS off: only the link, in the 420 × 500 box (350 × 500 at 390), no Rosa request. JSON blocked and
 stale data (30 h): link shown, no numbers, no widget request, section height unchanged.
 Cost: about 3.7 KB gzip of inline HTML (CSS + JS + markup), no new requests on load.
+
+## 2026-11-09: fix round after verification 1 (station 4g)
+
+designer 0.7.1, run `2026-10-midigama-01`, operator alon.
+
+**Why.** Verification 1 (`reports/2026-10-midigama-01/lotus-surf-house{,.visual,.experience}.md`, 2026-11-06) failed the page on dimension 8: visual-critic 7, experience-critic 7; critic 72.8/80; total 86.0. Fixed against the orchestrator's fix list, biggest effect first, inside Alon's gate-b order. That order is unchanged: gate → King band img-002 → img-025 with the facts → strip → roof img-021 → glance → garden rooms → porch → guests → getting here.
+
+### What changed
+
+| # | Fix | Where |
+|---|---|---|
+| 1 | **Forecast block, redone.** It is now its own section, `#surf`, after Getting here and before the closing (`nav` gains "Surf"). There is no rule above it: the `.fc.live` border-top and its 96 px padding are gone. The pair sits on the page grid: the text column starts at x 144 and Rosa's widget ends at x 1296 at 1440 (measured: text 144–764, widget 876–1296, 420 × 500, unmodified, `theme=light`). The left half is one tight group, vertically centred on the widget: the script title **"Surf at Lazy Left"**, then **"Lazy Left is the Rosa spot nearest the house."**, then Giada's verbatim words with attribution, then the headline card. The card no longer stretches to 500 px: it is 220 px at desktop and 254 px on the phone, credit on top, then "**Latest reading, Mon 9 Nov, 14:30**", the numeral, swell (the mean `period`, as `tools.md` says), wind and Rosa's update time. The plain link "See today's forecast for Lazy Left on Rosa" is always in the card's bottom row. | `index.astro` (`surf`), `site.css` (forecast block), `labels.json` (`fc_heading`, `fc_latest`, `fc_swell`, `fc_wind`, `fc_updated`), `gaps.json` `forecastIntro` (from the seed) |
+| 1 | **Loading and failure.** The HEAD-request gate is gone. When the block nears the screen (400 px), the JSON request and Rosa's iframe start independently. The card draws only from data under 24 h old. On failure, stale data or a 10 s timeout, the card's contents give way to the link, which **fills the card at the same height** when the block is on screen. When the failure comes while the block is still below the screen (`.solo`), the card shrinks to the link out of sight. With **JS off**, the card is just the link (112 px) and the widget's box is not drawn at all: no blank grey box and no empty reserved space. A refused or aborted frame leaves Rosa's box as the browser draws it, with the link visible in the card beside or above it. Labels and the JSON URL are `data-*` on the card. | `src/scripts/site.js` |
+| 1 | **The mapping** is recorded in `concepts.md` §3 as an amendment dated 2026-11-09. Nothing else in `concepts.md` changed. | `../concepts.md` |
+| 2 | **Phone header.** `.top` is `position:absolute` at ≤ 899 px, so it scrolls away with the hero. It held only the wordmark and was already hidden below the hero. That removes the 28 px grey scrim band at the top of every screen below the hero, and the wordmark no longer runs over the hero's Call pill or the rising title. `.top.solid::before` is hidden as well, and `.solid` no longer slides or turns white on the phone. | `site.css` phone block |
+| 3 | **Yelum print (img-032)**, kept rather than swapped to img-005, because it is the porch where breakfast is served. The source has a white print border (rows 0–91 and 1296–1388), and the old crop ended in it. The crop box is now 932 × 1165 at 505, 112: clear of both bands and the pillar, all four corners rounded, the left chair whole. A one-photo `tone` warms the lilac wall to white and calms the orange floor (recomb, saturation 0.66, gamma 1.1). It applies only to a source named `img-032*`, so an owner's upload gets no colour change. | `src/lib/slots.mjs` slot 17, `scripts/photos.mjs` (`tone`) |
+| 4 | **Separators.** New `pipes()`: each item draws its bar before it inside a clipping box pulled left by one bar, so no line ends (or starts) on a bar. Used for the King stay line and the phone amenities. The amenities are grouped (schema: "the template groups and orders them"): the four rows noted "additional charge" become one line, "**Additional charge:** Airport shuttle, Bicycle rental, Walking tours, Laundry". The other eight are a two-column list on desktop (4 rows) and a " \| " flow on the phone. No row is dropped or reworded. The Guests attribution sets the author on its own line on the phone, so its bar cannot dangle. | `site.mjs` (`pipes`, `AMENITY_GROUPS`), `index.astro`, `site.css` |
+| 5 | **Closing.** A short script title, "**Come and stay**" (template label `closing_title`), with the `closing` sentence beneath it in Hanken Grotesk 18/17 px, muted and balanced. | `index.astro`, `site.css`, `labels.json` |
+| 6 | **Guests** open on Henry ("after surfing … the local surf spots"), then Svenja ("4 surfspots"); the other ten follow in the copy's order (seed `LEAD_REVIEWS`, order only). A **small dated rating line** sits under the King facts: "9.0/10 Booking.com \| 4.9/5 Google \| read 3 Nov 2026", from the same `ratings[]` rows. The **garden slideshow opens on img-043** (the Deluxe Queen Room with the surfboard), then img-029. The **Yelum / Breakfast run** has its picture inside it on the phone: Yelum, the print, then Breakfast (grid order). Desktop is unchanged (print left, both texts right). | seed `ORDER`, `LEAD_REVIEWS`; `index.astro` (`kproof`, porch markup); `site.css` |
+| 7 | **Slider dots** are out of the tab order (`tabindex="-1"`, dot group `aria-hidden`). The 44 px arrows and the track's arrow keys are the keyboard controls, and pointer users can still tap the dots. **Check-in** is said twice, not three times: dropped from the glance line, kept under the King buttons and in Good to know. **JS off:** the hero's text block gets 72 px more bottom padding on the phone, so the static bar no longer covers Call (Call bottom 736, bar top 772 at 390). The desktop subtitle is `text-wrap: balance`: "Sri Lanka" stays together. | `index.astro`, `site.css`, seed `glance` |
+
+Kept, as the critics asked: the gate first screen, the King band, the roof, 1 tap to Booking.com, the facts, every control's existing motion, and Rosa's widget unstyled.
+
+### look-log (fix round)
+
+1. **Round 1, whole page** (`tools/shoot.mjs`, 1440 + 390, plus Playwright captures of each section, 2026-11-09):
+   - **Desktop.** The forecast pair reads as one composed block on the grid: script title, one bold sourced line, Giada's quote, and the card with time, numeral and two lines beside it, next to Rosa's widget. There is no rule. The card had about 45 px of air between the update line, so I took it from 236 to 220 px.
+   - **Phone.** The amenities picked up the desktop's 32 px `column-gap` as a flex gap, which left a ragged column look. I reset it. Giada's attribution split onto two lines like the Guests one, so that rule is now scoped to `.q`. "Lazy Left is the Rosa spot nearest the house." wrapped to two lines at 18 px, so it is 16.5 px on the phone.
+   - **Porch.** The recropped print has four round corners, a warm white wall and a calmer floor, and sits with the greens and woods of the page.
+   - **Phone header.** No band at the top of the King band or any later screen, and no wordmark over the hero buttons mid-scroll (captures at 250, 500 and 1800 px).
+2. **Round 2, whole page:** after the fixes above. Clean at both widths: no overflow (scrollWidth = innerWidth at 390 and 1440), no text under fixed elements except the phone bar passing over content as it scrolls, as before.
+
+**Against the bar.** The business has no site of its own. Verification 1 found this page already clearly better than the Booking.com and Google listings, and nothing here weakens that. Next to the gold pages it is still "a very good photograph" rather than an idea on the first screen. That is unchanged by this round's scope: the first screen is a "keep".
+
+**Phone length of the forecast block.** It is 1,058 px from the title to the bottom of the widget, against about 925 px before. The headline card itself is shorter (254 against 340 px, it no longer repeats the widget's next row, and the hairline and its 64 + 64 px are gone). But the block now carries the script title, the sourced line and Giada's quote that the critics asked for. Only the card could be shortened. The widget is fixed at 500.
+
+### Checks (2026-11-09, local preview build: `env -u SITE_URL npm run build`, served from `dist/` on 127.0.0.1)
+
+| Check | Result |
+|---|---|
+| `npm run build` (preview) | pass. `dist/index.html` 73.5 KB, `robots.txt` (Disallow: /, unchanged), `llms.txt` (only the review order changed), no `sitemap.xml`, `noindex, nofollow` present. JSON-LD byte-identical to the live build's |
+| `tools/check-design.mjs …/final/dist/index.html` | **ok**, 0 problems, 0 warnings. h1/h2 Parisienne, body Hanken Grotesk, ground #FFFFFF, 0 all-caps labels, 0/15 labelled headings |
+| `tools/check-places.mjs lotus-surf-house` | **ok**, 0 borrowed images |
+| `tools/site-check.mjs lotus-surf-house --url http://127.0.0.1:8971/ --no-parity` | **PASS**: pages, assets, handoff, forecast-data (JSON 200, 5.4 h old, widget 200), seo, browser, booking, forecast-block, performance; video skipped (none). forecast-block: section height 1058→1058 (390) and 612→612 (1440), shift 0, headline drawn, iframe set. (The first run failed because the probe reads the first 160 characters of the `data-json` element, which was then the whole block; `data-json` moved to the headline card, where it belongs) |
+| `tools/audit-mockup.mjs lotus-surf-house ../final` (throttled phone) | first load **897 KB** (918,984 B, 13 requests, 1 host), JS 0 external, LCP **448 ms**, CLS **0**, scroll CLS early **0.0018** / settled **0**, 0 third-party, alt missing 0, largest image 228,380 B, fonts 56,996 B. `audit.json` updated |
+| Inspector (`design-taste-frontend/scripts/inspect.mjs`) | 8 FAIL, 5 WARN, down from 9 FAIL. Gone: `hairline` on `.fc.live` and the 3-line closing headline. New: `eyebrow` on "Latest reading, …" above the numeral: kept, because the critics and the fix list asked for a time label on the headline. Unchanged and discounted as in verification 1: "Upstairs" eyebrow, button resting shadow and hover glow, two text-shadows over photographs (legibility scrim), terracotta (both critics accepted it), still-page (calm, no canvas), covered-text (the phone bar passing over "Up on the roof" in scroll), reduced-hidden (the desktop nav waits for the scroll by design), 16 font sizes, no footage (none usable), side-scroll (the slideshows), empty-middle on "In the garden" (unchanged section), name-only title at 768/390 (the tagline under it says what and where). The inspector's own screenshots were deleted |
+| axe-core 4.11.4 (WCAG 2.0/2.1 A + AA), after a full scroll, iframes not audited | **0 violations** at 1440 and 390 |
+| Keyboard | 30 stops (1440) and 27 (390), all visible once focused. Skip link first, dots 0 (out of the tab order), forecast: credit link → plain link → widget iframe. No trap |
+| Failure paths (Playwright, 1440 + 390) | **JS off:** card = the link, 620 × 112 / 350 × 112, no widget box, no Rosa request. **JSON 500** (failed before reaching the screen): `.off.solo`, card 112 px with the link, widget still loads beside it. **Stale (30 h), on screen:** `.off`, card keeps 220/254 px with the link centred, no numbers. **Frame refused** (`frame-ancestors 'none'`): the headline stays, and the link stays visible in the card. All page heights unchanged by the outcome except `.solo` below the screen |
+| Booking | unchanged: the hero "Check dates on Booking.com" = `dossier.booking.engine_url` (seed asserts it), every `tel:` = `tel:+94774647541`, 1 tap |
+| Text diff, JS off, against the live build | only the intended changes: the "Surf" nav item, the stay line, the King proof line, the glance line without check-in, Henry and Svenja first, the grouped amenities, the forecast section's words, "Come and stay" |
+
+### Facts added this round
+
+| On the page | Source |
+|---|---|
+| "Lazy Left is the Rosa spot nearest the house." | Alon's mapping (2026-11-04). Rosa `data/index.json` vs dossier `location.lat_lng`: 293 m, nearest of Rosa's spots (`concepts.md` §3 amendment; `gaps.forecastIntro._source`) |
+| "The location is perfect to go and surf at lazy left and right" (Giada, Italy, Booking.com, Dec 2025) | dossier `reviews.quotes` (Giada, Italy, 2025-12-13, `…#review-e68a59ddb9111462`), sentence 2, verbatim. The seed fails if it is not a substring of the dossier text. Its trailing " ." is left out, nothing else. Also in `location.spot.note` |
+| "9.0/10 Booking.com \| 4.9/5 Google \| read 3 Nov 2026" under the King facts | `ratings[]` (as the cards) |
+| "Come and stay", "Surf at Lazy Left", "Latest reading, …" | template labels: no checkable claim |
+
+### Media (no media in git)
+
+- `scripts/make-media.sh` was re-run. It rewrote `src/tenant/media/*` (18 originals, unchanged copies from the dossier) and `public/photos/*` (21 WebP files).
+- Changed files: `img-032-r1.25-840.webp` (new crop and tone), plus slots 11/12 swapped (same files, `img-043-r1.25-960.webp` now first). Every other photo is byte-for-byte the same recipe.
+- Recipe changes (committed scripts, no new `# media:` globs needed): `src/lib/slots.mjs` slot 17, `scripts/photos.mjs` (the `tone` option), `scripts/seed-from-dossier.mjs` (slideshow order, review order, glance, `forecastIntro`). `dossier/lotus-surf-house/assets/` was not written.
+
+### conflicts (none blocking; for Alon)
+
+1. **New words not passed by the copywriter or copyeditor:** "Surf at Lazy Left", "Lazy Left is the Rosa spot nearest the house.", "Come and stay", "Latest reading, …". The first two follow the orchestrator's fix list and the critics' suggestion. The quote is verbatim. They should go through 4c, or Alon approves them as they are.
+2. **The widget now loads independently of the site's JSON.** It also loads when Rosa's JSON is stale or failed. The card then shows only the link, but Rosa's own widget still shows Rosa's days with Rosa's own dates and "Today" label. The alternative, gating the widget on fresh JSON, would leave an empty 420 × 500 box or a layout shift on failure, which the fix list forbids. Alon may prefer the gate.
+3. **Amenities "trim":** done by grouping (4 repeated "(additional charge)" notes become one line) and by the two-column list. No row is hidden: the 12 rows are the owner's content (`amenities[]`), and hiding some would be a template overriding the owner. If Alon wants fewer, delete rows in the seed / CMS (CCTV and luggage storage are the obvious ones).
+4. **The forecast block on the phone is longer than before** (1,058 vs about 925 px), because it gained the title, line and quote. The card itself is 86 px shorter.
+5. The headline's "Latest reading" time can trail the clock by hours (Rosa republishes 4×/day). It is labelled with its time, never "now".

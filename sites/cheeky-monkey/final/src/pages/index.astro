@@ -12,7 +12,7 @@ import {
   c, G, L, e, t, paras, block, money, Word, PLATFORM, dayMonYear, monYear,
   MARK, MARK_SUB, PRIMARY, INSTA_LINK, TEL, PHONE, EMAIL, mailto, MAP, SOC, IG_HANDLE,
   WEEKS, WEEKS_BLOCK, WEEKS_LEDE, WEEKS_FROM, LESSON, LESSON_YEAR, lessonPrice, lessonUnit, lessonLevelsLine, lessonOthersLine, lessonDrawerLine,
-  transfersLine, stayTimes, amenLine, roomDet, roomShort, roomSize, roomSlides, quoteSource,
+  transfersLine, stayTimes, amenLine, roomDet, roomShort, roomSize, roomExtra, roomSlides, quoteSource,
   img, slotRow, slotSrc, slotSet, hero, reel, HERO_CREDIT, splitLine,
   metaDescription, seoHead, businessLd, ldJson, ogImage, IS_PREVIEW,
 } from '../lib/site.mjs'
@@ -105,6 +105,9 @@ const w0 = WEEKS[0]
       {H.sources.map((s) => <source data-src={s.src} type={s.type} media={s.media} />)}
     </video>}
   </div>}
+  {/* round 4 (critic dim 6, open since round 3; WCAG 2.2.2): one quiet control pauses and plays both looping videos
+      (the hero and the shop reel). Hidden until the hero loop is attached, so it never shows with posters only */}
+  {H && H.sources.length > 0 && <button type="button" class="icon-btn vid-ctl" aria-pressed="false" aria-label={L.pause} hidden><Fragment set:html={icon('pause') + icon('play')} /></button>}
   <div class="hero-in">
     {c.featureLine && <p class="hero-line">{splitLine(c.featureLine).map((h) => <span>{h}</span>)}</p>}
     {PRIMARY && <a class="btn btn-hero" href={PRIMARY.url}>{PRIMARY.label}
@@ -151,18 +154,38 @@ const w0 = WEEKS[0]
       sites/layday-surf-ahangama/final. Rams is the Rosa spot nearest the guesthouse, not the business's own break: the
       block only ever says "Forecast for Rams by Rosa". Both halves have fixed boxes; nothing is requested until the
       block nears the screen (src/scripts/site.js). With JS off, the plain link fills the widget's box. */}
+  {/* round 4 (verification 1): the pair sits on the page column (headline stack | widget at Rosa's 420 px); a short
+      title and one factual line introduce Rams (gaps.forecast, Rosa's index.json against dossier location.lat_lng);
+      the headline is labelled with its time; Rosa's update time is plain text, not the price pill; the plain link
+      stays visible in the credit line at all times; no HEAD request; JS off, a failed or stale JSON and a refused
+      frame all end in filled, composed states (src/styles/site.css) */}
   {fcOn && <div class="wrap">
-    <div class="fc" data-json={`https://rosa-data-opal.vercel.app/data/spots/${spotId}.json`} data-spot={spotName}>
-      <div class="fc-now" aria-live="polite">
-        <p class="credit-rosa"><Fragment set:html={icon('wave')} /><a href={`https://rosa.surf/spot/${spotId}`}>Forecast for {spotName} by Rosa</a></p>
-        <div class="live">
-          <p class="now"><span class="nh">{' '}<small> m</small></span></p>
-          <p class="nd"><span data-f="t"></span><span data-f="swell"></span><span data-f="wind"></span></p>
-          <p class="dated upd"><Fragment set:html={icon('clock')} /><span data-f="upd"></span></p>
+    <div class="fc" data-json={`https://rosa-data-opal.vercel.app/data/spots/${spotId}.json`} data-spot={spotName} data-when={L.forecast.when} data-upd={L.forecast.upd}>
+      <div class="fc-now">
+        <h3 class="t-hand-s fc-h">{t(L.forecast.title, { spot: spotName })}</h3>
+        {G.forecast?.line && <p class="fc-intro">{G.forecast.line}</p>}
+        <div class="fc-read" aria-live="polite">
+          <div class="live">
+            <p class="fc-when" data-f="t"></p>
+            <p class="now"><span class="nh">{' '}<small> m</small></span></p>
+            <p class="nd"><span data-f="swell"></span><span data-f="wind"></span></p>
+            <p class="fc-upd" data-f="upd"></p>
+          </div>
+          <p class="fc-none fc-wait"><Fragment set:html={icon('wave')} /><span>{t(L.forecast.wait, { spot: spotName })}</span></p>
+          <p class="fc-none fc-off"><span>{t(L.forecast.off, { spot: spotName })}</span><small>{t(L.forecast.off_more, { spot: spotName })}</small></p>
+        </div>
+        <div class="fc-credit">
+          <p class="credit-rosa"><Fragment set:html={icon('wave')} /><a href={`https://rosa.surf/spot/${spotId}`}>{t(L.forecast.credit, { spot: spotName })}</a></p>
+          <a class="btn btn-ghost btn-sm fc-plain" href={`https://rosa.surf/spot/${spotId}`}>{t(L.forecast.link, { spot: spotName })} <Fragment set:html={arrow} /></a>
         </div>
       </div>
       <div class="fc-rosa">
-        <a class="fc-link" href={`https://rosa.surf/spot/${spotId}`}><span>See today's forecast for {spotName} on Rosa</span></a>
+        <div class="fc-alt">
+          <span class="fc-alt-i" aria-hidden="true"><Fragment set:html={icon('wave')} /></span>
+          <p class="fc-alt-t">{t(L.forecast.alt, { spot: spotName })}</p>
+          <a class="btn btn-sm" href={`https://rosa.surf/spot/${spotId}`}>{t(L.forecast.link, { spot: spotName })}</a>
+          <p class="fc-alt-c"><a href={`https://rosa.surf/spot/${spotId}`}>{t(L.forecast.credit, { spot: spotName })}</a></p>
+        </div>
         <iframe
           data-src={`https://rosa.surf/widget/?spot=${spotId}&theme=light&units=metric`}
           title={`Rosa surf forecast - ${spotName}`}
@@ -265,18 +288,23 @@ const w0 = WEEKS[0]
   </div>
 </section>}
 
+{/* round 4 (visual v1 fix 5): the sunset surfer was a 16:9 slice of a portrait drawn 1440 px wide (soft, a blocky
+    face). On desktop it is now the whole photograph, 3:4, at a size it holds, with the roof bar overlapping it; on a
+    phone it is still the full-bleed 4:5 band at the top of the section, as before */}
 {roof && <section class="roof pinkg edge" id="roof" aria-labelledby="roof-h">
-  {slotRow(S.roofBand) && <picture class="roof-band">
-    {slotSrc(S.roofBand, 1) && <source media="(max-width:860px)" srcset={slotSrc(S.roofBand, 1).webp} width={slotSrc(S.roofBand, 1).w} height={slotSrc(S.roofBand, 1).h}>}
-    <Fragment set:html={img(S.roofBand)} />
-  </picture>}
   <div class="wrap roof-g">
     <div class="roof-t">
       <h2 class="t-hand" id="roof-h">{roof.heading}</h2>
       <Fragment set:html={paras(roof.body).map((p) => `<p>${e(p)}</p>`).join('')} />
       {amenLine && <p class="det amen">{amenLine}</p>}
     </div>
-    <Fragment set:html={img(S.roofSide, { cls: 'roof-side' })} />
+    <div class="roof-ph">
+      {slotRow(S.roofBand) && <picture class="roof-band">
+        {slotSrc(S.roofBand, 1) && <source media="(max-width:860px)" srcset={slotSrc(S.roofBand, 1).webp} width={slotSrc(S.roofBand, 1).w} height={slotSrc(S.roofBand, 1).h}>}
+        <Fragment set:html={img(S.roofBand)} />
+      </picture>}
+      <Fragment set:html={img(S.roofSide, { cls: 'roof-side' })} />
+    </div>
   </div>
 </section>}
 
@@ -340,7 +368,7 @@ const w0 = WEEKS[0]
   <div class="wrap">
     <h2 class="sr" id="ig-h">{L.ig.sr}</h2>
     <div class="ig-g"><Fragment set:html={S.ig.map((n) => { const h = img(n); return h ? `<a class="ig-t" href="${e(SOC.instagram)}">${h}</a>` : '' }).join('')} />
-      <a class="ig-follow" href={SOC.instagram}><Fragment set:html={icon('insta')} /><span>{`${L.ig.follow} ${IG_HANDLE}`}</span></a>
+      <a class="ig-follow" href={SOC.instagram}><Fragment set:html={icon('insta')} />{/* round 4 (visual v1): the handle broke mid-word in the tile; the tile says what it does */}<span>{L.ig.follow}</span></a>
     </div>
   </div>
 </section>}
@@ -390,10 +418,11 @@ const w0 = WEEKS[0]
       {rooms.length > 0 && <div class="step" data-step="room" id="plan-room">
         <p class="plan-q">{L.drawer.which_room}</p>
         <div class="tiles rooms-t">
-          {rooms.map((r) => <button type="button" class="tile ph" data-room={r.label}>{r.slides[0] && <img src={r.slides[0].webp} alt="" width={r.slides[0].w} height={r.slides[0].h} loading="lazy">}<b>{roomShort(r)}</b><span>{[r.beds, roomSize(r)].filter(Boolean).join(' | ')}</span></button>)}
+          {rooms.map((r) => <button type="button" class="tile ph" data-room={r.label}>{r.slides[0] && <img src={r.slides[0].webp} alt="" width={r.slides[0].w} height={r.slides[0].h} loading="lazy">}<b>{roomShort(r)}</b><span>{[r.beds, roomSize(r)].filter(Boolean).join(' |\u00a0')}</span>{roomExtra(r) && <span class="x">{roomExtra(r)}</span>}</button>)}
         </div>
         {PRIMARY && <div class="handoff" data-handoff hidden>
-          <p class="sum"><span data-sum>{rooms[0].label}</span>. {L.drawer.handoff}</p>
+          {/* round 4 (experience v1 fix 3): the hand-off names the room picked */}
+          <p class="sum">{L.drawer.handoff} <Fragment set:html={e(L.drawer.handoff_look).replace('{room}', `<b data-sum>${e(rooms[0].label)}</b>`)} /></p>
           <a class="btn" href={PRIMARY.url}>{PRIMARY.label} <Fragment set:html={arrow} /></a>
         </div>}
         {PRIMARY && <a class="btn plain-only" href={PRIMARY.url}>{PRIMARY.label} <Fragment set:html={arrow} /></a>}

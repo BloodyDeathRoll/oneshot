@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<title>A website for Coconut Surf Inn</title>
+<meta name="description" content="A proposal for Coconut Surf Inn, Gurubebila: the website preview we built, what it changes for a guest on a phone, what you will be able to edit yourself, and the ways it can run.">
+<style>
+:root{
+  --bg:#f7f7f4; --paper:#ffffff; --ink:#1f2418; --muted:#575d4f; --line:#dcdfd5;
+  --accent:#252323; --accent-ink:#ffffff; --link:#a8391f; --soft:#f0f1f3; --warn:#fff6e0; --warn-line:#d9a02a;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --accent:#e9ebe4; --accent-ink:#141611; --bg:#141611; --paper:#1d2019; --ink:#e9ebe4; --muted:#b0b5a7; --line:#30352a; --link:#f0a27f; --soft:#22252a; --warn:#2a2416; --warn-line:#b8862a; }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+a{color:var(--link)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header.top{padding:40px 16px 24px}
+.kicker{color:var(--muted);font-size:15px;margin:0 0 8px}
+h1{font-size:clamp(30px,6vw,48px);line-height:1.1;font-weight:600;margin:0 0 16px;letter-spacing:-.01em}
+h2{font-size:clamp(23px,4vw,30px);line-height:1.2;font-weight:600;margin:0 0 14px}
+h3{font-size:18px;margin:0 0 6px}
+p{margin:0 0 14px}
+.lede{font-size:19px;max-width:44em}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:12px 20px;background:var(--accent);color:var(--accent-ink);font-weight:600;text-decoration:none;border-radius:4px;word-break:break-all}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--link);outline-offset:2px}
+.note{color:var(--muted);font-size:15px}
+section{padding:36px 16px;border-top:1px solid var(--line)}
+.grid2{display:grid;gap:24px;grid-template-columns:1fr}
+.shots{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+figure{margin:0}
+figure img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+figcaption{font-size:14px;color:var(--muted);margin-top:6px}
+.wide{margin-top:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px}
+.fix{display:grid;gap:18px;grid-template-columns:1fr;margin-top:20px}
+.fix .card h3{margin-bottom:10px}
+.fix .label{display:block;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:10px 0 2px}
+.fix figure{max-width:300px}
+.fix figure.land{max-width:420px}
+.fix figure+figure{margin-top:14px}
+table{border-collapse:collapse;width:100%;background:var(--paper);border:1px solid var(--line);border-radius:8px;font-size:16px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-top:1px solid var(--line)}
+thead th{border-top:0;font-size:14px;color:var(--muted);font-weight:600}
+tbody th{font-weight:600;width:22%}
+.tablewrap{overflow-x:auto}
+.tabs{list-style:none;padding:0;margin:0;display:grid;gap:8px;grid-template-columns:1fr}
+.tabs li{padding:10px 14px;background:var(--paper);border:1px solid var(--line);border-radius:6px}
+.tabs li>strong:first-child{display:block}
+.offer{background:var(--soft);border-left:4px solid var(--accent);padding:18px 20px;border-radius:4px;max-width:46em}
+.offer p:last-child{margin-bottom:0}
+ol.confirm{padding-left:22px;margin:0;max-width:46em}
+ol.confirm li{margin-bottom:10px}
+.offsite figure{max-width:420px}
+footer{padding:28px 16px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (min-width:720px){
+  .grid2{grid-template-columns:1fr 1fr}
+  .fix{grid-template-columns:1fr 1fr}
+  .tabs{grid-template-columns:1fr 1fr}
+  .offsite{display:grid;gap:24px;grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  table,thead,tbody,tr,th,td{display:block}
+  thead{display:none}
+  tbody tr{border-top:1px solid var(--line);padding:10px 12px}
+  tbody tr:first-child{border-top:0}
+  tbody th,tbody td{border:0;padding:2px 0;width:auto}
+  tbody td::before{content:attr(data-h);display:block;font-size:13px;font-weight:600;color:var(--muted)}
+}
+@media (max-width:420px){ .shots{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<header class="top wrap">
+  <p class="kicker">A proposal for Coconut Surf Inn, Gurubebila, Sri Lanka</p>
+  <h1>We built Coconut Surf Inn a website</h1>
+  <p class="lede">Your guests rate Coconut Surf Inn 8.5 out of 10 on Booking.com, from 142 reviews, and 4.8 out of 5 on Google, from 88 (read 4 November 2026). On Booking.com they give the location 9.6 and the staff 9.4. Today the inn has no website of its own. A traveller finds you on Google Maps, Booking.com or Airbnb. On Booking.com they can't reach you before they book, and on Airbnb they must sign up first. We built a site that shows the house, the six kinds of room, the roof, the restaurant upstairs and the break in front of the door, with Booking.com and your phone one tap away. It is made from your Booking.com and Airbnb photos and listings, your own words on Airbnb, your Google listing and your guests' reviews. You can open it now:</p>
+  <p><a class="btn" href="https://coconut-surf-inn-guest-house-and-restaurant.os1.workers.dev/">Open the preview</a></p>
+  <p class="note">coconut-surf-inn-guest-house-and-restaurant.os1.workers.dev. This is a private preview. Search engines are told not to list it, so it is not on Google. Your Booking.com, Airbnb and Google listings stay exactly as they are. Nothing goes public until you decide.</p>
+</header>
+
+<main>
+<section class="wrap" aria-labelledby="h-first">
+  <h2 id="h-first">The first screen on a phone</h2>
+  <div class="shots">
+    <figure>
+      <img src="before-booking-fold.jpg" width="780" height="1688" loading="lazy" alt="Our screenshot of the Coconut Surf Inn listing on Booking.com on a phone, 4 November 2026: the blue Booking.com bar and search box, Beachfront, the name, No.49, Kadabeddagama, Gurubebila, Weligama, 8.5 Very good, 142 reviews, a photo of the courtyard marked 1/45, Breakfast and free WiFi, and a yellow box saying Choose dates to see prices.">
+      <figcaption>Today: your Booking.com listing on a phone. Our screenshot, 4 November 2026.</figcaption>
+    </figure>
+    <figure>
+      <img src="after-390-top.jpg" width="780" height="1688" loading="lazy" alt="The preview on a phone: the view from your roof over the palms to the sea, the name Coconut Surf Inn in hand lettering, the line A guesthouse in Gurubebila, between Midigama and Weligama, and a black button Check dates on Booking.com.">
+      <figcaption>The preview on a phone, 5 November 2026: the view from your roof, your name and Booking.com.</figcaption>
+    </figure>
+  </div>
+  <div class="grid2 wide">
+    <figure>
+      <img src="after-1440-top.jpg" width="1440" height="900" loading="lazy" alt="The preview on a laptop: the view from the roof across the full screen, palms, the beach and the sea, with Coconut Surf Inn, the guesthouse line and Check dates on Booking.com over the sky, and Rooms, The stay, The break and Check dates at the top.">
+      <figcaption>The preview on a laptop, 5 November 2026.</figcaption>
+    </figure>
+    <figure>
+      <img src="after-1440-rooms.jpg" width="1440" height="900" loading="lazy" alt="The preview on a laptop, further down: Six kinds of room, the line Booking.com lists six, starting with a single for one person and going up to a family room for four, a Find your room button, and the first two rooms with photos marked A/C and Hot water.">
+      <figcaption>Further down: the six room types, each with its own photos.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-numbers">
+  <h2 id="h-numbers">Booking from a phone, before and after</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th scope="col"></th><th scope="col">Today (Google, Booking.com, Airbnb)</th><th scope="col">The preview</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Your own page</th>
+        <td data-h="Today (Google, Booking.com, Airbnb)">None. The Google listing says "Add website" where the website should be.</td>
+        <td data-h="The preview">A home page and a "Find your room" page, only about Coconut Surf Inn, in your photos and your guests' words.</td></tr>
+      <tr><th scope="row">Booking</th>
+        <td data-h="Today (Google, Booking.com, Airbnb)">On Booking.com or Airbnb, after choosing dates. On Google, "Check availability" opens a price box led by a sponsored Booking.com offer.</td>
+        <td data-h="The preview">"Check dates on Booking.com" on the first screen: one tap to your listing. As the guest scrolls, it stays in a bar at the bottom of the phone screen.</td></tr>
+      <tr><th scope="row">Asking you first</th>
+        <td data-h="Today (Google, Booking.com, Airbnb)">Booking.com shows no phone, WhatsApp or email; questions go to a public Q&amp;A. On Airbnb, "Message host" asks the guest to log in or sign up. Your phone number is on Google and on comparison sites like Kayak, not on the pages where a guest books.</td>
+        <td data-h="The preview">"Call +94 77 892 1396" under the ratings, in "Getting here" and at the end of the page, and a call button at the top of the screen once the guest scrolls.</td></tr>
+      <tr><th scope="row">Which room has A/C</th>
+        <td data-h="Today (Google, Booking.com, Airbnb)">Booking.com's description says every room has air-conditioning. Its own room list gives the two budget rooms a fan only. Airbnb still describes fan rooms with a shared bathroom.</td>
+        <td data-h="The preview">Each of the six room types says it plainly, with an "A/C | Hot water" or "Fan" label: the four A/C rooms first, then the Budget Double and Budget Single with "Fan and mosquito net; no air conditioning and no hot water".</td></tr>
+      <tr><th scope="row">The restaurant</th>
+        <td data-h="Today (Google, Booking.com, Airbnb)">On Google it is a separate listing, "Coconut Surf Restaurant (2nd floor)", with no phone and no website.</td>
+        <td data-h="The preview">"The restaurant upstairs": the room, the sea view, open every day from 7:30 to 22:00, and its own Google rating, 4.6 from 39 reviews.</td></tr>
+      <tr><th scope="row">The break</th>
+        <td data-h="Today (Google, Booking.com, Airbnb)">Named in your Airbnb text and in one Booking.com answer ("coconut surf break ( 60m)"). Google says nothing about it.</td>
+        <td data-h="The preview">"Coconuts, a consistent A-frame reef break, is in front of the guesthouse", Plantations a 100 m walk up the beach, the season, and today's surf on Coconuts from the Rosa forecast.</td></tr>
+      <tr><th scope="row">Guest reviews</th>
+        <td data-h="Today (Google, Booking.com, Airbnb)">On each platform separately. On Google, the review texts sit behind a sign-in.</td>
+        <td data-h="The preview">Booking.com 8.5/10 from 142, Google 4.8/5 from 88 and Airbnb 4.44/5 from 54, each with the date we read it, and 12 guest reviews quoted word for word.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note wide">On a slowed-down phone test (5 November 2026) the preview opened with 373 KB and 0 requests to outside servers, and the main content showed in under half a second. The page fits a phone screen without sideways scrolling, every button is big enough to tap, and the Booking.com and Call links work with JavaScript switched off.</p>
+</section>
+
+<section class="wrap" aria-labelledby="h-fixed">
+  <h2 id="h-fixed">What a guest meets today, and what the preview does instead</h2>
+  <p>We walked your Google, Booking.com and Airbnb listings on a phone on 4 November 2026, as a guest would, without booking anything. These screenshots are from that walk.</p>
+  <div class="fix">
+    <div class="card">
+      <h3>On Booking.com, a guest can't ask you anything before booking</h3>
+      <span class="label">Today</span>
+      <p>Your Booking.com listing shows no phone, no WhatsApp and no email. Under "Contacting the property" it says: "Once you book, we'll provide details so you can contact the property directly." The only way to ask first is the public questions and answers on the listing.</p>
+      <span class="label">On the preview</span>
+      <p>"Call +94 77 892 1396" sits under the ratings beside "See rooms and live dates on Booking.com", again in "Getting here" and at the end of the page, and a round call button stays at the top of the screen once the guest scrolls. The closing line says: "Booking.com has the live dates and prices. If you'd rather ask something first, call us."</p>
+      <figure><img src="before-booking-contact.jpg" width="780" height="262" loading="lazy" alt="Our screenshot of the Booking.com listing on a phone, 4 November 2026: Contacting the property. If you want to request something specific, you can do that after you choose your rate. Once you book, we'll provide details so you can contact the property directly."><figcaption>"Contacting the property" on Booking.com, 4 November 2026.</figcaption></figure>
+      <figure><img src="before-booking-questions.jpg" width="780" height="500" loading="lazy" alt="Our screenshot of the Booking.com questions and answers, 4 November 2026: a guest asks about a room for friends from 27 February to 9 March, and the answer, given on 21 January 2025, begins Hi, Sorry for the late reply. We have room from 27.02.2025 to 09.03.2025."><figcaption>A question in the Booking.com Q&amp;A, 4 November 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>On Airbnb, asking means signing up first</h3>
+      <span class="label">Today</span>
+      <p>On your Airbnb listing, the host card says "Responds within a few days or more". Tapping "Message host" opens "Log in or sign up". A guest who only wants to ask about a room has to make an account first.</p>
+      <span class="label">On the preview</span>
+      <p>The same phone number, one tap away on every screen, and no account needed for anything.</p>
+      <figure><img src="before-airbnb-host.jpg" width="780" height="290" loading="lazy" alt="Our screenshot of the Airbnb listing on a phone, 4 November 2026: Host details, Responds within a few days or more, and a Message host button."><figcaption>The host card on Airbnb, 4 November 2026.</figcaption></figure>
+      <figure><img src="before-airbnb-signin.jpg" width="780" height="620" loading="lazy" alt="Our screenshot of what opens after tapping Message host on Airbnb: Log in or sign up, with a phone number or email field, Continue, and Google and Apple buttons."><figcaption>After tapping "Message host", 4 November 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>The rooms with A/C and the rooms with a fan are told apart</h3>
+      <span class="label">Today</span>
+      <p>The first lines of Booking.com's description say: "Each room includes air-conditioning, a work desk, and a private entrance." Booking.com writes that summary, not you, and its own room list gives the Budget Single and Budget Double a fan only. Some guests have booked a budget room expecting air-conditioning.</p>
+      <span class="label">On the preview</span>
+      <p>The four A/C rooms come first, each with its own photos and the label "A/C | Hot water": "Upstairs, 15 m², with a balcony. Air conditioning, fan and hot water." The two budget rooms follow with "Fan and mosquito net; no air conditioning and no hot water." A guest knows what they are booking before they tap.</p>
+      <figure class="land"><img src="before-booking-summary.jpg" width="780" height="260" loading="lazy" alt="Our screenshot of Booking.com's property description on a phone, 4 November 2026: Comfortable Accommodations: Coconut Surf Inn in Weligama offers family rooms with private bathrooms, balconies, and garden views. Each room includes air-conditioning, a work desk, and a private entrance."><figcaption>Booking.com's description, 4 November 2026.</figcaption></figure>
+      <figure><img src="after-390-room-ac.jpg" width="780" height="1688" loading="lazy" alt="The preview on a phone: a photo of the Deluxe Double Room with Balcony, the bed and the open balcony doors, marked A/C and Hot water; then 1 large double bed, Sleeps 2, Upstairs, 15 m², with a balcony. Air conditioning, fan and hot water, and Check dates on Booking.com."><figcaption>An A/C room on the preview, 5 November 2026.</figcaption></figure>
+      <figure><img src="after-390-room-fan.jpg" width="780" height="1688" loading="lazy" alt="The preview on a phone: Budget Double Room, 1 large double bed, Sleeps 2, 12 m², Fan and mosquito net; no air conditioning and no hot water; Budget Single Room, 1 single bed, Sleeps 1, Upstairs, 9 m², the same line; each with Check dates on Booking.com; then Check-in from 13:00, Check-out until 11:00, and the line about children and pets."><figcaption>The two fan rooms on the preview, 5 November 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>One description of the stay, not two</h3>
+      <span class="label">Today</span>
+      <p>The Airbnb listing describes a different stay from Booking.com's. Its header says "Shared bathroom", while your own text there says "own bathroom" and Booking.com gives every room a private one. It describes "09 rooms" with a ceiling fan and a wall fan, says "(Break fast not included to the Price)", and gives check-in and check-out at 12:00, where Booking.com says 13:00 and 11:00.</p>
+      <span class="label">On the preview</span>
+      <p>One account of the house, taken from the Booking.com listing you keep up to date: six kinds of room, each with its own entrance and its own bathroom with a shower; check-in from 13:00, check-out until 11:00; "Breakfast comes with some rates and not with others." Your own words from Airbnb about the Eranga family home, the grass by the beach and the two breaks are kept.</p>
+      <figure class="land"><img src="before-airbnb-header.jpg" width="780" height="300" loading="lazy" alt="Our screenshot of the Airbnb listing on a phone, 4 November 2026: Coconut Surf Inn, Room in Weligama, Sri Lanka, 1 bed, Shared bathroom, 4.44 stars, 54 reviews."><figcaption>The top of the Airbnb listing, 4 November 2026.</figcaption></figure>
+      <figure class="land"><img src="before-airbnb-rooms.jpg" width="780" height="390" loading="lazy" alt="Our screenshot of the Airbnb description, 4 November 2026: Guest access. There are 09 rooms, with each having a double bed, ceiling fan, Wall fan and own bathroom. Sheets and towels are provided. Hammocks, a shady restaurant area and garden, outdoor shower, clothes line and surf board rack are all provided. All meals, snacks and drinks available. (Break fast not included to the Price)."><figcaption>"Guest access" in the Airbnb description, 4 November 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>Google has no website to send people to</h3>
+      <span class="label">Today</span>
+      <p>On Google Maps the Coconut Surf Inn Guest House and Restaurant listing shows 4.8 from 88 reviews and, where the website should be, "Add website" under "Add missing information". On a phone it offers Directions, Start and Call, and its photos are only in the app.</p>
+      <span class="label">On the preview</span>
+      <p>A page that tells the house's story through one day: the roof in the afternoon, the beach at sunset, the restaurant until 22:00, the Eranga family home from 7:30, and the break. "Getting here" gives the airport, the two stations and your address in Google's own words, says "On Google Maps, look for Coconut Surf Inn Guest House and Restaurant", and links to the listing. Once the site is live, its address is what goes into "Add website".</p>
+      <figure><img src="before-google-phone.jpg" width="780" height="290" loading="lazy" alt="Our screenshot of the Coconut Surf Inn Guest House and Restaurant listing on Google Maps on a phone, 4 November 2026: 4.8 stars, 88 reviews, 3-star hotel, and the buttons Directions, Start and Call."><figcaption>Your Google listing on a phone, 4 November 2026.</figcaption></figure>
+      <figure class="land"><img src="before-google-website.jpg" width="408" height="395" loading="lazy" alt="Our screenshot of the same listing on a laptop, 4 November 2026: Kadabeddagama Road Gurubebila, Weligama 81700, Sri Lanka, +94 77 892 1396, the plus code, Check-out time 11:00, Suggest an edit, and under Add missing information, Add website and Add a photo."><figcaption>The same listing on a laptop: "Add website", 4 November 2026.</figcaption></figure>
+      <figure><img src="after-390-here.jpg" width="780" height="1688" loading="lazy" alt="The preview on a phone: Getting here. Koggala Airport is 11 km away, a taxi on request with a charge; the nearest train station is Kumbalgama, about a 13-minute walk; Midigama station is 1.4 km away; Weligama centre 3.3 km. On Google Maps, look for Coconut Surf Inn Guest House and Restaurant. The address, and the buttons Open in Google Maps and Call +94 77 892 1396."><figcaption>"Getting here" on the preview, 5 November 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>Trust, all in one place</h3>
+      <span class="label">Today</span>
+      <p>Your ratings are high, but each sits on its own platform, and on Google the review texts are behind a sign-in.</p>
+      <span class="label">On the preview</span>
+      <p>Booking.com, Google and Airbnb side by side, each with the review count and the date we read it, right after the first screen and again before the guests' words. Twelve guest reviews are quoted word for word with the guest's name, country and month, two of them inside "A day at the house".</p>
+      <figure><img src="after-390-checkin.jpg" width="780" height="1688" loading="lazy" alt="The preview on a phone: 13:00, check-in, a paragraph about the guesthouse, the break in front and the restaurant hours, then three rows: 8.5/10 Booking.com, 142 reviews, 4 Nov 2026; 4.8/5 Google, 88 reviews, 4 Nov 2026; 4.44/5 Airbnb, 54 reviews, 4 Nov 2026; then See rooms and live dates on Booking.com and Call +94 77 892 1396. At the bottom, the bar Check dates on Booking.com and Find your room."><figcaption>The ratings on the preview, 5 November 2026.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-also">
+  <h2 id="h-also">Also on the preview</h2>
+  <ul>
+    <li>Only your own photographs: every one on the page is a photo you uploaded to Booking.com or Airbnb, the view from the roof first.</li>
+    <li>"Find your room": the guest says how many are coming, and sees only the rooms that fit. It works as a separate page with JavaScript switched off.</li>
+    <li>"Inside the house" (the skylit courtyard, the hammocks, the outdoor shower and the board rack) and "At the house": WiFi, the 24-hour front desk, room service, packed lunches, bicycle and car hire, the tour desk and laundry.</li>
+    <li>"Today on Coconuts": the wave height, swell and wind on your break, from the Rosa surf forecast, loaded only when the guest scrolls to it. The season is given as the Sri Lanka Travel Pages surf guide gives it, November to April, with its name.</li>
+    <li>Check-in from 13:00 and check-out until 11:00, children welcome with no cots or extra beds, pets on request at no charge.</li>
+    <li>No chat widget, no pop-up, no tracker.</li>
+    <li>Apart from the forecast and the season above, every fact on the preview comes from your Booking.com, Airbnb and Google listings or your guests' reviews. Our reviewer checked each one against those sources: 0 mismatches.</li>
+  </ul>
+</section>
+
+<section class="wrap" aria-labelledby="h-off">
+  <h2 id="h-off">Also worth doing, outside the website</h2>
+  <ul>
+    <li><strong>Add the website to your Google listing.</strong> Once the site is live, its address goes into "Add website" on the Coconut Surf Inn Guest House and Restaurant listing.</li>
+    <li><strong>Claim the restaurant's Google listing.</strong> "Coconut Surf Restaurant (2nd floor)" has its own Google listing, rated 4.6 from 39 reviews, with "Claim this business", no phone and no website. Its address says "No 44", where Booking.com says No.49. Claim it, add your phone and the new site, and set the house number you use.</li>
+    <li><strong>Take your number off the "Coconut Beach" place.</strong> Google also has a place called "Coconut Beach", filed as a beach with its address in Matara, that shows your phone number, +94 77 892 1396. Its stars and reviews are about the beach, not the inn. A traveller, or an AI assistant, who finds your number there may mix the two up. "Suggest an edit" on that place can remove the number.</li>
+    <li><strong>Check the room facilities on Booking.com.</strong> In the Booking.com extranet, each room type's facilities can be checked, so the description stops saying every room has air-conditioning. Booking.com's "Closest beaches" block also puts Midigama Beach 1.3 km away on foot, while the top of the page says "Beachfront"; you can ask Booking.com to correct it.</li>
+    <li><strong>Bring the Airbnb listing up to date, or close it.</strong> The bathroom type, the rooms, the A/C, breakfast and the check-in times there no longer match Booking.com.</li>
+  </ul>
+  <div class="offsite wide">
+    <figure>
+      <img src="before-google-restaurant.jpg" width="408" height="600" loading="lazy" alt="Our screenshot of the Coconut Surf Restaurant (2nd floor) listing on Google Maps on a laptop, 4 November 2026: 4.6 stars, Restaurant, No 44 Kadebeddagama Gurubebila, Weligama 81700, Sri Lanka, Opens 7:30 am, the plus code XC63+74 Ahangama, Claim this business, and under Add missing information, Add place's phone number and Add website.">
+      <figcaption>The restaurant's own Google listing, 4 November 2026.</figcaption>
+    </figure>
+    <figure>
+      <img src="before-google-beach.jpg" width="408" height="305" loading="lazy" alt="Our screenshot of the Coconut Beach place on Google Maps on a laptop, 4 November 2026: Coconut Beach, 4.8 stars for the beach, Beach, Matara, Sri Lanka, and the phone number +94 77 892 1396.">
+      <figcaption>The "Coconut Beach" place, with your phone number, 4 November 2026.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-edit">
+  <h2 id="h-edit">What you will be able to change yourself</h2>
+  <p>Today the preview is a finished build, with no login yet. With the managed or the self-hosted option below, you get your own login to a simple admin page that shows only Coconut Surf Inn. You fill in fields, not code, so an edit can't break the design. Press Publish, and the site rebuilds itself.</p>
+  <ul class="tabs">
+    <li><strong>Basics</strong> the name, the opening line and the closing line</li>
+    <li><strong>Text</strong> the rooms line, the roof, the beach, the restaurant, the family home, inside the house and getting here</li>
+    <li><strong>Opening hours</strong> the restaurant's hours, wherever the page shows them</li>
+    <li><strong>Photos</strong> the first screen, the five photos of the day at the house, inside the house and the sign. Upload from your phone; the site makes the sizes itself.</li>
+    <li><strong>Rooms and stay</strong> each room's name, beds, how many it sleeps, its details and first photo; check-in and check-out times and the house rules</li>
+    <li><strong>Amenities</strong> the "At the house" list</li>
+    <li><strong>Surf</strong> the break, the season and the forecast block</li>
+    <li><strong>Reviews</strong> remove any rating or quote; we add new ones with their source</li>
+    <li><strong>Contact and booking</strong> phone, address, map link and the Booking.com link</li>
+  </ul>
+  <p class="wide">The layout, colours and fonts stay fixed. Some parts of this design have no field yet: the short line on the first screen, the "A/C" and "Fan" labels on the rooms, the extra photos in each room's slideshow, and which two guest quotes sit inside "A day at the house". We change those for you when you ask.</p>
+</section>
+
+<section class="wrap" aria-labelledby="h-offer">
+  <h2 id="h-offer">How it can run: you choose</h2>
+  <div class="offer">
+    <p>Nothing is set up yet: no hosting, no login, no domain. We set it up once you choose. <strong>Managed</strong> is the one we recommend: we host the site and keep it running, and hosting, updates and backups are our job. You pay a monthly fee that we agree with you, and you edit your content whenever you like. <strong>Self-hosted</strong>: we install the same site and editor on a server of your own for a one-time fee that we agree with you. It is then fully yours. You pay your server company roughly $6–12 a month, and you take care of updates and backups yourself. <strong>Files only</strong>: if you never want to edit it yourself, we hand you the finished site as files that run on any web host; every change then needs a developer.</p>
+    <p class="note">The preview runs on a temporary address. Which address the live site gets is something we decide with you once you have chosen.</p>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-confirm">
+  <h2 id="h-confirm">Before it goes live, we need you to confirm</h2>
+  <ol class="confirm">
+    <li><strong>WhatsApp and email.</strong> If +94 77 892 1396 is on WhatsApp, we add a WhatsApp button with a message already started. If guests can write to you by email, send us the address and we add it.</li>
+    <li><strong>Your address and your place name.</strong> The preview uses Google's address, with no house number. Is it No.49, as on Booking.com, or No 44, as on the restaurant's Google listing? The preview calls the place "Gurubebila, between Midigama and Weligama". Is that how you want it said?</li>
+    <li><strong>Prices and breakfast.</strong> We found your rates only on Booking.com and Airbnb, where they change with the dates, so the preview shows no price and links to live dates. It says "Breakfast comes with some rates and not with others." Tell us if you want a price or more about breakfast on the site.</li>
+    <li><strong>The restaurant menu.</strong> Guests praise the sesame tuna, but we found no menu anywhere online. If you send one, the restaurant can have its own part of the site.</li>
+    <li><strong>Who runs the house.</strong> The preview names you, Chinthaka, and your family as the hosts, and nobody else. Tell us if anyone else should be named.</li>
+    <li><strong>The rooms.</strong> From Booking.com, the preview says the Deluxe Family Room sleeps four in one single and one large double bed, and says which rooms have hot water. Is that right, the Budget Single especially?</li>
+    <li><strong>Pool and spa.</strong> Google lists a pool and Booking.com lists spa facilities. No photo or guest review shows either, so the preview says nothing. Tell us if they are there.</li>
+    <li><strong>Video and more photos.</strong> We found no video of your own, and no photos of surfers on Coconuts, of you and your family, or of the breakfast and the food guests write about. A video could open the site; if you send some, we add them.</li>
+    <li><strong>The season.</strong> The preview gives the surf season as a surf guide gives it, November to April, with the guide's name. Tell us if you want it in your own words.</li>
+    <li><strong>AI assistants.</strong> Once live, assistants such as ChatGPT can read the site and quote it to travellers. Keep that, or block the ones that train on it?</li>
+  </ol>
+</section>
+
+<section class="wrap" aria-labelledby="h-reply">
+  <h2 id="h-reply">How to reply</h2>
+  <p>Open the preview first: <a href="https://coconut-surf-inn-guest-house-and-restaurant.os1.workers.dev/">coconut-surf-inn-guest-house-and-restaurant.os1.workers.dev</a>. If you have questions, or want to go ahead, reply to the message this page came with. There is no obligation, and the preview stays private until you decide.</p>
+</section>
+</main>
+
+<footer class="wrap">
+  <p>Prepared 5 November 2026. Screenshots of the Booking.com and Airbnb listings and the three Google places are ours, taken on 4 November 2026, and show only Coconut Surf Inn, its restaurant and the "Coconut Beach" place that carries its phone. Screenshots of the preview were taken on 5 November 2026. The photographs on the preview are Coconut Surf Inn's own Booking.com and Airbnb uploads.</p>
+</footer>
+</body>
+</html>

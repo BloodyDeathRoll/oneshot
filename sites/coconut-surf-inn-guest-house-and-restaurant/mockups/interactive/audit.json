@@ -1,42 +1,33 @@
 {
  "slug": "coconut-surf-inn-guest-house-and-restaurant",
  "variant": "interactive",
- "measured_at": "2026-11-04T23:29:43.305Z",
+ "measured_at": "2026-11-05T09:03:52.715Z",
  "first_load": {
-  "requests": 8,
+  "requests": 12,
   "hosts": [
    "fonts.googleapis.com",
-   "fonts.gstatic.com",
-   "localhost:8980"
+   "localhost:8980",
+   "fonts.gstatic.com"
   ],
   "third_party_hosts": [
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 373729,
-  "bytes_html": 129334,
+  "bytes_total": 684860,
+  "bytes_html": 134036,
   "bytes_js": 0,
   "bytes_css": 0,
-  "bytes_fonts": 64772,
-  "bytes_images": 179623,
-  "largest_image_bytes": 102000,
-  "lcp_ms": 520,
-  "cls": 0.0018,
-  "dcl_ms": 1812
+  "bytes_fonts": 68384,
+  "bytes_images": 482440,
+  "largest_image_bytes": 152504,
+  "lcp_ms": 564,
+  "cls": 0.0002,
+  "dcl_ms": 2321
  },
  "scroll": {
   "early": {
-   "cls": 0.0018,
-   "shifts": [
-    {
-     "value": 0.0014,
-     "at_ms": 1091,
-     "y": 0,
-     "sources": [
-      "#text"
-     ]
-    }
-   ]
+   "cls": 0.0001,
+   "shifts": []
   },
   "settled": {
    "cls": 0,
@@ -65,19 +56,12 @@
   "note": "no drawer; every action is a plain link"
  },
  "a11y": {
-  "images": 15,
+  "images": 13,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
-  "tapables": 41,
-  "tapables_under_44px": 17,
-  "tapables_under_44px_examples": [
-   "Coconut Surf Inn 176x26",
-   "Booking.com, 142 116x19",
-   "Google, 88 71x19",
-   " 24x8",
-   " 8x8",
-   " 8x8"
-  ],
+  "tapables": 42,
+  "tapables_under_44px": 0,
+  "tapables_under_44px_examples": [],
   "headings": [
    "H1",
    "H2",
@@ -103,9 +87,9 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 10119,
+  "text_length": 9500,
   "booking_links_reachable": 2,
-  "visible_images": 45
+  "visible_images": 42
  },
  "reduced_motion": {
   "canvases": 1,
@@ -113,7 +97,7 @@
   "photograph_visible": true
  },
  "facts": {
-  "numbers_on_page": 49,
+  "numbers_on_page": 50,
   "numbers_not_in_passed_copy": [
    "0.4",
    "0.6",

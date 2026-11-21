@@ -1,9 +1,9 @@
 {
  "slug": "coconut-surf-inn-guest-house-and-restaurant",
  "variant": "calm",
- "measured_at": "2026-11-04T23:23:31.823Z",
+ "measured_at": "2026-11-05T09:02:24.424Z",
  "first_load": {
-  "requests": 21,
+  "requests": 25,
   "hosts": [
    "fonts.googleapis.com",
    "localhost:8980",
@@ -13,20 +13,20 @@
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 1077927,
-  "bytes_html": 92625,
+  "bytes_total": 914413,
+  "bytes_html": 103679,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 56244,
-  "bytes_images": 929058,
-  "largest_image_bytes": 129540,
-  "lcp_ms": 600,
-  "cls": 0.0023,
-  "dcl_ms": 1006
+  "bytes_images": 754490,
+  "largest_image_bytes": 79122,
+  "lcp_ms": 596,
+  "cls": 0.0014,
+  "dcl_ms": 1183
  },
  "scroll": {
   "early": {
-   "cls": 0,
+   "cls": 0.0005,
    "shifts": []
   },
   "settled": {
@@ -59,16 +59,9 @@
   "images": 43,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
-  "tapables": 89,
-  "tapables_under_44px": 46,
-  "tapables_under_44px_examples": [
-   " 36x44",
-   " 24x44",
-   " 24x44",
-   " 24x44",
-   " 24x44",
-   " 24x44"
-  ],
+  "tapables": 62,
+  "tapables_under_44px": 0,
+  "tapables_under_44px_examples": [],
   "headings": [
    "H1",
    "H2",
@@ -88,7 +81,7 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 8850,
+  "text_length": 8854,
   "booking_links_reachable": 2,
   "visible_images": 43
  },

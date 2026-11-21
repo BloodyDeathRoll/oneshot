@@ -71,7 +71,8 @@ const ALT = {
   'img-134': 'Cheeky Monkey surfer on the beach with his surfboard',
   'img-078': 'Open-air wooden rooftop bar with a sea view in golden light',
   'img-141': 'Baba, who founded Cheeky Monkey, among the boards in his shop',
-  'img-121': "An earlier view of the shop front, Baba's Surf Shop and Surf School",
+  /* round 4: written from the new 4:5 crop of the print (slots.mjs 17), which ends after "BABA'S SURF" */
+  'img-121': "An earlier view of the shop front: the Cheeky Monkey signpost and the Baba's Surf sign, boards outside",
   'img-082': "The building from the road: BABA'S SURF SHOP & SURF SCHOOL front, signpost and a red tuk-tuk",
   'img-105': 'Busy night at restaurant near Cheeky Monkey',
   'img-085': 'Group selfie of smiling guests and an instructor on the beach, soft boards behind',
@@ -173,7 +174,10 @@ const doc = {
   businessName: copy.businessName,
   businessType: copy.businessType,
   tagline: copy.tagline,
-  closing: copy.closing,
+  /* round 4 (visual and experience critics, verification 1): the closing line is set in the marker hand and ran to three
+     lines on a phone; shortened by the designer on the operator's fix list. Same two facts as copy.closing: rooms go
+     to Booking.com (booking.engine_url), lessons and surf weeks are booked by phone (contact.phone) */
+  closing: 'Book a room online, or call us about lessons and surf weeks.',
   featureLine: copy.featureLine,
   languages: ['en'],
   copyBlocks: rowIds(copy.copyBlocks, 'block'),
@@ -239,6 +243,10 @@ const gaps = {
   heroCredit: { person: 'Lorenzo Marzocca', what: '2018 promo film for Cheeky Monkey', url: vid001.source_url, licence: vid001.license, _source: 'dossier.videos[] vid-001 found_on ("Promotional video for Cheeky Monkey Guesthouse", uploaded 2018-02-06 by Lorenzo Marzocca) and source_url; media has no credit field. Licence unknown: to be confirmed with the owner at pitch' },
   socials: { website: dossier.contact.socials.website, instagram: dossier.contact.socials.instagram, facebook: dossier.contact.socials.facebook },
   _socials: 'socialLinks[] exists only among the v0.11 brand modules; a surf_camp has no field for its site, Instagram and Facebook',
+  forecast: {
+    line: 'Rams is the nearest spot Rosa covers, about 360 m from the shop.',
+    _source: "round 4 (Alon, 2026-11-04; concepts.md §3 amendment of 2026-11-09): Rosa's data/index.json (rams 5.962565, 80.393597; the next, weligama-west 'Coconut', 578 m) against dossier location.lat_lng (5.9617986, 80.3967609): 360 m by haversine; 369 m from the shop's own Google listing (location.address_other_platforms). Never called the business's break",
+  },
   drawer: {
     boardsTile: '400 boards to rent',
     boardStep: "400 boards for rent, in different sizes, tails and colours: shortboards, longboards and fish, and Cheeky Monkey's own boards, shaped in Bali. Scooters too.",

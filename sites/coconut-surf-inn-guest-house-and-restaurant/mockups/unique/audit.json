@@ -1,7 +1,7 @@
 {
  "slug": "coconut-surf-inn-guest-house-and-restaurant",
  "variant": "unique",
- "measured_at": "2026-11-04T23:30:55.011Z",
+ "measured_at": "2026-11-05T08:33:05.971Z",
  "first_load": {
   "requests": 8,
   "hosts": [
@@ -11,20 +11,20 @@
   "third_party_hosts": [
    "fonts.gstatic.com"
   ],
-  "bytes_total": 382224,
-  "bytes_html": 98304,
+  "bytes_total": 370460,
+  "bytes_html": 99204,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 81460,
-  "bytes_images": 202460,
+  "bytes_images": 189796,
   "largest_image_bytes": 77582,
-  "lcp_ms": 1888,
-  "cls": 0.0011,
-  "dcl_ms": 1708
+  "lcp_ms": 1672,
+  "cls": 0.0012,
+  "dcl_ms": 1704
  },
  "scroll": {
   "early": {
-   "cls": 0.0009,
+   "cls": 0.001,
    "shifts": []
   },
   "settled": {
@@ -56,7 +56,7 @@
   "images": 50,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
-  "tapables": 78,
+  "tapables": 58,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
   "headings": [
@@ -90,9 +90,9 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 9844,
+  "text_length": 9185,
   "booking_links_reachable": 2,
-  "visible_images": 39
+  "visible_images": 38
  },
  "reduced_motion": {
   "canvases": 1,
@@ -100,7 +100,7 @@
   "photograph_visible": true
  },
  "facts": {
-  "numbers_on_page": 43,
+  "numbers_on_page": 44,
   "numbers_not_in_passed_copy": [
    "0.4",
    "0.6",

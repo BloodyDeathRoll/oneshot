@@ -13,13 +13,13 @@ Short names: D = `dossier/lotus-surf-house/dossier.json`; A = `dossier/lotus-sur
 | 3 | Staff score 9.9 on Booking.com | H | D `reviews.booking.subscores.Staff` 9.9 |
 | 4 | No website of its own; found on Google Maps or Booking.com | H, M | D `existing_site.url` null + note; A scope `no_site`; audit.md "the path a traveller takes today" |
 | 5 | On Booking.com a guest can't reach the hosts before booking: no phone/WhatsApp/email; "Once you book, we'll provide details…"; "Ask a question" → sign-in | H, M | A F1 (W 04-booking-com: tel_links [], whatsapp 0, mailto 0); `before-booking-contact.jpg` (crop y 0–262 of `walk/04-booking-com-contacting.png`), `before-booking-signin.jpg` (crop y 0–620 of `walk/04-booking-com-ask-tapped.png`) |
-| 6 | The phone number is only on Google | H | A F1 notes ("The phone exists only on the two Google listings") |
+| 6 | The phone number is on Google and comparison sites like Kayak, not where a guest books | H | D `contact.phone.verified` (Google listings, Kayak) |
 | 7 | Built from their Booking.com photos and listing, Google listing and guests' reviews | H | FN facts table + images (18 photos, all Booking.com uploads `business-owned`); S d1 facts table |
 | 8 | Preview URL https://lotus-surf-house.os1.workers.dev/ | H, M | L note; fetched 2026-11-04 → 200, `cmp`-identical to DIST |
 | 9 | Private preview; search engines told not to list it; listings unchanged | H | L (noindex,nofollow meta; robots Disallow; no sitemap); only the preview Worker exists |
 | 10 | Today's Booking.com first screen: Booking.com bar and search box, name, 9.0 Superb · 125 reviews, ping-pong table photo 1/42, "Choose dates to see prices" | H | `before-booking-fold.jpg` (= `walk/04-booking-com-fold.png`, whole); V "Current presence"; X "Against the current presence" |
 | 11 | Preview first screen: the gate, name, "A guesthouse in Midigama, on the south coast of Sri Lanka.", "Check dates on Booking.com", "Call +94 77 464 7541" | H | S d4 (mobile-00); X timeline; DIST hero; `after-390-top.jpg`, `after-1440-top.jpg` |
-| 12 | One scroll down: the King Rooms band, "The King Rooms upstairs are new, and their balconies look out into the trees."; shown first as Alon asked | H | DIST `#upstairs`; FN (Alon's gate-b words "show the king room first"); `after-1440-king.jpg` |
+| 12 | One scroll down: the King Rooms band, "The King Rooms upstairs are new, and their balconies look out into the trees." | H | DIST `#upstairs`; FN (Alon's gate-b words "show the king room first"); `after-1440-king.jpg` |
 | 13 | Google listing says "Add website" | H | A F2; `before-google-website.jpg` (crop x 72–488, y 205–577 of `walk/02-google-listing-desktop-add-website.png`; no map, no "Similar hotels nearby") |
 | 14 | On a laptop the first Google button is a sponsored Booking.com advert | H | A F2 ("On a desktop the first button is 'Book now' on a Booking.com ad marked 'Sponsored'"); `walk/02-google-listing-desktop-availability.png` (not shown) |
 | 15 | Google on a phone: Directions, Start, Call; photos behind "See all 150 photos in the app"; nothing in the house's own words | H | A F2; W 01-google-listing text; `before-google-phone.jpg` (crop y 1150–1688 of `walk/01-google-listing-fold.png`; the map with other places' names is cut off) |
@@ -61,7 +61,7 @@ Short names: D = `dossier/lotus-surf-house/dossier.json`; A = `dossier/lotus-sur
 | 51 | Booking.com lists a private hot tub in the King Rooms, Google a pool and a restaurant; no photo/review shows them; preview says nothing | H | D `contradictions` pool / restaurant / hot tub; NB open item; AI ("The King Room hot tub… I left it out") |
 | 52 | A 2023 YouTube video by Travel With Sandhya shows the roof terrace, garden and surfing nearby; ask whether the footage is theirs | H | D `videos[]` vid-002 (uploaded 2023-04-17, channel Travel With Sandhya, `not_picked`: "Ask the owner whether the footage is his (pitch point)") |
 | 53 | No photos of the beach, waves, breakfast or the people running the house; none larger than 1600 px | H | D gaps images (pitch_point: "all 44 photos are ≤ 1600 px … nothing of the wave or the people") |
-| 54 | Guests write about Lazy Left and Lazy Right; the house names no break and no season; preview says nothing | H | D gaps `location.spot` and `season` (pitch_point); AI "Surf" and "The season" |
+| 54 | Guests write about Lazy Left and Lazy Right; the house names no break and no season; preview shows only a Rosa forecast for Lazy Left, the nearest spot Rosa covers | H | D gaps `location.spot` and `season` (pitch_point); AI "Surf" and "The season" |
 | 55 | AI assistants: keep, or block the training crawlers | H | AI "Crawler policy (owner decision, must be confirmed)" |
 | 56 | Greeting "Hello Yelum" | M | DIST ("Yelum owns the house"); D owner replies in `reviews`; NB ("Owner Yelum and his family") |
 | 57 | Proposal page URL https://lotus-surf-house-proposal.os1.workers.dev | M | `wrangler deploy` 2026-11-04, version dc0b8ed6-0330-47a5-9a56-7d495722470f; verified below |
@@ -91,3 +91,5 @@ All made by `make-pitch-media.sh` (`# media:` headers). Git-ignored by the repo'
 - **No fee amounts anywhere.**
 - **Polish open on the preview** (all three critics, not gating; NB): the phone header wordmark overprints the hero line and Call button while scrolling, the porch photo shows a white Instagram border on desktop, the King thumbnails can't be tapped. The owner will see the first one on his first scroll. The pitch's screenshots don't show it.
 - The pitch names no other business; the Google crops leave out the map and "Similar hotels nearby". It names the YouTube channel Travel With Sandhya only to ask whether its footage is the owner's.
+
+Revised 2026-11-09 after the fix round and verification 2: the six after-*.jpg re-shot from the live preview by make-pitch-media.sh (before-*.jpg unchanged); two alt texts updated to the new shots (King Room rating lines; the glance line without check-in); the sources line now includes the forecast, which verification 2's facts check covered (0 mismatches).

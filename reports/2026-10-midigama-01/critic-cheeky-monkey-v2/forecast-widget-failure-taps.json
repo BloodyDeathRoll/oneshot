@@ -1,0 +1,72 @@
+{
+ "normal": {
+  "btn_visible": true,
+  "top_at_btn": "IFRAME",
+  "frame_visibility": "visible",
+  "frame_display": "block",
+  "src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+  "rosa_on": true,
+  "fc": "fc live",
+  "tap_result": "popup https://rosa.surf/spot/rams"
+ },
+ "widget-abort": {
+  "btn_visible": true,
+  "top_at_btn": "IFRAME",
+  "frame_visibility": "visible",
+  "frame_display": "block",
+  "src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+  "rosa_on": true,
+  "fc": "fc live",
+  "tap_result": "nothing happened"
+ },
+ "widget-404": {
+  "btn_visible": true,
+  "top_at_btn": "IFRAME",
+  "frame_visibility": "visible",
+  "frame_display": "block",
+  "src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+  "rosa_on": true,
+  "fc": "fc live",
+  "tap_result": "nothing happened"
+ },
+ "widget-refused": {
+  "btn_visible": true,
+  "top_at_btn": "IFRAME",
+  "frame_visibility": "visible",
+  "frame_display": "block",
+  "src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+  "rosa_on": true,
+  "fc": "fc live",
+  "tap_result": "nothing happened"
+ },
+ "widget-hang": {
+  "btn_visible": true,
+  "top_at_btn": "button",
+  "frame_visibility": "hidden",
+  "frame_display": "block",
+  "src": null,
+  "rosa_on": false,
+  "fc": "fc live",
+  "tap_result": "navigated"
+ },
+ "json-abort": {
+  "btn_visible": true,
+  "top_at_btn": "button",
+  "frame_visibility": "hidden",
+  "frame_display": "block",
+  "src": null,
+  "rosa_on": false,
+  "fc": "fc off",
+  "tap_result": "navigated"
+ },
+ "nojs-normal": {
+  "btn_visible": true,
+  "top_at_btn": "button",
+  "frame_visibility": "hidden",
+  "frame_display": "none",
+  "src": null,
+  "rosa_on": false,
+  "fc": "fc",
+  "tap_result": "navigated"
+ }
+}

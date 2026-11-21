@@ -14,6 +14,9 @@
 
   /* ---------- header sticks (desktop) and the phone bar slides up once the hero has gone */
   const hero = $('.hero'), top = $('.top'), bar = $('#bar');
+  /* the blurred placeholder under the hero photo is a loading state only: dropped once the photo is in */
+  const himg = $('.hero-img');
+  if (himg) { const ok = () => himg.classList.add('loaded'); himg.complete && himg.naturalWidth ? ok() : himg.addEventListener('load', ok, { once: true }); }
   new IntersectionObserver(([e]) => {
     top.classList.toggle('stuck', !e.isIntersecting);
     bar.classList.toggle('up', !e.isIntersecting);
@@ -59,11 +62,14 @@
     f.style.cssText = 'max-width:420px;border:0;border-radius:16px;display:block';
     f.referrerPolicy = 'strict-origin-when-cross-origin';
     f.setAttribute('sandbox', 'allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin');
-    const done = (ok) => { box.dataset.loading = 'false'; if (ok) box.classList.add('loaded'); else f.remove(); };
+    const done = (ok) => { box.dataset.loading = 'false'; if (ok) box.classList.add('loaded'); else f.remove(); };   // the plain link stays under the frame either way
     const timer = setTimeout(() => done(false), 12000);
     f.addEventListener('load', () => { clearTimeout(timer); done(true); }, { once: true });
-    f.src = box.dataset.rosa;
-    box.append(f);
+    // a failed frame still fires 'load' (on an empty error page that would cover the link), so the
+    // frame is only added once Rosa answers at all; until then, and if it never does, the plain link stays
+    fetch(box.dataset.rosa, { mode: 'no-cors', credentials: 'omit' })
+      .then(() => { f.src = box.dataset.rosa; box.append(f); })
+      .catch(() => { clearTimeout(timer); done(false); });
   }, '600px');
 
   /* ---------- deferred slides: written as <img> only when their room or slideshow is shown */
@@ -91,37 +97,49 @@
     track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => set(Math.round(track.scrollLeft / track.clientWidth))); }, { passive: true });
   });
 
-  /* ---------- drag rows: momentum, and a rubber band at both ends (mouse; touch scrolls natively) */
-  $$('[data-drag]').forEach((row) => {
-    if (!fine) return;
-    let down = false, x0 = 0, s0 = 0, lastX = 0, lastT = 0, v = 0, moved = false, raf = 0;
-    const max = () => row.scrollWidth - row.clientWidth;
-    const band = (o) => { row.style.transform = o ? `translateX(${o}px)` : ''; };
-    row.addEventListener('pointerdown', (e) => {
-      if (e.pointerType !== 'mouse' || e.button !== 0) return;
-      cancelAnimationFrame(raf); down = true; moved = false; x0 = lastX = e.clientX; s0 = row.scrollLeft; lastT = e.timeStamp; v = 0;
-      row.style.transition = '';
+  /* ---------- the reviews: a paged carousel (round 3). One dot per page of what fits (3 / 2 / 1),
+     arrows that stop at the ends, swipe and trackpad scroll natively; every control is 44 px or more. */
+  $$('[data-revs]').forEach((rv) => {
+    const track = $('.cards', rv), cards = [...track.children], ctrl = $('.rev-ctrl', rv), dotsBox = $('.dots', rv);
+    const prev = $('.prev', rv), next = $('.next', rv), count = $('.rev-count', rv);
+    let per = 1, pages = 1, page = 0, dots = [];
+    const x = (k) => cards[k].offsetLeft - cards[0].offsetLeft;
+    const mark = (n) => {
+      page = n; dots.forEach((d, k) => d.setAttribute('aria-current', k === n ? 'true' : 'false'));
+      count.textContent = `${n + 1} of ${pages}`;
+      prev.disabled = n === 0; next.disabled = n >= pages - 1;
+    };
+    const go = (n) => { n = Math.max(0, Math.min(pages - 1, n)); track.scrollTo({ left: x(Math.min(n * per, cards.length - 1)), behavior: calm ? 'auto' : 'smooth' }); mark(n); };
+    const build = () => {
+      per = Math.max(1, Math.round(track.clientWidth / (cards[0].offsetWidth || 1)));
+      pages = Math.ceil(cards.length / per);
+      dotsBox.textContent = '';
+      dots = Array.from({ length: pages }, (_, k) => {
+        const d = document.createElement('button'); d.type = 'button'; d.className = 'dot';
+        d.setAttribute('aria-label', `Reviews ${k * per + 1} to ${Math.min(cards.length, (k + 1) * per)}`);
+        d.addEventListener('click', () => go(k)); dotsBox.append(d); return d;
+      });
+      ctrl.hidden = pages < 2;
+      // more pages than fit as 44 px dots (a phone, one review a page): a counter between the arrows
+      const many = pages > 6; dotsBox.hidden = many; count.hidden = !many;
+      mark(Math.min(page, pages - 1));
+    };
+    prev.addEventListener('click', () => go(page - 1));
+    next.addEventListener('click', () => go(page + 1));
+    let raf = 0;
+    track.addEventListener('scroll', () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const end = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+        mark(end ? pages - 1 : Math.round(track.scrollLeft / Math.max(1, x(Math.min(per, cards.length - 1)))));
+      });
+    }, { passive: true });
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(page + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(page - 1); }
     });
-    addEventListener('pointermove', (e) => {
-      if (!down) return;
-      const dx = e.clientX - x0;
-      if (!moved && Math.abs(dx) > 4) { moved = true; row.classList.add('drag'); row.setPointerCapture?.(e.pointerId); }
-      if (!moved) return;
-      const want = s0 - dx, m = max();
-      row.scrollLeft = want;
-      band(want < 0 ? -want * -.35 : want > m ? -(want - m) * .35 : 0);
-      const dt = Math.max(1, e.timeStamp - lastT); v = (e.clientX - lastX) / dt; lastX = e.clientX; lastT = e.timeStamp;
-    });
-    addEventListener('pointerup', () => {
-      if (!down) return; down = false;
-      row.style.transition = 'transform .45s cubic-bezier(.32,.72,0,1)'; band(0);
-      setTimeout(() => row.classList.remove('drag'), 0);
-      if (!moved || calm) return;
-      let vel = -v * 16;
-      const glide = () => { row.scrollLeft += vel; vel *= .94; if (Math.abs(vel) > .4) raf = requestAnimationFrame(glide); };
-      raf = requestAnimationFrame(glide);
-    });
-    row.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+    build();
+    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(build, 120); });
   });
 
   /* ---------- How do you like to sleep? tiles -> rooms that match -> one room on the stage */
@@ -214,7 +232,7 @@
       if (!tw) return;
       const dpr = Math.min(devicePixelRatio || 1, 2), cw = cv.clientWidth, ch = cv.clientHeight;
       cv.width = Math.round(cw * dpr); cv.height = Math.round(ch * dpr); gl.viewport(0, 0, cv.width, cv.height);
-      const s = Math.max(cw / tw, ch / th), dw = tw * s, dh = th * s, k = 1.015;        // object-fit: cover, scale(1.015)
+      const s = Math.max(cw / tw, ch / th), dw = tw * s, dh = th * s, k = 1.03;         // object-fit: cover, scale(1.03)
       const pos = getComputedStyle(im).objectPosition.split(' ').map((v) => parseFloat(v) / 100);
       const ox = (cw - dw) * pos[0], oy = (ch - dh) * pos[1];
       gl.uniform2f(U('sp'), cw / (k * dw), ch / (k * dh));
@@ -222,9 +240,13 @@
       uvpx = [1 / (dw * k), 1 / (dh * k)];
       last = null;
     };
-    // the eye: ±10 px at the nearest layer, 0 at the horizon; one drift on load, then it rests
+    // the eye (round 2): it is never still while the hero is in view. An idle drift, a slow figure
+    // of eight (±7 px across, ±2.5 px up and down at the nearest layer, a 10 s loop), so the depth
+    // reads with no pointer and on every phone. Scrolling away lowers the eye (up to 8 px), so the
+    // thatch slides over the sea as you leave. A pointer or a tilt takes over and hands back after
+    // 2.5 s. 0 at the horizon. Reduced motion and Save-Data never start any of it.
     const AMP = [10, 6];
-    let eye = [0, 0], aim = [0, 0], last = null, drift = calm ? -1 : 0, raf = 0, prev = 0, frames = 0, slow = 0, inView = true, dead = false;
+    let eye = [0, 0], aim = [0, 0], user = [0, 0], userAt = -1e9, last = null, raf = 0, prev = 0, frames = 0, slow = 0, inView = true, dead = false, clock = 0;
     const draw = () => {
       gl.uniform2f(U('off'), -eye[0] * uvpx[0], -eye[1] * uvpx[1]);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
@@ -232,24 +254,22 @@
     };
     const tick = (t) => {
       raf = 0;
-      if (dead || !ready || !inView || document.hidden) return;
+      if (dead || !ready || !inView || document.hidden) { prev = 0; return; }
       const dt = prev ? Math.min(64, t - prev) : 16; prev = t;
       if (frames < 30) { frames++; if (frames > 3 && dt > 24) slow++; if (frames === 30 && slow > 12 && !force) { dead = true; cv.classList.remove('live'); return; } }
-      if (drift >= 0) {
-        drift += dt / 1000;
-        const k = Math.sin(Math.PI * Math.min(drift, 6) / 6);
-        aim = [4 * k, -1.5 * k];
-        if (drift >= 6) drift = -1;
-      }
-      const a = 1 - Math.exp(-dt / 140);
+      clock += dt / 1000;
+      const ramp = Math.min(1, clock / 2.5), w = 2 * Math.PI * clock / 10;
+      const idle = [7 * Math.sin(w) * ramp, 2.5 * Math.sin(2 * w + .6) * ramp];
+      const sc = Math.min(1, Math.max(0, scrollY / innerHeight)) * 8;
+      aim = t - userAt < 2500 ? [user[0], user[1] + sc] : [idle[0], idle[1] + sc];
+      const a = 1 - Math.exp(-dt / (t - userAt < 2500 ? 140 : 600));
       eye = [eye[0] + (aim[0] - eye[0]) * a, eye[1] + (aim[1] - eye[1]) * a];
-      if (!last || Math.abs(eye[0] - last[0]) > .02 || Math.abs(eye[1] - last[1]) > .02) draw();
+      if (!last || Math.abs(eye[0] - last[0]) > .01 || Math.abs(eye[1] - last[1]) > .01) draw();
       if (!cv.classList.contains('live')) cv.classList.add('live');
-      const settled = drift < 0 && Math.abs(aim[0] - eye[0]) < .02 && Math.abs(aim[1] - eye[1]) < .02;
-      if (!settled || frames < 30) raf = requestAnimationFrame(tick); else prev = 0;
+      raf = requestAnimationFrame(tick);
     };
     const kick = () => { if (!raf && !dead) raf = requestAnimationFrame(tick); };
-    const point = (nx, ny) => { drift = -1; aim = [Math.max(-1, Math.min(1, nx)) * AMP[0], Math.max(-1, Math.min(1, ny)) * AMP[1]]; kick(); };
+    const point = (nx, ny) => { userAt = performance.now(); user = [Math.max(-1, Math.min(1, nx)) * AMP[0], Math.max(-1, Math.min(1, ny)) * AMP[1]]; kick(); };
     if (fine) addEventListener('pointermove', (e) => { if (inView) point((e.clientX / innerWidth - .5) * 2, (e.clientY / innerHeight - .5) * 2); }, { passive: true });
     hero.addEventListener('pointermove', (e) => { if (e.pointerType === 'touch') { const r = hero.getBoundingClientRect(); point((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1); } }, { passive: true });
     // tilt on phones: iOS asks first, on the visitor's first tap on the picture (never on the button)

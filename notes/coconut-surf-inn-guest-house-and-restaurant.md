@@ -1,0 +1,11 @@
+# coconut-surf-inn-guest-house-and-restaurant — run 2026-10-midigama-01 (test)
+
+State: **packaged** (2026-11-05), waiting at gate c for Alon to send: proposal https://coconut-surf-inn-proposal.os1.workers.dev, WhatsApp/SMS text in `sites/coconut-surf-inn-guest-house-and-restaurant/pitch/message.en.whatsapp.md` (only channel +94 77 892 1396; may not be on WhatsApp — then SMS; no email in the dossier). Preview: https://coconut-surf-inn-guest-house-and-restaurant.os1.workers.dev (Oneshot account, version 502c5534; noindex, Disallow, no sitemap; site-check PASS).
+
+Path: gate a 2026-11-04 -> harvest/audit/copy/concepts -> 4e mockups (calm, interactive, unique) -> 4f in 3 rounds (unique passed round 2; calm and interactive round 3; all 8/8) -> gate b: Alon picked unique with calm's view-from-the-roof hero ("looks good, go ahead") -> 4g build (`final/`, served on :8970) -> seo -> aiseo -> station 5 round 1 pass 96.3 (critic 76.3/80, visual 8, experience 8; ledger critiqued(1) lines carry agent_version null by mistake, critic was 0.4.3) -> previewed -> packaged.
+
+Optional polish (critics, none blocking): phone hero ~2/3 sky (move crop down so sea fills lower half); empty grey forecast box and a 169 px jump when Rosa data fails while on screen; rooms stretch ~2.5 desktop screens; closing line 3 lines on phone; hero line repeated on next screen; rooms/ CLS 0.038; one extra Rosa reachability request vs hard constraint 9 (reported, not deducted).
+
+Facts to keep straight: the inn is Google 4.8 from 88; "Coconut Beach" 4.8/120 is the beach place (which wrongly carries the inn's phone). Rosa spot `weligama-west` (never `coconut-beach`, that is Arugam Bay). The restaurant has its own unclaimed Google listing (No 44 vs Booking's No.49). Pitch questions: WhatsApp/email, house number, prices/breakfast, AI-crawler policy.
+
+Review fixes (PR #68, 2026-11-06): pitch page and message corrected (room types, phone claim, forecast and season excepted from the sources line, rooms added to the owner's list). The proposal needs it. Score under rubric 0.3.2: 91.7, still a pass. Proposal redeployed 2026-11-06 from main: version 549d09ed, all files byte-identical, noindex. The preview didn't change.
