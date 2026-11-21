@@ -1,6 +1,6 @@
 # sanjee-surf-school
 
-Operator: alon. Run: `2026-10-midigama-01` (`mode: test`, no owner contact). Branch: `alon/sanjee-surf-school`, worktree `.superset/worktrees/oneshot/sanjee-surf-school`. It carries all of `alon/seo-cheeky-monkey` (PR #68), so its PR should wait for that one or be based on it. Nothing is pushed.
+Operator: alon. Run: `2026-10-midigama-01` (`mode: test`, no owner contact). Branch: `alon/sanjee-surf-school`, worktree `.superset/worktrees/oneshot/sanjee-surf-school`. PR #68 (`alon/seo-cheeky-monkey`, which this branch carried) is merged; main merged in on 2026-11-22 and the branch is open as its own PR.
 
 ## Where it stands
 
