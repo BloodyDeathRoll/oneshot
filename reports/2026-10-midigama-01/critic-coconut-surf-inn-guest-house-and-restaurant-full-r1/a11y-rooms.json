@@ -1,0 +1,217 @@
+{
+ "m390": {
+  "axe": {
+   "violations": [],
+   "passes": 20,
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 13
+    }
+   ]
+  },
+  "overflow": {
+   "sw": 390,
+   "cw": 390
+  },
+  "external_attempted": [],
+  "errors": [],
+  "tab_count": 21,
+  "tab_invisible": 0,
+  "tabs": [
+   {
+    "t": "Coconut Surf Inn",
+    "w": 139,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Call +94 77 892 1396",
+    "w": 44,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Back to Coconut Surf Inn",
+    "w": 238,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Check dates on Booking.com",
+    "w": 213,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Check dates on Booking.com",
+    "w": 213,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Check dates on Booking.com",
+    "w": 213,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Check dates on Booking.com",
+    "w": 213,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Check dates on Booking.com",
+    "w": 213,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   }
+  ],
+  "tabs_odd": [],
+  "tabs_all_outline": [
+   "solid 3px"
+  ]
+ },
+ "d1440": {
+  "axe": {
+   "violations": [],
+   "passes": 20,
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 24
+    }
+   ]
+  },
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440
+  },
+  "external_attempted": [],
+  "errors": [],
+  "tab_count": 22,
+  "tab_invisible": 0,
+  "tabs": [
+   {
+    "t": "Coconut Surf Inn",
+    "w": 147,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Rooms",
+    "w": 54,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "The stay",
+    "w": 65,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "The break",
+    "w": 74,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Check dates",
+    "w": 151,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Back to Coconut Surf Inn",
+    "w": 238,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Check dates on Booking.com",
+    "w": 265,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Check dates on Booking.com",
+    "w": 265,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   }
+  ],
+  "tabs_odd": [],
+  "tabs_all_outline": [
+   "solid 3px"
+  ]
+ },
+ "overflow_320": {
+  "sw": 320,
+  "cw": 320
+ },
+ "overflow_360": {
+  "sw": 360,
+  "cw": 360
+ },
+ "nojs390": {
+  "booking_links": 14,
+  "first_top": 0,
+  "tel": 3,
+  "blockquotes": 0,
+  "rosa": [],
+  "imgs_visible": 11,
+  "text_len": 2380,
+  "sw": 390,
+  "cw": 390
+ },
+ "nojs1440": {
+  "booking_links": 14,
+  "first_top": 10,
+  "tel": 3,
+  "blockquotes": 0,
+  "rosa": [],
+  "imgs_visible": 11,
+  "text_len": 2357,
+  "sw": 1440,
+  "cw": 1440
+ },
+ "reduced": {
+  "videos": 0,
+  "canvases": 0,
+  "anims": []
+ }
+}

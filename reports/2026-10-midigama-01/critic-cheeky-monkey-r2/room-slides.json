@@ -1,0 +1,4 @@
+{
+ "why": "desktop-07/08 (shoot.mjs, 700 ms settle) showed the Small Twin Room's first slide as an empty rose box. Re-checked: after scrolling in 800 px steps with 700 ms waits, every room track's visible first slide (img-030, 035, 058, 002, 064) is complete with naturalWidth > 0 at 1440 and 390, scrollLeft 0. The blank is the lazy image arriving after the capture, not a missing file.",
+ "missing_files_in_dist": 0
+}

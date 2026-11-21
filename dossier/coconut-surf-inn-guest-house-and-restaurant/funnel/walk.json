@@ -1,0 +1,661 @@
+{
+ "walked_at": "2026-11-04T22:22:27.515Z",
+ "scope": "no_site",
+ "viewport": "390x844 DPR2 mobile, iPhone Safari UA, en-US, logged out (Google listings also at 1440x1000, where the detail rows show)",
+ "rules": "read-only; cookie dialogs declined, sign-in prompts closed; no form submitted, no dates or personal data entered, no login, no message, no contact",
+ "recipe": "dossier/coconut-surf-inn-guest-house-and-restaurant/funnel/make-walk.mjs",
+ "steps": [
+  {
+   "step": "01-google-listing",
+   "viewport": "390x844",
+   "requested": "https://www.google.com/maps/place/Coconut+Surf+Inn+Guest+House+and+Restaurant/data=!4m10!3m9!1s0x3ae114e71b426f23:0xe26a608b9e3c1b42!5m2!4m1!1i2!8m2!3d5.9606427!4d80.4028521!16s%2Fg%2F11c0q0glzw!19sChIJI29CG-cU4ToRQhs8notgauI?hl=en",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "dismissed": [
+    "Go back to web"
+   ],
+   "navigation_chain": [
+    [
+     200,
+     "https://www.google.com/maps/place/Coconut+Surf+Inn+Guest+House+and+Restaurant/data=!4m10!3m9!1s0x3ae114e71b426f23:0xe26a608b9e3c1b42!5m2!4m1!1i2!8m2!3d5.9606427"
+    ]
+   ],
+   "final_url": "https://www.google.com/maps/place/Coconut+Surf+Inn+Guest+House+and+Restaurant,+Kadabeddagama+Road+Gurubebila,+Weligama+81700,+Sri+Lanka/@5.9606427,80.4028521,15z/data=!4m6!3m5!1s0x3ae114e71b426f23:0xe26a608b9e3c1b42!8m2!3d5.9606427!4d80.4028521!16s%2Fg%2F11c0q0glzw?hl=en&g_ep=Eg1tbF8yMDI2MTEwM18wIJvbDyoASAJQAg%3D%3D",
+   "screenshot": "funnel/walk/01-google-listing-fold.png",
+   "title": "Coconut Surf Inn Guest House and Restaurant, Weligama - Explore in Google Maps",
+   "doc_width": 390,
+   "page_height": 844,
+   "text_chars": 502,
+   "tel_links": [
+    "tel:+94778921396"
+   ],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_778921396_in_text": false,
+   "add_website": false,
+   "claim_business": false,
+   "own_site_links": [],
+   "offsite_booking_links": [],
+   "commission_phrases": [],
+   "contact_phrases": [],
+   "place_names": {
+    "midigama": 0,
+    "gurubebila": 0,
+    "weligama": 0,
+    "matara": 0
+   },
+   "login_wall": false,
+   "captcha": false,
+   "text_head": "\n\nCoconut Surf Inn Guest House and Restaurant\n\nOpen in the app\nYour location\n\n\nStreet View\nCoconut Surf Inn Guest House and Restaurant\n4.8\n(88)·3-star hotel\n\nDirections\n\nStart\n\nCall\n\nSave\n\nShare\nSee all 202 photos in the app\nContinue\n\nTraffic\n\nTransit\n\nBicycling\n\nSatellite\n\nTerrain\n\nWildfires\n\nAir Quality\n\nMap movement controls\n\nReal-time location sharing\n\nYour contributions\n\nYour places\nSettings\nLanguage\nHelp\nMy Maps\nSend Product Feedback\n\tIsrael\tEDIT\n\tUse the Google Maps app",
+   "at": []
+  },
+  {
+   "step": "02-google-listing-desktop",
+   "viewport": "1440x1000",
+   "requested": "https://www.google.com/maps/place/Coconut+Surf+Inn+Guest+House+and+Restaurant/data=!4m10!3m9!1s0x3ae114e71b426f23:0xe26a608b9e3c1b42!5m2!4m1!1i2!8m2!3d5.9606427!4d80.4028521!16s%2Fg%2F11c0q0glzw!19sChIJI29CG-cU4ToRQhs8notgauI?hl=en",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "navigation_chain": [
+    [
+     200,
+     "https://www.google.com/maps/place/Coconut+Surf+Inn+Guest+House+and+Restaurant/data=!4m10!3m9!1s0x3ae114e71b426f23:0xe26a608b9e3c1b42!5m2!4m1!1i2!8m2!3d5.9606427"
+    ]
+   ],
+   "final_url": "https://www.google.com/maps/place/Coconut+Surf+Inn+Guest+House+and+Restaurant/@5.9606427,80.4028521,17z/data=!3m1!4b1!4m9!3m8!1s0x3ae114e71b426f23:0xe26a608b9e3c1b42!5m2!4m1!1i2!8m2!3d5.9606427!4d80.4028521!16s%2Fg%2F11c0q0glzw?hl=en&entry=ttu&g_ep=EgoyMDI2MTEwMi4wIKXMDSoASAFQAw%3D%3D",
+   "screenshot": "funnel/walk/02-google-listing-desktop-fold.png",
+   "title": "Coconut Surf Inn Guest House and Restaurant - Google Maps",
+   "doc_width": 1440,
+   "page_height": 1000,
+   "text_chars": 1534,
+   "tel_links": [
+    "tel:+94778921396"
+   ],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_778921396_in_text": true,
+   "add_website": true,
+   "claim_business": false,
+   "own_site_links": [],
+   "offsite_booking_links": [
+    {
+     "label": "Agoda ₪80  Free breakfast",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEyhtU22qvqjrY7M5d1fLTs26jPAFmVjtht2CX5iK6zGT1S54neg6itMtNzIXvkT2WYvOp2W-imklee6Ybqtrixh5sTRxuPLMh-aMCVOId1Pn4M3"
+    },
+    {
+     "label": "HomeToGo ₪80 ",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEyhpA9DumR4h9xNBxachu7lVBUQWRmsIOb1vnlh4GPvqEL87LrDS2lMHuwfacNp9k1ctwDLfJUcslEePxuoKuXD4IqCokluxTHWfZeqIw8Ptohh"
+    }
+   ],
+   "commission_phrases": [],
+   "contact_phrases": [],
+   "place_names": {
+    "midigama": 0,
+    "gurubebila": 1,
+    "weligama": 2,
+    "matara": 0
+   },
+   "login_wall": true,
+   "captcha": false,
+   "text_head": " Select your dates to see the best prices\n\n\n\nNearby hotels\n\nRestaurants\n\nThings to do\n\nBars\n\nCoffee\n\nPharmacies\n\nParking\n\n\n\nSaved\n\nRecents\nCoconut Surf Inn Guest House and Restaurant\n\nGet app\n₪80\nNov 8 – 9\n\nSee photos\nCoconut Surf Inn Guest House and Restaurant\n4.8\n3-star hotel\nOverview\nPrices\nAbout\n\nDirections\n\nSave\n\nNearby\n\nShare\n\nCheck availability\n \nCompare prices\nFree cancellation only\n\nCheck in / Check out\nSun, Nov 8\n\n\nMon, Nov 9\n\n\n\n2\n\n \nSponsored\n\nBooking.com\n₪80\n\nFree breakfast · Free Wi-Fi\n1 double bed\n₪80\n\nSee all rooms\n \nAll options\nAgoda\n₪80\n\nFree breakfast\nSee rooms \nHomeToGo\n₪80\n\nMore prices from ₪80\n \n \n\nKadabeddagama Road Gurubebila, Weligama 81700, Sri Lanka\n\n\n+94 77 892 1396\n\n\n\nXC63+74 Weligama, Sri Lanka\n\n\n\nCheck-out time: 11:00\n \n\nSuggest an edit\n \nAdd missing information\n\n\nAdd website\n\nAdd a photo\n \nSimilar hotels nearby\n₪110\nDorian Guest House And Restaurant\n4.5(127)\n0.1 km away\n₪110\nDew Drop Villa\n4.4(52)\n0.1 km away\nFunky Sol Society, Surf Hostel\n4.5(126)\n0.1 km away\nAira PLACE\n5.0(7)\n0.1 km away\nFisherman House\n5.0(11)\n0.1 km away\nSurfing Life Guest House & Restaurant\n4.8(137)\n0.1 km away\n \nView more nearby ho",
+   "at": [
+    {
+     "needle": "Add website",
+     "y": 1360,
+     "screenshot": "funnel/walk/02-google-listing-desktop-add-website.png"
+    },
+    {
+     "needle": "Check availability",
+     "y": -376,
+     "screenshot": "funnel/walk/02-google-listing-desktop-availability.png"
+    },
+    {
+     "needle": "View prices",
+     "found": false
+    },
+    {
+     "needle": "Pool",
+     "y": 254,
+     "screenshot": "funnel/walk/02-google-listing-desktop-about-pool.png"
+    }
+   ],
+   "panel": [
+    "Prices for Coconut Surf Inn Guest House and Restaurant",
+    "More prices from ₪80",
+    "Address: Kadabeddagama Road Gurubebila, Weligama 81700, Sri Lanka",
+    "Copy address",
+    "Phone: +94 77 892 1396",
+    "Copy phone number",
+    "Call phone number",
+    "Plus code: XC63+74 Weligama, Sri Lanka",
+    "Copy plus code",
+    "Learn more about plus codes",
+    " Check-out time: 11:00"
+   ],
+   "offer_links": [
+    {
+     "label": "Booking.com ₪80  Free breakfast · Free Wi-Fi",
+     "href": "https://www.google.com/aclk?sa=L&ai=DChsSEwjzk4HXrO-XAxUTl1AGHdf_CtIYACICCAEQARoCZGc&co=1&ase=2&gclid=EAIaIQobChMI85OB16zvlwMVE5dQBh3X_wrSEAoYASABEgJ6APD_BwE&category=acrcp_v1_32&sig=AOD64_32Uzae6YGRT"
+    },
+    {
+     "label": "1 double bed ₪80 ",
+     "href": "https://www.google.com/aclk?sa=L&ai=DChsSEwjzk4HXrO-XAxUTl1AGHdf_CtIYACICCAEQAxoCZGc&co=1&ase=2&gclid=EAIaIQobChMI85OB16zvlwMVE5dQBh3X_wrSEAoYASADEgLgLPD_BwE&category=acrcp_v1_32&sig=AOD64_0bxOTV6dsK3"
+    },
+    {
+     "label": "See all rooms",
+     "href": "https://www.google.com/aclk?sa=L&ai=DChsSEwjzk4HXrO-XAxUTl1AGHdf_CtIYACICCAEQARoCZGc&co=1&ase=2&gclid=EAIaIQobChMI85OB16zvlwMVE5dQBh3X_wrSEAoYASABEgJ6APD_BwE&category=acrcp_v1_32&sig=AOD64_32Uzae6YGRT"
+    },
+    {
+     "label": "Agoda ₪80  Free breakfast",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEyhtU22qvqjrY7M5d1fLTs26jPAFmVjtht2CX5iK6zGT1S54neg6itMtNzIXvkT2WYvOp2W-imklee6Ybqtrixh5sTRxuPLMh-aMCVOId1Pn4M3n24S-5vV8ISGo-JCgCHVIj3HDImT_wNfEOTsg0V0"
+    },
+    {
+     "label": "",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEyhkJuavr1Hbj0KOGuuaE_jLK3AkxbNvlhKebxDVvic8wz6kdGEpOzlRkMHeqtsPM6na-QSwVwSmPylCPuEIRNF824jZAMb2Xh85io4dcHancvzQyWatBqCL3HIWILh0vmGyT_5paIyxV1OVx_ujCwt"
+    },
+    {
+     "label": "",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEyhtU22qvqjrY7M5d1fLTs26jPAFmVjtht2CX5iK6zGT1S54neg6itMtNzIXvkT2WYvOp2W-imklee6Ybqtrixh5sTRxuPLMh-aMCVOId1Pn4M3n24S-5vV8ISGo-JCgCHVIj3HDImT_wNfEOTsg0V0"
+    },
+    {
+     "label": "HomeToGo ₪80 ",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEyhpA9DumR4h9xNBxachu7lVBUQWRmsIOb1vnlh4GPvqEL87LrDS2lMHuwfacNp9k1ctwDLfJUcslEePxuoKuXD4IqCokluxTHWfZeqIw8PtohhYdIfLIiAIs6_BaKKKJ-cMclGwC2PMk2ma0o9lcfi"
+    }
+   ],
+   "website_links": [],
+   "about_text": "Overview\nPrices\nAbout\n₪80 · 3-star hotel\nNov 8 – 9\n\nCheck availability\n \n\nFree Wi-Fi\n\nFree breakfast\n\nFree parking\n\nPool\n\nAir-conditioned\n\nPet-friendly\n\nBeach access\n\nRestaurant\n\nFitness center\n "
+  },
+  {
+   "step": "03-google-restaurant-desktop",
+   "viewport": "1440x1000",
+   "requested": "https://www.google.com/maps/place/Coconut+Surf+Restaurant+%282nd+floor%29/data=!4m7!3m6!1s0x3ae115004317322d:0xfb15750303ad8d58!8m2!3d5.9607452!4d80.4028573!16s%2Fg%2F11vsw9c7g_!19sChIJLTIXQwAV4ToRWI2tAwN1Ffs?hl=en",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "navigation_chain": [
+    [
+     200,
+     "https://www.google.com/maps/place/Coconut+Surf+Restaurant+%282nd+floor%29/data=!4m7!3m6!1s0x3ae115004317322d:0xfb15750303ad8d58!8m2!3d5.9607452!4d80.4028573!16s"
+    ]
+   ],
+   "final_url": "https://www.google.com/maps/place/Coconut+Surf+Restaurant+(2nd+floor)/@5.9607452,80.4028573,17z/data=!3m1!4b1!4m6!3m5!1s0x3ae115004317322d:0xfb15750303ad8d58!8m2!3d5.9607452!4d80.4028573!16s%2Fg%2F11vsw9c7g_?hl=en&entry=ttu&g_ep=EgoyMDI2MTEwMi4wIKXMDSoASAFQAw%3D%3D",
+   "screenshot": "funnel/walk/03-google-restaurant-desktop-fold.png",
+   "title": "Coconut Surf Restaurant (2nd floor) - Google Maps",
+   "doc_width": 1440,
+   "page_height": 1000,
+   "text_chars": 731,
+   "tel_links": [],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_778921396_in_text": false,
+   "add_website": true,
+   "claim_business": true,
+   "own_site_links": [],
+   "offsite_booking_links": [],
+   "commission_phrases": [],
+   "contact_phrases": [],
+   "place_names": {
+    "midigama": 0,
+    "gurubebila": 1,
+    "weligama": 1,
+    "matara": 0
+   },
+   "login_wall": true,
+   "captcha": false,
+   "text_head": "\n\n\nNearby restaurants\n\nHotels\n\nThings to do\n\nBars\n\nCoffee\n\nTakeout\n\nGroceries\n\n\n\nSaved\n\nRecents\nCoconut Surf Restaurant (2nd floor)\n\nGet app\n\nSee photos\nCoconut Surf Restaurant (2nd floor)\n4.6\nRestaurant\n \n\nDirections\n\nSave\n\nNearby\n\nSend to phone\n\nShare\n \n\nNo 44 Kadebeddagama Gurubebila, Weligama 81700, Sri Lanka\n\n\nClosed · Opens 7:30 am\n\n\nXC63+74 Ahangama, Sri Lanka\n\n\n\nClaim this business\n\n \n\nSuggest an edit\n \nAdd missing information\n\n\nAdd place's phone number\n\nAdd website\n \nPhotos\n\n \n\nAdd photos & videos\n \n \n\nWrite a review\n \nAbout this data\n\nYou're seeing a limited view of Google Maps. See more\n\nSign in\n\n\n\n\n Layers\nMap data ©2026 IsraelTermsPrivacySend Product Feedback\n\t100 m ",
+   "at": [
+    {
+     "needle": "Claim this business",
+     "y": 624,
+     "screenshot": "funnel/walk/03-google-restaurant-desktop-claim.png"
+    },
+    {
+     "needle": "Add website",
+     "y": 696,
+     "screenshot": "funnel/walk/03-google-restaurant-desktop-add-website.png"
+    }
+   ],
+   "panel": [
+    "Menu",
+    "Send to phone",
+    "Address: No 44 Kadebeddagama Gurubebila, Weligama 81700, Sri Lanka",
+    "Copy address",
+    "Thursday, 7:30 am to 10 pm, Copy open hours",
+    "Suggest an edit to open hours",
+    "Plus code: XC63+74 Ahangama, Sri Lanka",
+    "Copy plus code",
+    "Learn more about plus codes",
+    "Claim this business",
+    "Claim this business"
+   ],
+   "offer_links": [],
+   "website_links": []
+  },
+  {
+   "step": "04-google-beach-desktop",
+   "viewport": "1440x1000",
+   "requested": "https://www.google.com/maps/place/Coconut+Beach/data=!4m7!3m6!1s0x3ae114e1474f1fef:0x76380a35b311bcfe!8m2!3d5.9588096!4d80.4058413!16s%2Fg%2F11c5hxgc0t!19sChIJ7x9PR-EU4ToR_rwRszUKOHY?hl=en",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "navigation_chain": [
+    [
+     200,
+     "https://www.google.com/maps/place/Coconut+Beach/data=!4m7!3m6!1s0x3ae114e1474f1fef:0x76380a35b311bcfe!8m2!3d5.9588096!4d80.4058413!16s%2Fg%2F11c5hxgc0t!19sChIJ7"
+    ]
+   ],
+   "final_url": "https://www.google.com/maps/place/Coconut+Beach/@5.9588095,80.4058413,15z/data=!3m1!4b1!4m6!3m5!1s0x3ae114e1474f1fef:0x76380a35b311bcfe!8m2!3d5.9588096!4d80.4058413!16s%2Fg%2F11c5hxgc0t?hl=en&entry=ttu&g_ep=EgoyMDI2MTEwMi4wIKXMDSoASAFQAw%3D%3D",
+   "screenshot": "funnel/walk/04-google-beach-desktop-fold.png",
+   "title": "Coconut Beach - Google Maps",
+   "doc_width": 1440,
+   "page_height": 1000,
+   "text_chars": 490,
+   "tel_links": [
+    "tel:+94778921396"
+   ],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_778921396_in_text": true,
+   "add_website": false,
+   "claim_business": false,
+   "own_site_links": [],
+   "offsite_booking_links": [],
+   "commission_phrases": [],
+   "contact_phrases": [],
+   "place_names": {
+    "midigama": 0,
+    "gurubebila": 0,
+    "weligama": 0,
+    "matara": 1
+   },
+   "login_wall": true,
+   "captcha": false,
+   "text_head": "\n\n\nRestaurants\n\nHotels\n\nThings to do\n\nTransit\n\nParking\n\nPharmacies\n\nATMs\n\n\n\nSaved\n\nRecents\nCoconut Beach\n\nGet app\n\nSee photos\nCoconut Beach\n4.8\nBeach\n \n\nDirections\n\nSave\n\nNearby\n\nSend to phone\n\nShare\n \n\nMatara, Sri Lanka\n\n\n+94 77 892 1396\n\n\n \nAdd missing information\n\n\nAdd a photo\n \n \n\nWrite a review\n \nAbout this data\n\nYou're seeing a limited view of Google Maps. See more\n\nSign in\n\n\n\n Layers\nMap data ©2026 IsraelTermsPrivacySend Product Feedback\n\t500 m ",
+   "at": [
+    {
+     "needle": "892 1396",
+     "y": 528,
+     "screenshot": "funnel/walk/04-google-beach-desktop-phone.png"
+    }
+   ],
+   "panel": [
+    "Send to phone",
+    "Address: Matara, Sri Lanka",
+    "Copy address",
+    "Phone: +94 77 892 1396",
+    "Copy phone number",
+    "Call phone number"
+   ],
+   "offer_links": [],
+   "website_links": []
+  },
+  {
+   "step": "05-booking-com",
+   "viewport": "390x844",
+   "requested": "https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html",
+   "status": 202,
+   "error": null,
+   "cookie_declined": null,
+   "dismissed": [
+    "Close"
+   ],
+   "navigation_chain": [
+    [
+     202,
+     "https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"
+    ],
+    [
+     200,
+     "https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html?chal_t=1793830884950&force_referer="
+    ]
+   ],
+   "final_url": "https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html?chal_t=1793830884950&force_referer=",
+   "screenshot": "funnel/walk/05-booking-com-fold.png",
+   "title": "Coconut Surf Inn, Weligama (updated prices 2027)",
+   "doc_width": 390,
+   "page_height": 6509,
+   "text_chars": 5839,
+   "tel_links": [],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_778921396_in_text": false,
+   "add_website": false,
+   "claim_business": false,
+   "own_site_links": [],
+   "offsite_booking_links": [
+    {
+     "label": "",
+     "href": "https://www.booking.com/searchresults.en-gb.html?label=gen173nr-10CAsohQFCGWNvY29udXQtc3VyZi1pbm4td2VsaWdhbWFICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4AuXfrt"
+    },
+    {
+     "label": "",
+     "href": "https://www.booking.com/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCGWNvY29udXQtc3VyZi1pbm4td2VsaWdhbWFICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4AuX"
+    },
+    {
+     "label": "",
+     "href": "https://account.booking.com/auth/oauth2?client_id=vO1Kblk7xX9tUn2cpZLS&redirect_uri=https%3A%2F%2Fsecure.booking.com%2Flogin.html%3Fop%3Doauth_return&response_t"
+    },
+    {
+     "label": "Weligama",
+     "href": "https://www.booking.com/city/lk/weligama.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCGWNvY29udXQtc3VyZi1pbm4td2VsaWdhbWFICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGI"
+    },
+    {
+     "label": "Mirissa",
+     "href": "https://www.booking.com/city/lk/mirissa-south.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCGWNvY29udXQtc3VyZi1pbm4td2VsaWdhbWFICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH"
+    },
+    {
+     "label": "Ahangama",
+     "href": "https://www.booking.com/city/lk/ahangama.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCGWNvY29udXQtc3VyZi1pbm4td2VsaWdhbWFICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGI"
+    },
+    {
+     "label": "Imaduwa",
+     "href": "https://www.booking.com/city/lk/imaduwa.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCGWNvY29udXQtc3VyZi1pbm4td2VsaWdhbWFICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIA"
+    },
+    {
+     "label": "Home",
+     "href": "https://www.booking.com/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCGWNvY29udXQtc3VyZi1pbm4td2VsaWdhbWFICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4AuX"
+    },
+    {
+     "label": "Hotels",
+     "href": "https://www.booking.com/hotel/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCGWNvY29udXQtc3VyZi1pbm4td2VsaWdhbWFICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoA"
+    },
+    {
+     "label": "All guest houses",
+     "href": "https://www.booking.com/guest-house/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCGWNvY29udXQtc3VyZi1pbm4td2VsaWdhbWFICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQG"
+    },
+    {
+     "label": "Sri Lanka",
+     "href": "https://www.booking.com/country/lk.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCGWNvY29udXQtc3VyZi1pbm4td2VsaWdhbWFICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAg"
+    },
+    {
+     "label": "Matara District",
+     "href": "https://www.booking.com/region/lk/matara.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCGWNvY29udXQtc3VyZi1pbm4td2VsaWdhbWFICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGI"
+    },
+    {
+     "label": "Weligama",
+     "href": "https://www.booking.com/city/lk/weligama.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCGWNvY29udXQtc3VyZi1pbm4td2VsaWdhbWFICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGI"
+    },
+    {
+     "label": "Get the free app Search, book & manage your trips in the app Install",
+     "href": "https://booking.com/apps.en-gb.html?sid=2f5d44eb4618761039d2a9cd03018ce1&app_install=1&lang=en-gb&stid=2&site=mdot&is_iphone=1&page=hotel&source=hotel&placement"
+    },
+    {
+     "label": "Countries",
+     "href": "https://www.booking.com/country.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCGWNvY29udXQtc3VyZi1pbm4td2VsaWdhbWFICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4A"
+    }
+   ],
+   "commission_phrases": [],
+   "contact_phrases": [],
+   "place_names": {
+    "midigama": 1,
+    "gurubebila": 2,
+    "weligama": 10,
+    "matara": 1
+   },
+   "login_wall": false,
+   "captcha": false,
+   "text_head": "Weligama\nSelect dates\nBeachfront\n \nCoconut Surf Inn\nAccessibility links\nSkip to description\nSkip to facilities\nSkip to rooms\nSkip to policies\nNo.49, Kadabeddagama,Gurubebila,Weligama, Weligama—Excellent location—Show on map\n8.5\nRated: Very good 8.5, based on 142 reviews Expand ratings and reviews section\nVery good · 142 reviews\n1/45\nBreakfast\nBreakfast\nFabulous free WiFi\nRated 9.2 by guests\nChoose dates to see prices\nCheck-in date\nThu 5 Nov 2026\nCheck-out date\nFri 6 Nov 2026\nAdults\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\nChildren\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\nRooms\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\nAre you travelling for work?\nYes\nNo\nCheck availability\nBeachfront\nProperty is on the beach or right next to it.Show on map\nBeachfront\nFacilities\nBeachfront\nFree WiFi\nFamily rooms\nAirport shuttle\nShow all facilities and services\nReviews\n8.5\nRated: Very good 8.5, based on 142 reviews\nVery good · 142 reviews\nLocation, 9.6, Average rating out of 10\nLocation\n9.6\nCleanliness, 8.5, Average rating out of 10\nCleanliness\n8.5\nValue for money, 8.2, Average rating out of 10\nValue for money\n8.2\nShow more\nGuests who stayed",
+   "at": [
+    {
+     "needle": "Choose dates to see prices",
+     "y": 990,
+     "screenshot": "funnel/walk/05-booking-com-dates.png"
+    },
+    {
+     "needle": "Ask a question",
+     "found": false
+    },
+    {
+     "needle": "1.3 km",
+     "y": 8550,
+     "screenshot": "funnel/walk/05-booking-com-distance.png"
+    },
+    {
+     "needle": "Each room",
+     "y": 3785,
+     "screenshot": "funnel/walk/05-booking-com-summary.png"
+    }
+   ],
+   "screenshot_full": "funnel/walk/05-booking-com-full.png",
+   "accordions": [
+    {
+     "label": "Accommodation Policies",
+     "screenshot": "funnel/walk/05-booking-com-policies.png",
+     "text": "Accommodation Policies\nCheck-in\nFrom 13:00\nCheck-out\nUntil 11:00\nCancellation/ prepayment\nCancellation and prepayment policies vary according to accommodation type. Please enter the dates of your stay and check the conditions of your required option.\nNo age restriction\nThere is no age requirement for check-in\nPets\nFree!\nPets are allowed on request. No extra charges.\nAccepted payment methods\nCash"
+    },
+    {
+     "label": "Hotel policies",
+     "found": false
+    },
+    {
+     "label": "Contacting the property",
+     "screenshot": "funnel/walk/05-booking-com-contacting.png",
+     "text": "Contacting the property\nIf you want to request something specific, you can do that after you choose your rate.\nOnce you book, we'll provide details so you can contact the property directly."
+    }
+   ],
+   "summary_text": "st route from the property. When no route is available, distances are shown measured in a straight line. Actual travel times and distances may vary.\nNo.49, Kadabeddagama,Gurubebila,Weligama, 81700 Weligama, Sri Lanka—Excellent location\nShow on map\nProperty description\n\nComfortable Accommodations: Coconut Surf Inn in Weligama offers family rooms with private bathrooms, balconies, and garden views. Each room includes air-conditioning, a work desk, and a private entrance.\n\nExceptional...\n\nRead more\nAccommodation Policies\nCheck-in\nFrom 13:00\nCheck-out\nUntil 11:00\nCancellation/ prepayment\nCancellation and prepayment policies vary according to accommodation type. Please enter the dates of your stay and check the conditions of your required option.\nNo age restriction\nThere is no age requirement for check-in\nPets\nFree!\nPets are allowed on request. No extra charges.\nAccepted payment methods\nCash\n",
+   "faq_text": " own questions to the property.\nShow all questions\nProperty surroundings\nExcellent location\nAttractions\nEat and drink\nTransport\nWhat's nearby\nKushtarajagala\n3 min\n(2.6 km)\nKoggala Beach Park\n10 min\n(9 km)\nKoggala Export Processing Zone Playground\n10 min\n(9 km)\nClosest beaches\nMidigama Beach\n16 min\n(1.3 km)\nAbimanagama Beach\n19 min\n(1.6 km)\nWeligama Beach\n2 min\n(2.9 km)\nWalking and driving times are based on the fastest route from the property. When no route is available, distances are shown meas",
+   "questions": {
+    "url_after_tap": "https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html?chal_t=1793830884950&force_referer=&activeTab=questions-and-answers-sub-page&subPageId=questions-and-answers-sub-page",
+    "text": "\nDestinations, properties, even an address\nLoading current location\nAround current location\nCheck-in date\nThu 5 Nov 2026\nCheck-out date\nFri 6 Nov 2026\n        \n            November 2026\n            \n                \n    \n        SunMonTueWedThuFriSat\n    \n    \n                \n        \n          \n            1 \n          \n        \n    \n        \n          \n            2 \n          \n        \n    \n        \n          \n            3 \n          \n        \n    \n        \n          \n            4 \n          \n        \n    \n        \n          \n            5—\n          \n        \n    \n        \n          \n            6—\n          \n        \n    \n        \n          \n            7—\n          \n        \n    \n        \n          \n            8—\n          \n        \n    \n        \n          \n            9—\n          \n        \n    \n        \n          \n            10—\n          \n        \n    \n        \n          \n            11—\n          \n        \n    \n        \n          \n            12—\n          \n        \n    \n        \n          \n            13—\n          \n        \n    \n        \n          \n            14—\n          \n        \n    \n        \n          \n            15—\n          \n        \n    \n        \n          \n            16—\n          \n        \n    \n        \n          \n            17—\n          \n        \n    \n        \n          \n            18—\n          \n        \n    \n        \n          \n            19—\n          \n        \n    \n        \n          \n            20—\n          \n        \n    \n        \n  ",
+    "screenshot": "funnel/walk/05-booking-com-questions.png"
+   }
+  },
+  {
+   "step": "06-airbnb",
+   "viewport": "390x844",
+   "requested": "https://www.airbnb.com/rooms/2402254",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "dismissed": [
+    "Close"
+   ],
+   "navigation_chain": [
+    [
+     200,
+     "https://www.airbnb.com/rooms/2402254"
+    ]
+   ],
+   "final_url": "https://www.airbnb.com/rooms/2402254?source_impression_id=p3_1793830908_P3WYJmJysdzACRwj",
+   "screenshot": "funnel/walk/06-airbnb-fold.png",
+   "title": "Coconut Surf Inn - Bed and breakfasts for Rent in Weligama, Southern Province, Sri Lanka - Airbnb",
+   "doc_width": 390,
+   "page_height": 5880,
+   "text_chars": 10680,
+   "tel_links": [],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_778921396_in_text": false,
+   "add_website": false,
+   "claim_business": false,
+   "own_site_links": [],
+   "offsite_booking_links": [
+    {
+     "label": "Community forum",
+     "href": "https://community.withairbnb.com/t5/Community-Center/ct-p/community-center"
+    },
+    {
+     "label": "Airbnb-friendly apartments",
+     "href": "/airbnb-friendly"
+    },
+    {
+     "label": "Investors",
+     "href": "https://investors.airbnb.com"
+    },
+    {
+     "label": "Airbnb.org emergency stays",
+     "href": "https://www.airbnb.org?locale=en"
+    },
+    {
+     "label": "",
+     "href": "https://www.facebook.com/airbnb"
+    },
+    {
+     "label": "",
+     "href": "https://twitter.com/airbnb"
+    },
+    {
+     "label": "",
+     "href": "https://instagram.com/airbnb"
+    }
+   ],
+   "commission_phrases": [],
+   "contact_phrases": [
+    "Responds within a few days or more",
+    "Message host"
+   ],
+   "place_names": {
+    "midigama": 2,
+    "gurubebila": 0,
+    "weligama": 5,
+    "matara": 2
+   },
+   "login_wall": false,
+   "captcha": false,
+   "text_head": "Skip to content\nShowing photo 1 of 29\n1 / 29\nCoconut Surf Inn\nRoom in Weligama, Sri Lanka\n1 bed · Shared bathroom\nRated 4.44 out of 5 stars.\n4.44\n·\n54 reviews\nHosted by Chinthaka\n13 years hosting\nListing highlights\nOcean view\nSoak up the view during your stay.\nPark for free\nThis is one of the few places in the area with free parking.\nRoom in a bed and breakfast\nYour own room in a home, plus access to shared spaces.\nSituated just footsteps from both Coconuts and Plantation surf breaks is Coconut Surf Inn guesthouse. This undiscovered gem is a peaceful, serene oasis that is tucked away from the busy Galle - Matara road, but it right next to the beach.\nThe space\nCoconut Surf Inn is the Eranga family home, so staying here means you will experience the endless warm smiles and kind hospitality of the gracious host Chintaka and his family.\nNext to the guesthouse is a large open grassed area overlooking the beach, where the friendly locals and tourists alike gather to watch the surf, play cricket, socialise and enjoy beautiful sunrises and sunsets. You can truly immerse yourself in the life of a small Sri Lankan village.\nCoconuts is a consistent A-frame reef break, located in front of the ",
+   "at": [
+    {
+     "needle": "Shared bathroom",
+     "y": 467,
+     "screenshot": "funnel/walk/06-airbnb-header.png"
+    },
+    {
+     "needle": "Responds within",
+     "y": 6992,
+     "screenshot": "funnel/walk/06-airbnb-response.png"
+    },
+    {
+     "needle": "Guest access (description modal)",
+     "screenshot": "funnel/walk/06-airbnb-description-rooms.png"
+    }
+   ],
+   "description_modal": "About this space\nSituated just footsteps from both Coconuts and Plantation surf breaks is Coconut Surf Inn guesthouse. This undiscovered gem is a peaceful, serene oasis that is tucked away from the busy Galle - Matara road, but it right next to the beach.\nThe space\nCoconut Surf Inn is the Eranga family home, so staying here means you will experience the endless warm smiles and kind hospitality of the gracious host Chintaka and his family.\nNext to the guesthouse is a large open grassed area overlooking the beach, where the friendly locals and tourists alike gather to watch the surf, play cricket, socialise and enjoy beautiful sunrises and sunsets. You can truly immerse yourself in the life of a small Sri Lankan village.\nCoconuts is a consistent A-frame reef break, located in front of the guesthouse. Plantations is a more mellow wave, located just 100 meters walk up the beach. This really is a surfer's paradise.\nThis isn't just a place to stay, it's a place to live. Enjoy beautiful Midigama from this charming guesthouse right by the beach.\nGuest access\nThere are 09 rooms, with each having a double bed, ceiling fan , Wall fan and own bathroom. Sheets and towels are provided. Hammocks, a shady restaurant area and garden, outdoor shower, clothes line and surf board rack are all provided. All meals, snacks and drinks available.(Break fast not included to the Price)",
+   "response_text": "l 54 reviews\nMeet your host\nChinthaka\nHost\n77 reviews\n77\nReviews\n4.52 out of 5 average rating\n4.52\nRating\n13 years of hosting\n13\nYears hosting\nSpeaks English\nLives in Weligama, Sri Lanka\nHost details\nResponds within a few days or more\nMessage host\nTo help protect your payment, always use Airbnb to send money and communicate with hosts.\nThings to know\nCheck in after 12:00 PM\n\nCheck out before 12:00 PM\n\nHouse rules and requests\n\nReview these details for a smooth stay.\n\nSafety & property\n\nNo smoke ",
+   "message_host": {
+    "url_after_tap": "https://www.airbnb.com/rooms/2402254?source_impression_id=p3_1793830908_P3WYJmJysdzACRwj",
+    "text": "Log in or sign up\nPhone number or email\nContinue\nor",
+    "screenshot": "funnel/walk/06-airbnb-message-tapped.png"
+   }
+  },
+  {
+   "step": "07-kayak",
+   "viewport": "390x844",
+   "requested": "https://www.kayak.com/Weligama-Hotels-Coconut-Surf-Inn.2771966.ksp",
+   "status": 200,
+   "error": null,
+   "cookie_declined": "button:has-text(\"Reject all\")",
+   "navigation_chain": [
+    [
+     200,
+     "https://www.kayak.com/Weligama-Hotels-Coconut-Surf-Inn.2771966.ksp"
+    ]
+   ],
+   "final_url": "https://www.kayak.com/Weligama-Hotels-Coconut-Surf-Inn.2771966.ksp",
+   "screenshot": "funnel/walk/07-kayak-fold.png",
+   "title": "Coconut Surf Inn from $35. Weligama Hotel Deals & Reviews - KAYAK",
+   "doc_width": 390,
+   "page_height": 9943,
+   "text_chars": 7714,
+   "tel_links": [],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_778921396_in_text": false,
+   "add_website": false,
+   "claim_business": false,
+   "own_site_links": [],
+   "offsite_booking_links": [
+    {
+     "label": "Blog",
+     "href": "https://www.kayak.com/news/"
+    },
+    {
+     "label": "",
+     "href": "https://play.google.com/store/apps/details?id=com.kayak.android"
+    },
+    {
+     "label": "",
+     "href": "https://apps.apple.com/us/app/kayak-flights-hotels-cars/id305204535"
+    },
+    {
+     "label": "",
+     "href": "https://www.facebook.com/kayak/"
+    },
+    {
+     "label": "",
+     "href": "https://x.com/KAYAK"
+    },
+    {
+     "label": "",
+     "href": "https://www.instagram.com/kayak/"
+    }
+   ],
+   "commission_phrases": [],
+   "contact_phrases": [],
+   "place_names": {
+    "midigama": 3,
+    "gurubebila": 2,
+    "weligama": 14,
+    "matara": 0
+   },
+   "login_wall": false,
+   "captcha": false,
+   "text_head": "Skip to main content\nSkip to overview section\nSkip to rates section\nSkip to location section\nSkip to reviews section\nSkip to amenities section\nCoconut Surf Inn\n1 star\n8.5\nVery good\n101 reviews\nNo.49, Kadabeddagama,Gurubebila,Weligama, Weligama\nSat 11/7\n-\nSun 11/8\n2 guests, 1 room\nSearch\nCompare vs. KAYAK\nBooking.com\nPhotos of Coconut Surf Inn\n1/60\nOther\n2/60\nOther\n3/60\nOther\n4/60\nOther\n5/60\nOther\n6/60\nOther\n7/60\nOther\n8/60\nOther\n9/60\nOther\n10/60\nOther\n11/60\nOther\n12/60\nOther\n13/60\nPatio\n14/60\nOther\n15/60\nOther\n16/60\nOther\n17/60\nOther\n18/60\nHallway\n19/60\nOther\n20/60\nOther\n21/60\nOther\n22/60\nOutdoors view\n23/60\nOther\n24/60\nOther\n25/60\nOther\n26/60\nOther\n27/60\nOther\n28/60\nOther\n29/60\nOther\n30/60\nOther\n31/60\nOutdoors view\n32/60\nOther\n33/60\nOther\n34/60\nOther\n35/60\nOther\n36/60\nOther\n37/60\nOther\n38/60\nBalcony\n39/60\nOther\n40/60\nOther\n41/60\nOther\n42/60\nLobby\n43/60\nOther\n44/60\nOther\n45/60\nOther\n46/60\nOther\n47/60\nOther\n48/60\nOther\n49/60\nOther\n50/60\nOutdoors view\n51/60\nOther\n52/60\nOther\n53/60\nOther\n54/60\nOther\n55/60\nOther\n56/60\nOther\n57/60\nOther\n58/60\nOther\n59/60\nOther\n60/60\nOverview\nPrices\nAmenities\nReviews\nLocation\nTips & FAQs\nNearby stays\nOverview\nFacing the seafront in Weligama, Coconut Surf",
+   "at": [
+    {
+     "needle": "778 921 396",
+     "found": false
+    }
+   ]
+  },
+  {
+   "step": "08-google-search",
+   "viewport": "390x844",
+   "requested": "https://www.google.com/search?q=Coconut+Surf+Inn+Midigama&hl=en",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "navigation_chain": [
+    [
+     200,
+     "https://www.google.com/search?q=Coconut+Surf+Inn+Midigama&hl=en"
+    ],
+    [
+     302,
+     "https://www.google.com/search?q=Coconut+Surf+Inn+Midigama&hl=en&sei=HbDraqyoDYX0i-gPnebGmA8"
+    ],
+    [
+     429,
+     "https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3DCoconut%2BSurf%2BInn%2BMidigama%26hl%3Den%26sei%3DHbDraqyoDYX0i-gPnebGmA8&hl=en&"
+    ]
+   ],
+   "final_url": "https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3DCoconut%2BSurf%2BInn%2BMidigama%26hl%3Den%26sei%3DHbDraqyoDYX0i-gPnebGmA8&hl=en&q=EhAqDW_AFb8mANGdDzxzB73BGJ3grtcGIjD_vi8jmz3R_xBe2vcBXAYAANqlNYgHIg_-9430dHBB_-RmyUYw2ccikE4C7iS78rAyAVJaAUNglJDwgv7grcE1",
+   "screenshot": "funnel/walk/08-google-search-fold.png",
+   "title": "https://www.google.com/search?q=Coconut+Surf+Inn+Midigama&hl=en&sei=HbDraqyoDYX0i-gPnebGmA8",
+   "doc_width": 390,
+   "page_height": 844,
+   "text_chars": 370,
+   "tel_links": [],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_778921396_in_text": false,
+   "add_website": false,
+   "claim_business": false,
+   "own_site_links": [],
+   "offsite_booking_links": [],
+   "commission_phrases": [],
+   "contact_phrases": [],
+   "place_names": {
+    "midigama": 1,
+    "gurubebila": 0,
+    "weligama": 0,
+    "matara": 0
+   },
+   "login_wall": false,
+   "captcha": true,
+   "text_head": "\nAbout this page\nOur systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. Why did this happen?\nIP address: 2a0d:6fc0:15bf:2600:d19d:f3c:7307:bdc1\nTime: 2026-11-04T22:22:22Z\nURL: https://www.google.com/search?q=Coconut+Surf+Inn+Midigama&hl=en&sei=HbDraqyoDYX0i-gPnebGmA8\n",
+   "at": []
+  }
+ ]
+}

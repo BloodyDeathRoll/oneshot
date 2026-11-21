@@ -1,0 +1,9 @@
+nojs finder href rooms/ rooms/
+nojs forecast block 
+rosa-blocked third-party on load 0
+rosa-blocked {"ifr":0,"text":"Forecast for Coconuts by Rosa","hit":true,"href":"https://rosa.surf/spot/weligama-west"} requests ["https://rosa-data-opal.vercel.app/data/spots/weligama-west.json","https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric"]
+rosa-live third-party on load 0
+rosa-live after scroll rosa-data-opal.vercel.app rosa.surf fonts.googleapis.com fonts.gstatic.com server.arcgisonline.com iframes 1
+tap-through hero: href=https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html -> first request https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html (1 tap)
+laptop header in hero 1 visible top
+focus 2 <a href="#rooms">Rooms</a>

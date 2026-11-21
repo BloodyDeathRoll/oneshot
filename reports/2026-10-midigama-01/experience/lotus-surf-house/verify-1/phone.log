@@ -1,0 +1,45 @@
+cold-0.5s.png start 525 done 2180
+cold-1.5s.png start 2181 done 2284
+cold-3s.png start 3000 done 3183
+cold-6s.png start 6016 done 6903
+FIRSTLOAD {"lcp":504,"cls":0.0017839193863570001,"sw":390,"h":10807} bytes 871343 n 13 hosts lotus-surf-house.os1.workers.dev failed 0
+00 {"y":0,"H":10807,"sec":"","fcTop":8949,"fcH":925,"live":false,"on":false,"cls":"fc","blank":0,"inView":1} 
+01 {"y":563,"H":10807,"sec":"Lotus Surf House","fcTop":8386,"fcH":925,"live":false,"on":false,"cls":"fc","blank":0,"inView":2} 
+02 {"y":1125,"H":10807,"sec":"The King Rooms","fcTop":7824,"fcH":925,"live":false,"on":false,"cls":"fc","blank":0,"inView":2} lotus-surf-house.os1.workers.dev:img-020-r0.563-960.webp
+03 {"y":1687,"H":10807,"sec":"King Room with Balcony","fcTop":7262,"fcH":925,"live":false,"on":false,"cls":"fc","blank":0,"inView":3} lotus-surf-house.os1.workers.dev:img-029-r1.25-960.webp
+04 {"y":2249,"H":10807,"sec":"King Room with Balcony","fcTop":6700,"fcH":925,"live":false,"on":false,"cls":"fc","blank":0,"inView":5} 
+05 {"y":2811,"H":10807,"sec":"Up on the roof","fcTop":6138,"fcH":925,"live":false,"on":false,"cls":"fc","blank":0,"inView":3} lotus-surf-house.os1.workers.dev:img-032-r1.25-840.webp
+06 {"y":3374,"H":10807,"sec":"Up on the roof","fcTop":5575,"fcH":925,"live":false,"on":false,"cls":"fc","blank":0,"inView":2} 
+07 {"y":3936,"H":10807,"sec":"In the garden","fcTop":5013,"fcH":925,"live":false,"on":false,"cls":"fc","blank":0,"inView":1} 
+08 {"y":4498,"H":10807,"sec":"In the garden","fcTop":4451,"fcH":925,"live":false,"on":false,"cls":"fc","blank":3,"inView":7} lotus-surf-house.os1.workers.dev:img-043-r1.25-960.webp lotus-surf-house.os1.workers.dev:img-030-r1.25-643.webp
+09 {"y":5061,"H":10807,"sec":"In the garden","fcTop":3888,"fcH":925,"live":false,"on":false,"cls":"fc","blank":3,"inView":6} 
+10 {"y":5623,"H":10807,"sec":"Deluxe Queen Room","fcTop":3326,"fcH":925,"live":false,"on":false,"cls":"fc","blank":0,"inView":1} 
+11 {"y":6185,"H":10807,"sec":"Deluxe Queen Room","fcTop":2764,"fcH":925,"live":false,"on":false,"cls":"fc","blank":0,"inView":1} 
+12 {"y":6748,"H":10807,"sec":"Guests","fcTop":2201,"fcH":925,"live":false,"on":false,"cls":"fc","blank":0,"inView":0} 
+13 {"y":7310,"H":10807,"sec":"Guests","fcTop":1639,"fcH":925,"live":false,"on":false,"cls":"fc","blank":0,"inView":0} 
+14 {"y":7873,"H":10807,"sec":"Getting here","fcTop":1076,"fcH":925,"live":true,"on":false,"cls":"fc live","blank":0,"inView":0} rosa-data-opal.vercel.app:lazy-left.json rosa.surf:?spot=lazy-left&theme=light& rosa.surf:?spot=lazy-left&theme=light& fonts.googleapis.com:css2?family=Inter:wght@400;5 rosa-data-opal.vercel.app:lazy-left.json
+FC near at 36678
+15 {"y":8435,"H":10807,"sec":"Good to know","fcTop":514,"fcH":925,"live":true,"on":true,"cls":"fc live","blank":0,"inView":0} rosa.surf:favicon.svg fonts.gstatic.com:UcC73FwrK3iLTeHuS_nVMrMxCp50
+16 {"y":8997,"H":10807,"sec":"Forecast for Lazy Left by Rosa","fcTop":-48,"fcH":925,"live":true,"on":true,"cls":"fc live","blank":0,"inView":0} server.arcgisonline.com:5924 server.arcgisonline.com:5925 server.arcgisonline.com:5926 server.arcgisonline.com:5924 server.arcgisonline.com:5925 server.arcgisonline.com:5926
+17 {"y":9560,"H":10807,"sec":"Forecast for Lazy Left by Rosa","fcTop":-611,"fcH":925,"live":true,"on":true,"cls":"fc live","blank":0,"inView":0} 
+18 {"y":9963,"H":10807,"sec":"Forecast for Lazy Left by Rosa","fcTop":-1014,"fcH":925,"live":true,"on":true,"cls":"fc live","blank":0,"inView":0} 
+19 {"y":9963,"H":10807,"sec":"Forecast for Lazy Left by Rosa","fcTop":-1014,"fcH":925,"live":true,"on":true,"cls":"fc live","blank":0,"inView":0} 
+20 {"y":9963,"H":10807,"sec":"Forecast for Lazy Left by Rosa","fcTop":-1014,"fcH":925,"live":true,"on":true,"cls":"fc live","blank":0,"inView":0} 
+AFTER {"cls":0.0017839193863570001,"shifts":[{"v":0.0018,"t":1327,"y":0}],"h":10807}
+FRAME https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric
+WIDGET TEXT "Imagery © Esri\nrosa.surf\nLazy Left\nEpic\nair 24°C\nwater 30°C\nrashguard\nToday, 11/6\nSURF M\nSWELL\nWIND KM/H\nKJ\nHPA\n06:00\n0.8-1.3\n0.9 m\n9s\nSSE\n5\nENE\nCROSS\n214\n1012\n12:00\n0.9-1.3\n0.9 m\n9s\nSSE\n9\nSE\nCROSS\n240\n1011\n18:00\n0.9-1.4\n0.8 m\n16s\nSSE\n4\nESE\nCROSS\n336\n1011\nTomorrow, 11/7\nSURF M\nSWELL\nWIND KM/H\nKJ\nHPA\n06:00\n0.9-1.4\n0.8 m\n16s\nS\n3\nNNE\nOFFSHORE\n248\n1012\n12:00\n0.8-1.2\n0.9 m\n15s\nSSE\n9\nSW\nONSHORE\n249\n1010\n18:00\n0.7-1.1\n0.9 m\n15s\nSSE\n6\nWNW\nCROSS\n230\n1011\nSunday, 11/8\nSURF M\nSWELL\nWIND KM/H\nKJ\nHPA\n06:00\n0"
+HEADLINE {"head":["0.9–1.4 m"],"nd":["Friday 6 November, 20:30","Swell 16.6 s from the south","Wind 5.1 km/h from the north, offshore"],"upd":["Rosa, updated 6 November 2026, 19:56"],"ifr":{"top":80,"h":500,"w":350},"bar":772,"y":9294} {"bar":772}
+SWIPE UP INSIDE WIDGET page moved 301
+pages after sideways swipe 0
+LATER by host {"lotus-surf-house.os1.workers.dev":[5,325090],"rosa-data-opal.vercel.app":[2,10064],"rosa.surf":[3,10248],"fonts.googleapis.com":[1,1075],"fonts.gstatic.com":[1,48951],"server.arcgisonline.com":[6,51697]}
+35308 35632 9960  https://rosa-data-opal.vercel.app/data/spots/lazy-left.json
+35648 undefined undefined net::ERR_ABORTED https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric
+35955 36298 7862  https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric
+36532 36673 104  https://rosa-data-opal.vercel.app/data/spots/lazy-left.json
+36782 36857 2386  https://rosa.surf/favicon.svg
+FAILED [
+  'net::ERR_ABORTED https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric'
+]
+CONSOLE [
+  'warning: An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.'
+]

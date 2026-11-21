@@ -1,0 +1,1150 @@
+{
+ "normal-m": {
+  "vp": "m",
+  "thirdPartyOnLoad": [],
+  "preSecH": 1058,
+  "preDocH": 10922,
+  "afterScroll3p": [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [main]",
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric [sub]",
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap [sub]",
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [sub]",
+   "https://rosa.surf/favicon.svg [sub]",
+   "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5924 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5925 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5926 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5926 [sub]"
+  ],
+  "jsonReqs": 2,
+  "widgetFrameReqs": 1,
+  "cls": "wrap fc live",
+  "secH": 1058,
+  "docH": 10922,
+  "cardText": "Forecast for Lazy Left by Rosa Forecast for Mon 9 Nov, 14:30 0.4–0.7 m Swell 7.9 s from the south-east Wind 5.7 km/h from the south, onshore Rosa, updated 9 Nov 2026, 13:56 See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 20,
+   "y": 307,
+   "w": 350,
+   "h": 254
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 20,
+   "y": 513,
+   "w": 350,
+   "h": 48
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+  "iframe": {
+   "x": 20,
+   "y": 581,
+   "w": 350,
+   "h": 500
+  },
+  "iframeVisible": true,
+  "rosaBox": {
+   "x": 20,
+   "y": 581,
+   "w": 350,
+   "h": 500
+  },
+  "rosaVisible": true,
+  "elementAtIframeCentre": "A.btn btn-book bar-book",
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": []
+ },
+ "jsoff-m": {
+  "vp": "m",
+  "thirdPartyOnLoad": [],
+  "preSecH": 396,
+  "preDocH": 10144,
+  "afterScroll3p": [],
+  "jsonReqs": 0,
+  "widgetFrameReqs": 0,
+  "cls": "wrap fc",
+  "secH": 396,
+  "docH": 10144,
+  "cardText": "See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 20,
+   "y": 307,
+   "w": 350,
+   "h": 112
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 20,
+   "y": 307,
+   "w": 350,
+   "h": 112
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": null,
+  "iframe": {
+   "x": 0,
+   "y": 0,
+   "w": 0,
+   "h": 0
+  },
+  "iframeVisible": false,
+  "rosaBox": {
+   "x": 0,
+   "y": 0,
+   "w": 0,
+   "h": 0
+  },
+  "rosaVisible": false,
+  "elementAtIframeCentre": null,
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": []
+ },
+ "jsonAbort-m": {
+  "vp": "m",
+  "thirdPartyOnLoad": [],
+  "preSecH": 1058,
+  "preDocH": 10922,
+  "afterScroll3p": [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [main]",
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric [sub]",
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap [sub]",
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [sub]",
+   "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2 [sub]"
+  ],
+  "jsonReqs": 2,
+  "widgetFrameReqs": 1,
+  "cls": "wrap fc off solo",
+  "secH": 916,
+  "docH": 10780,
+  "cardText": "See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 20,
+   "y": 307,
+   "w": 350,
+   "h": 112
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 20,
+   "y": 307,
+   "w": 350,
+   "h": 112
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+  "iframe": {
+   "x": 20,
+   "y": 439,
+   "w": 350,
+   "h": 500
+  },
+  "iframeVisible": true,
+  "rosaBox": {
+   "x": 20,
+   "y": 439,
+   "w": 350,
+   "h": 500
+  },
+  "rosaVisible": true,
+  "elementAtIframeCentre": "iframe",
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": []
+ },
+ "json500-m": {
+  "vp": "m",
+  "thirdPartyOnLoad": [],
+  "preSecH": 1058,
+  "preDocH": 10922,
+  "afterScroll3p": [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [main]",
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric [sub]",
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap [sub]",
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [sub]",
+   "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2 [sub]"
+  ],
+  "jsonReqs": 2,
+  "widgetFrameReqs": 1,
+  "cls": "wrap fc off solo",
+  "secH": 916,
+  "docH": 10780,
+  "cardText": "See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 20,
+   "y": 307,
+   "w": 350,
+   "h": 112
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 20,
+   "y": 307,
+   "w": 350,
+   "h": 112
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+  "iframe": {
+   "x": 20,
+   "y": 439,
+   "w": 350,
+   "h": 500
+  },
+  "iframeVisible": true,
+  "rosaBox": {
+   "x": 20,
+   "y": 439,
+   "w": 350,
+   "h": 500
+  },
+  "rosaVisible": true,
+  "elementAtIframeCentre": "iframe",
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": []
+ },
+ "stale30h-m": {
+  "vp": "m",
+  "thirdPartyOnLoad": [],
+  "preSecH": 1058,
+  "preDocH": 10922,
+  "afterScroll3p": [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [main]",
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric [sub]",
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap [sub]",
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [sub]",
+   "https://rosa.surf/favicon.svg [sub]",
+   "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5924 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5925 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5926 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5926 [sub]"
+  ],
+  "jsonReqs": 2,
+  "widgetFrameReqs": 1,
+  "cls": "wrap fc off",
+  "secH": 1058,
+  "docH": 10922,
+  "cardText": "See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 20,
+   "y": 307,
+   "w": 350,
+   "h": 254
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 20,
+   "y": 307,
+   "w": 350,
+   "h": 254
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+  "iframe": {
+   "x": 20,
+   "y": 581,
+   "w": 350,
+   "h": 500
+  },
+  "iframeVisible": true,
+  "rosaBox": {
+   "x": 20,
+   "y": 581,
+   "w": 350,
+   "h": 500
+  },
+  "rosaVisible": true,
+  "elementAtIframeCentre": "A.btn btn-book bar-book",
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": [
+   {
+    "v": 0.0659203464340366,
+    "t": 4865.10000000149,
+    "src": "fc-link"
+   }
+  ]
+ },
+ "jsonHang-m": {
+  "vp": "m",
+  "thirdPartyOnLoad": [],
+  "preSecH": 1058,
+  "preDocH": 10922,
+  "afterScroll3p": [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [main]",
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric [sub]",
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap [sub]",
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [sub]"
+  ],
+  "jsonReqs": 2,
+  "widgetFrameReqs": 1,
+  "cls": "wrap fc off",
+  "secH": 1058,
+  "docH": 10922,
+  "cardText": "See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 20,
+   "y": 307,
+   "w": 350,
+   "h": 254
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 20,
+   "y": 307,
+   "w": 350,
+   "h": 254
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+  "iframe": {
+   "x": 20,
+   "y": 581,
+   "w": 350,
+   "h": 500
+  },
+  "iframeVisible": true,
+  "rosaBox": {
+   "x": 20,
+   "y": 581,
+   "w": 350,
+   "h": 500
+  },
+  "rosaVisible": true,
+  "elementAtIframeCentre": "A.btn btn-book bar-book",
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": [
+   {
+    "v": 0.0659203464340366,
+    "t": 14664.400000000373,
+    "src": "fc-link"
+   }
+  ]
+ },
+ "widgetAbort-m": {
+  "vp": "m",
+  "thirdPartyOnLoad": [],
+  "preSecH": 1058,
+  "preDocH": 10922,
+  "afterScroll3p": [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [main]",
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric [sub]"
+  ],
+  "jsonReqs": 1,
+  "widgetFrameReqs": 1,
+  "cls": "wrap fc live",
+  "secH": 1058,
+  "docH": 10922,
+  "cardText": "Forecast for Lazy Left by Rosa Forecast for Mon 9 Nov, 14:30 0.4–0.7 m Swell 7.9 s from the south-east Wind 5.7 km/h from the south, onshore Rosa, updated 9 Nov 2026, 13:56 See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 20,
+   "y": 307,
+   "w": 350,
+   "h": 254
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 20,
+   "y": 513,
+   "w": 350,
+   "h": 48
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+  "iframe": {
+   "x": 20,
+   "y": 581,
+   "w": 350,
+   "h": 500
+  },
+  "iframeVisible": true,
+  "rosaBox": {
+   "x": 20,
+   "y": 581,
+   "w": 350,
+   "h": 500
+  },
+  "rosaVisible": true,
+  "elementAtIframeCentre": "A.btn btn-book bar-book",
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": []
+ },
+ "widgetRefused-m": {
+  "vp": "m",
+  "thirdPartyOnLoad": [],
+  "preSecH": 1058,
+  "preDocH": 10922,
+  "afterScroll3p": [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [main]",
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric [sub]"
+  ],
+  "jsonReqs": 1,
+  "widgetFrameReqs": 1,
+  "cls": "wrap fc live",
+  "secH": 1058,
+  "docH": 10922,
+  "cardText": "Forecast for Lazy Left by Rosa Forecast for Mon 9 Nov, 14:30 0.4–0.7 m Swell 7.9 s from the south-east Wind 5.7 km/h from the south, onshore Rosa, updated 9 Nov 2026, 13:56 See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 20,
+   "y": 307,
+   "w": 350,
+   "h": 254
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 20,
+   "y": 513,
+   "w": 350,
+   "h": 48
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+  "iframe": {
+   "x": 20,
+   "y": 581,
+   "w": 350,
+   "h": 500
+  },
+  "iframeVisible": true,
+  "rosaBox": {
+   "x": 20,
+   "y": 581,
+   "w": 350,
+   "h": 500
+  },
+  "rosaVisible": true,
+  "elementAtIframeCentre": "A.btn btn-book bar-book",
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": []
+ },
+ "allRosaBlocked-m": {
+  "vp": "m",
+  "thirdPartyOnLoad": [],
+  "preSecH": 1058,
+  "preDocH": 10922,
+  "afterScroll3p": [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [main]",
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric [sub]"
+  ],
+  "jsonReqs": 1,
+  "widgetFrameReqs": 1,
+  "cls": "wrap fc off solo",
+  "secH": 916,
+  "docH": 10780,
+  "cardText": "See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 20,
+   "y": 307,
+   "w": 350,
+   "h": 112
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 20,
+   "y": 307,
+   "w": 350,
+   "h": 112
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+  "iframe": {
+   "x": 20,
+   "y": 439,
+   "w": 350,
+   "h": 500
+  },
+  "iframeVisible": true,
+  "rosaBox": {
+   "x": 20,
+   "y": 439,
+   "w": 350,
+   "h": 500
+  },
+  "rosaVisible": true,
+  "elementAtIframeCentre": "iframe",
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": []
+ },
+ "normal-d": {
+  "vp": "d",
+  "thirdPartyOnLoad": [],
+  "preSecH": 612,
+  "preDocH": 9208,
+  "afterScroll3p": [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [main]",
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric [sub]",
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap [sub]",
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [sub]",
+   "https://rosa.surf/favicon.svg [sub]",
+   "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5924 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5925 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5926 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5926 [sub]"
+  ],
+  "jsonReqs": 2,
+  "widgetFrameReqs": 1,
+  "cls": "wrap fc live",
+  "secH": 612,
+  "docH": 9208,
+  "cardText": "Forecast for Lazy Left by Rosa Forecast for Mon 9 Nov, 14:30 0.4–0.7 m Swell 7.9 s from the south-east Wind 5.7 km/h from the south, onshore Rosa, updated 9 Nov 2026, 13:56 See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 144,
+   "y": 346,
+   "w": 620,
+   "h": 220
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 144,
+   "y": 518,
+   "w": 620,
+   "h": 48
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+  "iframe": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "iframeVisible": true,
+  "rosaBox": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "rosaVisible": true,
+  "elementAtIframeCentre": "iframe",
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": []
+ },
+ "jsoff-d": {
+  "vp": "d",
+  "thirdPartyOnLoad": [],
+  "preSecH": 438,
+  "preDocH": 8976,
+  "afterScroll3p": [],
+  "jsonReqs": 0,
+  "widgetFrameReqs": 0,
+  "cls": "wrap fc",
+  "secH": 438,
+  "docH": 8976,
+  "cardText": "See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 144,
+   "y": 313,
+   "w": 620,
+   "h": 112
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 144,
+   "y": 313,
+   "w": 620,
+   "h": 112
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": null,
+  "iframe": {
+   "x": 0,
+   "y": 0,
+   "w": 0,
+   "h": 0
+  },
+  "iframeVisible": false,
+  "rosaBox": {
+   "x": 0,
+   "y": 0,
+   "w": 0,
+   "h": 0
+  },
+  "rosaVisible": false,
+  "elementAtIframeCentre": null,
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": []
+ },
+ "jsonAbort-d": {
+  "vp": "d",
+  "thirdPartyOnLoad": [],
+  "preSecH": 612,
+  "preDocH": 9208,
+  "afterScroll3p": [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [main]",
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric [sub]",
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap [sub]",
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [sub]",
+   "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2 [sub]"
+  ],
+  "jsonReqs": 2,
+  "widgetFrameReqs": 1,
+  "cls": "wrap fc off solo",
+  "secH": 612,
+  "docH": 9208,
+  "cardText": "See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 144,
+   "y": 400,
+   "w": 620,
+   "h": 112
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 144,
+   "y": 400,
+   "w": 620,
+   "h": 112
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+  "iframe": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "iframeVisible": true,
+  "rosaBox": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "rosaVisible": true,
+  "elementAtIframeCentre": "iframe",
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": []
+ },
+ "json500-d": {
+  "vp": "d",
+  "thirdPartyOnLoad": [],
+  "preSecH": 612,
+  "preDocH": 9208,
+  "afterScroll3p": [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [main]",
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric [sub]",
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap [sub]",
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [sub]",
+   "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2 [sub]"
+  ],
+  "jsonReqs": 2,
+  "widgetFrameReqs": 1,
+  "cls": "wrap fc off solo",
+  "secH": 612,
+  "docH": 9208,
+  "cardText": "See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 144,
+   "y": 400,
+   "w": 620,
+   "h": 112
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 144,
+   "y": 400,
+   "w": 620,
+   "h": 112
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+  "iframe": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "iframeVisible": true,
+  "rosaBox": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "rosaVisible": true,
+  "elementAtIframeCentre": "iframe",
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": []
+ },
+ "stale30h-d": {
+  "vp": "d",
+  "thirdPartyOnLoad": [],
+  "preSecH": 612,
+  "preDocH": 9208,
+  "afterScroll3p": [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [main]",
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric [sub]",
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap [sub]",
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [sub]",
+   "https://rosa.surf/favicon.svg [sub]",
+   "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5924 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5925 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5926 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5926 [sub]"
+  ],
+  "jsonReqs": 2,
+  "widgetFrameReqs": 1,
+  "cls": "wrap fc off",
+  "secH": 612,
+  "docH": 9208,
+  "cardText": "See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 144,
+   "y": 346,
+   "w": 620,
+   "h": 220
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 144,
+   "y": 346,
+   "w": 620,
+   "h": 220
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+  "iframe": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "iframeVisible": true,
+  "rosaBox": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "rosaVisible": true,
+  "elementAtIframeCentre": "iframe",
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": [
+   {
+    "v": 0.012571159122085049,
+    "t": 4598.699999999255,
+    "src": "fc-link"
+   }
+  ]
+ },
+ "jsonHang-d": {
+  "vp": "d",
+  "thirdPartyOnLoad": [],
+  "preSecH": 612,
+  "preDocH": 9208,
+  "afterScroll3p": [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [main]",
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric [sub]",
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap [sub]",
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [sub]"
+  ],
+  "jsonReqs": 2,
+  "widgetFrameReqs": 1,
+  "cls": "wrap fc off",
+  "secH": 612,
+  "docH": 9208,
+  "cardText": "See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 144,
+   "y": 346,
+   "w": 620,
+   "h": 220
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 144,
+   "y": 346,
+   "w": 620,
+   "h": 220
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+  "iframe": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "iframeVisible": true,
+  "rosaBox": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "rosaVisible": true,
+  "elementAtIframeCentre": "iframe",
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": [
+   {
+    "v": 0.012571159122085049,
+    "t": 14326.299999998882,
+    "src": "fc-link"
+   }
+  ]
+ },
+ "widgetAbort-d": {
+  "vp": "d",
+  "thirdPartyOnLoad": [],
+  "preSecH": 612,
+  "preDocH": 9208,
+  "afterScroll3p": [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [main]",
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric [sub]"
+  ],
+  "jsonReqs": 1,
+  "widgetFrameReqs": 1,
+  "cls": "wrap fc live",
+  "secH": 612,
+  "docH": 9208,
+  "cardText": "Forecast for Lazy Left by Rosa Forecast for Mon 9 Nov, 14:30 0.4–0.7 m Swell 7.9 s from the south-east Wind 5.7 km/h from the south, onshore Rosa, updated 9 Nov 2026, 13:56 See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 144,
+   "y": 346,
+   "w": 620,
+   "h": 220
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 144,
+   "y": 518,
+   "w": 620,
+   "h": 48
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+  "iframe": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "iframeVisible": true,
+  "rosaBox": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "rosaVisible": true,
+  "elementAtIframeCentre": "iframe",
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": []
+ },
+ "widgetRefused-d": {
+  "vp": "d",
+  "thirdPartyOnLoad": [],
+  "preSecH": 612,
+  "preDocH": 9208,
+  "afterScroll3p": [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [main]",
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric [sub]"
+  ],
+  "jsonReqs": 1,
+  "widgetFrameReqs": 1,
+  "cls": "wrap fc live",
+  "secH": 612,
+  "docH": 9208,
+  "cardText": "Forecast for Lazy Left by Rosa Forecast for Mon 9 Nov, 14:30 0.4–0.7 m Swell 7.9 s from the south-east Wind 5.7 km/h from the south, onshore Rosa, updated 9 Nov 2026, 13:56 See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 144,
+   "y": 346,
+   "w": 620,
+   "h": 220
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 144,
+   "y": 518,
+   "w": 620,
+   "h": 48
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+  "iframe": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "iframeVisible": true,
+  "rosaBox": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "rosaVisible": true,
+  "elementAtIframeCentre": "iframe",
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": []
+ },
+ "allRosaBlocked-d": {
+  "vp": "d",
+  "thirdPartyOnLoad": [],
+  "preSecH": 612,
+  "preDocH": 9208,
+  "afterScroll3p": [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [main]",
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric [sub]"
+  ],
+  "jsonReqs": 1,
+  "widgetFrameReqs": 1,
+  "cls": "wrap fc off solo",
+  "secH": 612,
+  "docH": 9208,
+  "cardText": "See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 144,
+   "y": 400,
+   "w": 620,
+   "h": 112
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 144,
+   "y": 400,
+   "w": 620,
+   "h": 112
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+  "iframe": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "iframeVisible": true,
+  "rosaBox": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "rosaVisible": true,
+  "elementAtIframeCentre": "iframe",
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": []
+ },
+ "tzNewYork-d": {
+  "vp": "d",
+  "thirdPartyOnLoad": [],
+  "preSecH": 612,
+  "preDocH": 9208,
+  "afterScroll3p": [
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [main]",
+   "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric [sub]",
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap [sub]",
+   "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json [sub]",
+   "https://rosa.surf/favicon.svg [sub]",
+   "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5924 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5925 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5926 [sub]",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5926 [sub]"
+  ],
+  "jsonReqs": 2,
+  "widgetFrameReqs": 1,
+  "cls": "wrap fc live",
+  "secH": 612,
+  "docH": 9208,
+  "cardText": "Forecast for Lazy Left by Rosa Forecast for Mon 9 Nov, 14:30 0.4–0.7 m Swell 7.9 s from the south-east Wind 5.7 km/h from the south, onshore Rosa, updated 9 Nov 2026, 13:56 See today's forecast for Lazy Left on Rosa",
+  "card": {
+   "x": 144,
+   "y": 346,
+   "w": 620,
+   "h": 220
+  },
+  "linkVisible": true,
+  "link": {
+   "x": 144,
+   "y": 518,
+   "w": 620,
+   "h": 48
+  },
+  "linkHref": "https://rosa.surf/spot/lazy-left",
+  "iframeSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+  "iframe": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "iframeVisible": true,
+  "rosaBox": {
+   "x": 876,
+   "y": 100,
+   "w": 420,
+   "h": 500
+  },
+  "rosaVisible": true,
+  "elementAtIframeCentre": "iframe",
+  "iframeStyle": {
+   "filter": "none",
+   "transform": "none",
+   "opacity": "1",
+   "clip": "none",
+   "mix": "normal",
+   "overflowParent": "visible"
+  },
+  "loadingAttr": null,
+  "cls_entries": []
+ }
+}

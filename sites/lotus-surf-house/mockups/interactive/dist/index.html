@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Lotus Surf House, Midigama</title><meta name="description" content="A guesthouse in Midigama, on the south coast of Sri Lanka. Breakfast included. Book on Booking.com or call +94 77 464 7541."><meta property="og:title" content="Lotus Surf House"><meta property="og:description" content="A guesthouse in Midigama, on the south coast of Sri Lanka.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600&family=Patrick+Hand&display=swap">
+<link rel="preload" as="image" href="img/hero-wide-1600.webp" imagesrcset="img/hero-wide-1120.webp 1120w, img/hero-wide-1600.webp 1600w" imagesizes="100vw" media="(min-width: 768px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero-tall-960.webp" imagesrcset="img/hero-tall-720.webp 720w, img/hero-tall-960.webp 960w" imagesizes="100vw" media="(max-width: 767px)" fetchpriority="high">
+<script>document.documentElement.classList.replace('no-js','js')</script>
+<style>/* Lotus Surf House, interactive "Dappled". Colours sampled from img-020 / img-005 / img-001 (concepts.md §4.2). */
+/* metric-matched fallbacks (widths measured against the web fonts), so the swap does not reflow */
+@font-face{font-family:'Patrick Hand Fallback';src:local('Arial');size-adjust:80.1%}
+@font-face{font-family:'Be Vietnam Pro Fallback';src:local('Arial');size-adjust:108%}
+:root{
+  --ground:#FFFFFF; --tint:#EDEDF0; --ink:#664D25; --text:#4A3819; --muted:#6E5E46; --canopy:#517A24; --yellow:#E1B910;
+  --accent:#0165A3; --accent-deep:#01548A;
+  --ease-out:cubic-bezier(0.23,1,0.32,1); --ease-io:cubic-bezier(0.77,0,0.175,1); --ease-drawer:cubic-bezier(0.32,0.72,0,1);
+  --body:'Be Vietnam Pro','Be Vietnam Pro Fallback',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --hand:'Patrick Hand','Patrick Hand Fallback','Comic Neue','Bradley Hand',cursive;
+  --gut:28px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:84px}
+body{margin:0;background:var(--ground);color:var(--text);font:400 16.5px/1.65 var(--body);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3,p,figure,blockquote,ul{margin:0}
+ul{padding:0;list-style:none}
+button{font:inherit;color:inherit}
+.skip{position:absolute;left:-999px;top:8px;z-index:60;background:#fff;padding:10px 16px;border-radius:10px}
+.skip:focus{left:8px}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gut)}
+.hand{font-family:var(--hand);font-weight:400;color:var(--ink);line-height:1.08}
+h2.hand{font-size:clamp(40px,4.6vw,56px);margin-bottom:24px}
+.ic{width:20px;height:20px;flex:none}
+.sep{color:#C9BFB0;margin:0 .3em}
+.muted{color:var(--muted)}
+.tint{background:var(--tint)}
+.center{text-align:center}
+
+/* buttons: press 0.97 / 120 ms; lift 2 px on fine pointers */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;border-radius:14px;border:0;
+  font:600 16px/1.2 var(--body);text-decoration:none;white-space:nowrap;cursor:pointer;
+  transition:transform 140ms var(--ease-out),background-color 160ms ease,box-shadow 200ms var(--ease-out)}
+.btn:active{transform:scale(.97)}
+.btn-book{background:var(--accent);color:#fff;box-shadow:0 1px 2px rgba(1,60,100,.25)}
+.btn-call{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px rgba(102,77,37,.45)}
+.tint .btn-call{background:transparent}
+.btn-sm{min-height:44px;padding:0 18px;font-size:15px}
+@media (hover:hover) and (pointer:fine){
+  .btn-book:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 10px 22px -10px rgba(1,84,138,.6)}
+  .btn-book:active{transform:translateY(0) scale(.97)}
+  .btn-call:hover{background:rgba(102,77,37,.06)}
+}
+.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* header */
+.top{position:fixed;inset:0 0 auto 0;z-index:30;height:76px;display:flex;align-items:center;gap:24px;padding:0 32px;color:#fff;
+  transition:background-color 240ms ease,color 240ms ease,box-shadow 240ms ease,transform 260ms var(--ease-drawer)}
+.mark{font:600 17px/1 var(--body);padding:13px 0;text-decoration:none;margin-right:auto;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.nav{display:flex;gap:4px}
+.nav a{text-decoration:none;font-weight:600;font-size:15px;padding:12px;border-radius:12px;text-shadow:0 1px 12px rgba(0,0,0,.35);transition:background-color 160ms ease}
+@media (hover:hover) and (pointer:fine){.nav a:hover{background:rgba(255,255,255,.16)}}
+.top.solid{background:rgba(255,255,255,.96);color:var(--ink);box-shadow:0 10px 30px -22px rgba(74,56,25,.5);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.top.solid .mark,.top.solid .nav a{text-shadow:none}
+@media (hover:hover) and (pointer:fine){.top.solid .nav a:hover{background:rgba(102,77,37,.07)}}
+
+/* first screen: the photo is the LCP; the canvas lays the moving light over it after first paint */
+.hero{position:relative;height:100svh;min-height:600px;max-height:1080px;display:grid;place-items:center;overflow:hidden}
+.hero-media,.hero-media picture,.hero-img,.light{position:absolute;inset:0;width:100%;height:100%}
+.hero-media{background:#5C6B3A}
+.hero-img{object-fit:cover;object-position:50% 50%}
+.light{opacity:0;transition:opacity 900ms ease}
+.light.on{opacity:1}
+.hero-media::after{content:"";position:absolute;inset:0 0 auto 0;height:180px;background:linear-gradient(rgba(28,22,8,.42),rgba(28,22,8,0));pointer-events:none}
+.hero-text{position:relative;z-index:2;text-align:center;color:#fff;padding:0 20px}
+.hero-text::before{content:"";position:absolute;left:50%;top:50%;width:min(980px,160vw);height:520px;transform:translate(-50%,-50%);
+  background:radial-gradient(closest-side,rgba(28,22,8,.42),rgba(28,22,8,.18) 58%,rgba(28,22,8,0));z-index:-1;pointer-events:none}
+.hero h1{font-size:clamp(46px,6vw,84px);color:#fff;margin-bottom:6px;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.where{font-size:19px;font-weight:600;margin-bottom:30px;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.btn-hero{min-height:56px;padding:0 30px;font-size:17px;box-shadow:0 0 0 1.5px rgba(255,255,255,.35),0 10px 28px -10px rgba(0,0,0,.55)}
+
+/* at a glance */
+.facts{padding:88px 0 96px}
+.tag{font-size:22px;color:var(--ink);text-align:center;max-width:640px;margin:0 auto 44px}
+.fact-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:40px}
+.fact-row li{display:flex;gap:14px;align-items:flex-start;padding:22px 20px;border-radius:18px;background:var(--tint)}
+.fact-row .ic{width:26px;height:26px;color:var(--canopy);margin-top:2px}
+.fact-row b{display:block;font-weight:600;color:var(--ink);font-size:17px;line-height:1.35}
+.fact-row b i{font-style:normal;font-weight:400;color:var(--muted)}
+.fact-row small{display:block;font-size:14px;color:var(--muted);margin-top:4px;line-height:1.45}
+.fact-row small a{text-decoration:none}
+.facts .actions{justify-content:center}
+
+/* rolling digits */
+.num{display:inline-flex;overflow:hidden;vertical-align:bottom;height:1.2em;line-height:1.2em}
+.num .col{display:flex;flex-direction:column;transition:transform 520ms var(--ease-out)}
+.num .col span{height:1.2em}
+.num .fix{display:inline-block}
+
+/* floor switch */
+.floors{padding:104px 0 112px}
+.floors h2{text-align:center}
+.switch{position:relative;display:flex;width:max-content;max-width:100%;margin:0 auto 44px;padding:6px;border-radius:18px;background:#fff;box-shadow:0 1px 2px rgba(74,56,25,.08)}
+.switch[hidden]{display:none}
+.switch button{position:relative;z-index:1;display:inline-flex;align-items:center;gap:9px;min-height:48px;padding:0 22px;border:0;background:none;border-radius:13px;
+  font-weight:600;font-size:16px;color:var(--muted);cursor:pointer;transition:color 200ms ease,transform 140ms var(--ease-out)}
+.switch button:active{transform:scale(.97)}
+.switch button[aria-selected="true"]{color:var(--ink)}
+.switch .ic{color:var(--canopy)}
+.pill{position:absolute;top:6px;bottom:6px;left:0;width:0;border-radius:13px;background:var(--tint);transition:transform 260ms cubic-bezier(0.22,1,0.36,1),width 260ms cubic-bezier(0.22,1,0.36,1)}
+.pill::after{content:"";position:absolute;top:8px;right:8px;width:7px;height:7px;border-radius:50%;background:var(--yellow)}
+.stage{display:grid}
+.panel-h{font:600 15px/1 var(--body);color:var(--muted);margin:0 0 18px}
+.js .panel-h{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.no-js .panel+.panel{margin-top:80px}
+.js .panel{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity 220ms ease,transform 260ms var(--ease-out),visibility 0s linear 260ms}
+.js .panel.on{opacity:1;visibility:visible;transform:none;transition:opacity 240ms ease 40ms,transform 320ms var(--ease-out) 40ms,visibility 0s}
+.split{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:start}
+.split.up{grid-template-columns:minmax(0,8fr) minmax(0,4fr);align-items:center}
+.split.roof{grid-template-columns:minmax(0,8fr) minmax(0,4fr);align-items:center}
+.tiles{display:flex;flex-direction:column;gap:12px}
+.tile{background:#fff;border-radius:18px;box-shadow:0 1px 2px rgba(74,56,25,.07);transition:box-shadow 240ms ease}
+.tile:has([aria-expanded="true"]){box-shadow:0 18px 40px -26px rgba(74,56,25,.5)}
+.tile-head{position:relative;display:grid;gap:4px;width:100%;text-align:left;padding:18px 56px 18px 20px;border:0;background:none;cursor:pointer;border-radius:18px;
+  transition:transform 140ms var(--ease-out)}
+.tile-head:active{transform:scale(.985)}
+.tile-name{font-weight:600;font-size:17px;color:var(--ink);line-height:1.35}
+.tile-name.big{font-size:22px}
+.tile-sub{font-size:15px;color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:7px;width:max-content;margin-top:6px;padding:5px 12px 5px 10px;border-radius:99px;background:var(--tint);font-size:13.5px;font-weight:600;color:var(--ink)}
+.chip .ic{width:16px;height:16px;color:var(--canopy)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 18px}
+.plus{position:absolute;right:20px;top:24px;width:20px;height:20px}
+.plus::before,.plus::after{content:"";position:absolute;left:3px;right:3px;top:9px;height:2px;border-radius:2px;background:var(--ink);transition:transform 260ms var(--ease-out)}
+.plus::after{transform:rotate(90deg)}
+[aria-expanded="true"] .plus::after{transform:rotate(0)}
+.tile-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows 300ms cubic-bezier(0.34,1.12,0.64,1)}
+[aria-expanded="true"]+.tile-body{grid-template-rows:1fr}
+.no-js .tile-body{grid-template-rows:1fr}
+.tile-in{overflow:hidden;padding:0 20px}
+.tile-in p{margin:2px 0 14px;font-size:15.5px}
+.tile-in .btn{margin-bottom:20px}
+.yq{margin-top:20px;padding:6px 4px}
+.yq p{font-family:var(--hand);font-size:26px;line-height:1.3;color:var(--ink)}
+.king p{margin-bottom:18px}
+.king .tile-name{margin-bottom:4px}
+.roof-pics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.roof-pics img{aspect-ratio:4/5;object-fit:cover;border-radius:18px;width:100%}
+
+/* slideshows */
+.show{min-width:0}
+.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:20px;overscroll-behavior-x:contain}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start}
+.slide img{width:100%;object-fit:cover}
+.r45 .slide img{aspect-ratio:4/5}
+.r32 .slide img{aspect-ratio:3/2}
+.ctrl{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px}
+.ctrl[hidden]{display:none}
+.js .ctrl[hidden]{display:flex;visibility:hidden}
+.js .switch[hidden]{display:flex;visibility:hidden}
+
+.arw{width:44px;height:44px;border-radius:12px;border:0;background:transparent;display:grid;place-items:center;cursor:pointer;color:var(--ink);transition:transform 140ms var(--ease-out),background-color 160ms ease}
+.arw:active{transform:scale(.92)}
+@media (hover:hover) and (pointer:fine){.arw:hover{background:rgba(102,77,37,.08)}}
+.dots{display:flex}
+.dot{height:44px;width:22px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center;transition:width 240ms var(--ease-out)}
+.dot::after{content:"";width:8px;height:8px;border-radius:99px;background:#CFC6B8;transition:width 240ms var(--ease-out),background-color 240ms ease}
+.dot[aria-current="true"]{width:34px}
+.dot[aria-current="true"]::after{width:22px;background:var(--canopy)}
+
+/* in the garden */
+.garden{padding:112px 0}
+.g-split{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;align-items:center}
+.table{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:22px}
+.g-split p+p{margin-top:14px}
+.g-split p{font-size:18px}
+.amen{margin-top:56px;color:var(--muted);font-size:15.5px;line-height:2;text-align:center;max-width:980px;margin-left:auto;margin-right:auto}
+
+/* porch */
+.porch{padding:112px 0}
+.p-grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:72px;align-items:start}
+.fiona p{font-size:clamp(22px,2.2vw,28px);line-height:1.5;color:var(--ink)}
+.fiona p::before{content:"\201C"}
+.fiona p::after{content:"\201D"}
+.fiona figcaption{margin-top:18px;font-size:14px;color:var(--muted)}
+.print{background:#fff;padding:14px;border-radius:6px;max-width:360px;margin-bottom:28px;box-shadow:0 18px 36px -26px rgba(74,56,25,.55);transform:rotate(-1.2deg)}
+.print img{aspect-ratio:4/5;object-fit:cover;width:100%}
+.p-side .hand.small{font-size:36px;margin:28px 0 8px}
+
+/* guests */
+.guests{padding:112px 0 104px;overflow:hidden}
+.figs{display:flex;gap:56px;flex-wrap:wrap;margin-bottom:40px}
+.fig{display:grid;gap:4px;text-decoration:none;color:var(--muted);font-size:14.5px}
+.fig .big{font-size:76px;line-height:1;font-weight:600;color:var(--ink);letter-spacing:-.02em}
+.fig .big small{font-size:28px;font-weight:400;color:var(--muted)}
+.cards{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px max(var(--gut),calc((100vw - 1240px)/2 + var(--gut))) 12px;
+  scroll-padding:0 max(var(--gut),calc((100vw - 1240px)/2 + var(--gut)));cursor:grab;overscroll-behavior-x:contain}
+.cards::-webkit-scrollbar{display:none}
+.cards.dragging{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.card{flex:0 0 320px;scroll-snap-align:start;background:var(--tint);border-radius:20px;padding:24px 24px 22px;display:flex;flex-direction:column;justify-content:space-between;gap:18px;
+  transition:transform 200ms var(--ease-out)}
+.card p{font-size:15.5px;line-height:1.6}
+.card blockquote p::before{content:"\201C"}
+.card blockquote p::after{content:"\201D"}
+.who{font-size:13.5px;color:var(--muted)}
+.who b{color:var(--ink)}
+
+/* getting here, closing, footer */
+.out{padding:104px 0}
+.o-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:72px}
+.o-grid p+p{margin-top:12px}
+.addr{display:flex;gap:10px;margin:22px 0 26px;font-weight:600;color:var(--ink)}
+.addr .ic{color:var(--accent);margin-top:3px}
+.know{background:#fff;border-radius:22px;padding:30px 30px 26px;align-self:start;margin-top:84px}
+.know h3{font-size:18px;color:var(--ink);margin-bottom:8px}
+.closing{padding:120px 0 104px}
+.close-line{font-size:clamp(32px,3.4vw,44px);max-width:820px;margin:0 auto 34px}
+.closing .actions{justify-content:center}
+.foot{padding:56px 0 40px;background:var(--tint)}
+.f-grid{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.f-name{font-size:34px}
+.foot p{color:var(--muted)}
+.foot .btn-call{background:#fff}
+.fine{margin-top:28px;font-size:13px}
+.bar{display:none}
+
+@media (max-width:899px){
+  :root{--gut:20px}
+  .top{height:64px;padding:0 16px}
+  .top .nav,.top .btn-sm{display:none}
+  .top.solid{transform:translateY(-100%)}
+  .hero{min-height:560px}
+  .hero h1{font-size:clamp(44px,12vw,56px)}
+  .btn-hero{min-height:54px;padding:0 24px;font-size:16px}
+  .facts{padding:64px 0 72px}
+  .tag{font-size:19px;margin-bottom:28px}
+  .fact-row{grid-template-columns:1fr 1fr;gap:10px}
+  .fact-row li{flex-direction:column;gap:8px;padding:16px}
+  .fact-row b{font-size:15.5px}
+  .actions .btn{flex:1 1 auto}
+  .floors,.garden,.porch,.guests,.out{padding:72px 0}
+  .switch{width:100%}
+  .switch button{flex:1;justify-content:center;padding:0 6px;font-size:14.5px;gap:6px;white-space:nowrap}
+  .switch .ic{display:none}
+  .split,.split.up,.split.roof,.g-split,.p-grid,.o-grid{grid-template-columns:minmax(0,1fr);gap:28px}
+  .roof-pics{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .fig .big{font-size:58px}
+  .figs{gap:32px}
+  .card{flex-basis:84%}
+  .know{margin-top:0}
+  .closing{padding:80px 0}
+  .print{max-width:72%}
+  .foot{padding-bottom:calc(120px + env(safe-area-inset-bottom))}
+  .bar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 -12px 30px -20px rgba(74,56,25,.5);
+    border-radius:18px 18px 0 0;transform:translateY(110%);transition:transform 260ms var(--ease-drawer)}
+  .bar.on,.no-js .bar{transform:none}
+  .bar-row{display:grid;grid-template-columns:minmax(0,1fr) 52px 52px;gap:8px}
+  .bar-row .btn{min-height:52px;padding:0 12px}
+  .bar-book{font-size:15px;gap:8px}
+  .bar-book .ic{width:18px;height:18px}
+  .bar-icon{background:var(--tint);color:var(--ink);padding:0}
+  .bar-tog .ic{transition:transform 260ms var(--ease-out)}
+  .bar-tog[aria-expanded="true"] .ic{transform:rotate(180deg)}
+  .bar-more{padding:6px 6px 14px;font-size:14.5px;line-height:1.55}
+  .bar-more p+p{margin-top:6px}
+  .bar-row .bar-tog[hidden]{display:none}
+  .no-js .bar-row{grid-template-columns:minmax(0,1fr) 52px}
+}
+@media (prefers-reduced-motion:reduce){
+  .light{display:none}
+  .btn,.panel,.pill,.tile-body,.dot,.dot::after,.num .col,.bar,.top,.card,.plus::before,.plus::after{transition-duration:1ms!important;transition-delay:0s!important}
+  .js .panel{transform:none}
+}
+
+/* off-screen slides are not rendered until they near the view, so their lazy photos wait */
+.js .slide:not(:first-child){content-visibility:auto;contain-intrinsic-size:auto 1px}
+.js .panel:not(.on){content-visibility:hidden}
+.no-js .top{position:absolute}
+</style>
+</head>
+<body>
+<a class="skip" href="#floors">Skip to the rooms</a>
+<main>
+
+<header class="top" id="top">
+  <a class="mark" href="#top">Lotus Surf House</a>
+  <nav class="nav" aria-label="Sections"><a href="#floors">Rooms</a><a href="#getting-here">Getting here</a></nav>
+  <a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates</span></a>
+</header>
+<section class="hero" aria-label="Lotus Surf House">
+  <div class="hero-media">
+    <picture>
+      <source media="(max-width: 767px)" srcset="img/hero-tall-720.webp 720w, img/hero-tall-960.webp 960w" sizes="100vw">
+      <img class="hero-img" src="img/hero-wide-1600.webp" srcset="img/hero-wide-1120.webp 1120w, img/hero-wide-1600.webp 1600w" sizes="100vw"
+        width="1600" height="900" alt="The garden under a big shade tree: a hammock by the wall, the lawn in dappled sun, a ping-pong table further back" fetchpriority="high">
+    </picture>
+    <canvas class="light" aria-hidden="true"></canvas>
+  </div>
+  <div class="hero-text">
+    <h1 class="hand">Lotus Surf House</h1>
+    <p class="where">Midigama, Sri Lanka</p>
+    <a class="btn btn-book btn-hero" href="https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a>
+  </div>
+</section>
+
+<section class="facts" aria-label="The house at a glance">
+  <div class="wrap">
+    <p class="tag">A guesthouse in Midigama, on the south coast of Sri Lanka.</p>
+    <ul class="fact-row">
+      <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 9c2.4 0 2.4-2 4.75-2S9.6 9 12 9s2.4-2 4.75-2S19.1 9 21.5 9M2.5 15c2.4 0 2.4-2 4.75-2S9.6 15 12 15s2.4-2 4.75-2 2.35 2 4.75 2"/></svg><span><b>Midigama Beach 250 m</b><small>Booking.com</small></span></li>
+      <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8zM17 9.5h1.5a2.5 2.5 0 0 1 0 5H17M7 3.5v2M10.5 3.5v2M14 3.5v2M4 21h13"/></svg><span><b>Breakfast included</b><small>8 to 10 in the morning</small></span></li>
+      <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span><b>Live dates</b><small>on Booking.com</small></span></li>
+      <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><span><b><span class="num" data-roll="9.0" aria-label="9.0 out of 10">9.0</span>/10 <i>and</i> <span class="num" data-roll="4.9" aria-label="4.9 out of 5">4.9</span>/5</b>
+        <small><a href="https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html" rel="noopener">Booking.com, 125 reviews</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJBR_cQfoV4ToRQhXcrYmPyU0" rel="noopener">Google, 78</a> · 3 Nov 2026</small></span></li>
+    </ul>
+    <div class="actions"><a class="btn btn-book " href="https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a><a class="btn btn-call " href="tel:+94774647541"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>Call +94 77 464 7541</span></a></div>
+  </div>
+</section>
+
+<section class="floors tint" id="floors" aria-labelledby="h-floors">
+  <div class="wrap">
+    <h2 class="hand" id="h-floors">Choose your floor</h2>
+    <div class="switch" role="tablist" aria-label="Floors" hidden>
+      <span class="pill" aria-hidden="true"></span>
+      <button role="tab" id="t-garden" aria-controls="p-garden" aria-selected="true"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-14 15-15-1 10-7 15-15 15zM5 19l7-7"/></svg>Garden floor</button>
+      <button role="tab" id="t-up" aria-controls="p-up" aria-selected="false" tabindex="-1"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h5v-5h5v-5h5V5h3"/></svg>Upstairs</button>
+      <button role="tab" id="t-roof" aria-controls="p-roof" aria-selected="false" tabindex="-1"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>Roof</button>
+    </div>
+    <div class="stage">
+      <div class="panel" id="p-garden" role="tabpanel" aria-labelledby="t-garden">
+        <h3 class="panel-h">Garden floor</h3>
+        <div class="split">
+          <div class="show r45" data-show id="gshow" role="region" aria-roledescription="carousel" aria-label="Garden rooms, photos"><ul class="track" tabindex="0"><li class="slide" aria-roledescription="slide" aria-label="1 of 5"><img src="img/r45-img-029.webp" width="900" height="1126" alt="A garden twin room with two single beds, striped covers, wooden wall shelves and a round woven rug" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="2 of 5"><img src="img/r45-img-032.webp" width="900" height="1126" alt="The veranda of the garden rooms: rattan chairs and a glass table on a red cement floor" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="3 of 5"><img src="img/r45-img-030.webp" width="642" height="804" alt="A ground-floor bathroom with sage-green walls, a shower, a toilet and a small basin" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="4 of 5"><img src="img/r45-img-043.webp" width="900" height="1126" alt="The Deluxe Queen Room, wide-angle: a double bed under a mosquito net, rattan chairs and a rattan sofa, wooden shelves and a surfboard" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="5 of 5"><img src="img/r45-img-028.webp" width="800" height="1000" alt="A ground-floor bathroom with grey flower-patterned wall tiles, black floor tiles, a pebble shower floor, a toilet and a basin" loading="lazy" decoding="async"></li></ul><div class="ctrl" hidden><button class="arw prev" type="button" aria-label="Previous photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><div class="dots" role="group" aria-label="Choose a photo"><button type="button" class="dot" aria-label="Photo 1"></button><button type="button" class="dot" aria-label="Photo 2"></button><button type="button" class="dot" aria-label="Photo 3"></button><button type="button" class="dot" aria-label="Photo 4"></button><button type="button" class="dot" aria-label="Photo 5"></button></div><button class="arw next" type="button" aria-label="Next photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
+          <div class="tiles">
+            
+      <div class="tile" data-tile>
+        <button class="tile-head" type="button" aria-expanded="true" aria-controls="tile-0">
+          <span class="tile-name">Standard Double or Twin Room with Garden View</span>
+          <span class="tile-sub">2 single beds, sleeps 2</span>
+          <span class="chip"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1.6"/><path d="M12 10.4C12 6 13.5 3 16 3.5c2 .4 1.5 4-4 6.9M13.6 12c4.4 0 7.4 1.5 6.9 4-.4 2-4 1.5-6.9-4M12 13.6c0 4.4-1.5 7.4-4 6.9-2-.4-1.5-4 4-6.9M10.4 12C6 12 3 10.5 3.5 8c.4-2 4 1.5 6.9 4"/></svg>Fan, no A/C, no hot water</span>
+          <span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="tile-body" id="tile-0"><div class="tile-in">
+          <p>Ground floor, 20–25 m², garden view. Fan and mosquito net; no air conditioning and no hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a>
+        </div></div>
+      </div>
+      <div class="tile" data-tile>
+        <button class="tile-head" type="button" aria-expanded="false" aria-controls="tile-1">
+          <span class="tile-name">Double or Twin Room with Garden View</span>
+          <span class="tile-sub">2 single beds, sleeps 2</span>
+          <span class="chip"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1.6"/><path d="M12 10.4C12 6 13.5 3 16 3.5c2 .4 1.5 4-4 6.9M13.6 12c4.4 0 7.4 1.5 6.9 4-.4 2-4 1.5-6.9-4M12 13.6c0 4.4-1.5 7.4-4 6.9-2-.4-1.5-4 4-6.9M10.4 12C6 12 3 10.5 3.5 8c.4-2 4 1.5 6.9 4"/></svg>Fan, no A/C, no hot water</span>
+          <span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="tile-body" id="tile-1"><div class="tile-in">
+          <p>Ground floor, 25 m², garden view. Fan and mosquito net; no air conditioning and no hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a>
+        </div></div>
+      </div>
+      <div class="tile" data-tile>
+        <button class="tile-head" type="button" aria-expanded="false" aria-controls="tile-2">
+          <span class="tile-name">Deluxe Queen Room</span>
+          <span class="tile-sub">1 large double bed, sleeps 2</span>
+          <span class="chip"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1.6"/><path d="M12 10.4C12 6 13.5 3 16 3.5c2 .4 1.5 4-4 6.9M13.6 12c4.4 0 7.4 1.5 6.9 4-.4 2-4 1.5-6.9-4M12 13.6c0 4.4-1.5 7.4-4 6.9-2-.4-1.5-4 4-6.9M10.4 12C6 12 3 10.5 3.5 8c.4-2 4 1.5 6.9 4"/></svg>Fan, no A/C, no hot water</span>
+          <span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="tile-body" id="tile-2"><div class="tile-in">
+          <p>Ground floor, 25 m², garden view, tiled floor and a walk-in shower. Fan and mosquito net; no air conditioning and no hot water.</p><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a>
+        </div></div>
+      </div>
+            <figure class="yq"><blockquote><p>The garden rooms are downstairs. “The standard rooms may not be the newest,” Yelum says, “but they are popular with many vacationers due to their charm.”</p></blockquote></figure>
+          </div>
+        </div>
+      </div>
+      <div class="panel" id="p-up" role="tabpanel" aria-labelledby="t-up">
+        <h3 class="panel-h">Upstairs</h3>
+        <div class="split up">
+          <div class="show r32" data-show id="kshow" role="region" aria-roledescription="carousel" aria-label="King Room with Balcony, photos"><ul class="track" tabindex="0"><li class="slide" aria-roledescription="slide" aria-label="1 of 6"><img src="img/k32-img-002-1440.webp" width="1440" height="960" alt="An upstairs King Room: a bed under a white mosquito net with a blush trim, glass doors open onto a balcony with rattan chairs and trees" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="2 of 6"><img src="img/k32-img-010-1440.webp" width="1440" height="960" alt="A King Room bed under a mosquito net, tall glass doors open to the trees" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="3 of 6"><img src="img/k32-img-015-1440.webp" width="1280" height="852" alt="A King Room with the bed under its net, an air-conditioning unit and a wooden wall shelf" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="4 of 6"><img src="img/k32-img-025-1440.webp" width="1200" height="800" alt="From inside a King Room: glass doors open onto the balcony, two rattan chairs and a small table, palms and sky" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="5 of 6"><img src="img/k32-img-034-1440.webp" width="1440" height="960" alt="A King Room bedside: the bed under its net, an air-conditioning remote on a wooden side table" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="6 of 6"><img src="img/k32-img-008-1440.webp" width="1440" height="960" alt="A new bathroom with a poured-concrete basin, a round lit mirror and a walk-in shower" loading="lazy" decoding="async"></li></ul><div class="ctrl" hidden><button class="arw prev" type="button" aria-label="Previous photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><div class="dots" role="group" aria-label="Choose a photo"><button type="button" class="dot" aria-label="Photo 1"></button><button type="button" class="dot" aria-label="Photo 2"></button><button type="button" class="dot" aria-label="Photo 3"></button><button type="button" class="dot" aria-label="Photo 4"></button><button type="button" class="dot" aria-label="Photo 5"></button><button type="button" class="dot" aria-label="Photo 6"></button></div><button class="arw next" type="button" aria-label="Next photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
+          <div class="king">
+            <p class="tile-name big">King Room with Balcony</p>
+            <p class="tile-sub">1 extra-large double bed, sleeps 2</p>
+            <p class="chips"><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></svg>A/C</span><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>Hot water</span><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-14 15-15-1 10-7 15-15 15zM5 19l7-7"/></svg>Balcony</span></p>
+            <p>Upstairs, 25 m². Air conditioning, fan, mosquito net and hot water. The King Rooms upstairs are new, and their balconies look out into the trees.</p>
+            <a class="btn btn-book " href="https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="panel" id="p-roof" role="tabpanel" aria-labelledby="t-roof">
+        <h3 class="panel-h">Roof</h3>
+        <div class="split roof">
+          <div class="roof-pics"><img src="img/roof-021.webp" width="640" height="800" alt="A corner of the roof terrace: a Buddha on a carved pedestal, yoga mats and cushions on the floor, palms beyond" loading="lazy" decoding="async"><img src="img/roof-022.webp" width="640" height="800" alt="A bronze Buddha on its pedestal with offerings of fruit and flowers, among them a violet blossom" loading="lazy" decoding="async"><img src="img/roof-004.webp" width="640" height="800" alt="A long wooden table and chairs on the roof terrace, green treetops behind" loading="lazy" decoding="async"></div>
+          <div class="king">
+            <p class="tile-name big">Up on the roof</p>
+            <p>There&#x27;s a roof terrace as well, with a wooden table and chairs and the trees behind it. In one corner a Buddha sits on a pedestal, with offerings of flowers and fruit.</p>
+            <a class="btn btn-book " href="https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="garden" id="garden" aria-labelledby="h-garden">
+  <div class="wrap g-split">
+    <img class="table" src="img/table-1280.webp" srcset="img/table-800.webp 800w, img/table-1280.webp 1280w" sizes="(max-width: 899px) 100vw, 58vw" width="1280" height="852" alt="A blue ping-pong table with a yellow frame on the sandy garden lawn in sun, the white guest wing behind it" loading="lazy" decoding="async">
+    <div>
+      <h2 class="hand" id="h-garden">In the garden</h2>
+      <p>The house is in a shady garden on Indhana Road. There&#x27;s a hammock under the trees, and the ping-pong table has a thatched roof over it.</p><p>Every room downstairs opens onto the garden through its own terrace, with chairs outside and a table to eat at.</p>
+    </div>
+  </div>
+  <div class="wrap"><p class="amen"><span>Private bathroom in every room</span> <span class="sep" aria-hidden="true">|</span> <span>Free WiFi (in all areas)</span> <span class="sep" aria-hidden="true">|</span> <span>Outdoor shower</span> <span class="sep" aria-hidden="true">|</span> <span>Shared kitchen</span> <span class="sep" aria-hidden="true">|</span> <span>Shared lounge with TV</span> <span class="sep" aria-hidden="true">|</span> <span>Room service</span> <span class="sep" aria-hidden="true">|</span> <span>Airport shuttle (additional charge)</span> <span class="sep" aria-hidden="true">|</span> <span>Bicycle rental (additional charge)</span> <span class="sep" aria-hidden="true">|</span> <span>Walking tours (additional charge)</span> <span class="sep" aria-hidden="true">|</span> <span>Laundry (additional charge)</span> <span class="sep" aria-hidden="true">|</span> <span>Luggage storage</span> <span class="sep" aria-hidden="true">|</span> <span>CCTV outside and in common areas</span></p></div>
+</section>
+
+<section class="porch tint" aria-labelledby="h-breakfast">
+  <div class="wrap">
+    <h2 class="hand" id="h-breakfast">Breakfast</h2>
+    <div class="p-grid">
+      <figure class="fiona"><blockquote><p>Yelum and his family provide such a welcoming and comfortable stay. The garden is like an oasis away from hustle of main road. Rooms are clean and comfortable and sitting on the porch breakfast is served with a range of options made by Yelum mother, the coconut roti and dhal a highlight for me and granola yogurt and fresh fruit and banana pancakes for my family. Yelum organised an airport pickup at midnight for us and welcomed us at 3 am. Would definitely stay again</p></blockquote>
+        <figcaption><span>Fiona, Australia</span> <span class="sep" aria-hidden="true">|</span> <span>Booking.com</span> <span class="sep" aria-hidden="true">|</span> <span>Dec 2024</span></figcaption></figure>
+      <div class="p-side">
+        <div class="print"><img src="img/porch-720.webp" width="720" height="900" alt="The veranda of the garden rooms: rattan chairs and a glass table on a red cement floor" loading="lazy" decoding="async"></div>
+        <p>Breakfast is included, and you can have it any time from 8 to 10 in the morning.</p>
+        <h3 class="hand small">Yelum</h3>
+        <p>Yelum owns the house. As he once wrote to a guest, “I strive every day to make my customers&#x27; holidays as wonderful as possible.”</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="guests" id="guests" aria-labelledby="h-guests">
+  <div class="wrap">
+    <h2 class="hand" id="h-guests">Guests say</h2>
+    <div class="figs">
+      <a class="fig" href="https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html" rel="noopener"><span class="big"><span class="num" data-roll="9.0" aria-label="9.0 out of 10">9.0</span><small>/10</small></span><span>Booking.com · 125 reviews · 3 Nov 2026</span></a>
+      <a class="fig" href="https://www.google.com/maps/place/?q=place_id:ChIJBR_cQfoV4ToRQhXcrYmPyU0" rel="noopener"><span class="big"><span class="num" data-roll="4.9" aria-label="4.9 out of 5">4.9</span><small>/5</small></span><span>Google · 78 reviews · 3 Nov 2026</span></a>
+    </div>
+  </div>
+  <ul class="cards" data-drag tabindex="0" aria-label="Guest reviews"><li class="card"><blockquote><p>Yelum and his family provide such a welcoming and comfortable stay. The garden is like an oasis away from hustle of main road. Rooms are clean and comfortable and sitting on the porch breakfast is served with a range of options made by Yelum mother, the coconut roti and dhal a highlight for me and granola yogurt and fresh fruit and banana pancakes for my family. Yelum organised an airport pickup at midnight for us and welcomed us at 3 am. Would definitely stay again</p></blockquote><p class="who"><b>Fiona</b>, Australia<br>Booking.com · Dec 2024</p></li><li class="card"><blockquote><p>The room was spacious and functional. The AC is really helping when it’s hot outsider. The highlight was truly the host, Yelum. He is always there to help, recommend things to do, plan trips (we went to a snake farm, batik factory and safari with him, which were all great experiences). The breakfast prepared by him and his mom for the traditional Sri Lankan dishes were also very good. You can go there with your eyes closed.</p></blockquote><p class="who"><b>Benjamin</b>, Switzerland<br>Booking.com · Oct 2025</p></li><li class="card"><blockquote><p>Very sweet Accommodation! A nice garden with a ping pong table and a great rooftop terrace, partly with a roof to get some shade. Had lots of yoga sessions up there with a wonderful view over the jungle. Location is great, lots of Restaurants around and just a few minutes walking distance to 4 surfspots, suitable for everyone from beginner/intermediates to highly advanced surfers. Yelum and his Father are super friendly and will help you with whatever Question comes up. I will be back :)</p></blockquote><p class="who"><b>Svenja</b>, Germany<br>Booking.com · Feb 2024</p></li><li class="card"><blockquote><p>I enjoyed my stay here, and extended one more night. The location is perfect to go and surf at lazy left and right . the host is very welcoming and kind . breakfast is very nice. the room is ok , it gets very dusty pretty easily I think . Bed was comfortable enough .</p></blockquote><p class="who"><b>Giada</b>, Italy<br>Booking.com · Dec 2025</p></li><li class="card"><blockquote><p>We had an amazing stay at Lotus House. The family are so kind and welcoming. The breakfasts every day after surfing are amazing. Great location, only a 2 minute walk from the beach and the local surf spots. A very calm and relaxing vibe - lots of fun on the ping pong table in the garden. Our favourite stay in Sri Lanka, we would highly recommend, and we can’t wait to come back next year!</p></blockquote><p class="who"><b>Henry</b>, United Kingdom<br>Booking.com · Mar 2024</p></li><li class="card"><blockquote><p>I thoroughly enjoyed my stay at the Lotus Surf House. The property was clean and tidy, and it’s located in a quiet area that’s ideal for accessing surf spots suited to all skill levels. The owner and his wife were very personable and extremely helpful with anything I needed during my stay. I would definitely stay there again.</p></blockquote><p class="who"><b>Dimitrios</b>, United Kingdom<br>Booking.com · Nov 2025</p></li><li class="card"><blockquote><p>Yelum was an incredible host who helped us out with not only planning our days in Mitigama, but also with planning our entire Sri Lanka trip! He was very kind and generous with his time and cooked a delicious breakfast. The room we stayed in was recently renovated and was beautiful and spacious. Yelum had a scooter that we could hire for a very decent price to get around during our stay. It is walking distance to the beach and a few lovely cafes. Thank Yelum for the awesome stay!</p></blockquote><p class="who"><b>Talia</b>, Australia<br>Booking.com · Nov 2025</p></li><li class="card"><blockquote><p>Beautiful garden, the owners are so friendly and accomodating and the location is really close to all the cafes and restaurants in Midigama and walking distance to the two best surf spots around. I felt right at home here as a solo fem traveller!</p></blockquote><p class="who"><b>Nicole</b>, Australia<br>Booking.com · Dec 2024</p></li><li class="card"><blockquote><p>Very friendly and lovely owner - always helpful, easy going. Yelum can also help you with getting around Sri Lanka. Beautiful garden and 5 min walk to the beach. Close to the train tracks but the train doesn&#x27;t run very often. We were here 5 years ago and decided to come back this year and will do it again:)</p></blockquote><p class="who"><b>Holtmann</b>, Switzerland<br>Booking.com · Sep 2025</p></li><li class="card"><blockquote><p>Super close to the beaches and waves. Super cool and friendly staff/owners. Super comfy rooms with working AC and hot water.</p></blockquote><p class="who"><b>Colin</b>, Canada<br>Booking.com · Jan 2026</p></li><li class="card"><blockquote><p>For the price, my room was amazing. It felt like I was in the jungle. Hot water, AC, free breakfast, I’d stay again.</p></blockquote><p class="who"><b>ジョナ</b>, Japan<br>Booking.com · Feb 2026</p></li><li class="card"><blockquote><p>I had a room without ac and it was fine but for a long period stay won’t recommend (since the humidity is high and my staff couldn’t get dry)</p></blockquote><p class="who"><b>Katsiaryna</b>, Poland<br>Booking.com · Feb 2026</p></li></ul>
+</section>
+
+<section class="out tint" id="getting-here" aria-labelledby="h-out">
+  <div class="wrap o-grid">
+    <div>
+      <h2 class="hand" id="h-out">Getting here</h2>
+      <p>Midigama railway station is 50 m from the house, so you can come by train.</p><p>Further out, Booking.com lists Ahangama Beach at 1.4 km, Weligama Beach at 4.2 km and Koggala Airport at 9 km.</p><p>On Google you may also find the house under its old name, Yelum Guest House.</p>
+      <p class="addr"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s-7-6.2-7-11.5a7 7 0 0 1 14 0c0 5.3-7 11.5-7 11.5z"/><circle cx="12" cy="10" r="2.6"/></svg><span>Indhana Rd, Midigama 80650, Sri Lanka</span></p>
+      <div class="actions"><a class="btn btn-call" href="https://www.google.com/maps/place/?q=place_id:ChIJBR_cQfoV4ToRQhXcrYmPyU0" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6.5v13.5L9 17.5l6 2.5 6-2.5V4l-6 2.5zM9 4v13.5M15 6.5V20"/></svg><span>Open in Google Maps</span></a><a class="btn btn-call " href="tel:+94774647541"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>Call +94 77 464 7541</span></a></div>
+    </div>
+    <div class="know">
+      <h3>Good to know</h3>
+      <p>Check-in at any hour, day or night. Cash only. Children welcome; no cots or extra beds. Pets on request, at no charge. No parking.</p>
+      <p class="muted"><span>Check-out 11:00–12:00</span> <span class="sep" aria-hidden="true">|</span> <span>Check-in at any hour</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="closing" id="book" aria-label="Book">
+  <div class="wrap center">
+    <p class="hand close-line">Live dates and prices are on Booking.com. If you&#x27;d rather ask us something first, call.</p>
+    <div class="actions"><a class="btn btn-book " href="https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a><a class="btn btn-call " href="tel:+94774647541"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>Call +94 77 464 7541</span></a></div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap f-grid">
+    <div><p class="hand f-name">Lotus Surf House</p><p>Indhana Rd, Midigama 80650, Sri Lanka</p></div>
+    <div class="actions">
+      <a class="btn btn-call btn-sm" href="tel:+94774647541"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>+94 77 464 7541</span></a>
+      <a class="btn btn-call btn-sm" href="https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Booking.com</span></a>
+      <a class="btn btn-call btn-sm" href="https://www.google.com/maps/place/?q=place_id:ChIJBR_cQfoV4ToRQhXcrYmPyU0" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6.5v13.5L9 17.5l6 2.5 6-2.5V4l-6 2.5zM9 4v13.5M15 6.5V20"/></svg><span>Google Maps</span></a>
+    </div>
+  </div>
+  <p class="wrap fine">Ratings and reviews as published on Booking.com and Google, read 3 Nov 2026.</p>
+</footer>
+<div class="bar" id="bar">
+  <div class="bar-more" id="bar-more" hidden>
+    <p>A guesthouse in Midigama, on the south coast of Sri Lanka.</p>
+    <p class="muted"><span>Midigama Beach 250 m</span> <span class="sep" aria-hidden="true">|</span> <span>Breakfast included, 8–10</span> <span class="sep" aria-hidden="true">|</span> <span>Live dates on Booking.com</span></p>
+    <p class="muted"><span>9.0/10 Booking.com, 125 reviews</span> <span class="sep" aria-hidden="true">|</span> <span>4.9/5 Google, 78</span> <span class="sep" aria-hidden="true">|</span> <span>3 Nov 2026</span></p>
+  </div>
+  <div class="bar-row">
+    <a class="btn btn-book bar-book" href="https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a>
+    <a class="btn bar-icon" href="tel:+94774647541" aria-label="Call +94 77 464 7541"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
+    <button class="btn bar-icon bar-tog" type="button" aria-expanded="false" aria-controls="bar-more" aria-label="More about the house" hidden><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></button>
+  </div>
+</div>
+<script>/* Lotus Surf House, interactive: the light shader, floor switch, tiles, slideshows, digits, drag row, bar.
+   Every link and every section works without it. */
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData = navigator.connection && navigator.connection.saveData === true;
+
+  /* ---------- the dappled light: moves the sunlight already in img-020, adds nothing ---------- */
+  const startLight = () => {
+    const canvas = document.querySelector('.light'), photo = document.querySelector('.hero-img');
+    if (!canvas || reduce || saveData) return;
+    const gl = canvas.getContext('webgl', { alpha: false, antialias: false, premultipliedAlpha: false, powerPreference: 'low-power' });
+    if (!gl) return;
+    const vs = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+    const fs = `precision mediump float;
+      uniform sampler2D img; uniform vec2 res, isz; uniform float t;
+      float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+      float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
+        return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+      float fbm(vec2 p){float v=0.,a=.5;for(int k=0;k<4;k++){v+=a*n(p);p=p*2.03+17.1;a*=.5;}return v;}
+      void main(){
+        vec2 frag=vec2(gl_FragCoord.x,res.y-gl_FragCoord.y);
+        float s=max(res.x/isz.x,res.y/isz.y);
+        vec2 uv=(frag-res*.5)/(isz*s)+.5;
+        vec2 q=uv*vec2(isz.x/isz.y,1.)*3.2;
+        float a=fbm(q+vec2(t*.045,t*.028)), b=fbm(q*1.3-vec2(t*.031,-t*.037)+9.);
+        vec3 base=texture2D(img,uv).rgb;
+        float lum=dot(base,vec3(.299,.587,.114));
+        float sun=smoothstep(.42,.78,lum);                 // the photo's own sun patches
+        float leaf=smoothstep(.15,.45,lum)*(1.-sun*.6);    // lit leaves sway a little too
+        vec2 d=(vec2(a,b)-.5)*(6./(isz*s))*(sun+leaf*.7);  // <= 6 css px of drift
+        vec3 c=texture2D(img,uv+d).rgb;
+        float dap=smoothstep(.32,.68,fbm(q*1.7+vec2(-t*.06,t*.05)));
+        c*=1.+.065*(dap-.5)*2.*sun;                        // <= 6.5% brightness, only where the sun is
+        gl_FragColor=vec4(c,1.);
+      }`;
+    const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
+    const pr = gl.createProgram();
+    gl.attachShader(pr, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(pr);
+    if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return;
+    gl.useProgram(pr);
+    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    const U = k => gl.getUniformLocation(pr, k);
+    const tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tex);
+    [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach(k => gl.texParameteri(gl.TEXTURE_2D, k, gl.CLAMP_TO_EDGE));
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    const pic = new Image(); pic.decoding = 'async'; pic.src = photo.currentSrc || photo.src;
+    const force = /[?&]light=force/.test(location.search);
+    let run = false, vis = true, raf = 0, t0 = performance.now(), slow = 0, frames = 0;
+    const size = () => {
+      const r = canvas.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 1.5);
+      canvas.width = Math.round(r.width * dpr); canvas.height = Math.round(r.height * dpr);
+      gl.viewport(0, 0, canvas.width, canvas.height); gl.uniform2f(U('res'), canvas.width, canvas.height);
+    };
+    const frame = now => {
+      raf = 0; if (!run || !vis || document.hidden) return;
+      const dt = now - (frame.last || now); frame.last = now;
+      if (++frames > 10 && frames < 70 && dt > 40) slow++;
+      if (slow > 25 && !force) { canvas.classList.remove('on'); return; }   // a weak phone keeps the still photo (?light=force skips this, for checking in software GL)
+      gl.uniform1f(U('t'), (now - t0) / 1000); gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      raf = requestAnimationFrame(frame);
+    };
+    const kick = () => { if (!raf && run && vis && !document.hidden) { frame.last = 0; raf = requestAnimationFrame(frame); } };
+    pic.onload = () => {
+      try { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, pic); } catch (err) { return; }   // file:// or a tainted copy: the still stays
+      gl.uniform2f(U('isz'), pic.naturalWidth, pic.naturalHeight); gl.uniform1i(U('img'), 0);
+      size(); run = true; gl.uniform1f(U('t'), 0); gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      canvas.classList.add('on'); kick();
+    };
+    addEventListener('resize', () => { if (run) { size(); kick(); } }, { passive: true });
+    new IntersectionObserver(([e]) => { vis = e.isIntersecting; kick(); }).observe(canvas);
+    document.addEventListener('visibilitychange', kick);
+  };
+  const later = () => requestAnimationFrame(() => setTimeout(startLight, 120));
+  document.readyState === 'complete' ? later() : addEventListener('load', later, { once: true });
+
+  /* ---------- slideshows ---------- */
+  for (const show of document.querySelectorAll('[data-show]')) {
+    const track = show.querySelector('.track'), slides = [...track.children], dots = [...show.querySelectorAll('.dot')];
+    show.querySelector('.ctrl').hidden = false;
+    let cur = 0;
+    const mark = i => { cur = i; dots.forEach((d, j) => d.setAttribute('aria-current', j === i ? 'true' : 'false')); };
+    const go = i => { i = (i + slides.length) % slides.length; track.scrollTo({ left: i * track.clientWidth, behavior: reduce ? 'auto' : 'smooth' }); mark(i); };
+    let tm; track.addEventListener('scroll', () => { clearTimeout(tm); tm = setTimeout(() => mark(Math.round(track.scrollLeft / track.clientWidth)), 60); }, { passive: true });
+    dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+    show.querySelector('.prev').addEventListener('click', () => go(cur - 1));
+    show.querySelector('.next').addEventListener('click', () => go(cur + 1));
+    track.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1); } });
+    mark(0);
+  }
+
+  /* ---------- floor switch: sliding pill, panels cross-fade with a short rise ---------- */
+  const sw = document.querySelector('.switch');
+  if (sw) {
+    sw.hidden = false;
+    const tabs = [...sw.querySelectorAll('[role=tab]')], pill = sw.querySelector('.pill');
+    const panels = tabs.map(t => document.getElementById(t.getAttribute('aria-controls')));
+    const place = t => { pill.style.width = t.offsetWidth + 'px'; pill.style.transform = `translateX(${t.offsetLeft}px)`; };
+    const pick = (i, focus) => {
+      tabs.forEach((t, j) => { const on = i === j; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; panels[j].classList.toggle('on', on); panels[j].inert = !on; });
+      place(tabs[i]); if (focus) tabs[i].focus();
+      // photos of a hidden panel load when it is chosen
+      panels[i].querySelectorAll('img[loading=lazy]').forEach(im => { im.loading = 'eager'; });
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => pick(i));
+      t.addEventListener('keydown', e => {
+        const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (d) { e.preventDefault(); pick((i + d + tabs.length) % tabs.length, true); }
+      });
+    });
+    pill.style.transition = 'none'; pick(0); pill.offsetWidth; pill.style.transition = '';
+    addEventListener('resize', () => place(tabs.find(t => t.getAttribute('aria-selected') === 'true')), { passive: true });
+  }
+
+  /* ---------- room tiles: one open at a time ---------- */
+  const heads = [...document.querySelectorAll('.tile-head')];
+  heads.forEach(h => h.addEventListener('click', () => {
+    const open = h.getAttribute('aria-expanded') !== 'true';
+    heads.forEach(o => o.setAttribute('aria-expanded', 'false'));
+    h.setAttribute('aria-expanded', open);
+  }));
+
+  /* ---------- rolling digits on first view ---------- */
+  const rolls = [...document.querySelectorAll('[data-roll]')];
+  rolls.forEach(el => {
+    const v = el.dataset.roll; el.textContent = '';
+    for (const ch of v) {
+      if (/\d/.test(ch)) {
+        const c = document.createElement('span'); c.className = 'col'; c.dataset.d = ch; c.setAttribute('aria-hidden', 'true');
+        c.innerHTML = Array.from({ length: 10 }, (_, k) => `<span>${k}</span>`).join(''); el.append(c);
+      } else { const s = document.createElement('span'); s.className = 'fix'; s.setAttribute('aria-hidden', 'true'); s.textContent = ch; el.append(s); }
+    }
+  });
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return; io.unobserve(e.target);
+    e.target.querySelectorAll('.col').forEach((c, k) => setTimeout(() => { c.style.transform = `translateY(${-c.dataset.d * 1.2}em)`; }, k * 60));
+  }), { threshold: .6 });
+  rolls.forEach(r => io.observe(r));
+
+  /* ---------- review row: drag with momentum on a mouse; touch and trackpads scroll natively ---------- */
+  for (const row of document.querySelectorAll('[data-drag]')) {
+    let down = false, x0 = 0, s0 = 0, v = 0, lx = 0, lt = 0, moved = 0;
+    row.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; down = true; moved = 0; x0 = lx = e.clientX; s0 = row.scrollLeft; lt = performance.now(); v = 0; row.classList.add('dragging'); row.setPointerCapture(e.pointerId); });
+    row.addEventListener('pointermove', e => {
+      if (!down) return; const now = performance.now(); row.scrollLeft = s0 - (e.clientX - x0);
+      v = (lx - e.clientX) / Math.max(1, now - lt); lx = e.clientX; lt = now; moved += Math.abs(e.movementX);
+    });
+    const up = () => {
+      if (!down) return; down = false;
+      let vel = v * 16; const glide = () => { if (Math.abs(vel) < .4) { row.classList.remove('dragging'); return; } row.scrollLeft += vel; vel *= .94; requestAnimationFrame(glide); };
+      reduce ? row.classList.remove('dragging') : glide();
+    };
+    row.addEventListener('pointerup', up); row.addEventListener('pointercancel', up);
+  }
+
+  /* ---------- header and phone bar after the first screen; the bar opens to the summary ---------- */
+  const top = document.querySelector('.top'), bar = document.getElementById('bar'), hero = document.querySelector('.hero');
+  new IntersectionObserver(([e]) => { top.classList.toggle('solid', !e.isIntersecting); bar.classList.toggle('on', !e.isIntersecting); },
+    { rootMargin: '-80px 0px 0px 0px' }).observe(hero);
+  const tog = bar.querySelector('.bar-tog'), more = document.getElementById('bar-more');
+  tog.hidden = false;
+  tog.addEventListener('click', () => { const open = tog.getAttribute('aria-expanded') !== 'true'; tog.setAttribute('aria-expanded', open); more.hidden = !open; });
+})();
+</script>
+</body>
+</html>

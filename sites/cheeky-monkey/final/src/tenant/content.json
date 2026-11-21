@@ -15,7 +15,7 @@
    "businessName": "Cheeky Monkey Surf Camp",
    "businessType": "surf_camp",
    "tagline": "Surf shop, rooms and lessons on the main road in Midigama, with 400 boards to rent.",
-   "closing": "See the rooms and live dates on Booking.com. For lessons and surf weeks, call us first.",
+   "closing": "Book a room online, or call us about lessons and surf weeks.",
    "featureLine": "Come as a stranger, leave as a friend.",
    "languages": [
     "en"
@@ -233,13 +233,13 @@
      "id": "seed-photo-3",
      "image": {
       "id": 3,
-      "alt": "Surfers wading into the sea on Midigama beach",
-      "filename": "img-155.jpg",
+      "alt": "Cheeky Monkey surfers on the sand with coconuts, lined up in front of their colourful soft boards, palms behind",
+      "filename": "img-151.jpg",
       "mimeType": "image/jpeg",
-      "filesize": 315337,
+      "filesize": 278307,
       "width": 1920,
-      "height": 844,
-      "url": "/api/media/file/img-155.jpg",
+      "height": 900,
+      "url": "/api/media/file/img-151.jpg",
       "focalX": 50,
       "focalY": 50,
       "sizes": {}
@@ -488,7 +488,7 @@
      "id": "seed-photo-18",
      "image": {
       "id": 18,
-      "alt": "An earlier view of the shop front, Baba's Surf Shop and Surf School",
+      "alt": "An earlier view of the shop front: the Cheeky Monkey signpost and the Baba's Surf sign, boards outside",
       "filename": "img-121.jpg",
       "mimeType": "image/jpeg",
       "filesize": 1030824,
@@ -623,31 +623,62 @@
    ],
    "heroVideo": {
     "id": 49,
-    "alt": "New boards on the rack in Baba's Surf Shop, filmed close along their rails",
-    "filename": "cm-board.mp4",
+    "alt": "Drone footage of the Midigama coast: the reef and the coast road, the village under the palms, a surfer on a green wave",
+    "filename": "cm-drone.mp4",
     "mimeType": "video/mp4",
-    "filesize": 12280907,
+    "filesize": 18203019,
     "width": null,
     "height": null,
-    "url": "/api/media/file/cm-board.mp4",
+    "url": "/api/media/file/cm-drone.mp4",
     "focalX": 50,
     "focalY": 50,
     "sizes": {}
    },
    "heroVideoPoster": {
     "id": 50,
-    "alt": "New boards on the rack in Baba's Surf Shop: a white Rockwell shortboard beside a magenta speckled board",
-    "filename": "cm-board-poster.jpg",
+    "alt": "Drone view of the Midigama coast: turquoise reef water, the rock wall along the coast road, houses and palms behind",
+    "filename": "cm-drone-poster.jpg",
     "mimeType": "image/jpeg",
-    "filesize": 144408,
-    "width": 1080,
-    "height": 1920,
-    "url": "/api/media/file/cm-board-poster.jpg",
-    "focalX": 50,
+    "filesize": 449338,
+    "width": 1920,
+    "height": 1080,
+    "url": "/api/media/file/cm-drone-poster.jpg",
+    "focalX": 52,
     "focalY": 50,
     "sizes": {}
    },
-   "videos": [],
+   "videos": [
+    {
+     "id": "seed-video-1",
+     "video": {
+      "id": 51,
+      "alt": "New boards on the rack in Baba's Surf Shop, filmed close along their rails",
+      "filename": "cm-board.mp4",
+      "mimeType": "video/mp4",
+      "filesize": 9424902,
+      "width": null,
+      "height": null,
+      "url": "/api/media/file/cm-board.mp4",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "poster": {
+      "id": 52,
+      "alt": "New boards on the rack in Baba's Surf Shop: the rails of a red, a green, a yellow splattered and a sand-coloured board side by side",
+      "filename": "cm-board-poster.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 133880,
+      "width": 1080,
+      "height": 1920,
+      "url": "/api/media/file/cm-board-poster.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "description": "New boards on the rack in Baba's Surf Shop, filmed close along their rails"
+    }
+   ],
    "contact": {
     "phone": "+94719248686",
     "whatsapp": null,
@@ -1012,7 +1043,11 @@
     }
    ],
    "shaping": null,
-   "forecast": null,
+   "forecast": {
+    "enabled": true,
+    "rosaSpotId": "rams",
+    "spotName": "Rams"
+   },
    "createdAt": null,
    "updatedAt": null
   }

@@ -1,0 +1,341 @@
+{
+  "slug": "coconut-surf-inn-guest-house-and-restaurant",
+  "run_id": "2026-10-midigama-01",
+  "auditor_version": "0.1.3",
+  "audited_at": "2026-11-04T22:24:07Z",
+  "scope": "no_site",
+  "measured": null,
+  "findings": [
+    {
+      "id": "F1",
+      "area": "offsite",
+      "severity": "high",
+      "title": "On Booking.com a visitor cannot reach the hosts before booking",
+      "what_a_visitor_meets": "Booking.com is where the rooms sell, and the listing shows no phone, no WhatsApp and no email. Under \"Contacting the property\" it says: \"If you want to request something specific, you can do that after you choose your rate. Once you book, we'll provide details so you can contact the property directly.\" The only way to ask anything first is the public Q&A, where one answer begins \"Hi, Sorry for the late reply\" and ends \"for more information you can visit us\". A visitor who wants to know whether a room has A/C, or how far the break is, has to book first or wait.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/05-booking-com-contacting.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/05-booking-com-questions.png"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html",
+            "Contacting the property"
+          ]
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html",
+            "Show all questions"
+          ]
+        },
+        {
+          "type": "url",
+          "value": "https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"
+        }
+      ],
+      "playbook_ref": "§5 booking path, §2 how fast will they answer",
+      "fix_in_new_site": "contact.phone (+94778921396) as a tap-to-call link beside bookingLinks[0] in the booking section and the persistent mobile bar, so the visitor can ask the hosts before going to Booking.com",
+      "pitch_point": true,
+      "notes": "walk.json 05-booking-com: tel_links [], whatsapp_links 0, mailto_links 0. The phone is published only on Google (F3) and on the 'Coconut Beach' place (F4)."
+    },
+    {
+      "id": "F2",
+      "area": "offsite",
+      "severity": "medium",
+      "title": "On Airbnb, asking the host means signing up, and Airbnb says he replies within a few days or more",
+      "what_a_visitor_meets": "The Airbnb listing's host card reads \"Responds within a few days or more\". Tapping \"Message host\" opens \"Log in or sign up\". A traveller who is arriving this week and wants an answer today has no faster way in from this page.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/06-airbnb-response.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/06-airbnb-message-tapped.png"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "https://www.airbnb.com/rooms/2402254",
+            "Message host",
+            "Log in or sign up"
+          ]
+        },
+        {
+          "type": "url",
+          "value": "https://www.airbnb.com/rooms/2402254"
+        }
+      ],
+      "playbook_ref": "§1 the customer messages the one that answers fastest, §5 booking path",
+      "fix_in_new_site": "contact.phone as a tap-to-call link on every screen (booking section and persistent bar); no sign-up between the visitor and the hosts",
+      "pitch_point": true
+    },
+    {
+      "id": "F3",
+      "area": "offsite",
+      "severity": "medium",
+      "title": "The inn's Google listing has no website, and its booking buttons lead to OTA offers",
+      "what_a_visitor_meets": "On Google Maps the inn shows 4.8 (88) and, where the website should be, \"Add website\" under \"Add missing information\". On a desktop, \"Check availability\" opens a price box whose first row is a \"Sponsored\" Booking.com offer, followed by Agoda and HomeToGo. On a phone the listing offers Directions, Start and Call, and its 202 photos sit behind \"See all 202 photos in the app\". The phone is the only direct way in, and nothing on the listing is in the business's own words.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/02-google-listing-desktop-add-website.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/02-google-listing-desktop-availability.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/01-google-listing-fold.png"
+        },
+        {
+          "type": "url",
+          "value": "https://www.google.com/maps/place/Coconut+Surf+Inn+Guest+House+and+Restaurant/data=!4m10!3m9!1s0x3ae114e71b426f23:0xe26a608b9e3c1b42!5m2!4m1!1i2!8m2!3d5.9606427!4d80.4028521!16s%2Fg%2F11c0q0glzw!19sChIJI29CG-cU4ToRQhs8notgauI?hl=en"
+        }
+      ],
+      "playbook_ref": "§1 the customer finds them on Google Maps",
+      "fix_in_new_site": null,
+      "pitch_point": true
+    },
+    {
+      "id": "F4",
+      "area": "offsite",
+      "severity": "medium",
+      "title": "Google shows three places for one business: the inn, an unclaimed restaurant with no phone, and a beach that carries the inn's phone",
+      "what_a_visitor_meets": "The upper-floor restaurant has its own Google listing, \"Coconut Surf Restaurant (2nd floor)\", 4.6, with a \"Claim this business\" row, \"Add place's phone number\" and \"Add website\". Its address is \"No 44 Kadebeddagama Gurubebila\", where Booking.com says No.49, and its plus code reads \"Ahangama\". A visitor who finds the restaurant cannot call it and cannot tell that it belongs to the inn. Separately, the Google place \"Coconut Beach\" (a beach, 4.8, address \"Matara, Sri Lanka\") lists +94 77 892 1396, the inn's number. Someone who taps Call on the beach reaches the inn without knowing it.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/03-google-restaurant-desktop-claim.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/03-google-restaurant-desktop-fold.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/04-google-beach-desktop-phone.png"
+        },
+        {
+          "type": "url",
+          "value": "https://www.google.com/maps/place/Coconut+Surf+Restaurant+%282nd+floor%29/data=!4m7!3m6!1s0x3ae115004317322d:0xfb15750303ad8d58!8m2!3d5.9607452!4d80.4028573!16s%2Fg%2F11vsw9c7g_!19sChIJLTIXQwAV4ToRWI2tAwN1Ffs?hl=en"
+        },
+        {
+          "type": "url",
+          "value": "https://www.google.com/maps/place/Coconut+Beach/data=!4m7!3m6!1s0x3ae114e1474f1fef:0x76380a35b311bcfe!8m2!3d5.9588096!4d80.4058413!16s%2Fg%2F11c5hxgc0t!19sChIJ7x9PR-EU4ToR_rwRszUKOHY?hl=en"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#contradictions"
+        }
+      ],
+      "playbook_ref": "§6 trust signals: exact location, one current contact",
+      "fix_in_new_site": "one name (businessName), the Google inn address in contact.address and one number (contact.phone) on every screen; the restaurant as an amenities[] row with its hours in hoursNote, so the page both Google places can point to says it is the inn's own restaurant",
+      "pitch_point": true,
+      "notes": "walk.json 03: tel_links [], add_website true, claim_business true. 04: tel_links ['tel:+94778921396'], address 'Matara, Sri Lanka'. The beach place's 4.8 (120) is about the beach and is never the inn's rating."
+    },
+    {
+      "id": "F5",
+      "area": "offsite",
+      "severity": "medium",
+      "title": "Booking.com's description says every room has air-conditioning; the budget rooms do not",
+      "what_a_visitor_meets": "The first lines of the Booking.com description read: \"Coconut Surf Inn in Weligama offers family rooms with private bathrooms, balconies, and garden views. Each room includes air-conditioning, a work desk, and a private entrance.\" Booking.com's own room list gives the Budget Single and Budget Double rooms a fan and no A/C. The owner has replied to a guest that the Budget Double room \"does not include facilities such as air conditioning or hot water\", and guests who booked those rooms wrote that they found no A/C.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/05-booking-com-summary.png"
+        },
+        {
+          "type": "url",
+          "value": "https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#room_types"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#reviews.critical_themes"
+        }
+      ],
+      "playbook_ref": "§2 what's included, §7 honesty of facts",
+      "fix_in_new_site": "rooms[] one row per Booking.com room type, each with its own rooms[].photo and rooms[].beds, and a rooms[].note that says fan or A/C, and cold shower where the owner says so, in plain words",
+      "pitch_point": true,
+      "notes": "Booking.com writes this summary from facility data, not the owner. Room facts from dossier room_types: air_conditioning false on Budget Double Room and Budget Single Room."
+    },
+    {
+      "id": "F6",
+      "area": "offsite",
+      "severity": "medium",
+      "title": "The Airbnb listing describes a different stay from the Booking.com one",
+      "what_a_visitor_meets": "Airbnb heads the listing \"Room in Weligama · 1 bed · Shared bathroom\". The host's text below says \"There are 09 rooms, with each having a double bed, ceiling fan, Wall fan and own bathroom\" and \"(Break fast not included to the Price)\". Check-in is after 12:00 and check-out before 12:00. On Booking.com every room has a private bathroom, four of the six room types have A/C, and check-in runs from 13:00 to 11:00. A visitor comparing the two cannot tell which is current: shared or private bathroom, fan or A/C, breakfast or not.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/06-airbnb-header.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/06-airbnb-description-rooms.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/06-airbnb-response.png"
+        },
+        {
+          "type": "url",
+          "value": "https://www.airbnb.com/rooms/2402254"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#contradictions"
+        }
+      ],
+      "playbook_ref": "§2 what's included, §6 trust signals",
+      "fix_in_new_site": "rooms[] from the current Booking.com room types, and stayInfo.checkInFrom 13:00 / stayInfo.checkOutTo 11:00 from the listing the owner keeps current, shown once on the business's own page",
+      "pitch_point": true,
+      "notes": "The Airbnb text predates the 2022–2023 renovation (dossier business.renovation). Whether breakfast is in the rate depends on the rate (dossier stay_info.breakfast); the site says breakfast is served on site, not that it is included."
+    },
+    {
+      "id": "F7",
+      "area": "offsite",
+      "severity": "low",
+      "title": "Booking.com calls the inn \"Beachfront\" and puts the nearest beach 1.3 km away",
+      "what_a_visitor_meets": "The top of the Booking.com page shows a \"Beachfront\" badge. Further down, \"Closest beaches\" lists \"Midigama Beach 16 min (1.3 km)\" on foot and \"Weligama Beach 2 min (2.9 km)\" by car. The host says the Coconuts break is \"in front of the guesthouse\", and guests write about a 1–2 minute walk. A visitor reading the surroundings block may think the beach is a 16-minute walk.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/05-booking-com-fold.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/05-booking-com-distance.png"
+        },
+        {
+          "type": "url",
+          "value": "https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#break"
+        }
+      ],
+      "playbook_ref": "§2 where exactly, and which wave",
+      "fix_in_new_site": "spot names Coconuts in front of the inn and Plantations 100 m up the beach, in the host's words, with contact.mapUrl to the Google pin",
+      "pitch_point": false
+    },
+    {
+      "id": "F8",
+      "area": "offsite",
+      "severity": "low",
+      "title": "The place has a different town name on every surface",
+      "what_a_visitor_meets": "Google gives the inn's address as Gurubebila, Weligama 81700. The restaurant's plus code says Ahangama, and the beach place carrying the inn's phone says Matara. Airbnb says \"Room in Weligama\", while the host's text says \"Enjoy beautiful Midigama\". The inn's own sign says Gurubebila. A traveller who heard \"Midigama\" sees Weligama on every listing.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/02-google-listing-desktop-add-website.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/03-google-restaurant-desktop-claim.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/04-google-beach-desktop-phone.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/06-airbnb-description-rooms.png"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#contradictions"
+        }
+      ],
+      "playbook_ref": "§2 what is this and where, §6 exact location",
+      "fix_in_new_site": "contact.address in Google's words (Kadabeddagama Road Gurubebila, Weligama 81700, Sri Lanka); the what-and-where line and spot may name Midigama and Gurubebila as the owner does",
+      "pitch_point": false
+    },
+    {
+      "id": "F9",
+      "area": "offsite",
+      "severity": "low",
+      "title": "The Google listing shows other hotels with their prices under the inn's own details",
+      "what_a_visitor_meets": "Directly under the address, phone and \"Add website\", the desktop listing shows \"Similar hotels nearby\": three neighbouring guesthouses 0.1 km away, each with a photo, a rating and a nightly price.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/02-google-listing-desktop-add-website.png"
+        }
+      ],
+      "playbook_ref": "§1 the customer compares 3-5 businesses in a few minutes",
+      "fix_in_new_site": null,
+      "pitch_point": false,
+      "notes": "Google's layout; the owner cannot change it. Context for the pitch, not a claim."
+    }
+  ],
+  "recommended": {
+    "primary_action": "engine",
+    "primary_label": "See rooms and live dates on Booking.com",
+    "secondary_actions": [
+      "tel"
+    ],
+    "clicks_to_book": 1,
+    "above_fold": [
+      "what_where",
+      "spot",
+      "included",
+      "price",
+      "trust",
+      "primary_action"
+    ],
+    "offer_framing": "rooms[] from the six Booking.com room types, each with its own photo, beds, size and sleeps; the fan rooms (Budget Single, Budget Double) and the A/C rooms (Superior, Deluxe with Balcony, Deluxe 2 Adults + 1 Child, Deluxe Family) told apart in plain words in rooms[].note. Then what every stay has, as the dossier records it: the upper-floor restaurant with the sea view (an amenities[] row, hours 7:30-22:00 in hoursNote), the roof terrace, board storage, and Coconuts in front of the door (spot). No nightly rate copied: price means the link to live dates on Booking.com. stayInfo check-in from 13:00 and check-out until 11:00 beside it.",
+    "closing_intent": "send the reader to live dates on Booking.com, and give the phone as the way to ask the hosts first",
+    "off_site": [
+      {
+        "channel": "google_business_profile",
+        "finding": "F3",
+        "advice": "add the new site as the inn listing's website"
+      },
+      {
+        "channel": "google_business_profile",
+        "finding": "F4",
+        "advice": "claim the Coconut Surf Restaurant (2nd floor) listing, add the phone and the new site, and confirm the house number; suggest an edit removing the inn's phone from the Coconut Beach place"
+      },
+      {
+        "channel": "booking_com",
+        "finding": "F5",
+        "advice": "check each room type's facilities in the Booking.com extranet so the description stops promising air-conditioning in every room"
+      },
+      {
+        "channel": "booking_com",
+        "finding": "F7",
+        "advice": "ask Booking.com to correct the closest-beach distances in the property's surroundings"
+      },
+      {
+        "channel": "airbnb",
+        "finding": "F6",
+        "advice": "update the Airbnb listing (bathroom type, rooms, A/C, breakfast, check-in times) to match the Booking.com listing, or close it"
+      }
+    ]
+  },
+  "built_site_gaps": [],
+  "not_measurable": [
+    "Booking.com and Airbnb past the listing page: no dates entered and no booking started, so no live prices, availability or cancellation terms per room",
+    "What Booking.com or Airbnb charges the property: no page opened states it (walk.json commission_phrases empty on every step)",
+    "Agoda and HomeToGo listings: not found; they appear only as offers inside Google's prices (harvester)",
+    "Google web search for 'Coconut Surf Inn Midigama': Google returned its 'unusual traffic' page to the headless browser (funnel/walk/08-google-search-fold.png); not bypassed, so whether a 'Midigama' search finds the inn is unknown",
+    "Tripadvisor: 403 to headless browsers (harvester); Google review texts: sign-in wall in the limited view (harvester)",
+    "Airbnb messaging past 'Log in or sign up', and the Booking.com question form past the Q&A page: not entered",
+    "Whether the owner answers +94778921396, whether that number is on WhatsApp, and how fast: no contact in test mode",
+    "Conversion rate and traffic: no analytics access"
+  ]
+}

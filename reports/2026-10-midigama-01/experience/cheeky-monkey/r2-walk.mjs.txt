@@ -1,0 +1,147 @@
+// experience-critic round 2 walk: cold phone (throttled), video delivery checks, scroll, laptop, RM, Save-Data, JS off.
+import { chromium } from '/Users/alonlavi/.superset/worktrees/oneshot/pull-latest-version-from-ff5cf4f5/node_modules/playwright/index.mjs';
+import fs from 'node:fs';
+const URL = 'http://localhost:8950/';
+const OUT = process.argv[2];
+fs.mkdirSync(OUT, { recursive: true });
+const log = (...a) => { const s = a.map(x => typeof x === 'string' ? x : JSON.stringify(x)).join(' '); console.log(s); fs.appendFileSync(OUT + '/r2-walk.log', s + '\n'); };
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1';
+const phone = { viewport: { width: 390, height: 844 }, deviceScaleFactor: 3, isMobile: true, hasTouch: true, userAgent: UA };
+const laptop = { viewport: { width: 1440, height: 900 } };
+
+const vstate = () => [...document.querySelectorAll('video')].map(v => ({
+  hero: v.hasAttribute('data-hero-video'), src: (v.currentSrc || '').split('/').pop(), rs: v.readyState, paused: v.paused,
+  t: +v.currentTime.toFixed(2), on: v.classList.contains('on'), op: getComputedStyle(v).opacity, w: v.videoWidth, h: v.videoHeight }));
+const fonts = () => [...document.fonts].filter(f => f.status === 'loaded').map(f => f.family);
+
+async function throttle(page) {
+  const c = await page.context().newCDPSession(page);
+  await c.send('Network.enable');
+  await c.send('Network.emulateNetworkConditions', { offline: false, latency: 150, downloadThroughput: 1.6e6 / 8, uploadThroughput: 750e3 / 8 });
+  await c.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+  return c;
+}
+function netlog(page, tag) {
+  const reqs = [];
+  const t0 = Date.now();
+  page.on('request', r => reqs.push({ u: r.url().replace(URL, ''), t: Date.now() - t0, type: r.resourceType() }));
+  page.on('requestfinished', async r => { const s = await r.sizes().catch(() => null); const e = reqs.find(x => x.u === r.url().replace(URL, '') && !x.done); if (e) { e.done = Date.now() - t0; e.bytes = s && s.responseBodySize; } });
+  return () => reqs;
+}
+
+const browser = await chromium.launch({ args: ['--autoplay-policy=no-user-gesture-required', '--use-gl=angle', '--enable-webgl'] });
+
+// 1. phone cold, throttled
+{
+  const ctx = await browser.newContext(phone); const page = await ctx.newPage(); await throttle(page);
+  const reqs = netlog(page);
+  const t0 = Date.now();
+  page.goto(URL).catch(() => {});
+  for (const t of [500, 1500, 3000, 6000, 10000, 15000, 20000]) {
+    await sleep(t - (Date.now() - t0));
+    await page.screenshot({ path: `${OUT}/r2-phone-t${t}.png` }).catch(e => log('shot fail', t, e.message));
+    const st = await page.evaluate(() => ({ cls: document.documentElement.className, v: [...document.querySelectorAll('video')].map(v => ({ hero: v.hasAttribute('data-hero-video'), src: (v.currentSrc || '').split('/').pop(), rs: v.readyState, paused: v.paused, t: +v.currentTime.toFixed(2), on: v.classList.contains('on') })), fonts: [...document.fonts].filter(f => f.status === 'loaded').map(f => f.family), lcp: performance.getEntriesByType('largest-contentful-paint').map(e => [Math.round(e.startTime), e.url && e.url.split('/').pop()]) })).catch(e => ({ err: e.message }));
+    log('phone-cold', `t=${t}`, st);
+  }
+  const lcp = await page.evaluate(() => new Promise(r => new PerformanceObserver(l => { const e = l.getEntries().pop(); r([Math.round(e.startTime), (e.url || '').split('/').pop(), e.element && e.element.className]); }).observe({ type: 'largest-contentful-paint', buffered: true })));
+  log('phone-cold LCP', lcp);
+  log('phone-cold requests', reqs().map(r => `${r.t}-${r.done || '?'}ms ${r.type} ${r.u.slice(0, 70)} ${r.bytes || ''}`));
+  // pause off screen
+  await page.evaluate(() => scrollTo(0, innerHeight * 1.5)); await sleep(1500);
+  log('phone scrolled 1.5 screens', await page.evaluate(vstate));
+  await page.evaluate(() => scrollTo(0, 0)); await sleep(1500);
+  log('phone back at top', await page.evaluate(vstate));
+  await ctx.close();
+}
+
+// 2. phone unthrottled: poster→video handoff alignment, loop seam, human scroll
+{
+  const ctx = await browser.newContext(phone); const page = await ctx.newPage();
+  const reqs = netlog(page);
+  await page.goto(URL, { waitUntil: 'load' });
+  await page.waitForFunction(() => document.querySelector('video[data-hero-video]').classList.contains('on'), null, { timeout: 15000 }).catch(() => log('hero never on'));
+  await sleep(1000);
+  log('phone fast state', await page.evaluate(vstate));
+  // handoff: poster only vs video at t=0
+  await page.evaluate(() => { const v = document.querySelector('video[data-hero-video]'); v.pause(); v.currentTime = 0; });
+  await sleep(600);
+  await page.screenshot({ path: `${OUT}/r2-phone-handoff-video0.png` });
+  await page.evaluate(() => { const v = document.querySelector('video[data-hero-video]'); v.style.transition = 'none'; v.style.opacity = '0'; });
+  await sleep(300);
+  await page.screenshot({ path: `${OUT}/r2-phone-handoff-poster.png` });
+  // seam: frames around the loop point
+  await page.evaluate(() => { const v = document.querySelector('video[data-hero-video]'); v.style.opacity = '1'; });
+  for (const t of [1.1, 2.4, 3.5, 5.0, 6.6]) {
+    await page.evaluate(t => { const v = document.querySelector('video[data-hero-video]'); v.currentTime = t; }, t); await sleep(500);
+    await page.screenshot({ path: `${OUT}/r2-phone-loop-${String(t).replace('.', '_')}.png` });
+  }
+  await page.evaluate(() => document.querySelector('video[data-hero-video]').play());
+  // human-pace scroll
+  const H = await page.evaluate(() => document.documentElement.scrollHeight);
+  log('phone page height', H);
+  let i = 0;
+  for (let y = 0; y < H; y += 506) {
+    await page.mouse.wheel(0, 0); await page.evaluate(y => scrollTo(0, y), y); await sleep(700); i++;
+    if (i <= 34) await page.screenshot({ path: `${OUT}/r2-phone-s${String(i).padStart(2, '0')}.png` });
+    const st = await page.evaluate(() => ({ y: scrollY, hs: [...document.querySelectorAll('h2,h3')].filter(h => { const r = h.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; }).map(h => h.textContent.trim().slice(0, 40)), vids: [...document.querySelectorAll('video')].map(v => `${v.hasAttribute('data-hero-video') ? 'hero' : 'board'}:${v.paused ? 'paused' : 'playing'}`).join(' '), bar: getComputedStyle(document.getElementById('bar')).visibility + '/' + document.getElementById('bar').className }));
+    log('phone s' + i, st);
+  }
+  log('phone total video bytes', reqs().filter(r => r.type === 'media').map(r => `${r.u} ${r.bytes}`));
+  await ctx.close();
+}
+
+// 3. reduced motion, Save-Data, JS off — phone
+for (const [tag, opts, init] of [
+  ['rm', { ...phone, reducedMotion: 'reduce' }, null],
+  ['savedata', phone, () => { Object.defineProperty(navigator, 'connection', { value: { saveData: true, effectiveType: '4g', addEventListener() {} }, configurable: true }); }],
+  ['nojs', { ...phone, javaScriptEnabled: false }, null],
+]) {
+  const ctx = await browser.newContext(opts); if (init) await ctx.addInitScript(init);
+  const page = await ctx.newPage(); const reqs = netlog(page);
+  await page.goto(URL, { waitUntil: 'load' }); await sleep(2500);
+  await page.screenshot({ path: `${OUT}/r2-phone-${tag}-1.png` });
+  const cls = await page.evaluate(() => document.documentElement.className).catch(() => 'n/a');
+  // scroll the page to fire any lazy media
+  const H = await page.evaluate(() => document.documentElement.scrollHeight);
+  for (let y = 0; y < H; y += 800) { await page.evaluate(y => scrollTo(0, y), y); await sleep(120); }
+  await page.evaluate(() => scrollTo(0, 1100)); await sleep(800);
+  await page.screenshot({ path: `${OUT}/r2-phone-${tag}-2.png` });
+  log(tag, 'class', cls, 'media requests over full scroll:', reqs().filter(r => r.type === 'media' || /\.(mp4|webm)/.test(r.u)).map(r => r.u));
+  await ctx.close();
+}
+
+// 4. laptop cold (unthrottled) + throttled desktop-ish, scroll
+{
+  const ctx = await browser.newContext(laptop); const page = await ctx.newPage(); const reqs = netlog(page);
+  const t0 = Date.now(); page.goto(URL).catch(() => {});
+  for (const t of [500, 1500, 3000]) { await sleep(t - (Date.now() - t0)); await page.screenshot({ path: `${OUT}/r2-laptop-t${t}.png` }); log('laptop', t, await page.evaluate(vstate)); }
+  await page.hover('.btn-hero'); await sleep(400); await page.screenshot({ path: `${OUT}/r2-laptop-hero-hover.png` });
+  const H = await page.evaluate(() => document.documentElement.scrollHeight); log('laptop height', H);
+  let i = 0;
+  for (let y = 0; y < H; y += 700) { await page.evaluate(y => scrollTo(0, y), y); await sleep(600); i++; await page.screenshot({ path: `${OUT}/r2-laptop-s${String(i).padStart(2, '0')}.png` }); }
+  log('laptop media', reqs().filter(r => r.type === 'media').map(r => `${r.u} ${r.bytes}`));
+  log('laptop vids at bottom', await page.evaluate(vstate));
+  // board hover + card hover
+  await page.evaluate(() => document.querySelector('[data-reel]').scrollIntoView({ block: 'center' })); await sleep(1500);
+  await page.hover('[data-reel]'); await sleep(500); await page.screenshot({ path: `${OUT}/r2-laptop-board-hover.png` });
+  log('laptop board', await page.evaluate(vstate));
+  const card = await page.$('.card, .pk, [class*=card]'); if (card) { await card.scrollIntoViewIfNeeded(); await card.hover(); await sleep(500); await page.screenshot({ path: `${OUT}/r2-laptop-card-hover.png` }); }
+  await ctx.close();
+}
+
+// 5. booking taps on phone
+{
+  const ctx = await browser.newContext(phone); const page = await ctx.newPage();
+  await page.goto(URL, { waitUntil: 'load' }); await sleep(800);
+  const links = await page.evaluate(() => [...document.querySelectorAll('a')].filter(a => /booking\.com|wa\.me|tel:|mailto:/.test(a.href)).map(a => { const r = a.getBoundingClientRect(); return { t: a.textContent.trim().replace(/\s+/g, ' ').slice(0, 40), href: a.href, vis: r.top < innerHeight && r.bottom > 0 && r.width > 0, h: Math.round(r.height) }; }));
+  log('booking links (first screen vis)', links.filter(l => l.vis));
+  log('booking link count', links.length, [...new Set(links.map(l => l.href))]);
+  await page.evaluate(() => scrollTo(0, 900)); await sleep(800);
+  await page.screenshot({ path: `${OUT}/r2-phone-bar.png` });
+  log('bar', await page.evaluate(() => [...document.querySelectorAll('#bar a, #bar button')].map(a => a.textContent.trim() + ' -> ' + (a.href || a.getAttribute('aria-controls') || ''))));
+  const plan = await page.$('#bar button, #bar [data-drawer], #bar a[href="#book"]');
+  if (plan) { await plan.tap(); await sleep(900); await page.screenshot({ path: `${OUT}/r2-phone-drawer.png` }); }
+  await ctx.close();
+}
+await browser.close();

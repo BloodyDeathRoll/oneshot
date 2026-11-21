@@ -1,0 +1,232 @@
+{
+ "m390_keys": [
+  "Skip to the rooms op=1.00",
+  "Lotus Surf House op=1.00",
+  "Check dates on Booking.com op=1.00",
+  "Call +94 77 464 7541 op=1.00",
+  "Check dates on Booking.com op=1.00",
+  "Call +94 77 464 7541 op=1.00"
+ ],
+ "m390_contrast": [
+  {
+   "at": 0,
+   "t": "Lotus Surf House",
+   "big": false,
+   "contrast_median": 12.2,
+   "contrast_p95_brightest": 4.76
+  },
+  {
+   "at": 0,
+   "t": "Lotus Surf House",
+   "big": true,
+   "contrast_median": 9.4,
+   "contrast_p95_brightest": 5.26
+  },
+  {
+   "at": 0,
+   "t": "A guesthouse in Midigama, on t",
+   "big": false,
+   "contrast_median": 11.52,
+   "contrast_p95_brightest": 6.23
+  },
+  {
+   "at": 0,
+   "t": "Check dates on Booking.com",
+   "big": false,
+   "contrast_median": 5.44,
+   "contrast_p95_brightest": 5.44
+  },
+  {
+   "at": 0,
+   "t": "Check dates on Booking.com",
+   "big": false,
+   "contrast_median": 5.44,
+   "contrast_p95_brightest": 5.44
+  },
+  {
+   "at": 0,
+   "t": "Call +94 77 464 7541",
+   "big": false,
+   "contrast_median": 8.93,
+   "contrast_p95_brightest": 2.76
+  },
+  {
+   "at": 0,
+   "t": "Call +94 77 464 7541",
+   "big": false,
+   "contrast_median": 8.73,
+   "contrast_p95_brightest": 6.34
+  },
+  {
+   "at": 759.6,
+   "t": "Lotus Surf House",
+   "big": false,
+   "contrast_median": 10.81,
+   "contrast_p95_brightest": 5.6
+  },
+  {
+   "at": 759.6,
+   "t": "Call +94 77 464 7541",
+   "big": false,
+   "contrast_median": 12.56,
+   "contrast_p95_brightest": 7.44
+  },
+  {
+   "at": 759.6,
+   "t": "Call +94 77 464 7541",
+   "big": false,
+   "contrast_median": 12.33,
+   "contrast_p95_brightest": 9.61
+  },
+  {
+   "at": 759.6,
+   "t": "The King Rooms",
+   "big": true,
+   "contrast_median": 6.88,
+   "contrast_p95_brightest": 4.25
+  },
+  {
+   "at": 759.6,
+   "t": "The King Rooms upstairs are ne",
+   "big": false,
+   "contrast_median": 9.25,
+   "contrast_p95_brightest": 7.76
+  },
+  {
+   "at": 1350.4,
+   "t": "The King Rooms",
+   "big": true,
+   "contrast_median": 8.42,
+   "contrast_p95_brightest": 6.35
+  },
+  {
+   "at": 1350.4,
+   "t": "The King Rooms upstairs are ne",
+   "big": false,
+   "contrast_median": 9.25,
+   "contrast_p95_brightest": 7.76
+  },
+  {
+   "at": 1350.4,
+   "t": "Check dates on Booking.com",
+   "big": false,
+   "contrast_median": 5.44,
+   "contrast_p95_brightest": 5.44
+  },
+  {
+   "at": 1350.4,
+   "t": "Check dates on Booking.com",
+   "big": false,
+   "contrast_median": 5.44,
+   "contrast_p95_brightest": 5.44
+  }
+ ],
+ "d1440_keys": [
+  "Skip to the rooms op=1.00",
+  "Lotus Surf House op=1.00",
+  "Rooms op=1.00",
+  "Guests op=1.00",
+  "Getting here op=1.00",
+  "Check dates op=1.00"
+ ],
+ "d1440_contrast": [
+  {
+   "at": 0,
+   "t": "Check dates",
+   "big": false,
+   "contrast_median": 11.07,
+   "contrast_p95_brightest": 1.72
+  },
+  {
+   "at": 0,
+   "t": "Check dates",
+   "big": false,
+   "contrast_median": 12.46,
+   "contrast_p95_brightest": 5.38
+  },
+  {
+   "at": 0,
+   "t": "Check dates on Booking.com",
+   "big": false,
+   "contrast_median": 5.44,
+   "contrast_p95_brightest": 1.07
+  },
+  {
+   "at": 0,
+   "t": "Check dates on Booking.com",
+   "big": false,
+   "contrast_median": 5.44,
+   "contrast_p95_brightest": 5.44
+  },
+  {
+   "at": 810,
+   "t": "Check dates",
+   "big": false,
+   "contrast_median": 5.15,
+   "contrast_p95_brightest": 1.29
+  },
+  {
+   "at": 810,
+   "t": "Check dates",
+   "big": false,
+   "contrast_median": 4.75,
+   "contrast_p95_brightest": 2
+  },
+  {
+   "at": 810,
+   "t": "The King Rooms",
+   "big": true,
+   "contrast_median": 6.88,
+   "contrast_p95_brightest": 4.37
+  },
+  {
+   "at": 810,
+   "t": "The King Rooms upstairs are ne",
+   "big": false,
+   "contrast_median": 10.83,
+   "contrast_p95_brightest": 7.67
+  },
+  {
+   "at": 1440,
+   "t": "Check dates",
+   "big": false,
+   "contrast_median": 5.44,
+   "contrast_p95_brightest": 1.1
+  },
+  {
+   "at": 1440,
+   "t": "Check dates",
+   "big": false,
+   "contrast_median": 5.44,
+   "contrast_p95_brightest": 5.44
+  },
+  {
+   "at": 1440,
+   "t": "The King Rooms",
+   "big": true,
+   "contrast_median": 1.06,
+   "contrast_p95_brightest": 1.05
+  },
+  {
+   "at": 1440,
+   "t": "The King Rooms upstairs are ne",
+   "big": false,
+   "contrast_median": 10.83,
+   "contrast_p95_brightest": 7.67
+  },
+  {
+   "at": 1440,
+   "t": "Check dates on Booking.com",
+   "big": false,
+   "contrast_median": 5.44,
+   "contrast_p95_brightest": 5.44
+  },
+  {
+   "at": 1440,
+   "t": "Check dates on Booking.com",
+   "big": false,
+   "contrast_median": 5.44,
+   "contrast_p95_brightest": 5.44
+  }
+ ]
+}

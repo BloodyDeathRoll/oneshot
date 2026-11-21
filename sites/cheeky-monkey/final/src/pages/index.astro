@@ -1,7 +1,10 @@
 ---
 /* Home: a port of mockups/unique/dist/index.html ("Pick your board", picked by Alon at gate b, with his colour
    and beach-photo rounds 4–7), bound to the content schema. Markup, class names, CSS and JS are the mockup's;
-   4g changes are commented here, in src/styles/site.css and in src/scripts/site.js. */
+   4g changes are commented here, in src/styles/site.css and in src/scripts/site.js.
+   Round 2 (critique r1 + Alon, 2026-11-04: "i dont like the cartoon"): the drawn beach and the board zoom-through
+   are gone. The first screen is a full-bleed drone loop of the Midigama coast (heroVideo) with the featureLine and
+   the one booking button; the board window survives in the intro, holding the shop reel (videos[0]). */
 import css from '../styles/site.css?raw'
 import js from '../scripts/site.js?raw'
 import icons from '../lib/icons.svg.txt?raw'
@@ -9,37 +12,47 @@ import {
   c, G, L, e, t, paras, block, money, Word, PLATFORM, dayMonYear, monYear,
   MARK, MARK_SUB, PRIMARY, INSTA_LINK, TEL, PHONE, EMAIL, mailto, MAP, SOC, IG_HANDLE,
   WEEKS, WEEKS_BLOCK, WEEKS_LEDE, WEEKS_FROM, LESSON, LESSON_YEAR, lessonPrice, lessonUnit, lessonLevelsLine, lessonOthersLine, lessonDrawerLine,
-  transfersLine, stayTimes, amenLine, roomDet, roomShort, roomSize, roomSlides, quoteSource,
-  img, slotRow, slotSrc, hero, splitLine,
+  transfersLine, stayTimes, amenLine, roomDet, roomShort, roomSize, roomExtra, roomSlides, quoteSource,
+  img, slotRow, slotSrc, slotSet, hero, reel, HERO_CREDIT, splitLine,
+  metaDescription, seoHead, businessLd, ldJson, ogImage, IS_PREVIEW,
 } from '../lib/site.mjs'
 import { S } from '../lib/slots.mjs'
 
 const H = hero()
-const [lineA, lineB] = splitLine(c.featureLine)
+const R = reel()
 const intro = block('intro', 0), baba = block('about', 0), shop = block('about', 1), roof = block('about', 2)
 const lessonsB = block('offer', 0), here = block('info', 0), know = block('info', 1)
 const rooms = (c.rooms ?? []).map((r, k) => ({ ...r, k, slides: roomSlides(r) }))
 const quotes = c.testimonials ?? []
 const ratings = (c.ratings ?? []).filter((r) => r.score != null)
-const atmo = G.atmosphere
 const shortMark = MARK
 const weekSubject = (w) => `${shortMark}: ${w.group} week`
 const icon = (n) => `<svg aria-hidden="true"><use href="#i-${n}"/></svg>`
 const arrow = icon('arrow')
 const RENT_ICONS = ['board', 'star', 'scooter']
-const data = H ? { poster: H.poster.webp, desk: H.desk, phone: H.phone } : { poster: '', desk: [], phone: [] }
-const hasReel = !!H && (H.desk.length > 0 || H.phone.length > 0)
-const [jsA, jsB] = js.split('/* ================= the rest of the page')
+/* round 2: the business's own img-103 leads "Down at the water" as the full-bleed band (16:9, 4:5 on phones) */
+const bandRow = slotRow(S.water[1]), bandSet = slotSet(S.water[1]), bandM = slotSrc(S.water[1], 1)
 const title = G.seo?.title ?? c.businessName
-const fontFaces = `@font-face{font-family:'Rethink Sans';font-style:normal;font-weight:400 600;font-display:optional;src:url(fonts/rethink-sans-latin-wght-normal.woff2) format('woff2')}
-@font-face{font-family:'Permanent Marker';font-style:normal;font-weight:400;font-display:optional;src:url(fonts/permanent-marker-latin-400-normal.woff2) format('woff2')}
+/* 4h: the description is the owner's tagline (84 chars; no further owner sentence fits under 155 without cutting one) */
+const description = metaDescription([c.tagline])
+const head = seoHead({ path: '', title, description, image: ogImage() })
+const ld = ldJson(businessLd({ description }))
+/* round 2 (experience r1 fix 1, playbook §4): font-display swap, so the marker titles arrive on a slow first visit
+   too, with metric-matched local fallbacks (size-adjust / ascent / descent measured against Arial in Chromium) so the
+   swap does not move the layout */
+const fontFaces = `@font-face{font-family:'Rethink Sans';font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/rethink-sans-latin-wght-normal.woff2) format('woff2')}
+@font-face{font-family:'Permanent Marker';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/permanent-marker-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Rethink Fallback';src:local('Arial'),local('Helvetica'),local('Roboto');size-adjust:104.3%;ascent-override:95.1%;descent-override:29.7%;line-gap-override:0%}
+@font-face{font-family:'Marker Fallback';src:local('Arial Bold'),local('Arial-BoldMT'),local('Helvetica Bold'),local('Roboto Bold');font-weight:400;size-adjust:103.5%;ascent-override:107.2%;descent-override:30.7%;line-gap-override:2.9%}
 `
-/* the tier before first paint, so the set-piece's height never changes above the reader (mockup); 4g: no reel
-   in the content = the still tier */
+/* the motion tier before first paint: reduced motion or Save-Data = the still tier (posters only, no video) */
 const tierJs = `(function(){var h=document.documentElement,c='js';
 try{var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,sd=navigator.connection&&navigator.connection.saveData;
-c+=(rm||sd||${hasReel ? 'false' : 'true'})?' still':' motion';}catch(e){c+=' still'}
+c+=(rm||sd)?' still':' motion';}catch(e){c+=' still'}
 h.className=c;})();`
+/* schema v0.3: the block renders only when the owner's switch is on and the deployer's Rosa id is set */
+const fcOn = c.forecast?.enabled && /^[a-z0-9-]+$/.test(c.forecast?.rosaSpotId ?? '')
+const spotId = c.forecast?.rosaSpotId, spotName = c.forecast?.spotName || spotId
 const weekRooms = [L.drawer.room_private, L.drawer.room_double, L.drawer.room_triple]
 const w0 = WEEKS[0]
 ---
@@ -49,12 +62,15 @@ const w0 = WEEKS[0]
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title}</title>
-{c.tagline && <meta name="description" content={c.tagline}>}
+{IS_PREVIEW && <meta name="robots" content="noindex, nofollow">}
+{description && <meta name="description" content={description}>}
+<Fragment set:html={head} />
 <meta name="theme-color" content="#ffffff">
 <script is:inline set:html={tierJs}></script>
 <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/rethink-sans-latin-wght-normal.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/permanent-marker-latin-400-normal.woff2">
-{H && <link rel="preload" as="image" href={H.poster.webp} fetchpriority="high">}
+{H && H.port && <link rel="preload" as="image" href={H.port.webp} media="(max-aspect-ratio: 3/4)" fetchpriority="high">}
+{H && <link rel="preload" as="image" imagesrcset={H.land.map((s) => `${s.webp} ${s.w}w`).join(', ')} imagesizes="(max-aspect-ratio: 16/9) 178vh, 100vw" media={H.port ? '(min-aspect-ratio: 3/4)' : undefined} fetchpriority="high">}
 <style is:inline set:html={fontFaces + css}></style>
 </head>
 <body>
@@ -62,52 +78,67 @@ const w0 = WEEKS[0]
 <a class="skip" href="#counter">{L.skip}</a>
 
 <header class="top" id="top">
-  <h1 class="mark-h"><a class="mark" href="#"><b>{MARK}</b>{MARK_SUB && <span>{MARK_SUB}</span>}</a></h1>
+  <h1 class="mark-h"><a class="mark" href="#"><b>{MARK}</b>{MARK_SUB && <>{' '}<span>{MARK_SUB}</span></>}</a></h1>
   <nav class="nav" aria-label="Main">
     <a class="l" href="#counter">{L.nav.counter}</a>
     <a class="l" href="#rooms">{L.nav.rooms}</a>
     <a class="l" href="#shop">{L.nav.shop}</a>
     <a class="btn btn-ghost btn-plan" href="#book" data-plan>{L.plan}</a>
+    {/* round 2 (critic r1 hard fail): the booking engine is the header's first action, before the phone icon, so the
+        page's first and top-most booking action is the engine (tools/funnel.mjs) */}
+    {PRIMARY && <a class="btn btn-book" href={PRIMARY.url} aria-label={L.book_short_aria}>{L.book_short}</a>}
     {TEL && <a class="icon-btn" href={TEL} aria-label={`${L.call_aria} ${PHONE}`}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5h3.2l1.6 4.3-2.1 1.4a11 11 0 0 0 7.1 7.1l1.4-2.1 4.3 1.6V19a2 2 0 0 1-2.2 2A17 17 0 0 1 3 5.7 2 2 0 0 1 5 3.5z"/></svg></a>}
   </nav>
 </header>
 
 <main>
-<section class="pick" id="pick" aria-label={c.businessName}>
-  <div class="stage" id="stage">
-    <div class="beach" aria-hidden="true"><i class="far"></i><i class="sea"></i><i class="foam"></i><i class="wet"></i><i class="sand"></i></div>
-    {H && <div class="zm" id="zm" aria-hidden="true">
-      <img src={H.poster.webp} alt="" width={H.poster.w} height={H.poster.h} decoding="async">
-    </div>}
-    <canvas class="gl" id="gl" aria-hidden="true"></canvas>
-    <div class="hero" id="hero">
-      <p class="hero-line a" id="heroLine">{lineA}</p>
-      <div class="slot" id="slot">
-        {H && <img class="poster" src={H.poster.webp} width={H.poster.w} height={H.poster.h} fetchpriority="high" alt={H.alt}>}
-        <span class="shadow" aria-hidden="true"></span>
-      </div>
-      <div class="hero-b" id="heroB"><p class="hero-line b">{lineB}</p><div class="hero-cta" id="heroCta">
-        {PRIMARY && <a class="btn" href={PRIMARY.url}>{PRIMARY.label}
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>}
-      </div></div>
-    </div>
-    <p class="sr" id="loadNote" role="status"></p>
+<section class="hero" id="hero" aria-label={c.businessName}>
+  {H && <div class="hero-media" style={[H.bandsLand && `--ph-l:linear-gradient(${H.bandsLand.join(',')})`, H.bandsPort && `--ph-p:linear-gradient(${H.bandsPort.join(',')})`].filter(Boolean).join(';') || undefined}>
+    {/* round 3 (experience r2 fix 4): the poster's own tones as a gradient placeholder; the legibility shade waits for
+        the poster (html.js .hero.lit), so a slow phone never sees a dark blob on flat blue */}
+    <picture>
+      {H.port && <source media="(max-aspect-ratio: 3/4)" srcset={H.port.webp} width={H.port.w} height={H.port.h}>}
+      <img class="hero-poster" src={H.first.webp} srcset={H.land.map((s) => `${s.webp} ${s.w}w`).join(', ')} sizes="(max-aspect-ratio: 16/9) 178vh, 100vw"
+        width={H.first.w} height={H.first.h} fetchpriority="high" alt={H.alt} onload="this.closest('.hero').classList.add('lit')">
+    </picture>
+    {H.sources.length > 0 && <video class="hero-video" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1" data-hero-video>
+      {H.sources.map((s) => <source data-src={s.src} type={s.type} media={s.media} />)}
+    </video>}
+  </div>}
+  {/* round 4 (critic dim 6, open since round 3; WCAG 2.2.2): one quiet control pauses and plays both looping videos
+      (the hero and the shop reel). Hidden until the hero loop is attached, so it never shows with posters only */}
+  {H && H.sources.length > 0 && <button type="button" class="icon-btn vid-ctl" aria-pressed="false" aria-label={L.pause} hidden><Fragment set:html={icon('pause') + icon('play')} /></button>}
+  <div class="hero-in">
+    {c.featureLine && <p class="hero-line">{splitLine(c.featureLine).map((h) => <span>{h}</span>)}</p>}
+    {PRIMARY && <a class="btn btn-hero" href={PRIMARY.url}>{PRIMARY.label}
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>}
   </div>
 </section>
 
-{intro && <section class="intro-s sandg" aria-labelledby="intro-h"><div class="intro wrap">
-  {intro.heading && <h2 class="t-hand" id="intro-h">{intro.heading}</h2>}
-  <div class="intro-b" set:html={paras(intro.body).map((p) => `<p>${e(p)}</p>`).join('')}></div>
+{intro && <section class="intro-s sandg edge" aria-labelledby="intro-h"><div class={`intro wrap${R ? ' has-board' : ''}`}>
+  {/* round 2: the concept's board window, now standing on the sand beside the intro, holding the shop reel
+      (videos[0]); the reel plays only on screen, never under reduced motion or Save-Data */}
+  {R && <div class="board" data-reel>
+    <div class="board-in">
+      <img src={R.poster.webp} width={R.poster.w} height={R.poster.h} loading="lazy" decoding="async" alt={R.label}>
+      {R.sources.length > 0 && <video muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1">
+        {R.sources.map((s) => <source data-src={s.src} type={s.type} media={s.media} />)}
+      </video>}
+    </div>
+    <span class="shadow" aria-hidden="true"></span>
+  </div>}
+  <div class="intro-t">
+    {intro.heading && <h2 class="t-hand" id="intro-h">{intro.heading}</h2>}
+    <div class="intro-b" set:html={paras(intro.body).map((p) => `<p>${e(p)}</p>`).join('')}></div>
+  </div>
 </div></section>}
 
 <section class="water aquag edge" id="water" aria-labelledby="water-h">
-  {atmo && <div class="atmo">
-    {/* SCHEMA GAP: the credited atmosphere photograph (stock-003, CC BY-SA 3.0): served as published, whole, its
-       box reserved, its src set only as it nears the screen (2.2 MB); with JS off the noscript copy */}
-    <div class="atmo-box"><img data-src={`atmo/${atmo.file}`} width={atmo.width} height={atmo.height} decoding="async" alt={atmo.alt}>
-    <noscript><img src={`atmo/${atmo.file}`} width={atmo.width} height={atmo.height} alt={atmo.alt}></noscript></div>
-    <p class="credit"><a href={atmo.credit.titleUrl}>{atmo.credit.title}</a> — {atmo.credit.author}, <a href={atmo.credit.licenseUrl}>{atmo.credit.license}</a>, via {atmo.credit.via}</p>
-  </div>}
+  {bandRow && bandSet.length > 0 && <picture class="water-band">
+    {bandM && <source media="(max-width:860px)" srcset={bandM.webp} width={bandM.w} height={bandM.h}>}
+    <img src={bandSet[0].webp} srcset={bandSet.map((s) => `${s.webp} ${s.w}w`).join(', ')} sizes="(min-width:1600px) 1600px, 100vw"
+      width={bandSet[0].w} height={bandSet[0].h} loading="lazy" decoding="async" alt={bandRow.alt}>
+  </picture>}
   <div class="wrap water-g">
     <div class="water-t">
       <h2 class="t-hand" id="water-h">{L.water.title}</h2>
@@ -117,10 +148,57 @@ const w0 = WEEKS[0]
   </dl>}
       <a class="btn btn-ghost btn-sm" href="#counter"><Fragment set:html={icon('wave')} />{L.water.see_weeks}</a>
     </div>
-    <div class="water-m">
-      <Fragment set:html={img(S.water[0], { cls: 'w1' }) + img(S.water[1], { cls: 'w2' }) + img(S.water[2], { cls: 'w3' })} />
-    </div>
+    <Fragment set:html={img(S.water[0], { cls: 'w1' }) + img(S.water[2], { cls: 'w3' })} />
   </div>
+  {/* 2026-11-04 (Alon): the Rosa forecast (schema v0.3, playbook §4 exception), ported from
+      sites/layday-surf-ahangama/final. Rams is the Rosa spot nearest the guesthouse, not the business's own break: the
+      block only ever says "Forecast for Rams by Rosa". Both halves have fixed boxes; nothing is requested until the
+      block nears the screen (src/scripts/site.js). With JS off, the plain link fills the widget's box. */}
+  {/* round 4 (verification 1): the pair sits on the page column (headline stack | widget at Rosa's 420 px); a short
+      title and one factual line introduce Rams (gaps.forecast, Rosa's index.json against dossier location.lat_lng);
+      the headline is labelled with its time; Rosa's update time is plain text, not the price pill; the plain link
+      stays visible in the credit line at all times; no HEAD request; JS off, a failed or stale JSON and a refused
+      frame all end in filled, composed states (src/styles/site.css) */}
+  {fcOn && <div class="wrap">
+    <div class="fc" data-json={`https://rosa-data-opal.vercel.app/data/spots/${spotId}.json`} data-spot={spotName} data-when={L.forecast.when} data-upd={L.forecast.upd}>
+      <div class="fc-now">
+        <h3 class="t-hand-s fc-h">{t(L.forecast.title, { spot: spotName })}</h3>
+        {G.forecast?.line && <p class="fc-intro">{G.forecast.line}</p>}
+        <div class="fc-read" aria-live="polite">
+          <div class="live">
+            <p class="fc-when" data-f="t"></p>
+            <p class="now"><span class="nh">{' '}<small> m</small></span></p>
+            <p class="nd"><span data-f="swell"></span><span data-f="wind"></span></p>
+            <p class="fc-upd" data-f="upd"></p>
+          </div>
+          <p class="fc-none fc-wait"><Fragment set:html={icon('wave')} /><span>{t(L.forecast.wait, { spot: spotName })}</span></p>
+          <p class="fc-none fc-off"><span>{t(L.forecast.off, { spot: spotName })}</span><small>{t(L.forecast.off_more, { spot: spotName })}</small></p>
+        </div>
+        <div class="fc-credit">
+          <p class="credit-rosa"><Fragment set:html={icon('wave')} /><a href={`https://rosa.surf/spot/${spotId}`}>{t(L.forecast.credit, { spot: spotName })}</a></p>
+          <a class="btn btn-ghost btn-sm fc-plain" href={`https://rosa.surf/spot/${spotId}`}>{t(L.forecast.link, { spot: spotName })} <Fragment set:html={arrow} /></a>
+        </div>
+      </div>
+      <div class="fc-rosa">
+        <div class="fc-alt">
+          <span class="fc-alt-i" aria-hidden="true"><Fragment set:html={icon('wave')} /></span>
+          <p class="fc-alt-t">{t(L.forecast.alt, { spot: spotName })}</p>
+          <a class="btn btn-sm" href={`https://rosa.surf/spot/${spotId}`}>{t(L.forecast.link, { spot: spotName })}</a>
+          <p class="fc-alt-c"><a href={`https://rosa.surf/spot/${spotId}`}>{t(L.forecast.credit, { spot: spotName })}</a></p>
+        </div>
+        <iframe
+          data-src={`https://rosa.surf/widget/?spot=${spotId}&theme=light&units=metric`}
+          title={`Rosa surf forecast - ${spotName}`}
+          width="100%"
+          height="500"
+          style="max-width:420px;border:0;border-radius:16px;display:block"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+        ></iframe>
+      </div>
+    </div>
+  </div>}
 </section>
 
 <section class="counter sandg edge" id="counter" aria-labelledby="week-h">
@@ -131,8 +209,8 @@ const w0 = WEEKS[0]
     </div>
     <div class="cards" tabindex="0" role="group" aria-label={L.weeks.cards_aria}>
 {WEEKS.map((w, k) => (
-<article class="card" data-tilt>
-  <div class="card-board" set:html={img(S.cards[k])}></div>
+<article class="card">
+  <div class="card-ph" set:html={img(S.cards[k])}></div>
   <h3>{w.title}</h3>
   <p class="price"><b>{w.range}</b> <span>{w.per}</span></p>
   <p class="rows">{w.rowsLine}</p>
@@ -171,7 +249,7 @@ const w0 = WEEKS[0]
 {rooms.map((r) => (
 <article class="room" aria-labelledby={`room-${r.k}-n`}>
   {r.slides.length > 0 && <div class="show" data-show>
-    <ul class="track" tabindex="0" role="group" aria-label={t(L.rooms.photos_aria, { room: r.label })} set:html={r.slides.map((s) => `<li><img src="${s.webp}" width="${s.w}" height="${s.h}" loading="lazy" decoding="async" alt="${e(s.alt)}"></li>`).join('')}></ul>
+    <ul class="track" tabindex="0" aria-label={t(L.rooms.photos_aria, { room: r.label })} set:html={r.slides.map((s) => `<li${s.bg ? ` style="background-color:${s.bg}"` : ''}><img src="${s.webp}" width="${s.w}" height="${s.h}" loading="lazy" decoding="async" alt="${e(s.alt)}"></li>`).join('')}></ul>
     <button type="button" class="arw prev" aria-label={L.rooms.prev}><Fragment set:html={icon('chev-l')} /></button><button type="button" class="arw next" aria-label={L.rooms.next}><Fragment set:html={icon('chev-r')} /></button>
     <div class="dots">{r.slides.map((_, i) => <button type="button" class="dot" aria-label={t(L.rooms.dot, { i: i + 1, n: r.slides.length })} aria-current={i === 0 ? 'true' : undefined}></button>)}</div>
   </div>}
@@ -210,18 +288,23 @@ const w0 = WEEKS[0]
   </div>
 </section>}
 
+{/* round 4 (visual v1 fix 5): the sunset surfer was a 16:9 slice of a portrait drawn 1440 px wide (soft, a blocky
+    face). On desktop it is now the whole photograph, 3:4, at a size it holds, with the roof bar overlapping it; on a
+    phone it is still the full-bleed 4:5 band at the top of the section, as before */}
 {roof && <section class="roof pinkg edge" id="roof" aria-labelledby="roof-h">
-  {slotRow(S.roofBand) && <picture class="roof-band">
-    {slotSrc(S.roofBand, 1) && <source media="(max-width:860px)" srcset={slotSrc(S.roofBand, 1).webp} width={slotSrc(S.roofBand, 1).w} height={slotSrc(S.roofBand, 1).h}>}
-    <Fragment set:html={img(S.roofBand)} />
-  </picture>}
   <div class="wrap roof-g">
     <div class="roof-t">
       <h2 class="t-hand" id="roof-h">{roof.heading}</h2>
       <Fragment set:html={paras(roof.body).map((p) => `<p>${e(p)}</p>`).join('')} />
       {amenLine && <p class="det amen">{amenLine}</p>}
     </div>
-    <Fragment set:html={img(S.roofSide, { cls: 'roof-side' })} />
+    <div class="roof-ph">
+      {slotRow(S.roofBand) && <picture class="roof-band">
+        {slotSrc(S.roofBand, 1) && <source media="(max-width:860px)" srcset={slotSrc(S.roofBand, 1).webp} width={slotSrc(S.roofBand, 1).w} height={slotSrc(S.roofBand, 1).h}>}
+        <Fragment set:html={img(S.roofBand)} />
+      </picture>}
+      <Fragment set:html={img(S.roofSide, { cls: 'roof-side' })} />
+    </div>
   </div>
 </section>}
 
@@ -241,7 +324,7 @@ const w0 = WEEKS[0]
     <div class="quotes" data-show>
       <h2 class="t-hand" id="guests-h">{L.guests.title}</h2>
       <div class="q-nav"><button type="button" class="arw prev" aria-label={L.guests.prev}><Fragment set:html={icon('chev-l')} /></button><span class="q-count" aria-hidden="true">{`1 / ${quotes.length}`}</span><div class="dots">{quotes.map((_, i) => <button type="button" class="dot" aria-label={t(L.guests.dot, { i: i + 1, n: quotes.length })} aria-current={i === 0 ? 'true' : undefined}></button>)}</div><button type="button" class="arw next" aria-label={L.guests.next}><Fragment set:html={icon('chev-r')} /></button></div>
-      <ul class="track q-track" tabindex="0" role="group" aria-label={L.guests.track_aria} set:html={quotes.map((q) => {
+      <ul class="track q-track" tabindex="0" aria-label={L.guests.track_aria} set:html={quotes.map((q) => {
         const src = quoteSource(q)
         const when = monYear(q.date)
         const s = src ? (src.url ? `<a href="${e(src.url)}">${e(src.name)}</a>` : e(src.name)) : ''
@@ -285,7 +368,7 @@ const w0 = WEEKS[0]
   <div class="wrap">
     <h2 class="sr" id="ig-h">{L.ig.sr}</h2>
     <div class="ig-g"><Fragment set:html={S.ig.map((n) => { const h = img(n); return h ? `<a class="ig-t" href="${e(SOC.instagram)}">${h}</a>` : '' }).join('')} />
-      <a class="ig-follow" href={SOC.instagram}><span class="ig-board"></span><span class="ig-txt"><Fragment set:html={icon('insta')} />{`${L.ig.follow} ${IG_HANDLE}`}</span></a>
+      <a class="ig-follow" href={SOC.instagram}><Fragment set:html={icon('insta')} />{/* round 4 (visual v1): the handle broke mid-word in the tile; the tile says what it does */}<span>{L.ig.follow}</span></a>
     </div>
   </div>
 </section>}
@@ -304,6 +387,8 @@ const w0 = WEEKS[0]
       {SOC.facebook && <a class="icon-btn" href={SOC.facebook} aria-label="Facebook"><Fragment set:html={icon('fb')} /></a>}
     </div>
   </div>
+  {/* round 2: the hero footage's credit (SCHEMA GAP gaps.heroCredit; licence to be confirmed with the owner at pitch) */}
+  {H && HERO_CREDIT && <p class="wrap foot-credit"><a href={HERO_CREDIT.url}>{t(L.hero_credit, HERO_CREDIT)}</a></p>}
 </footer>
 
 <div class="bar" id="bar">
@@ -333,10 +418,11 @@ const w0 = WEEKS[0]
       {rooms.length > 0 && <div class="step" data-step="room" id="plan-room">
         <p class="plan-q">{L.drawer.which_room}</p>
         <div class="tiles rooms-t">
-          {rooms.map((r) => <button type="button" class="tile ph" data-room={r.label}>{r.slides[0] && <img src={r.slides[0].webp} alt="" width={r.slides[0].w} height={r.slides[0].h} loading="lazy">}<b>{roomShort(r)}</b><span>{[r.beds, roomSize(r)].filter(Boolean).join(' | ')}</span></button>)}
+          {rooms.map((r) => <button type="button" class="tile ph" data-room={r.label}>{r.slides[0] && <img src={r.slides[0].webp} alt="" width={r.slides[0].w} height={r.slides[0].h} loading="lazy">}<b>{roomShort(r)}</b><span>{[r.beds, roomSize(r)].filter(Boolean).join(' |\u00a0')}</span>{roomExtra(r) && <span class="x">{roomExtra(r)}</span>}</button>)}
         </div>
         {PRIMARY && <div class="handoff" data-handoff hidden>
-          <p class="sum"><span data-sum>{rooms[0].label}</span>. {L.drawer.handoff}</p>
+          {/* round 4 (experience v1 fix 3): the hand-off names the room picked */}
+          <p class="sum">{L.drawer.handoff} <Fragment set:html={e(L.drawer.handoff_look).replace('{room}', `<b data-sum>${e(rooms[0].label)}</b>`)} /></p>
           <a class="btn" href={PRIMARY.url}>{PRIMARY.label} <Fragment set:html={arrow} /></a>
         </div>}
         {PRIMARY && <a class="btn plain-only" href={PRIMARY.url}>{PRIMARY.label} <Fragment set:html={arrow} /></a>}
@@ -370,8 +456,7 @@ const w0 = WEEKS[0]
   </div>
 </section>
 
-<script type="application/json" id="cm-data" is:inline set:html={JSON.stringify(data).replace(/</g, '\\u003c')}></script>
-<script is:inline set:html={jsA}></script>
-<script is:inline set:html={'/* ================= the rest of the page' + jsB}></script>
+<script type="application/ld+json" is:inline set:html={ld}></script>
+<script is:inline set:html={js}></script>
 </body>
 </html>

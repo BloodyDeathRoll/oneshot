@@ -6,9 +6,9 @@
   "scripts": {
     "seed": "bash scripts/make-media.sh",
     "fetch": "node scripts/fetch-tenant.mjs",
-    "media": "node ../../../cms/publisher/src/video.mjs . && node scripts/photos.mjs",
+    "media": "node ../../../cms/publisher/src/video.mjs . && node scripts/video-site.mjs && node scripts/photos.mjs",
     "build": "node scripts/photos.mjs && astro build",
-    "build:cms": "node scripts/fetch-tenant.mjs && node ../../../cms/publisher/src/video.mjs . && node scripts/photos.mjs && astro build",
+    "build:cms": "node scripts/fetch-tenant.mjs && node ../../../cms/publisher/src/video.mjs . && node scripts/video-site.mjs && node scripts/photos.mjs && astro build",
     "preview": "astro preview"
   },
   "engines": {

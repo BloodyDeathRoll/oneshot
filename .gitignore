@@ -110,3 +110,6 @@ dossier/*/industry/funnel
 .taste-skill/
 .impeccable/
 motion-audits/
+
+# dashboard thumbnails: which preview URL each cached picture was shot from (dashboard/server.mjs)
+dashboard/mockups/*/dist/img/.urls.json

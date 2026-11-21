@@ -6,10 +6,10 @@
      fins img-108: red #E53034, yellow #DBB912, green #25833D, blue #36A4EC */
   --sky:#CADFFA; --sky-2:#85BAFA; --sea:#7DD2F4; --sea-far:#36A4EC; --sand:#F2E8D7; --sand-wet:#E4D0AE;
   --aqua:#E4F6FD; --skyg:#EAF3FE; --fin-r:#E53034; --fin-y:#DBB912; --fin-g:#25833D; --fin-b:#36A4EC;
-  --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 40' preserveAspectRatio='none'%3E%3Cpath d='M0 22C60 8 110 6 170 16S270 34 330 26 430 4 500 12 570 30 600 22V40H0Z'/%3E%3C/svg%3E"); --ink:#143746; --ink-2:#3d5865; --place:#D3AAAE;
+  --ink:#143746; --ink-2:#3d5865; --place:#D3AAAE;
   --book:#0B72C4; --book-deep:#095EA2;
-  --body:'Rethink Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
-  --hand:'Permanent Marker','Marker Felt','Comic Sans MS',cursive;
+  --body:'Rethink Sans','Rethink Fallback',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  --hand:'Permanent Marker','Marker Fallback',sans-serif;
   --ease:cubic-bezier(.23,1,.32,1); --ease-io:cubic-bezier(.77,0,.175,1);
   --r:18px; --nose:999px;
   --wrap:1200px; --gut:clamp(20px,4vw,48px);
@@ -36,7 +36,7 @@ p{margin:0 0 1em}
    is now exactly half the button's height and the 18 px tail corners stay soft, as the concept draws it. */
 .btn{--bg:var(--book);--bh:52px;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:var(--bh);padding:0 26px;border-radius:18px calc(var(--bh) / 2) calc(var(--bh) / 2) 18px;
   background:var(--bg);color:#fff;font:600 16px/1 var(--body);text-decoration:none;border:0;cursor:pointer;
-  box-shadow:0 1px 0 rgba(20,55,70,.06),0 8px 22px -12px rgba(11,114,196,.55);
+  box-shadow:none;
   transition:transform .16s var(--ease),padding .22s var(--ease),background-color .2s ease,box-shadow .2s ease}
 .btn svg{width:18px;height:18px;flex:none}
 .btn:active{transform:scale(.97)}
@@ -52,68 +52,85 @@ p{margin:0 0 1em}
 
 /* ---------- header ---------- */
 .top{position:fixed;inset:0 0 auto;z-index:40;height:72px;display:flex;align-items:center;gap:24px;padding:0 var(--gut);
-  background:rgba(255,255,255,.0);transition:background-color .3s ease,box-shadow .3s ease}
-.top.solid{background:rgba(255,255,255,.94);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);box-shadow:0 1px 0 rgba(20,55,70,.06)}
+  background:rgba(255,255,255,.96);color:var(--ink);transition:background-color .3s ease,box-shadow .3s ease,color .3s ease}
+/* round 2 (experience r1): with JS off the header keeps its white ground (above); with JS it is clear over the
+   footage, in white, until the page scrolls */
+html.js .top:not(.solid){background:rgba(255,255,255,0);color:#fff}
+html.js .top:not(.solid) .mark span{color:#fff}
+html.js .top:not(.solid) .icon-btn{background:rgba(255,255,255,.16);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5)}
+html.js .top:not(.solid) .btn-ghost{background:rgba(255,255,255,.16);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5)}
+html.js .top:not(.solid) .btn-ghost svg{color:#fff}
+/* round 3 (critic r2 dim 6): full-white subtitle and a firmer shadow; the hero's top shade (below) is deeper too */
+html.js .top:not(.solid) .nav a.l{text-shadow:0 1px 2px rgba(10,32,44,.5),0 1px 10px rgba(10,32,44,.45)}
+html.js .top:not(.solid) .mark{text-shadow:0 1px 2px rgba(10,32,44,.5),0 1px 12px rgba(10,32,44,.45)}
+/* round 4 (visual v1 fix 4): no hairline under the scrolled header (calibration: no rules under the header) */
+.top.solid{background:rgba(255,255,255,.94);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);box-shadow:none}
 .mark-h{margin:0 auto 0 0;font:inherit}
-.mark{display:flex;flex-direction:column;justify-content:center;min-height:46px;text-decoration:none;line-height:1.1}
+.mark{display:flex;flex-direction:column;justify-content:center;min-height:46px;text-decoration:none;line-height:1.1;transition:transform .16s var(--ease),opacity .2s ease}
+.mark:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.mark:hover{opacity:.78}}
 .mark b{font:400 22px/1 var(--hand);letter-spacing:.01em}
 .mark span{font-size:13px;color:var(--ink-2);margin-top:4px}
 .nav{display:flex;align-items:center;gap:6px}
 .nav a.l{padding:12px 14px;border-radius:12px;text-decoration:none;font-weight:600;font-size:15px;transition:background-color .2s ease}
 @media (hover:hover){.nav a.l:hover{background:var(--tint)}}
 .nav .btn{--bh:46px;min-height:46px;padding:0 20px;font-size:15px}
-@media (max-width:860px){.nav a.l,.nav .btn-plan{display:none}.top{height:64px}.mark b{font-size:20px}}
+.nav .btn-book{margin-left:4px}
+@media (hover:hover) and (pointer:fine){html.js .top:not(.solid) .nav a.l:hover{background:rgba(255,255,255,.16)}}
+@media (max-width:860px){.nav a.l,.nav .btn-plan{display:none}.top{height:64px;gap:10px;padding:0 14px 0 16px}.mark b{font-size:20px}.mark span{font-size:12px}
+  .nav{gap:8px}.nav .btn-book{padding:0 18px;margin:0}}
 
-/* ---------- 1. hero + set-piece ---------- */
-.pick{position:relative;height:100svh}
-html.motion .pick{height:calc(100svh + 180vh)}
-@media (max-width:860px){html.motion .pick{height:calc(100svh + 110vh)}}
-.stage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--sky);--hz:33%;--shore:57%}
-.beach{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.beach i{position:absolute;left:0;bottom:0;width:calc(100% + 600px);display:block;
-  -webkit-mask:var(--wave) 0 0/600px 34px repeat-x,linear-gradient(#000 0 0) 0 33px/100% 100% no-repeat;
-          mask:var(--wave) 0 0/600px 34px repeat-x,linear-gradient(#000 0 0) 0 33px/100% 100% no-repeat}
-.beach .far{top:var(--hz);background:var(--sea-far);-webkit-mask:none;mask:none;width:100%}
-.beach .sea{top:calc(var(--hz) + 3.2%);background:var(--sea);animation:drift 40s linear infinite}
-.beach .foam{top:calc(var(--shore) - 26px);background:#fff;animation:drift 22s linear infinite}
-.beach .wet{top:calc(var(--shore) - 12px);background:var(--sand-wet);animation:drift 30s linear infinite reverse}
-.beach .sand{top:calc(var(--shore) - 3px);background:var(--sand);transform:translateX(-210px)}
-@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-600px)}}
-@media (max-width:860px){.stage{--hz:27%;--shore:66%}}
-.hero{position:absolute;inset:0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;column-gap:clamp(28px,4vw,64px);
-  padding:92px var(--gut) 4svh;z-index:3;pointer-events:none}
-.hero > *{pointer-events:auto}
-.hero-line{font:400 clamp(34px,3.6vw,54px)/1.08 var(--hand);color:var(--ink);margin:0;max-width:7.2em;text-wrap:balance}
-.hero-line.a{justify-self:end;text-align:right;align-self:end;margin-bottom:13svh}
-.hero-b{justify-self:start;align-self:end;margin-bottom:9svh;display:flex;flex-direction:column;align-items:flex-start;gap:26px}
-.slot{position:relative;height:min(86svh,calc(100svh - 128px));aspect-ratio:100/320;flex:none;pointer-events:none}
-.slot .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 320' preserveAspectRatio='none'%3E%3Cpath d='M50 0C59 0 79 26 90 76C98 116 100 158 99 196C97 248 87 290 70 310C63 318 56 320 50 320C44 320 37 318 30 310C13 290 3 248 1 196C0 158 2 116 10 76C21 26 41 0 50 0Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
-          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 320' preserveAspectRatio='none'%3E%3Cpath d='M50 0C59 0 79 26 90 76C98 116 100 158 99 196C97 248 87 290 70 310C63 318 56 320 50 320C44 320 37 318 30 310C13 290 3 248 1 196C0 158 2 116 10 76C21 26 41 0 50 0Z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
-.shadow{position:absolute;left:-30%;right:-30%;bottom:-16px;height:34px;border-radius:50%;
-  background:radial-gradient(closest-side,rgba(92,70,40,.34),rgba(92,70,40,.12) 55%,transparent);z-index:-1}
-.hero-cta{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
-.hero-cta small{font-size:14px;color:var(--ink-2)}
-html.motion .slot .poster{visibility:hidden}
-
-/* the zoom layer (motion tier) */
-.zm{position:absolute;left:0;top:0;transform-origin:0 0;z-index:1;display:none;
-  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 320' preserveAspectRatio='none'%3E%3Cpath d='M50 0C59 0 79 26 90 76C98 116 100 158 99 196C97 248 87 290 70 310C63 318 56 320 50 320C44 320 37 318 30 310C13 290 3 248 1 196C0 158 2 116 10 76C21 26 41 0 50 0Z'/%3E%3C/svg%3E");
-          mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 320' preserveAspectRatio='none'%3E%3Cpath d='M50 0C59 0 79 26 90 76C98 116 100 158 99 196C97 248 87 290 70 310C63 318 56 320 50 320C44 320 37 318 30 310C13 290 3 248 1 196C0 158 2 116 10 76C21 26 41 0 50 0Z'/%3E%3C/svg%3E");
-  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
-html.motion .zm{display:block}
-.zm img,.zm video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.zm video{opacity:0;transition:opacity .4s ease}
-.zm.playing video{opacity:1}
-/* loading state: a slow resin sheen sweeps the poster until the reel plays */
-.zm::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.38) 50%,transparent 62%) 0 0/300% 100% no-repeat;
-  animation:sheen 1.8s var(--ease-io) infinite;pointer-events:none}
-.zm.playing::after{display:none}
-@keyframes sheen{from{background-position:120% 0}to{background-position:-20% 0}}
-.gl{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;opacity:0;transition:opacity .25s ease}
-html.gl-live .gl{opacity:1}
-html.gl-live .zm{visibility:hidden}
-
+/* ---------- 1. hero (round 2): the drone loop of the Midigama coast, full-bleed ----------
+   Alon, 2026-11-04: "i dont like the cartoon" -> the drawn beach and the board zoom-through are gone. Only the header,
+   one centred line and the one booking button sit on the footage (custom.md; references.md calibration). */
+.hero{position:relative;isolation:isolate;height:100svh;min-height:560px;max-height:1200px;overflow:hidden;background:var(--sea);color:#fff;
+  display:grid;place-items:end center;text-align:center}
+/* round 3 (visual r2 fix 1): the line and the button sit in the lower band of the frame, centred, below the surfer:
+   across the loop's surf shot he rides between 33% and 62% of the frame's height (checked every 0.25 s at 1440 and 390,
+   notes.md); the sky above and the water below him are clear */
+.hero-media{position:absolute;inset:0;z-index:0;background:var(--ph-l,none)}
+@media (max-aspect-ratio:3/4){.hero-media{background:var(--ph-p,var(--ph-l,none))}}
+.hero-media picture,.hero-poster,.hero-video{position:absolute;inset:0;width:100%;height:100%}
+.hero-poster,.hero-video{object-fit:cover;object-position:55% 50%}
+@media (max-aspect-ratio:3/4){.hero-poster,.hero-video{object-position:50% 50%}}
+.hero-video{opacity:0;transition:opacity .8s ease}
+.hero-video.on{opacity:1}
+/* legibility only: a soft shade under the header and behind the line, never a tint over the whole picture */
+/* round 3 (critic r2 dim 6): a deeper top shade, so the header's white text is >= 4.5:1 across the loop (and on the
+   placeholder before the poster arrives) */
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(rgba(8,26,36,.66),rgba(8,26,36,.5) 72px,rgba(8,26,36,0) 180px)}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;transition:opacity .5s ease;
+  background:radial-gradient(ellipse 66% 30% at 50% 84%,rgba(10,32,44,.42),rgba(10,32,44,0) 100%)}
+/* round 3 (experience r2 fix 4): with JS, the line's scrim appears with the poster, never as a dark blob on the
+   empty ground */
+html.js .hero:not(.lit)::after{opacity:0}
+.hero-line span{display:block}
+.hero-in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:24px;padding:96px var(--gut) clamp(36px,6.5vh,72px)}
+.hero-line{font:400 clamp(32px,3.6vw,52px)/1.12 var(--hand);margin:0;max-width:none;
+  text-shadow:0 1px 2px rgba(10,32,44,.45),0 2px 24px rgba(10,32,44,.4)}
+/* round 4: the videos' pause control, bottom right of the hero, as quiet as the header's icon buttons */
+.vid-ctl{position:absolute;right:var(--gut);bottom:64px;z-index:3;background:rgba(255,255,255,.16);color:#fff;
+  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.vid-ctl[hidden]{display:none}
+.vid-ctl svg{width:18px;height:18px;transition:transform .2s var(--ease),opacity .2s ease}
+.vid-ctl svg + svg{position:absolute;opacity:0;transform:scale(.6)}
+.vid-ctl[aria-pressed="true"] svg:first-child{opacity:0;transform:scale(.6)}
+.vid-ctl[aria-pressed="true"] svg + svg{opacity:1;transform:none}
+.vid-ctl svg:last-child{fill:currentColor;stroke:none}
+@media (hover:hover) and (pointer:fine){.vid-ctl:hover{background:rgba(255,255,255,.3);color:#fff}}
+/* on a phone the line and the button fill the foot of the frame: the control sits under the header's call button */
+@media (max-width:860px){.vid-ctl{width:44px;height:44px;right:15px;top:76px;bottom:auto}}
+.btn-hero{--bh:56px;min-height:56px;padding:0 28px;font-size:17px;min-width:min(324px,100%)}
+/* round 3: the block spans the hero and the button has a min-width that holds the label in either font, so the font
+   swap (Rethink Sans is 6 px narrower than its fallback here) moves nothing (scroll CLS early 0) */
+.hero-in{width:100%}
+@media (max-width:860px){.hero-in{gap:18px;padding:88px 20px clamp(32px,6vh,56px)}.hero-line{font-size:clamp(26px,7.4vw,34px)}}
+/* round 4 (critic v1, scroll.early.cls 0.0288 on a plain server): a part-parsed first paint drew the line before the
+   button existed, then the block grew 74 px upwards. The block now reserves its full height from the first paint:
+   padding + two lines of the line + the gap + the button (it still grows if the line ever wraps to three) */
+.hero-in{min-height:calc(96px + clamp(36px,6.5vh,72px) + 2.24 * clamp(32px,3.6vw,52px) + 24px + 56px)}
+@media (max-width:860px){.hero-in{min-height:calc(88px + clamp(32px,6vh,56px) + 2.24 * clamp(26px,7.4vw,34px) + 18px + 56px)}}
 
 /* ---------- shared ---------- */
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
@@ -139,6 +156,27 @@ section{scroll-margin-top:80px}
 /* ---------- intro ---------- */
 .intro{padding:clamp(72px,10vw,128px) var(--gut) clamp(40px,6vw,72px);max-width:880px;text-align:center}
 .intro-b{font-size:19px;line-height:1.65;margin-top:22px}
+/* round 2: the board window (the concept's one shape) stands on the sand beside the intro, holding the shop reel.
+   It is drawn at most 300 CSS px wide from the 720-wide reel, so it stays sharp at 2x */
+.intro.has-board{max-width:1060px;display:grid;grid-template-columns:auto 1fr;gap:clamp(40px,7vw,104px);align-items:center;text-align:left}
+.board{position:relative;width:min(172px,40vw);aspect-ratio:100/320;justify-self:center;transform:rotate(-3deg);transition:transform .6s var(--ease)}
+@media (hover:hover) and (pointer:fine){.board:hover{transform:rotate(0deg) translateY(-6px)}}
+.board-in{position:absolute;inset:0;overflow:hidden;background:#e7ddd0;
+  -webkit-mask:var(--board-mask) center/100% 100% no-repeat;mask:var(--board-mask) center/100% 100% no-repeat}
+.board-in img,.board-in video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.board-in video{opacity:0;transition:opacity .5s ease}
+.board-in video.on{opacity:1}
+/* a resin sheen crosses the board while the reel loads, and once on hover */
+.board-in::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.34) 50%,transparent 62%) 0 0/300% 100% no-repeat;
+  background-position:120% 0;pointer-events:none}
+.board.loading .board-in::after{animation:sheen 1.8s var(--ease-io) infinite}
+@media (hover:hover) and (pointer:fine){.board:hover .board-in::after{animation:sheen 1.1s var(--ease-io) 1}}
+@keyframes sheen{from{background-position:120% 0}to{background-position:-20% 0}}
+.board .shadow{position:absolute;left:-36%;right:-36%;bottom:-18px;height:34px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(92,70,40,.30),rgba(92,70,40,.10) 55%,transparent);z-index:-1}
+@media (max-width:860px){.intro.has-board{grid-template-columns:1fr;text-align:center;gap:48px}.board{width:min(124px,34vw)}}
+/* round 3 (experience r2 fix 5): the board gets its moment back on a laptop */
+@media (min-width:1024px){.board{width:224px}}
 .facts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:36px 0 0;text-align:left}
 .facts div{background:#fff;border-radius:var(--r);padding:20px 22px}
 .facts dt{display:flex;align-items:center;gap:10px;font-weight:600;margin-bottom:6px}
@@ -147,26 +185,26 @@ section{scroll-margin-top:80px}
 
 /* ---------- the counter: four board cards ---------- */
 .counter{padding:clamp(40px,6vw,72px) 0 clamp(72px,9vw,120px)}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.card{display:flex;flex-direction:column;gap:12px;background:#fff;border-radius:22px;padding:22px 20px 22px;
-  box-shadow:0 1px 2px rgba(20,55,70,.06),0 18px 40px -26px rgba(20,55,70,.35);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
-.card-board{height:330px;display:flex;align-items:center;justify-content:center;perspective:700px;margin:-6px -4px 6px;border-radius:16px;background:var(--fin,var(--fin-b))}
-.card:nth-child(1){--fin:var(--fin-b)}.card:nth-child(2){--fin:var(--fin-y)}.card:nth-child(3){--fin:var(--fin-r)}.card:nth-child(4){--fin:var(--fin-g)}
-.card-board img{height:300px;width:94px;max-width:none;aspect-ratio:auto;object-fit:cover;
-  -webkit-mask:var(--board-mask) center/100% 100% no-repeat;mask:var(--board-mask) center/100% 100% no-repeat;
-  transition:transform .5s var(--ease);transform:rotateY(var(--ry,0deg)) rotateX(var(--rx,0deg)) rotate(var(--rz,0deg))}
+/* round 4 (visual v1): the row ran 23 px past the column (1fr let the dated pill's min-content widen the cards) */
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+/* round 2 (visual r1 fix 3): no primary-colour blocks; each card leads with its photograph, whole at the card's width */
+.card{display:flex;flex-direction:column;gap:12px;background:#fff;border-radius:22px;padding:12px 12px 22px;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.card > :not(.card-ph){margin-left:8px;margin-right:8px}
+.card-ph{border-radius:14px;overflow:hidden;margin-bottom:6px;background:var(--sand)}
+.card-ph img{width:100%;aspect-ratio:5/4;object-fit:cover;transition:transform .7s var(--ease)}
+@media (hover:hover) and (pointer:fine){.card:hover .card-ph img{transform:scale(1.04)}}
 .card h3{font-size:19px;font-weight:600;line-height:1.25}
 .card .rows{font-size:13.5px;color:var(--ink-2);margin:0}
 .card .line{font-size:15px;line-height:1.5;margin:0;flex:1}
 .card .card-act{margin-top:6px}
 .card .btn-sm{flex:1;padding:0 14px;white-space:nowrap}
-.card .dated{font-size:13px;padding:6px 11px 6px 8px;align-self:flex-start;white-space:nowrap}
-@media (hover:hover) and (pointer:fine){.card:hover{transform:translateY(-4px);box-shadow:0 1px 2px rgba(20,55,70,.06),0 26px 50px -26px rgba(20,55,70,.42)}}
+.card .dated{font-size:13px;padding:6px 10px 6px 8px;gap:6px;align-self:flex-start;white-space:nowrap;margin-left:4px;margin-right:0}
+@media (hover:hover) and (pointer:fine){.card:hover{transform:translateY(-4px);box-shadow:0 26px 50px -30px rgba(20,55,70,.38)}}
 .incl{margin-top:clamp(48px,6vw,72px);display:grid;grid-template-columns:240px 1fr;gap:24px 48px;align-items:start}
 .ic-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px 28px}
 .ic-grid li,.ic-list li{display:flex;align-items:flex-start;gap:12px;font-size:16px;line-height:1.4}
 .ic-grid svg,.ic-list svg{width:24px;height:24px;flex:none;color:var(--book);margin-top:-1px}
-.ic-grid li:nth-child(3n+2) svg{color:var(--fin-r)}.ic-grid li:nth-child(3n) svg{color:var(--fin-g)}
 .ic-grid em{display:block;font-style:normal;font-size:13.5px;color:var(--ink-2);margin-top:3px}
 .lessons{margin-top:clamp(56px,7vw,88px);display:grid;grid-template-columns:1.1fr 1fr;gap:28px 56px;align-items:center}
 .lessons .t-hand-s{margin-bottom:14px}
@@ -177,7 +215,7 @@ section{scroll-margin-top:80px}
 .rooms{padding:clamp(72px,9vw,120px) 0}
 .room-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,4vw,56px) 28px}
 .room{display:flex;flex-direction:column;gap:16px;min-width:0}
-.show{position:relative;border-radius:20px;overflow:hidden;background:#e9dfe0}
+.show{position:relative;border-radius:20px;overflow:hidden;background:#d9dcd8}
 .track{display:flex;list-style:none;margin:0;padding:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
 .track::-webkit-scrollbar{display:none}
 .track > li{flex:0 0 100%;scroll-snap-align:start}
@@ -214,34 +252,42 @@ section{scroll-margin-top:80px}
 html.motion .m.pre img{transform:scale(.98)}
 
 /* ---------- roof ---------- */
-.roof{padding:0 0 clamp(72px,9vw,120px)}
-.roof-band{display:block;max-width:1500px;margin:0 auto}
-.roof-band img{width:100%;aspect-ratio:16/9;object-fit:cover}
-.roof-g{display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:center;margin-top:clamp(48px,6vw,80px)}
+.roof{padding:clamp(72px,9vw,120px) 0}
+.roof-g{display:grid;grid-template-columns:5fr 6fr;gap:56px;align-items:center}
 .roof-t .t-hand{margin-bottom:18px}
 .roof-t p{font-size:18px}
 .amen{font-size:15px!important;margin-top:20px}
-.roof-side{width:100%;border-radius:22px;aspect-ratio:4/5;object-fit:cover}
+/* round 4: the two roof photographs as one overlapping pair: the sunset portrait whole (3:4), the roof bar (4:5)
+   over its lower left corner, set off by a ring of the section's own pink */
+.roof-ph{position:relative;padding-bottom:clamp(64px,7vw,96px)}
+.roof-band{display:block;width:76%;margin-left:auto}
+.roof-band img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:22px}
+.roof-side{position:absolute;left:0;bottom:0;width:46%;border-radius:20px;aspect-ratio:4/5;object-fit:cover;outline:10px solid var(--tint)}
 
 /* ---------- Baba ---------- */
-.baba{padding:clamp(72px,9vw,120px) 0}
+/* round 3 (visual r2 fix 5): Baba's bottom and the guests' top padding stacked into a ~250 px empty band; halved */
+.baba{padding:clamp(72px,9vw,120px) 0 clamp(36px,4.5vw,64px)}
 .baba-g{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:center}
 .baba-p{width:100%;border-radius:22px;aspect-ratio:4/5;object-fit:cover}
 .baba-t .t-hand{margin-bottom:18px}
 .baba-t p{font-size:18px;max-width:34em}
-.print{width:min(320px,70%);margin-top:28px;border-radius:6px;background:#fff;padding:10px;box-shadow:0 1px 2px rgba(20,55,70,.08),0 16px 30px -18px rgba(20,55,70,.35);transform:rotate(-2deg)}
+/* round 4 (visual v1 fix 5): a white mat (the slot's mean-colour placeholder had turned it grey), and a 4:5 crop that
+   ends cleanly after "BABA'S SURF" with the Cheeky Monkey signpost (the source itself cuts the sign at "SU") */
+.print{width:min(232px,60%);margin-top:28px;border-radius:6px;background:#fff!important;padding:10px;box-shadow:0 1px 2px rgba(20,55,70,.08),0 16px 30px -18px rgba(20,55,70,.35);transform:rotate(-2deg)}
 
 /* ---------- guests ---------- */
-.guests{padding:clamp(72px,9vw,120px) 0}
+.guests{padding:clamp(36px,4vw,56px) 0 clamp(72px,9vw,120px)}
 .guests-g{display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:center}
 .quotes{position:relative;min-width:0}
 .quotes .t-hand{margin-bottom:22px}
+/* round 3 (critic r2 dim 2, visual r2): the slideshow is as tall as the quote on show, not the longest one */
+.q-track{align-items:flex-start;overflow-y:hidden;transition:height .35s var(--ease)}
 .q-track > li{padding-right:8px}
 .q-track blockquote{margin:0}
 .q-track p{font-size:clamp(19px,1.7vw,23px);line-height:1.5;margin:0 0 18px;text-wrap:pretty}
 .q-track footer{display:flex;flex-direction:column;gap:2px;font-size:15px}
 .q-track footer span{color:var(--ink-2)}
-.q-track footer a{text-decoration:none;font-weight:600;color:var(--book);display:inline-flex;align-items:center;min-height:44px;min-width:44px}
+.q-track footer a{text-decoration:none;font-weight:600;color:var(--book-deep);display:inline-flex;align-items:center;min-height:44px;min-width:44px}
 .q-nav{display:flex;align-items:center;gap:6px;margin:0 0 18px -8px}
 .q-nav .arw{position:static;margin:0;opacity:1;background:#fff;box-shadow:inset 0 0 0 1.5px rgba(20,55,70,.12)}
 .q-nav .dot::before{background:rgba(20,55,70,.22);box-shadow:none}
@@ -275,15 +321,16 @@ html.motion .m.pre img{transform:scale(.98)}
 
 /* ---------- instagram ---------- */
 .ig{padding:0 0 clamp(56px,7vw,88px)}
-.ig-g{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
+.ig-g{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
 .ig-t{border-radius:16px;overflow:hidden;display:block}
 .ig-t img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .5s var(--ease)}
 @media (hover:hover){.ig-t:hover img{transform:scale(1.04)}}
-.ig-follow{grid-column:span 2;position:relative;display:grid;place-items:center;text-decoration:none;color:#fff;min-height:120px}
-.ig-board{position:absolute;inset:8% 0;background:var(--book);-webkit-mask:var(--board-mask-h) center/100% 100% no-repeat;mask:var(--board-mask-h) center/100% 100% no-repeat;transition:transform .4s var(--ease),background-color .2s ease}
-.ig-txt{position:relative;display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;padding:0 18%}
-.ig-txt svg{width:20px;height:20px;flex:none}
-@media (hover:hover){.ig-follow:hover .ig-board{transform:scale(1.04);background:var(--book-deep)}}
+/* round 2 (visual r1): the follow tile is a tile like the photos, not a blue ellipse */
+.ig-follow{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;aspect-ratio:1;border-radius:16px;background:var(--book);
+  color:#fff;text-decoration:none;font-weight:600;font-size:15px;line-height:1.3;text-align:center;padding:12px;transition:background-color .2s ease,transform .16s var(--ease)}
+.ig-follow svg{width:28px;height:28px}
+.ig-follow:active{transform:scale(.97)}
+@media (hover:hover){.ig-follow:hover{background:var(--book-deep)}}
 
 /* ---------- footer ---------- */
 .foot{padding:56px 0 calc(48px + env(safe-area-inset-bottom))}
@@ -292,6 +339,9 @@ html.motion .m.pre img{transform:scale(.98)}
 .mark-f{font:400 24px/1 var(--hand)!important;color:var(--ink)!important;margin-bottom:10px!important}
 .foot-c{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
 .foot-s{display:flex;gap:10px}
+.foot-credit{margin-top:28px!important;font-size:13px!important}
+.foot-credit a{color:var(--ink-2);text-decoration:none;display:inline-block;padding:12px 0}
+@media (hover:hover){.foot-credit a:hover{color:var(--ink)}}
 
 /* ---------- phone bar ---------- */
 .bar{display:none}
@@ -324,8 +374,10 @@ html.motion .m.pre img{transform:scale(.98)}
 .tile.ph{padding:0 0 14px;overflow:hidden}
 .tile.ph img{width:100%;aspect-ratio:3/2;object-fit:cover;margin-bottom:8px}
 .tile.ph b,.tile.ph span{padding:0 14px}
+.tile .x{font-size:13.5px;color:var(--ink);margin-top:2px}
 .tile[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--book);background:#fff}
 .handoff{margin-top:18px;background:var(--tint);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.handoff[hidden]{display:none}
 .handoff .sum{margin:0}
 .plain-only{margin-top:16px}
 .seg{display:flex;flex-wrap:wrap;gap:8px}
@@ -356,33 +408,93 @@ html.js .plain-only{display:none}
 @media (max-width:860px){html.js .plan-panel{width:100%;padding:14px 18px 32px;border-radius:0}}
 
 
-/* ---------- round 7: the water ---------- */
+/* ---------- the water (round 2: the business's own img-103 leads, full-bleed; no borrowed photograph) ---------- */
 .water{padding:0 0 clamp(72px,9vw,120px)}
-.atmo{margin:0 auto;max-width:1600px}
-.atmo-box{position:relative;aspect-ratio:2560/1712;background:var(--aqua)}
-.atmo img{position:absolute;inset:0;width:100%;height:100%;display:block}
-.atmo img[data-src]{opacity:0}
-.atmo img{transition:opacity .6s ease}
-.credit{font-size:13px;line-height:1.6;color:var(--ink-2);text-align:right;padding:8px var(--gut) 0;margin:0;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0,"dlig" 0,"ccmp" 0}
-.credit a{color:var(--ink-2);text-decoration:none;font-weight:600;padding:13px 0;display:inline-block;min-width:44px}
-.water-g{display:flex;flex-direction:column;gap:clamp(28px,3vw,40px);margin-top:clamp(36px,5vw,64px)}
-.water-t{display:grid;grid-template-columns:4fr 8fr;gap:16px 48px;align-items:start}
-.water-t .btn{grid-column:2;justify-self:start}
-.water-t .t-hand{margin-bottom:22px}
-.facts-w{grid-template-columns:1fr 1fr;margin:0}
-.water-m{display:grid;grid-template-columns:5fr 7fr;grid-template-rows:auto auto;gap:16px}
-.water-m img{width:100%;height:100%;object-fit:cover;border-radius:20px;display:block}
-.w1{grid-row:1 / span 2;min-height:0}
-.w2{aspect-ratio:3/2}
-.w3{aspect-ratio:1600/702}
+.water-band{display:block;max-width:1600px;margin:0 auto}
+.water-band img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.water-g{display:grid;grid-template-columns:5fr 7fr;grid-template-areas:"w1 t" "w1 w3";gap:clamp(20px,3vw,40px) clamp(24px,4vw,56px);margin-top:clamp(48px,6vw,80px);align-items:start}
+.water-t{grid-area:t;display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.water-t .t-hand{margin-bottom:2px}
+.facts-w{grid-template-columns:1fr 1fr;margin:0;width:100%}
+.water-g img{width:100%;object-fit:cover;border-radius:20px;display:block}
+.w1{grid-area:w1;aspect-ratio:5/8}
+.w3{grid-area:w3;align-self:end}
 @media (max-width:860px){
-  .water-g{gap:28px}
-  .water-t{grid-template-columns:1fr}.water-t .btn{grid-column:1}.facts-w{grid-template-columns:1fr}
-  .water-m{grid-template-columns:1fr 1fr;gap:10px}
-  .w1{grid-row:auto;grid-column:1 / span 2;aspect-ratio:4/5;height:auto}
-  .w3{grid-column:1 / span 2}
-  .w2{grid-column:1 / span 2}
-  .credit{text-align:left}
+  .water-band img{aspect-ratio:4/5}
+  .water-g{grid-template-columns:1fr;grid-template-areas:"t" "w1" "w3";gap:28px}
+  .facts-w{grid-template-columns:1fr}
+  .w1{aspect-ratio:4/5}
+}
+/* ---------- the Rosa forecast (2026-11-04; playbook §4 exception) ----------
+   Round 4 (verification 1): rebuilt on the page column. Left, a tight stack in the site's own type: a short title, one
+   factual line about Rams, the headline card (labelled with its time; Rosa's update time as plain text, never the
+   pink "call to confirm" pill) and the credit line, which carries the plain link at all times. Right, Rosa's widget
+   at Rosa's 420 x 500, exactly as Rosa ships it (theme=light, never restyled). Both boxes have fixed sizes, so nothing
+   shifts when the data arrives, fails or goes stale. States: loading (a short line in the card), live, off (failed,
+   stale, timed out: a line in the card, and the composed card .fc-alt in the widget's box), solo (failed while still
+   below the screen) and JS off: no headline card, the composed card at its own height beside the stack. */
+.fc{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:clamp(24px,4vw,56px);align-items:center;min-height:500px;margin-top:clamp(56px,7vw,96px)}
+.fc-now{max-width:560px;display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+.fc-h{margin:0 0 10px}
+.fc-intro{font-size:17px;line-height:1.55;color:var(--ink-2);margin:0 0 22px}
+.fc-read{display:grid;width:100%;height:248px;background:#fff;border-radius:22px;padding:24px 28px 22px}
+.fc-read > *{grid-area:1/1;min-width:0}
+.fc-read .live{display:flex;flex-direction:column;visibility:hidden}
+.fc.live .fc-read .live{visibility:visible}
+/* loading and failed are two layers of the same cell, switched by visibility, so a state change moves nothing */
+.fc-none{align-self:center;margin:0;color:var(--ink)}
+.fc-wait{display:flex;align-items:center;gap:14px;font-weight:600;font-size:17px;line-height:1.4}
+.fc-wait svg{width:30px;height:30px;flex:none;color:var(--book)}
+/* failed or stale: the card says so in the site's hand, with where the forecast is, never as an empty box */
+.fc-off{visibility:hidden}
+.fc-off span{display:block;font:400 clamp(24px,2.2vw,28px)/1.2 var(--hand)}
+.fc-off small{display:block;font-size:16px;line-height:1.5;color:var(--ink-2);margin-top:8px}
+.fc.off .fc-off{visibility:visible}
+.fc.off .fc-wait,.fc.live .fc-wait{visibility:hidden}
+.fc-when{margin:0;font-weight:600;font-size:15px;color:var(--ink)}
+.now{margin:8px 0 0}
+.nh{display:inline-block;white-space:nowrap;font-weight:600;font-size:clamp(60px,6vw,80px);line-height:.95;letter-spacing:-.035em;color:var(--ink)}
+.nh small{font-size:.32em;letter-spacing:0;font-weight:500;color:var(--ink-2)}
+.nd{display:flex;flex-direction:column;gap:0;margin:12px 0 0;font-size:16px;line-height:1.5;color:var(--ink-2)}
+.nd span[hidden],.fc-read [hidden]{display:none}
+.fc-upd{margin:auto 0 0;font-size:13.5px;color:var(--ink-2)}
+.fc-credit{display:flex;align-items:center;flex-wrap:wrap;gap:6px 18px;margin-top:18px}
+.credit-rosa{display:flex;align-items:center;gap:10px;margin:0;font-weight:600;font-size:15px}
+.credit-rosa svg{width:20px;height:20px;flex:none;color:var(--book)}
+.credit-rosa a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;
+  text-decoration-color:rgba(20,55,70,.3);transition:text-decoration-color .2s ease,color .2s ease}
+@media (hover:hover){.credit-rosa a:hover{text-decoration-color:var(--book);color:var(--book-deep)}}
+.fc-plain{white-space:nowrap}
+.fc-rosa{position:relative;width:420px;max-width:100%;height:500px;justify-self:end}
+/* the composed card under the frame: what the box shows before, without and instead of Rosa's widget. It sits under
+   the iframe at all times, 4 px short of the widget's foot, so a frame that loads blank still shows it */
+.fc-alt{position:absolute;inset:0 0 4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:36px 32px;
+  background:#fff;border-radius:16px;text-align:center}
+.fc-alt-i{display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:var(--aqua);color:var(--book)}
+.fc-alt-i svg{width:40px;height:40px}
+.fc-alt-t{margin:0;font:400 clamp(24px,2.2vw,28px)/1.2 var(--hand);color:var(--ink);text-wrap:balance;max-width:12em}
+.fc-alt .btn{white-space:normal;text-align:center;line-height:1.25;padding:10px 22px}
+.fc-alt-c{margin:0;font-size:14px}
+.fc-alt-c a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink-2);text-decoration:none;transition:color .2s ease}
+@media (hover:hover){.fc-alt-c a:hover{color:var(--ink)}}
+.fc-rosa iframe{position:relative;visibility:hidden}
+.fc-rosa.on iframe{visibility:visible}
+html:not(.js) .fc-read,.fc.solo .fc-read{display:none}
+html:not(.js) .fc,.fc.solo{min-height:0}
+html:not(.js) .fc-rosa,.fc.solo .fc-rosa{height:auto}
+html:not(.js) .fc-alt,.fc.solo .fc-alt{position:static;padding:40px 32px}
+html:not(.js) .fc-plain,.fc.solo .fc-plain{display:none} /* the composed card carries the link there */
+html:not(.js) .fc-rosa iframe,.fc.solo .fc-rosa iframe{display:none!important} /* the frame's inline display:block (as Rosa ships it) */
+@media (max-width:860px){
+  .fc{grid-template-columns:minmax(0,1fr);min-height:0;gap:24px}
+  .fc-now{max-width:none}
+  .fc-intro{font-size:16px;margin-bottom:18px}
+  .fc-read{height:214px;padding:20px 22px 18px}
+  .nh{font-size:58px}
+  .nd{font-size:15px;margin-top:10px}
+  .fc-credit{margin-top:12px;gap:4px 18px}
+  .fc-plain{white-space:normal;text-align:left;line-height:1.3;padding:8px 18px}
+  .fc-rosa{justify-self:center;width:100%}
 }
 /* ---------- phone ---------- */
 @media (max-width:860px){
@@ -390,35 +502,50 @@ html.js .plain-only{display:none}
   .cards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--gut));padding:6px var(--gut) 24px;scroll-padding:0 var(--gut);scrollbar-width:none}
   .cards::-webkit-scrollbar{display:none}
   .card{flex:0 0 78%;scroll-snap-align:start}
-  .card-board{height:280px}.card-board img{height:250px;width:78px}
   .incl,.lessons,.room-grid,.shop-g,.roof-g,.baba-g,.guests-g,.road-g{grid-template-columns:1fr}
   .ic-grid{grid-template-columns:1fr 1fr;gap:16px}
   .shop-t{position:static}
   .masonry{columns:2;column-gap:10px}.m{margin-bottom:10px;border-radius:14px}
-  .roof-band img{aspect-ratio:4/5}
+  .roof{padding-top:0}
+  .roof-ph{display:contents}
+  .roof-band{order:-1;width:auto;margin:0 calc(-1 * var(--gut)) 16px}
+  .roof-band img{aspect-ratio:4/5;border-radius:0}
+  .roof-side{position:static;width:100%;border-radius:22px;outline:0}
   .roof-g,.baba-g,.road-g{gap:32px}
   .stay{padding:24px}
-  .ig-g{grid-template-columns:repeat(3,1fr);gap:8px}
-  .ig-follow{grid-column:span 3;min-height:110px}
+  .ig-g{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .ig-follow{font-size:13px}
   .foot-g{grid-template-columns:1fr}
   .foot{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
   .room-t .btn{width:100%}
   .rating b{font-size:40px}
 }
 
-@media (max-width:860px){
-  .hero{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:76px 16px 20px;text-align:center}
-  .hero-line{font-size:25px;max-width:none}
-  .hero-line.a{margin-bottom:12px;text-align:center;align-self:auto}
-  .hero-b{align-self:auto;margin-bottom:0}
-  .hero-line.b{margin-top:14px}
-  .slot{height:calc(100svh - 252px)}
-  .hero-b{display:flex;align-items:center;gap:16px}
-  .hero-cta{align-items:center}
+/* round 4 (visual v1 fix 4): the joins between sections were one 900 px curve, repeated, with a small cusp at each
+   seam (x ~870 at 1440). Now four curves, each a smooth periodic tile (every crest and trough has a level tangent, the
+   seam included) wider than most of what it spans, set per section with its own offset, so no two joins in a row look
+   alike and none has a cusp */
+:root{
+  --wave-a:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 40' preserveAspectRatio='none'%3E%3Cpath d='M0 12C139 12 191 27 330 27C494 27 556 13 720 13C880 13 940 26 1100 26C1310 26 1390 12 1600 12V40H0Z'/%3E%3C/svg%3E");
+  --wave-b:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1100 40' preserveAspectRatio='none'%3E%3Cpath d='M0 26C126 26 174 11 300 11C434 11 486 24 620 24C729 24 771 14 880 14C972 14 1008 26 1100 26V40H0Z'/%3E%3C/svg%3E");
+  --wave-c:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1900 40' preserveAspectRatio='none'%3E%3Cpath d='M0 16C176 16 244 28 420 28C622 28 698 10 900 10C1110 10 1190 25 1400 25C1610 25 1690 16 1900 16V40H0Z'/%3E%3C/svg%3E");
+  --wave-d:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 40' preserveAspectRatio='none'%3E%3Cpath d='M0 22C118 22 162 12 280 12C431 12 489 27 640 27C783 27 837 9 980 9C1114 9 1166 22 1300 22V40H0Z'/%3E%3C/svg%3E");
 }
-.edge{position:relative}
+.edge{position:relative;--wv:var(--wave-a);--ww:1600px;--wx:0px}
 .edge::before{content:"";position:absolute;left:0;right:0;top:-39px;height:40px;background:var(--bg);pointer-events:none;
-  -webkit-mask:var(--wave) 0 100%/900px 40px repeat-x;mask:var(--wave) 0 100%/900px 40px repeat-x}
+  -webkit-mask:var(--wv) calc(var(--wx) * var(--wk,1)) 100%/calc(var(--ww) * var(--wk,1)) 40px repeat-x;mask:var(--wv) calc(var(--wx) * var(--wk,1)) 100%/calc(var(--ww) * var(--wk,1)) 40px repeat-x}
+@media (max-width:860px){.edge{--wk:.5}}
+.intro-s{--wv:var(--wave-a);--ww:1600px;--wx:-140px}
+#water{--wv:var(--wave-c);--ww:1900px;--wx:-380px}
+#counter{--wv:var(--wave-b);--ww:1100px;--wx:-120px}
+#rooms{--wv:var(--wave-d);--ww:1300px;--wx:-520px}
+#shop{--wv:var(--wave-a);--ww:1600px;--wx:-900px}
+#roof{--wv:var(--wave-c);--ww:1900px;--wx:-1100px}
+#baba{--wv:var(--wave-b);--ww:1100px;--wx:-640px}
+#guests{--wv:var(--wave-d);--ww:1300px;--wx:-160px}
+#road{--wv:var(--wave-a);--ww:1600px;--wx:-1240px}
+.closing{--wv:var(--wave-c);--ww:1900px;--wx:-720px}
+.foot{--wv:var(--wave-b);--ww:1100px;--wx:-330px}
 .sandg{--bg:var(--sand);background:var(--sand)}
 .aquag{--bg:var(--aqua);background:var(--aqua)}
 .skyg{--bg:var(--skyg);background:var(--skyg)}

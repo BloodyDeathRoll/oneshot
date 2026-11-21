@@ -1,0 +1,306 @@
+{
+ "calm": {
+  "overflow_320_js": {
+   "sw": 340,
+   "at": 0,
+   "els": [
+    "HEADER.top r=340 Coconut Surf Inn",
+    "SPAN.pl r=333 Free WiFi 24-hour front desk 2",
+    "SPAN.pi lb r=333 Swimwear and snacks for sale a",
+    "BUTTON.arw next r=340 ",
+    "svg.[object SVGAnimatedString] r=334 ",
+    "path.[object SVGAnimatedString] r=327 ",
+    "NAV.bar r=340 Check dates on Booking.com",
+    "A.btn bar-call r=328 "
+   ]
+  },
+  "overflow_360_js": {
+   "sw": 360,
+   "at": 0,
+   "els": []
+  },
+  "overflow_390_nojs": {
+   "sw": 390,
+   "at": 0,
+   "els": []
+  }
+ },
+ "interactive": {
+  "overflow_320_js": {
+   "sw": 320,
+   "at": 0,
+   "els": []
+  },
+  "overflow_360_js": {
+   "sw": 360,
+   "at": 0,
+   "els": []
+  },
+  "overflow_390_nojs": {
+   "sw": 390,
+   "at": 0,
+   "els": []
+  }
+ },
+ "unique": {
+  "overflow_320_js": {
+   "sw": 342,
+   "at": 0,
+   "els": [
+    "DIV.ctrl r=342 ",
+    "BUTTON.arw next r=338 ",
+    "svg.[object SVGAnimatedString] r=326 ",
+    "DIV.bar r=342 ",
+    "A.btn btn-ghost r=330 "
+   ]
+  },
+  "overflow_360_js": {
+   "sw": 362,
+   "at": 0,
+   "els": [
+    "DIV.ctrl r=362 ",
+    "DIV.bar r=362 "
+   ]
+  },
+  "overflow_390_nojs": {
+   "sw": 397,
+   "at": 0,
+   "els": [
+    "DIV.fc-now r=397 See today's forecast for Cocon",
+    "P.fc-plain r=397 See today's forecast for Cocon",
+    "A.btn btn-ghost r=397 See today's forecast for Cocon",
+    "P.credit r=397 Forecast for Coconuts by Rosa",
+    "DIV.rosa-box r=397 See today's forecast for Cocon",
+    "A.btn btn-ghost fallback r=397 See today's forecast for Cocon",
+    "DIV.bar r=397 Check dates on Booking.com Fin"
+   ]
+  }
+ },
+ "unique_setpiece_top": [
+  {
+   "i": "0",
+   "top": 5045,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk cur"
+  },
+  {
+   "i": "1",
+   "top": 5881,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk"
+  },
+  {
+   "i": "2",
+   "top": 6627,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk"
+  },
+  {
+   "i": "3",
+   "top": 7373,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk"
+  },
+  {
+   "i": "4",
+   "top": 8119,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk"
+  }
+ ],
+ "unique_setpiece_at_1": [
+  {
+   "i": "0",
+   "top": -536,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk"
+  },
+  {
+   "i": "1",
+   "top": 300,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk cur"
+  },
+  {
+   "i": "2",
+   "top": 1046,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk"
+  },
+  {
+   "i": "3",
+   "top": 1792,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk"
+  },
+  {
+   "i": "4",
+   "top": 2538,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk"
+  }
+ ],
+ "unique_setpiece_at_2": [
+  {
+   "i": "0",
+   "top": -1282,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk"
+  },
+  {
+   "i": "1",
+   "top": -446,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk"
+  },
+  {
+   "i": "2",
+   "top": 300,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk cur"
+  },
+  {
+   "i": "3",
+   "top": 1046,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk"
+  },
+  {
+   "i": "4",
+   "top": 1792,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk"
+  }
+ ],
+ "unique_setpiece_at_3": [
+  {
+   "i": "0",
+   "top": -2028,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk"
+  },
+  {
+   "i": "1",
+   "top": -1192,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk"
+  },
+  {
+   "i": "2",
+   "top": -446,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk"
+  },
+  {
+   "i": "3",
+   "top": 300,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk cur"
+  },
+  {
+   "i": "4",
+   "top": 1046,
+   "opacity": "1",
+   "color": "rgb(77, 111, 122)",
+   "subColor": "rgb(77, 111, 122)",
+   "cls": "blk"
+  }
+ ],
+ "interactive_canvas": [
+  {
+   "w": 1440,
+   "h": 900,
+   "op": "1",
+   "vis": "visible",
+   "disp": "block"
+  }
+ ],
+ "interactive_errs": [],
+ "interactive_canvas_noforce": [
+  {
+   "op": "1",
+   "disp": "block",
+   "cls": "depth live"
+  }
+ ],
+ "interactive_odd_tabstops": [
+  {
+   "i": 17,
+   "t": "Previous photo",
+   "inView": true,
+   "op": 0.22,
+   "outline": "solid 3px",
+   "shadow": "rgba(0, 0, 0, 0.4) 0px 6px 16px -8px"
+  },
+  {
+   "i": 24,
+   "t": "Next photo",
+   "inView": true,
+   "op": 0.07,
+   "outline": "solid 3px",
+   "shadow": "rgba(0, 0, 0, 0.4) 0px 6px 16px -8px"
+  },
+  {
+   "i": 28,
+   "t": "Previous photo",
+   "inView": true,
+   "op": 0.07,
+   "outline": "solid 3px",
+   "shadow": "rgba(0, 0, 0, 0.4) 0px 6px 16px -8px"
+  },
+  {
+   "i": 32,
+   "t": "Next photo",
+   "inView": true,
+   "op": 0.22,
+   "outline": "solid 3px",
+   "shadow": "rgba(0, 0, 0, 0.4) 0px 6px 16px -8px"
+  },
+  {
+   "i": 35,
+   "t": "IFRAME",
+   "inView": true,
+   "op": 0,
+   "outline": "none 3px",
+   "shadow": "none"
+  }
+ ]
+}

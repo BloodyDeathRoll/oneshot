@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<title>A website for Cheeky Monkey Surf Camp</title>
+<meta name="description" content="A proposal for Cheeky Monkey Surf Camp, Midigama: the website preview we built, what it changes for a guest on a phone, what you will be able to edit yourself, and the ways it can run.">
+<style>
+:root{
+  --bg:#f6f8fa; --paper:#ffffff; --ink:#0f1a2b; --muted:#4f5b6b; --line:#d9e0e7;
+  --accent:#0b6fc4; --accent-ink:#ffffff; --blue:#0b5cad; --soft:#eaf2fb; --warn:#fff6e0; --warn-line:#e0a526;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#0e141c; --paper:#16202b; --ink:#e8edf3; --muted:#a8b3c0; --line:#2a3644; --blue:#7db8ff; --soft:#1a2836; --warn:#2a2416; --warn-line:#b8862a; }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+a{color:var(--blue)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header.top{padding:40px 16px 24px}
+.kicker{color:var(--muted);font-size:15px;margin:0 0 8px}
+h1{font-size:clamp(30px,6vw,48px);line-height:1.1;font-weight:600;margin:0 0 16px;letter-spacing:-.01em}
+h2{font-size:clamp(23px,4vw,30px);line-height:1.2;font-weight:600;margin:0 0 14px}
+h3{font-size:18px;margin:0 0 6px}
+p{margin:0 0 14px}
+.lede{font-size:19px;max-width:44em}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:12px 20px;background:var(--accent);color:var(--accent-ink);font-weight:600;text-decoration:none;border-radius:4px;word-break:break-all}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.note{color:var(--muted);font-size:15px}
+section{padding:36px 16px;border-top:1px solid var(--line)}
+.grid2{display:grid;gap:24px;grid-template-columns:1fr}
+.shots{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+figure{margin:0}
+figure img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+figcaption{font-size:14px;color:var(--muted);margin-top:6px}
+.wide{margin-top:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px}
+.fix{display:grid;gap:18px;grid-template-columns:1fr;margin-top:20px}
+.fix .card h3{margin-bottom:10px}
+.fix .label{display:block;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:10px 0 2px}
+.fix figure{max-width:300px}
+.fix figure+figure{margin-top:14px}
+table{border-collapse:collapse;width:100%;background:var(--paper);border:1px solid var(--line);border-radius:8px;font-size:16px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-top:1px solid var(--line)}
+thead th{border-top:0;font-size:14px;color:var(--muted);font-weight:600}
+tbody th{font-weight:600;width:22%}
+.tablewrap{overflow-x:auto}
+.tabs{list-style:none;padding:0;margin:0;display:grid;gap:8px;grid-template-columns:1fr}
+.tabs li{padding:10px 14px;background:var(--paper);border:1px solid var(--line);border-radius:6px}
+.tabs li>strong:first-child{display:block}
+.offer{background:var(--soft);border-left:4px solid var(--blue);padding:18px 20px;border-radius:4px;max-width:46em}
+.ask{background:var(--warn);border-left:4px solid var(--warn-line);padding:18px 20px;border-radius:4px;max-width:46em;margin-top:20px}
+.ask p:last-child{margin-bottom:0}
+ol.confirm{padding-left:22px;margin:0;max-width:46em}
+ol.confirm li{margin-bottom:10px}
+footer{padding:28px 16px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (min-width:720px){
+  .grid2{grid-template-columns:1fr 1fr}
+  .fix{grid-template-columns:1fr 1fr}
+  .tabs{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  table,thead,tbody,tr,th,td{display:block}
+  thead{display:none}
+  tbody tr{border-top:1px solid var(--line);padding:10px 12px}
+  tbody tr:first-child{border-top:0}
+  tbody th,tbody td{border:0;padding:2px 0;width:auto}
+  tbody td::before{content:attr(data-h);display:block;font-size:13px;font-weight:600;color:var(--muted)}
+}
+@media (max-width:420px){ .shots{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<header class="top wrap">
+  <p class="kicker">A proposal for Cheeky Monkey Surf Camp, Midigama, Sri Lanka</p>
+  <h1>We built Cheeky Monkey a new website</h1>
+  <p class="lede">Your guests rate Cheeky Monkey 4.5 out of 5 on Google, from 467 reviews, and 8.3 out of 10 on Booking.com, from 45 (read 26 October 2026). We built a site that puts your surf weeks, rooms, shop and guests' words in front of a traveller on a phone, with Booking.com and your phone number one tap away. It is made from your own pages, photos, Instagram reel and Booking.com listing. You can open it now:</p>
+  <p><a class="btn" href="https://cheeky-monkey-surf-camp.os1.workers.dev/">cheeky-monkey-surf-camp.os1.workers.dev</a></p>
+  <p class="note">This is a private preview. Search engines are told not to list it, so it is not on Google. cheekymonkeymidigama.com stays exactly as it is. Nothing goes public until you decide.</p>
+</header>
+
+<main>
+<section class="wrap" aria-labelledby="h-first">
+  <h2 id="h-first">The first screen on a phone</h2>
+  <div class="shots">
+    <figure>
+      <img src="before-home-390.jpg" width="780" height="1688" loading="lazy" alt="Our screenshot of cheekymonkeymidigama.com on a phone, 26 October 2026: nine lines of a WordPress Notice message at the top, then the Cheeky Monkey logo, the menu icon, and a photo of a surfer holding a yellow board under the words Welcome to Cheeky Monkey, Your Surf and Yoga Camp in Midigama. No button.">
+      <figcaption>Today: cheekymonkeymidigama.com on a phone. Our screenshot, 26 October 2026.</figcaption>
+    </figure>
+    <figure>
+      <img src="after-390-top.jpg" width="780" height="1688" loading="lazy" alt="The preview on a phone: drone view of the Midigama coast, turquoise reef water, the rock wall along the coast road and the village under the palms. At the top, Cheeky Monkey, Surf Camp, Midigama, Sri Lanka, a Book button and a call button; at the bottom the line Come as a stranger, leave as a friend, and the button Check dates on Booking.com.">
+      <figcaption>The preview on a phone, 4 November 2026. A drone loop plays behind the line (here its first frame).</figcaption>
+    </figure>
+  </div>
+  <div class="grid2 wide">
+    <figure>
+      <img src="after-390-drone.jpg" width="780" height="1688" loading="lazy" alt="The preview on a phone, a moment later in the loop: a surfer riding a green reef wave, seen from the drone, with a round pause button under the call button.">
+      <figcaption>A frame from the loop, on a phone.</figcaption>
+    </figure>
+    <figure>
+      <img src="after-1440-drone.jpg" width="1440" height="900" loading="lazy" alt="The preview on a laptop: a surfer on a green reef wave with another paddling out, the menu Surf weeks, Rooms, Shop, Plan a stay, Book and a call button, the button Check dates on Booking.com, and a round pause button at the bottom right.">
+      <figcaption>The same loop on a laptop, 4 November 2026.</figcaption>
+    </figure>
+  </div>
+  <div class="ask">
+    <p><strong>One question about this footage.</strong> These drone shots come from the 2018 promo film Lorenzo Marzocca made for Cheeky Monkey, which is on his YouTube channel. The preview credits him at the foot of the page. We don't know who holds the rights, so we use the shots only on this private preview. Could you tell us whether we may use them on the live site, or who we should ask? If we can't confirm it, the first screen switches to your own photos before the site goes live. If you have the original footage, it would also look sharper than the YouTube copy.</p>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-numbers">
+  <h2 id="h-numbers">Booking from a phone, before and after</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th scope="col"></th><th scope="col">cheekymonkeymidigama.com today</th><th scope="col">The preview</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Booking</th>
+        <td data-h="cheekymonkeymidigama.com today">No booking button on any of the 4 pages the menu reaches. The only action is an email link 5,360 pixels down the home page. Nothing leads to Booking.com, where your rooms are sold.</td>
+        <td data-h="The preview">"Check dates on Booking.com" on the first screen and "Book" in the header: one tap to your Booking.com listing. After the first scroll the button stays in a bar at the bottom of the phone screen.</td></tr>
+      <tr><th scope="row">The phone</th>
+        <td data-h="cheekymonkeymidigama.com today">(+94) 71 924 8686 is plain text, 5,410 pixels down the home page. Tapping it does nothing.</td>
+        <td data-h="The preview">A call button in the header on every screen, and "Call to book" beside the surf weeks and the lessons.</td></tr>
+      <tr><th scope="row">Prices</th>
+        <td data-h="cheekymonkeymidigama.com today">On two pages the menu does not link to, and on the packages page inside a closed "Prices" accordion.</td>
+        <td data-h="The preview">Your four surf weeks, priced per person for 7 nights by room, and lessons at USD 20 per person for 90 minutes. Each says it was published in 2021, with "call to confirm".</td></tr>
+      <tr><th scope="row">The rooms</th>
+        <td data-h="cheekymonkeymidigama.com today">A banner under the first photo says the rooms "aren't bookable right now". On Booking.com they are on sale, with reviews of stays up to September 2026.</td>
+        <td data-h="The preview">Your five Booking.com room types, each with its photos and a button to live dates on Booking.com.</td></tr>
+      <tr><th scope="row">Guest reviews</th>
+        <td data-h="cheekymonkeymidigama.com today">None on the site.</td>
+        <td data-h="The preview">Google 4.5/5 from 467 reviews and Booking.com 8.3/10 from 45, with the date we read them, and 11 guest reviews quoted word for word.</td></tr>
+      <tr><th scope="row">On a 390-pixel phone</th>
+        <td data-h="cheekymonkeymidigama.com today">The home page is 470 pixels wide, so it scrolls sideways; the email address and the price table are cut off at the right edge.</td>
+        <td data-h="The preview">Fits the screen. Every button and link is at least 44 pixels high.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note wide">On a slowed-down phone test (4 November 2026) the preview opened with 691 KB and 0 requests to outside servers, and the main content showed in about half a second. The video starts after that; with reduced motion switched on, the still photo stays and nothing moves. The booking links work with JavaScript switched off.</p>
+</section>
+
+<section class="wrap" aria-labelledby="h-fixed">
+  <h2 id="h-fixed">What a guest meets today, and what the preview does instead</h2>
+  <p>We walked cheekymonkeymidigama.com on a phone on 26 October 2026, as a guest would, without booking anything. These screenshots are from that walk.</p>
+  <div class="fix">
+    <div class="card">
+      <h3>The first screen has no button</h3>
+      <span class="label">Today</span>
+      <p>Every page opens with nine lines of a WordPress "Notice" message, which fill the top half of the phone screen above your logo. The menu reaches Home, About us, Surf Shop &amp; Activities and Contact us, and none of them has a booking button or a price.</p>
+      <span class="label">On the preview</span>
+      <p>The first screen is the coast and the surf from the air, with your name, "Surf Camp | Midigama, Sri Lanka", and "Check dates on Booking.com". "Book" and a call button stay in the header as the guest scrolls.</p>
+      <figure><img src="before-home-390.jpg" width="780" height="1688" loading="lazy" alt="Our screenshot of the cheekymonkeymidigama.com home page on a phone, 26 October 2026, as described above."><figcaption>Home, first screen, 26 October 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>The site says the rooms can't be booked</h3>
+      <span class="label">Today</span>
+      <p>Right under the first photo, a black banner says the rooms are being renovated and "aren't bookable right now". Booking.com sells the same rooms, and its 45 reviews are from stays between September 2025 and September 2026. A guest who came for a room reads that there is none.</p>
+      <span class="label">On the preview</span>
+      <p>"The rooms" shows your five Booking.com room types with their photos, beds and views, and each one links to live dates on Booking.com. The preview says nothing about whether you are open (see the questions below).</p>
+      <figure><img src="before-banner-390.jpg" width="780" height="1688" loading="lazy" alt="Our screenshot of the home page on a phone, 26 October 2026: under the surfer photo, a black banner reading Good to know: We're renovating our rooms to make your next stay even cheekier and comfier! While the rooms are getting their glow-up and aren't bookable right now, our surf store is still open and ready for you! Below it, the photo of Baba's Surf Shop and Surf School on the main road."><figcaption>The banner under the home page photo, 26 October 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>The prices are on pages nobody reaches</h3>
+      <span class="label">Today</span>
+      <p>Your site does publish lesson, surf-week and B&amp;B prices, on /our-services/ and /surf-camp-packages-sri-lanka/. No menu item links to either page, and on the packages page the price table is inside a closed "Prices" accordion. On a phone the table is cut off at the right edge.</p>
+      <span class="label">On the preview</span>
+      <p>"A week of surf" shows the four packages on cards, from USD 300–400 per person for 7 nights for the Full Surf Lesson Package, with the price for a private room, a shared double and a shared triple. "Lessons for your level" shows USD 20 per person for 90 minutes. Every price says it was published in 2021, and asks the guest to call to confirm.</p>
+      <figure><img src="before-prices-390.jpg" width="780" height="1688" loading="lazy" alt="Our screenshot of the packages page on a phone, 26 October 2026: the Prices accordion opened, a table of USD per-week prices for the Full Surf Lessons Package, the Moderate Surf Lesson package and a third column cut off at the right edge, each cell with a red Book Now button."><figcaption>The packages page, with the "Prices" accordion opened, 26 October 2026.</figcaption></figure>
+      <figure><img src="after-390-weeks.jpg" width="780" height="1688" loading="lazy" alt="The preview's surf weeks on a phone: a line saying you pay per person for the week, depending on the room, and that the prices were published in 2021 so call to confirm; then the card Full Surf Lesson Package, USD 300–400, per person, 7 nights, with a photo of surfers practising on boards on the sand, and the next card beside it. At the bottom, the bar Check dates on Booking.com and Plan a stay."><figcaption>The preview's surf weeks, 4 November 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>The phone number can't be tapped</h3>
+      <span class="label">Today</span>
+      <p>The number is plain text 5,410 pixels down the home page and on the contact page, so a guest has to copy it by hand. No page has a call link or a WhatsApp link. On a phone the email address runs off the edge of the contact box.</p>
+      <span class="label">On the preview</span>
+      <p>The call button is in the header on every screen, and "Call to book" sits beside the surf weeks and the lessons. The email links open a message with the subject already filled in, such as "Cheeky Monkey: Full Surf Lesson Package week".</p>
+      <figure><img src="before-phone-390.jpg" width="780" height="1688" loading="lazy" alt="Our screenshot of the home page's Contact us box on a phone, 26 October 2026: E-Mail: cheekymonkeymidi@gm cut off at the right edge, Phone: (+94) 71 924 8686 as plain text, Instagram: @cheekymonkeysrilanka."><figcaption>The Contact us box on the home page, 26 October 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>The forms and the enquiry button show code</h3>
+      <span class="label">Today</span>
+      <p>Where the contact form should be, the contact page shows "[contact-form-7 id="117"]" as text, and the booking page shows "[ninja_form id="2"]". On /our-services/, under "Reservation Enquiry!!", the button to Booking.com appears as a line of code instead of a button.</p>
+      <span class="label">On the preview</span>
+      <p>No forms to break. "Plan a stay" opens a panel that asks what the guest wants: a room, a surf week, a lesson or a board. A room goes to Booking.com. A surf week shows the price for the room they pick, then "Call about this week" or an email that names the package and the room.</p>
+      <figure><img src="before-contact-390.jpg" width="780" height="440" loading="lazy" alt="Our screenshot of the contact page on a phone, 26 October 2026: the text [heading text=Send Us Message tag=h3] [contact-form-7 id=117] where the form should be, then the address, phone, email and web address."><figcaption>The contact page, 26 October 2026.</figcaption></figure>
+      <figure><img src="before-enquiry-390.jpg" width="780" height="308" loading="lazy" alt="Our screenshot of /our-services/ on a phone, 26 October 2026: the heading Reservation Enquiry!! and under it a line of code beginning [button2 class=btn-line btn-big mt10 linkbox=url:https%3A%2F%2Fwww.booking.com."><figcaption>"Reservation Enquiry!!" on /our-services/, 26 October 2026.</figcaption></figure>
+      <figure><img src="after-390-plan.jpg" width="780" height="1688" loading="lazy" alt="The preview's Plan a stay panel on a phone: What would you like to book? A room, five rooms, live dates on Booking.com; A surf week, four packages, from USD 250; A lesson, 90 min, USD 20 per person; A board, 400 boards to rent."><figcaption>"Plan a stay" on the preview, 4 November 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>What guests say is not on the site</h3>
+      <span class="label">Today</span>
+      <p>The site shows no rating and no review, although Google has 4.5 from 467 reviews and Booking.com 8.3 from 45.</p>
+      <span class="label">On the preview</span>
+      <p>"What guests say" quotes 11 guests word for word, with their names and where they wrote it, and shows both ratings with the review count and the date we read them.</p>
+      <figure><img src="after-390-guests.jpg" width="780" height="1688" loading="lazy" alt="The preview's guest section on a phone: review 1 of 11, a quote from Christina about the helpful staff, the nice rooms, the surf shop's selection and Baba taking care of you, then two cards: 4.5/5 Google, 467 reviews, 26 Oct 2026, and 8.3/10 Booking.com, 45 reviews, 26 Oct 2026."><figcaption>The preview's guest section, 4 November 2026.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-also">
+  <h2 id="h-also">Also on the preview</h2>
+  <ul>
+    <li>Your own photographs, and your Instagram reel of new boards on the rack (7 October 2026) playing inside a surfboard shape under "Catch waves, not worries".</li>
+    <li>"Down at the water", "Baba's Surf Shop" with the 400 boards to rent and the brands you stock, "Up on the roof", and "Three rooms in 2009", the story of how Cheeky Monkey started.</li>
+    <li>Check-in and check-out times and the house rules from Booking.com, and "Getting here" with the distances Booking.com gives to the beach, the station and the airport.</li>
+    <li>No chat widget, no pop-up, no tracker.</li>
+    <li>Every fact on the preview comes from your site, Booking.com, Google, Instagram, Facebook or the press, and the surf forecast is Rosa's live data for Rams. Our reviewer checked them against those sources: 0 mismatches.</li>
+  </ul>
+</section>
+
+<section class="wrap" aria-labelledby="h-off">
+  <h2 id="h-off">Also worth doing, outside the website</h2>
+  <ul>
+    <li><strong>Add the website to your Google listings.</strong> On Google Maps, where many travellers find you, the Cheeky Monkey listing shows a Call button but no website: Google offers "Add website" under "Add missing information". The same goes for the Baba's Surf Shop listing.</li>
+    <li><strong>Say the same thing everywhere about what is open.</strong> The Instagram bio starts with "OPEN … Rooms". Facebook says "Always open" in its details, and "closed for low season" in its intro. The website says the rooms are not bookable. Once you tell us what is open, the Facebook intro and hours and the Instagram bio can say the same as the site.</li>
+  </ul>
+  <figure class="wide" style="max-width:420px">
+    <img src="before-google.jpg" width="416" height="490" loading="lazy" alt="Our screenshot of the Cheeky Monkey listing on Google Maps, 26 October 2026: the address on the Galle - Matara Main Road, +94 71 924 8686, check-in 14:00 and check-out 11:00, and under Add missing information, Add website and Add a photo.">
+    <figcaption>Your Google listing, 26 October 2026: no website.</figcaption>
+  </figure>
+</section>
+
+<section class="wrap" aria-labelledby="h-edit">
+  <h2 id="h-edit">What you will be able to change yourself</h2>
+  <p>Today the preview is a finished build, with no login yet. With the managed or the self-hosted option below, you get your own login to a simple admin page that shows only Cheeky Monkey. You fill in fields, not code, so an edit can't break the design. Press Publish, and the site rebuilds itself.</p>
+  <ul class="tabs">
+    <li><strong>Basics</strong> the name, the tagline, the line on the first screen and the closing line</li>
+    <li><strong>Text</strong> the introduction, Baba's story, the shop, the roof, the lessons, the surf weeks, getting here and good to know</li>
+    <li><strong>Prices</strong> the surf-week prices by room, and the airport transfers</li>
+    <li><strong>Lessons</strong> the price, the length, the levels, the other lesson types and the group size</li>
+    <li><strong>Photos and video</strong> the first-screen video and its still, the shop reel and the photos across the page. Upload from your phone; the site makes the sizes itself.</li>
+    <li><strong>Rooms and stay</strong> each room's beds, size, view and photo; check-in and check-out times and the house rules</li>
+    <li><strong>Shop</strong> the boards to rent and the brands you stock</li>
+    <li><strong>Surf</strong> the spot and the season</li>
+    <li><strong>Reviews</strong> remove any rating or quote; we add new ones with their source</li>
+    <li><strong>Contact and booking</strong> phone, email, address, map link, the Booking.com link and Instagram</li>
+  </ul>
+  <p class="wide">The layout, colours and fonts stay fixed. Some parts of this design have no field yet: the package names and what every week includes, the "Published 2021" year on the lessons, the extra photos in each room's slideshow, the credit under the drone footage, the social links, the place line in the header and the board step in "Plan a stay". We change those for you when you ask.</p>
+</section>
+
+<section class="wrap" aria-labelledby="h-offer">
+  <h2 id="h-offer">How it can run: you choose</h2>
+  <div class="offer">
+    <p>Nothing is set up yet: no hosting, no login, no domain. We set it up once you choose. <strong>Managed</strong> is the one we recommend: we host the site and keep it running, and hosting, updates and backups are our job. You pay a monthly fee that we agree with you, and you edit your content whenever you like. <strong>Self-hosted</strong>: we install the same site and editor on a server of your own for a one-time fee that we agree with you. It is then fully yours. You pay your server company roughly $6–12 a month, and you take care of updates and backups yourself. <strong>Files only</strong>: if you never want to edit it yourself, we hand you the finished site as files that run on any web host; every change then needs a developer.</p>
+    <p class="note">You already have cheekymonkeymidigama.com. If you want the new site on that address, we connect it once you have chosen.</p>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-confirm">
+  <h2 id="h-confirm">Before it goes live, we need you to confirm</h2>
+  <ol class="confirm">
+    <li><strong>The drone footage on the first screen.</strong> It comes from Lorenzo Marzocca's 2018 promo film for Cheeky Monkey. May we use it on the live site, or who should we ask? If we can't confirm it, the first screen switches to your own photos before going live.</li>
+    <li><strong>What is open, and when.</strong> Your site says the rooms are not bookable, Facebook says Midigama is closed for low season, and Booking.com and Instagram are active. The preview says nothing either way. Tell us what is open, and we add a line that says so, which we update when the season changes.</li>
+    <li><strong>Prices.</strong> Every price on the preview is from your 2021 pages, and is marked that way. Send us the current ones. The B&amp;B room rates are left out because your two pages give two different prices for the same double room (USD 20 and 22$).</li>
+    <li><strong>The surf weeks and payment.</strong> The preview lists a party night and five dinners from your 2021 packages page. Booking.com's house rules now say parties and events are not allowed, and guests have found the restaurant closed. Do both still happen? It also says cash only, and to bring a credit card for check-in, as Booking.com does. Is that right?</li>
+    <li><strong>Board rental prices.</strong> The shop rents 400 boards, but we found no rental price or deposit anywhere. If you send them, we add them.</li>
+    <li><strong>WhatsApp.</strong> If +94 71 924 8686 is on WhatsApp, we add a WhatsApp button with a message already started.</li>
+    <li><strong>The name of the owner.</strong> The preview says only "Baba". A 2021 press article names Pasindu Delgodage, and your About page names the Dodangoda family. Tell us how you want to be named.</li>
+    <li><strong>Shop hours.</strong> Instagram says 7am–6pm; Google says Monday 8 am–7 pm. The preview shows no hours until you tell us.</li>
+    <li><strong>AI assistants.</strong> Once live, assistants such as ChatGPT can read the site and quote it to travellers. Keep that, or block the ones that train on it?</li>
+  </ol>
+  <p class="wide">The preview's live surf forecast is for Rams, the nearest spot Rosa covers. We could not find the names of the breaks you surf, your instructors, or a video of your own published anywhere. If you send them, we add them.</p>
+</section>
+
+<section class="wrap" aria-labelledby="h-reply">
+  <h2 id="h-reply">How to reply</h2>
+  <p>Open the preview first: <a href="https://cheeky-monkey-surf-camp.os1.workers.dev/">cheeky-monkey-surf-camp.os1.workers.dev</a>. If you have questions, or want to go ahead, reply to the message or the email this page came with. There is no obligation, and the preview stays private until you decide.</p>
+</section>
+</main>
+
+<footer class="wrap">
+  <p>Prepared 4 November 2026. Screenshots of cheekymonkeymidigama.com and of the Google listing are ours, taken on 26 October 2026. Screenshots of the preview were taken on 4 November 2026. The drone frames are from Lorenzo Marzocca's 2018 promo film for Cheeky Monkey, shown here as they appear on the private preview.</p>
+</footer>
+</body>
+</html>

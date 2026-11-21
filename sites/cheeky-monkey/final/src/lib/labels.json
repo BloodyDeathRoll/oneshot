@@ -3,6 +3,10 @@
  "skip": "Skip to surf weeks and prices",
  "nav": { "counter": "Surf weeks", "rooms": "Rooms", "shop": "Shop" },
  "plan": "Plan a stay",
+ "book_short": "Book",
+ "book_short_aria": "Book a room on Booking.com",
+ "pause": "Pause the videos",
+ "hero_credit": "Drone footage: {person} ({what})",
  "call_aria": "Call",
  "water": { "title": "Down at the water", "spot": "The spot", "season": "The season", "see_weeks": "See the surf weeks" },
  "weeks": {
@@ -18,7 +22,14 @@
  "guests": { "title": "What guests say", "prev": "Previous review", "next": "Next review", "dot": "Review {i} of {n}", "track_aria": "Guest reviews" },
  "road": { "map": "Open in Google Maps" },
  "closing": { "sr": "Book", "email": "Email us" },
- "ig": { "sr": "Instagram", "follow": "Follow" },
+ "ig": { "sr": "Instagram", "follow": "Follow us on Instagram" },
+ "forecast": {
+  "title": "Waves at {spot}",
+  "wait": "Getting Rosa's latest forecast for {spot}", "off": "No fresh forecast just now", "off_more": "Rosa's own page for {spot} has today's forecast.",
+  "when": "Forecast for {day} {time}", "upd": "Rosa updated it on {day} {month} at {time}",
+  "credit": "Forecast for {spot} by Rosa", "link": "See today's forecast for {spot} on Rosa",
+  "alt": "Wave height, swell and wind for {spot}"
+ },
  "footer": { "rooms": "Rooms on Booking.com" },
  "drawer": {
   "start": "What would you like to book?",
@@ -27,7 +38,7 @@
   "week_tile": "{n} packages, from {price}",
   "which_room": "Which room?", "which_week": "Which week?", "week_aria": "Surf week", "room_aria": "Room",
   "room_private": "Private", "room_double": "Shared double", "room_triple": "Shared triple",
-  "handoff": "Live dates and prices for every room are on Booking.com.",
+  "handoff": "Live dates and prices for every room are on Booking.com.", "handoff_look": "Look for the {room} on the list.",
   "week_call": "Call about this week", "email": "Email", "call": "Call",
   "dated_week": "Published {year}, call to confirm before you book",
   "dated_lesson": "Published {year}, call to confirm before you come",

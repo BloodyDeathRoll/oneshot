@@ -1,0 +1,3788 @@
+{
+ "slug": "lotus-surf-house",
+ "run_id": "2026-10-midigama-01",
+ "harvester_version": "0.5.0",
+ "harvested_at": "2026-11-03T18:10:00Z",
+ "businessType": "beach_lodging",
+ "business": {
+  "name": {
+   "value": "Lotus Surf House",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z",
+   "note": "The name on its Booking.com listing (hotel id 5590766), its Google listing, the entrance sign in its own photo img-018 (\"Lotus Surf House MIDIGAMA\"), Kayak and Priceline. Earlier name 'Yelum Guest House': Booking's old URL /hotel/lk/yelum-guest-house redirects to this listing; a second Google listing 'Yelum Guest House' (same phone, same address, 7 m apart) and Kayak's English URL still carry it; the Facebook page is 'Midigama guesthouse YELUM'."
+  },
+  "former_names": {
+   "value": [
+    "Yelum Guest House",
+    "Midigama guesthouse YELUM"
+   ],
+   "source_url": "https://www.google.com/maps/place/Yelum+Guest+House/data=!4m10!3m9!1s0x3ae114c1a01189c7:0x43e62c20fba3efe5!5m2!4m1!1i2!8m2!3d5.9651521!4d80.3922717!16s%2Fg%2F11cjgd948_!19sChIJx4kRoMEU4ToR5e-j-yAs5kM?hl=en",
+   "fetched_at": "2026-11-03T17:37:54Z",
+   "note": "Google listing 'Yelum Guest House' (4.7, 13 reviews, category 'Guest house', same phone +94 77 464 7541, website field = the Facebook page); https://www.booking.com/hotel/lk/yelum-guest-house.en-gb.html redirects (302) to /hotel/lk/lotus-surf-house; Facebook page title 'Midigama guesthouse YELUM'"
+  },
+  "type": {
+   "value": "beach_lodging",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z",
+   "note": "sells beds with breakfast near the Midigama breaks; no lessons, rentals or shop of its own (guests rent boards 'just at the corner of the beach', not here). Booking files it as a 3-star 'Hotel', Google as '3-star hotel', the older Google listing as 'Guest house'; guests call it a family-run guesthouse/homestay."
+  },
+  "businessType_note": "beach_lodging per verticals/surf/business-types.md: a bed near the wave, no lessons of its own. Surf-related through its name, its location in front of Lazy Left / Lazy Right (guests) and its surfer clientele; the business itself publishes no surf service.",
+  "tagline": {
+   "value": null,
+   "gap": "no tagline or own words published anywhere (no own site, Facebook intro empty)"
+  },
+  "description": {
+   "value": "Set 300 metres from Midigama Beach, Lotus Surf House offers 3-star accommodation in Midigama and has a garden, a shared lounge and a terrace. The accommodation offers a shared kitchen, room service and luggage storage for guests.\n\nFeaturing a private bathroom with a shower, rooms at the hotel also have free WiFi, while some rooms also offer a balcony.\n\nGuests at Lotus Surf House can enjoy a continental breakfast.\n\nYou can play table tennis at the accommodation, and the area is popular for hiking and fishing.\n\nKoggala Airport is 10 km from the property, and the property offers a paid airport shuttle service.",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z",
+   "language": "en",
+   "note": "Booking.com's property description (Booking-written from the property's facility data, not the owner's prose). Booking also shows an AI-written summary ('Comfortable Accommodations … Exceptional Facilities …') that claims 'family rooms', 'each room includes a … balcony' and 'a hot tub' as a shared amenity — not used: contradicted by the room data (balconies only on the King rooms; hot tub listed per King room only)."
+  },
+  "owner_voice": {
+   "value": "Dear Nadia, I am so very sorry that your expectations were not met. The planned completion of our new deluxe rooms and the even larger roof terrace could unfortunately not be guaranteed at the time of your stay. … The standard rooms may not be the newest, but they are popular with many vacationers due to their charm. … Breakfast is served from 8 a.m. to 10 a.m. … Best regards and thank you for your kind words. Yelum",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-b7169b68c4d67dc7",
+   "fetched_at": "2026-11-03T17:37:19Z",
+   "note": "the owner's only long text in public: his signed reply to a 2/10 review (Nadia, Booking 2025-03-12), elided here; full text in reviews.quotes. His other 69 replies are short thanks. No own description exists — the copywriter writes from the facts."
+  },
+  "owner": {
+   "value": "Yelum",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-b7169b68c4d67dc7",
+   "fetched_at": "2026-11-03T17:37:19Z",
+   "note": "signs his Booking replies 'Yelum'; guests name 'Yelum' (also spelt Yellum, Yelem, Yulem, Lium) as the owner and host in 30+ reviews, 'Yelum and his wife' (Gravina 2026-02, Marlene 2025-11), 'he and his family run the location' (Sylvia 2025-03), breakfast 'made by Yelum mother' (Fiona 2024-12) / 'by him and his mom' (Benjamin 2025-10), 'Yelum and his Father' (Svenja 2024-02). The Facebook page post says 'Midigama guesthouse YELUM is with Yelum Manoj' (2018) — surname/full name not used on the site unless the owner confirms."
+  },
+  "run_by": {
+   "value": "the owner Yelum with his wife and family",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-8247912dc328a31d",
+   "fetched_at": "2026-11-03T17:37:19Z",
+   "note": "guests: 'The couple who own and run the place' (Adele 2026-04), 'Yelum and his wife' (Gravina 2026-02), 'He and his family run the location' (Sylvia 2025-03)"
+  },
+  "since": {
+   "value": null,
+   "gap": "opening year not published. Earliest evidence: Facebook page post 12 Nov 2018; Booking photos uploaded 2021-10-30; earliest Booking review 2023-12-01; a guest (Holtmann, 2025-09) says \"We were here 5 years ago\"."
+  },
+  "recent_works": {
+   "value": "new upstairs rooms (the King Rooms with balcony, A/C, hot water) and a larger roof terrace built 2024–2025",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-b7169b68c4d67dc7",
+   "fetched_at": "2026-11-03T17:37:19Z",
+   "note": "owner reply (2025-03): 'planned completion of our new deluxe rooms and the even larger roof terrace'; Fiona 2024-12: 'Upstairs communal area has been replaced with new rooms'; King-room photos uploaded 2025-03-11 to 2025-12-24; reviews from 2025-10 on call the King room 'recently renovated', 'brand new'"
+  },
+  "stars": {
+   "value": "3-star (as Booking and Google label it)",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z",
+   "note": "no star certificate published; Booking shows \"3-star accommodation\", Google \"3-star hotel\""
+  }
+ },
+ "location": {
+  "address": {
+   "value": "5.965106, 80.392243, Indhana Rd, Midigama 80650, Sri Lanka",
+   "source_url": "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en",
+   "fetched_at": "2026-11-03T17:37:54Z",
+   "note": "Google listing address exactly as shown (aria-label 'Address: 5.965106, 80.392243, Indhana Rd, Midigama 80650, Sri Lanka'); Google prefixes the coordinates. Site form per playbook §6 (street, town postcode, country; Google's words): 'Indhana Rd, Midigama 80650, Sri Lanka'. Judgement call: dropping the coordinate prefix is a deletion of Google's words, not a change of them — flagged for the copyeditor."
+  },
+  "address_site_form": {
+   "value": "Indhana Rd, Midigama 80650, Sri Lanka",
+   "source_url": "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en",
+   "fetched_at": "2026-11-03T17:37:54Z",
+   "note": "derived from the Google listing address above by removing the leading coordinates only"
+  },
+  "address_other_platforms": [
+   {
+    "value": "Indhana Road, 80650 Midigama, Sri Lanka",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+    "fetched_at": "2026-11-03T17:33:45Z",
+    "note": "Booking.com"
+   },
+   {
+    "value": "5.965106, 80.392243, Indhana Rd, Sri Lanka",
+    "source_url": "https://www.google.com/maps/place/Yelum+Guest+House/data=!4m10!3m9!1s0x3ae114c1a01189c7:0x43e62c20fba3efe5!5m2!4m1!1i2!8m2!3d5.9651521!4d80.3922717!16s%2Fg%2F11cjgd948_!19sChIJx4kRoMEU4ToR5e-j-yAs5kM?hl=en",
+    "fetched_at": "2026-11-03T17:37:54Z",
+    "note": "the older Google listing 'Yelum Guest House' (no town, no postcode)"
+   },
+   {
+    "value": "Indhana Road, Midigama East 11200, Sri Lanka",
+    "source_url": "https://www.kayak.com/Midigama-East-Hotels-Yelum-Guest-House.3733075.ksp",
+    "fetched_at": "2026-11-03T17:39:27Z",
+    "note": "Kayak — postcode 11200 disagrees with Google/Booking 80650"
+   },
+   {
+    "value": "Midigama ahangama, Matara, Sri Lanka",
+    "source_url": "https://www.facebook.com/people/Midigama-guesthouse-YELUM/100054389085744/",
+    "fetched_at": "2026-11-03T17:38:28Z",
+    "note": "Facebook page intro"
+   }
+  ],
+  "lat_lng": {
+   "value": [
+    5.9652192,
+    80.3922802
+   ],
+   "source_url": "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en",
+   "fetched_at": "2026-11-03T17:37:54Z",
+   "note": "Google pin; Booking 5.965220660954416, 80.3922872591272; OSM node \"Lotus Surf House\" (guest_house) 5.965203, 80.39234 (scout log)"
+  },
+  "plus_code": {
+   "value": "X98R+3W Ahangama, Sri Lanka",
+   "source_url": "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en",
+   "fetched_at": "2026-11-03T17:37:54Z"
+  },
+  "map_url": {
+   "value": "https://www.google.com/maps/place/?q=place_id:ChIJBR_cQfoV4ToRQhXcrYmPyU0",
+   "source_url": "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en",
+   "fetched_at": "2026-11-03T17:37:54Z",
+   "note": "the Google listing (place id from the scout link)"
+  },
+  "distance_to_beach": {
+   "value": "Midigama Beach 250 m",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:34:59Z",
+   "note": "Booking 'Beaches in the neighbourhood' and FAQ ('The nearest beach is just 250 m'); Booking's own description says '300 metres from Midigama Beach', its summary 'a 3-minute walk'. Guests: 'only a 2 minute walk to the beach' (Adele 2026-04), 'one minute walk to the beach' (Marlene 2025-11), '5 min walk to the beach' (Holtmann 2025-09)."
+  },
+  "distance_to_station": {
+   "value": "Midigama station 50 m",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z",
+   "note": "Booking: 'Railway access — 50 m walking from Midigama station'; guests mention hearing the trains (see reviews.critical_themes)"
+  },
+  "nearby": {
+   "value": {
+    "Surfing Wombats Restaurant": "200 m",
+    "Serf View Resturent": "750 m",
+    "Shirani Home Made Rice & Curry": "1.7 km",
+    "Midigama Beach": "250 m",
+    "Ahangama Beach": "1.4 km",
+    "Abimanagama Beach": "2.9 km",
+    "Weligama Beach": "4.2 km",
+    "Kabalana Beach": "4.6 km",
+    "Midigama (train)": "50 m",
+    "Kumbalgama (train)": "2.5 km",
+    "Kushtarajagala": "4 km",
+    "Koggala Beach Park": "7 km",
+    "Koggala Lake": "6 km",
+    "Medinduwa": "8 km",
+    "Kudagalkanda": "14 km",
+    "Koggala Airport": "9 km",
+    "Mattala Rajapaksa International Airport": "97 km"
+   },
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:34:59Z",
+   "note": "Booking 'Hotel surroundings' (OpenStreetMap distances); the description says Koggala Airport 10 km, Kayak 5.3 mi, Priceline 6.2 mi"
+  },
+  "distance_to_centre": {
+   "value": "1,000 m from the centre of Midigama",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:34:59Z",
+   "note": "Booking FAQ"
+  },
+  "spot": {
+   "value": "Lazy Left and Lazy Right, in front of the house, with other breaks within walking distance",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-bcff1f46def15690",
+   "fetched_at": "2026-11-03T17:37:19Z",
+   "origin_note": "guest words, not the business: the business itself names no break",
+   "note": "Victoria (Booking 2025-12): 'The place is in front of two amazing surf spots (lazy right and lazy left), and you have other three that you can go walking (less 1 km).' Giada (2025-12): 'The location is perfect to go and surf at lazy left and right'. Sylvia (de, 2024-05): 'Ideal für Fortgeschrittene Surfer die lazy Left und lazy right surfen wollen'. Svenja (2024-02): 'a few minutes walking distance to 4 surfspots, suitable for everyone from beginner/intermediates to highly advanced surfers'. Ben (2025-04): 'a quiet beach that is great for more advanced surfers'. Jocelyn (fr, 2025-03): 'le rooftop est bien pour checker le spot de surf'. Break type, bottom and season are not stated by anyone here: those facts need a sourced reference (the spot pack / Rosa), not the guests."
+  },
+  "views": {
+   "value": "garden views from the ground-floor rooms; balcony views into the trees from the upstairs King rooms",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z",
+   "note": "Booking room data ('Garden view' on the Standard/Double-or-Twin and Deluxe Queen rooms; 'View' and balcony on the King rooms); guests: 'It felt like I was in the jungle' (ジョナ 2026-02), roof terrace 'wonderful view over the jungle' (Svenja 2024-02). No sea view is claimed."
+  }
+ },
+ "contact": {
+  "phone": {
+   "value": "+94774647541",
+   "source_url": "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en",
+   "fetched_at": "2026-11-03T17:37:54Z",
+   "verified": "copied from Google's tel: link 'phone:tel:+94774647541' on both Google listings (Lotus Surf House and Yelum Guest House); Kayak shows '+94 774 647 541' (same number); matches the scout"
+  },
+  "phone_other": {
+   "value": "+94712585804",
+   "source_url": "https://www.facebook.com/people/Midigama-guesthouse-YELUM/100054389085744/",
+   "fetched_at": "2026-11-03T17:38:28Z",
+   "note": "the Facebook page 'Midigama guesthouse YELUM' shows '+94 71 258 5804'. That page's newest visible post is from 2018 (one 2025 image in its photo strip). Disagrees with Google — both recorded, gap raised; the Google number is the one on both current listings."
+  },
+  "whatsapp": {
+   "value": null,
+   "gap": "no WhatsApp number or link published anywhere (Google, Booking, Facebook, Kayak). +94 77… is a Sri Lankan mobile number, but whether it is on WhatsApp is not published — not assumed."
+  },
+  "email": {
+   "value": null,
+   "gap": "not published"
+  },
+  "socials": {
+   "instagram": null,
+   "facebook": "https://www.facebook.com/people/Midigama-guesthouse-YELUM/100054389085744/",
+   "tripadvisor": "https://www.tripadvisor.com/Hotel_Review-g2492996-d19431857-Reviews.html",
+   "tripadvisor_old": "https://www.tripadvisor.com/Hotel_Review-g2492996-d7736476-Reviews.html",
+   "google_maps": "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en",
+   "google_maps_old": "https://www.google.com/maps/place/Yelum+Guest+House/data=!4m10!3m9!1s0x3ae114c1a01189c7:0x43e62c20fba3efe5!5m2!4m1!1i2!8m2!3d5.9651521!4d80.3922717!16s%2Fg%2F11cjgd948_!19sChIJx4kRoMEU4ToR5e-j-yAs5kM?hl=en"
+  },
+  "facebook_profile": {
+   "value": {
+    "name": "Midigama guesthouse YELUM",
+    "category": "Hotel",
+    "followers": 677,
+    "intro": "Midigama ahangama, Matara, Sri Lanka",
+    "phone": "+94 71 258 5804",
+    "latest_visible_post": "12 November 2018 (\"Today Traveling Sinharaja Rain forest\")"
+   },
+   "source_url": "https://www.facebook.com/people/Midigama-guesthouse-YELUM/100054389085744/",
+   "fetched_at": "2026-11-03T17:38:28Z",
+   "note": "linked as 'Website: facebook.com' from the old Google listing (https://www.facebook.com/Yelum-guest-house-midigama-1553875118208096/ redirects here). Logged-out view; posts and photos behind the login wall. Dormant."
+  }
+ },
+ "booking": {
+  "path": {
+   "value": "engine",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z",
+   "note": "rooms are sold on Booking.com (live; 125 reviews, newest stay Aug 2026) — the only booking path the business publishes. Google shows Booking.com and Agoda offers. Phone on Google. No WhatsApp, no email, no own site. Payment: cash only (Booking policy)."
+  },
+  "engine_url": {
+   "value": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z"
+  },
+  "other_engines": {
+   "value": [
+    "Agoda (offer shown in Google hotel prices; listing URL not found — Agoda search did not load headless)",
+    "Kayak (meta-search, id 3733075)",
+    "Priceline (Booking mirror, H73226805)"
+   ],
+   "source_url": "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en",
+   "fetched_at": "2026-11-03T17:37:54Z"
+  },
+  "direct_channels": {
+   "value": [
+    "phone +94774647541"
+   ],
+   "source_url": "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en",
+   "fetched_at": "2026-11-03T17:37:54Z"
+  },
+  "reply_time_hint": {
+   "value": null,
+   "gap": "not published (Booking shows partnerAverageResponseTime 0, i.e. none)"
+  },
+  "reliability_note": {
+   "value": "one guest says the property cancelled a confirmed booking on the arrival day because other guests extended (Brett, Canada, Booking 2024-01, score 1); one says a refund request went unanswered (Alaa, Egypt, 2026-02, score 4)",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-f6008e095139b9f3",
+   "fetched_at": "2026-11-03T17:37:19Z",
+   "note": "critical guest claims, not facts about the business; not for the site, context for the pitch only"
+  }
+ },
+ "hours": [],
+ "hours_note": {
+  "value": null,
+  "gap": "lodging: no opening hours apply; reception is \"Check-in available 24 hours\" (Booking)"
+ },
+ "stay_info": {
+  "check_in": {
+   "value": "Available 24 hours",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z",
+   "note": "Booking policy (FAQ: 'Check-in … is from 00:00'). Kayak says check-in 12:00 PM — contradiction"
+  },
+  "check_out": {
+   "value": "From 11:00 to 12:00",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z",
+   "note": "Booking policy (FAQ: check-out until 12:00). Kayak says 10:00 AM — contradiction"
+  },
+  "breakfast_hours": {
+   "value": "8 a.m. to 10 a.m.",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-b7169b68c4d67dc7",
+   "fetched_at": "2026-11-03T17:37:19Z",
+   "note": "the owner's own reply: 'Breakfast is served from 8 a.m. to 10 a.m.' (2025-03)"
+  },
+  "house_rules": {
+   "value": [
+    "Children of any age are welcome.",
+    "Cots and extra beds are not available at this property.",
+    "There is no age requirement for check-in",
+    "Pets are allowed on request. No extra charges.",
+    "This property only accepts cash payments.",
+    "Cancellation and prepayment policies vary according to accommodation type."
+   ],
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z",
+   "note": "Booking property policies, verbatim"
+  },
+  "parking": {
+   "value": "No parking available.",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:34:59Z",
+   "note": "Booking facilities 'Parking'; Google lists no parking either"
+  }
+ },
+ "room_types": [
+  {
+   "value": {
+    "label": "Standard Double or Twin Room with Garden View",
+    "units_listed": 2,
+    "beds": "2 single beds",
+    "sleeps": 2,
+    "size_m2": [
+     20,
+     25
+    ],
+    "description": "This twin/double room has a seating area, a terrace, garden views and a private bathroom. The unit has 2 beds.",
+    "air_conditioning": false,
+    "private_hot_tub_listed": false,
+    "booking_room_ids": [
+     559076601,
+     559076606
+    ],
+    "photos": [
+     "img-009",
+     "img-029",
+     "img-030",
+     "img-032"
+    ]
+   },
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z"
+  },
+  {
+   "value": {
+    "label": "Deluxe Queen Room",
+    "units_listed": 2,
+    "beds": "1 large double bed",
+    "sleeps": 2,
+    "size_m2": [
+     25
+    ],
+    "description": "The double room provides a seating area, a tiled floor, a terrace with garden views as well as a private bathroom featuring a walk-in shower. The unit offers 1 bed.",
+    "air_conditioning": false,
+    "private_hot_tub_listed": false,
+    "booking_room_ids": [
+     559076604,
+     559076605
+    ],
+    "photos": [
+     "img-028",
+     "img-043",
+     "img-044"
+    ]
+   },
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z"
+  },
+  {
+   "value": {
+    "label": "Double or Twin Room with Garden View",
+    "units_listed": 1,
+    "beds": "2 single beds",
+    "sleeps": 2,
+    "size_m2": [
+     25
+    ],
+    "description": "This twin/double room has a seating area, a terrace, garden views and a private bathroom. The unit has 2 beds.",
+    "air_conditioning": false,
+    "private_hot_tub_listed": false,
+    "booking_room_ids": [
+     559076607
+    ],
+    "photos": [
+     "img-009",
+     "img-029",
+     "img-030",
+     "img-032"
+    ]
+   },
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z"
+  },
+  {
+   "value": {
+    "label": "King Room with Balcony",
+    "units_listed": 3,
+    "beds": "1 extra-large double bed",
+    "sleeps": 2,
+    "size_m2": [
+     25
+    ],
+    "description": "Guests will have a special experience as the double room provides a hot tub. This double room is air-conditioned and features a private bathroom, a seating area and a terrace. The unit offers 1 bed.",
+    "air_conditioning": true,
+    "private_hot_tub_listed": true,
+    "booking_room_ids": [
+     559076608,
+     559076609,
+     559076610
+    ],
+    "photos": [
+     "img-007",
+     "img-010",
+     "img-011",
+     "img-012",
+     "img-013",
+     "img-014",
+     "img-015",
+     "img-016",
+     "img-017",
+     "img-034",
+     "img-037",
+     "img-038",
+     "img-039",
+     "img-040",
+     "img-041",
+     "img-042"
+    ]
+   },
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z"
+  }
+ ],
+ "room_units": [
+  {
+   "value": {
+    "label": "Standard Double or Twin Room with Garden View",
+    "booking_room_id": 559076601,
+    "beds": "2 single beds",
+    "sleeps": 2,
+    "size_m2": 20,
+    "description": "This twin/double room has a seating area, a terrace, garden views and a private bathroom. The unit has 2 beds.",
+    "facilities": [
+     "Fan",
+     "Mosquito net",
+     "Wake-up service",
+     "Drying rack for clothing",
+     "Socket near the bed",
+     "Toilet",
+     "Private bathroom",
+     "Bath or shower",
+     "Towels",
+     "Toilet paper",
+     "Patio",
+     "Terrace",
+     "Outdoor furniture",
+     "Outdoor dining area",
+     "Garden view",
+     "Seating area",
+     "Linen",
+     "Entire unit located on ground floor",
+     "Board games/puzzles"
+    ],
+    "photos": [
+     "img-009",
+     "img-029",
+     "img-030",
+     "img-032"
+    ]
+   },
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z"
+  },
+  {
+   "value": {
+    "label": "Deluxe Queen Room",
+    "booking_room_id": 559076604,
+    "beds": "1 large double bed",
+    "sleeps": 2,
+    "size_m2": 25,
+    "description": "The double room provides a seating area, a tiled floor, a terrace with garden views as well as a private bathroom featuring a walk-in shower. The unit offers 1 bed.",
+    "facilities": [
+     "Fan",
+     "Tile/marble floor",
+     "Mosquito net",
+     "Wake-up service",
+     "Drying rack for clothing",
+     "Socket near the bed",
+     "Toilet",
+     "Private bathroom",
+     "Bath or shower",
+     "Towels",
+     "Toilet paper",
+     "Patio",
+     "Terrace",
+     "Outdoor furniture",
+     "Outdoor dining area",
+     "Garden view",
+     "Seating area",
+     "Linen",
+     "Entire unit located on ground floor",
+     "Board games/puzzles"
+    ],
+    "photos": [
+     "img-043",
+     "img-044"
+    ]
+   },
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z"
+  },
+  {
+   "value": {
+    "label": "Deluxe Queen Room",
+    "booking_room_id": 559076605,
+    "beds": "1 large double bed",
+    "sleeps": 2,
+    "size_m2": 25,
+    "description": "The double room offers a seating area, a tiled floor, a terrace with garden views as well as a private bathroom featuring a walk-in shower. The unit offers 1 bed.",
+    "facilities": [
+     "Fan",
+     "Tile/marble floor",
+     "Mosquito net",
+     "Wake-up service",
+     "Drying rack for clothing",
+     "Socket near the bed",
+     "Toilet",
+     "Private bathroom",
+     "Bath or shower",
+     "Towels",
+     "Toilet paper",
+     "Terrace",
+     "Outdoor furniture",
+     "Outdoor dining area",
+     "Garden view",
+     "Seating area",
+     "Linen",
+     "Entire unit located on ground floor",
+     "Board games/puzzles"
+    ],
+    "photos": [
+     "img-043",
+     "img-044",
+     "img-028"
+    ]
+   },
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z"
+  },
+  {
+   "value": {
+    "label": "Standard Double or Twin Room with Garden View",
+    "booking_room_id": 559076606,
+    "beds": "2 single beds",
+    "sleeps": 2,
+    "size_m2": 25,
+    "description": "This twin/double room has a seating area, a terrace, garden views and a private bathroom. The unit has 2 beds.",
+    "facilities": [
+     "Fan",
+     "Mosquito net",
+     "Wake-up service",
+     "Drying rack for clothing",
+     "Socket near the bed",
+     "Toilet",
+     "Private bathroom",
+     "Bath or shower",
+     "Towels",
+     "Toilet paper",
+     "Patio",
+     "Terrace",
+     "Outdoor furniture",
+     "Outdoor dining area",
+     "Garden view",
+     "Seating area",
+     "Linen",
+     "Entire unit located on ground floor",
+     "Board games/puzzles"
+    ],
+    "photos": [
+     "img-029",
+     "img-030",
+     "img-032",
+     "img-009"
+    ]
+   },
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z"
+  },
+  {
+   "value": {
+    "label": "Double or Twin Room with Garden View",
+    "booking_room_id": 559076607,
+    "beds": "2 single beds",
+    "sleeps": 2,
+    "size_m2": 25,
+    "description": "This twin/double room has a seating area, a terrace, garden views and a private bathroom. The unit has 2 beds.",
+    "facilities": [
+     "Fan",
+     "Mosquito net",
+     "Wake-up service",
+     "Drying rack for clothing",
+     "Socket near the bed",
+     "Toilet",
+     "Private bathroom",
+     "Bath or shower",
+     "Towels",
+     "Toilet paper",
+     "Patio",
+     "Terrace",
+     "Outdoor furniture",
+     "Outdoor dining area",
+     "Garden view",
+     "Seating area",
+     "Linen",
+     "Entire unit located on ground floor",
+     "Board games/puzzles"
+    ],
+    "photos": [
+     "img-029",
+     "img-030",
+     "img-032",
+     "img-009"
+    ]
+   },
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z"
+  },
+  {
+   "value": {
+    "label": "King Room with Balcony",
+    "booking_room_id": 559076608,
+    "beds": "1 extra-large double bed",
+    "sleeps": 2,
+    "size_m2": 25,
+    "description": "Guests will have a special experience as the double room provides a hot tub. This double room is air-conditioned and features a private bathroom, a seating area and a terrace. The unit offers 1 bed.",
+    "facilities": [
+     "Air conditioning",
+     "Fan",
+     "Mosquito net",
+     "Private hot tub",
+     "Drying rack for clothing",
+     "Socket near the bed",
+     "Toilet",
+     "Private bathroom",
+     "Bath or shower",
+     "Towels",
+     "Toilet paper",
+     "Balcony",
+     "Terrace",
+     "Outdoor furniture",
+     "Outdoor dining area",
+     "View",
+     "Seating area",
+     "Board games/puzzles"
+    ],
+    "photos": [
+     "img-010",
+     "img-017",
+     "img-014",
+     "img-038",
+     "img-034",
+     "img-041",
+     "img-037",
+     "img-042",
+     "img-040",
+     "img-039"
+    ]
+   },
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z"
+  },
+  {
+   "value": {
+    "label": "King Room with Balcony",
+    "booking_room_id": 559076609,
+    "beds": "1 extra-large double bed",
+    "sleeps": 2,
+    "size_m2": 25,
+    "description": "This double room provides a hot tub. This double room is air-conditioned and features a private bathroom, a seating area and a terrace. The unit offers 1 bed.",
+    "facilities": [
+     "Air conditioning",
+     "Fan",
+     "Mosquito net",
+     "Private hot tub",
+     "Drying rack for clothing",
+     "Socket near the bed",
+     "Toilet",
+     "Private bathroom",
+     "Bath or shower",
+     "Towels",
+     "Toilet paper",
+     "Balcony",
+     "Terrace",
+     "Outdoor furniture",
+     "Outdoor dining area",
+     "View",
+     "Seating area",
+     "Board games/puzzles"
+    ],
+    "photos": [
+     "img-010",
+     "img-015",
+     "img-016",
+     "img-007"
+    ]
+   },
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z"
+  },
+  {
+   "value": {
+    "label": "King Room with Balcony",
+    "booking_room_id": 559076610,
+    "beds": "1 extra-large double bed",
+    "sleeps": 2,
+    "size_m2": 25,
+    "description": "This double room features a hot tub. The double room includes a private bathroom fitted with a shower. The double room offers air conditioning and a terrace. The unit has 1 bed.",
+    "facilities": [
+     "Air conditioning",
+     "Fan",
+     "Mosquito net",
+     "Private hot tub",
+     "Drying rack for clothing",
+     "Socket near the bed",
+     "Toilet",
+     "Private bathroom",
+     "Bath or shower",
+     "Towels",
+     "Toilet paper",
+     "Terrace",
+     "View",
+     "Board games/puzzles"
+    ],
+    "photos": [
+     "img-011",
+     "img-012",
+     "img-013"
+    ]
+   },
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z"
+  }
+ ],
+ "room_count": {
+  "value": 8,
+  "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+  "fetched_at": "2026-11-03T17:33:45Z",
+  "note": "Booking lists 8 bookable units: 3 King Room with Balcony, 2 Deluxe Queen Room, 2 Standard Double or Twin Room with Garden View, 1 Double or Twin Room with Garden View. Guests: '5 rooms with privat Bath are located into a nice shadowy garden' (Sylvia 2025-03, before the upstairs rooms); the owner: 'we have 3 type room' (reply 2025-12) and 'we have 1st floor that's rooms only have [air condition and hot water]' (reply 2026-03)."
+ },
+ "room_types_note": "Three kinds of room on the ground: fan rooms in the older garden wing (Standard/Double-or-Twin, 20–25 m², 2 single beds; Deluxe Queen, 25 m², 1 large double, walk-in shower) and the new upstairs King Rooms (25 m², extra-large double, A/C, balcony, hot water). Booking lists 'Private hot tub' on the King rooms; no photo shows a hot tub and no guest mentions one — treat as unverified (contradiction). Nightly rates are live OTA inventory and are not copied (site-content rule 'Live prices are not content'); the King-room photos are tagged in images[].room. Guests repeatedly warn the ground-floor rooms have no A/C or hot water (see reviews.critical_themes) — the room labels should say fan/A/C plainly.",
+ "offers": [],
+ "offers_note": "No price published by the business. Live OTA prices seen 2026-11-03 (not content, recorded only for the pitch): Google 'ILS 119' for 8–9 Nov 2026 (Booking.com and Agoda, 'Free cancellation until 4 Nov · Free breakfast'); Kayak 'from $19', Priceline 'from $31'.",
+ "facilities": [
+  {
+   "value": "breakfast included",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-910146b5c58ca32c",
+   "fetched_at": "2026-11-03T17:37:19Z",
+   "note": "Adele (2026-04): 'A delicious breakfast is included, just choose that morning out of a few choices.'; Google offers 'Free breakfast'; Booking: 'Exceptional breakfast — Continental'; guests name coconut roti and dhal, Sri Lankan rice, granola with curd and fruit, banana pancakes (Fiona 2024-12, Amy 2024-12)"
+  },
+  {
+   "value": "garden with hammock, ping-pong table and picnic area",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:34:59Z",
+   "note": "Booking facilities 'Garden', 'Picnic area', 'Table tennis' (free); photos img-001, img-005, img-020; guests: 'table tennis table was a great hit' (Holly 2026-03)"
+  },
+  {
+   "value": "roof terrace (partly shaded), used for yoga",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-9e9b0178abf5f619",
+   "fetched_at": "2026-11-03T17:37:19Z",
+   "note": "Booking 'Sun terrace', 'Terrace'; Svenja (2024-02): 'a great rooftop terrace, partly with a roof to get some shade. Had lots of yoga sessions up there with a wonderful view over the jungle'; Stefan (de, 2025-03): 'Yogaplatz'; photos img-004, img-021. Not a yoga service — no classes published."
+  },
+  {
+   "value": "shared kitchen",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:34:59Z",
+   "note": "Booking facility; Stefan (de, 2025-03): 'Küche kann benutzt werden'"
+  },
+  {
+   "value": "shared lounge/TV area",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:34:59Z"
+  },
+  {
+   "value": "outdoor shower",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-e68a59ddb9111462",
+   "fetched_at": "2026-11-03T17:37:19Z",
+   "note": "owner reply to Giada (2025-12): 'yes i fix all ready out door shower'; Melvin (fr, 2026-04): 'la douche extérieure après le surf est très jolie'"
+  },
+  {
+   "value": "drinking-water refill station",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-98f61dacbf606be3",
+   "fetched_at": "2026-11-03T17:37:19Z",
+   "note": "Sylvia (2025-03): 'There is a waterstation where you can refill your water (with a box for money when you use it)'"
+  },
+  {
+   "value": "free WiFi in all areas",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:34:59Z",
+   "note": "Booking 'WiFi is available in all areas and is free of charge', guests rate it 10/10; Adele: 'WiFi works well for those who work online'"
+  },
+  {
+   "value": "scooter hire",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-19a8b68e60900235",
+   "fetched_at": "2026-11-03T17:37:19Z",
+   "note": "Talia (2025-11): 'Yelum had a scooter that we could hire for a very decent price'; Ben (2025-04) moped; Sylvia (2025-03) 'They also rent Scooter'. Booking lists 'Bicycle rental' (paid). No price published."
+  },
+  {
+   "value": "airport shuttle / airport pick-up",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:34:59Z",
+   "note": "Booking 'Airport shuttle' (paid, pick-up and drop-off), 'Shuttle service' (paid); Fiona (2024-12): 'Yelum organised an airport pickup at midnight'. No price published."
+  },
+  {
+   "value": "trips arranged by the owner",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-79d50a72c3649d87",
+   "fetched_at": "2026-11-03T17:37:19Z",
+   "note": "Benjamin (2025-10): 'plan trips (we went to a snake farm, batik factory and safari with him)'; Victoria (2025-12): a Yala National Park trip with taxi and jeep; Talia (2025-11): helped plan the whole Sri Lanka trip. Booking lists 'Walking tours' (paid)."
+  },
+  {
+   "value": "laundry",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:34:59Z",
+   "note": "Booking 'Laundry' (paid); Sylvia (2025-03): 'do laundry'"
+  },
+  {
+   "value": "luggage storage",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:34:59Z",
+   "note": "Booking (free)"
+  },
+  {
+   "value": "room service",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:34:59Z"
+  },
+  {
+   "value": "express check-in/check-out",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:34:59Z"
+  },
+  {
+   "value": "board games/puzzles",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:34:59Z"
+  },
+  {
+   "value": "pets allowed on request, no charge",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:34:59Z"
+  },
+  {
+   "value": "CCTV outside the property and in common areas; key access",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:34:59Z"
+  },
+  {
+   "value": "private bathroom in every room",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z",
+   "note": "Booking 'isPrivateBathroomInAllRooms: true'"
+  },
+  {
+   "value": "massage spa next door (run by the owner's brother)",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-98f61dacbf606be3",
+   "fetched_at": "2026-11-03T17:37:19Z",
+   "note": "Sylvia (2025-03): 'The Spa Station next door is run by the brother of Yelum'; Herman (2024-02): 'a massage spa next door'. Not part of the business — mention only as 'nearby', or leave out."
+  }
+ ],
+ "facilities_note": "Booking also lists activities 'Snorkelling', 'Hiking', 'Fishing', 'Beach' as free — area activities, not services. Google's hotel details list 'Pool', 'Restaurant' and 'Beach access': no pool or restaurant appears in any photo, Booking facility or review (Booking's FAQ asks 'Is there a swimming pool?' with no yes) — not used (contradiction). Surfboard storage, board rental and surf lessons: not offered by the business in any source (Sylvia: 'rent a surfboard just at the corner of the beach').",
+ "season": {
+  "value": null,
+  "gap": "the business publishes no surf season; open all year as far as Booking shows (reviews in every month Nov–Aug). Guests: end of high season is very hot in the fan rooms (Alice 2026-03)."
+ },
+ "languages_spoken": [
+  {
+   "value": "en",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:34:59Z",
+   "note": "Booking 'spokenLanguages: [en]'; Sylvia (2025-03): 'speaks very well englisch'"
+  }
+ ],
+ "reviews": {
+  "google": {
+   "rating": 4.9,
+   "count": 78,
+   "scale": 5,
+   "source_url": "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en",
+   "fetched_at": "2026-11-03T17:37:54Z",
+   "note": "Google listing 'Lotus Surf House', category '3-star hotel' (the scout saw 4.9; the similar-hotels card on the other listing shows 4.9 (77)). Review texts behind Google's sign-in wall in the limited view (not quoted)."
+  },
+  "google_old_listing": {
+   "rating": 4.7,
+   "count": 13,
+   "scale": 5,
+   "source_url": "https://www.google.com/maps/place/Yelum+Guest+House/data=!4m10!3m9!1s0x3ae114c1a01189c7:0x43e62c20fba3efe5!5m2!4m1!1i2!8m2!3d5.9651521!4d80.3922717!16s%2Fg%2F11cjgd948_!19sChIJx4kRoMEU4ToR5e-j-yAs5kM?hl=en",
+   "fetched_at": "2026-11-03T17:37:54Z",
+   "note": "the older 'Yelum Guest House' listing (category 'Guest house'); same business"
+  },
+  "booking": {
+   "rating": 9.0,
+   "count": 125,
+   "scale": 10,
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "fetched_at": "2026-11-03T17:33:45Z",
+   "label": "Superb",
+   "subscores": {
+    "Staff": 9.9,
+    "Location": 9.4,
+    "Value for money": 9.3,
+    "Comfort": 8.9,
+    "Cleanliness": 8.8,
+    "Facilities": 8.8,
+    "Free WiFi": 10
+   },
+   "note": "reviews dated 2023-12-01 to 2026-08-04; 85 of 125 carry text; score distribution 10×73, 9×22, 8×13, 7×6, 6×5, 5×3, 4×1, 2×1, 1×1"
+  },
+  "kayak": {
+   "rating": 9.0,
+   "count": 138,
+   "scale": 10,
+   "source_url": "https://www.kayak.com/Midigama-East-Hotels-Yelum-Guest-House.3733075.ksp",
+   "fetched_at": "2026-11-03T17:39:27Z",
+   "note": "Kayak 'Wonderful', 138 reviews (aggregated from partner sites)"
+  },
+  "priceline": {
+   "rating": 9.3,
+   "count": 45,
+   "scale": 10,
+   "source_url": "https://www.priceline.com/hotel-deals/en-us/P5000497909/H73226805/lotus-surf-house.ssp",
+   "fetched_at": "2026-11-03T17:39:35Z",
+   "note": "Priceline 'Exceptional', 45 verified reviews (a Booking Holdings mirror)"
+  },
+  "tripadvisor": {
+   "rating": 5,
+   "count": 5,
+   "scale": 5,
+   "source_url": "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en",
+   "fetched_at": "2026-11-03T17:37:54Z",
+   "note": "as shown in the Google listing ('Tripadvisor 5/5 · 5 reviews', entity d19431857). The one snippet Google shows (MsAliR, '3 years ago': 'close to Kabalana and spa is one of the best massages around. Liam is the best …') reads like it is about the spa next door — not quoted. The old entity d7736476 also exists. Tripadvisor itself: 403 to headless Chromium, not verified there."
+  },
+  "quotes": [
+   {
+    "text": "La table de ping pong, les hôtes étaient adorables, la douche extérieure après le surf est très jolie et les espaces pour déjeuner aussi",
+    "negative_text": "La chambre est super mais mériterait un petit coup de rafraîchissement, notamment sur les moustiquaires au dessus des portes et celle du lit",
+    "title": "Agréable",
+    "author": "Melvin, France",
+    "date": "2026-04-26",
+    "score": 9,
+    "scale": 10,
+    "lang": "fr",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-1597af66b29fa2dd",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank You ❤️❤️"
+   },
+   {
+    "text": "Aamiainen oli tosi hyvä ja sijainti oli lähellä rantaa ja surffispotteja. Juna-asema sijaitsee aivan vieressä, joten sieltä kuuluu aika kova ääni junista.",
+    "negative_text": null,
+    "title": null,
+    "author": "Lotta, Finland",
+    "date": "2026-04-12",
+    "score": 9,
+    "scale": 10,
+    "lang": "fi",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-ad0d9fa0b7453af2",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️❤️"
+   },
+   {
+    "text": "WOW - the BEST place to stay in Midigama 🫶 \n\nI spent a wonderful three weeks staying at Lotus Surf House. The couple who own and run the place are so so kind, helpful and caring. As a solo female traveller, I felt extremely safe staying there. It was lovely to chat with other guests, friendly vibes!\n\nThe guesthouse is only a 2 minute walk to the beach and the nearest restaurants and shops are 1 minute walk. Just off the main road, the area is peaceful. The train passes by a few times a day, however not an issue at all. \n\nI stayed a few days in the Queen fan room, the room was simple and spacious. For the majority of my stay, I was in the King Room with AC. This room is brand new, big, balcony, AC & fan and has hot water shower. The room is perfect! \n\nWiFi works well for those who work online. A delicious breakfast is included, just choose that morning out of a few choices. \n\nWhen I return to Midigama, I will 100% be staying at Lotus Surf House again. Thank you🧡",
+    "negative_text": null,
+    "title": "WOW - the BEST place to stay in Midigama 🫶",
+    "author": "Adele, United Kingdom",
+    "date": "2026-04-03",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Deluxe Queen Room",
+    "nights": 5,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-910146b5c58ca32c",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks a lot ❤️❤️"
+   },
+   {
+    "text": "Staff were so friendly and the breakfast they made each morning was so good.",
+    "negative_text": null,
+    "title": "Midigama 3 nights",
+    "author": "Charlotte, United Kingdom",
+    "date": "2026-03-29",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-559a6a3018eb86d5",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks ❤️❤️"
+   },
+   {
+    "text": "The property was in a great location, nice and quiet but very close to the beach. The table tennis table was a great hit with my 13yr old son and the breakfast was great. The staff were very lovely!",
+    "negative_text": null,
+    "title": null,
+    "author": "Holly, New Zealand",
+    "date": "2026-03-26",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-5fd7029cc0828d55",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️❤️"
+   },
+   {
+    "text": "Very centrally located next to Midigama station. Simple, clean, lovely staff. Relaxing garden, a washing line to hang bathers and a communal ping pong table.",
+    "negative_text": "I only stayed one night as I couldn’t bear the heat. Even with a fan it was so hot and stuffy, but that’s also just the reality of end of the high season. If you want a good night sleep on a Tuesday I’d recommend elsewhere - you can hear the party at Lazie’s from there.",
+    "title": "Simple and clean in a convenient location",
+    "author": "Alice, Australia",
+    "date": "2026-03-25",
+    "score": 7,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 1,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-dbf1ca442ab221b6",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️❤️"
+   },
+   {
+    "text": "El desayuno y la amabilidad del personal",
+    "negative_text": "Me gustó todo",
+    "title": null,
+    "author": "María, Spain",
+    "date": "2026-03-18",
+    "score": 10,
+    "scale": 10,
+    "lang": "es",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 2,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-53723daacfcba6ac",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️"
+   },
+   {
+    "text": "De locatie is top, vlakbij het strand en de hoofdstraat in midigama. Verder is het zitje met de stoelen voor de kamer ook fijn. De kamer was super schoon.",
+    "negative_text": "Er was geen airco (wel een ventilator) maar daardoor was het wel wat warm in de nacht en de ventilator maakt veel geluid. Ook was er geen warm water.",
+    "title": null,
+    "author": "India, Netherlands",
+    "date": "2026-03-10",
+    "score": 9,
+    "scale": 10,
+    "lang": "nl",
+    "room": "Deluxe Queen Room",
+    "nights": 2,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-4994145869b418af",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️❤️\nSorry  you book without air condition and hot water room.we have 1st floor that's rooms only have."
+   },
+   {
+    "text": "A proximidade da praia, o facto de ter pequeno almoço incluído e todas as opções serem igualmente deliciosas e locais. Ponto positivo também é sem dúvida a mesa de pingpong!\nOs hosts extremamente simpáticos e prestáveis :)",
+    "negative_text": "A única opção de água para duche é fria e a rede de mosquitos por cima da nossa cama estava em queda eminente do teto. A porta da casa de banho também não fechava, ficava sempre entreaberta.",
+    "title": "Perfeita relação qualidade preço e também ótima localização.",
+    "author": "Maria, Portugal",
+    "date": "2026-03-05",
+    "score": 8,
+    "scale": 10,
+    "lang": "pt",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-23967e8a7e71edb7",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️"
+   },
+   {
+    "text": "Super nette und hilfsbereite Gastgeberfamilie",
+    "negative_text": "Nachts ist es durch die nahe liegenden Bahnschienen etwas lauter.",
+    "title": null,
+    "author": "Daniela, Germany",
+    "date": "2026-02-27",
+    "score": 9,
+    "scale": 10,
+    "lang": "de",
+    "room": "Deluxe Queen Room",
+    "nights": 2,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-c3ab2cf02c2aff3b",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️"
+   },
+   {
+    "text": "The best place to stay in Midigama 🤍\n\nThe location is perfect: close to the center and just two steps from the sea. You can walk everywhere, surf spots are nearby, and everything feels easy and relaxed.\n\nYelum and his wife are simply the best 🩷\nso kind, welcoming, and always ready to help. They truly make you feel at home. A special mention goes to the breakfast: Fresh, generous, and made with love every morning.\n\nThere are different types of rooms you can choose from, and even the most basic option has all the comfort you may need. Clean, cozy, and peaceful.\n\nIt really felt like home\n\nDefinitely recommended 🌊✨",
+    "negative_text": null,
+    "title": null,
+    "author": "Gravina, Italy",
+    "date": "2026-02-25",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Double or Twin Room with Garden View",
+    "nights": 5,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-8247912dc328a31d",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you very much ❤️❤️"
+   },
+   {
+    "text": "Well positioned just 2 minutes walk from main street and beaches. Nice garden sorrounded by nature and animals.",
+    "negative_text": "Mosquito net needs better cleaning but it’s ok",
+    "title": null,
+    "author": "Giacomo, Italy",
+    "date": "2026-02-23",
+    "score": 9,
+    "scale": 10,
+    "lang": "en",
+    "room": "Deluxe Queen Room",
+    "nights": 7,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-10771cf107b92e11",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️"
+   },
+   {
+    "text": "I had a room without ac and it was fine but for a long period stay won’t recommend (since the humidity is high and my staff couldn’t get dry)",
+    "negative_text": null,
+    "title": null,
+    "author": "Katsiaryna, Poland",
+    "date": "2026-02-23",
+    "score": 8,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 5,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-125f6dab8e2884a7",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️❤️\nYou book without ac room."
+   },
+   {
+    "text": "the place itself looked nice and quiet, the host welcomed us and seemed really nice.",
+    "negative_text": "we booked 2 rooms; they had nothing to do with the photos they represent. one of them was fine, the other was extremely disappointing. we left our stuff when we checked in then we decided to come back and take our stuff and leave because the person who was supposed to stay in this room just couldn't. we went back to discuss if there's another room there was no one to talk to. we left to stay somewhere else and requested a full refund given what happened, they never responded.\r\n\r\nthere were rooms upstairs that looked really nice from the outside, probably these are the ones they show in the photos, so probably these are the good ones, just that the one were very different and not showcased on the website.",
+    "title": "rooms don't look like photos",
+    "author": "Alaa, Egypt",
+    "date": "2026-02-21",
+    "score": 4,
+    "scale": 10,
+    "lang": "xu",
+    "room": "Deluxe Queen Room",
+    "nights": 2,
+    "traveller_type": "Group",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-67901f3894e12bf1",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️"
+   },
+   {
+    "text": "For the price, my room was amazing. It felt like I was in the jungle. Hot water, AC, free breakfast, I’d stay again.",
+    "negative_text": null,
+    "title": null,
+    "author": "ジョナ, Japan",
+    "date": "2026-02-20",
+    "score": 9,
+    "scale": 10,
+    "lang": "xu",
+    "room": "King Room with Balcony",
+    "nights": 3,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-ff132f373e9c4548",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️❤️"
+   },
+   {
+    "text": "Everything was perfect!",
+    "negative_text": null,
+    "title": null,
+    "author": "Maciej, Poland",
+    "date": "2026-02-17",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "King Room with Balcony",
+    "nights": 4,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-95e6568fa5c68d5c",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️"
+   },
+   {
+    "text": "Simpel, aber schön\nLeckeres Frühstück, das man ganz toll auf den Sitzgelegenheiten vor den Zimmern im garten essen kann\nTischtennisplatte natürlich auch ein Hit\nShampoo und Duschgel vorhanden",
+    "negative_text": null,
+    "title": null,
+    "author": "Tobias, Germany",
+    "date": "2026-02-16",
+    "score": 10,
+    "scale": 10,
+    "lang": "de",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 1,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-a000a4531e5e88b5",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️❤️"
+   },
+   {
+    "text": "The staff and location are perfect, and it is a very good value for money. It has a very homey and welcoming atmosphere!",
+    "negative_text": "The bathroom was not very clean when we arrived, it could be maintained better. The room is quite small with minimal space to put our stuff and luggage, and there is no space to hang our clothes.",
+    "title": "Good value for money!",
+    "author": "Alice, Hong Kong",
+    "date": "2026-02-16",
+    "score": 8,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-6ee6e6021e33a365",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️"
+   },
+   {
+    "text": "Sehr schön eingerichtet und sauber. Super Lage, 3min zum Surfspot und schöne Gegend. Leckeres Frühstück und tolle Besitzer!",
+    "negative_text": null,
+    "title": "Schönste Unterkunft unseres Urlaubs mit lieben Besitzern.",
+    "author": "Janne, Germany",
+    "date": "2026-02-12",
+    "score": 10,
+    "scale": 10,
+    "lang": "de",
+    "room": "Deluxe Queen Room",
+    "nights": 4,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-280737ff7440a0f1",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️❤️"
+   },
+   {
+    "text": "The garden is very nice and relaxing, sorrounded by nature: trees, birds, squirrels and monkeys.\nLocated just outside the main road and 5-10 minutes walk to the main beach surf spots.\nOwners are very welcoming. \nI’ll be back when in Midigama.",
+    "negative_text": null,
+    "title": "The perfect place to unplug and relax",
+    "author": "Giacomo, Italy",
+    "date": "2026-02-07",
+    "score": 9,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-30afb63e607e51b3",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️"
+   },
+   {
+    "text": "Die Vermieter sind ganz liebe Menschen und waren jederzeit hilfsbereit. Die Zimmer sind einfach und mit schönem Blick auf die Palmen.\nStändig konnte man Tiere beobachten. Am Strand war man in 5 Minuten.",
+    "negative_text": "An den Geräuschen vom Bahnhof kommt man nicht vorbei. Ebenso Roller und Tuk Tuk,s sind die halbe Nacht zu hören. Aber wenn man nach Sri Lanka kommt, dann weiß man es.",
+    "title": null,
+    "author": "Jens, Germany",
+    "date": "2026-02-02",
+    "score": 8,
+    "scale": 10,
+    "lang": "de",
+    "room": "King Room with Balcony",
+    "nights": 4,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-f236b68ee63ff9d4",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️"
+   },
+   {
+    "text": "Great place! Rooms are clean, comfortable and have everything you need! Friendly and welcoming hosts and perfect location. Highly recommended!",
+    "negative_text": null,
+    "title": null,
+    "author": "Valeria, Israel",
+    "date": "2026-01-28",
+    "score": 10,
+    "scale": 10,
+    "lang": "xu",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 1,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-a5acade8202d9b9a",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️"
+   },
+   {
+    "text": "Super close to the beaches and waves. Super cool and friendly staff/owners. Super comfy rooms with working AC and hot water.",
+    "negative_text": "Can hear trains and road noise but not debilitating.",
+    "title": "Epic spot right by the beach and waves.  Amazing staff, owners and tasty breakfast!",
+    "author": "Colin, Canada",
+    "date": "2026-01-27",
+    "score": 10,
+    "scale": 10,
+    "lang": "xu",
+    "room": "King Room with Balcony",
+    "nights": 4,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-c8baa255680570c0",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank You ❤️❤️"
+   },
+   {
+    "text": "Nie spaliśmy finalnie w obiekcie, bo z powodu rzekomego błędu booking.com na nasz pokój był overbooking. Dowiedzieliśmy się o tym w dniu przyjazdu. Właściciel oferował pomoc w znalezieniu podobnej jakości miejsc w tej samej cenie. Jeżeli to faktycznie błąd techniczny portalu - to bardzo dobre zachowanie właściciela. Szkoda, że w końcu nie udało się tam spać.",
+    "negative_text": null,
+    "title": null,
+    "author": "Franciszek, Poland",
+    "date": "2026-01-18",
+    "score": 5,
+    "scale": 10,
+    "lang": "pl",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-1af384e713fa4d0a",
+    "fetched_at": "2026-11-03T17:37:19Z"
+   },
+   {
+    "text": "Sehr leckeres Frühstück!",
+    "negative_text": "Check-In time ist in Booking falsch vermerkt, wir konnten doch erst nachmittags einchecken",
+    "title": null,
+    "author": "Felix, Germany",
+    "date": "2026-01-16",
+    "score": 9,
+    "scale": 10,
+    "lang": "de",
+    "room": "King Room with Balcony",
+    "nights": 4,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-34758b70af7e3562",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️❤️"
+   },
+   {
+    "text": "I loved staying at this place. Especially this room where they put so much thought into the design. It’s new and clean, the bed is comfortable , the atmosphere is very relaxed. The management/staff are amazing and breakfast was really good and they did everything to make me feel comfortable :)",
+    "negative_text": "You should know that the train is very close so don’t be surprised to hear it sometimes. But that’s nothing they can change and it didn’t bother me.",
+    "title": null,
+    "author": "Nina, Germany",
+    "date": "2026-01-15",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "King Room with Balcony",
+    "nights": 2,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-d6b1c9cf621fd78f",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank You ❤️❤️"
+   },
+   {
+    "text": "Завтрак прям у номера готовят по заказу из меню\nБлизость к океану",
+    "negative_text": "Шум рядом проезжающих поездов, отсутствие горячей воды",
+    "title": null,
+    "author": "Мария, Russia",
+    "date": "2026-01-06",
+    "score": 10,
+    "scale": 10,
+    "lang": "ru",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 2,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-d473a8f892f97117",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️"
+   },
+   {
+    "text": "The room is really beautiful and new. The location is good and the owner is super friendly and helpful",
+    "negative_text": "They need to make some improvements like adding amenities ( shampoo, hand soap) and a hairdryer. Cleanliness could improve. And unfortunately the hotel is located near the train tracks so you can hear the trains passing.",
+    "title": "Nice stay at Midigama!",
+    "author": "Anastasia, Greece",
+    "date": "2026-01-05",
+    "score": 8,
+    "scale": 10,
+    "lang": "en",
+    "room": "King Room with Balcony",
+    "nights": 1,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-dff6e2aaa420510e",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️❤️"
+   },
+   {
+    "text": "A lovely new room in a great location with just a short walk to the beach and surf breaks. Super helpful and friendly staff.",
+    "negative_text": "Everything was great.",
+    "title": "Highly recommend",
+    "author": "Thalia, Australia",
+    "date": "2026-01-01",
+    "score": 10,
+    "scale": 10,
+    "lang": "xu",
+    "room": "King Room with Balcony",
+    "nights": 1,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-c913160e431b19ae",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank You ❤️❤️"
+   },
+   {
+    "text": "המקום היה מדהים קרוב לים מאוד נוח ארוחת הבוקר הייתה טובה אבל מעבר להכל מה דבלט היה האירוח המדהים! נקשרנו למארחים מאוד והם יצרו חוויה מעבר לסתם בית מלון(:",
+    "negative_text": null,
+    "title": "פשוט נהדר!",
+    "author": "Matan, Australia",
+    "date": "2025-12-28",
+    "score": 10,
+    "scale": 10,
+    "lang": "he",
+    "room": "Deluxe Queen Room",
+    "nights": 7,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-8d58617b4798b07a",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you very much ❤️❤️"
+   },
+   {
+    "text": "Awesome spot! Close to some good surf. I also extended one night. Such a peaceful courtyard.",
+    "negative_text": null,
+    "title": "Would defiantly stay again.",
+    "author": "Cookish, United States",
+    "date": "2025-12-28",
+    "score": 10,
+    "scale": 10,
+    "lang": "xu",
+    "room": "Deluxe Queen Room",
+    "nights": 2,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-1e762c9fd0090d51",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️"
+   },
+   {
+    "text": "Really chill place! the owner yelum is very friendly and welcoming. if you have a Problem, he will help you.",
+    "negative_text": "Everything was just find :)",
+    "title": null,
+    "author": "Lars, Germany",
+    "date": "2025-12-27",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Double or Twin Room with Garden View",
+    "nights": 2,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-200ddbbe7edf20ba",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️❤️"
+   },
+   {
+    "text": "The host and family are nice but the place. I expected a more generous breakfast like in other guesthouses, but it was good enough.",
+    "negative_text": "It needs some maintenance and cleaning. There were holes on the ceiling, the mosquito net was stinky and the place was full of flies. Changing the fun would be good since it makes lot of noise. I could hear it like an airplane even wearing ear taps.",
+    "title": "Budget place",
+    "author": "Marta, Spain",
+    "date": "2025-12-25",
+    "score": 6,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-ebb39c06bea52be7",
+    "fetched_at": "2026-11-03T17:37:19Z"
+   },
+   {
+    "text": "all",
+    "negative_text": null,
+    "title": null,
+    "author": "Giorgio, Italy",
+    "date": "2025-12-23",
+    "score": 10,
+    "scale": 10,
+    "lang": "it",
+    "room": "Double or Twin Room with Garden View",
+    "nights": 5,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-4f95a970586c5723",
+    "fetched_at": "2026-11-03T17:37:19Z"
+   },
+   {
+    "text": "Good budget option, price point reflects the accommodation. Location for midigama is perfect, the outdoor area is nice and breakfast was great. Owner is really lovely as well.",
+    "negative_text": "We were in the end room by the kitchen, there wasn’t really enough space for myself and my partner to sit outside our room comfortably and we had to bring over a chair from the table area. \n\nWe also had a bit of an issue with Ants in the room, which ended up in our bags as well so we had to clean them out before we left. \n\nSome sort of outdoor shower would have been great as well, that you can wash off the sand as it started to build up in the room over the three days.",
+    "title": "Great budget option",
+    "author": "Maeve, Ireland",
+    "date": "2025-12-17",
+    "score": 6,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-57ab17ff64fbe885",
+    "fetched_at": "2026-11-03T17:37:19Z"
+   },
+   {
+    "text": "Just wow! Location 10/10, room 10/10, cleanliness 10/10, host 10/10. Highly recommended!",
+    "negative_text": null,
+    "title": null,
+    "author": "Eleonora, Lithuania",
+    "date": "2025-12-15",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "King Room with Balcony",
+    "nights": 11,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-cc482cc0cb1be1ea",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks you ❤️❤️"
+   },
+   {
+    "text": "Sehr gutes Preis-Leistungs-Verhältnis – die Unterkunft war genauso wie auf den Bildern. Großes, sehr helles und lichtdurchflutetes Zimmer mit bequemem Bett, großem Badezimmer, guter Dusche und Balkon. Für den Preis wirklich außergewöhnlich gut.\nDas Frühstück war sehr lecker und abwechslungsreich, man konnte täglich aus mehreren Optionen wählen. Der Gastgeber war extrem freundlich, hilfsbereit und jederzeit ansprechbar, z. B. beim Rollerverleih. Man merkt, dass hier an viele Details gedacht wurde: Nachttischlampen, gut platzierte Klimaanlage (nicht direkt aufs Bett), Moskitonetz sowie ausreichend Ablageflächen – was man nicht überall findet.\nDie Lage ist ebenfalls top: Nur ein paar hundert Meter bis zum Strand, viele sehr gute Restaurants fußläufig erreichbar und trotzdem nicht direkt an der Hauptstraße gelegen. Züge hört man gelegentlich, was in Sri Lanka jedoch ganz normal ist und uns nicht gestört hat.\nWir hatten gelesen, dass in früheren Bewertungen von Bauarbeiten die Rede war. Während unseres Aufenthalts wurden im Haus noch zwei weitere Zimmer fertiggestellt, die bereits an unserem letzten Reisetag in Betrieb genommen wurden. Der Baulärm war minimal, und wir wurden immer gefragt, ob alles für uns in Ordnung ist – also war kein kein Problem. \nWir haben uns rundum wohlgefühlt und würden jederzeit wiederkommen.",
+    "negative_text": null,
+    "title": "Tolles Preis-Leistungs-Verhältnis in perfekter Lage",
+    "author": "Jane, Germany",
+    "date": "2025-12-14",
+    "score": 10,
+    "scale": 10,
+    "lang": "de",
+    "room": "King Room with Balcony",
+    "nights": 4,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-db0fefe3391d2809",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️❤️"
+   },
+   {
+    "text": "I enjoyed my stay here, and extended one more night. \r\nThe location is perfect to go and surf at lazy left and right . \r\nthe host is very welcoming and kind . breakfast is very nice. \r\nthe room is ok , it gets very dusty pretty easily I think . Bed was comfortable enough .",
+    "negative_text": "It's missing a shower outside to rinse a bit from the sand , the bathroom gets really wet with the shower, it would be nice to have one of those brooms to help dry it faster .",
+    "title": null,
+    "author": "Giada, Italy",
+    "date": "2025-12-13",
+    "score": 8,
+    "scale": 10,
+    "lang": "en",
+    "room": "Deluxe Queen Room",
+    "nights": 3,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-e68a59ddb9111462",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️ yes i fix all ready out door shower.also other think i will do it.thank you."
+   },
+   {
+    "text": "Es el mejor Hostel en el que he estado. Yelum es el mejor anfitrión, te ayuda en todo lo que necesitas. Y su familia es súper agradable. No dudaría en volver a alojarme aquí",
+    "negative_text": "Nada",
+    "title": "Espactular",
+    "author": "Julian, Spain",
+    "date": "2025-12-13",
+    "score": 10,
+    "scale": 10,
+    "lang": "es",
+    "room": "Double or Twin Room with Garden View",
+    "nights": 8,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-7d617a4a8871e506",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️"
+   },
+   {
+    "text": "I stayed at Lotus Surf House for ten days and had an amazing experience. The breakfast is absolutely incredible, there is so much variety and everything is delicious. The room was very comfortable, with air conditioning, a mosquito net, and hot water, which made our stay really pleasant. We could rest in the night without any noise. The place is in front of two amazing surf spots (lazy right and lazy left), and you have other three that you can go walking (less 1 km).\r\nThe owner, Yelum, is extremely kind and helpful. He went above and beyond to assist us, even helping us recover our surfboards that had been lost at the airport. He also organized a wonderful trip for us to Yala National Park, arranging a very comfortable taxi and an excellent jeep with a great driver.\r\nI truly recommend Lotus Surf House. Thank you for making our stay in Sri Lanka so enjoyable!",
+    "negative_text": null,
+    "title": "Quiet, beautiful and comfortable",
+    "author": "Victoria, Spain",
+    "date": "2025-12-12",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "King Room with Balcony",
+    "nights": 9,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-bcff1f46def15690",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️"
+   },
+   {
+    "text": "Está cerca de la playa y son muy amables.",
+    "negative_text": null,
+    "title": "Muy recomendable relación calidad precio, muy cerca de la playa y muy amables con indicaciones, además tienen para alqui",
+    "author": "Elia, Spain",
+    "date": "2025-12-11",
+    "score": 10,
+    "scale": 10,
+    "lang": "es",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 10,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-48a42f1ae1048f7f",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️"
+   },
+   {
+    "text": "Colazione buona.\r\nPersonale disponibile",
+    "negative_text": "La camera viene mostrata in foto in maniera un po\r\nIngannatoria, di fatto la unica cosa che mi ha dato davvero fastidio è stata La puzza di umidità è muffa nella camera.",
+    "title": null,
+    "author": "Daniele, Italy",
+    "date": "2025-12-09",
+    "score": 5,
+    "scale": 10,
+    "lang": "it",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 5,
+    "traveller_type": "Group",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-f187088121e127dc",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you for your reply.i will try my best.please you check what do you book room because we have 3 type room please check aging.\nThanks "
+   },
+   {
+    "text": "It is super convenient as it is close to the restaurants and main waves of Midigama. The owner is super attentive and the room is nice. The breakfast is also super delicious. The mood with other guests is awesome.",
+    "negative_text": null,
+    "title": "I felt this was my home.",
+    "author": "Jose, Spain",
+    "date": "2025-12-07",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 1,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-aca4dc3b4d8bb16d",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️"
+   },
+   {
+    "text": "I thoroughly enjoyed my stay at the Lotus Surf House. The property was clean and tidy, and it’s located in a quiet area that’s ideal for accessing surf spots suited to all skill levels. The owner and his wife were very personable and extremely helpful with anything I needed during my stay. I would definitely stay there again.",
+    "negative_text": null,
+    "title": null,
+    "author": "Dimitrios, United Kingdom",
+    "date": "2025-11-22",
+    "score": 8,
+    "scale": 10,
+    "lang": "en",
+    "room": "Deluxe Queen Room",
+    "nights": 14,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-704e0ff563b696aa",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️❤️"
+   },
+   {
+    "text": "Die Gastgeber waren sehr nett, Frühstück und die Nähe zum Strand waren top.\nDas neue Zimmer ist sehr modern und minimalistisch eingerichtet.",
+    "negative_text": "Die Sauberkeit war garnicht gut. Am Abfluss des Waschbeckens haben sich Ablagerungen gebildet, die nicht weggemacht wurden. Auf dem Bettlaken waren einige Haare. Alles wurde nur ganz grob geputzt, man müsste mal gründlich reinigen.\nDie Türen sind aus Milchglas, sodass Licht aus dem Flur reinschien und man hat sich hinter der Tür etwas beobachtet gefühlt. Weiterhin wurden auf der Etage die anderen neuen Zimmer gebaut. Uns wurde gesagt, dass wir sagen sollen, falls es stört, aber das hätten wir gerne vor der Buchung gewusst, dann hätten wir uns für eine andere Unterkunft entschieden. Die Tür ist auch überhaupt nicht dicht. Wenn wir im Zimmer abends Licht anhatten, kamen Insekten durch den Türrahmen ins Zimmer. Weiterhin lässt sie viel Lautstärke durch (z.B. von den Bauarbeiten).\nDie Fenster sind auch null dicht, man hört alles auf der Straße und der Zug der vorbeifährt und vorher hupt ist unnormal laut.\nDie Bidet Dusche ist nachts ausgelaufen, das ganze Bad stand unter Wasser.\nDie Bettdecke war eine weiche Decke, wie eine Art Kuscheldecke, die für eine Person gereicht hat. Auf Nachfrage haben wir allerdings eine 2. bekommen.",
+    "title": "Zimmer mit Potenzial",
+    "author": "Maria-luisa, Germany",
+    "date": "2025-11-18",
+    "score": 6,
+    "scale": 10,
+    "lang": "de",
+    "room": "King Room with Balcony",
+    "nights": 3,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-7ecbfeeb15c41047",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you i will check that all i will fix soon "
+   },
+   {
+    "text": "Yelum and his wife are super friendly and helpful. They have delicious breakfast and it‘s only a one minute walk to the beach.",
+    "negative_text": null,
+    "title": "Great location and friendly people",
+    "author": "Marlene, Germany",
+    "date": "2025-11-15",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Double or Twin Room with Garden View",
+    "nights": 6,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-c5237be26705d4e8",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️"
+   },
+   {
+    "text": "Yelum was an incredible host who helped us out with not only planning our days in Mitigama, but also with planning our entire Sri Lanka trip! He was very kind and generous with his time and cooked a delicious breakfast. The room we stayed in was recently renovated and was beautiful and spacious. Yelum had a scooter that we could hire for a very decent price to get around during our stay. It is walking distance to the beach and a few lovely cafes. Thank Yelum for the awesome stay!",
+    "negative_text": null,
+    "title": "Lovely stay close to the beach!",
+    "author": "Talia, Australia",
+    "date": "2025-11-13",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "King Room with Balcony",
+    "nights": 3,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-19a8b68e60900235",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank a lot 🙏🙏"
+   },
+   {
+    "text": "The room was spacious and functional. The AC is really helping when it’s hot outsider. The highlight was truly the host, Yelum. He is always there to help, recommend things to do, plan trips (we went to a snake farm, batik factory and safari with him, which were all great experiences). The breakfast prepared by him and his mom for the traditional Sri Lankan dishes were also very good. You can go there with your eyes closed.",
+    "negative_text": null,
+    "title": "Great place, amazing host",
+    "author": "Benjamin, Switzerland",
+    "date": "2025-10-10",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "King Room with Balcony",
+    "nights": 5,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-79d50a72c3649d87",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you very much 🙏your also very nice guess.\nThanks "
+   },
+   {
+    "text": "Very friendly and lovely owner - always helpful, easy going. Yelum can also help you with getting around Sri Lanka. Beautiful garden and 5 min walk to the beach. Close to the train tracks but the train doesn't run very often. We were here 5 years ago and decided to come back this year and will do it again:)",
+    "negative_text": null,
+    "title": null,
+    "author": "Holtmann, Switzerland",
+    "date": "2025-09-18",
+    "score": 9,
+    "scale": 10,
+    "lang": "en",
+    "room": "Deluxe Queen Room",
+    "nights": 1,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-91e35b305cc51bda",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you very much 🙏"
+   },
+   {
+    "text": "We really liked the nice atmosphere with the garden, we felt like home! Yellum is very friendly and super helpful, he even invited us to a local event, which was a great experience! The food was also very delicious! Thank you so much!!",
+    "negative_text": null,
+    "title": null,
+    "author": "Jennifer, Spain",
+    "date": "2025-07-02",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Deluxe Queen Room",
+    "nights": 5,
+    "traveller_type": "Family",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-ed9f113421de8934",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you so much your ❤️❤️your also very nice and very friendly."
+   },
+   {
+    "text": "The owner, Yelum was very reliable and helpful to make guest comfortable during the stay. He is knowledgeable of the area surrounding Midigama to give me suitable advise to do the activities. \nWhen I had a hassle with an online booking and refund process of STLB bus, he supported me with a big patient at heart.",
+    "negative_text": "Nothing special",
+    "title": "Very reliable small hideaway",
+    "author": "Hiroshi, Australia",
+    "date": "2025-06-17",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 2,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-2f4f7c38a43350c9",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you ❤️❤️"
+   },
+   {
+    "text": "Creo que el desayuno fue lo único.",
+    "negative_text": "Cama, limpieza de sábanas, nada que ver con las fotos. Las fotos me engañaron un montón. Tenía esperado llegar y encontrarme con algo similar a las fotos. Mi habitación era una cama doble. El un lado limpio y el otro lado con manchas. Baño limpio. La persona que te recibe es muy buena onda y el desayuno es bueno. Para el precio está bien. Pero si te digo que no es lo que muestran en las fotos. Está en un pueblo que no hay absolutamente nada que hacer. Pero si playas en las que puedes estar relajado por un día o dos.",
+    "title": "Las fotos me engañaron",
+    "author": "Camilo, Austria",
+    "date": "2025-05-20",
+    "score": 8,
+    "scale": 10,
+    "lang": "es",
+    "room": "Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-d8777c0acb6eb286",
+    "fetched_at": "2026-11-03T17:37:19Z"
+   },
+   {
+    "text": "Die Unterkunft liegt total schön im grünen und es ist ruhig, bis auf den Zug der ab und an vorbei fährt- aber das hat man ja überall entlang der Küste. Das Zimmer sieht genauso aus wie auf den Bildern! Die Klimaanlage funktioniert super, es ist sauber, das Frühstück ist toll und die Kommunikation mit Yelum ist ganz entspannt. Der Blick vom Balkon geht auf die kleine Straße auf der ab und an ein Tuktuk oder Auto und ansonsten nur Fußgänger und Fahrradfahrer unterwegs sind. Der Strand ist wirklich nur ein paar wenige Minuten entfernt. Es hat mir total gut gefallen, ich konnte richtig entspannen 😊",
+    "negative_text": "-",
+    "title": null,
+    "author": "Furgber, Germany",
+    "date": "2025-05-05",
+    "score": 10,
+    "scale": 10,
+    "lang": "de",
+    "room": "King Room with Balcony",
+    "nights": 3,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-b4c5dd732e4cd793",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank You 🙏 "
+   },
+   {
+    "text": "Clean, friendly host, perfect location. \nI loved the little garden in front 🦋",
+    "negative_text": null,
+    "title": null,
+    "author": "Gaëlle, Belgium",
+    "date": "2025-04-28",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-ac175d3f88bd7ed6",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks 🙏🙏"
+   },
+   {
+    "text": "alles:)",
+    "negative_text": null,
+    "title": "ich hatte einen tollen aufenthalt, habe mich sehr wohl gefühlt und der besitzer war sehr sehr lieb",
+    "author": "Amelie, Germany",
+    "date": "2025-04-13",
+    "score": 10,
+    "scale": 10,
+    "lang": "de",
+    "room": "Double or Twin Room with Garden View",
+    "nights": 1,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-98f85c8304aeb4d4",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks 🙏🙏"
+   },
+   {
+    "text": "Très bien situé pour aller surfer. A deux pas du spot et au calme (pas de nuisance de la route ). Hôte très gentil et serviable !",
+    "negative_text": null,
+    "title": "Très bon séjour !",
+    "author": "Agathe, France",
+    "date": "2025-04-07",
+    "score": 10,
+    "scale": 10,
+    "lang": "fr",
+    "room": "Deluxe Queen Room",
+    "nights": 2,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-a74403cd9809f901",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks 🙏🙏"
+   },
+   {
+    "text": "Really enjoyed the location and the hospitality. Yelum was super helpful and laidback, really made my stay as easy as possible. The house is a few hundred meters away from the beach and close to all the surf breaks.",
+    "negative_text": null,
+    "title": "Lovely stay, great location, plenty of food options, ample sized rooms, great hospitality!",
+    "author": "Rick, United States",
+    "date": "2025-04-05",
+    "score": 9,
+    "scale": 10,
+    "lang": "xu",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 4,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-855c4f8d5bfc8786",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks a lot 🙏🙏🙏"
+   },
+   {
+    "text": "Great location only a few minutes walk to a quiet beach that is great for more advanced surfers, with some nice restaurants and juice bars very close by. Unfortunately I missed it, but the beach even had some turtles hatch during my stay. Very helpful and kind owner, who sorted me out with a moped to rent for a few days at a good price. Super tasty breakfast.",
+    "negative_text": "Nothing.",
+    "title": "Chill stay near the beach",
+    "author": "Ben, Kazakhstan",
+    "date": "2025-04-01",
+    "score": 9,
+    "scale": 10,
+    "lang": "en",
+    "room": "Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-52040a1935ea178c",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks A Lot 🙏🙏🙏"
+   },
+   {
+    "text": "Very nice Homestay with various breakfast included. 5 rooms with privat Bath are located into a nice shadowy garden, which makes it a nice familiar athmosphere. The rooms (with fan) are simple and clean and have everything you need. Yelum the SriLankan owner is very nice and helpfull in every situation and speaks very well englisch. He and his family run the location. They also rent Scooter, do laundry, and make nice breakfast. There is a waterstation where you can refill your water (with a box for money when you use it). They are not obtrusive but help when you ask. \nThe Location is just a few minutes walk from the nice beaches from Midigama. \nYou can surf lazy left and lazy right and rent a surfboard just at the corner of the beach. There are a few nice restaurants with good srilankan food nearby. The railwaytracks are nearby but the trains that comes from time to time did not disturb me. The Spa Station next door is run by the brother of Yelum and I can higly recommend to go there! So the whole setting is really nice for a great stay at Midigama. I will come back.",
+    "negative_text": null,
+    "title": "A great nice family run location in Midigama",
+    "author": "Sylvia, Austria",
+    "date": "2025-03-30",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Double or Twin Room with Garden View",
+    "nights": 1,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-98f61dacbf606be3",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks a lot🙏🙏🙏"
+   },
+   {
+    "text": "Très bien placé, propre, Yulem est très sympa et le rooftop est bien pour checker le spot de surf.",
+    "negative_text": null,
+    "title": "Super emplacement",
+    "author": "Jocelyn, France",
+    "date": "2025-03-15",
+    "score": 10,
+    "scale": 10,
+    "lang": "fr",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-b43164074bd9ee9d",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks🙏🙏🙏"
+   },
+   {
+    "text": "L’emplacement, la gentillesse de l’hôte.",
+    "negative_text": "Les deux chambres dans lesquelles nous avons séjourné et les équipements sont vétustes. Les ventilateurs sont rouillés et grincent, la chasse d’eau fuyait. \r\nJ’ai été piqué par des insectes (punaises le lit). \r\nL’aménagement extérieur n’est pas  comme sur les photos, il y a seulement un hamac et une vieille table de tennis de table. Pas de canapé…La salle à manger est dans un bâtiment non terminé, la table et les chaises sont vétustes et mal entretenues.\r\nLe petit déjeuner non testé car disponible seulement de 8h à 10h ( info non donnée à l’arrivée). Le prix de la navette 25% plus cher. que dans mon premier hôtel.",
+    "title": "A fuir. Photos mensongères. Très mauvais rapport qualité prix.",
+    "author": "Nadia, France",
+    "date": "2025-03-12",
+    "score": 2,
+    "scale": 10,
+    "lang": "fr",
+    "room": "Double or Twin Room with Garden View",
+    "nights": 2,
+    "traveller_type": "Family",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-b7169b68c4d67dc7",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Dear Nadia, I am so very sorry that your expectations were not met. The planned completion of our new deluxe rooms and the even larger roof terrace could unfortunately not be guaranteed at the time of your stay. I strive every day to make my customers' holidays as wonderful as possible. If you give me a second chance in the future, I would be delighted to personally present all the new features to you.\n\nI would like to respond to your criticisms as follows: The standard rooms may not be the newest, but they are popular with many vacationers due to their charm. After a thorough inspection, no vermin were found; dry cleaning will also be carried out.\n\nBreakfast is served from 8 a.m. to 10 a.m. It is very painful for me that we were apparently unable to meet your expectations due to a communication problem.\n\nFor further suggestions, criticism, and questions, I am available to you and all my customers at any time. I wish you a wonderful time in Sri Lanka and look forward to seeing you again for a second chance. Best regards and thank you for your kind words. Yelum"
+   },
+   {
+    "text": "Entspannte Unterkunft, wahnsinnig gutes Preis- Leistungsverhältnis - es kann wirklich kein Luxus erwartet werden, aber es ist alles vorhanden, was man braucht. Kleiner Garten mit Tischtennis, Hängematte und Yogaplatz. Küche kann benutzt werden. Gutes Frühstück ist inkludiert. Super nah am Strand und vielen Restaurants, aber auch an den Gleisen (zT sehr laut, aber man gewöhnt sich dran)",
+    "negative_text": null,
+    "title": null,
+    "author": "Stefan, Germany",
+    "date": "2025-03-10",
+    "score": 9,
+    "scale": 10,
+    "lang": "de",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 2,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-04acae14226dbd49",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks a lot 🙏🙏🙏"
+   },
+   {
+    "text": "Awesome hangout spot post surf. Yelum is a great host and makes a delicious breakfast. Will definitely stay again!",
+    "negative_text": "That I couldn't stay longer.",
+    "title": "2 mediocre surfers find a home",
+    "author": "Caleb, Canada",
+    "date": "2025-03-08",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Group",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-8c935cd10b968e5b",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks A Lot 🙏🙏🙏"
+   },
+   {
+    "text": "Die Besitzer sind sehr freundlich und man fühlt sich sehr willkommen. Ruhige Lage im Vergleich zur Strasse",
+    "negative_text": null,
+    "title": null,
+    "author": "Frederike, Germany",
+    "date": "2025-03-04",
+    "score": 9,
+    "scale": 10,
+    "lang": "de",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-d5251212028f2271",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks A Lot🙏🙏🙏"
+   },
+   {
+    "text": "Alles wat je leest is waar. Deze plek is zo chill, ontbijt is heerlijk, Yelum is mega relaxed, katoenen lakens, rustige plek. Gewoon echt mega fijn. En voor deze prijs top!",
+    "negative_text": null,
+    "title": "Geweldig!",
+    "author": "Mare, Netherlands",
+    "date": "2025-02-24",
+    "score": 10,
+    "scale": 10,
+    "lang": "nl",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-b2d491e46fc0f3e1",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks A Lot🙏🙏🙏"
+   },
+   {
+    "text": "ALL !",
+    "negative_text": "Nothing",
+    "title": "Perfect",
+    "author": "Aurore, France",
+    "date": "2025-02-20",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-40d5aa29946c6ce8",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks🙏🙏🙏"
+   },
+   {
+    "text": "Yelum and his family were such brilliant hosts. If you want a simple spot with great food close to the waves and centre of Midigama, look no further.",
+    "negative_text": null,
+    "title": "I'll be back!",
+    "author": "Matthew, United Kingdom",
+    "date": "2025-02-19",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Double or Twin Room with Garden View",
+    "nights": 7,
+    "traveller_type": "Group",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-758e556e760492b8",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks a lot🙏🙏🙏"
+   },
+   {
+    "text": "We arrived late and he woke up to welcome us. Very nice guy\r\nthe price is low and seems appropriate for what you get.",
+    "negative_text": "Very poorly maintained room, in the middle of the night the fan broke down and it was very difficult to fall asleep with the heat without air conditioning, it was uncomfortable",
+    "title": null,
+    "author": "Shagasi, Israel",
+    "date": "2025-02-09",
+    "score": 7,
+    "scale": 10,
+    "lang": "en",
+    "room": "Double or Twin Room with Garden View",
+    "nights": 1,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-57f9f11684f1fe72",
+    "fetched_at": "2026-11-03T17:37:19Z"
+   },
+   {
+    "text": "Best place so far",
+    "negative_text": null,
+    "title": null,
+    "author": "Michael, Austria",
+    "date": "2025-01-21",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-693cce7988ff1dbf",
+    "fetched_at": "2026-11-03T17:37:19Z"
+   },
+   {
+    "text": "Quiet atmosphere, relaxed setting and attracts a nice crowd \n\nAlso breakfast granola was the delicious - yelum is the best !",
+    "negative_text": "That i had to leave !",
+    "title": "Peaceful",
+    "author": "Shaw, Spain",
+    "date": "2025-01-18",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Double or Twin Room with Garden View",
+    "nights": 1,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-d2f7032cc6f1735c",
+    "fetched_at": "2026-11-03T17:37:19Z"
+   },
+   {
+    "text": "J’ai tout aimé. L’accueil, la simplicité des chambres avec tout le nécéssaire et la beauté du jardin, le petit déjeuner, la bienveillance du hôte.",
+    "negative_text": null,
+    "title": "Chaleureux, comme chez soi.",
+    "author": "Anna, France",
+    "date": "2025-01-12",
+    "score": 10,
+    "scale": 10,
+    "lang": "fr",
+    "room": "Double or Twin Room with Garden View",
+    "nights": 2,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-ac07c4aa39a137d1",
+    "fetched_at": "2026-11-03T17:37:19Z"
+   },
+   {
+    "text": "posizione e arredamento",
+    "negative_text": "molti rumori",
+    "title": null,
+    "author": "Nicoletta, Italy",
+    "date": "2025-01-12",
+    "score": 7,
+    "scale": 10,
+    "lang": "it",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 1,
+    "traveller_type": "Group",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-4cefa9276d38c386",
+    "fetched_at": "2026-11-03T17:37:19Z"
+   },
+   {
+    "text": "Het ontbijt was heel goed. De service en locatie ook.",
+    "negative_text": "Als er een feest is op het dakterras in de stad hoor je dit wel, maar dat is op alle plekken in de buurt.",
+    "title": "Heel fijn",
+    "author": "A, Netherlands",
+    "date": "2025-01-10",
+    "score": 9,
+    "scale": 10,
+    "lang": "nl",
+    "room": "Double or Twin Room with Garden View",
+    "nights": 2,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-79a63e6951e0faf7",
+    "fetched_at": "2026-11-03T17:37:19Z"
+   },
+   {
+    "text": "Sri Lankan rice & coconut muesli with fresh fruits and curd was an excellent breakfast option. They let us help ourselves to tea and coffee which was great. It was a short easy stroll to the beach. And the train station is very close. Great place for dinner just down the road at Chill out cafe. Lovely family runs the guesthouse.",
+    "negative_text": "Could do with a little touch up - rooms downstairs need a little maintenance and would be nice to be provided with basics like soap and shampoo, a bath mat and more comfortable pillows. We had the luxury of staying in the brand new big room upstairs which was very nice but the rest of the family were down stairs in older rooms that need some maintenance. But the family is super nice and helpful.",
+    "title": "Great little beach retreat with a beautiful family.",
+    "author": "Amy, New Zealand",
+    "date": "2024-12-31",
+    "score": 8,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Family",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-ac8f190c696185f9",
+    "fetched_at": "2026-11-03T17:37:19Z"
+   },
+   {
+    "text": "Yelum and his family provide such a welcoming and comfortable stay. The garden is like an oasis away from hustle of main road. Rooms are clean and comfortable and sitting on the porch breakfast is served with a range of options made by Yelum mother, the coconut roti and dhal a highlight for me and granola yogurt and fresh fruit and banana pancakes for my family. Yelum organised an airport pickup at midnight for us and welcomed us at 3 am. Would definitely stay again",
+    "negative_text": "Upstairs communal area has been replaced with new rooms, but otherwise no",
+    "title": "Great little oasis",
+    "author": "Fiona, Australia",
+    "date": "2024-12-14",
+    "score": 9,
+    "scale": 10,
+    "lang": "en",
+    "room": "Deluxe Queen Room",
+    "nights": 2,
+    "traveller_type": "Family",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-6cf5897ec90b23db",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thank you your feedback.also your very nice very friendly guest."
+   },
+   {
+    "text": "Beautiful garden, the owners are so friendly and accomodating and the location is really close to all the cafes and restaurants in Midigama and walking distance to the two best surf spots around. I felt right at home here as a solo fem traveller!",
+    "negative_text": null,
+    "title": "The best!!",
+    "author": "Nicole, Australia",
+    "date": "2024-12-05",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Deluxe Queen Room",
+    "nights": 14,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-6703a9561429867e",
+    "fetched_at": "2026-11-03T17:37:19Z"
+   },
+   {
+    "text": "An amazing place and just minutes away from the the shore. We had all the care from Yelem and his family. A good place to have a peaceful rest and meet charming Sri Lankan family:)",
+    "negative_text": null,
+    "title": "Looking forward to come back! Unforgettable place.",
+    "author": "Anastasia, Georgia",
+    "date": "2024-11-25",
+    "score": 10,
+    "scale": 10,
+    "lang": "xu",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 4,
+    "traveller_type": "Group",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-8e56fcb2e18b6fa7",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Your also nice guest for us.we are happy to staying our place.thank you staying our place."
+   },
+   {
+    "text": "Ein kleiner, sehr netter Familienbetrieb \nEinfache , nette Zimmer mit Bad, alles was man braucht, um einen kleinen Garten herum. Schöner Gemeinschaftsbereich auf der Dachterrasse. \n3 Minuten zu Fuß vom Strand (klein, mit Liegen und Bäumen u teilweise Sonnensegel) entfernt\nIdeal für Fortgeschrittene Surfer die lazy Left und  lazy right surfen wollen. \nLium, der Besitzer kümmert sich um alle Fragen und Anliegen. Er vermietet auch Mopeds.\nGleich daneben hat sein Bruder ein tolles Spa House. Mehrere Restaurants u 2 Geschäfte in unmittelbarer Nähe. \nDie Zugschienen sind gleich daneben, und ab und zu fährt ein Zug,  aber das hat nicht gestört. \nIch kann Lotus Surf House sehr empfehlen. Ich habe mich sehr sicher und wohl gefühlt",
+    "negative_text": null,
+    "title": null,
+    "author": "Sylvia, Austria",
+    "date": "2024-05-02",
+    "score": 10,
+    "scale": 10,
+    "lang": "de",
+    "room": "Double or Twin Room with Garden View",
+    "nights": 2,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-e6a17a995a0c630f",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks a lot.also your very nice guest."
+   },
+   {
+    "text": "We had an amazing stay at Lotus House. The family are so kind and welcoming. The breakfasts every day after surfing are amazing. Great location, only a 2 minute walk from the beach and the local surf spots. A very calm and relaxing vibe - lots of fun on the ping pong table in the garden. Our favourite stay in Sri Lanka, we would highly recommend, and we can’t wait to come back next year!",
+    "negative_text": "Nothing. It was all great.",
+    "title": "Amazing",
+    "author": "Henry, United Kingdom",
+    "date": "2024-03-03",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 8,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-da3b701928dfd325",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Your also very nice and friendly couple we meet.thanks a lot staying with us recommend us.see you soon."
+   },
+   {
+    "text": "Location is great: beach is close, there are a couple of local restaurants nearby and a massage spa next door. Garden and rooftop terrace are very good for relaxing. Breakfast options are great.",
+    "negative_text": null,
+    "title": "Convenient and friendly local accommodation!",
+    "author": "Herman, Switzerland",
+    "date": "2024-02-24",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Deluxe Queen Room",
+    "nights": 8,
+    "traveller_type": "Couple",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-e9775c601beef556",
+    "fetched_at": "2026-11-03T17:37:19Z"
+   },
+   {
+    "text": "Le calme, l’esprit surf et cool du lieux 🤙",
+    "negative_text": null,
+    "title": "Petit hôtel très calme, loin du bruit des grosses villes (Marissa, Weligama) la ville de Midigama n’est pas très grand e",
+    "author": "Alexandre, Belgium",
+    "date": "2024-02-10",
+    "score": 10,
+    "scale": 10,
+    "lang": "fr",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 2,
+    "traveller_type": "Group",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-f1a271ba0a437362",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Your both a nice boys.very friendly and good."
+   },
+   {
+    "text": "老闆很親切",
+    "negative_text": "沒有冷氣，沒有熱水，設備老舊",
+    "title": "很接近衝浪的地點，但是房間不通風沒有冷氣，設備很老舊，此價位應該可以租更好的地方",
+    "author": "信鴻, Taiwan",
+    "date": "2024-02-05",
+    "score": 6,
+    "scale": 10,
+    "lang": "xt",
+    "room": "Deluxe Queen Room",
+    "nights": 1,
+    "traveller_type": "Group",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-11e64a8caecf1d85",
+    "fetched_at": "2026-11-03T17:37:19Z"
+   },
+   {
+    "text": "Very sweet Accommodation! A nice garden with a ping pong table and a great rooftop terrace, partly with a roof to get some shade. Had lots of yoga sessions up there with a wonderful view over the jungle. Location is great, lots of Restaurants around and just a few minutes walking distance to 4 surfspots, suitable for everyone from beginner/intermediates to highly advanced surfers. Yelum and his Father are super friendly and will help you with whatever Question comes up. I will be back :)",
+    "negative_text": "Most rooms had AC and hot showers, mine didn’t - which I knew and got used to very quickly so not really a minus :-)",
+    "title": null,
+    "author": "Svenja, Germany",
+    "date": "2024-02-05",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 10,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-9e9b0178abf5f619",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Your also nice and very friendly guest.\nThanks review for us."
+   },
+   {
+    "text": null,
+    "negative_text": "Unfortunately I never got to stay here. I booked a 3 night stay about a week in advance. The property messaged me at 10 am on the day I was supposed to arrive to say that some other guests wanted to stay longer so they had no room for me and they wanted me to cancel my booking. I had to scramble to find something else at the last minute and unfortunately there were not many options left in the area. Not sure what is the point of taking reservations if you do not honor them",
+    "title": "Canceled at the last minute",
+    "author": "Brett, Canada",
+    "date": "2024-01-30",
+    "score": 1,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 3,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-f6008e095139b9f3",
+    "fetched_at": "2026-11-03T17:37:19Z"
+   },
+   {
+    "text": "Fantastic place, very chilled out, not on the main road like many other places, breakfast was delicious, and they even had a very cute puppy who liked to play a lot!",
+    "negative_text": "Nothing!",
+    "title": "Amazing place!",
+    "author": "Francis, United Kingdom",
+    "date": "2023-12-01",
+    "score": 10,
+    "scale": 10,
+    "lang": "en",
+    "room": "Standard Double or Twin Room with Garden View",
+    "nights": 1,
+    "traveller_type": "Solo traveller",
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-1297ba41ea7bb4a1",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "owner_reply": "Thanks a lot staying our place and your so nice and very friendly."
+   }
+  ],
+  "owner_replies_without_review_text": [
+   {
+    "review_id": "d46ea8843212b5e7",
+    "author": "Emilie, Germany",
+    "date": "2026-01-10",
+    "score": 10,
+    "owner_reply": "Thank you ❤️",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-d46ea8843212b5e7",
+    "fetched_at": "2026-11-03T17:37:19Z"
+   }
+  ],
+  "critical_themes": [
+   {
+    "value": "ground-floor fan rooms: no A/C or hot water, hot at night, noisy fan",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-dbf1ca442ab221b6",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "note": "Alice (2026-03), Katsiaryna (2026-02), 4994145869b418af (nl, 2026-03), Shagasi (2025-02), Svenja (2024-02), 信鴻 (2024-02). Owner: 'we have 1st floor that's rooms only have [A/C and hot water]'"
+   },
+   {
+    "value": "trains and some road noise (the railway is 50 m away); Tuesday party noise from a bar",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-c8baa255680570c0",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "note": "Colin (2026-01), Nina (2026-01), Anastasia (2026-01), Lotta (fi, 2026-04), Stefan (de, 2025-03); Alice (2026-03): 'you can hear the party at Lazie’s'"
+   },
+   {
+    "value": "older ground-floor rooms need maintenance; cleanliness, mosquito nets, ants, flies, basics like soap and shampoo",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-ebb39c06bea52be7",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "note": "Marta (2025-12), Maeve (2025-12), Amy (2024-12), Anastasia (2026-01), Alice HK (2026-02), Giacomo (2026-02), Daniele (it, 2025-12), Nadia (fr, 2025-03)"
+   },
+   {
+    "value": "rooms differ from the photos (the photos show the new upstairs rooms)",
+    "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-67901f3894e12bf1",
+    "fetched_at": "2026-11-03T17:37:19Z",
+    "note": "Alaa (2026-02, score 4), Daniele (it, 2025-12, 5), Nadia (fr, 2025-03, 2). Pitch point: a site that shows each room type with its own photos fixes this."
+   }
+  ],
+  "critical_themes_note": "Praise is overwhelmingly about the hosts (Yelum, his wife and family), the breakfast, the garden and the walk to the surf; the King rooms upstairs are called new, beautiful, A/C + hot water. Complaints concentrate on the older fan rooms."
+ },
+ "images": [
+  {
+   "id": "img-001",
+   "file": "assets/img-001.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/796646994.jpg?k=dfac4199989ca4360cfd6433422d4a0bc4360d4f6248780a161d8764cb9232cb&o=",
+   "booking_photo_id": "796646994",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a ping pong table in front of a house at Lotus Surf House in Midigama",
+   "uploaded": "2025-12-24 11:13:38",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "3abacf332717b6ced2a59944a88eff4724912016a136c4f2c9d14c363098fd47",
+   "width": 1280,
+   "height": 960,
+   "original_size": [
+    1280,
+    960
+   ],
+   "description": "blue ping-pong table on the sandy garden lawn, the single-storey guest wing and the new two-storey block behind",
+   "room": null
+  },
+  {
+   "id": "img-002",
+   "file": "assets/img-002.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657116913.jpg?k=13d4290e83fada8077682b583e93e1e39db216ce673e4750c3b7b9fc358e84ce&o=",
+   "booking_photo_id": "657116913",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bedroom with a canopy bed and a balcony at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:09:58",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "2d31e1eee67075845352f01a11f91c87b46f510dcf35d5273b8e85406cce0e25",
+   "width": 1600,
+   "height": 1200,
+   "original_size": [
+    1600,
+    1200
+   ],
+   "description": "new upstairs King Room: canopy bed with mosquito net, floor-to-ceiling glass door open onto a balcony with two rattan chairs and trees",
+   "room": null
+  },
+  {
+   "id": "img-003",
+   "file": "assets/img-003.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657117502.jpg?k=f17e73b25e479f9440a192a6cf194fc391d7500079d3090ff34296dd1a8a4689&o=",
+   "booking_photo_id": "657117502",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bathroom with a glass door in a room at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:11:21",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "70d2ecb1fcfdcb2c9ebc94d921ee0dcd71302eb3c3ebc4c2d068a8b59c103be8",
+   "width": 1200,
+   "height": 1600,
+   "original_size": [
+    1200,
+    1600
+   ],
+   "description": "new bathroom: glass shower door, walk-in rain shower, rattan towel rack",
+   "room": null
+  },
+  {
+   "id": "img-004",
+   "file": "assets/img-004.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657115863.jpg?k=ff02c437e55ca04257ea5cf2fe250a76cb1c42199ed982ca6a3fb9164175dd03&o=",
+   "booking_photo_id": "657115863",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a wooden table with chairs and a table top at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:06:53",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "db72dc6f957832190c32f35f2ad75a25e76f2aaf4b47a5945a5365f8421c6726",
+   "width": 1199,
+   "height": 1600,
+   "original_size": [
+    1199,
+    1600
+   ],
+   "description": "roof terrace dining table with wooden chairs, green canopy of trees behind",
+   "room": null
+  },
+  {
+   "id": "img-005",
+   "file": "assets/img-005.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657115840.jpg?k=a3a78c2795bf1db07f115cb2d790f47155b53a1b51691ea75734ec1ff0046588&o=",
+   "booking_photo_id": "657115840",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a blue ping pong table under a wooden roof at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:06:41",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "dddca5a8748c70ba0b56d056a554723f7636c80138a45404bd62466c95e0645a",
+   "width": 1199,
+   "height": 1600,
+   "original_size": [
+    1199,
+    1600
+   ],
+   "description": "ping-pong table under a thatched pavilion in the garden, guest wing behind",
+   "room": null
+  },
+  {
+   "id": "img-006",
+   "file": "assets/img-006.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657116526.jpg?k=ca61d364e7e3286a756b1ef0f3b30d2510743298f2b05e24eaa92953d106cdd0&o=",
+   "booking_photo_id": "657116526",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bedroom with a bed with a canopy at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:09:02",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "7ef6f517d4c9bfff4feba910a26fd7b312734c839101c0c3857eb06663319072",
+   "width": 1200,
+   "height": 1600,
+   "original_size": [
+    1200,
+    1600
+   ],
+   "description": "canopy bed seen from the corner of the room, balcony and palms through the glass",
+   "room": null
+  },
+  {
+   "id": "img-007",
+   "file": "assets/img-007.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/777704775.jpg?k=0e4d8898fe24d839327282277368a14207aafbea488987bd7976b1ea2f1f3b19&o=",
+   "booking_photo_id": "777704775",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bedroom with a canopy bed and a balcony at Lotus Surf House in Midigama",
+   "uploaded": "2025-11-15 10:57:06",
+   "booking_rooms": [
+    "559076609"
+   ],
+   "found_on": "booking",
+   "sha256": "8ff06b98b39bbc891e616336f3e46164750fa67598fcbbdaddc9b6a0b0f8bcf2",
+   "width": 1280,
+   "height": 960,
+   "original_size": [
+    1280,
+    960
+   ],
+   "description": "King Room with canopy bed and open balcony door (another upload of the img-002 view)",
+   "room": [
+    "King Room with Balcony"
+   ],
+   "same_view_as": "img-002"
+  },
+  {
+   "id": "img-008",
+   "file": "assets/img-008.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657117417.jpg?k=bdc2138c25085da96b5da78ca6f63c1a2c96cb630fa29687c597282d956c8c8d&o=",
+   "booking_photo_id": "657117417",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bathroom with a sink and a shower at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:11:07",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "a383e417e33ff97986157e7995197ba247b68555f7d33be0b540073f7866105b",
+   "width": 1600,
+   "height": 1200,
+   "original_size": [
+    1600,
+    1200
+   ],
+   "description": "new bathroom: poured-concrete basin, round backlit mirror, walk-in shower",
+   "room": null
+  },
+  {
+   "id": "img-009",
+   "file": "assets/img-009.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/325758743.jpg?k=7016f9d432cabf4092ee04374001ee624ab5aaddff5dd7dacb6ec6ec2205f429&o=",
+   "booking_photo_id": "325758743",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a house with a yard with chairs and a courtyard at Lotus Surf House in Midigama",
+   "uploaded": "2021-10-30 08:13:23",
+   "booking_rooms": [
+    "559076601",
+    "559076606",
+    "559076607"
+   ],
+   "found_on": "booking",
+   "sha256": "157469e727390d729b4239a3b4ced9c08ca234023de71642b3652125c14642d8",
+   "width": 1024,
+   "height": 768,
+   "original_size": [
+    1024,
+    768
+   ],
+   "description": "the garden lawn with a stone birdbath, the tiled-roof guest wing with its veranda and rattan chairs, the two-storey block on the right",
+   "room": [
+    "Double or Twin Room with Garden View",
+    "Standard Double or Twin Room with Garden View"
+   ]
+  },
+  {
+   "id": "img-010",
+   "file": "assets/img-010.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657116379.jpg?k=ecbb93541e13084ba6546df824593bb70bc881343801ef1249f137e4c7dde576&o=",
+   "booking_photo_id": "657116379",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bedroom with a bed with a mosquito net at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:08:33",
+   "booking_rooms": [
+    "559076608",
+    "559076609"
+   ],
+   "found_on": "booking",
+   "sha256": "e688a08779af9e96068ef9a1b8b5bd173b29313ad3bfa1dc9cd9a6e130cd2f74",
+   "width": 1600,
+   "height": 1200,
+   "original_size": [
+    1600,
+    1200
+   ],
+   "description": "upstairs room with canopy bed, tall windows and doors open onto trees",
+   "room": [
+    "King Room with Balcony"
+   ]
+  },
+  {
+   "id": "img-011",
+   "file": "assets/img-011.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/796627023.jpg?k=cf01c5552c2b7b017b25d8d1a6d33c1112708496d3b2b38bf546c492cb3e70bc&o=",
+   "booking_photo_id": "796627023",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bedroom with a bed with a large window at Lotus Surf House in Midigama",
+   "uploaded": "2025-12-24 10:49:53",
+   "booking_rooms": [
+    "559076610"
+   ],
+   "found_on": "booking",
+   "sha256": "b6da4a37c87f684cf88e9daf4905068959f65f4f7ecad362625f2fb5f830dfcc",
+   "width": 960,
+   "height": 1280,
+   "original_size": [
+    960,
+    1280
+   ],
+   "description": "King Room (2025-12): double bed under two windows, wall lights",
+   "room": [
+    "King Room with Balcony"
+   ]
+  },
+  {
+   "id": "img-012",
+   "file": "assets/img-012.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/796626817.jpg?k=cb5a856bfd5f0ef02e4db7a662da9791eae6a4374c9faaf5566353ab14ca6ed1&o=",
+   "booking_photo_id": "796626817",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bathroom with a sink and a mirror at Lotus Surf House in Midigama",
+   "uploaded": "2025-12-24 10:49:34",
+   "booking_rooms": [
+    "559076610"
+   ],
+   "found_on": "booking",
+   "sha256": "b37f376c9f62452976147528ad3fe04540930905c12d7cb1ee8c24c81e507c52",
+   "width": 960,
+   "height": 1280,
+   "original_size": [
+    960,
+    1280
+   ],
+   "description": "King Room bathroom: rain shower, basin, gold-framed mirror",
+   "room": [
+    "King Room with Balcony"
+   ]
+  },
+  {
+   "id": "img-013",
+   "file": "assets/img-013.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/796626404.jpg?k=293698438ef1ec8266b88748ce7a2bc3194dd82e8179ff80611f198d6cfa54c3&o=",
+   "booking_photo_id": "796626404",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bed with two pillows in a room with a window at Lotus Surf House in Midigama",
+   "uploaded": "2025-12-24 10:49:11",
+   "booking_rooms": [
+    "559076610"
+   ],
+   "found_on": "booking",
+   "sha256": "a1e5fbfa3f8dddd067b351d061dcb5688fc3002297a007e448add243097a7453",
+   "width": 960,
+   "height": 1280,
+   "original_size": [
+    960,
+    1280
+   ],
+   "description": "King Room: bed with two pillows under a high window with ochre curtains",
+   "room": [
+    "King Room with Balcony"
+   ]
+  },
+  {
+   "id": "img-014",
+   "file": "assets/img-014.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/675996187.jpg?k=1fc0d320b2575b19da812f2c3f781c2eb5b5f0a82ae974d062e487627557358e&o=",
+   "booking_photo_id": "675996187",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bedroom with a canopy bed and a balcony at Lotus Surf House in Midigama",
+   "uploaded": "2025-04-24 17:10:34",
+   "booking_rooms": [
+    "559076608"
+   ],
+   "found_on": "booking",
+   "sha256": "45ebe6cebd095f844b12f7d64e0f8c79c061928b46dba956ebdce6a36854cb33",
+   "width": 1024,
+   "height": 768,
+   "original_size": [
+    1024,
+    768
+   ],
+   "description": "King Room with canopy bed and balcony (another upload of the img-002 view)",
+   "room": [
+    "King Room with Balcony"
+   ],
+   "same_view_as": "img-002"
+  },
+  {
+   "id": "img-015",
+   "file": "assets/img-015.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/777704999.jpg?k=27aa4db7b222ae8c8227a43d546aca8623f8695195348f147cbcda86e8bdb3ba&o=",
+   "booking_photo_id": "777704999",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bedroom with a canopy bed with white curtains at Lotus Surf House in Midigama",
+   "uploaded": "2025-11-15 10:59:23",
+   "booking_rooms": [
+    "559076609"
+   ],
+   "found_on": "booking",
+   "sha256": "e32cb3fc8511398f8ed90dc9cf6b0123c611b3e67f6d12c98b5b9d77d684213f",
+   "width": 1280,
+   "height": 960,
+   "original_size": [
+    1280,
+    960
+   ],
+   "description": "King Room: canopy bed, air-conditioning unit, wooden wall shelf and hanger rail",
+   "room": [
+    "King Room with Balcony"
+   ]
+  },
+  {
+   "id": "img-016",
+   "file": "assets/img-016.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/777704867.jpg?k=464043d606e600ccc066f28c3f2e16a52bcb26ebea991c2f2c8c71eb7285a86c&o=",
+   "booking_photo_id": "777704867",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bedroom with a bed and a table and chairs on a balcony at Lotus Surf House in Midigama",
+   "uploaded": "2025-11-15 10:58:21",
+   "booking_rooms": [
+    "559076609"
+   ],
+   "found_on": "booking",
+   "sha256": "bd27d7417b11021f97b1e78b29bcc0aee8ae52010042b21ca4fb6570a3a3ae45",
+   "width": 960,
+   "height": 1280,
+   "original_size": [
+    960,
+    1280
+   ],
+   "description": "King Room: foot of the bed and the balcony with two rattan chairs looking into trees",
+   "room": [
+    "King Room with Balcony"
+   ]
+  },
+  {
+   "id": "img-017",
+   "file": "assets/img-017.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/675996188.jpg?k=8f2b88bd06708e134cdea46254ea011cbb736f42409f39677bd505c38c24de13&o=",
+   "booking_photo_id": "675996188",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bedroom with a bed with a mosquito net at Lotus Surf House in Midigama",
+   "uploaded": "2025-04-24 17:10:35",
+   "booking_rooms": [
+    "559076608"
+   ],
+   "found_on": "booking",
+   "sha256": "cdac68301981678ab437ad32b82f4b7a0497eba4b2845d65f2277d8d30dc5a71",
+   "width": 1024,
+   "height": 768,
+   "original_size": [
+    1024,
+    768
+   ],
+   "description": "upstairs room with canopy bed, tall windows and doors open onto trees (another upload of the img-010 view)",
+   "room": [
+    "King Room with Balcony"
+   ],
+   "same_view_as": "img-010"
+  },
+  {
+   "id": "img-018",
+   "file": "assets/img-018.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657115528.jpg?k=ab450976636d0c33db5d79bb50a62f6a16991bea6c11e5d8dc37c164ac94b35b&o=",
+   "booking_photo_id": "657115528",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a sign for the entrance to the garden of our house at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:05:39",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "6c61b1b849ae064694e354c9f804e899739edf9b543ae1787cf8f35cbdadc384",
+   "width": 1200,
+   "height": 1600,
+   "original_size": [
+    1200,
+    1600
+   ],
+   "description": "the entrance sign on a blue wall: \"Lotus Surf House MIDIGAMA\", flowering creeper above",
+   "room": null
+  },
+  {
+   "id": "img-019",
+   "file": "assets/img-019.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657115749.jpg?k=145477329b411401c08cd12612b50017ba18a1efdbf1980a21bf6e8263fcef90&o=",
+   "booking_photo_id": "657115749",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "an open door to a building with a tree at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:06:13",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "e3231275658488d8d7dac39c6ab0d0a26be2ea49921c553bf10766f5244a8928",
+   "width": 1200,
+   "height": 1600,
+   "original_size": [
+    1200,
+    1600
+   ],
+   "description": "old wooden double door in the garden wall, leaves framing it",
+   "room": null
+  },
+  {
+   "id": "img-020",
+   "file": "assets/img-020.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657115804.jpg?k=fede5f39641936b644a281ecc02812e9b5b8d7ed235ef891e78692a54a017be2&o=",
+   "booking_photo_id": "657115804",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a hammock under a tree in a yard at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:06:27",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "a4af5411dfd9086a6db9eb9c2dc978d73090699f19cd9cd097451f6e68a8917b",
+   "width": 1600,
+   "height": 1200,
+   "original_size": [
+    1600,
+    1200
+   ],
+   "description": "shady garden: hammock under the trees, ping-pong table, garden wall",
+   "room": null
+  },
+  {
+   "id": "img-021",
+   "file": "assets/img-021.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657115911.jpg?k=80dba7282dad6f4e58765f9f1627eedcaac39a7c6f5663a463677a23ff5f5f1d&o=",
+   "booking_photo_id": "657115911",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a statue sitting on top of a pedestal in a garden at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:07:06",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "d3a0d52bcc700d5db496c28859d70a03bd951e2b9ff302123211108fb05244f0",
+   "width": 1200,
+   "height": 1600,
+   "original_size": [
+    1200,
+    1600
+   ],
+   "description": "roof terrace corner with a Buddha statue on a pedestal, yoga mats and cushions on the floor, palms beyond",
+   "room": null
+  },
+  {
+   "id": "img-022",
+   "file": "assets/img-022.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657115987.jpg?k=c9d96a75d8ff116f70e0cfb0aee65d959b35f742f93c6ada18adfa26bfade239&o=",
+   "booking_photo_id": "657115987",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a statue of a buddha sitting on a table at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:07:17",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "82d752698d04566073ad948c02c4521ca4bd64ff4de57542d375b0be2caf11af",
+   "width": 1199,
+   "height": 1600,
+   "original_size": [
+    1199,
+    1600
+   ],
+   "description": "close-up of the Buddha statue with offerings of flowers and fruit",
+   "room": null
+  },
+  {
+   "id": "img-023",
+   "file": "assets/img-023.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657116699.jpg?k=6c96591e3572fb0afceb6bbe833a3cb8e46a542c0986d7731cc22a6de3d25caa&o=",
+   "booking_photo_id": "657116699",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bedroom with a canopy bed with white drapes at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:09:45",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "c1cf260396b3fd8d79652819bf5ee2c3a9f5c81102d9b840777350cbdf8a72d3",
+   "width": 1600,
+   "height": 1200,
+   "original_size": [
+    1600,
+    1200
+   ],
+   "description": "King Room: canopy bed, air-conditioning unit, wall shelf (another upload of the img-015 view)",
+   "room": null,
+   "same_view_as": "img-015"
+  },
+  {
+   "id": "img-024",
+   "file": "assets/img-024.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657117340.jpg?k=4f0b9207bbeeff082d3ecc313562dded4b52b7419496e3f68cb0c7da3c50fd58&o=",
+   "booking_photo_id": "657117340",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bathroom with a sink and a mirror and a toilet at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:10:55",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "6accf67db8fbe72d7de91842a06c234ea9060cc43b1bbd663493928a7a898c85",
+   "width": 1200,
+   "height": 1600,
+   "original_size": [
+    1200,
+    1600
+   ],
+   "description": "new bathroom: round backlit mirror, concrete vanity, toilet, glass door",
+   "room": null
+  },
+  {
+   "id": "img-025",
+   "file": "assets/img-025.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657116625.jpg?k=6777024a70e6fce618619593812f0646a4442a05957cdc15e487ffc5d6214318&o=",
+   "booking_photo_id": "657116625",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bedroom with a balcony with a table and chairs at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:09:30",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "2f119319891e1664c0d5a00decb844705cc44852607d982ee46915fdcf30b961",
+   "width": 1200,
+   "height": 1600,
+   "original_size": [
+    1200,
+    1600
+   ],
+   "description": "from inside the King Room: glass doors open onto the balcony and its two rattan chairs, trees",
+   "room": null
+  },
+  {
+   "id": "img-026",
+   "file": "assets/img-026.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/325758993.jpg?k=a8d5ff20ff5f103609cf22c22369046a44fefcaa7f844422558cf113f77a8953&o=",
+   "booking_photo_id": "325758993",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a room with a bed and a surfboard in it at Lotus Surf House in Midigama",
+   "uploaded": "2021-10-30 08:20:01",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "6e24ec4fae5cc00c339832b1d578e837e4efd09d5eefdf1fab104bd6b4cbfb06",
+   "width": 1600,
+   "height": 1200,
+   "original_size": [
+    1600,
+    1200
+   ],
+   "description": "older (2021) room, wide-angle: bed, rattan chairs, wooden wall shelves and a surfboard",
+   "room": null
+  },
+  {
+   "id": "img-027",
+   "file": "assets/img-027.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/325759075.jpg?k=dc077db98c90150cb4605dc9a41da94b5c9d782ce3f1a5019aef99e681b94bd4&o=",
+   "booking_photo_id": "325759075",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a house with three chairs and a table on a porch at Lotus Surf House in Midigama",
+   "uploaded": "2021-10-30 08:20:46",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "b23cce6fcd46c8e81c1ccc1b03e0951693879fee186243550b230b0f9cb7fb02",
+   "width": 1520,
+   "height": 1040,
+   "original_size": [
+    1520,
+    1040
+   ],
+   "description": "older (2021) porch, wide-angle: rattan chairs and a glass table on a wooden deck in front of glass doors",
+   "room": null
+  },
+  {
+   "id": "img-028",
+   "file": "assets/img-028.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/658172986.jpg?k=11ed61196a9e245f5996919b3da81dc6b09073d4b0f5ac8cc38e4dafced4f766&o=",
+   "booking_photo_id": "658172986",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bathroom with a toilet and a sink at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-13 09:46:20",
+   "booking_rooms": [
+    "559076605"
+   ],
+   "found_on": "booking",
+   "sha256": "059bda1d50511b0e33ca2979dc1bafdabe6dcf17632389a93769902697aaa436",
+   "width": 1049,
+   "height": 1000,
+   "original_size": [
+    1049,
+    1000
+   ],
+   "description": "Deluxe Queen Room bathroom (2025-03): black tiles, toilet, basin, pebble floor",
+   "room": [
+    "Deluxe Queen Room"
+   ]
+  },
+  {
+   "id": "img-029",
+   "file": "assets/img-029.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/325758786.jpg?k=42c11e6c6bbcd4cf0ed066bb6f89065f0c990c40fba42f4e0e0865ea9d87d41f&o=",
+   "booking_photo_id": "325758786",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a room with two beds and shelves on the wall at Lotus Surf House in Midigama",
+   "uploaded": "2021-10-30 08:14:20",
+   "booking_rooms": [
+    "559076601",
+    "559076606",
+    "559076607"
+   ],
+   "found_on": "booking",
+   "sha256": "cc5b1c84ecb4212d377ab748e64d7c67666f01daa3b94d4e18b346736e95e078",
+   "width": 1440,
+   "height": 1434,
+   "original_size": [
+    1440,
+    1434
+   ],
+   "description": "twin room (2021): two single beds, wooden wall shelves, woven rugs",
+   "room": [
+    "Double or Twin Room with Garden View",
+    "Standard Double or Twin Room with Garden View"
+   ]
+  },
+  {
+   "id": "img-030",
+   "file": "assets/img-030.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/658171599.jpg?k=01858d8ade800c5e82423d90ed8c7cd870f49f8a9ce77961a4b097d4e783cbb9&o=",
+   "booking_photo_id": "658171599",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bathroom with a toilet and a sink at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-13 09:39:22",
+   "booking_rooms": [
+    "559076601",
+    "559076606",
+    "559076607"
+   ],
+   "found_on": "booking",
+   "sha256": "a0c7306933e02476bc75c78fad2c4122b19566fdc67d7d09b12332e727f19dcc",
+   "width": 1080,
+   "height": 804,
+   "original_size": [
+    1080,
+    804
+   ],
+   "description": "standard-room bathroom (2025-03): green walls, shower, toilet, basin",
+   "room": [
+    "Double or Twin Room with Garden View",
+    "Standard Double or Twin Room with Garden View"
+   ]
+  },
+  {
+   "id": "img-031",
+   "file": "assets/img-031.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/325758771.jpg?k=58379427cda4aca868e057d209df3e0c9de1c4a8912aa9524d0d9216e8009707&o=",
+   "booking_photo_id": "325758771",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "an aerial view of a house and the ocean at Lotus Surf House in Midigama",
+   "uploaded": "2021-10-30 08:14:05",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "d3858f09ea1307c4e8e9581f4a6900ebf5f59db823b2df325abfed64046305a2",
+   "width": 1024,
+   "height": 576,
+   "original_size": [
+    1024,
+    576
+   ],
+   "description": "aerial view (2021, 1024x576): the village roofs and palms, the coast road and the sea with the reef beyond",
+   "room": null
+  },
+  {
+   "id": "img-032",
+   "file": "assets/img-032.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/325758785.jpg?k=74fd47e432190ea8bbc0efe1f8746bc21b7f75c7b8a51b56905d95c42c6f9731&o=",
+   "booking_photo_id": "325758785",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a patio with chairs and a table on a house at Lotus Surf House in Midigama",
+   "uploaded": "2021-10-30 08:14:20",
+   "booking_rooms": [
+    "559076601",
+    "559076606",
+    "559076607"
+   ],
+   "found_on": "booking",
+   "sha256": "e8bebdecc34a8bfbe744ae61ec438e1a5e4bb9794a379cbba94ef0642b0af9fb",
+   "width": 1600,
+   "height": 1388,
+   "original_size": [
+    1600,
+    1388
+   ],
+   "description": "veranda of the ground-floor rooms (2021): rattan chairs and a glass table on a red floor",
+   "room": [
+    "Double or Twin Room with Garden View",
+    "Standard Double or Twin Room with Garden View"
+   ]
+  },
+  {
+   "id": "img-033",
+   "file": "assets/img-033.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657116564.jpg?k=946d2c60906a4e4719747144b71ef361970a16ada89ea29329505b493fd604a6&o=",
+   "booking_photo_id": "657116564",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bedroom with a bed with a mosquito net at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:09:15",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "a9e793c7e3cedf2e1f29e22c6882f27c9f9b0d1c20a3969de784054dd31a49a6",
+   "width": 1600,
+   "height": 1200,
+   "original_size": [
+    1600,
+    1200
+   ],
+   "description": "upstairs room with canopy bed and balcony doors",
+   "room": null
+  },
+  {
+   "id": "img-034",
+   "file": "assets/img-034.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657116443.jpg?k=40f7cfa0306d850c168a25c982a116eaceb242c0fe98efe8a39f0ba76759c7aa&o=",
+   "booking_photo_id": "657116443",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bedroom with a bed with a remote control on a table at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:08:48",
+   "booking_rooms": [
+    "559076608"
+   ],
+   "found_on": "booking",
+   "sha256": "2d68e0390f945bb849eac11d093c3989c815d66188b2f67e21d57ec612b49f24",
+   "width": 1600,
+   "height": 1200,
+   "original_size": [
+    1600,
+    1200
+   ],
+   "description": "King Room bedside: canopy bed and air-conditioning remote on a wooden side table",
+   "room": [
+    "King Room with Balcony"
+   ]
+  },
+  {
+   "id": "img-035",
+   "file": "assets/img-035.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657117072.jpg?k=273700ea4b43756d0d200766b3f1597b52dff57e9c0c5d48e2ba17348c3d1919&o=",
+   "booking_photo_id": "657117072",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "two chairs and a table on a porch with plants at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:10:20",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "587c4d82d69410807f4efeda1ab3079ccef4cd09859d452299f6ab7e50a0a196",
+   "width": 1200,
+   "height": 1600,
+   "original_size": [
+    1200,
+    1600
+   ],
+   "description": "upstairs balcony with two rattan chairs and palms beside it",
+   "room": null
+  },
+  {
+   "id": "img-036",
+   "file": "assets/img-036.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/657117178.jpg?k=eaae872578960c365924ae46e9d8f438603c118c4f9223821633d3aeee26084c&o=",
+   "booking_photo_id": "657117178",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a wooden shelf hanging on a wall next to a door at Lotus Surf House in Midigama",
+   "uploaded": "2025-03-11 06:10:32",
+   "booking_rooms": [],
+   "found_on": "booking",
+   "sha256": "ebe08949a53b5b156b9f6a0929160e5ddf14b77df1adc22f56d34d68b02edfdd",
+   "width": 1600,
+   "height": 1200,
+   "original_size": [
+    1600,
+    1200
+   ],
+   "description": "wooden wall shelf with clothes hangers beside the bathroom door",
+   "room": null
+  },
+  {
+   "id": "img-037",
+   "file": "assets/img-037.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/675996189.jpg?k=994aa74b5892c3699a5d5e31549cf7bb5eba7c34163aedcea2ea81876bf35047&o=",
+   "booking_photo_id": "675996189",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a wooden shelf hanging on a wall next to a door at Lotus Surf House in Midigama",
+   "uploaded": "2025-04-24 17:10:35",
+   "booking_rooms": [
+    "559076608"
+   ],
+   "found_on": "booking",
+   "sha256": "cf1aa07ee9afcdef382c84289d101369cbeb755300f5d64c023e695bf17f734b",
+   "width": 1024,
+   "height": 768,
+   "original_size": [
+    1024,
+    768
+   ],
+   "description": "wooden wall shelf with clothes hangers (another upload of the img-036 view)",
+   "room": [
+    "King Room with Balcony"
+   ],
+   "same_view_as": "img-036"
+  },
+  {
+   "id": "img-038",
+   "file": "assets/img-038.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/675996190.jpg?k=7c71ebd3891f98e11ca355759a220119317669deb26a7ecc19f972b035725154&o=",
+   "booking_photo_id": "675996190",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bedroom with a bed with a canopy at Lotus Surf House in Midigama",
+   "uploaded": "2025-04-24 17:10:35",
+   "booking_rooms": [
+    "559076608"
+   ],
+   "found_on": "booking",
+   "sha256": "700ef6f07ae27bf6419514397ccbfdab9e3bffa48190b0043021ad6f62e97cea",
+   "width": 768,
+   "height": 1024,
+   "original_size": [
+    768,
+    1024
+   ],
+   "description": "upstairs room with canopy bed (another upload of the img-010 view)",
+   "room": [
+    "King Room with Balcony"
+   ],
+   "same_view_as": "img-010"
+  },
+  {
+   "id": "img-039",
+   "file": "assets/img-039.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/675996184.jpg?k=a1abedb82c8f086f9a6b53d5dce4d91470209bb9d2f582cdbb3f85db3abd8821&o=",
+   "booking_photo_id": "675996184",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bathroom with a sink and a shower and a toilet at Lotus Surf House in Midigama",
+   "uploaded": "2025-04-24 17:10:34",
+   "booking_rooms": [
+    "559076608"
+   ],
+   "found_on": "booking",
+   "sha256": "7596a66964274b88e26fde1ed9246509bb0e7ae9ee671c6d1fdbcb2d58887e09",
+   "width": 1024,
+   "height": 768,
+   "original_size": [
+    1024,
+    768
+   ],
+   "description": "new bathroom with concrete basin and round mirror (another upload of the img-008 view)",
+   "room": [
+    "King Room with Balcony"
+   ],
+   "same_view_as": "img-008"
+  },
+  {
+   "id": "img-040",
+   "file": "assets/img-040.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/675996185.jpg?k=05d5dc12ee5fd3b7dcc4c572a85a10d1cda992d2fbc5551dd1ef8f330decc97b&o=",
+   "booking_photo_id": "675996185",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "an empty room with a shower and a glass door at Lotus Surf House in Midigama",
+   "uploaded": "2025-04-24 17:10:34",
+   "booking_rooms": [
+    "559076608"
+   ],
+   "found_on": "booking",
+   "sha256": "d376cd58aadbdfc96cf375bc4e56c8fdab40d92c4a1dd2bd09ca81a751bb9d07",
+   "width": 768,
+   "height": 1024,
+   "original_size": [
+    768,
+    1024
+   ],
+   "description": "new bathroom with glass shower door (another upload of the img-003 view)",
+   "room": [
+    "King Room with Balcony"
+   ],
+   "same_view_as": "img-003"
+  },
+  {
+   "id": "img-041",
+   "file": "assets/img-041.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/675996186.jpg?k=a4ab668eecbb75b6cdce5f2e8b6a834cd0c142cb894853957e5a949ada29e69a&o=",
+   "booking_photo_id": "675996186",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "a bedroom with a balcony with a table and chairs at Lotus Surf House in Midigama",
+   "uploaded": "2025-04-24 17:10:34",
+   "booking_rooms": [
+    "559076608"
+   ],
+   "found_on": "booking",
+   "sha256": "6f4a960f23ba7675cbcc04858a883edc63857d21cf4fbd5c9fe42de578a94ef1",
+   "width": 768,
+   "height": 1024,
+   "original_size": [
+    768,
+    1024
+   ],
+   "description": "inside the King Room looking out to the balcony (another upload of the img-025 view)",
+   "room": [
+    "King Room with Balcony"
+   ],
+   "same_view_as": "img-025"
+  },
+  {
+   "id": "img-042",
+   "file": "assets/img-042.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/675996193.jpg?k=5193a9644d2a1ce979ded01ba825efc95d4ff3170f712d044b8b3274fed898ac&o=",
+   "booking_photo_id": "675996193",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": "two chairs and a table on a porch with plants at Lotus Surf House in Midigama",
+   "uploaded": "2025-04-24 17:10:35",
+   "booking_rooms": [
+    "559076608"
+   ],
+   "found_on": "booking",
+   "sha256": "05da2ea8f3d170604828cef57f415378e4e8989a9d8dd8e69b66f1401638d109",
+   "width": 768,
+   "height": 1024,
+   "original_size": [
+    768,
+    1024
+   ],
+   "description": "upstairs balcony with rattan chairs (another upload of the img-035 view)",
+   "room": [
+    "King Room with Balcony"
+   ],
+   "same_view_as": "img-035"
+  },
+  {
+   "id": "img-043",
+   "file": "assets/img-043.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/325759081.jpg?k=4443c2daa243fea5e8dd3ce59f7f0bbe1af4decd307ef8b13c3d4dab93aabb86&o=",
+   "booking_photo_id": "325759081",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": null,
+   "uploaded": null,
+   "booking_rooms": [
+    "559076604",
+    "559076605"
+   ],
+   "found_on": "booking",
+   "sha256": "de09935cba3dafe22ad892d574f04aeb0543d428f8ff25e621c57945f98c74c3",
+   "width": 1600,
+   "height": 1200,
+   "original_size": [
+    1600,
+    1200
+   ],
+   "description": "Deluxe Queen Room (2021 upload), wide-angle: double bed under a mosquito net, wooden shelves, a surfboard, rattan sofa and chairs",
+   "room": [
+    "Deluxe Queen Room"
+   ]
+  },
+  {
+   "id": "img-044",
+   "file": "assets/img-044.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "photo_url": "https://cf.bstatic.com/xdata/images/hotel/max1920/658172533.jpg?k=b226dfa789e32e06a6f7d7e3daee112fdfed468d8896d5bcf119dd1d75d838d0&o=",
+   "booking_photo_id": "658172533",
+   "fetched_at": "2026-11-03T17:42:14Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing (hotel id 5590766); Shahar approved OTA listing photos as usable 2026-09-19",
+   "booking_alt": null,
+   "uploaded": null,
+   "booking_rooms": [
+    "559076604",
+    "559076605"
+   ],
+   "found_on": "booking",
+   "sha256": "bd22f7c62d65a0b726d76edeb77824b7d6a2d901bfe9969b49013d3be4278137",
+   "width": 816,
+   "height": 738,
+   "original_size": [
+    816,
+    738
+   ],
+   "description": "Deluxe Queen Room porch (2021 upload), wide-angle: rattan chairs and glass table on a wooden deck (another upload of the img-027 view)",
+   "room": [
+    "Deluxe Queen Room"
+   ],
+   "same_view_as": "img-027"
+  }
+ ],
+ "images_note": "44 files, all property-uploaded on Booking.com (uploaded 2021-10-30 to 2025-12-24), all business-owned, all ≤ 1600 px on the long edge (Booking serves nothing larger: max1920 returns the original size). None reaches the 1920 px full-bleed target; 19 are ≥ 1200 px on the long edge in landscape or portrait (the hard floor for full-width). 11 are further uploads of a view already in the set (images[].same_view_as) — distinct files, kept, the designer picks one. Strongest: img-002 (King room, canopy bed, glass doors to the balcony), img-009 (garden and guest wing), img-001 (ping-pong in the garden), img-018 (the entrance sign), img-021 (roof-terrace Buddha and yoga mats), img-004 (roof terrace table). Weak: the 2021 wide-angle shots (img-026/027/029/032/043/044) and img-031 (the only view of the sea, aerial, 1024×576). No photo of the beach, the breaks, surfing, breakfast or the hosts. Facebook (2018, ≤ 960 px, signed CDN URLs) and Google (mostly guest uploads, licence unknown) photos were not downloaded.",
+ "videos": [
+  {
+   "id": "vid-001",
+   "source_url": "https://www.youtube.com/watch?v=RJqzt6e_0ks",
+   "fetched_at": "2026-11-03T17:40:07Z",
+   "license": "unknown",
+   "license_note": "third-party YouTube upload, not the business's own channel (the business has no YouTube or Vimeo channel)",
+   "found_on": "YouTube channel Coastal Stay Journal (https://www.youtube.com/channel/UCi0aNr6z2dtBI7ChNO42YIg), uploaded 2026-09-27; title \"Lotus Surf House - The Price Shocked Me | Mirissa, Sri Lanka🏨\"",
+   "shows": "a narrated listicle with a \"scan to book\" QR code burnt into every frame; most shots are generic or AI-generated hotel scenes (marble lobby, a woman with a suitcase, European squares, Alpine chalets) that are not this property; only a few frames show Lotus Surf House (the blue ping-pong table in the garden, the canopy-bed room) and they are the Booking.com photos animated",
+   "duration_s": 161.7,
+   "resolution": [
+    1920,
+    1080
+   ],
+   "source_file": "assets/video/vid-001-source.mp4",
+   "sheet": "assets/video/vid-001-sheet.jpg",
+   "sha256": "dea70b22deb5d5d551e32dfbb4a982ea6986e61c522d4e6a5d59a887e68c14c2",
+   "not_picked": "third-party affiliate video, QR code and captions on every frame, mostly not this place"
+  },
+  {
+   "id": "vid-002",
+   "source_url": "https://www.youtube.com/watch?v=gbUYkE1xlnI",
+   "fetched_at": "2026-11-03T17:40:24Z",
+   "license": "unknown",
+   "license_note": "third-party YouTube upload, not the business's own channel (the business has no YouTube or Vimeo channel)",
+   "found_on": "YouTube channel Travel With Sandhya (https://www.youtube.com/channel/UCtNOGpgewJtlQbxGdSxALLw), uploaded 2023-04-17; title \"Lotus Surf House, Midigama, Sri Lanka\"",
+   "shows": "title cards (\"Travel With Sandhya\", \"For booking or more details please read description box\"), then real footage: the roof-terrace lounge with a hammock and sofa, the garden lawn and guest wing with surfboards on the grass, an aerial over the palms to the sea, the white picket balcony with rattan chairs, and surf selfie clips of a group in the water and a pop-up lesson on a beach; ends on like/subscribe cards",
+   "duration_s": 108,
+   "resolution": [
+    1920,
+    1080
+   ],
+   "source_file": "assets/video/vid-002-source.mp4",
+   "sheet": "assets/video/vid-002-sheet.jpg",
+   "sha256": "93c800bbd0c9c0e414fad272ff8a095dead706a0d958ae3c7d348ce8eaed954a",
+   "not_picked": "the only real moving footage of the place and of surfing nearby, but on a third-party affiliate channel with title cards; licence unknown, and it is not known whether the surf clips were filmed at Midigama or by guests of this house. Ask the owner whether the footage is his (pitch point)"
+  },
+  {
+   "id": "vid-003",
+   "source_url": "https://www.youtube.com/watch?v=Wmj8cJU7oc0",
+   "fetched_at": "2026-11-03T17:40:44Z",
+   "license": "unknown",
+   "license_note": "third-party YouTube upload, not the business's own channel (the business has no YouTube or Vimeo channel)",
+   "found_on": "YouTube channel Travel With Sandhya (https://www.youtube.com/channel/UCtNOGpgewJtlQbxGdSxALLw), uploaded 2025-05-31; title \"Lotus Surf House, Midigama, Sri Lanka | Travel With Sandhya\"",
+   "shows": "slow pans over still photos of the property (balcony, porches, twin room, garden, ping-pong table, a basketball hoop) between black cards that copy the Booking.com room data and \"Hotel surroundings\" list; title and end cards of the channel",
+   "duration_s": 173.84,
+   "resolution": [
+    1920,
+    1080
+   ],
+   "source_file": "assets/video/vid-003-source.mp4",
+   "sheet": "assets/video/vid-003-sheet.jpg",
+   "sha256": "e5a7434881ac9c002772b6e424febde06f1d366a8875b1e20a46cf7353e1c024",
+   "not_picked": "third-party slideshow of still photos with text cards; nothing a site could use"
+  }
+ ],
+ "videos_note": "The business publishes no video (no site, no YouTube/Vimeo channel, no Instagram; Facebook reels behind the login wall). Three third-party YouTube videos were found and looked at; none is usable (licence unknown). No hero video: the first screen leads with a photograph.",
+ "existing_site": {
+  "url": null,
+  "status": null,
+  "notes": "no website: Google 'Add website' on the Lotus Surf House listing; the old Yelum Guest House listing's 'website' is the dormant Facebook page. The business's web presence is its Booking.com listing."
+ },
+ "languages": {
+  "seen": [
+   "en"
+  ],
+  "owner_language_hint": "si"
+ },
+ "contradictions": [
+  {
+   "what": "phone",
+   "values": [
+    "+94774647541 (both Google listings, Kayak)",
+    "+94712585804 (Facebook page, dormant since 2018)"
+   ],
+   "sources": [
+    "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en",
+    "https://www.facebook.com/people/Midigama-guesthouse-YELUM/100054389085744/",
+    "https://www.kayak.com/Midigama-East-Hotels-Yelum-Guest-House.3733075.ksp"
+   ],
+   "resolution": "site uses +94774647541 (both current listings); the other is recorded, not shown"
+  },
+  {
+   "what": "check-in / check-out",
+   "values": [
+    "Booking: check-in available 24 hours, check-out 11:00–12:00",
+    "Kayak: check-in 12:00 PM, check-out 10:00 AM"
+   ],
+   "sources": [
+    "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+    "https://www.kayak.com/Midigama-East-Hotels-Yelum-Guest-House.3733075.ksp"
+   ],
+   "resolution": "Booking is the listing the owner manages; Kayak's times not used"
+  },
+  {
+   "what": "postcode",
+   "values": [
+    "80650 (Google, Booking)",
+    "11200 (Kayak)"
+   ],
+   "sources": [
+    "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en",
+    "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+    "https://www.kayak.com/Midigama-East-Hotels-Yelum-Guest-House.3733075.ksp"
+   ],
+   "resolution": "80650 (Google)"
+  },
+  {
+   "what": "distance to the beach",
+   "values": [
+    "250 m (Booking surroundings, FAQ)",
+    "300 metres (Booking description)",
+    "'a 3-minute walk' (Booking summary)",
+    "guests: 1–5 minutes"
+   ],
+   "sources": [
+    "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html"
+   ],
+   "resolution": "say \"a short walk\" or \"250 m\" with the source; no single figure is the owner's"
+  },
+  {
+   "what": "pool / restaurant / hot tub",
+   "values": [
+    "Google hotel details: 'Pool', 'Restaurant', 'Beach access'",
+    "Booking AI summary: 'a hot tub' as a shared amenity; Booking room data: 'Private hot tub' on the King rooms",
+    "no photo, facility list or review shows a pool, a restaurant or a hot tub"
+   ],
+   "sources": [
+    "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en",
+    "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html"
+   ],
+   "resolution": "none of the three is claimed on the site"
+  },
+  {
+   "what": "room count",
+   "values": [
+    "8 units on Booking (4 room-type names)",
+    "'5 rooms' (Sylvia, 2025-03, before the upstairs build)",
+    "'we have 3 type room' (owner, 2025-12)"
+   ],
+   "sources": [
+    "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+    "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-98f61dacbf606be3",
+    "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-f187088121e127dc"
+   ],
+   "resolution": "site shows the room types, not a count"
+  },
+  {
+   "what": "name",
+   "values": [
+    "Lotus Surf House (Booking, Google, sign, Kayak, Priceline)",
+    "Yelum Guest House (old Google listing, Kayak URL, Booking's old URL)",
+    "Midigama guesthouse YELUM (Facebook)"
+   ],
+   "sources": [
+    "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+    "https://www.google.com/maps/place/Yelum+Guest+House/data=!4m10!3m9!1s0x3ae114c1a01189c7:0x43e62c20fba3efe5!5m2!4m1!1i2!8m2!3d5.9651521!4d80.3922717!16s%2Fg%2F11cjgd948_!19sChIJx4kRoMEU4ToR5e-j-yAs5kM?hl=en",
+    "https://www.facebook.com/people/Midigama-guesthouse-YELUM/100054389085744/"
+   ],
+   "resolution": "'Lotus Surf House' — the current name on the sign and every live listing"
+  }
+ ],
+ "gaps": [
+  {
+   "field": "offers / prices",
+   "why": "no price published by the business; only live OTA rates",
+   "pitch_point": true
+  },
+  {
+   "field": "contact.whatsapp",
+   "why": "no WhatsApp number or link anywhere; the only direct channel is a phone number on Google",
+   "pitch_point": true
+  },
+  {
+   "field": "contact.email",
+   "why": "not published",
+   "pitch_point": false
+  },
+  {
+   "field": "existing_site",
+   "why": "no website of its own; booking runs only through Booking.com/Agoda (commission) and a phone number",
+   "pitch_point": true
+  },
+  {
+   "field": "business.description / tagline",
+   "why": "the owner has written nothing about the place; Booking's text is Booking's. Not blocking: the copywriter writes from the facts",
+   "pitch_point": true
+  },
+  {
+   "field": "videos",
+   "why": "no video of its own; the only real footage of the place is a third-party YouTube film (vid-002, licence unknown)",
+   "pitch_point": true
+  },
+  {
+   "field": "images ≥ 1920 px / photos of the beach, the breaks, breakfast, the hosts",
+   "why": "all 44 photos are ≤ 1600 px and show rooms, bathrooms, garden and terrace; nothing of the wave or the people guests praise most",
+   "pitch_point": true
+  },
+  {
+   "field": "location.spot (business words)",
+   "why": "the business names no break; Lazy Left / Lazy Right come from guests. Break type, bottom and who it suits need a sourced reference",
+   "pitch_point": true
+  },
+  {
+   "field": "season",
+   "why": "no season or best months published",
+   "pitch_point": true
+  },
+  {
+   "field": "room photos per room type",
+   "why": "three guests say the rooms did not match the photos: Booking's gallery leads with the new upstairs rooms; the older ground-floor rooms have only 2021 wide-angle photos",
+   "pitch_point": true
+  },
+  {
+   "field": "booking.reply_time_hint",
+   "why": "not published",
+   "pitch_point": false
+  },
+  {
+   "field": "business.since",
+   "why": "opening year not published",
+   "pitch_point": false
+  },
+  {
+   "field": "instagram",
+   "why": "no Instagram account found",
+   "pitch_point": true
+  },
+  {
+   "field": "reviews.google quotes",
+   "why": "Google review texts are behind the sign-in wall in the limited view (rating and count captured)",
+   "pitch_point": false
+  }
+ ],
+ "must_have_check": {
+  "type": "beach_lodging",
+  "rooms_min_1": "met (4 room types / 8 units on Booking.com, with beds, size, occupancy, facilities and per-room photos)",
+  "photos_min_6": "met (44 business-owned Booking.com photos, 33 distinct views)",
+  "bookingLinks_min_1": "met (Booking.com listing; Agoda offer seen in Google prices)",
+  "core_contact": "met (phone +94774647541 on both Google listings)",
+  "core_facts_for_copy": "met (what, where, rooms, breakfast, garden, roof terrace, owner, distance to the beach and station, 85 guest texts)",
+  "verdict": "buildable in test mode; no blocking gap"
+ }
+}

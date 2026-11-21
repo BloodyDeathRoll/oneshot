@@ -1,0 +1,133 @@
+{
+  "slug": "lotus-surf-house",
+  "run_id": "2026-10-midigama-01",
+  "auditor_version": "0.1.3",
+  "audited_at": "2026-11-03T17:57:39Z",
+  "scope": "no_site",
+  "measured": null,
+  "findings": [
+    {
+      "id": "F1",
+      "area": "offsite",
+      "severity": "high",
+      "title": "On Booking.com a visitor cannot reach the hosts before booking",
+      "what_a_visitor_meets": "The Booking.com listing is the only place that sells the rooms. It shows no phone, no WhatsApp and no email. Under \"Contacting the property\" it says: \"Once you book, we'll provide details so you can contact the property directly.\" Tapping \"Ask a question\" opens a Booking.com sign-in page. A visitor who wants to ask whether a room has A/C, or whether boards can be stored, has to book or create an account first.",
+      "evidence": [
+        { "type": "screenshot", "value": "funnel/walk/04-booking-com-contacting.png" },
+        { "type": "screenshot", "value": "funnel/walk/04-booking-com-ask.png" },
+        { "type": "screenshot", "value": "funnel/walk/04-booking-com-ask-tapped.png" },
+        { "type": "click_path", "value": ["https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html", "Contacting the property", "Ask a question", "account.booking.com/sign-in"] },
+        { "type": "url", "value": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html" }
+      ],
+      "playbook_ref": "§5 booking path, §2 how fast will they answer",
+      "fix_in_new_site": "contact.phone (+94774647541) as a tap-to-call link beside bookingLinks[0] in the booking section and the persistent mobile bar, so the visitor can ask before going to Booking.com",
+      "pitch_point": true,
+      "notes": "walk.json 04-booking-com: tel_links [], whatsapp_links 0, mailto_links 0 on the listing. The phone exists only on the two Google listings (F2, F3)."
+    },
+    {
+      "id": "F2",
+      "area": "offsite",
+      "severity": "medium",
+      "title": "The Google listing has no website, and its top booking button is a sponsored Booking.com link",
+      "what_a_visitor_meets": "On Google Maps the Lotus Surf House listing shows 4.9 (78) and, where the website should be, \"Add website\" under \"Add missing information\". On a desktop the first button is \"Book now\" on a Booking.com ad marked \"Sponsored\", then Booking.com and Agoda offers. On a phone the listing shows Directions, Start and Call, and the photos sit behind \"See all 150 photos in the app\". Nowhere on the listing does the business tell the visitor anything in its own words.",
+      "evidence": [
+        { "type": "screenshot", "value": "funnel/walk/02-google-listing-desktop-add-website.png" },
+        { "type": "screenshot", "value": "funnel/walk/02-google-listing-desktop-availability.png" },
+        { "type": "screenshot", "value": "funnel/walk/01-google-listing-fold.png" },
+        { "type": "url", "value": "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en" }
+      ],
+      "playbook_ref": "§1 the customer finds them on Google Maps",
+      "fix_in_new_site": null,
+      "pitch_point": true
+    },
+    {
+      "id": "F3",
+      "area": "offsite",
+      "severity": "medium",
+      "title": "A second, older Google listing sends visitors to a Facebook page last posted in 2018, with a different phone number",
+      "what_a_visitor_meets": "Google still shows \"Yelum Guest House\" at the same spot, with its own 4.7 (13) and a \"Claim this business\" row. Its website link opens the Facebook page \"Midigama guesthouse YELUM\". The newest visible post there is from November 2018. The page gives +94 71 258 5804 as the phone, while both Google listings give +94 77 464 7541, and its address ends in \"123456789\". A visitor who lands there cannot tell which name, number or page is current.",
+      "evidence": [
+        { "type": "screenshot", "value": "funnel/walk/03-google-old-listing-desktop-website.png" },
+        { "type": "screenshot", "value": "funnel/walk/06-facebook-phone.png" },
+        { "type": "screenshot", "value": "funnel/walk/06-facebook-fold.png" },
+        { "type": "url", "value": "https://www.google.com/maps/place/Yelum+Guest+House/data=!4m10!3m9!1s0x3ae114c1a01189c7:0x43e62c20fba3efe5!5m2!4m1!1i2!8m2!3d5.9651521!4d80.3922717!16s%2Fg%2F11cjgd948_!19sChIJx4kRoMEU4ToR5e-j-yAs5kM?hl=en" },
+        { "type": "url", "value": "https://www.facebook.com/Yelum-guest-house-midigama-1553875118208096/" }
+      ],
+      "playbook_ref": "§6 trust signals: exact location, one current contact",
+      "fix_in_new_site": "one current name (businessName) and one number (contact.phone +94774647541) on every screen; the new site is the link both Google listings can point to",
+      "pitch_point": true,
+      "notes": "The Booking.com URL under the old name (/hotel/lk/yelum-guest-house) redirects (301) to the Lotus Surf House listing (walk.json 05-booking-old-url), so the Booking side is already merged; only Google and Facebook carry the old name."
+    },
+    {
+      "id": "F4",
+      "area": "offsite",
+      "severity": "medium",
+      "title": "Booking.com's summary promises air-conditioning and a balcony in every room",
+      "what_a_visitor_meets": "The first lines of the Booking.com description read: \"Lotus Surf House in Midigama offers family rooms with private bathrooms, air-conditioning, and garden views. Each room includes a shower, balcony, and tiled floors.\" Booking.com's own room list gives air-conditioning and a balcony only to the three King Rooms upstairs; the five garden rooms are fan rooms. A visitor who books a garden room from this text finds no A/C on arrival. Three guests wrote that their room did not match the photos, and six that the fan rooms were hot or had no hot water.",
+      "evidence": [
+        { "type": "screenshot", "value": "funnel/walk/04-booking-com-summary.png" },
+        { "type": "url", "value": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html" },
+        { "type": "dossier", "value": "dossier.json#room_types" },
+        { "type": "dossier", "value": "dossier.json#reviews.critical_themes" }
+      ],
+      "playbook_ref": "§2 what's included, §7 honesty of facts",
+      "fix_in_new_site": "rooms[] one row per room type, each with its own rooms[].photo, rooms[].beds and a rooms[].note that says fan or A/C, garden or balcony, in plain words",
+      "pitch_point": true,
+      "notes": "Booking.com writes this summary, not the owner. Room facts from Booking.com's room data (dossier room_types: air_conditioning true only on 'King Room with Balcony', 3 of 8 units)."
+    },
+    {
+      "id": "F5",
+      "area": "offsite",
+      "severity": "low",
+      "title": "\"Cash only\" sits inside a closed accordion on Booking.com",
+      "what_a_visitor_meets": "The listing says \"This property only accepts cash payments\" only after the visitor opens \"Hotel policies\" near the bottom of the page. A visitor who skips it arrives expecting to pay by card.",
+      "evidence": [
+        { "type": "screenshot", "value": "funnel/walk/04-booking-com-policies.png" },
+        { "type": "click_path", "value": ["https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html", "Hotel policies"] }
+      ],
+      "playbook_ref": "§2 what's included",
+      "fix_in_new_site": "stayInfo.note carries cash only beside check-in and check-out, in the booking section",
+      "pitch_point": false
+    },
+    {
+      "id": "F6",
+      "area": "offsite",
+      "severity": "low",
+      "title": "The Google listing shows other Midigama hotels with their prices under the business's own details",
+      "what_a_visitor_meets": "Right under the address and phone, the desktop listing shows \"Similar hotels nearby\" with three other Midigama hotels, each with a photo, a rating and a nightly price, before the hotel details and the reviews.",
+      "evidence": [
+        { "type": "screenshot", "value": "funnel/walk/02-google-listing-desktop-add-website.png" }
+      ],
+      "playbook_ref": "§1 the customer compares 3-5 businesses in a few minutes",
+      "fix_in_new_site": null,
+      "pitch_point": false,
+      "notes": "Google's layout; the owner cannot change it. Context for the pitch, not a claim."
+    }
+  ],
+  "recommended": {
+    "primary_action": "engine",
+    "primary_label": "See rooms and live dates on Booking.com",
+    "secondary_actions": ["tel"],
+    "clicks_to_book": 1,
+    "above_fold": ["what_where", "spot", "included", "price", "trust", "primary_action"],
+    "offer_framing": "rooms[] from the four Booking.com room types, upstairs King Rooms (A/C, balcony) and garden rooms (fan) told apart in plain words, each with its own photo, beds and size; then what every stay includes as the dossier records it (breakfast, garden, roof terrace, the walk to the beach). No nightly rate copied: price means the link to live dates on Booking.com. stayInfo check-in, check-out and cash only next to it.",
+    "closing_intent": "send the reader to live dates on Booking.com, and give the phone as the way to ask the hosts first",
+    "off_site": [
+      { "channel": "google_business_profile", "finding": "F2", "advice": "add the new site as the Lotus Surf House listing's website" },
+      { "channel": "google_business_profile", "finding": "F3", "advice": "claim the old Yelum Guest House listing and point it at the new site, or ask Google to merge it into Lotus Surf House" },
+      { "channel": "facebook", "finding": "F3", "advice": "update the page's name, phone and address to match the Google listing, or link it to the new site" },
+      { "channel": "booking_com", "finding": "F4", "advice": "check each room type's facilities in the Booking.com extranet so the fan rooms are not shown with air-conditioning or a balcony" }
+    ]
+  },
+  "built_site_gaps": [],
+  "not_measurable": [
+    "Booking.com past the listing page: no dates entered and no booking started, so no live prices, availability or cancellation terms per room",
+    "What Booking.com charges the property: no page opened states it",
+    "Agoda listing: not found; Agoda appears only as an offer inside Google's prices (harvester)",
+    "Google web search for the name: Google returned a 429 'unusual traffic' check to the headless browser (funnel/walk/07-google-search-fold.png); not bypassed",
+    "Tripadvisor: 403 to headless browsers (harvester)",
+    "Facebook posts, photos and messages: login wall",
+    "Whether the owner answers +94774647541, whether that number is on WhatsApp, and how fast: no contact in test mode",
+    "Conversion rate and traffic: no analytics access"
+  ]
+}

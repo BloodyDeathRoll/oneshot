@@ -1,0 +1,334 @@
+{
+ "w390": {
+  "heroVideo": {
+   "src": "http://localhost:8961/video/cm-drone.p1080.webm",
+   "paused": false,
+   "muted": true,
+   "loop": true,
+   "playsinline": true,
+   "controls": false,
+   "ariaHidden": "true"
+  },
+  "externalAttempted": [],
+  "videoRequests": [
+   "/video/cm-board.p640.webm",
+   "/video/cm-drone.p1080.webm"
+  ],
+  "pageErrors": [],
+  "imagesNotLoadedAfterScroll": [
+   {
+    "src": "http://localhost:8961/photos/img-030-r0.667-1100.webp",
+    "alt": ""
+   },
+   {
+    "src": "http://localhost:8961/photos/img-035-r0.667-1100.webp",
+    "alt": ""
+   },
+   {
+    "src": "http://localhost:8961/photos/img-058-r0.667-1100.webp",
+    "alt": ""
+   },
+   {
+    "src": "http://localhost:8961/photos/img-002-r0.667-1100.webp",
+    "alt": ""
+   },
+   {
+    "src": "http://localhost:8961/photos/img-064-r0.667-1100.webp",
+    "alt": ""
+   }
+  ],
+  "overflow": {
+   "sw": 390,
+   "cw": 390
+  },
+  "axe": {
+   "violations": [],
+   "passes": 27,
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "nodes": 172
+    }
+   ]
+  },
+  "tabStops": [
+   {
+    "tag": "A",
+    "text": "Skip to surf weeks and prices",
+    "href": "#counter",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Cheeky Monkey\nSurf Camp | Midigama, Sri ",
+    "href": "#",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Book",
+    "href": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Call +94 71 924 8686",
+    "href": "tel:+94719248686",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Check dates on Booking.com",
+    "href": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "See the surf weeks",
+    "href": "#counter",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "DIV",
+    "text": "Full Surf Lesson Package\n\nUSD 300–400\npe",
+    "href": null,
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Call to book",
+    "href": "tel:+94719248686",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Email about the Full Surf Lesson Package",
+    "href": "mailto:cheekymonkeymidi@gmail.com?subject=Cheeky%20Monkey%3A%20Full%20Surf%20Lesson%20Package%20week",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Call to book",
+    "href": "tel:+94719248686",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Email about the Moderate week",
+    "href": "mailto:cheekymonkeymidi@gmail.com?subject=Cheeky%20Monkey%3A%20Moderate%20Surf%20Lesson%20or%20Surf%20Spot%20Guiding%20Package%20week",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Call to book",
+    "href": "tel:+94719248686",
+    "outline": "solid 3px",
+    "visible": true
+   }
+  ]
+ },
+ "w1440": {
+  "heroVideo": {
+   "src": "http://localhost:8961/video/cm-drone.d1920.webm",
+   "paused": false,
+   "muted": true,
+   "loop": true,
+   "playsinline": true,
+   "controls": false,
+   "ariaHidden": "true"
+  },
+  "externalAttempted": [],
+  "videoRequests": [
+   "/video/cm-board.m720.mp4",
+   "/video/cm-drone.d1920.webm"
+  ],
+  "pageErrors": [],
+  "imagesNotLoadedAfterScroll": [
+   {
+    "src": "http://localhost:8961/photos/img-033-r0.667-1100.webp",
+    "alt": "Superior Double Room: a bedroom with a door open to a balcony"
+   },
+   {
+    "src": "http://localhost:8961/photos/img-026-r0.667-1100.webp",
+    "alt": "View from a room door to the balcony and palms"
+   },
+   {
+    "src": "http://localhost:8961/photos/img-053-r0.667-1100.webp",
+    "alt": "Balcony with potted plants outside a room"
+   },
+   {
+    "src": "http://localhost:8961/photos/img-030-r0.667-1100.webp",
+    "alt": ""
+   },
+   {
+    "src": "http://localhost:8961/photos/img-035-r0.667-1100.webp",
+    "alt": ""
+   },
+   {
+    "src": "http://localhost:8961/photos/img-058-r0.667-1100.webp",
+    "alt": ""
+   },
+   {
+    "src": "http://localhost:8961/photos/img-002-r0.667-1100.webp",
+    "alt": ""
+   },
+   {
+    "src": "http://localhost:8961/photos/img-064-r0.667-1100.webp",
+    "alt": ""
+   }
+  ],
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440
+  },
+  "axe": {
+   "violations": [],
+   "passes": 27,
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "nodes": 170
+    }
+   ]
+  },
+  "tabStops": [
+   {
+    "tag": "A",
+    "text": "Skip to surf weeks and prices",
+    "href": "#counter",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Cheeky Monkey\nSurf Camp | Midigama, Sri ",
+    "href": "#",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Surf weeks",
+    "href": "#counter",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Rooms",
+    "href": "#rooms",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Shop",
+    "href": "#shop",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Plan a stay",
+    "href": "#book",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Book",
+    "href": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Call +94 71 924 8686",
+    "href": "tel:+94719248686",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Check dates on Booking.com",
+    "href": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "See the surf weeks",
+    "href": "#counter",
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "DIV",
+    "text": "Full Surf Lesson Package\n\nUSD 300–400\npe",
+    "href": null,
+    "outline": "solid 3px",
+    "visible": true
+   },
+   {
+    "tag": "A",
+    "text": "Call to book",
+    "href": "tel:+94719248686",
+    "outline": "solid 3px",
+    "visible": true
+   }
+  ]
+ },
+ "reduced390": {
+  "videoRequests": [],
+  "firstBooking": {
+   "text": "Book",
+   "href": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html",
+   "top": 9,
+   "visible": true
+  },
+  "headerBg": "rgba(255, 255, 255, 0.94)",
+  "headerColor": "rgb(20, 55, 70)",
+  "textLen": 8984,
+  "bookLinksInBook": 12,
+  "bookVisible": true
+ },
+ "jsoff390": {
+  "videoRequests": [],
+  "firstBooking": {
+   "text": "Book",
+   "href": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html",
+   "top": 9,
+   "visible": true
+  },
+  "headerBg": "rgba(255, 255, 255, 0.96)",
+  "headerColor": "rgb(20, 55, 70)",
+  "textLen": 10162,
+  "bookLinksInBook": 12,
+  "bookVisible": true
+ },
+ "jsoff1440": {
+  "videoRequests": [],
+  "firstBooking": {
+   "text": "Book",
+   "href": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html",
+   "top": 13,
+   "visible": true
+  },
+  "headerBg": "rgba(255, 255, 255, 0.96)",
+  "headerColor": "rgb(20, 55, 70)",
+  "textLen": 10189,
+  "bookLinksInBook": 12,
+  "bookVisible": true
+ }
+}

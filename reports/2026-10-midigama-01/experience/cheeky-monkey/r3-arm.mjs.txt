@@ -1,0 +1,20 @@
+// experience-critic r3: what arms the board reel on a cold throttled phone (5 runs)
+import { chromium } from '/Users/alonlavi/.superset/worktrees/oneshot/pull-latest-version-from-ff5cf4f5/node_modules/playwright/index.mjs';
+const URL='http://localhost:8950/'; const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const UA='Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1';
+const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});
+for(let run=1;run<=5;run++){
+  const ctx=await b.newContext({viewport:{width:390,height:844},deviceScaleFactor:3,isMobile:true,hasTouch:true,userAgent:UA});
+  await ctx.addInitScript(()=>{window.__e=[];const T=()=>Math.round(performance.now());
+    addEventListener('scroll',()=>__e.push(['win-scroll',T(),scrollY]),{passive:true,capture:false});
+    document.addEventListener('error',e=>__e.push(['error',T(),e.target.tagName,(e.target.src||'').split('/').pop()]),true);
+    document.addEventListener('playing',e=>__e.push(['playing',T(),e.target.hasAttribute('data-hero-video')?'hero':'board']),true);
+    addEventListener('load',()=>__e.push(['load',T()]));});
+  const page=await ctx.newPage(); const c=await ctx.newCDPSession(page);
+  await c.send('Network.enable'); await c.send('Network.emulateNetworkConditions',{offline:false,latency:150,downloadThroughput:2e5,uploadThroughput:9.4e4}); await c.send('Emulation.setCPUThrottlingRate',{rate:4});
+  const t0=Date.now(); const rq=[]; page.on('request',r=>{if(/\.(webm|mp4)/.test(r.url()))rq.push([r.url().split('/').pop(),Date.now()-t0])});
+  page.goto(URL).catch(()=>{}); await sleep(12000);
+  console.log('run',run,JSON.stringify(await page.evaluate(()=>__e)),'media req',JSON.stringify(rq));
+  await ctx.close();
+}
+await b.close();

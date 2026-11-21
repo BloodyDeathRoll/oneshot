@@ -1,0 +1,10 @@
+node_modules
+.astro/
+dist/
+# build products of scripts/make-media.sh, the publisher's video step and scripts/photos.mjs
+# (media never goes in git: docs/team.md; media/lotus-surf-house.tsv lists them)
+public/photos/
+public/video/
+src/tenant/media/
+src/tenant/photos.generated.json
+src/tenant/videos.generated.json
