@@ -1,0 +1,790 @@
+{
+ "variant": "unique",
+ "copy": {
+  "js": {
+   "paragraphs": 30,
+   "missing_or_out_of_order": [
+    {
+     "block": "The rooms",
+     "para": 3,
+     "found": false,
+     "inOrder": false
+    }
+   ],
+   "flat_missing": [],
+   "leads": [
+    "Just by the buzzing and eclectic town of Ahangama,",
+    "Centuries old Galle Fort, a UNESCO World Heritage ",
+    "The nearby beaches of Midigama, Weligama, Mirissa,",
+    "Yala and Udwalawe National Parks, Singharaja Fores",
+    "Ahangama train station is 1.4 km from us."
+   ]
+  },
+  "kit": {
+   "text": "We have included thoughtful touches from evening lavender scents to high pressure rain showers so you are assured of a restorative stay in any one of our room types. Every room has A plush pillow-top mattress with 500 thread count linen A shower big enough for two Spa Ceylon amenities, bathrobes and slippers Central air conditioning and a ceiling fan A desk, universal sockets, a hairdryer and a Bluetooth speaker High speed WiFi Newspapers and magazines from around the world on PressReader In the Studio King, a trip",
+   "sep": null,
+   "seps": 0
+  },
+  "nojs": {
+   "paragraphs": 30,
+   "missing_or_out_of_order": [
+    {
+     "block": "The rooms",
+     "para": 3,
+     "found": false,
+     "inOrder": false
+    }
+   ],
+   "flat_missing": [],
+   "leads": [
+    "Just by the buzzing and eclectic town of Ahangama,",
+    "Centuries old Galle Fort, a UNESCO World Heritage ",
+    "The nearby beaches of Midigama, Weligama, Mirissa,",
+    "Yala and Udwalawe National Parks, Singharaja Fores",
+    "Ahangama train station is 1.4 km from us."
+   ]
+  }
+ },
+ "skip": {
+  "first": {
+   "text": "Skip to Rooms",
+   "href": "#rooms",
+   "box": "12,12 133x44",
+   "visible": true,
+   "color": "rgb(255, 255, 255)",
+   "bg": "rgb(20, 46, 102)"
+  },
+  "after": {
+   "hash": "#rooms",
+   "y": 888,
+   "h2": "The rooms",
+   "h2_top": 229,
+   "head": [
+    "sticky:84"
+   ],
+   "active": "BODY#"
+  },
+  "next_tab": {
+   "label": "DIV Studio King, photographs",
+   "top": 342
+  }
+ },
+ "bar": {
+  "gestures": [
+   {
+    "reduced": false,
+    "speed": 600,
+    "mid": {
+     "y": 3602,
+     "atEnd": false,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "end": {
+     "y": 3602,
+     "atEnd": false,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "samples": 206,
+    "max_labels": 1,
+    "shown_label_differs_from_href_ms": 518,
+    "longest_differs_ms": 121,
+    "longest_blank_ms": 40,
+    "total_blank_ms": 156
+   },
+   {
+    "reduced": false,
+    "speed": 1200,
+    "mid": {
+     "y": 3603,
+     "atEnd": false,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "end": {
+     "y": 3603,
+     "atEnd": false,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "samples": 131,
+    "max_labels": 1,
+    "shown_label_differs_from_href_ms": 562,
+    "longest_differs_ms": 121,
+    "longest_blank_ms": 40,
+    "total_blank_ms": 79
+   },
+   {
+    "reduced": false,
+    "speed": 2400,
+    "mid": {
+     "y": 3607,
+     "atEnd": false,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "end": {
+     "y": 3607,
+     "atEnd": false,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "samples": 93,
+    "max_labels": 1,
+    "shown_label_differs_from_href_ms": 359,
+    "longest_differs_ms": 81,
+    "longest_blank_ms": 121,
+    "total_blank_ms": 320
+   },
+   {
+    "reduced": false,
+    "speed": 4000,
+    "mid": {
+     "y": 3609,
+     "atEnd": false,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "end": {
+     "y": 14945,
+     "atEnd": true,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "samples": 213,
+    "max_labels": 1,
+    "shown_label_differs_from_href_ms": 121,
+    "longest_differs_ms": 80,
+    "longest_blank_ms": 361,
+    "total_blank_ms": 562
+   },
+   {
+    "reduced": true,
+    "speed": 600,
+    "mid": {
+     "y": 3603,
+     "atEnd": false,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "end": {
+     "y": 3603,
+     "atEnd": false,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "samples": 206,
+    "max_labels": 1,
+    "shown_label_differs_from_href_ms": 0,
+    "longest_differs_ms": 0,
+    "longest_blank_ms": 0,
+    "total_blank_ms": 0
+   },
+   {
+    "reduced": true,
+    "speed": 1200,
+    "mid": {
+     "y": 3602,
+     "atEnd": false,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "end": {
+     "y": 3602,
+     "atEnd": false,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "samples": 131,
+    "max_labels": 1,
+    "shown_label_differs_from_href_ms": 0,
+    "longest_differs_ms": 0,
+    "longest_blank_ms": 0,
+    "total_blank_ms": 0
+   },
+   {
+    "reduced": true,
+    "speed": 2400,
+    "mid": {
+     "y": 3597,
+     "atEnd": false,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "end": {
+     "y": 3597,
+     "atEnd": false,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "samples": 93,
+    "max_labels": 1,
+    "shown_label_differs_from_href_ms": 0,
+    "longest_differs_ms": 0,
+    "longest_blank_ms": 0,
+    "total_blank_ms": 0
+   },
+   {
+    "reduced": true,
+    "speed": 4000,
+    "mid": {
+     "y": 3604,
+     "atEnd": false,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "end": {
+     "y": 13285,
+     "atEnd": true,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "samples": 210,
+    "max_labels": 1,
+    "shown_label_differs_from_href_ms": 0,
+    "longest_differs_ms": 0,
+    "longest_blank_ms": 0,
+    "total_blank_ms": 0
+   }
+  ],
+  "jumps": [
+   {
+    "gap_ms": 60,
+    "at_room": {
+     "y": 2633,
+     "atEnd": false,
+     "href": "vA6V?rid=53603",
+     "spans": [
+      "Director’s Suite: check live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "at_end": {
+     "y": 14944,
+     "atEnd": true,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "samples": 111,
+    "max_labels": 1,
+    "shown_label_differs_from_href_ms": 197,
+    "longest_differs_ms": 118,
+    "longest_blank_ms": 241,
+    "total_blank_ms": 241
+   },
+   {
+    "gap_ms": 120,
+    "at_room": {
+     "y": 2633,
+     "atEnd": false,
+     "href": "vA6V?rid=53603",
+     "spans": [
+      "Director’s Suite: check live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "at_end": {
+     "y": 14944,
+     "atEnd": true,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "samples": 117,
+    "max_labels": 1,
+    "shown_label_differs_from_href_ms": 159,
+    "longest_differs_ms": 80,
+    "longest_blank_ms": 362,
+    "total_blank_ms": 444
+   },
+   {
+    "gap_ms": 200,
+    "at_room": {
+     "y": 2633,
+     "atEnd": false,
+     "href": "vA6V?rid=53603",
+     "spans": [
+      "Director’s Suite: check live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "at_end": {
+     "y": 14944,
+     "atEnd": true,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "samples": 126,
+    "max_labels": 1,
+    "shown_label_differs_from_href_ms": 317,
+    "longest_differs_ms": 119,
+    "longest_blank_ms": 81,
+    "total_blank_ms": 282
+   },
+   {
+    "gap_ms": 400,
+    "at_room": {
+     "y": 2633,
+     "atEnd": false,
+     "href": "vA6V?rid=53603",
+     "spans": [
+      "Director’s Suite: check live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "at_end": {
+     "y": 14944,
+     "atEnd": true,
+     "href": "rvation/WMvA6V",
+     "spans": [
+      "Check rooms and live dates op=1"
+     ],
+     "hit": true,
+     "wh": "304x52"
+    },
+    "samples": 144,
+    "max_labels": 1,
+    "shown_label_differs_from_href_ms": 388,
+    "longest_differs_ms": 107,
+    "longest_blank_ms": 79,
+    "total_blank_ms": 238
+   }
+  ]
+ },
+ "first_screen": {
+  "1440x900": {
+   "sea": "0..1440 x 783..900",
+   "sea_share_of_view": 0.13,
+   "sea_img_loaded": 1440,
+   "picture": "0..1440 x 0..775",
+   "h1": "419..1021 x 622..693",
+   "cta": "597..843 x 709..761",
+   "cta_in_fold": true,
+   "overflowX": 0
+  },
+  "1366x650": {
+   "sea": "0..1366 x 566..650",
+   "sea_share_of_view": 0.13,
+   "sea_img_loaded": 1366,
+   "picture": "0..1366 x 0..558",
+   "h1": "425..941 x 421..482",
+   "cta": "560..806 x 494..540",
+   "cta_in_fold": true,
+   "overflowX": 0
+  },
+  "1920x1080": {
+   "sea": "0..1920 x 950..1080",
+   "sea_share_of_view": 0.12,
+   "sea_img_loaded": 1920,
+   "picture": "0..1920 x 0..942",
+   "h1": "659..1261 x 765..836",
+   "cta": "837..1083 x 852..904",
+   "cta_in_fold": true,
+   "overflowX": 0
+  },
+  "390x844": {
+   "sea": "0..390 x 768..844",
+   "sea_share_of_view": 0.09,
+   "sea_img_loaded": 260,
+   "picture": "0..390 x 0..490",
+   "h1": "20..370 x 553..636",
+   "cta": "20..370 x 650..702",
+   "cta_in_fold": true,
+   "overflowX": 0
+  },
+  "390x664": {
+   "sea": "0..390 x 604..664",
+   "sea_share_of_view": 0.09,
+   "sea_img_loaded": 260,
+   "picture": "0..390 x 0..385",
+   "h1": "20..370 x 419..502",
+   "cta": "20..370 x 516..568",
+   "cta_in_fold": true,
+   "overflowX": 0
+  },
+  "360x640": {
+   "sea": "none",
+   "sea_share_of_view": 0,
+   "sea_img_loaded": 260,
+   "picture": "0..360 x 0..333",
+   "h1": "20..340 x 419..494",
+   "cta": "20..340 x 504..552",
+   "cta_in_fold": true,
+   "overflowX": 0
+  },
+  "320x568": {
+   "sea": "none",
+   "sea_share_of_view": 0,
+   "sea_img_loaded": 260,
+   "picture": "0..320 x 0..295",
+   "h1": "20..300 x 364..439",
+   "cta": "20..300 x 449..497",
+   "cta_in_fold": true,
+   "overflowX": 0
+  }
+ },
+ "room_images": {
+  "phone_first_load_images": [
+   "hour-noon-phone.webp",
+   "logo-white.webp",
+   "img-153-sea-800.webp",
+   "img-062-800.webp"
+  ],
+  "strips_before": [
+   "strip near 300",
+   "strip 300",
+   "strip 309.59375",
+   "strip 540"
+  ],
+  "phone_throttled_arrival": {
+   "0": {
+    "inView": 212,
+    "painted": 212
+   },
+   "1": {
+    "inView": 1929,
+    "painted": 1929
+   },
+   "2": {
+    "inView": 2263,
+    "painted": 2680
+   },
+   "3": {
+    "inView": 3978,
+    "painted": 4462
+   }
+  },
+  "phone_requests_after_scroll": 30,
+  "phone_throttled_swipe": [
+   {
+    "slide": 2,
+    "display": "block",
+    "loaded_ms": 0,
+    "w": 390
+   },
+   {
+    "slide": 3,
+    "display": "block",
+    "loaded_ms": 0,
+    "w": 390
+   },
+   {
+    "slide": 4,
+    "display": "block",
+    "loaded_ms": 0,
+    "w": 390
+   },
+   {
+    "slide": 5,
+    "display": "block",
+    "loaded_ms": 0,
+    "w": 390
+   }
+  ],
+  "phone_direct_jump": {
+   "cls": "strip near seen",
+   "h": 540,
+   "img_w": 390,
+   "shown": 540
+  },
+  "anchor_y": 10767,
+  "desktop_panels": [
+   {
+    "room": 0,
+    "slides": 5,
+    "all_shown": true,
+    "failures": [],
+    "bar": "rid=53570"
+   },
+   {
+    "room": 1,
+    "slides": 5,
+    "all_shown": true,
+    "failures": [],
+    "bar": "rid=53586"
+   },
+   {
+    "room": 2,
+    "slides": 7,
+    "all_shown": true,
+    "failures": [],
+    "bar": "rid=53587"
+   },
+   {
+    "room": 3,
+    "slides": 6,
+    "all_shown": true,
+    "failures": [],
+    "bar": "rid=53603"
+   }
+  ],
+  "nojs": {
+   "slides": 23,
+   "shown": 23,
+   "html_class": ""
+  }
+ },
+ "strip_keys": {
+  "order": [
+   0,
+   1,
+   0
+  ],
+  "attrs": {
+   "tabindex": "0",
+   "role": "group",
+   "label": "Studio King, photographs",
+   "outline": "solid 3px",
+   "count0": 4,
+   "h3inBtn": 0,
+   "growAria": "Studio King, more photographs"
+  },
+  "phone": {
+   "grow_display": "none",
+   "footer": {
+    "visible_text": "Baranige Wattha Walhengoda, Ahangama 80650, Sri Lanka +94765700007 | reservations@thesandhya.com The front desk is open 24 hours a day. Call Email Map Instagram",
+    "tel": [
+     "Call"
+    ],
+    "mail": [
+     "Email"
+    ]
+   }
+  },
+  "desktop_footer": "Baranige Wattha Walhengoda, Ahangama 80650, Sri Lanka +94765700007 | reservations@thesandhya.com The front desk is open 24 hours a day. Call Email Map Instagram"
+ },
+ "setpiece": {
+  "phone": {
+   "rows": [
+    {
+     "p": 0,
+     "frame_opacity": 1,
+     "canvas_on": true,
+     "canvas_op": "1",
+     "print_covers_frame": 0,
+     "print_img": 390
+    },
+    {
+     "p": 0.3,
+     "frame_opacity": 1,
+     "canvas_on": true,
+     "canvas_op": "1",
+     "print_covers_frame": 0,
+     "print_img": 390
+    },
+    {
+     "p": 0.6,
+     "frame_opacity": 1,
+     "canvas_on": true,
+     "canvas_op": "1",
+     "print_covers_frame": 0,
+     "print_img": 390
+    },
+    {
+     "p": 0.75,
+     "frame_opacity": 1,
+     "canvas_on": true,
+     "canvas_op": "1",
+     "print_covers_frame": 0.2,
+     "print_img": 390
+    },
+    {
+     "p": 0.84,
+     "frame_opacity": 1,
+     "canvas_on": true,
+     "canvas_op": "1",
+     "print_covers_frame": 0.81,
+     "print_img": 390
+    },
+    {
+     "p": 0.9,
+     "frame_opacity": 0.600499,
+     "canvas_on": true,
+     "canvas_op": "1",
+     "print_covers_frame": 1,
+     "print_img": 390
+    },
+    {
+     "p": 1,
+     "frame_opacity": 0,
+     "canvas_on": true,
+     "canvas_op": "1",
+     "print_covers_frame": 1,
+     "print_img": 390
+    }
+   ],
+   "label": {
+    "visible_text": "",
+    "frame_role": "img",
+    "aria": "An effect, not a photograph taken at dusk: the daylight photograph of the hotel is graded on screen as you scroll, the sky deepening and the bays lighting one by one. It ends on a real photograph of the hotel at blue hour.",
+    "print_alt": "A photograph of the concrete building at blue hour against a deep blue sky, its curtained balconies glowing gold from inside, chairs in silhouette on the decks"
+   }
+  },
+  "desktop": {
+   "rows": [
+    {
+     "p": 0,
+     "frame_opacity": 1,
+     "canvas_on": true,
+     "canvas_op": "1",
+     "print_covers_frame": 0,
+     "print_img": 800
+    },
+    {
+     "p": 0.3,
+     "frame_opacity": 1,
+     "canvas_on": true,
+     "canvas_op": "1",
+     "print_covers_frame": 0,
+     "print_img": 800
+    },
+    {
+     "p": 0.6,
+     "frame_opacity": 1,
+     "canvas_on": true,
+     "canvas_op": "1",
+     "print_covers_frame": 0,
+     "print_img": 800
+    },
+    {
+     "p": 0.75,
+     "frame_opacity": 1,
+     "canvas_on": true,
+     "canvas_op": "1",
+     "print_covers_frame": 0.09,
+     "print_img": 800
+    },
+    {
+     "p": 0.84,
+     "frame_opacity": 1,
+     "canvas_on": true,
+     "canvas_op": "1",
+     "print_covers_frame": 0.4,
+     "print_img": 800
+    },
+    {
+     "p": 0.9,
+     "frame_opacity": 0.60394,
+     "canvas_on": true,
+     "canvas_op": "1",
+     "print_covers_frame": 0.47,
+     "print_img": 800
+    },
+    {
+     "p": 1,
+     "frame_opacity": 0,
+     "canvas_on": true,
+     "canvas_op": "1",
+     "print_covers_frame": 0.47,
+     "print_img": 800
+    }
+   ],
+   "label": {
+    "visible_text": "",
+    "frame_role": "img",
+    "aria": "An effect, not a photograph taken at dusk: the daylight photograph of the hotel is graded on screen as you scroll, the sky deepening and the bays lighting one by one. It ends on a real photograph of the hotel at blue hour.",
+    "print_alt": "A photograph of the concrete building at blue hour against a deep blue sky, its curtained balconies glowing gold from inside, chairs in silhouette on the decks"
+   }
+  },
+  "reduced": {
+   "pin": false,
+   "piece_h": 850,
+   "frame_display": "none",
+   "canvas": "block/0/300",
+   "print": 800
+  },
+  "dist_files": [
+   "hour-folds.webp",
+   "hour-mask.webp",
+   "hour-noon-phone.webp",
+   "hour-noon.webp"
+  ],
+  "no_webgl": {
+   "webgl": false,
+   "canvas_on": false,
+   "still": 1920,
+   "end_print_covers": 800,
+   "errors": []
+  }
+ }
+}

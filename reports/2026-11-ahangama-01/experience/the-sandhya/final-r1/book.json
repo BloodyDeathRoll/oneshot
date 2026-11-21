@@ -1,0 +1,166 @@
+{
+ "datesBox": {
+  "hidden": false,
+  "y": 16090,
+  "w": 326,
+  "h": 67,
+  "inMin": "2026-11-09",
+  "outMin": "2026-11-10",
+  "fieldH": 67,
+  "inputFont": "16px"
+ },
+ "afterCheckinOnly": {
+  "dout": "2026-12-10",
+  "note": "",
+  "hrefs": [
+   "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-10",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-10",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570#checkin=2026-12-09&checkout=2026-12-10",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586#checkin=2026-12-09&checkout=2026-12-10",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587#checkin=2026-12-09&checkout=2026-12-10",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603#checkin=2026-12-09&checkout=2026-12-10",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-10",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-10"
+  ]
+ },
+ "afterBoth": {
+  "din": "2026-12-09",
+  "dout": "2026-12-12",
+  "note": "",
+  "hrefs": [
+   "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-12",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-12",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570#checkin=2026-12-09&checkout=2026-12-12",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586#checkin=2026-12-09&checkout=2026-12-12",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587#checkin=2026-12-09&checkout=2026-12-12",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603#checkin=2026-12-09&checkout=2026-12-12",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-12",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-12"
+  ]
+ },
+ "afterBack": {
+  "din": "",
+  "dout": "",
+  "hrefs": [
+   "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V"
+  ]
+ },
+ "barTextWithDates": "Check rooms and live dates",
+ "clearedOut": {
+  "note": "",
+  "hrefs": [
+   "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V"
+  ]
+ },
+ "past": {
+  "note": "Choose both dates, or clear both.",
+  "hrefs": [
+   "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V"
+  ]
+ },
+ "sameDay": {
+  "dout": "2026-11-19",
+  "note": "Choose both dates, or clear both.",
+  "hrefs": [
+   "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V"
+  ]
+ },
+ "afterReload": {
+  "din": "",
+  "hrefs": [
+   "https://hotels.cloudbeds.com/reservation/WMvA6V"
+  ]
+ },
+ "steps": [
+  {
+   "name": "hero, no dates",
+   "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "req": [
+    "https://hotels.cloudbeds.com/reservation/WMvA6V"
+   ],
+   "backY": 1
+  },
+  {
+   "name": "room 0, no dates",
+   "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570",
+   "req": [
+    "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570"
+   ],
+   "backY": 2487
+  },
+  {
+   "name": "room 1, no dates",
+   "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586",
+   "req": [
+    "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586"
+   ],
+   "backY": 3087
+  },
+  {
+   "name": "room 2, no dates",
+   "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587",
+   "req": [
+    "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587"
+   ],
+   "backY": 3713
+  },
+  {
+   "name": "room 3, no dates",
+   "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603",
+   "req": [
+    "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603"
+   ],
+   "backY": 4339
+  },
+  {
+   "name": "booking section button, dates set",
+   "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-12",
+   "req": [
+    "https://hotels.cloudbeds.com/reservation/WMvA6V"
+   ],
+   "backY": 15587
+  },
+  {
+   "name": "phone bar, dates set",
+   "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "req": [
+    "https://hotels.cloudbeds.com/reservation/WMvA6V"
+   ],
+   "backY": 9469
+  },
+  {
+   "name": "room 2 button, dates set",
+   "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587",
+   "req": [
+    "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587"
+   ],
+   "backY": 3713
+  }
+ ],
+ "labels": [
+  "Check rooms and live dates",
+  "Check rooms and live dates",
+  "Studio King: check live dates",
+  "Studio Twin: check live dates",
+  "Studio+ King: check live dates",
+  "Director’s Suite: check live dates",
+  "Check rooms and live dates",
+  "Check rooms and live dates"
+ ]
+}

@@ -1,0 +1,394 @@
+{
+ "widths": {
+  "600": {
+   "worst": [
+    {
+     "t": 0,
+     "sel": "name",
+     "min": 6.64,
+     "median": 8.81,
+     "under45": 0,
+     "lines": 1,
+     "tile": "444x555",
+     "textTop": 505,
+     "scrimTop": 366
+    },
+    {
+     "t": 1,
+     "sel": "beds",
+     "min": 7.23,
+     "median": 10.46,
+     "under45": 0,
+     "lines": 1,
+     "tile": "444x555",
+     "textTop": 527,
+     "scrimTop": 366
+    }
+   ],
+   "any_under": 0
+  },
+  "667": {
+   "worst": [
+    {
+     "t": 0,
+     "sel": "name",
+     "min": 7.07,
+     "median": 8.95,
+     "under45": 0,
+     "lines": 1,
+     "tile": "494x617",
+     "textTop": 567,
+     "scrimTop": 407
+    },
+    {
+     "t": 0,
+     "sel": "beds",
+     "min": 7.42,
+     "median": 9.12,
+     "under45": 0,
+     "lines": 1,
+     "tile": "494x617",
+     "textTop": 589,
+     "scrimTop": 407
+    }
+   ],
+   "any_under": 0
+  },
+  "720": {
+   "worst": [
+    {
+     "t": 0,
+     "sel": "name",
+     "min": 7.18,
+     "median": 9.23,
+     "under45": 0,
+     "lines": 1,
+     "tile": "533x666",
+     "textTop": 616,
+     "scrimTop": 440
+    },
+    {
+     "t": 0,
+     "sel": "beds",
+     "min": 7.55,
+     "median": 9.23,
+     "under45": 0,
+     "lines": 1,
+     "tile": "533x666",
+     "textTop": 638,
+     "scrimTop": 440
+    }
+   ],
+   "any_under": 0
+  },
+  "740": {
+   "worst": [
+    {
+     "t": 0,
+     "sel": "name",
+     "min": 7.05,
+     "median": 9.27,
+     "under45": 0,
+     "lines": 1,
+     "tile": "548x684",
+     "textTop": 634,
+     "scrimTop": 452
+    },
+    {
+     "t": 1,
+     "sel": "name",
+     "min": 7.45,
+     "median": 10.36,
+     "under45": 0,
+     "lines": 1,
+     "tile": "548x684",
+     "textTop": 634,
+     "scrimTop": 452
+    }
+   ],
+   "any_under": 0
+  },
+  "768": {
+   "worst": [
+    {
+     "t": 1,
+     "sel": "name",
+     "min": 1.36,
+     "median": 4.09,
+     "under45": 59,
+     "lines": 1,
+     "tile": "169x211",
+     "textTop": 144,
+     "scrimTop": 139
+    },
+    {
+     "t": 0,
+     "sel": "name",
+     "min": 2.73,
+     "median": 5.9,
+     "under45": 22,
+     "lines": 1,
+     "tile": "169x211",
+     "textTop": 160,
+     "scrimTop": 139
+    }
+   ],
+   "any_under": 3
+  },
+  "800": {
+   "worst": [
+    {
+     "t": 0,
+     "sel": "name",
+     "min": 3.26,
+     "median": 6.26,
+     "under45": 14,
+     "lines": 1,
+     "tile": "177x221",
+     "textTop": 170,
+     "scrimTop": 146
+    },
+    {
+     "t": 1,
+     "sel": "name",
+     "min": 3.76,
+     "median": 7.53,
+     "under45": 5,
+     "lines": 1,
+     "tile": "177x221",
+     "textTop": 170,
+     "scrimTop": 146
+    }
+   ],
+   "any_under": 3
+  },
+  "820": {
+   "worst": [
+    {
+     "t": 0,
+     "sel": "name",
+     "min": 3.28,
+     "median": 6.38,
+     "under45": 11,
+     "lines": 1,
+     "tile": "182x227",
+     "textTop": 177,
+     "scrimTop": 150
+    },
+    {
+     "t": 1,
+     "sel": "name",
+     "min": 4.08,
+     "median": 7.73,
+     "under45": 2,
+     "lines": 1,
+     "tile": "182x227",
+     "textTop": 177,
+     "scrimTop": 150
+    }
+   ],
+   "any_under": 3
+  },
+  "844": {
+   "worst": [
+    {
+     "t": 0,
+     "sel": "name",
+     "min": 3.35,
+     "median": 6.52,
+     "under45": 8,
+     "lines": 1,
+     "tile": "188x234",
+     "textTop": 184,
+     "scrimTop": 155
+    },
+    {
+     "t": 3,
+     "sel": "name",
+     "min": 3.3,
+     "median": 7.59,
+     "under45": 1,
+     "lines": 1,
+     "tile": "188x234",
+     "textTop": 184,
+     "scrimTop": 155
+    }
+   ],
+   "any_under": 3
+  },
+  "900": {
+   "worst": [
+    {
+     "t": 0,
+     "sel": "name",
+     "min": 4.34,
+     "median": 7.17,
+     "under45": 0,
+     "lines": 1,
+     "tile": "202x252",
+     "textTop": 202,
+     "scrimTop": 166
+    },
+    {
+     "t": 1,
+     "sel": "name",
+     "min": 4.65,
+     "median": 8.33,
+     "under45": 0,
+     "lines": 1,
+     "tile": "202x252",
+     "textTop": 202,
+     "scrimTop": 166
+    }
+   ],
+   "any_under": 0
+  },
+  "960": {
+   "worst": [
+    {
+     "t": 0,
+     "sel": "name",
+     "min": 4.69,
+     "median": 7.76,
+     "under45": 0,
+     "lines": 1,
+     "tile": "217x271",
+     "textTop": 220,
+     "scrimTop": 179
+    },
+    {
+     "t": 1,
+     "sel": "name",
+     "min": 5.35,
+     "median": 8.72,
+     "under45": 0,
+     "lines": 1,
+     "tile": "217x271",
+     "textTop": 220,
+     "scrimTop": 179
+    }
+   ],
+   "any_under": 0
+  },
+  "1000": {
+   "worst": [
+    {
+     "t": 0,
+     "sel": "name",
+     "min": 4.39,
+     "median": 7.97,
+     "under45": 0,
+     "lines": 1,
+     "tile": "227x283",
+     "textTop": 233,
+     "scrimTop": 187
+    },
+    {
+     "t": 1,
+     "sel": "name",
+     "min": 5.54,
+     "median": 8.94,
+     "under45": 0,
+     "lines": 1,
+     "tile": "227x283",
+     "textTop": 233,
+     "scrimTop": 187
+    }
+   ],
+   "any_under": 0
+  },
+  "1100": {
+   "worst": [
+    {
+     "t": 0,
+     "sel": "name",
+     "min": 5.88,
+     "median": 8.17,
+     "under45": 0,
+     "lines": 1,
+     "tile": "252x314",
+     "textTop": 264,
+     "scrimTop": 207
+    },
+    {
+     "t": 3,
+     "sel": "name",
+     "min": 6.37,
+     "median": 9.09,
+     "under45": 0,
+     "lines": 1,
+     "tile": "252x314",
+     "textTop": 264,
+     "scrimTop": 207
+    }
+   ],
+   "any_under": 0
+  },
+  "1280": {
+   "worst": [
+    {
+     "t": 0,
+     "sel": "name",
+     "min": 6.28,
+     "median": 8.16,
+     "under45": 0,
+     "lines": 1,
+     "tile": "292x365",
+     "textTop": 306,
+     "scrimTop": 241
+    },
+    {
+     "t": 3,
+     "sel": "name",
+     "min": 6.37,
+     "median": 8.98,
+     "under45": 0,
+     "lines": 1,
+     "tile": "292x365",
+     "textTop": 306,
+     "scrimTop": 241
+    }
+   ],
+   "any_under": 0
+  }
+ },
+ "dining_dots_phone": [
+  {
+   "dot": 0,
+   "under": 1,
+   "active": 1
+  },
+  {
+   "dot": 1,
+   "under": 2,
+   "active": 2
+  },
+  {
+   "dot": 2,
+   "under": 3,
+   "active": 3
+  },
+  {
+   "dot": 3,
+   "under": 4,
+   "active": 4
+  },
+  {
+   "dot": 4,
+   "under": 5,
+   "active": 5
+  },
+  {
+   "dot": 5,
+   "under": 5,
+   "active": 5
+  }
+ ],
+ "sep": {
+  "w": 1,
+  "h": 1,
+  "clip": "auto",
+  "overflow": "hidden",
+  "color": "rgb(18, 26, 34)"
+ }
+}

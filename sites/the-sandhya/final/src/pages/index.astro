@@ -1,0 +1,443 @@
+---
+// sites/the-sandhya/final/src/pages/index.astro — the home page, ported from the picked calm mockup
+// ("The Artwork", mockups/calm/src/page.html + build.mjs) without changing how it looks; the 4g changes are
+// marked "4g:". Every word, photograph and link comes from src/tenant/content.json (the schema's shape;
+// Payload after a sale), except interface labels (src/lib/labels.mjs) and what the schema has no field for
+// (src/gaps/gaps.json, notes.md "schema gaps"). Placement of photos[] by position: src/lib/layout.mjs.
+import content from '../tenant/content.json'
+import gaps from '../gaps/gaps.json'
+import photos from '../tenant/photos.generated.json'
+import { PHOTO_ROWS } from '../lib/layout.mjs'
+import LABELS from '../lib/labels.mjs'
+import { IS_PREVIEW, ROUTES, abs, pageTitle, metaDescription, heroImage, businessLd, ldJson } from '../lib/seo.mjs'
+import siteJs from '../scripts/site.js?raw'
+import '../styles/site.css'
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
+
+// Fonts, self-hosted (scripts/fonts.mjs writes public/fonts/ from the pinned Fontsource packages).
+// The text face loads as a file, with a metric-matched local fallback so its swap does not re-wrap the page.
+// The script face (23 KB, titles only) is inlined at build time: with a swap, a title that wrapped to three
+// lines in the fallback moved the page on an early scroll (audit-mockup scroll.early.cls 0.035). The file
+// stays out of git; the build reads it from public/fonts/.
+const sacramento = readFileSync(join(process.cwd(), 'public/fonts/sacramento-latin-400-normal.woff2')).toString('base64')
+const fontCss = `@font-face{font-family:"Schibsted Grotesk";font-style:normal;font-weight:400 900;font-display:swap;src:url(fonts/schibsted-grotesk-latin-wght-normal.woff2) format("woff2")}
+@font-face{font-family:"Schibsted Fallback";src:local("Arial"),local("Helvetica Neue"),local("Roboto");size-adjust:102.5%}
+@font-face{font-family:"Sacramento";font-style:normal;font-weight:400;font-display:swap;src:url(data:font/woff2;base64,${sacramento}) format("woff2")}`
+
+const lang = content.locales.en.languages?.[0] ?? 'en'
+const s = content.locales[lang]
+const L = LABELS[lang] ?? LABELS.en
+
+const https = (u) => (typeof u === 'string' && /^https:\/\/[^\s"<>]+$/.test(u) ? u : null) // the schema's re-check
+const esc = (t) => String(t ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+const paras = (b) => (b?.body ? b.body.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean) : [])
+const slot = (name) => (s.copyBlocks ?? []).filter((b) => b.slot === name)
+
+// copyBlocks by slot and order within it (notes.md "editable"): intro; about = Why, Casual Luxe, Looking
+// after the place; offer = the rooms, the Dining Room, Exclusive Use; info = Kabalana and around.
+const [intro] = slot('intro')
+const [why, luxe, care] = slot('about')
+const [roomsB, dining, excl] = slot('offer')
+const [kab] = slot('info')
+const I = paras(intro), W = paras(why), Lx = paras(luxe), R = paras(roomsB), D = paras(dining), X = paras(excl), K = paras(kab)
+// Paragraph positions the design leans on (schema gap: these sentences have no field of their own).
+const wallpaper = Lx[2], luxeA = Lx[0], luxeB = [Lx[1], Lx[3]].filter(Boolean), service = Lx[4], simply = Lx[5]
+const breakfast = D.at(-1), rates = R.at(-1)
+
+// photos[] by position, grouped as src/lib/layout.mjs places them.
+const G = {}
+;(s.photos ?? []).forEach((p, i) => { const row = PHOTO_ROWS[i]; if (row && p.image && photos[p.image.filename]) (G[row[0]] ??= []).push(p.image) })
+const R_ = (m) => photos[m.filename]
+const hero = G.hero?.[0]
+
+// Booking: the engine is bookingLinks[0] (no WhatsApp: contact.whatsapp is empty). Every engine link is
+// marked data-engine, so the date fields can carry the chosen dates into it.
+const links = (s.bookingLinks ?? []).filter((l) => https(l.url))
+const engine = links[0]
+const roomLink = (label) => links.find((l) => l.label.startsWith(label + ':')) ?? engine
+const tel = s.contact?.phone ? `tel:${s.contact.phone}` : null
+const mail = s.contact?.email ? `mailto:${s.contact.email}` : null
+const mapUrl = https(s.contact?.mapUrl)
+const insta = (s.socialLinks ?? []).find((l) => l.platform === 'instagram' && https(l.url))
+// +94765700007 -> +94 765 700 007 (the hotel's own printing, dossier contact.phone.verified)
+const phonePrinted = s.contact?.phone ? s.contact.phone.replace(/^\+(94)(\d{3})(\d{3})(\d{3})$/, '+$1 $2 $3 $4') : null
+
+// The h1: no line break inside the place names (the mockup's two spans, made general: the last two words
+// before the first comma, and everything after it).
+const h1 = (() => {
+  const t = s.tagline ?? s.businessName
+  const parts = t.split(', ')
+  if (parts.length < 2) return esc(t)
+  const first = parts[0], cut = first.lastIndexOf(' ', first.lastIndexOf(' ') - 1)
+  return `${esc(first.slice(0, cut + 1))}<span class="nb">${esc(first.slice(cut + 1))},</span> <span class="nb">${esc(parts.slice(1).join(', '))}</span>`
+})()
+
+// Rooms: rooms[].photo first, then its gallery (schema gap 1).
+const rooms = (s.rooms ?? []).map((r, i) => ({ ...r, shots: [r.photo, ...(gaps.roomGalleries?.[i] ?? [])].filter((m) => m && photos[m.filename]), link: roomLink(r.label) }))
+
+const host = (u) => { try { return new URL(u).hostname } catch { return '' } }
+const ratings = (s.ratings ?? []).map((r) => ({ url: https(r.url), score: `${r.score}/${r.scale}`, name: gaps.platformLabels?.[host(r.url)] ?? r.platform, count: r.count, read: r.capturedAt }))
+const monthName = (ym) => new Date(`${ym}-15T00:00:00Z`).toLocaleString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' })
+const money = (p) => `${{ USD: 'US$', EUR: '€', LKR: 'LKR ' }[p.currency] ?? p.currency + ' '}${p.price.toLocaleString('en-US')}`
+const price = s.priceList?.[0]
+
+// 4h: head and structured data from src/lib/seo.mjs (the preview rule, title, description, JSON-LD).
+const title = pageTitle()
+const description = metaDescription()
+const pageUrl = abs(ROUTES[0] || './')
+const canonical = IS_PREVIEW ? null : pageUrl
+const ogImg = heroImage()
+const ld = ldJson(businessLd({ description }))
+const slideDims = (m) => R_(m).l
+---
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title}</title>
+<meta name="description" content={description}>
+{IS_PREVIEW && <meta name="robots" content="noindex, nofollow">}
+<meta name="theme-color" content="#CBCEC5">
+{canonical && <link rel="canonical" href={canonical}>}
+{canonical && <link rel="alternate" hreflang={lang} href={canonical}>}
+{canonical && <link rel="alternate" hreflang="x-default" href={canonical}>}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content={s.businessName}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+{pageUrl && <meta property="og:url" content={pageUrl}>}
+{pageUrl && ogImg && <meta property="og:image" content={abs(ogImg.src)}>}
+{pageUrl && ogImg && <meta property="og:image:type" content="image/webp">}
+{pageUrl && ogImg && <meta property="og:image:width" content={String(ogImg.width)}>}
+{pageUrl && ogImg && <meta property="og:image:height" content={String(ogImg.height)}>}
+{pageUrl && ogImg && <meta property="og:image:alt" content={ogImg.alt}>}
+<meta name="twitter:card" content={pageUrl && ogImg ? 'summary_large_image' : 'summary'}>
+<style is:inline set:html={fontCss}></style>
+<link rel="preload" as="font" type="font/woff2" href="fonts/schibsted-grotesk-latin-wght-normal.woff2" crossorigin>
+{hero && <link rel="preload" as="image" href={R_(hero).d.src} media="(min-width: 768px)" fetchpriority="high">}
+{hero && <link rel="preload" as="image" href={R_(hero).phone.src} media="(max-width: 767px)" fetchpriority="high">}
+<script is:inline>document.documentElement.classList.add('js');['load','error'].forEach(function(n){document.addEventListener(n,function(e){var t=e.target;if(t.tagName==='IMG')t.classList.add('in')},true)})</script>
+</head>
+<body data-l-photo={L.photograph} data-l-of={L.of} data-l-prev={L.prev} data-l-next={L.next} data-l-half={L.datesHalf} data-l-cta={L.datesCta} data-l-room={L.datesRoom} data-l-night={L.night} data-l-nights={L.nights}>
+<a class="skip" href="#main">{L.skip}</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5M3 16h18M6 11V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/></symbol>
+<symbol id="i-shower" viewBox="0 0 24 24"><path d="M5 20V7a3 3 0 0 1 6 0M8 9h6M10 13v1M14 13v1M12 16v1M16 16v1"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14M5 19l8-8"/></symbol>
+<symbol id="i-robe" viewBox="0 0 24 24"><path d="M9 3l3 3 3-3 4 3-2 5-2-1v11H9V10l-2 1-2-5z"/></symbol>
+<symbol id="i-fan" viewBox="0 0 24 24"><path d="M12 12c0-4 1-7 3-7s3 2 1 4-4 3-4 3zm0 0c4 0 7 1 7 3s-2 3-4 1-3-4-3-4zm0 0c0 4-1 7-3 7s-3-2-1-4 4-3 4-3zm0 0c-4 0-7-1-7-3s2-3 4-1 3 4 3 4z"/></symbol>
+<symbol id="i-desk" viewBox="0 0 24 24"><path d="M3 8h18M5 8v11M19 8v11M14 8v5h5"/></symbol>
+<symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M7 8h10v3a5 5 0 0 1-10 0zM12 16v5"/></symbol>
+<symbol id="i-dryer" viewBox="0 0 24 24"><path d="M4 6h11a4 4 0 0 1 0 8H4zM9 14l-1 7h3l1-7M20 8.5h1.5M20 11.5h1.5"/></symbol>
+<symbol id="i-speaker" viewBox="0 0 24 24"><path d="M9 9H5v6h4l5 4V5zM17 9a4 4 0 0 1 0 6"/></symbol>
+<symbol id="i-wifi" viewBox="0 0 24 24"><path d="M3 9a14 14 0 0 1 18 0M6.5 13a9 9 0 0 1 11 0M10 16.5a4 4 0 0 1 4 0M12 19.5h.01"/></symbol>
+<symbol id="i-news" viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2M7 9h7M7 12h7M7 15h4"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M6 3h3l2 5-2 1.5a12 12 0 0 0 5.5 5.5L16 13l5 2v3a3 3 0 0 1-3 3A15 15 0 0 1 3 6a3 3 0 0 1 3-3z"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 7l9 7 9-7"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12zM12 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></symbol>
+<symbol id="i-insta" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><path d="M16.5 7.5h.01"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+</defs></svg>
+
+<header class="hero" id="top">
+  {hero && (
+    <picture class="hero-media">
+      <source media="(max-width: 767px)" srcset={R_(hero).phone.src} width={R_(hero).phone.width} height={R_(hero).phone.height}>
+      <img src={R_(hero).d.src} width={R_(hero).d.width} height={R_(hero).d.height} fetchpriority="high" alt={hero.alt}>
+    </picture>
+  )}
+  <div class="top">
+    <nav aria-label={L.navSections}><a href="#rooms">{L.rooms}</a><a class="wide" href="#dining">{L.dining}</a></nav>
+    <a class="logo" href="#top" aria-label={s.businessName}><img src="img/logo-white.png" width="406" height="106" alt={s.businessName}></a>
+    <nav class="right" aria-label={L.navMore}><a class="wide" href="#kabalana">{L.kabalana}</a><a class="narrow" href="#dining">{L.dining}</a></nav>
+  </div>
+  <div class="hero-copy">
+    <h1 set:html={h1} />
+    {engine && <a class="btn btn-book" id="hero-book" data-engine href={engine.url}><span class="lbl">{engine.label}</span></a>}
+  </div>
+</header>
+
+<div class="rest">
+  <div class="stick" role="region" aria-label={L.stickyHeader}>
+    <div class="top wrap stick-in">
+      <nav aria-label={L.navRepeat}><a href="#rooms">{L.rooms}</a><a href="#dining">{L.dining}</a><a href="#kabalana">{L.kabalana}</a></nav>
+      <a class="logo" href="#top" aria-label={`${s.businessName}, ${L.backToTop}`}><img src="img/logo-white.png" width="406" height="106" alt={s.businessName}></a>
+      <div class="right">{engine && <a class="btn btn-book" data-engine href={engine.url}><span class="lbl">{engine.label}</span></a>}</div>
+    </div>
+  </div>
+
+  <main id="main">
+  {intro && (
+    <section class="arrival wrap">
+      <h2 class="t center">{intro.heading}</h2>
+      <div class="split">
+        <div class="prose">{I.map((t) => <p>{t}</p>)}</div>
+        {G.arrival && <div class="frame" data-px><img decoding="async" fetchpriority="low" data-src={R_(G.arrival[0]).door.src} width={R_(G.arrival[0]).door.width} height={R_(G.arrival[0]).door.height} alt={G.arrival[0].alt}><noscript><img src={R_(G.arrival[0]).door.src} width={R_(G.arrival[0]).door.width} height={R_(G.arrival[0]).door.height} alt={G.arrival[0].alt}></noscript></div>}
+      </div>
+    </section>
+  )}
+
+  <section class="wrap" id="rooms">
+    <div class="rooms-head center">
+      {roomsB?.heading && <h2 class="t">{roomsB.heading}</h2>}
+      {R[0] && <p class="lede">{R[0]}</p>}
+    </div>
+    {rooms.map((r, i) => (
+      <article class={i % 2 ? 'room flip' : 'room'}>
+        <div class="show" role="group" aria-roledescription={L.slideshow} aria-label={r.label}>
+          <div class="stage"><ul class="strip" tabindex="0">
+            {r.shots.map((m, j) => {
+              const v = R_(m), set = `${v.s.src} ${v.s.width}w, ${v.l.src} ${v.l.width}w`
+              const dims = { width: v.l.width, height: Math.round(v.l.width * 2 / 3), sizes: '(max-width: 767px) 100vw, 60vw', alt: m.alt }
+              // Every photograph wakes when its room comes near and the hero has loaded (site.js), so none
+              // of them takes the phone's bandwidth from the hero; a plain image for JS off.
+              return <li class="slide"><img decoding="async" fetchpriority="low" data-src={v.s.src} data-srcset={set} {...dims}><noscript><img src={v.s.src} srcset={set} {...dims}></noscript></li>
+            })}
+          </ul></div>
+          <div class="dots"></div>
+        </div>
+        <div class="room-text">
+          <h3>{r.label}</h3>
+          <p class="meta">{[r.beds, r.sleeps && `${L.sleeps} ${r.sleeps}`].filter(Boolean).join(' | ')}</p>
+          {r.note && <p>{r.note}</p>}
+          {r.link && <a class="btn btn-book" data-engine data-room={r.label} href={r.link.url}><span class="lbl">{r.link.label}</span></a>}
+        </div>
+      </article>
+    ))}
+    <div class="kit">
+      <div class="kit-text">
+        {R[1] && <p class="lede-s">{R[1]}</p>}
+        {R.slice(3, -1).map((t) => <p>{t}</p>)}
+        {rates && <p>{rates}</p>}
+        {engine && (
+          <div class="date-go" data-dates hidden>
+            <div class="dates" hidden>
+              <label class="field"><span>{L.checkIn}</span><input type="date" class="d-in" name="checkin" autocomplete="off"></label>
+              <label class="field"><span>{L.checkOut}</span><input type="date" class="d-out" name="checkout" autocomplete="off"></label>
+            </div>
+            <p class="dates-note" aria-live="polite"></p>
+            <a class="btn btn-book" data-engine href={engine.url}><span class="lbl">{engine.label}</span></a>
+          </div>
+        )}
+        {s.stayInfo && (
+          <div class="stay">
+            <strong>{s.stayInfo.checkInFrom && <span class="nb">{L.checkInFrom} {s.stayInfo.checkInFrom}</span>}{s.stayInfo.checkInFrom && s.stayInfo.checkOutTo && ' | '}{s.stayInfo.checkOutTo && <span class="nb">{L.checkOutBy} {s.stayInfo.checkOutTo}</span>}</strong>
+            {s.stayInfo.note}
+          </div>
+        )}
+      </div>
+      {gaps.roomKit?.length > 0 && (
+        <div class="kit-list">
+          <p class="kit-head">{L.roomKit}</p>
+          <ul>{gaps.roomKit.map((k) => <li><svg class="ic" aria-hidden="true"><use href={`#i-${k.icon}`}/></svg><span class="cap">{k.text}</span></li>)}</ul>
+        </div>
+      )}
+    </div>
+    {s.amenities?.length > 0 && (
+      <details class="amen" id="amen">
+        <summary><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg>{L.amenities}</summary>
+        <ul>{s.amenities.map((a) => <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>{a.label}{a.note && <> <span class="soft">| {a.note}</span></>}</span></li>)}</ul>
+      </details>
+    )}
+    {ratings.length > 0 && (
+      <ul class="rooms-proof">{ratings.map((r) => <li><a class="rate-line" href={r.url}><span>{r.score} | {r.name} | {r.count} {L.reviews} | <span class="nb">{L.read} {r.read}</span></span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>)}</ul>
+    )}
+  </section>
+
+  {G.feature && (
+    <section aria-label={L.theView}>
+      <div class="feature-block">
+        {s.featureLine && <p class="feature">{s.featureLine}</p>}
+        <div class="bleed">
+          <picture>
+            <source media="(max-width: 767px)" srcset={R_(G.feature[0]).phone.src}>
+            <img loading="lazy" decoding="async" src={R_(G.feature[0]).d.src} srcset={`${R_(G.feature[0]).m.src} ${R_(G.feature[0]).m.width}w, ${R_(G.feature[0]).d.src} ${R_(G.feature[0]).d.width}w`} sizes="100vw" width={R_(G.feature[0]).d.width} height={R_(G.feature[0]).d.height} alt={G.feature[0].alt}>
+          </picture>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {dining && (
+    <section class="dining wrap" id="dining">
+      <div class="dining-grid">
+        <div class="dining-text">
+          <h2 class="t">{dining.heading}</h2>
+          {D.slice(0, 2).map((t) => <p>{t}</p>)}
+          <div class="step-two">{D.slice(2).map((t, i, a) => <p class={i === a.length - 1 ? 'strong' : undefined}>{t}</p>)}</div>
+        </div>
+        {G.dining && (
+          <div class="mason">
+            {G.dining.map((m, i) => { const v = Object.values(R_(m))[0]; return <figure><img loading="lazy" decoding="async" src={v.src} width={v.width} height={v.height} alt={m.alt}></figure> })}
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  <section aria-label={L.theHouse}>
+    {G.house && (
+      <div class="bleed">
+        <picture>
+          <source media="(max-width: 767px)" srcset={R_(G.house[0]).phone.src}>
+          <img loading="lazy" decoding="async" src={R_(G.house[0]).d.src} srcset={`${R_(G.house[0]).m.src} ${R_(G.house[0]).m.width}w, ${R_(G.house[0]).d.src} ${R_(G.house[0]).d.width}w`} sizes="100vw" width={R_(G.house[0]).d.width} height={R_(G.house[0]).d.height} alt={G.house[0].alt}>
+        </picture>
+      </div>
+    )}
+    {luxe && (
+      <div class="luxe">
+        <div class="wrap center">
+          <h2 class="t">{luxe.heading}</h2>
+          {wallpaper && <p class="luxe-line">{wallpaper}</p>}
+        </div>
+        <div class="wrap luxe-cols">
+          <div>{luxeA && <p>{luxeA}</p>}</div>
+          <div>{luxeB.map((t) => <p>{t}</p>)}</div>
+        </div>
+        {G.details && (
+          <div class="swipe" id="details" tabindex="0" role="group" aria-label={L.details}>
+            {G.details.map((m) => <figure><img loading="lazy" decoding="async" src={R_(m).d45.src} width={R_(m).d45.width} height={R_(m).d45.height} alt={m.alt}></figure>)}
+          </div>
+        )}
+        <div class="wrap service">
+          {G.service && <div class="prints">{G.service.map((m) => <figure class="print"><img loading="lazy" decoding="async" src={R_(m).w.src} width={R_(m).w.width} height={R_(m).w.height} alt={m.alt}></figure>)}</div>}
+          <div class="words">
+            {service && <p>{service}</p>}
+            {simply && <p class="simply">{simply}</p>}
+          </div>
+        </div>
+      </div>
+    )}
+  </section>
+
+  {kab && (
+    <section class="sea on-tint" id="kabalana">
+      <div class="wrap">
+        <div class="kab-head">
+          <div>
+            <h2 class="t">{kab.heading}</h2>
+            {s.spot && <p class="spot">{s.spot}</p>}
+          </div>
+        </div>
+        <div class="kab">
+          {G.kabalana && <div class="frame" data-px><img loading="lazy" decoding="async" src={R_(G.kabalana[0]).w.src} width={R_(G.kabalana[0]).w.width} height={R_(G.kabalana[0]).w.height} alt={G.kabalana[0].alt}></div>}
+          <div class="kab-body">
+            <div class="kab-cols">{K.map((t) => <p>{t}</p>)}</div>
+            <div class="mapline">
+              {G.map && <figure class="print mapprint"><img loading="lazy" decoding="async" src={R_(G.map[0]).w.src} width={R_(G.map[0]).w.width} height={R_(G.map[0]).w.height} alt={G.map[0].alt}></figure>}
+              {mapUrl && <a class="btn btn-soft" href={mapUrl}><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>{L.map}</a>}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {(ratings.length > 0 || s.testimonials?.length > 0) && (
+    <section class="marble guests on-tint" aria-labelledby="guests-h">
+      <div class="wrap">
+        <h2 class="t center" id="guests-h">{L.guests}</h2>
+        <div class="ratings">{ratings.map((r) => <a class="rating" href={r.url}><span class="score">{r.score}</span><span class="sep"> | </span><span class="rate-rest"><span>{r.name} | {r.count} {L.reviews} | <span class="nb">{L.read} {r.read}</span></span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>)}</div>
+        <div class="quotes">{(s.testimonials ?? []).map((t) => <blockquote class="quote" lang={t.lang ?? undefined}><p>{t.quote}</p><footer>{[t.author, gaps.testimonialSource, t.date && monthName(t.date)].filter(Boolean).join(' | ')}</footer></blockquote>)}</div>
+      </div>
+    </section>
+  )}
+
+  {excl && (
+    <section class="exclusive wrap" aria-labelledby="ex-h">
+      {G.exclusive && <div class="frame" data-px><img loading="lazy" decoding="async" src={R_(G.exclusive[0]).s.src} srcset={`${R_(G.exclusive[0]).s.src} ${R_(G.exclusive[0]).s.width}w, ${R_(G.exclusive[0]).l.src} ${R_(G.exclusive[0]).l.width}w`} sizes="(max-width: 767px) 100vw, 92vw" width={R_(G.exclusive[0]).l.width} height={R_(G.exclusive[0]).l.height} alt={G.exclusive[0].alt}></div>}
+      <div class="ex-grid">
+        <div class="ex-text">
+          <h2 class="t" id="ex-h">{excl.heading}</h2>
+          {X.map((t) => <p>{t}</p>)}
+        </div>
+        <div class="ex-price">
+          {price && <div class="price"><span>{price.label}</span><b>{money(price)}</b></div>}
+          {price?.note && <p class="note">{price.note}</p>}
+          <div class="row">
+            {tel && <a class="btn btn-soft" href={tel}><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>{L.call}</a>}
+            {mail && <a class="btn btn-soft" href={mail}><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>{L.email}</a>}
+          </div>
+        </div>
+      </div>
+      {care && (
+        <div class="care">
+          <h3>{care.heading}</h3>
+          {paras(care).map((t) => <p>{t}</p>)}
+        </div>
+      )}
+    </section>
+  )}
+
+  {why && (
+    <section class="twilight wrap" aria-label={L.twilight}>
+      <div class="tw-words">
+        <h2 class="t">{why.heading}</h2>
+        {W.map((t, i) => <p class={i === 0 ? 'big' : undefined}>{t}</p>)}
+      </div>
+      {G.twilight && (
+        <div class="tw-prints">
+          {G.twilight.map((m, i) => <figure class={`print ${i ? 'b' : 'a'}`}><img loading="lazy" decoding="async" src={R_(m).w.src} width={R_(m).w.width} height={R_(m).w.height} alt={m.alt}></figure>)}
+        </div>
+      )}
+    </section>
+  )}
+
+  <section class="book" id="book" aria-label={L.booking}>
+    <div class="wrap">
+      <div class="book-card">
+        <h2>{s.tagline}</h2>
+        {s.spot && <p class="plain">{s.spot}</p>}
+        {breakfast && <p class="plain">{breakfast}</p>}
+        {rates && <p class="plain">{rates}</p>}
+        {ratings.length > 0 && <ul class="rate-lines">{ratings.map((r) => <li><a class="rate-line" href={r.url}><span>{r.score} | {r.name} | {r.count} {L.reviews} | <span class="nb">{L.read} {r.read}</span></span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>)}</ul>}
+        {engine && (
+          <div class="date-go" data-dates>
+            <div class="dates" hidden>
+              <label class="field"><span>{L.checkIn}</span><input type="date" class="d-in" name="checkin" autocomplete="off"></label>
+              <label class="field"><span>{L.checkOut}</span><input type="date" class="d-out" name="checkout" autocomplete="off"></label>
+            </div>
+            <p class="dates-note" aria-live="polite"></p>
+            <a class="btn btn-book btn-big" data-engine href={engine.url}><span class="lbl">{engine.label}</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        )}
+        {s.closing && <p class="closing">{s.closing}</p>}
+        <div class="row">
+          {tel && <a class="btn btn-soft" href={tel}><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>{L.call}</a>}
+          {mail && <a class="btn btn-soft" href={mail}><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>{L.email}</a>}
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <a class="logo" href="#top" aria-label={`${s.businessName}, ${L.backToTop}`}><img loading="lazy" decoding="async" src="img/logo-footer.png" width="284" height="145" alt={s.businessName}></a>
+      <div class="row">
+        {tel && <a class="btn btn-soft" href={tel}><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>{L.call}</a>}
+        {mail && <a class="btn btn-soft" href={mail}><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>{L.email}</a>}
+        {mapUrl && <a class="btn btn-soft" href={mapUrl}><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>{L.map}</a>}
+        {insta && <a class="btn btn-soft" href={insta.url}><svg class="ic" aria-hidden="true"><use href="#i-insta"/></svg>{L.instagram}</a>}
+      </div>
+      {s.contact?.address && <address>{s.contact.address}</address>}
+      <p class="fine">{[s.hoursNote, phonePrinted, s.contact?.email].filter(Boolean).map((t, i) => <>{i > 0 && ' | '}<span class={i ? 'nb' : undefined}>{t}</span></>)}</p>
+    </div>
+  </footer>
+
+  {engine && (
+    <nav class="bar" id="bar" aria-label={L.bookingBar}>
+      <a class="btn btn-book" data-engine href={engine.url}><span class="lbl">{engine.label}</span></a>
+      {tel && <a class="round" href={tel} aria-label={L.call}><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>}
+    </nav>
+  )}
+</div>
+
+<script is:inline set:html={siteJs}></script>
+<script type="application/ld+json" is:inline set:html={ld}></script>
+</body>
+</html>

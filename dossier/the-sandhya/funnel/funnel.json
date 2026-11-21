@@ -1,0 +1,505 @@
+{
+  "tool": "funnel.mjs",
+  "version": "0.2.0",
+  "measured_at": "2026-11-06T10:34:37.551Z",
+  "start_url": "https://thesandhya.com/",
+  "whitelabel_engine": false,
+  "final_landing_url": "https://thesandhya.com/",
+  "landing_status": 200,
+  "landing_error": null,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "viewport_meta": true,
+  "landing_text_chars": 3586,
+  "clicks_to_book": 1,
+  "primary_action": {
+    "class": "tel",
+    "href": "tel:+94 765 700 007",
+    "label": "+94 765 700 007",
+    "page": "https://thesandhya.com/"
+  },
+  "hero_action": null,
+  "cta_above_fold": false,
+  "terminal_above_fold": false,
+  "any_action_above_fold": false,
+  "landing_actions": [
+    {
+      "class": "tel",
+      "terminal": true,
+      "href": "tel:+94 765 700 007",
+      "label": "+94 765 700 007",
+      "tag": "a",
+      "top": 7798,
+      "height": 15,
+      "width": 106,
+      "above_fold": false,
+      "tap_target_ok": false
+    },
+    {
+      "class": "email",
+      "terminal": false,
+      "href": "mailto:reservations@thesandhya.com",
+      "label": "reservations@thesandhya.com",
+      "tag": "a",
+      "top": 7822,
+      "height": 15,
+      "width": 182,
+      "above_fold": false,
+      "tap_target_ok": false
+    }
+  ],
+  "action_classes_seen": [
+    "tel",
+    "email",
+    "engine"
+  ],
+  "pages_crawled": 10,
+  "pages_with_errors": [],
+  "console_errors": [],
+  "pages": [
+    {
+      "url": "https://thesandhya.com/",
+      "depth": 0,
+      "via": null,
+      "status": 200,
+      "final_url": "https://thesandhya.com/",
+      "title": "The Sandhya - Luxury Beachfront Boutique Hotel, Sri Lanka",
+      "viewport_meta": true,
+      "text_chars": 3586,
+      "actions": [
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94 765 700 007",
+          "label": "+94 765 700 007",
+          "tag": "a",
+          "top": 7798,
+          "height": 15,
+          "width": 106,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:reservations@thesandhya.com",
+          "label": "reservations@thesandhya.com",
+          "tag": "a",
+          "top": 7822,
+          "height": 15,
+          "width": 182,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 6,
+      "error": null,
+      "screenshot": "landing-mobile.png",
+      "fold_screenshot": "landing-fold.png"
+    },
+    {
+      "url": "https://thesandhya.com/rooms",
+      "depth": 1,
+      "via": "https://thesandhya.com/",
+      "status": 200,
+      "final_url": "https://thesandhya.com/rooms/",
+      "title": "Our Rooms - The Sandhya",
+      "viewport_meta": true,
+      "text_chars": 1113,
+      "actions": [
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+          "label": "RESERVE NOW",
+          "tag": "a",
+          "top": 2024,
+          "height": 52,
+          "width": 117,
+          "above_fold": false,
+          "tap_target_ok": true
+        },
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94 765 700 007",
+          "label": "+94 765 700 007",
+          "tag": "a",
+          "top": 3038,
+          "height": 15,
+          "width": 106,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:reservations@thesandhya.com",
+          "label": "reservations@thesandhya.com",
+          "tag": "a",
+          "top": 3062,
+          "height": 15,
+          "width": 182,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 10,
+      "error": null
+    },
+    {
+      "url": "https://thesandhya.com/dining",
+      "depth": 1,
+      "via": "https://thesandhya.com/",
+      "status": 200,
+      "final_url": "https://thesandhya.com/dining/",
+      "title": "Savouring the Sandhya - The Sandhya",
+      "viewport_meta": true,
+      "text_chars": 1610,
+      "actions": [
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94 765 700 007",
+          "label": "+94 765 700 007",
+          "tag": "a",
+          "top": 3241,
+          "height": 15,
+          "width": 106,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:reservations@thesandhya.com",
+          "label": "reservations@thesandhya.com",
+          "tag": "a",
+          "top": 3265,
+          "height": 15,
+          "width": 182,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 6,
+      "error": null
+    },
+    {
+      "url": "https://thesandhya.com/design",
+      "depth": 1,
+      "via": "https://thesandhya.com/",
+      "status": 200,
+      "final_url": "https://thesandhya.com/design/",
+      "title": "The Design - The Sandhya",
+      "viewport_meta": true,
+      "text_chars": 1788,
+      "actions": [
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94 765 700 007",
+          "label": "+94 765 700 007",
+          "tag": "a",
+          "top": 3726,
+          "height": 15,
+          "width": 106,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:reservations@thesandhya.com",
+          "label": "reservations@thesandhya.com",
+          "tag": "a",
+          "top": 3750,
+          "height": 15,
+          "width": 182,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 6,
+      "error": null
+    },
+    {
+      "url": "https://thesandhya.com/locale",
+      "depth": 1,
+      "via": "https://thesandhya.com/",
+      "status": 200,
+      "final_url": "https://thesandhya.com/locale/",
+      "title": "Locale - The Sandhya",
+      "viewport_meta": true,
+      "text_chars": 2872,
+      "actions": [
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94 765 700 007",
+          "label": "+94 765 700 007",
+          "tag": "a",
+          "top": 3876,
+          "height": 15,
+          "width": 106,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:reservations@thesandhya.com",
+          "label": "reservations@thesandhya.com",
+          "tag": "a",
+          "top": 3900,
+          "height": 15,
+          "width": 182,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 6,
+      "error": null
+    },
+    {
+      "url": "https://thesandhya.com/house",
+      "depth": 1,
+      "via": "https://thesandhya.com/",
+      "status": 200,
+      "final_url": "https://thesandhya.com/house/",
+      "title": "House - The Sandhya",
+      "viewport_meta": true,
+      "text_chars": 790,
+      "actions": [
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94 765 700 007",
+          "label": "+94 765 700 007",
+          "tag": "a",
+          "top": 1744,
+          "height": 15,
+          "width": 106,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:reservations@thesandhya.com",
+          "label": "reservations@thesandhya.com",
+          "tag": "a",
+          "top": 1768,
+          "height": 15,
+          "width": 182,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 6,
+      "error": null
+    },
+    {
+      "url": "https://thesandhya.com/room/studio-king",
+      "depth": 2,
+      "via": "https://thesandhya.com/rooms",
+      "status": 200,
+      "final_url": "https://thesandhya.com/room/studio-king/",
+      "title": "Studio King - The Sandhya",
+      "viewport_meta": true,
+      "text_chars": 1866,
+      "actions": [
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+          "label": "RESERVE NOW",
+          "tag": "a",
+          "top": 2065,
+          "height": 52,
+          "width": 300,
+          "above_fold": false,
+          "tap_target_ok": true
+        },
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94 765 700 007",
+          "label": "+94 765 700 007",
+          "tag": "a",
+          "top": 4671,
+          "height": 15,
+          "width": 106,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:reservations@thesandhya.com",
+          "label": "reservations@thesandhya.com",
+          "tag": "a",
+          "top": 4695,
+          "height": 15,
+          "width": 182,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 10,
+      "error": null
+    },
+    {
+      "url": "https://thesandhya.com/room/studio-twin",
+      "depth": 2,
+      "via": "https://thesandhya.com/rooms",
+      "status": 200,
+      "final_url": "https://thesandhya.com/room/studio-twin/",
+      "title": "Studio Twin - The Sandhya",
+      "viewport_meta": true,
+      "text_chars": 1866,
+      "actions": [
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+          "label": "RESERVE NOW",
+          "tag": "a",
+          "top": 2065,
+          "height": 52,
+          "width": 300,
+          "above_fold": false,
+          "tap_target_ok": true
+        },
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94 765 700 007",
+          "label": "+94 765 700 007",
+          "tag": "a",
+          "top": 4672,
+          "height": 15,
+          "width": 106,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:reservations@thesandhya.com",
+          "label": "reservations@thesandhya.com",
+          "tag": "a",
+          "top": 4696,
+          "height": 15,
+          "width": 182,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 10,
+      "error": null
+    },
+    {
+      "url": "https://thesandhya.com/room/studio-plus-king",
+      "depth": 2,
+      "via": "https://thesandhya.com/rooms",
+      "status": 200,
+      "final_url": "https://thesandhya.com/room/studio-plus-king/",
+      "title": "Studio+ King - The Sandhya",
+      "viewport_meta": true,
+      "text_chars": 1619,
+      "actions": [
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+          "label": "RESERVE NOW",
+          "tag": "a",
+          "top": 2065,
+          "height": 52,
+          "width": 300,
+          "above_fold": false,
+          "tap_target_ok": true
+        },
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94 765 700 007",
+          "label": "+94 765 700 007",
+          "tag": "a",
+          "top": 4485,
+          "height": 15,
+          "width": 106,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:reservations@thesandhya.com",
+          "label": "reservations@thesandhya.com",
+          "tag": "a",
+          "top": 4509,
+          "height": 15,
+          "width": 182,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 10,
+      "error": null
+    },
+    {
+      "url": "https://thesandhya.com/room/directors-suite",
+      "depth": 2,
+      "via": "https://thesandhya.com/rooms",
+      "status": 200,
+      "final_url": "https://thesandhya.com/room/directors-suite/",
+      "title": "Director's Suite - The Sandhya",
+      "viewport_meta": true,
+      "text_chars": 2429,
+      "actions": [
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+          "label": "RESERVE NOW",
+          "tag": "a",
+          "top": 2503,
+          "height": 52,
+          "width": 300,
+          "above_fold": false,
+          "tap_target_ok": true
+        },
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94 765 700 007",
+          "label": "+94 765 700 007",
+          "tag": "a",
+          "top": 5488,
+          "height": 15,
+          "width": 106,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:reservations@thesandhya.com",
+          "label": "reservations@thesandhya.com",
+          "tag": "a",
+          "top": 5512,
+          "height": 15,
+          "width": 182,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 10,
+      "error": null
+    }
+  ]
+}

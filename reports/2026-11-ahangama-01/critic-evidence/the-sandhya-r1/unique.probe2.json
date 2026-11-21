@@ -1,0 +1,417 @@
+{
+ "variant": "unique",
+ "lcp": [
+  {
+   "lcp": [
+    {
+     "t": 460,
+     "size": 25116,
+     "url": "",
+     "el": "H1."
+    },
+    {
+     "t": 1860,
+     "size": 217230,
+     "url": "hour-slice-phone.webp",
+     "el": "IMG.poster"
+    }
+   ],
+   "hero": [
+    {
+     "n": "hour-slice-phone.webp",
+     "end": 1848,
+     "kb": 68
+    },
+    {
+     "n": "css2?family=Halant:wght@500&family=Mukta",
+     "end": 477,
+     "kb": 1
+    },
+    {
+     "n": "logo-white.webp",
+     "end": 469,
+     "kb": 3
+    },
+    {
+     "n": "img-062-800.webp",
+     "end": 1549,
+     "kb": 21
+    }
+   ],
+   "fcp": 460
+  },
+  {
+   "lcp": [
+    {
+     "t": 332,
+     "size": 25116,
+     "url": "",
+     "el": "H1."
+    },
+    {
+     "t": 2356,
+     "size": 217230,
+     "url": "hour-slice-phone.webp",
+     "el": "IMG.poster"
+    }
+   ],
+   "hero": [
+    {
+     "n": "hour-slice-phone.webp",
+     "end": 2327,
+     "kb": 68
+    },
+    {
+     "n": "css2?family=Halant:wght@500&family=Mukta",
+     "end": 419,
+     "kb": 1
+    },
+    {
+     "n": "logo-white.webp",
+     "end": 462,
+     "kb": 3
+    },
+    {
+     "n": "img-062-800.webp",
+     "end": 1385,
+     "kb": 21
+    }
+   ],
+   "fcp": 332
+  },
+  {
+   "lcp": [
+    {
+     "t": 328,
+     "size": 25116,
+     "url": "",
+     "el": "H1."
+    },
+    {
+     "t": 2372,
+     "size": 217230,
+     "url": "hour-slice-phone.webp",
+     "el": "IMG.poster"
+    }
+   ],
+   "hero": [
+    {
+     "n": "hour-slice-phone.webp",
+     "end": 2364,
+     "kb": 68
+    },
+    {
+     "n": "css2?family=Halant:wght@500&family=Mukta",
+     "end": 426,
+     "kb": 1
+    },
+    {
+     "n": "logo-white.webp",
+     "end": 469,
+     "kb": 3
+    },
+    {
+     "n": "img-062-800.webp",
+     "end": 1334,
+     "kb": 21
+    }
+   ],
+   "fcp": 328
+  }
+ ],
+ "contrast": {
+  "phone": [
+   {
+    "text": "King bed | Sleeps 2",
+    "size": 16,
+    "weight": "500",
+    "color": "rgb(90, 85, 64)",
+    "op": 1,
+    "min": 6.12,
+    "p5": 6.12,
+    "median": 6.13,
+    "covered": false
+   },
+   {
+    "text": "An adults-only beachfront boutique hotel",
+    "size": 23,
+    "weight": "500",
+    "color": "rgb(50, 46, 31)",
+    "op": 1,
+    "min": 11.02,
+    "p5": 11.02,
+    "median": 11.02,
+    "covered": false
+   },
+   {
+    "text": "The rooms",
+    "size": 40,
+    "weight": "500",
+    "color": "rgb(50, 46, 31)",
+    "op": 1,
+    "min": 11.02,
+    "p5": 11.02,
+    "median": 11.02,
+    "covered": false
+   },
+   {
+    "text": "Our 9 spacious rooms have unobstructed s",
+    "size": 19,
+    "weight": "400",
+    "color": "rgb(50, 46, 31)",
+    "op": 1,
+    "min": 11.02,
+    "p5": 11.02,
+    "median": 11.02,
+    "covered": false
+   },
+   {
+    "text": "With panoramic glass doors & windows thr",
+    "size": 30,
+    "weight": "500",
+    "color": "rgb(50, 46, 31)",
+    "op": 1,
+    "min": 12.47,
+    "p5": 12.47,
+    "median": 12.47,
+    "covered": false
+   },
+   {
+    "text": "Check rooms and live dates",
+    "size": 17,
+    "weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "op": 1,
+    "min": 13.02,
+    "p5": 13.02,
+    "median": 13.02,
+    "covered": false
+   },
+   {
+    "text": "Studio King: check live dates",
+    "size": 16,
+    "weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "op": 1,
+    "min": 13.02,
+    "p5": 13.02,
+    "median": 13.02,
+    "covered": false
+   }
+  ],
+  "desktop": [
+   {
+    "text": "King bed | Sleeps 2",
+    "size": 16,
+    "weight": "500",
+    "color": "rgb(90, 85, 64)",
+    "op": 1,
+    "min": 6.18,
+    "p5": 6.18,
+    "median": 6.18,
+    "covered": false
+   },
+   {
+    "text": "An adults-only beachfront boutique hotel",
+    "size": 27,
+    "weight": "500",
+    "color": "rgb(50, 46, 31)",
+    "op": 1,
+    "min": 5.21,
+    "p5": 7.03,
+    "median": 8.05,
+    "covered": false
+   },
+   {
+    "text": "Rooms",
+    "size": 16,
+    "weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "op": 1,
+    "min": 9.42,
+    "p5": 9.69,
+    "median": 10.16,
+    "covered": false
+   },
+   {
+    "text": "The rooms",
+    "size": 74.88,
+    "weight": "500",
+    "color": "rgb(50, 46, 31)",
+    "op": 1,
+    "min": 11.02,
+    "p5": 11.02,
+    "median": 11.12,
+    "covered": false
+   },
+   {
+    "text": "Rooms",
+    "size": 16,
+    "weight": "500",
+    "color": "rgb(50, 46, 31)",
+    "op": 1,
+    "min": 12.06,
+    "p5": 12.06,
+    "median": 12.06,
+    "covered": false
+   },
+   {
+    "text": "With panoramic glass doors & windows thr",
+    "size": 54.72,
+    "weight": "500",
+    "color": "rgb(50, 46, 31)",
+    "op": 1,
+    "min": 12.47,
+    "p5": 12.47,
+    "median": 12.47,
+    "covered": false
+   },
+   {
+    "text": "Check rooms and live dates",
+    "size": 16,
+    "weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "op": 1,
+    "min": 13.02,
+    "p5": 13.02,
+    "median": 13.02,
+    "covered": false
+   }
+  ]
+ },
+ "tel_bar": {
+  "id": "telbar",
+  "wh": "52x52",
+  "bottom": 10,
+  "aria": "Call",
+  "href": "tel:+94765700007",
+  "tapped": true
+ },
+ "rooms_retest": {
+  "phone": {
+   "53570": {
+    "taps": 1,
+    "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570",
+    "wh": "346x50"
+   },
+   "53586": {
+    "taps": 1,
+    "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586",
+    "wh": "346x50"
+   },
+   "53587": {
+    "taps": 1,
+    "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587",
+    "wh": "346x50"
+   },
+   "53603": {
+    "taps": 1,
+    "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603",
+    "wh": "346x50"
+   }
+  },
+  "desktop": {
+   "53570": {
+    "taps": 2,
+    "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570",
+    "wh": "217x46"
+   },
+   "53586": {
+    "taps": 2,
+    "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586",
+    "wh": "219x46"
+   },
+   "53587": {
+    "taps": 2,
+    "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587",
+    "wh": "226x46"
+   },
+   "53603": {
+    "taps": 2,
+    "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603",
+    "wh": "242x46"
+   }
+  },
+  "desktop_closed_row_click": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570"
+ },
+ "bar_race": [
+  {
+   "gap_ms": 60,
+   "at_room": {
+    "href": "rid=53603",
+    "spans": [
+     "Studio Twin: check live dates op=1",
+     "Studio+ King: check live dates op=1",
+     "Director’s Suite: check live dates op=1"
+    ]
+   },
+   "at_end": {
+    "href": "on/WMvA6V",
+    "spans": [
+     "Studio+ King: check live dates op=1",
+     "Director’s Suite: check live dates op=1",
+     "Check rooms and live dates op=1"
+    ]
+   }
+  },
+  {
+   "gap_ms": 120,
+   "at_room": {
+    "href": "rid=53603",
+    "spans": [
+     "Studio Twin: check live dates op=1",
+     "Studio+ King: check live dates op=1",
+     "Director’s Suite: check live dates op=1"
+    ]
+   },
+   "at_end": {
+    "href": "on/WMvA6V",
+    "spans": [
+     "Studio+ King: check live dates op=1",
+     "Director’s Suite: check live dates op=1",
+     "Check rooms and live dates op=1"
+    ]
+   }
+  },
+  {
+   "gap_ms": 200,
+   "at_room": {
+    "href": "rid=53603",
+    "spans": [
+     "Studio Twin: check live dates op=1",
+     "Studio+ King: check live dates op=1",
+     "Director’s Suite: check live dates op=1"
+    ]
+   },
+   "at_end": {
+    "href": "on/WMvA6V",
+    "spans": [
+     "Studio+ King: check live dates op=1",
+     "Director’s Suite: check live dates op=1",
+     "Check rooms and live dates op=1"
+    ]
+   }
+  },
+  {
+   "gap_ms": 400,
+   "at_room": {
+    "href": "rid=53603",
+    "spans": [
+     "Studio+ King: check live dates op=1",
+     "Director’s Suite: check live dates op=1"
+    ]
+   },
+   "at_end": {
+    "href": "on/WMvA6V",
+    "spans": [
+     "Director’s Suite: check live dates op=1",
+     "Check rooms and live dates op=1"
+    ]
+   }
+  }
+ ],
+ "keyboard_settled": {
+  "stops": 34,
+  "bad": []
+ }
+}

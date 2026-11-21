@@ -1,0 +1,1133 @@
+{
+ "tabs": 77,
+ "seq": [
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "skip",
+   "text": "Skip to the page",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "",
+   "text": "Rooms",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "wide",
+   "text": "Dining",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "logo",
+   "text": "The Sandhya",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "wide",
+   "text": "Kabalana",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "hero-book",
+   "cls": "btn btn-book",
+   "text": "Check rooms and live dates",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "",
+   "text": "Rooms",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "",
+   "text": "Dining",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "",
+   "text": "Kabalana",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "logo",
+   "text": "The Sandhya, back to the top",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-book",
+   "text": "Check rooms and live dates",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "UL",
+   "id": "",
+   "cls": "strip",
+   "text": "<img src=\"photos/img-061-s-1000.webp\" sr",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "step prev",
+   "text": "Studio King: Previous photograph",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "step next",
+   "text": "Studio King: Next photograph",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio King, photograph 1 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio King, photograph 2 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio King, photograph 3 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio King, photograph 4 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio King, photograph 5 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-book",
+   "text": "Studio King: check live dates",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "UL",
+   "id": "",
+   "cls": "strip",
+   "text": "<img src=\"photos/img-080-s-1000.webp\" sr",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "step prev",
+   "text": "Studio Twin: Previous photograph",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "step next",
+   "text": "Studio Twin: Next photograph",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio Twin, photograph 1 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio Twin, photograph 2 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio Twin, photograph 3 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio Twin, photograph 4 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio Twin, photograph 5 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-book",
+   "text": "Studio Twin: check live dates",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "UL",
+   "id": "",
+   "cls": "strip",
+   "text": "<img src=\"photos/img-066-s-1000.webp\" sr",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "step prev",
+   "text": "Studio+ King: Previous photograph",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "step next",
+   "text": "Studio+ King: Next photograph",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio+ King, photograph 1 of 6",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio+ King, photograph 2 of 6",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio+ King, photograph 3 of 6",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio+ King, photograph 4 of 6",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio+ King, photograph 5 of 6",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio+ King, photograph 6 of 6",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-book",
+   "text": "Studio+ King: check live dates",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "UL",
+   "id": "",
+   "cls": "strip",
+   "text": "<img src=\"photos/img-171-s-1000.webp\" sr",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "step prev",
+   "text": "Director’s Suite: Previous photograph",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "step next",
+   "text": "Director’s Suite: Next photograph",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Director’s Suite, photograph 1 of 6",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Director’s Suite, photograph 2 of 6",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Director’s Suite, photograph 3 of 6",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Director’s Suite, photograph 4 of 6",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Director’s Suite, photograph 5 of 6",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Director’s Suite, photograph 6 of 6",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-book",
+   "text": "Director’s Suite: check live dates",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "SUMMARY",
+   "id": "",
+   "cls": "",
+   "text": "Amenities",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "rate-line",
+   "text": "9.7/10 | Trip.com | 56 reviews | read 20",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "rate-line",
+   "text": "9.4/10 | Kayak | 159 reviews | read 2026",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "DIV",
+   "id": "details",
+   "cls": "swipe",
+   "text": "Details of the furniture",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-soft",
+   "text": "Map",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "rating",
+   "text": "9.7/10 | Trip.com | 56 reviews | read 20",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "rating",
+   "text": "9.4/10 | Kayak | 159 reviews | read 2026",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-soft",
+   "text": "Call",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-soft",
+   "text": "Email",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "rate-line",
+   "text": "9.7/10 | Trip.com | 56 reviews | read 20",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "rate-line",
+   "text": "9.4/10 | Kayak | 159 reviews | read 2026",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "INPUT",
+   "id": "d-in",
+   "cls": "",
+   "text": "",
+   "inView": false,
+   "outline": "none 0px",
+   "ring": "solid"
+  },
+  {
+   "tag": "INPUT",
+   "id": "d-in",
+   "cls": "",
+   "text": "",
+   "inView": false,
+   "outline": "none 0px",
+   "ring": "solid"
+  },
+  {
+   "tag": "INPUT",
+   "id": "d-in",
+   "cls": "",
+   "text": "",
+   "inView": false,
+   "outline": "none 0px",
+   "ring": "solid"
+  },
+  {
+   "tag": "INPUT",
+   "id": "d-in",
+   "cls": "",
+   "text": "",
+   "inView": true,
+   "outline": "none 0px",
+   "ring": "solid"
+  },
+  {
+   "tag": "INPUT",
+   "id": "d-out",
+   "cls": "",
+   "text": "",
+   "inView": true,
+   "outline": "none 0px",
+   "ring": "solid"
+  },
+  {
+   "tag": "INPUT",
+   "id": "d-out",
+   "cls": "",
+   "text": "",
+   "inView": true,
+   "outline": "none 0px",
+   "ring": "solid"
+  },
+  {
+   "tag": "INPUT",
+   "id": "d-out",
+   "cls": "",
+   "text": "",
+   "inView": true,
+   "outline": "none 0px",
+   "ring": "solid"
+  },
+  {
+   "tag": "INPUT",
+   "id": "d-out",
+   "cls": "",
+   "text": "",
+   "inView": true,
+   "outline": "none 0px",
+   "ring": "solid"
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-book btn-big",
+   "text": "Check rooms and live dates",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-soft",
+   "text": "Call",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-soft",
+   "text": "Email",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "logo",
+   "text": "The Sandhya, back to the top",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-soft",
+   "text": "Call",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-soft",
+   "text": "Email",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-soft",
+   "text": "Map",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-soft",
+   "text": "Instagram",
+   "inView": true,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BODY",
+   "id": "",
+   "cls": "",
+   "text": "Skip to the page                        ",
+   "inView": false,
+   "outline": "none 3px",
+   "ring": null
+  }
+ ],
+ "notInView": [
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "skip",
+   "text": "Skip to the page",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "",
+   "text": "Rooms",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "",
+   "text": "Dining",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "UL",
+   "id": "",
+   "cls": "strip",
+   "text": "<img src=\"photos/img-061-s-1000.webp\" sr",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "step prev",
+   "text": "Studio King: Previous photograph",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "step next",
+   "text": "Studio King: Next photograph",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio King, photograph 1 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio King, photograph 2 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio King, photograph 3 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio King, photograph 4 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio King, photograph 5 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-book",
+   "text": "Studio King: check live dates",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "UL",
+   "id": "",
+   "cls": "strip",
+   "text": "<img src=\"photos/img-080-s-1000.webp\" sr",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "step prev",
+   "text": "Studio Twin: Previous photograph",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "step next",
+   "text": "Studio Twin: Next photograph",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio Twin, photograph 1 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio Twin, photograph 2 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio Twin, photograph 3 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio Twin, photograph 4 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio Twin, photograph 5 of 5",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "UL",
+   "id": "",
+   "cls": "strip",
+   "text": "<img src=\"photos/img-066-s-1000.webp\" sr",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "step prev",
+   "text": "Studio+ King: Previous photograph",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "step next",
+   "text": "Studio+ King: Next photograph",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio+ King, photograph 1 of 6",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Studio+ King, photograph 2 of 6",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "UL",
+   "id": "",
+   "cls": "strip",
+   "text": "<img src=\"photos/img-171-s-1000.webp\" sr",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "step prev",
+   "text": "Director’s Suite: Previous photograph",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "step next",
+   "text": "Director’s Suite: Next photograph",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Director’s Suite, photograph 1 of 6",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BUTTON",
+   "id": "",
+   "cls": "dot",
+   "text": "Director’s Suite, photograph 2 of 6",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "SUMMARY",
+   "id": "",
+   "cls": "",
+   "text": "Amenities",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "rate-line",
+   "text": "9.7/10 | Trip.com | 56 reviews | read 20",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "rate-line",
+   "text": "9.4/10 | Kayak | 159 reviews | read 2026",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "DIV",
+   "id": "details",
+   "cls": "swipe",
+   "text": "Details of the furniture",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-soft",
+   "text": "Map",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "rating",
+   "text": "9.7/10 | Trip.com | 56 reviews | read 20",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "rating",
+   "text": "9.4/10 | Kayak | 159 reviews | read 2026",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-soft",
+   "text": "Call",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-soft",
+   "text": "Email",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "rate-line",
+   "text": "9.7/10 | Trip.com | 56 reviews | read 20",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "rate-line",
+   "text": "9.4/10 | Kayak | 159 reviews | read 2026",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "INPUT",
+   "id": "d-in",
+   "cls": "",
+   "text": "",
+   "inView": false,
+   "outline": "none 0px",
+   "ring": "solid"
+  },
+  {
+   "tag": "INPUT",
+   "id": "d-in",
+   "cls": "",
+   "text": "",
+   "inView": false,
+   "outline": "none 0px",
+   "ring": "solid"
+  },
+  {
+   "tag": "INPUT",
+   "id": "d-in",
+   "cls": "",
+   "text": "",
+   "inView": false,
+   "outline": "none 0px",
+   "ring": "solid"
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "logo",
+   "text": "The Sandhya, back to the top",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-soft",
+   "text": "Call",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "A",
+   "id": "",
+   "cls": "btn btn-soft",
+   "text": "Email",
+   "inView": false,
+   "outline": "solid 2px",
+   "ring": null
+  },
+  {
+   "tag": "BODY",
+   "id": "",
+   "cls": "",
+   "text": "Skip to the page                        ",
+   "inView": false,
+   "outline": "none 3px",
+   "ring": null
+  }
+ ],
+ "typedIn": "2026-10-12"
+}

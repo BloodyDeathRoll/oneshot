@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<title>A new website for The Sandhya</title>
+<meta name="description" content="A proposal for The Sandhya: the website preview we built for the hotel, what it changes for a guest booking from a phone, what you will be able to edit yourself, and the ways it can run.">
+<style>
+:root{
+  --bg:#f6f7f8; --paper:#ffffff; --ink:#15181d; --muted:#505864; --line:#d9dde3;
+  --accent:#1f4f5c; --accent-ink:#ffffff; --link:#0b5a8a; --soft:#e9f1f3;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#101317; --paper:#181d23; --ink:#e9edf1; --muted:#a9b2bd; --line:#2b333c; --accent:#5aa2b4; --accent-ink:#0c1013; --link:#86c3ef; --soft:#18272c; }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+a{color:var(--link)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header.top{padding:40px 16px 24px}
+.kicker{color:var(--muted);font-size:15px;margin:0 0 8px}
+h1{font-size:clamp(30px,6vw,48px);line-height:1.1;font-weight:600;margin:0 0 16px;letter-spacing:-.01em}
+h2{font-size:clamp(23px,4vw,30px);line-height:1.2;font-weight:600;margin:0 0 14px}
+h3{font-size:18px;margin:0 0 6px}
+p{margin:0 0 14px}
+.lede{font-size:19px;max-width:44em}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:12px 20px;background:var(--accent);color:var(--accent-ink);font-weight:600;text-decoration:none;border-radius:4px;overflow-wrap:anywhere}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--link);outline-offset:2px}
+.note{color:var(--muted);font-size:15px}
+section{padding:36px 16px;border-top:1px solid var(--line)}
+.grid2{display:grid;gap:24px;grid-template-columns:1fr}
+.shots{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+figure{margin:0}
+figure img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:#fff}
+figcaption{font-size:14px;color:var(--muted);margin-top:6px}
+.wide{margin-top:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px}
+.fix{display:grid;gap:18px;grid-template-columns:1fr;margin-top:20px;align-items:start}
+.fix figure.blank{max-width:170px}
+.fix .card h3{margin-bottom:10px}
+.fix .label{display:block;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:10px 0 2px}
+.fix figure{max-width:300px}
+.pair{display:grid;gap:12px;grid-template-columns:1fr 1fr;max-width:620px}
+.pair figure{max-width:none}
+table{border-collapse:collapse;width:100%;background:var(--paper);border:1px solid var(--line);border-radius:8px;font-size:16px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-top:1px solid var(--line)}
+thead th{border-top:0;font-size:14px;color:var(--muted);font-weight:600}
+tbody th{font-weight:600;width:22%}
+.tablewrap{overflow-x:auto}
+.tabs{list-style:none;padding:0;margin:0;display:grid;gap:8px;grid-template-columns:1fr}
+.tabs li{padding:10px 14px;background:var(--paper);border:1px solid var(--line);border-radius:6px}
+.tabs li>strong:first-child{display:block}
+.offer{background:var(--soft);border-left:4px solid var(--accent);padding:18px 20px;border-radius:4px;max-width:46em}
+ol.confirm,ul.plain{padding-left:22px;margin:0;max-width:46em}
+ol.confirm li,ul.plain li{margin-bottom:10px}
+footer{padding:28px 16px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (min-width:720px){
+  .grid2{grid-template-columns:1fr 1fr}
+  .fix{grid-template-columns:1fr 1fr}
+  .tabs{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  table,thead,tbody,tr,th,td{display:block}
+  thead{display:none}
+  tbody tr{border-top:1px solid var(--line);padding:10px 12px}
+  tbody tr:first-child{border-top:0}
+  tbody th,tbody td{border:0;padding:2px 0;width:auto}
+  tbody td::before{content:attr(data-h);display:block;font-size:13px;font-weight:600;color:var(--muted)}
+}
+@media (max-width:420px){ .shots{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<header class="top wrap">
+  <p class="kicker">A proposal for The Sandhya, Kabalana Beach, Ahangama, Sri Lanka</p>
+  <h1>Your rooms, ready to book from a phone</h1>
+  <p class="lede">The Sandhya is a nine-room, adults-only beachfront boutique hotel on Kabalana Beach. Guests rate it 9.7 out of 10 on Trip.com, from 56 reviews (read 6 November 2026). On a phone, though, thesandhya.com is slow to open and hard to book from. We built a new version of the site from your own pages, photographs and booking engine. You can open it now:</p>
+  <p><a class="btn" href="https://the-sandhya.os1.workers.dev/">the-sandhya.os1.workers.dev</a></p>
+  <p class="note">This is a private preview. Search engines are told not to list it, so it is not on Google. thesandhya.com stays exactly as it is, and nothing goes public until you decide.</p>
+</header>
+
+<main>
+<section class="wrap" aria-labelledby="h-first">
+  <h2 id="h-first">The first screen on a phone</h2>
+  <div class="shots">
+    <figure>
+      <img src="before-home-390.jpg" width="780" height="1688" loading="lazy" alt="Our screenshot of thesandhya.com on a phone, 6 November 2026: a woman in a white shirt at a window over the sea, the word Sandhya with its pronunciation and meaning, the line Adults Only Hideaway, and a small RESERVE box in the top right corner.">
+      <figcaption>Today: thesandhya.com on a phone, once it has finished loading. Our screenshot, 6 November 2026.</figcaption>
+    </figure>
+    <figure>
+      <img src="after-390-top.jpg" width="780" height="1688" loading="lazy" alt="The preview on a phone: a room's glass doors open onto a terrace, a palm and the sea, with the line An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka, and a wide button Check rooms and live dates.">
+      <figcaption>The preview on a phone, 9 November 2026.</figcaption>
+    </figure>
+  </div>
+  <figure class="wide">
+    <img src="after-1440-top.jpg" width="1440" height="900" loading="lazy" alt="The preview on a laptop: a bed facing floor-to-ceiling glass doors with a palm and the sea beyond, the links Rooms, Dining and Kabalana, the same line about the hotel and the button Check rooms and live dates.">
+    <figcaption>The preview on a laptop, 9 November 2026.</figcaption>
+  </figure>
+</section>
+
+<section class="wrap" aria-labelledby="h-numbers">
+  <h2 id="h-numbers">Booking from a phone, before and after</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th scope="col"></th><th scope="col">thesandhya.com today</th><th scope="col">The preview</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Data to open the home page</th>
+        <td data-h="thesandhya.com today">17.5 MB, from 13 servers, including Facebook, Google Ads, DoubleClick and Google Analytics (one phone-size run, 6 November 2026).</td>
+        <td data-h="The preview">About 270 KB in 4 files, all from the preview's own server. No trackers.</td></tr>
+      <tr><th scope="row">When the booking button works</th>
+        <td data-h="thesandhya.com today">On a slowed-down 4G test, the page stayed white and RESERVE did nothing at 5, 15 and 30 seconds. It first answered about 52 seconds after the link was opened.</td>
+        <td data-h="The preview">The button is a plain link that is there from the first paint. In our slowed-down phone test the title and the button showed in about 0.6 seconds, and the main photograph had arrived by about 1.5 seconds.</td></tr>
+      <tr><th scope="row">The booking button</th>
+        <td data-h="thesandhya.com today">RESERVE, 70 × 30 pixels, in the top corner.</td>
+        <td data-h="The preview">"Check rooms and live dates", full width on a phone and 56 pixels tall, and the same button in a bar that stays at the bottom of the screen.</td></tr>
+      <tr><th scope="row">Taps to your booking page</th>
+        <td data-h="thesandhya.com today">2 taps, but the dates shown in the panel are not sent. Picking dates the engine receives takes 5 or 6 taps.</td>
+        <td data-h="The preview">1 tap, from the first screen, from any room or from the bar. A guest who picks dates first has them added to the link.</td></tr>
+      <tr><th scope="row">What and where</th>
+        <td data-h="thesandhya.com today">The first screen has a dictionary entry for "Sandhya" and "Adults Only Hideaway". "Sri Lanka" first appears about 3,200 pixels down.</td>
+        <td data-h="The preview">The first line: "An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka."</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note wide">The timings above come from test browsers with a slowed-down connection, not from a real phone on a real network. The old site's timings were measured on 6 November 2026; the preview's on 9 November 2026.</p>
+</section>
+
+<section class="wrap" aria-labelledby="h-fixed">
+  <h2 id="h-fixed">What a guest meets today, and what the preview does instead</h2>
+  <p>We walked thesandhya.com on a phone on 6 November 2026, as a guest would, without booking anything. Our screenshots of thesandhya.com below are from that walk.</p>
+  <div class="fix">
+    <div class="card">
+      <h3>A white page on a slow connection</h3>
+      <span class="label">Today</span>
+      <p>On a slowed-down 4G connection the home page stays white, and tapping RESERVE does nothing for about 52 seconds. Even on a fast line a white layer sits over RESERVE for 7.5 seconds after the page is ready: a tap in that time does nothing.</p>
+      <span class="label">On the preview</span>
+      <p>Nothing covers the page. The words and the booking button are usable before the photograph arrives, and booking still works with JavaScript switched off.</p>
+      <figure class="blank"><img src="before-slow4g-15s-390.jpg" width="390" height="844" loading="lazy" alt="Our screenshot of thesandhya.com on a phone 15 seconds after opening it on a slowed-down 4G connection: an entirely white screen."><figcaption>thesandhya.com, 15 seconds after opening on slowed-down 4G, 6 November 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>The dates in the panel are not sent</h3>
+      <span class="label">Today</span>
+      <p>RESERVE opens a panel that already shows today, tomorrow and 2 adults. If the guest keeps those dates and taps RESERVE, the booking page receives empty dates, and the number of adults is never sent at all.</p>
+      <span class="label">On the preview</span>
+      <p>No dates are filled in for the guest. Under the rooms, and again in the booking section, the guest can pick a check-in and a check-out date. Once both are picked, every booking button names them ("Check 8–11 Jan · 3 nights") and adds them to the link to your booking page. With no dates picked, the buttons go to your booking page as they do today.</p>
+      <div class="pair">
+        <figure><img src="before-panel-390.jpg" width="780" height="840" loading="lazy" alt="Our screenshot of the RESERVE panel on thesandhya.com: When do you arrive?, check-in and check-out 06/11/2026 to 07/11/2026, Adults 2, the cookie notice and a RESERVE button."><figcaption>Today's panel, 6 November 2026.</figcaption></figure>
+        <figure><img src="after-390-dates.jpg" width="780" height="504" loading="lazy" alt="The preview's date fields on a phone: the line Nightly rates are on our booking page, for the dates you choose, Check-in 08/01/2027, Check-out 11/01/2027, and the button Check 8–11 Jan · 3 nights."><figcaption>The preview, with two dates picked, 9 November 2026.</figcaption></figure>
+      </div>
+    </div>
+    <div class="card">
+      <h3>The room the guest chose is lost</h3>
+      <span class="label">Today</span>
+      <p>A guest who reads about the Director's Suite and taps RESERVE NOW follows the same link as every other room, with no room in it.</p>
+      <span class="label">On the preview</span>
+      <p>Each of the four room types has its photographs, its bed, size and floor, and its own button. That button's link carries the room's own number from your booking engine, so it can open on that room (see "Before it goes live" below).</p>
+      <div class="pair">
+        <figure><img src="before-suite-390.jpg" width="780" height="520" loading="lazy" alt="Our screenshot of the Director's Suite page on thesandhya.com: the title Director's Suite, 76sqm, and a RESERVE NOW button."><figcaption>The Director's Suite page, 6 November 2026.</figcaption></figure>
+        <figure><img src="after-390-room.jpg" width="780" height="1150" loading="lazy" alt="The preview's Studio King on a phone: a photograph of the room with its glass doors open onto the pool and the sea, slideshow dots, the title Studio King, King bed, Sleeps 2, 38 sq m on the upper or ground floor with 3.5 m floor-to-ceiling glass doors, and the button Studio King: check live dates."><figcaption>A room on the preview, 9 November 2026.</figcaption></figure>
+      </div>
+    </div>
+    <div class="card">
+      <h3>The first screen does not say what the hotel is</h3>
+      <span class="label">Today</span>
+      <p>The first screen gives a dictionary entry for the word Sandhya and "Adults Only Hideaway". A guest scrolls about two screens to read "hotel"; Sri Lanka first appears about 3,200 pixels down the home page, Kabalana about 3,900, and Ahangama only in the menu and the footer.</p>
+      <span class="label">On the preview</span>
+      <p>The first screen is your photograph of a room open to the sea, with one line, "An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka", and the booking button. The Sanskrit meaning of your name, twilight, has its place near the end, under "Why Sandhya".</p>
+    </div>
+    <div class="card">
+      <h3>No rating or guest review</h3>
+      <span class="label">Today</span>
+      <p>None of the 10 pages we read shows a rating, a review or a link to one. A guest who wants proof leaves for a listing.</p>
+      <span class="label">On the preview</span>
+      <p>Your 9.7 out of 10 on Trip.com, with the review count, the date we read it and a link, straight after the rooms, and two guest reviews quoted whole, with their source and month.</p>
+    </div>
+    <div class="card">
+      <h3>Calling, writing and finding the hotel</h3>
+      <span class="label">Today</span>
+      <p>The phone number is a call link and the email a mail link, both 15 to 16 pixels tall. The location page shows a drawn map of the island, and no page links to a map, so a guest copies the address into a maps app themselves.</p>
+      <span class="label">On the preview</span>
+      <p>Call, Email, Map and Instagram are buttons 50 pixels tall, with the address, the phone number and the email printed beside them. Map opens your Google listing. A round call button sits in the bar at the bottom of the phone screen.</p>
+      <div class="pair">
+        <figure><img src="before-contact-390.jpg" width="780" height="380" loading="lazy" alt="Our screenshot of the thesandhya.com footer on a phone: the address, a phone icon and a WhatsApp icon before +94 765 700 007, the email address and @thesandhya, on black."><figcaption>Today's footer, 6 November 2026.</figcaption></figure>
+        <figure><img src="after-390-footer.jpg" width="780" height="924" loading="lazy" alt="The preview's footer on a phone: The Sandhya logo, the buttons Call, Email, Map and Instagram, the address Baranige Wattha Walhengoda, Ahangama 80650, Sri Lanka, and the line The front desk is open 24 hours a day, +94 765 700 007, reservations@thesandhya.com."><figcaption>The preview's footer, 9 November 2026.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-also">
+  <h2 id="h-also">Also on the preview</h2>
+  <ul class="plain">
+    <li>Your own photographs only: each room type has a gallery of its own, and the Dining Room shows the food large.</li>
+    <li>The stay facts guests look for: check-in from 14:00 and check-out by 12:00, as your booking engine gives them, and "A continental breakfast for two adults is included in your stay."</li>
+    <li>Nightly room rates stay on your booking page, for the dates the guest picks, so the site never shows a rate that is out of date. Exclusive Use of the whole house keeps its "from US$3,500" with the date we read it.</li>
+    <li>Most of the text is your own, from thesandhya.com. Every fact on the page traces to your site, your booking engine or a public listing, and our reviewer checked each one against its source.</li>
+    <li>No cookie notice, pop-up, chat widget or tracker, and nothing that covers the page or the booking button.</li>
+  </ul>
+</section>
+
+<section class="wrap" aria-labelledby="h-off">
+  <h2 id="h-off">Also worth doing, away from the website</h2>
+  <ul class="plain">
+    <li><strong>Your Google listing.</strong> "Check availability" and "Compare prices" come first and list resellers (Agoda and Hotels.com on one load, Hotels.com and Expedia on another); your own booking page was not among them, and the link to thesandhya.com sits below. Ask Cloudbeds whether your direct rate can appear in that price list.</li>
+    <li><strong>Your MICHELIN Guide page.</strong> It shows a fixed bar reading "We're not currently taking reservations for this hotel. Please explore other hotels in our selection.", and it has no link to your own site. Ask the Guide why, and ask them to link thesandhya.com.</li>
+    <li><strong>The listings disagree.</strong> Google says check-in 14:00 and pet-friendly. Trip.com says check-in after 16:00, no pets, and children aged 12 and above welcome, while you describe the hotel as adults only. Once you have settled check-in, the age rule and pets, make Google, Trip.com and your booking engine say the same thing.</li>
+  </ul>
+</section>
+
+<section class="wrap" aria-labelledby="h-edit">
+  <h2 id="h-edit">What you will be able to change yourself</h2>
+  <p>Today the preview is a finished build, with no login. With the managed or the self-hosted option below, you get your own login to a simple admin page that shows only The Sandhya. You fill in fields, not code, so an edit cannot break the design. Press Publish and the site rebuilds itself.</p>
+  <ul class="tabs">
+    <li><strong>Text</strong> the opening line, the closing line, and every section: the rooms, the Dining Room, Casual Luxe, Kabalana and around, Exclusive Use, Why Sandhya</li>
+    <li><strong>Rooms</strong> each room's name, bed, guests, description and main photograph</li>
+    <li><strong>Photos</strong> the first screen and the photographs through the page, with their descriptions. Upload from your phone; the site makes the sizes itself, and you mark the point of each picture that its crops centre on.</li>
+    <li><strong>Stay</strong> check-in and check-out times, the amenities, the front-desk hours</li>
+    <li><strong>Prices</strong> the Exclusive Use price</li>
+    <li><strong>Reviews</strong> remove any rating or guest review; we add new ones with their source</li>
+    <li><strong>Contact and booking</strong> phone, email, address, map link, Instagram, and the links into your booking engine</li>
+  </ul>
+  <p class="wide">The layout, colours and fonts stay fixed. A few parts of this design have no field yet: the room galleries beyond each room's first photograph, the "Every room has" list, the logos and the date fields. We change those for you when you ask.</p>
+</section>
+
+<section class="wrap" aria-labelledby="h-offer">
+  <h2 id="h-offer">How it can run: you choose</h2>
+  <div class="offer">
+    <p>Nothing is set up yet: no hosting, no login, no domain. We set it up once you choose. <strong>Managed</strong> is the one we recommend: we host the site and keep it running, and hosting, updates and backups are our job. You pay a monthly fee that we agree with you, and you edit your content whenever you like. <strong>Self-hosted</strong>: we install the same site and editor on a server of your own for a one-time fee that we agree with you. It is then fully yours. You pay your server company roughly $6–12 a month, and you take care of updates and backups yourself. <strong>Files only</strong>: if you never want to edit it yourself, we hand you the finished site as files that run on any web host; every change then needs a developer.</p>
+    <p class="note">Your domain, thesandhya.com, stays yours. Once you have chosen, we connect it to the new site.</p>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-confirm">
+  <h2 id="h-confirm">Before it goes live, we need you to confirm</h2>
+  <ol class="confirm">
+    <li><strong>That your booking page reads the link.</strong> Your Cloudbeds page does not open for our automated test browser, so we could not see what it does with the dates and the room that the preview adds to the link. Together we open each room's button, with and without dates, in a normal browser. If the booking page ignores them, we take the date fields out rather than show dates that are not used.</li>
+    <li><strong>Check-in and the age rule.</strong> The preview gives check-in from 14:00 and check-out by 12:00, as your booking engine does, and says that other sites differ. Tell us the times and the minimum age, and we print them plainly.</li>
+    <li><strong>The ratings and reviews shown.</strong> We read every score from public listings on 6 November 2026. Tell us which you want on the site, and we keep the date and source beside each one.</li>
+    <li><strong>The Director's Suite bed.</strong> The preview says King bed. Your own room page says Super King.</li>
+    <li><strong>A few photographs.</strong> One Studio Twin photograph whose room we could not tell for certain, and the three photographs of your staff, which we show only with your agreement. The first screen on a phone is cut from a smaller copy of your photograph; the original file would make it sharper.</li>
+    <li><strong>WhatsApp.</strong> Your site shows a WhatsApp icon beside the phone number, but it is not a link, and we could not confirm that the number takes messages. The preview leaves WhatsApp out. Tell us if guests should use it.</li>
+    <li><strong>AI assistants.</strong> Once live, assistants such as ChatGPT can read the site and quote it to travellers. Keep that, or block the ones that train on it?</li>
+  </ol>
+  <p class="wide">We found no video of the hotel, and no published season, minimum stay, or names of your team. If you send any of them, we add them.</p>
+</section>
+
+<section class="wrap" aria-labelledby="h-reply">
+  <h2 id="h-reply">How to reply</h2>
+  <p>Open the preview first: <a href="https://the-sandhya.os1.workers.dev/">the-sandhya.os1.workers.dev</a>. If you have questions, or want to go ahead, reply to the message this page came with, or write to us there. There is no obligation, and the preview stays private until you decide.</p>
+</section>
+</main>
+
+<footer class="wrap">
+  <p>Prepared 9 November 2026. Screenshots of thesandhya.com are ours, taken on a phone-size screen on 6 November 2026. Screenshots of the preview were taken on 9 November 2026. Ratings and listings were read on 6 November 2026.</p>
+</footer>
+</body>
+</html>

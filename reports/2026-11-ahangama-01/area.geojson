@@ -1,0 +1,10 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "role": "anchor", "name": "The Sandhya", "mode": "business", "radius_m": 0, "source": "Google Maps place page, 2026-11-06" },
+      "geometry": { "type": "Point", "coordinates": [80.3525613, 5.9769788] }
+    }
+  ]
+}

@@ -1,0 +1,1353 @@
+{
+ "at": "2026-11-09T18:53:43.571Z",
+ "text_js_true": {
+  "sentences": 130,
+  "missing_in_dom": [
+   "Every room has a plush pillow-top mattress with 500 thread count linen, a shower big enough for two, Spa Ceylon amenities, bathrobes and slippers.",
+   "Each one also has central air conditioning and a ceiling fan, a desk, universal sockets, a hairdryer and a Bluetooth speaker.",
+   "High speed WiFi too, with newspapers and magazines from around the world on PressReader."
+  ],
+  "missing_in_innerText_count": 35,
+  "missing_in_innerText": [
+   "Every room has a plush pillow-top mattress with 500 thread count linen, a shower big enough for two, Spa Ceylon amenities, bathrobes and slippers.",
+   "Each one also has central air conditioning and a ceiling fan, a desk, universal sockets, a hairdryer and a Bluetooth speaker.",
+   "High speed WiFi too, with newspapers and magazines from around the world on PressReader.",
+   "Airport transfers",
+   "additional charge",
+   "Transfers throughout Sri Lanka",
+   "Tuk tuk bookings",
+   "Car and motorbike rentals",
+   "Tours and activities assistance",
+   "In-room spa massage",
+   "Yoga and surf lessons",
+   "on our list; ask us who runs them and what they cost",
+   "Surfboard hire",
+   "on our list; ask us who provides the boards and what hire costs",
+   "Sri Lankan rice & curry cooking class",
+   "Celebratory arrangements",
+   "Laundry and ironing",
+   "Daily housekeeping",
+   "Beach chairs, loungers and umbrellas",
+   "Pool and beach towels",
+   "Sun deck and terrace",
+   "Garden",
+   "Library",
+   "Welcome drink",
+   "Bottled water and refillable water stations",
+   "24-hour check-in",
+   "24-hour security",
+   "Safety deposit box",
+   "Baggage storage",
+   "Free parking",
+   "Non-smoking rooms",
+   "Hypoallergenic rooms",
+   "Designated smoking area",
+   "Access to healthcare professionals",
+   "Cashless payment accepted"
+  ],
+  "length": 8678
+ },
+ "text_leaves_not_in_copy": [
+  "Skip to the page",
+  "King bed | Sleeps 2",
+  "2 super-single beds | Sleeps 2",
+  "Check-in from 14:00",
+  "|",
+  "Check-out by 12:00",
+  "Amenities",
+  "| additional charge",
+  "| on our list; ask us who runs them and what they cost",
+  "| on our list; ask us who provides the boards and what hire costs",
+  "9.7/10 | Trip.com | 56 reviews |",
+  "read 2026-11-06",
+  "9.4/10 | Kayak | 159 reviews |",
+  "Guests",
+  "9.7/10",
+  "Trip.com | 56 reviews |",
+  "9.4/10",
+  "Kayak | 159 reviews |",
+  "Guest User | Trip.com | June 2026",
+  "Guest User | Trip.com | February 2026",
+  "US$3,500",
+  "Call",
+  "Email",
+  "Check-in",
+  "Check-out"
+ ],
+ "title": "The Sandhya, Ahangama",
+ "meta": [
+  [
+   "viewport",
+   "width=device-width, initial-scale=1, viewport-fit=cover"
+  ],
+  [
+   "description",
+   "An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka. A continental breakfast for two adults is included in your stay."
+  ],
+  [
+   "robots",
+   "noindex, nofollow"
+  ],
+  [
+   "theme-color",
+   "#CBCEC5"
+  ],
+  [
+   "og:type",
+   "website"
+  ],
+  [
+   "og:site_name",
+   "The Sandhya"
+  ],
+  [
+   "og:title",
+   "The Sandhya, Ahangama"
+  ],
+  [
+   "og:description",
+   "An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka. A continental breakfast for two adults is included in your stay."
+  ],
+  [
+   "twitter:card",
+   "summary"
+  ]
+ ],
+ "ld": [
+  {
+   "@context": "https://schema.org",
+   "@type": "Hotel",
+   "name": "The Sandhya",
+   "description": "An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka. A continental breakfast for two adults is included in your stay.",
+   "telephone": "+94765700007",
+   "email": "reservations@thesandhya.com",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Baranige Wattha Walhengoda",
+    "postalCode": "80650",
+    "addressLocality": "Ahangama",
+    "addressCountry": "LK"
+   },
+   "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 5.9769788,
+    "longitude": 80.3525613
+   },
+   "hasMap": "https://www.google.com/maps/place/The+Sandhya/@5.9769788,80.3525613,17z/data=!4m9!3m8!1s0x3ae1134e3ce889b1:0x41288b6ad09d4032!5m2!4m1!1i2!8m2!3d5.9769788!4d80.3525613!16s%2Fg%2F11f1gbc2nq?hl=en",
+   "checkinTime": "14:00",
+   "checkoutTime": "12:00",
+   "amenityFeature": [
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Airport transfers (additional charge)",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Transfers throughout Sri Lanka",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Tuk tuk bookings",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Car and motorbike rentals",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Tours and activities assistance",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "In-room spa massage",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Yoga and surf lessons (on our list; ask us who runs them and what they cost)",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Surfboard hire (on our list; ask us who provides the boards and what hire costs)",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Sri Lankan rice & curry cooking class",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Celebratory arrangements",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Laundry and ironing",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Daily housekeeping",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Beach chairs, loungers and umbrellas",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Pool and beach towels",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Sun deck and terrace",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Garden",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Library",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Welcome drink",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Bottled water and refillable water stations",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "24-hour check-in",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "24-hour security",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Safety deposit box",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Baggage storage",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Free parking",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Non-smoking rooms",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Hypoallergenic rooms",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Designated smoking area",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Access to healthcare professionals",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Cashless payment accepted",
+     "value": true
+    }
+   ],
+   "containsPlace": [
+    {
+     "@type": "HotelRoom",
+     "name": "Studio King",
+     "bed": "King bed",
+     "description": "38 sq m on the upper or ground floor, with 3.5 m floor-to-ceiling glass doors.",
+     "occupancy": {
+      "@type": "QuantitativeValue",
+      "maxValue": 2
+     }
+    },
+    {
+     "@type": "HotelRoom",
+     "name": "Studio Twin",
+     "bed": "2 super-single beds",
+     "description": "38 sq m on the upper floor, with 3.5 m floor-to-ceiling glass doors.",
+     "occupancy": {
+      "@type": "QuantitativeValue",
+      "maxValue": 2
+     }
+    },
+    {
+     "@type": "HotelRoom",
+     "name": "Studio+ King",
+     "bed": "King bed",
+     "description": "40 to 43 sq m on the upper or ground floor, with a deep stand-alone soaking tub and dual sinks.",
+     "occupancy": {
+      "@type": "QuantitativeValue",
+      "maxValue": 2
+     }
+    },
+    {
+     "@type": "HotelRoom",
+     "name": "Director’s Suite",
+     "bed": "King bed",
+     "description": "About 75 sq m on the top floor, with a living area, walk-in wardrobe, soaking tub, ocean-view balconies and a 55-inch TV.",
+     "occupancy": {
+      "@type": "QuantitativeValue",
+      "maxValue": 2
+     }
+    }
+   ],
+   "knowsLanguage": [
+    "en"
+   ],
+   "sameAs": [
+    "https://www.instagram.com/thesandhya/",
+    "https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel",
+    "https://www.kayak.com/Ahangama-Hotels-The-Sandhya.2781869.ksp"
+   ]
+  }
+ ],
+ "h1": [
+  "An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka."
+ ],
+ "headings": [
+  "H1 An adults-only beachfront boutique hotel on Kabalana Beach, ",
+  "H2 Pause, take a deep breath & exhale. You are home.",
+  "H2 The rooms",
+  "H3 Studio King",
+  "H3 Studio Twin",
+  "H3 Studio+ King",
+  "H3 Director’s Suite",
+  "H2 The Dining Room",
+  "H2 Casual Luxe",
+  "H2 Kabalana and around",
+  "H2 Guests",
+  "H2 Exclusive Use",
+  "H3 Looking after the place",
+  "H2 Why Sandhya",
+  "H2 An adults-only beachfront boutique hotel on Kabalana Beach, "
+ ],
+ "links": [
+  {
+   "href": "#main",
+   "text": "Skip to the page",
+   "engine": false
+  },
+  {
+   "href": "#rooms",
+   "text": "Rooms",
+   "engine": false
+  },
+  {
+   "href": "#dining",
+   "text": "Dining",
+   "engine": false
+  },
+  {
+   "href": "#top",
+   "text": "The Sandhya",
+   "engine": false
+  },
+  {
+   "href": "#kabalana",
+   "text": "Kabalana",
+   "engine": false
+  },
+  {
+   "href": "#dining",
+   "text": "Dining",
+   "engine": false
+  },
+  {
+   "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "text": "Check rooms and live dates",
+   "engine": true
+  },
+  {
+   "href": "#rooms",
+   "text": "Rooms",
+   "engine": false
+  },
+  {
+   "href": "#dining",
+   "text": "Dining",
+   "engine": false
+  },
+  {
+   "href": "#kabalana",
+   "text": "Kabalana",
+   "engine": false
+  },
+  {
+   "href": "#top",
+   "text": "The Sandhya, back to the top",
+   "engine": false
+  },
+  {
+   "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "text": "Check rooms and live dates",
+   "engine": true
+  },
+  {
+   "href": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570",
+   "text": "Studio King: check live dates",
+   "engine": true
+  },
+  {
+   "href": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586",
+   "text": "Studio Twin: check live dates",
+   "engine": true
+  },
+  {
+   "href": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587",
+   "text": "Studio+ King: check live dates",
+   "engine": true
+  },
+  {
+   "href": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603",
+   "text": "Director’s Suite: check live dates",
+   "engine": true
+  },
+  {
+   "href": "https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel",
+   "text": "9.7/10 | Trip.com | 56 reviews | read 2026-11-06",
+   "engine": false
+  },
+  {
+   "href": "https://www.kayak.com/Ahangama-Hotels-The-Sandhya.2781869.ksp",
+   "text": "9.4/10 | Kayak | 159 reviews | read 2026-11-06",
+   "engine": false
+  },
+  {
+   "href": "https://www.google.com/maps/place/The+Sandhya/@5.9769788,80.3525613,17z/data=!4m9!3m8!1s0x3ae1134e3ce889b1:0x41288b6ad09d4032!5m2!4m1!1i2!8m2!3d5.9769788!4d80.3525613!16s%2Fg%2F11f1gbc2nq?hl=en",
+   "text": "Map",
+   "engine": false
+  },
+  {
+   "href": "https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel",
+   "text": "9.7/10\nTrip.com | 56 reviews | read 2026-11-06",
+   "engine": false
+  },
+  {
+   "href": "https://www.kayak.com/Ahangama-Hotels-The-Sandhya.2781869.ksp",
+   "text": "9.4/10\nKayak | 159 reviews | read 2026-11-06",
+   "engine": false
+  },
+  {
+   "href": "tel:+94765700007",
+   "text": "Call",
+   "engine": false
+  },
+  {
+   "href": "mailto:reservations@thesandhya.com",
+   "text": "Email",
+   "engine": false
+  },
+  {
+   "href": "https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel",
+   "text": "9.7/10 | Trip.com | 56 reviews | read 2026-11-06",
+   "engine": false
+  },
+  {
+   "href": "https://www.kayak.com/Ahangama-Hotels-The-Sandhya.2781869.ksp",
+   "text": "9.4/10 | Kayak | 159 reviews | read 2026-11-06",
+   "engine": false
+  },
+  {
+   "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "text": "Check rooms and live dates",
+   "engine": true
+  },
+  {
+   "href": "tel:+94765700007",
+   "text": "Call",
+   "engine": false
+  },
+  {
+   "href": "mailto:reservations@thesandhya.com",
+   "text": "Email",
+   "engine": false
+  },
+  {
+   "href": "#top",
+   "text": "The Sandhya, back to the top",
+   "engine": false
+  },
+  {
+   "href": "tel:+94765700007",
+   "text": "Call",
+   "engine": false
+  },
+  {
+   "href": "mailto:reservations@thesandhya.com",
+   "text": "Email",
+   "engine": false
+  },
+  {
+   "href": "https://www.google.com/maps/place/The+Sandhya/@5.9769788,80.3525613,17z/data=!4m9!3m8!1s0x3ae1134e3ce889b1:0x41288b6ad09d4032!5m2!4m1!1i2!8m2!3d5.9769788!4d80.3525613!16s%2Fg%2F11f1gbc2nq?hl=en",
+   "text": "Map",
+   "engine": false
+  },
+  {
+   "href": "https://www.instagram.com/thesandhya/",
+   "text": "Instagram",
+   "engine": false
+  },
+  {
+   "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "text": "Check rooms and live dates",
+   "engine": true
+  },
+  {
+   "href": "tel:+94765700007",
+   "text": "Call",
+   "engine": false
+  }
+ ],
+ "imgs": [
+  {
+   "src": "photos/img-071-d-2000.webp",
+   "alt": "From a white bed in a pale room, floor-to-ceiling glass doors stand between grey curtains. Through them, one palm on the centre line, a sandy beach and a green-blue sea. A round table, chairs with woven seats and a red-shaded lamp stand to the left of the bed."
+  },
+  {
+   "src": "img/logo-white.png",
+   "alt": "The Sandhya"
+  },
+  {
+   "src": "img/logo-white.png",
+   "alt": "The Sandhya"
+  },
+  {
+   "src": "photos/img-038-door-1000.webp",
+   "alt": "Tall slatted teak doors standing open under a concrete canopy, with three low steps in front. Inside, a stair and a wall of glass."
+  },
+  {
+   "src": "photos/img-077-s-1000.webp",
+   "alt": "A white bed in the foreground, glass doors looking onto the long blue pool, parasols and the sea, a tall black mirror on the far wall and a dark bench beside it."
+  },
+  {
+   "src": "photos/img-061-s-1000.webp",
+   "alt": "From the foot of the bed: a dark daybed, a round wooden table and glass doors with two palms and white surf beyond."
+  },
+  {
+   "src": "photos/img-062-s-1000.webp",
+   "alt": "The whole room: a king bed with a teak headboard on the right, a cowhide on the floor, a ceiling fan and the glass doors to the sea on the left."
+  },
+  {
+   "src": "photos/img-070-s-1000.webp",
+   "alt": "A king bed against a pale wall, with chevron-panelled teak wardrobe doors and a short corridor behind it."
+  },
+  {
+   "src": "photos/img-079-s-1000.webp",
+   "alt": "A white stone basin under a lit mirror, a teak splashback and a glass-walled shower to the left."
+  },
+  {
+   "src": "photos/img-043-s-1000.webp",
+   "alt": "Two white beds with teak headboards, a jute rug, a round table and glass doors with the sea and palms on the right."
+  },
+  {
+   "src": "photos/img-080-s-1000.webp",
+   "alt": "From behind the beds: glass doors with a bent palm and white surf, curtains drawn to each side, a round table to the right."
+  },
+  {
+   "src": "photos/img-165-s-1000.webp",
+   "alt": "Two beds side by side on small dark rugs, chevron-panelled teak wardrobe doors on the wall behind."
+  },
+  {
+   "src": "photos/img-167-s-1000.webp",
+   "alt": "Two beds on the left, sliding glass doors filling the right with palms, sea and a table with a red-shaded lamp."
+  },
+  {
+   "src": "photos/img-083-s-1000.webp",
+   "alt": "A round wooden table with a water bottle and a small plant, two wooden chairs with woven seats and a red-shaded floor lamp in front of sheer curtains."
+  },
+  {
+   "src": "photos/img-042-s-1000.webp",
+   "alt": "A teak desk built into the back of the bed, a tall black mirror on the wall and glass doors with a palm and the sea beyond."
+  },
+  {
+   "src": "photos/img-066-s-1000.webp",
+   "alt": "A teak desk built into the back of the bed, seen from the side, with a glimpse of the pool and lawn through the glass doors."
+  },
+  {
+   "src": "photos/img-067-s-1000.webp",
+   "alt": "The corner of a white bed, a round table with flowers and a red lamp, and glass doors with the pool, a parasol and the sea."
+  },
+  {
+   "src": "photos/img-074-s-1000.webp",
+   "alt": "A white bed along the left, a jute rug and sliding glass doors on the right with palms and a lounge chair outside."
+  },
+  {
+   "src": "photos/img-076-s-1000.webp",
+   "alt": "A deep white stand-alone tub with a teak tray against a dark wall, and through a doorway a desk and a palm in the window."
+  },
+  {
+   "src": "photos/img-073-s-1000.webp",
+   "alt": "A bathroom with dual white basins on the left, a towel ladder and the stand-alone soaking tub under a lit niche."
+  },
+  {
+   "src": "photos/img-087-s-1000.webp",
+   "alt": "The suite from the living area: a grey sofa and teak desk in front, a television on a teak unit, the bed behind and a wall of glass with palms and the sea."
+  },
+  {
+   "src": "photos/img-171-s-1000.webp",
+   "alt": "From the bed: a corner of glass with palms and surf on the left, a television unit, a grey sofa and a tall mirror."
+  },
+  {
+   "src": "photos/img-172-s-1000.webp",
+   "alt": "A long teak desk and a grey sofa in the foreground, and the bed beyond a television unit."
+  },
+  {
+   "src": "photos/img-058-s-1000.webp",
+   "alt": "A walk-in wardrobe lined in teak, with a white robe on a hanger and open shelves on either side."
+  },
+  {
+   "src": "photos/img-059-s-1000.webp",
+   "alt": "From the wardrobe, a long teak-backed double basin running towards a white tub at the far end."
+  },
+  {
+   "src": "photos/img-055-s-1000.webp",
+   "alt": "A marble bathroom with a stand-alone tub beyond a glass door and a double basin in the foreground."
+  },
+  {
+   "src": "photos/img-068-d-2000.webp",
+   "alt": "From inside a room, a wall of glass in black frames. Beyond it a terrace of patterned tile with a metal lounge chair, a pool, a green lawn, two tall palms and the sea. A red-shaded lamp and a small round table stand by the curtain on the left."
+  },
+  {
+   "src": "photos/img-118-tall-900.webp",
+   "alt": "A blue patterned plate of wide pasta with herbs and a red crab shell on top, on a wooden table beside a dark napkin and cutlery."
+  },
+  {
+   "src": "photos/img-113-sq-850.webp",
+   "alt": "Seen from above, a round wooden table laid with small plates and bowls, between two slatted wooden seats on a stone floor."
+  },
+  {
+   "src": "photos/img-112-w-900.webp",
+   "alt": "A blue and white bowl of salad with halved boiled eggs, avocado and tomato on a woven placemat with gold cutlery."
+  },
+  {
+   "src": "photos/img-115-w-900.webp",
+   "alt": "Noodles with prawns and green beans in a patterned bowl on a wooden table, with chopsticks and a small patterned bowl."
+  },
+  {
+   "src": "photos/img-032-d-2000.webp",
+   "alt": "A double-height lounge. A stair climbs the pale wall on a fan of thin steel rods, low sun lies across the floor, wooden armchairs and a grey sofa face a wall of glass, and through it a long blue pool, parasols and the sea."
+  },
+  {
+   "src": "photos/img-131-d45-680.webp",
+   "alt": "Close on a dark wooden chair frame curving over a woven paper-cord seat."
+  },
+  {
+   "src": "photos/img-125-d45-680.webp",
+   "alt": "Close on a wooden hoop chair strung with white cord, with a pale cushion tied into it."
+  },
+  {
+   "src": "photos/img-139-d45-680.webp",
+   "alt": "Close on a pale wooden armrest over a basket-woven seat back."
+  },
+  {
+   "src": "photos/img-140-d45-680.webp",
+   "alt": "The corner of a teak desk with a dark inlaid panel."
+  },
+  {
+   "src": "photos/img-130-d45-680.webp",
+   "alt": "The arm of a blue upholstered armchair with a small wooden cap, on a pale stone floor."
+  },
+  {
+   "src": "photos/img-135-d45-680.webp",
+   "alt": "A black metal lounge chair and footstool with dark wooden slats on a black and white patterned tile floor."
+  },
+  {
+   "src": "photos/img-141-w-480.webp",
+   "alt": "Black and white: a smiling staff member in a white shirt and glasses reading a tablet by the stair."
+  },
+  {
+   "src": "photos/img-142-w-480.webp",
+   "alt": "Black and white: a staff member in a white polo shirt smoothing a bed beside a round lamp."
+  },
+  {
+   "src": "photos/img-143-w-480.webp",
+   "alt": "Black and white: a staff member in a white shirt setting a cup on a low table from a tray."
+  },
+  {
+   "src": "photos/img-034-w-1100.webp",
+   "alt": "Looking along a raked sandy beach from the edge of a green lawn, with a dark stone bowl and a slate sign bearing the hotel's logo in the foreground and two people far off by the water."
+  },
+  {
+   "src": "photos/img-013-w-730.webp",
+   "alt": "The hotel's own drawn map of the south-west coast of Sri Lanka: the road from the airport and Colombo down past Galle to The Sandhya, drawn as a small building on the sea, with Weligama beyond it."
+  },
+  {
+   "src": "photos/img-039-s-1000.webp",
+   "alt": "The long two-storey block with its decks and glass from the lawn: tall palms, tables under white parasols, a line of loungers beside the pool and the sea at the far right."
+  },
+  {
+   "src": "photos/img-027-w-1200.webp",
+   "alt": "The hotel's two-storey concrete frame at blue hour, each room's curtains lit gold against a deep blue sky."
+  },
+  {
+   "src": "photos/img-022-w-1200.webp",
+   "alt": "A sunset over the sea, gold light breaking through dark clouds onto wet sand, with palms and a roof in silhouette on the right."
+  },
+  {
+   "src": "img/logo-footer.png",
+   "alt": "The Sandhya"
+  }
+ ],
+ "ext_js_true": [],
+ "text_js_false": {
+  "sentences": 130,
+  "missing_in_dom": [
+   "Every room has a plush pillow-top mattress with 500 thread count linen, a shower big enough for two, Spa Ceylon amenities, bathrobes and slippers.",
+   "Each one also has central air conditioning and a ceiling fan, a desk, universal sockets, a hairdryer and a Bluetooth speaker.",
+   "High speed WiFi too, with newspapers and magazines from around the world on PressReader."
+  ],
+  "missing_in_innerText_count": 35,
+  "missing_in_innerText": [
+   "Every room has a plush pillow-top mattress with 500 thread count linen, a shower big enough for two, Spa Ceylon amenities, bathrobes and slippers.",
+   "Each one also has central air conditioning and a ceiling fan, a desk, universal sockets, a hairdryer and a Bluetooth speaker.",
+   "High speed WiFi too, with newspapers and magazines from around the world on PressReader.",
+   "Airport transfers",
+   "additional charge",
+   "Transfers throughout Sri Lanka",
+   "Tuk tuk bookings",
+   "Car and motorbike rentals",
+   "Tours and activities assistance",
+   "In-room spa massage",
+   "Yoga and surf lessons",
+   "on our list; ask us who runs them and what they cost",
+   "Surfboard hire",
+   "on our list; ask us who provides the boards and what hire costs",
+   "Sri Lankan rice & curry cooking class",
+   "Celebratory arrangements",
+   "Laundry and ironing",
+   "Daily housekeeping",
+   "Beach chairs, loungers and umbrellas",
+   "Pool and beach towels",
+   "Sun deck and terrace",
+   "Garden",
+   "Library",
+   "Welcome drink",
+   "Bottled water and refillable water stations",
+   "24-hour check-in",
+   "24-hour security",
+   "Safety deposit box",
+   "Baggage storage",
+   "Free parking",
+   "Non-smoking rooms",
+   "Hypoallergenic rooms",
+   "Designated smoking area",
+   "Access to healthcare professionals",
+   "Cashless payment accepted"
+  ],
+  "length": 8659
+ },
+ "no_js": {
+  "dates_hidden": true,
+  "engine_links": 8,
+  "bar_visible": false,
+  "hero_book_visible": true
+ },
+ "ext_js_false": [],
+ "taps_phone": [
+  {
+   "i": 0,
+   "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "text": "Check rooms and live dates",
+   "visible": true,
+   "box": [
+    358,
+    56
+   ],
+   "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V"
+  },
+  {
+   "i": 1,
+   "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "text": "Check rooms and live dates",
+   "visible": false
+  },
+  {
+   "i": 2,
+   "href": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570",
+   "text": "Studio King: check live dates",
+   "visible": true,
+   "box": [
+    350,
+    52
+   ],
+   "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570"
+  },
+  {
+   "i": 3,
+   "href": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586",
+   "text": "Studio Twin: check live dates",
+   "visible": true,
+   "box": [
+    350,
+    52
+   ],
+   "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586"
+  },
+  {
+   "i": 4,
+   "href": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587",
+   "text": "Studio+ King: check live dates",
+   "visible": true,
+   "box": [
+    350,
+    52
+   ],
+   "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587"
+  },
+  {
+   "i": 5,
+   "href": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603",
+   "text": "Director’s Suite: check live dates",
+   "visible": true,
+   "box": [
+    350,
+    52
+   ],
+   "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603"
+  },
+  {
+   "i": 6,
+   "href": "tel:+94765700007",
+   "text": "Call",
+   "visible": true,
+   "box": [
+    103,
+    50
+   ]
+  },
+  {
+   "i": 7,
+   "href": "mailto:reservations@thesandhya.com",
+   "text": "Email",
+   "visible": true,
+   "box": [
+    114,
+    50
+   ]
+  },
+  {
+   "i": 8,
+   "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "text": "Check rooms and live dates",
+   "visible": true,
+   "box": [
+    326,
+    64
+   ],
+   "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V"
+  },
+  {
+   "i": 9,
+   "href": "tel:+94765700007",
+   "text": "Call",
+   "visible": true,
+   "box": [
+    103,
+    50
+   ]
+  },
+  {
+   "i": 10,
+   "href": "mailto:reservations@thesandhya.com",
+   "text": "Email",
+   "visible": true,
+   "box": [
+    114,
+    50
+   ]
+  },
+  {
+   "i": 11,
+   "href": "tel:+94765700007",
+   "text": "Call",
+   "visible": true,
+   "box": [
+    103,
+    50
+   ]
+  },
+  {
+   "i": 12,
+   "href": "mailto:reservations@thesandhya.com",
+   "text": "Email",
+   "visible": true,
+   "box": [
+    114,
+    50
+   ]
+  },
+  {
+   "i": 13,
+   "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "text": "Check rooms and live dates",
+   "visible": true,
+   "box": [
+    302,
+    54
+   ],
+   "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V"
+  },
+  {
+   "i": 14,
+   "href": "tel:+94765700007",
+   "text": "",
+   "visible": true,
+   "box": [
+    54,
+    54
+   ]
+  }
+ ],
+ "hero_cta": {
+  "top": 768,
+  "bottom": 824,
+  "h": 56,
+  "w": 358,
+  "vh": 844
+ },
+ "persistent": {
+  "inView": 31,
+  "of": 31,
+  "misses": []
+ },
+ "dates": {
+  "attrs": {
+   "shown": true,
+   "inMin": "2026-11-09",
+   "outMin": "2026-11-10",
+   "inLabel": "Check-in",
+   "outLabel": "Check-out",
+   "inBox": [
+    134,
+    30
+   ],
+   "fs": "16px"
+  },
+  "initial": [
+   "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V"
+  ],
+  "after_checkin_only": {
+   "out": "2026-12-10",
+   "hrefs": [
+    "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-10",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-10",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570#checkin=2026-12-09&checkout=2026-12-10",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586#checkin=2026-12-09&checkout=2026-12-10",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587#checkin=2026-12-09&checkout=2026-12-10",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603#checkin=2026-12-09&checkout=2026-12-10",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-10",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-10"
+   ],
+   "note": ""
+  },
+  "both": {
+   "hrefs": [
+    "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-12",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-12",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570#checkin=2026-12-09&checkout=2026-12-12",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586#checkin=2026-12-09&checkout=2026-12-12",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587#checkin=2026-12-09&checkout=2026-12-12",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603#checkin=2026-12-09&checkout=2026-12-12",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-12",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-12"
+   ],
+   "note": ""
+  },
+  "tap_book_with_dates": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+  "after_back": {
+   "din": null,
+   "dout": null,
+   "hrefs": []
+  },
+  "tap_room_with_dates": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570",
+  "out_before_in": {
+   "hrefs": [
+    "https://hotels.cloudbeds.com/reservation/WMvA6V",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V"
+   ],
+   "note": "Choose both dates, or clear both."
+  },
+  "same_day": {
+   "hrefs": [
+    "https://hotels.cloudbeds.com/reservation/WMvA6V",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V"
+   ],
+   "note": "Choose both dates, or clear both."
+  },
+  "past_checkin": {
+   "out": "2026-12-09",
+   "hrefs": [
+    "https://hotels.cloudbeds.com/reservation/WMvA6V",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V"
+   ],
+   "note": "Choose both dates, or clear both."
+  },
+  "cleared_in": {
+   "hrefs": [
+    "https://hotels.cloudbeds.com/reservation/WMvA6V",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V"
+   ],
+   "note": "Choose both dates, or clear both."
+  },
+  "cleared_both": {
+   "hrefs": [
+    "https://hotels.cloudbeds.com/reservation/WMvA6V",
+    "https://hotels.cloudbeds.com/reservation/WMvA6V"
+   ],
+   "note": ""
+  },
+  "today_used": "2026-11-09",
+  "card_text": "An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka. Kabalana is a mile long, white sandy beach on the golden south coast of Sri Lanka. A continental breakfast for two adults is included in your stay. Nightly rates are on our booking page, for the dates you choose. 9.7/10 | Trip.com | 56 reviews | read 2026-11-06 9.4/10 | Kayak | 159 reviews | read 2026-11-06 Check-in Check-out Check rooms and live dates See live dates on our own booking page. If you have a question first, call or email us. Call Email"
+ },
+ "overflow": {
+  "320": {
+   "scrollW": 320,
+   "clientW": 320,
+   "offenders": [
+    "img.in 323"
+   ],
+   "n": 1
+  },
+  "360": {
+   "scrollW": 360,
+   "clientW": 360,
+   "offenders": [
+    "img.in 364"
+   ],
+   "n": 1
+  },
+  "390": {
+   "scrollW": 390,
+   "clientW": 390,
+   "offenders": [
+    "img.in 394"
+   ],
+   "n": 1
+  },
+  "414": {
+   "scrollW": 414,
+   "clientW": 414,
+   "offenders": [
+    "img.in 418"
+   ],
+   "n": 1
+  },
+  "768": {
+   "scrollW": 768,
+   "clientW": 768,
+   "offenders": [
+    "img.in 774"
+   ],
+   "n": 1
+  },
+  "1024": {
+   "scrollW": 1024,
+   "clientW": 1024,
+   "offenders": [
+    "img.in 1031"
+   ],
+   "n": 1
+  },
+  "1366": {
+   "scrollW": 1366,
+   "clientW": 1366,
+   "offenders": [
+    "img.in 1377"
+   ],
+   "n": 1
+  },
+  "1440": {
+   "scrollW": 1440,
+   "clientW": 1440,
+   "offenders": [
+    "img.in 1452"
+   ],
+   "n": 1
+  },
+  "1920": {
+   "scrollW": 1920,
+   "clientW": 1920,
+   "offenders": [
+    "img.in 1936"
+   ],
+   "n": 1
+  }
+ },
+ "axe": {
+  "phone": {
+   "v": [],
+   "inc": [
+    {
+     "id": "color-contrast",
+     "n": 5
+    }
+   ]
+  },
+  "desktop": {
+   "v": [
+    {
+     "id": "region",
+     "impact": "moderate",
+     "n": 2,
+     "sample": [
+      ".stick-in > .logo[aria-label=\"The Sandhya, back to the top\"][href$=\"#top\"] ",
+      ".stick-in > .right "
+     ]
+    }
+   ],
+   "inc": [
+    {
+     "id": "color-contrast",
+     "n": 7
+    }
+   ]
+  }
+ },
+ "kbd_desktop": {
+  "stops": 76,
+  "unique": 55,
+  "no_focus_style": [
+   "INPUT|d-in||",
+   "INPUT|d-in||",
+   "INPUT|d-in||",
+   "INPUT|d-in||",
+   "INPUT|d-out||",
+   "INPUT|d-out||",
+   "INPUT|d-out||",
+   "INPUT|d-out||"
+  ],
+  "not_in_view": [
+   "UL|||",
+   "BUTTON|||Studio King: Previous photogra",
+   "BUTTON|||Studio King: Next photograph",
+   "BUTTON|||Studio King, photograph 1 of 5",
+   "BUTTON|||Studio King, photograph 2 of 5",
+   "BUTTON|||Studio King, photograph 3 of 5",
+   "BUTTON|||Studio King, photograph 4 of 5",
+   "BUTTON|||Studio Twin: Previous photogra",
+   "UL|||",
+   "BUTTON|||Studio+ King: Previous photogr",
+   "BUTTON|||Studio+ King, photograph 1 of ",
+   "BUTTON|||Director’s Suite, photograph 1",
+   "BUTTON|||Director’s Suite, photograph 2",
+   "SUMMARY|||Amenities",
+   "A||https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel|9.7/10 | Trip.com | 56 reviews",
+   "DIV|details||Details of the furniture",
+   "A||https://www.google.com/maps/place/The+Sandhya/@5.9769788,80.3525613,17z/data=!4m9!3m8!1s0x3ae1134e3ce889b1:0x41288b6ad09d4032!5m2!4m1!1i2!8m2!3d5.9769788!4d80.3525613!16s%2Fg%2F11f1gbc2nq?hl=en|Map",
+   "A||https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel|9.7/10\nTrip.com | 56 reviews |",
+   "A||https://www.kayak.com/Ahangama-Hotels-The-Sandhya.2781869.ksp|9.4/10\nKayak | 159 reviews | r",
+   "A||tel:+94765700007|Call",
+   "A||mailto:reservations@thesandhya.com|Email",
+   "A||https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel|9.7/10 | Trip.com | 56 reviews",
+   "A||https://www.kayak.com/Ahangama-Hotels-The-Sandhya.2781869.ksp|9.4/10 | Kayak | 159 reviews |",
+   "INPUT|d-in||",
+   "INPUT|d-in||",
+   "INPUT|d-in||",
+   "INPUT|d-in||",
+   "INPUT|d-out||",
+   "INPUT|d-out||",
+   "INPUT|d-out||",
+   "INPUT|d-out||",
+   "A||https://hotels.cloudbeds.com/reservation/WMvA6V|Check rooms and live dates",
+   "A||tel:+94765700007|Call",
+   "A||mailto:reservations@thesandhya.com|Email",
+   "A||#top|The Sandhya, back to the top",
+   "A||tel:+94765700007|Call",
+   "A||mailto:reservations@thesandhya.com|Email",
+   "A||https://www.google.com/maps/place/The+Sandhya/@5.9769788,80.3525613,17z/data=!4m9!3m8!1s0x3ae1134e3ce889b1:0x41288b6ad09d4032!5m2!4m1!1i2!8m2!3d5.9769788!4d80.3525613!16s%2Fg%2F11f1gbc2nq?hl=en|Map",
+   "A||https://www.instagram.com/thesandhya/|Instagram"
+  ],
+  "first": [
+   "A||#main|Skip to the page",
+   "A||#rooms|Rooms",
+   "A||#dining|Dining",
+   "A||#top|The Sandhya"
+  ],
+  "skip": "A||#main|Skip to the page",
+  "after_skip": {
+   "hash": "#main",
+   "active": "BODY",
+   "y": 780
+  }
+ },
+ "kbd_phone": {
+  "stops": 64,
+  "unique": 46,
+  "no_focus_style": [
+   "INPUT|d-in||",
+   "INPUT|d-in||",
+   "INPUT|d-in||",
+   "INPUT|d-in||",
+   "INPUT|d-out||",
+   "INPUT|d-out||",
+   "INPUT|d-out||",
+   "INPUT|d-out||"
+  ],
+  "not_in_view": [
+   "UL|||",
+   "BUTTON|||Studio King, photograph 1 of 5",
+   "BUTTON|||Studio King, photograph 2 of 5",
+   "BUTTON|||Studio King, photograph 3 of 5",
+   "BUTTON|||Studio King, photograph 4 of 5",
+   "BUTTON|||Studio King, photograph 5 of 5",
+   "A||https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570|Studio King: check live dates",
+   "UL|||",
+   "BUTTON|||Studio Twin, photograph 1 of 5",
+   "BUTTON|||Studio Twin, photograph 2 of 5",
+   "BUTTON|||Studio+ King, photograph 1 of ",
+   "BUTTON|||Director’s Suite, photograph 1",
+   "SUMMARY|||Amenities",
+   "A||https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel|9.7/10 | Trip.com | 56 reviews",
+   "A||https://www.kayak.com/Ahangama-Hotels-The-Sandhya.2781869.ksp|9.4/10 | Kayak | 159 reviews |",
+   "DIV|details||Details of the furniture",
+   "A||https://www.google.com/maps/place/The+Sandhya/@5.9769788,80.3525613,17z/data=!4m9!3m8!1s0x3ae1134e3ce889b1:0x41288b6ad09d4032!5m2!4m1!1i2!8m2!3d5.9769788!4d80.3525613!16s%2Fg%2F11f1gbc2nq?hl=en|Map",
+   "A||https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel|9.7/10\nTrip.com | 56 reviews |",
+   "A||https://www.kayak.com/Ahangama-Hotels-The-Sandhya.2781869.ksp|9.4/10\nKayak | 159 reviews | r",
+   "A||tel:+94765700007|Call",
+   "A||mailto:reservations@thesandhya.com|Email",
+   "A||https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel|9.7/10 | Trip.com | 56 reviews",
+   "A||https://www.kayak.com/Ahangama-Hotels-The-Sandhya.2781869.ksp|9.4/10 | Kayak | 159 reviews |",
+   "INPUT|d-in||",
+   "INPUT|d-in||",
+   "INPUT|d-in||",
+   "INPUT|d-in||",
+   "INPUT|d-out||",
+   "INPUT|d-out||",
+   "INPUT|d-out||",
+   "INPUT|d-out||",
+   "A||https://hotels.cloudbeds.com/reservation/WMvA6V|Check rooms and live dates",
+   "A||tel:+94765700007|Call",
+   "A||mailto:reservations@thesandhya.com|Email",
+   "A||#top|The Sandhya, back to the top",
+   "A||tel:+94765700007|Call",
+   "A||mailto:reservations@thesandhya.com|Email",
+   "A||https://www.google.com/maps/place/The+Sandhya/@5.9769788,80.3525613,17z/data=!4m9!3m8!1s0x3ae1134e3ce889b1:0x41288b6ad09d4032!5m2!4m1!1i2!8m2!3d5.9769788!4d80.3525613!16s%2Fg%2F11f1gbc2nq?hl=en|Map",
+   "A||https://www.instagram.com/thesandhya/|Instagram"
+  ],
+  "first": [
+   "A||#main|Skip to the page",
+   "A||#rooms|Rooms",
+   "A||#top|The Sandhya",
+   "A||#dining|Dining"
+  ],
+  "skip": "A||#main|Skip to the page",
+  "after_skip": {
+   "hash": "#main",
+   "active": "BODY",
+   "y": 748
+  }
+ },
+ "reduced": {
+  "running": 0,
+  "transforms": 0,
+  "videos": 0,
+  "canvases": 0
+ },
+ "visit_phone": {
+  "requests": 48,
+  "external": [],
+  "fails": [],
+  "errs": [],
+  "broken": [],
+  "fonts": [
+   "Schibsted Grotesk",
+   "Schibsted Fallback",
+   "Sacramento"
+  ],
+  "bytes": null
+ },
+ "visit_desktop": {
+  "requests": 48,
+  "external": [],
+  "fails": [],
+  "errs": [],
+  "broken": [],
+  "fonts": [
+   "Schibsted Grotesk",
+   "Schibsted Fallback",
+   "Sacramento"
+  ],
+  "bytes": null
+ },
+ "targets_phone": [
+  {
+   "e": "INPUT ",
+   "w": 134,
+   "h": 30,
+   "inline": false
+  },
+  {
+   "e": "INPUT ",
+   "w": 134,
+   "h": 30,
+   "inline": false
+  }
+ ],
+ "dots": [
+  [
+   44,
+   44
+  ],
+  [
+   44,
+   44
+  ],
+  [
+   44,
+   44
+  ],
+  [
+   44,
+   44
+  ],
+  [
+   44,
+   44
+  ],
+  [
+   44,
+   44
+  ]
+ ]
+}

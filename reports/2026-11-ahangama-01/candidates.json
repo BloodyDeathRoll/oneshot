@@ -1,0 +1,99 @@
+{
+  "run_id": "2026-11-ahangama-01",
+  "generated_at": "2026-11-06T09:45:00Z",
+  "scout_version": "0.4.0",
+  "area": {
+    "mode": "business",
+    "anchors": [
+      {
+        "query": "The Sandhya Ahangama Sri Lanka",
+        "lat": 5.9769788,
+        "lng": 80.3525613,
+        "geocoder": "google_maps_place_page",
+        "fetched_at": "2026-11-06T09:41:00Z"
+      }
+    ],
+    "radius_m": 0,
+    "shore_buffer_m": null,
+    "polygon": "reports/2026-11-ahangama-01/area.geojson"
+  },
+  "candidates": [
+    {
+      "slug": "the-sandhya",
+      "name": "The Sandhya",
+      "type": "beach_lodging",
+      "location": {
+        "lat": 5.9769788,
+        "lng": 80.3525613,
+        "address": "Kabalana Beach, Baranige Watha, Walhengoda, Ahangama, Sri Lanka",
+        "inside_buffer": true,
+        "distance_to_shore_m": 74
+      },
+      "contact": {
+        "phone": "+94765700007",
+        "whatsapp": null,
+        "email": "reservations@thesandhya.com"
+      },
+      "socials": {
+        "instagram": "https://www.instagram.com/thesandhya/",
+        "facebook": null,
+        "tripadvisor": null,
+        "google_maps": "https://www.google.com/maps/place/The+Sandhya/@5.9769788,80.3525613,17z/data=!4m9!3m8!1s0x3ae1134e3ce889b1:0x41288b6ad09d4032!5m2!4m1!1i2!8m2!3d5.9769788!4d80.3525613!16s%2Fg%2F11f1gbc2nq?hl=en"
+      },
+      "existing_site": {
+        "url": "https://thesandhya.com/",
+        "status": 200,
+        "mobile_friendly": true,
+        "last_updated_hint": "image uploads dated 2023 to February 2025",
+        "has_booking": true,
+        "funnel": {
+          "clicks_to_book": 1,
+          "primary_action": "tel",
+          "cta_above_fold": false,
+          "measured_at": "2026-11-06T09:40:26.518Z"
+        }
+      },
+      "presence": {
+        "score": 5,
+        "reason": "Own mobile WordPress site with a Cloudbeds engine: a fixed RESERVE button on the first phone screen opens a date panel (2 taps to the engine), and RESERVE NOW on /rooms links straight to it; the homepage shows no nightly prices. tools/funnel.mjs reports no action above the fold because that RESERVE is an <a> with no href.",
+        "criteria": [
+          "own_site",
+          "mobile",
+          "booking_engine"
+        ]
+      },
+      "evidence": [
+        {
+          "source_url": "https://thesandhya.com/",
+          "fetched_at": "2026-11-06T09:40:26Z",
+          "note": "Own site; tools/funnel.mjs --depth 1, output in reports/2026-11-ahangama-01/funnel/the-sandhya/. Address, phone, email, @thesandhya as published. 9 bedrooms, adults only."
+        },
+        {
+          "source_url": "https://thesandhya.com/locale",
+          "fetched_at": "2026-11-06T09:39:00Z",
+          "note": "Surf is mentioned among several audiences and activities: 'surfers, families, and digital nomads alike'; no boards, lessons or surf offers on this page or on /rooms."
+        },
+        {
+          "source_url": "https://www.google.com/maps/place/The+Sandhya/@5.9769788,80.3525613,17z/data=!4m9!3m8!1s0x3ae1134e3ce889b1:0x41288b6ad09d4032!5m2!4m1!1i2!8m2!3d5.9769788!4d80.3525613!16s%2Fg%2F11f1gbc2nq?hl=en",
+          "fetched_at": "2026-11-06T09:41:00Z",
+          "note": "Google Maps place page: pin, phone +94 76 570 0007, website thesandhya.com, rating 4.6."
+        },
+        {
+          "source_url": "https://www.kayak.com/Ahangama-Hotels-The-Sandhya.2781869.ksp",
+          "fetched_at": "2026-11-06T09:20:00Z",
+          "note": "9.4 from 159 reviews; from $231 nightly with fees (Deluxe), King $351, default search dates; 9 air-conditioned accommodations."
+        },
+        {
+          "source_url": "https://www.momondo.com/hotels/ahangama/The-Sandhya.mhd2781869.ksp",
+          "fetched_at": "2026-11-06T09:20:00Z",
+          "note": "Deluxe $231, King $337, Premier $387, default search dates."
+        }
+      ],
+      "surf_related_confidence": 0.6,
+      "surf_related_note": "Sits on Kabalana Beach. Its own /design page lists \"Yoga and surf lessons\" and \"Surfboard hire\", with no price, provider or schedule; a third party says it has no surf school of its own. Surfers are one audience among several, not the market. Alon named it for its price point on 2026-11-06 and it is presented as a beachfront boutique hotel, not a surf stay.",
+      "languages_seen": [
+        "en"
+      ]
+    }
+  ]
+}

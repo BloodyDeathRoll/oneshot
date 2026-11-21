@@ -1,0 +1,89 @@
+[
+ {
+  "step": "hero tap, slow 4G, before media",
+  "tapAt": 2711,
+  "engine": [
+   "https://hotels.cloudbeds.com/reservation/WMvA6V"
+  ],
+  "url": "https://hotels.cloudbeds.com/reservation/WMvA6V"
+ },
+ {
+  "step": "bar on first screen",
+  "bar": [
+   {
+    "t": "Check rooms and live dates",
+    "h": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+    "x": 195,
+    "y": 796,
+    "hh": 56
+   }
+  ]
+ },
+ {
+  "step": "bar after 1200 px",
+  "bar": [
+   {
+    "t": "Check rooms and live dates",
+    "h": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+    "x": 163,
+    "y": 807,
+    "hh": 54
+   }
+  ]
+ },
+ {
+  "step": "bar tap",
+  "engine": [
+   "https://hotels.cloudbeds.com/reservation/WMvA6V"
+  ],
+  "url": "https://hotels.cloudbeds.com/reservation/WMvA6V"
+ },
+ {
+  "step": "after back",
+  "url": "http://127.0.0.1:8773/calm/dist/index.html",
+  "scrollY": 1201
+ },
+ {
+  "step": "room 53570 link tap",
+  "count": 1,
+  "txt": "Studio King: check live dates",
+  "engine": [
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570"
+  ]
+ },
+ {
+  "step": "room 53586 link tap",
+  "count": 1,
+  "txt": "Studio Twin: check live dates",
+  "engine": [
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586"
+  ]
+ },
+ {
+  "step": "room 53587 link tap",
+  "count": 1,
+  "txt": "Studio+ King: check live dates",
+  "engine": [
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587"
+  ]
+ },
+ {
+  "step": "room 53603 link tap",
+  "count": 1,
+  "txt": "Director’s Suite: check live dates",
+  "engine": [
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603"
+  ]
+ },
+ {
+  "step": "gallery swipe",
+  "box": {
+   "x": 0,
+   "y": 281.796875,
+   "width": 390,
+   "height": 292.5
+  },
+  "sel": "ul.strip",
+  "dots": "111111"
+ }
+]

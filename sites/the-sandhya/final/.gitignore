@@ -1,0 +1,13 @@
+node_modules
+.astro/
+dist/
+# build products of scripts/make-media.sh, scripts/fonts.mjs and scripts/photos.mjs
+# (media and fonts never go in git: docs/team.md; media/the-sandhya.tsv lists the media)
+src/tenant/media/
+src/gaps/media/
+src/tenant/photos.generated.json
+src/tenant/videos.generated.json
+public/photos/
+public/img/
+public/fonts/
+shots/

@@ -1,0 +1,404 @@
+/* sites/the-sandhya/final/src/styles/site.css: ported from mockups/calm/src/page.html (4e, the pick),
+   then the 4g changes, each marked "4g:". */
+[hidden]{display:none!important}
+:root{
+  --ground:#F2F2F2; --marble:#DFDEE3; --sea:#A1C0B7; --ink:#1D212B; --book:#CD0B40; --book-deep:#B10937;
+  --paint:#CBCEC5; --soft:rgba(29,33,43,.07); --soft-2:rgba(29,33,43,.13); --mute:#4B4F5A;
+  --text:"Schibsted Grotesk","Schibsted Fallback",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --script:"Sacramento","Snell Roundhand","Apple Chancery",cursive;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --gut:clamp(20px,4vw,56px);
+  --space:clamp(76px,10.5vw,152px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 17px/1.6 var(--text);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+p{margin:0 0 1em}
+p:last-child{margin-bottom:0}
+ul{list-style:none;margin:0;padding:0}
+figure{margin:0}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:12px;top:-60px;z-index:50;background:#fff;padding:10px 16px;border-radius:999px;transition:top 160ms ease}
+.skip:focus{top:10px}
+.wrap{width:min(100% - 2*var(--gut),1328px);margin-inline:auto}
+.ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+.js img[loading="lazy"],.js img[data-src]{opacity:0;transition:opacity 600ms ease}
+.js img.in{opacity:1}
+html:not(.js) img[data-src]{display:none}
+
+/* Section titles are the script. Everything people read is the grotesk. */
+.t{margin:0;font:400 clamp(46px,5.4vw,76px)/1.12 var(--script);text-wrap:balance}
+.center{text-align:center}
+.big{font-size:clamp(22px,2vw,27px);line-height:1.34;letter-spacing:-.01em;text-wrap:pretty}
+.lede{font-size:clamp(19px,1.6vw,22px);line-height:1.5;letter-spacing:-.005em}
+.lede-s{font-size:19px;line-height:1.5}
+.meta{font-size:15px;color:var(--mute)}
+.strong{font-weight:500}
+
+/* Buttons: one shape, one press. The booking colour is on booking links and nothing else. */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:56px;padding:0 30px;border-radius:999px;font-weight:600;font-size:17px;line-height:1.15;white-space:nowrap;transition:transform 120ms var(--ease),background-color 180ms ease;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.btn:active{transform:scale(.97)}
+.btn-book{background:var(--book);color:#fff}
+.btn-big{min-height:64px;padding:0 40px;font-size:19px}
+.btn-soft{background:var(--soft);min-height:50px;padding:0 22px;font-size:16px;font-weight:500}
+.btn .ic{transition:transform 220ms var(--ease)}
+.on-tint .btn-soft{background:rgba(255,255,255,.62)}
+@media (hover:hover){
+  .btn-book:hover{background:var(--book-deep)}
+  .btn-soft:hover{background:var(--soft-2)}
+  .on-tint .btn-soft:hover{background:#fff}
+  .btn:hover .ic{transform:translateY(-1px)}
+  .btn-big:hover .ic{transform:translateX(4px)}
+}
+
+/* First screen */
+.hero{position:relative;height:100svh;min-height:560px;overflow:hidden;background:var(--paint);display:flex;flex-direction:column}
+.hero-media{position:absolute;inset:0;display:block}
+.hero-media img{color:transparent;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform-origin:50% 42%;animation:settle 20s cubic-bezier(.22,.5,.3,1) both}
+@keyframes settle{from{transform:scale(1)}to{transform:scale(1.04)}}
+.top{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:14px var(--gut)}
+.top nav{display:flex;gap:6px;margin-left:-14px}
+.top .right{display:flex;justify-content:flex-end;align-items:center;gap:6px;margin:0 -14px 0 0}
+.top nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;font-weight:500;font-size:15px;transition:opacity 180ms ease}
+.logo{display:block;padding-block:6px;transition:opacity 180ms ease}
+.logo img{width:158px;height:auto;filter:brightness(0);opacity:.9}
+.hero-copy{position:relative;margin-top:auto;padding:0 var(--gut) clamp(32px,8.8vh,96px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px}
+h1{margin:0;font-weight:500;font-size:26px;line-height:1.28;letter-spacing:-.01em;max-width:32em;text-wrap:balance}
+.nb{white-space:nowrap}
+.top nav a.narrow{display:none}
+@media (hover:hover){.top nav a:hover,.logo:hover{opacity:.55}}
+
+/* The header after the first screen: desktop only, sticky, so it needs no script and the button is
+   never on the first screen. The phone has the bar at the foot instead. */
+.rest{position:relative}
+.stick{position:sticky;top:0;z-index:30;background:var(--ground);padding-block:8px}
+.stick .logo img{width:128px}
+.stick-in{padding:0}
+.stick .right{margin:0}
+.stick .btn{min-height:48px;padding:0 22px;font-size:15.5px}
+
+/* Arrival */
+.arrival{padding-block:clamp(48px,6vw,88px) var(--space)}
+.split{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:center;margin-top:clamp(40px,5vw,80px)}
+/* 4g (visual critic, fix 5): the text on the page's own left line, its top level with the doors, one size
+   (the mockup's large ¶2 between small ones read as an accidental size change). */
+.arrival .split{align-items:start}
+.arrival .prose{grid-column:1/7}
+.arrival .frame{grid-column:8/13;aspect-ratio:4/5}
+.frame{position:relative;overflow:hidden;background:var(--marble)}
+[data-px] img{position:absolute;left:0;top:-4rem;width:100%;height:calc(100% + 8rem);object-fit:cover;will-change:transform}
+
+/* Rooms */
+.rooms-head{max-width:46em;margin:0 auto clamp(48px,6vw,88px)}
+.rooms-head .t{margin-bottom:.34em}
+.room{display:grid;grid-template-columns:8fr 4fr;column-gap:clamp(32px,5vw,72px);align-items:center;margin-bottom:clamp(56px,7vw,104px)}
+.room.flip{grid-template-columns:4fr 8fr}
+.room.flip .show{order:2}
+.room h3{margin:0 0 .15em;font-weight:500;font-size:clamp(26px,2.4vw,32px);letter-spacing:-.015em;line-height:1.2}
+.room .meta{margin-bottom:.9em}
+.room .btn{margin-top:.75em;padding:0 24px;font-size:16px;min-height:52px}
+/* 4g: a room button that names the dates may take two lines in a narrow column. */
+.room .btn{white-space:normal;text-align:center;padding-block:8px}
+.stage{position:relative;background:var(--marble)}
+.strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.strip::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always}
+.slide img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.show.fade .strip{display:block;position:relative;aspect-ratio:3/2;overflow:hidden}
+.show.fade .slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility 0s .45s}
+.show.fade .slide.on{opacity:1;visibility:visible;transition:opacity .45s ease}
+.dots{display:flex;justify-content:center;min-height:44px;align-items:center}
+.dot{appearance:none;background:none;border:0;padding:0;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;touch-action:manipulation}
+.dot::before{content:"";display:block;width:7px;height:7px;border-radius:7px;background:var(--ink);opacity:.26;transition:width 260ms var(--ease),opacity 260ms ease}
+.dot[aria-current="true"]::before{width:22px;opacity:.9}
+.dot:active::before{opacity:.6}
+.step{position:absolute;top:50%;width:48px;height:48px;margin-top:-24px;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity 200ms ease,transform 140ms var(--ease)}
+.step.prev{left:16px}.step.next{right:16px}
+.step.prev .ic{transform:rotate(180deg)}
+.show:hover .step,.step:focus-visible{opacity:1}
+.step:active{transform:scale(.92)}
+.kit{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;row-gap:40px;padding-top:clamp(8px,2vw,24px)}
+.kit-text{grid-column:1/6}
+.kit-list{grid-column:7/13}
+.kit-head{font-weight:500;margin-bottom:.8em}
+.kit-list ul{columns:2;column-gap:32px}
+.kit-list li{display:flex;gap:12px;break-inside:avoid;padding-bottom:14px;font-size:16px;line-height:1.4}
+.cap{display:block}
+.cap::first-letter{text-transform:uppercase}
+.stay{margin-top:1.4em;padding:20px 24px;border-radius:16px;background:var(--soft);font-size:16px}
+.stay strong{font-weight:500;display:block;margin-bottom:.2em}
+.amen{margin-top:clamp(32px,4vw,56px)}
+.amen summary{display:inline-flex;align-items:center;gap:12px;min-height:44px;font-weight:500;cursor:pointer;list-style:none}
+.amen summary::-webkit-details-marker{display:none}
+.amen summary .ic{transition:transform 260ms var(--ease)}
+.amen[open] summary .ic{transform:rotate(45deg)}
+.amen ul{columns:3;column-gap:32px;margin-top:14px}
+@supports (interpolate-size:allow-keywords){
+  .amen{interpolate-size:allow-keywords}
+  .amen::details-content{height:0;overflow:clip;transition:height 300ms var(--ease),content-visibility 300ms allow-discrete}
+  .amen[open]::details-content{height:auto}
+}
+.amen li{display:flex;gap:10px;break-inside:avoid;padding-bottom:10px;font-size:15px;line-height:1.4}
+.amen .ic{width:16px;height:16px;margin-top:3px}
+.amen summary .ic{width:20px;height:20px;margin:0}
+.soft{color:var(--mute)}
+
+/* Full-bleed views: the frame is shorter than the photograph, so nothing is cropped at the sides
+   and the parallax has 4rem each way to travel. */
+.feature-block{position:relative;margin-top:var(--space)}
+.bleed{position:relative;overflow:hidden;height:calc(66.667vw - 8rem);background:var(--paint)}
+.bleed img{position:absolute;left:0;top:-4rem;width:100%;height:66.667vw;object-fit:cover;will-change:transform}
+.bleed picture{display:block}
+.feature{position:absolute;z-index:1;left:clamp(32px,4vw,64px);top:15%;width:19.5vw;margin:0;color:#fff;font:400 clamp(28px,2.95vw,56px)/1.16 var(--script);-webkit-text-stroke:.25px currentColor}
+
+/* Dining: text in two steps beside real masonry */
+.dining{padding-block:var(--space)}
+.dining-grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:start}
+.dining-text{grid-column:1/6}
+.dining-text .t{margin-bottom:.5em}
+.step-two{margin-top:2em}
+.mason{grid-column:7/13;columns:2;column-gap:16px}
+.mason img{width:100%;margin-bottom:16px}
+.mason figure:nth-child(3){break-before:column;margin-top:clamp(32px,5vw,72px)}
+
+/* The house */
+.luxe{padding-block:var(--space) 0}
+.luxe-line{max-width:25em;margin:.5em auto 0;font-size:clamp(26px,3vw,40px);line-height:1.22;letter-spacing:-.018em;text-wrap:balance}
+.luxe-cols{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;margin-top:clamp(40px,5vw,72px)}
+.luxe-cols>div:first-child{grid-column:2/7}
+.luxe-cols>div:last-child{grid-column:7/12}
+.swipe{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;margin-top:clamp(48px,6vw,88px);padding-inline:max(var(--gut),calc((100vw - 1328px)/2));scroll-padding-inline:max(var(--gut),calc((100vw - 1328px)/2));cursor:grab;-webkit-overflow-scrolling:touch}
+.swipe::-webkit-scrollbar{display:none}
+.swipe.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.swipe figure{flex:0 0 clamp(236px,23vw,340px);aspect-ratio:4/5;overflow:hidden;scroll-snap-align:start;background:var(--marble)}
+.swipe img{width:100%;height:100%;object-fit:cover;pointer-events:none;transition:transform 700ms var(--ease)}
+@media (hover:hover){.swipe figure:hover img{transform:scale(1.03)}}
+.service{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:center;padding-block:clamp(64px,8vw,120px) var(--space)}
+.prints{grid-column:1/7;display:flex;gap:clamp(12px,1.6vw,22px);align-items:flex-start}
+.print{background:#fff;padding:clamp(8px,.9vw,12px);box-shadow:0 10px 30px rgba(29,33,43,.09)}
+.prints .print{flex:1}
+.prints .print:nth-child(2){margin-top:clamp(20px,3vw,44px)}
+.service .words{grid-column:8/13}
+.simply{margin-top:1em;font-size:clamp(22px,2vw,27px);line-height:1.3;letter-spacing:-.012em}
+
+/* Tints */
+.on-tint{position:relative}
+.sea{background:var(--sea);padding-block:var(--space)}
+.marble{background:var(--marble);padding-block:var(--space)}
+.kab-head{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;margin-bottom:clamp(40px,5vw,72px)}
+.kab-head>*{grid-column:1/10}
+.spot{margin:.3em 0 0;font-size:clamp(28px,3.2vw,44px);line-height:1.18;letter-spacing:-.02em;text-wrap:balance}
+.kab{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:stretch}
+.kab .frame{grid-column:1/6;background:var(--ground)}
+.kab-body{grid-column:7/13}
+.kab-cols{columns:2;column-gap:32px;font-size:16px;line-height:1.58}
+.kab-cols p{break-inside:avoid}
+.mapline{display:flex;align-items:flex-end;gap:24px;margin-top:clamp(32px,4vw,56px)}
+.mapprint{flex:0 0 clamp(260px,26vw,380px)}
+.mapprint img{width:100%;aspect-ratio:730/630}
+
+.guests .t{margin-bottom:.5em}
+.ratings{display:flex;justify-content:center;gap:clamp(40px,7vw,104px);flex-wrap:wrap}
+.rating{display:block;text-align:center}
+.score{display:block;font-size:clamp(52px,6vw,84px);font-weight:400;line-height:1;letter-spacing:-.03em}
+.sep{display:none}
+.rate-rest{display:inline-flex;gap:8px;align-items:center;font-size:15px;margin-top:10px;color:var(--mute)}
+.rating .ic,.rate-line .ic{width:16px;height:16px;transition:transform 220ms var(--ease)}
+@media (hover:hover){.rating:hover .ic,.rate-line:hover .ic{transform:translateX(3px)}}
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);margin-top:clamp(48px,6vw,84px)}
+.quote{margin:0;font-size:clamp(18px,1.45vw,20px);line-height:1.5}
+.quote footer{margin-top:1em;font-size:15px;color:var(--mute)}
+
+/* Exclusive Use */
+.exclusive{padding-block:var(--space) 0}
+.exclusive .frame{aspect-ratio:16/9} /* 4g (visual critic, fix 5): was 21/10, read as a banner */
+.ex-grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;row-gap:40px;margin-top:clamp(40px,5vw,72px)}
+.ex-text{grid-column:1/7}
+.ex-text .t{margin-bottom:.4em}
+.ex-price{grid-column:8/13;align-self:end}
+.price{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;justify-content:space-between}
+.price b{font-weight:400;font-size:clamp(34px,3.2vw,44px);letter-spacing:-.02em;line-height:1.1}
+.ex-price .note{font-size:15px;color:var(--mute);margin:.5em 0 1.2em}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.care{margin-top:clamp(40px,5vw,64px);max-width:44em}
+.care h3{margin:0 0 .3em;font-weight:500;font-size:19px}
+
+/* Twilight */
+.twilight{padding-block:var(--space);display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:center}
+.tw-words{grid-column:1/6}
+.tw-words .t{margin-bottom:.45em}
+.tw-prints{grid-column:7/13;position:relative;aspect-ratio:1/.92}
+.tw-prints .print{position:absolute}
+.tw-prints .a{left:0;top:0;width:72%;z-index:1}
+.tw-prints .b{right:0;bottom:0;width:60%;z-index:2}
+
+/* Booking */
+.book{padding-bottom:var(--space)}
+.book-card{max-width:840px;margin:0 auto;padding:clamp(36px,5vw,72px) clamp(22px,5vw,72px);background:#fff;border-radius:28px;text-align:center}
+.book-card h2{margin:0 0 .6em;font-weight:500;font-size:clamp(23px,2.2vw,30px);line-height:1.25;letter-spacing:-.012em;text-wrap:balance}
+.book-card .plain{max-width:34em;margin-inline:auto}
+.rate-lines{margin:1.5em 0 2em;font-size:15px;color:var(--mute)}
+.rate-line{display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.closing{margin:1.8em auto 1em;max-width:30em}
+.book-card .row{justify-content:center}
+/* 4g: the date fields Alon asked for at gate b, in the room the mockup left above the link. Shown only
+   with a script, because only a script can carry them into the engine's link. */
+.dates{display:flex;gap:10px;justify-content:center;max-width:440px;margin:0 auto 14px}
+.field{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 18px 9px;border-radius:16px;background:var(--soft);text-align:left;cursor:pointer;transition:background-color 180ms ease}
+.field:focus-within{outline:2px solid var(--ink);outline-offset:2px}
+.field span{font-size:13px;font-weight:500;color:var(--mute);line-height:1.2}
+.field input{appearance:none;-webkit-appearance:none;width:100%;min-height:30px;margin:0;padding:0;border:0;background:none;color:var(--ink);font:500 17px/1.3 var(--text);outline:0}
+.field input::-webkit-calendar-picker-indicator{opacity:.55;cursor:pointer}
+@media (hover:hover){.field:hover{background:var(--soft-2)}}
+.dates-note{margin:-4px auto 14px;font-size:14px;color:var(--mute)}
+.dates-note:empty{display:none}
+/* 4g (experience critic, fix 3): proof straight after the rooms, the Guests block stays where it is. */
+/* 4g: one set of fields after the rooms and one in the booking card, sharing one state (site.js); each
+   set is the width of the button under it. */
+.date-go{width:min(100%,440px)}
+.date-go .dates{max-width:none;margin:0 0 14px}
+.date-go .btn{width:100%}
+.kit-text .date-go{margin-top:1.4em}
+.book-card .date-go{margin:0 auto}
+.btn .lbl{min-width:0;overflow:hidden;text-overflow:ellipsis}
+/* 4g fix: a label that names the dates wraps instead of clipping, breaking between its parts (site.js). */
+.btn .lbl.wrap{flex:1 1 auto;white-space:normal;text-align:center;overflow:visible;padding-block:8px}
+.btn .lbl.wrap .seg{display:inline-block}
+.rooms-proof{margin:clamp(24px,3vw,40px) 0 0;font-size:15px;color:var(--mute);display:flex;flex-wrap:wrap;gap:0 28px}
+
+/* Footer */
+.foot{background:var(--marble);padding-block:clamp(56px,7vw,96px) clamp(40px,5vw,64px);text-align:center}
+.foot .logo{display:inline-block;margin-bottom:28px}
+.foot .logo img{width:142px;filter:brightness(0);opacity:.9}
+.foot .row{justify-content:center}
+.foot .btn-soft{background:rgba(255,255,255,.62)}
+@media (hover:hover){.foot .btn-soft:hover{background:#fff}}
+.foot address{font-style:normal;margin-top:28px}
+.foot .fine{font-size:15px;color:var(--mute);margin-top:.5em}
+
+/* Phone bar: sticky at the foot of .rest, so it exists without a script and never lands on the
+   first screen. With a script it waits until the first screen's own button has gone. */
+.bar{display:none}
+
+@media (max-width:1023px){
+  .arrival .prose{grid-column:1/7}
+  .kit-text{grid-column:1/13}.kit-list{grid-column:1/13}
+  .dining-text{grid-column:1/7}.mason{grid-column:7/13;columns:1}
+  .mason figure:nth-child(3){break-before:auto;margin-top:0}
+  .amen ul{columns:2}
+  .room,.room.flip{grid-template-columns:1fr;row-gap:8px}
+  .room.flip .show{order:0}
+  .kab-cols{columns:1}
+  .mapline{flex-wrap:wrap}
+  .mapprint{flex-basis:100%}
+}
+@media (max-width:767px){
+  body{font-size:16.5px}
+  /* 4g: a focused control is never left under the phone bar (54 px + 2x10 px + the safe area). */
+  html{scroll-padding-top:12px;scroll-padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+  .top{padding:6px 8px}
+  .top nav{margin:0}.top .right{margin:0}
+  .top nav a{font-size:14px}
+  .top nav a.wide{display:none}
+  .top nav a.narrow{display:inline-flex}
+  .logo img{width:124px}
+  .hero-copy{padding:0 16px max(20px,env(safe-area-inset-bottom));gap:14px}
+  h1{font-size:clamp(19.5px,5.4vw,21px);line-height:1.3}
+  .hero .btn{width:100%}
+  .hero-media img{object-position:50% 0}
+  .stick{display:none}
+  .t{font-size:clamp(40px,11.4vw,46px)}
+
+  .arrival{padding-top:64px}
+  .split,.kit,.kab,.kab-head,.ex-grid,.service,.twilight,.luxe-cols,.dining-grid{display:block}
+  .arrival .frame{margin-top:32px;margin-inline:calc(-1*var(--gut))}
+  [data-px] img{top:0;height:100%;will-change:auto}
+
+  .room,.room.flip{display:block;margin-bottom:56px}
+  .room .show{margin-inline:calc(-1*var(--gut))}
+  .slide img{aspect-ratio:4/3}
+  .room-text{padding-top:4px}
+  .room .btn{width:100%;margin-top:.6em}
+  .kit-list{margin-top:32px}
+  .kit-list ul{columns:1}
+  .amen ul{columns:1}
+
+  .bleed{height:auto;aspect-ratio:4/5}
+  .bleed img{top:0;height:100%;will-change:auto}
+  /* 4g (experience critic, fix 2): on the phone the line is set in the text face, as large as the
+     Wallpaper* sentence; five lines of thin script were slow to read. */
+  .feature{position:static;width:auto;color:inherit;-webkit-text-stroke:0;font:400 24px/1.26 var(--text);letter-spacing:-.018em;text-wrap:balance;text-align:center;padding:0 var(--gut) 32px}
+
+  /* 4g (experience critic, fix 1): the dishes straight after the first two paragraphs, so no phone
+     screen is text alone. Order only; the DOM keeps the copy's order. */
+  /* stretch, not the desktop grid's align-items:start: in a start-aligned column the masonry shrank to
+     its content, 10 px wide until the lazy dishes arrived, then grew 351 px and moved the page on an
+     early scroll (audit-mockup scroll.early.cls 0.27 to 0.42, about one run in four). */
+  .dining-grid{display:flex;flex-direction:column;align-items:stretch}
+  .dining-text{display:contents}
+  .dining-text>.t,.dining-text>p{order:1}
+  .mason{order:2}
+  .step-two{order:3}
+  .mason{columns:2;margin-top:32px;column-gap:10px}
+  .mason img{margin-bottom:10px}
+  .mason figure:nth-child(3){break-before:column;margin-top:32px}
+
+  .luxe-line,.spot{font-size:24px;line-height:1.26}
+  .luxe-cols>div+div{margin-top:1em}
+  .swipe figure{flex-basis:68vw}
+  .prints{margin-bottom:40px}
+
+  .kab .frame{margin-bottom:32px;aspect-ratio:3/4}
+  .kab-cols{columns:1}
+  .mapline{display:block}
+  .mapprint{margin-bottom:20px}
+
+  .ratings{flex-direction:column;gap:28px}
+  .quotes{grid-template-columns:1fr}
+
+  .exclusive .frame{aspect-ratio:3/2;margin-inline:calc(-1*var(--gut))}
+  .ex-price{margin-top:40px}
+
+  /* 4g (experience critic, fix 4): the blue-hour print takes the phone's width, the sunset overlaps it. */
+  .tw-prints{margin-top:44px;aspect-ratio:auto}
+  .tw-prints .print{position:relative}
+  .tw-prints .a{width:100%}
+  .tw-prints .b{width:64%;margin:-18% 0 0 auto}
+  .rate-line .ic{display:none}
+  .rate-lines{font-size:14px}
+  .btn-big{width:100%;padding:0 16px;font-size:18px}
+  .book .wrap{width:calc(100% - 20px)}
+  .book-card{border-radius:22px}
+  .rooms-proof{flex-direction:column;gap:2px}
+  .foot{padding-bottom:40px}
+
+  .bar{display:flex;gap:10px;position:sticky;bottom:0;z-index:30;padding:10px 12px max(10px,env(safe-area-inset-bottom));background:var(--ground);transition:transform 250ms var(--ease)}
+  .bar .btn{flex:1;min-width:0;padding:0 8px;min-height:54px;font-size:clamp(15px,4.35vw,17px)}
+  .round{flex:none;width:54px;height:54px;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center;transition:transform 120ms var(--ease);touch-action:manipulation}
+  .round:active{transform:scale(.94)}
+  .js .bar:not(.up){transform:translateY(110%)}
+}
+@media (max-width:767px){.field{padding:10px 12px 9px}.field input{font-size:16px}}
+@media (max-width:379px){.dates{flex-direction:column}}
+/* 4g: on a portrait tablet the header links sat on the photographed ceiling lights (about 44 to 56 px
+   down); lifting the header row clears them. */
+@media (min-width:768px) and (max-width:1023px) and (orientation:portrait){.hero .top{padding-top:0}}
+/* A short phone or a short laptop: the photograph gives up its ceiling, never the bed, so the words
+   stay on the linen and clear of the window frame. */
+@media (max-width:767px) and (min-aspect-ratio:8/15){.hero-media img{object-position:50% 100%}}
+@media (max-width:767px) and (min-aspect-ratio:14/25){.hero-media img{object-position:50% 80%}}
+@media (min-width:768px) and (min-aspect-ratio:19/10){.hero-media img{object-position:50% 66%}.hero-copy{gap:14px}}
+@media (min-width:768px) and (min-aspect-ratio:41/20){.hero-media img{object-position:50% 74%}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-media img{animation:none}
+  .swipe img{transition:none}
+  .js img[loading="lazy"],.js img[data-src]{transition:none}
+  .btn,.dot::before,.step,.amen summary .ic,.show.fade .slide,.field{transition-duration:.01ms}
+  .show.fade .slide{transition-delay:0s}
+  .bar{transition:none}
+  .amen::details-content{transition:none}
+}

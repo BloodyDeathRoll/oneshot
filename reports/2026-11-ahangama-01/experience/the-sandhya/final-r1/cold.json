@@ -1,0 +1,156 @@
+{
+ "run1": {
+  "frames": [
+   {
+    "t": 500,
+    "at": 1828,
+    "f": "/Users/alonlavi/oneshot/.claude/worktrees/the-sandhya/sites/the-sandhya/final/shots/ec-r1/phone-cold1-500.jpg",
+    "st": {
+     "imgs": 2,
+     "h1": true,
+     "fonts": "loaded",
+     "hero": {
+      "y": 768,
+      "onTop": true,
+      "text": "Check rooms and live dates"
+     }
+    }
+   },
+   {
+    "t": 1500,
+    "at": 1890,
+    "f": "/Users/alonlavi/oneshot/.claude/worktrees/the-sandhya/sites/the-sandhya/final/shots/ec-r1/phone-cold1-1500.jpg",
+    "st": {
+     "imgs": 2,
+     "h1": true,
+     "fonts": "loaded",
+     "hero": {
+      "y": 768,
+      "onTop": true,
+      "text": "Check rooms and live dates"
+     }
+    }
+   },
+   {
+    "t": 3000,
+    "at": 3060,
+    "f": "/Users/alonlavi/oneshot/.claude/worktrees/the-sandhya/sites/the-sandhya/final/shots/ec-r1/phone-cold1-3000.jpg",
+    "st": {
+     "imgs": 7,
+     "h1": true,
+     "fonts": "loaded",
+     "hero": {
+      "y": 768,
+      "onTop": true,
+      "text": "Check rooms and live dates"
+     }
+    }
+   },
+   {
+    "t": 6000,
+    "at": 6058,
+    "f": "/Users/alonlavi/oneshot/.claude/worktrees/the-sandhya/sites/the-sandhya/final/shots/ec-r1/phone-cold1-6000.jpg",
+    "st": {
+     "imgs": 8,
+     "h1": true,
+     "fonts": "loaded",
+     "hero": {
+      "y": 768,
+      "onTop": true,
+      "text": "Check rooms and live dates"
+     }
+    }
+   }
+  ],
+  "metrics": {
+   "cls": 0.0031890356571142747,
+   "lcp": 564,
+   "bytes": 618242,
+   "reqs": 8,
+   "hosts": [
+    "127.0.0.1:8775"
+   ]
+  }
+ },
+ "earlyTap": {
+  "linkVisibleAt": 544,
+  "tapAt": 1008,
+  "url": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+  "engineReq": [
+   "https://hotels.cloudbeds.com/reservation/WMvA6V"
+  ]
+ },
+ "run2": {
+  "frames": [
+   {
+    "t": 500,
+    "at": 1778,
+    "f": "/Users/alonlavi/oneshot/.claude/worktrees/the-sandhya/sites/the-sandhya/final/shots/ec-r1/phone-cold2-500.jpg",
+    "st": {
+     "imgs": 2,
+     "h1": true,
+     "fonts": "loaded",
+     "hero": {
+      "y": 768,
+      "onTop": true,
+      "text": "Check rooms and live dates"
+     }
+    }
+   },
+   {
+    "t": 1500,
+    "at": 1841,
+    "f": "/Users/alonlavi/oneshot/.claude/worktrees/the-sandhya/sites/the-sandhya/final/shots/ec-r1/phone-cold2-1500.jpg",
+    "st": {
+     "imgs": 2,
+     "h1": true,
+     "fonts": "loaded",
+     "hero": {
+      "y": 768,
+      "onTop": true,
+      "text": "Check rooms and live dates"
+     }
+    }
+   },
+   {
+    "t": 3000,
+    "at": 3079,
+    "f": "/Users/alonlavi/oneshot/.claude/worktrees/the-sandhya/sites/the-sandhya/final/shots/ec-r1/phone-cold2-3000.jpg",
+    "st": {
+     "imgs": 7,
+     "h1": true,
+     "fonts": "loaded",
+     "hero": {
+      "y": 768,
+      "onTop": true,
+      "text": "Check rooms and live dates"
+     }
+    }
+   },
+   {
+    "t": 6000,
+    "at": 6077,
+    "f": "/Users/alonlavi/oneshot/.claude/worktrees/the-sandhya/sites/the-sandhya/final/shots/ec-r1/phone-cold2-6000.jpg",
+    "st": {
+     "imgs": 8,
+     "h1": true,
+     "fonts": "loaded",
+     "hero": {
+      "y": 768,
+      "onTop": true,
+      "text": "Check rooms and live dates"
+     }
+    }
+   }
+  ],
+  "metrics": {
+   "cls": 0.0031890356571142747,
+   "lcp": 572,
+   "bytes": 618242,
+   "reqs": 8,
+   "hosts": [
+    "127.0.0.1:8775"
+   ]
+  }
+ }
+}
