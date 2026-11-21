@@ -1,0 +1,438 @@
+{
+ "calm": {
+  "contrast_m": [
+   {
+    "sel": "h1",
+    "text": "Surf lessons in Weligama",
+    "fs": "36px",
+    "fw": "600",
+    "color": "37,56,100",
+    "min": 5.26,
+    "p05": 5.36,
+    "median": 5.58
+   },
+   {
+    "sel": "a.mark",
+    "text": "Sanjee Surf School",
+    "fs": "20px",
+    "fw": "600",
+    "color": "28,44,82",
+    "min": 5.33,
+    "p05": 5.49,
+    "median": 5.57
+   },
+   {
+    "sel": "p.feature",
+    "text": "Making waves, one lesson at a time.",
+    "fs": "36px",
+    "fw": "400",
+    "color": "37,56,100",
+    "min": 5.68,
+    "p05": 5.73,
+    "median": 5.76
+   }
+  ],
+  "fonts_m": [
+   "15px x4: Walk-in / One full session / Dawn or afternoon session",
+   "16px x42: Total beginner, beginner / 2 hours / per lesson",
+   "18px x102: Skip to lessons / Lessons / Boards",
+   "20px x7: Sanjee Surf School / I was born in Weligama and / Today I teach surfers from",
+   "24px x5: Surf lessons in Weligama,  / Beginner Lesson / Private Coaching"
+  ],
+  "contrast_d": [
+   {
+    "sel": "h1",
+    "text": "Surf lessons in Weligama",
+    "fs": "60px",
+    "fw": "600",
+    "color": "37,56,100",
+    "min": 5.42,
+    "p05": 5.58,
+    "median": 5.77
+   },
+   {
+    "sel": "a.mark",
+    "text": "Sanjee Surf School",
+    "fs": "20px",
+    "fw": "600",
+    "color": "28,44,82",
+    "min": 6.43,
+    "p05": 6.59,
+    "median": 6.76
+   },
+   {
+    "sel": "p.feature",
+    "text": "Making waves, one lesson at a time.",
+    "fs": "64px",
+    "fw": "400",
+    "color": "37,56,100",
+    "min": 5.52,
+    "p05": 5.6,
+    "median": 5.76
+   }
+  ],
+  "fonts_d": [
+   "16px x53: Lessons / Boards / Sanjee",
+   "18px x95: Skip to lessons / Ask on WhatsApp / You can come to us as a to",
+   "20px x1: Sanjee Surf School",
+   "24px x10: Beginner Lesson / Private Coaching / Week Intensive",
+   "28px x1: Surf lessons in Weligama, "
+  ],
+  "quotes": [
+   {
+    "a": "hal starkie",
+    "inPage": true,
+    "dossierSame": true,
+    "dnu": false
+   },
+   {
+    "a": "Rossana Encina",
+    "inPage": true,
+    "dossierSame": true,
+    "dnu": false
+   },
+   {
+    "a": "samagra singh",
+    "inPage": true,
+    "dossierSame": true,
+    "dnu": false
+   },
+   {
+    "a": "Tim St",
+    "inPage": true,
+    "dossierSame": true,
+    "dnu": false
+   }
+  ],
+  "quoteDeco": [],
+  "q_tag": 0,
+  "mapEq": [
+   true,
+   true,
+   true
+  ],
+  "forbidden": [
+   "$",
+   "Mon",
+   "cancel"
+  ],
+  "kbd2": {
+   "n": 40,
+   "bad": []
+  }
+ },
+ "interactive": {
+  "contrast_m": [
+   {
+    "sel": "h1",
+    "text": "Surf lessons in Weligama",
+    "fs": "34px",
+    "fw": "700",
+    "color": "24,29,16",
+    "min": 9.21,
+    "p05": 9.4,
+    "median": 9.56
+   },
+   {
+    "sel": "a.mark, .hdr a[href=\"#top\"]",
+    "text": "Sanjee Surf School",
+    "fs": "19px",
+    "fw": "800",
+    "color": "24,29,16",
+    "min": 8.41,
+    "p05": 8.48,
+    "median": 8.75
+   },
+   {
+    "sel": "section.feature p",
+    "text": "Making waves, one lesson at a time.",
+    "fs": "32.76px",
+    "fw": "400",
+    "color": "24,29,16",
+    "min": 17.18,
+    "p05": 17.18,
+    "median": 17.18
+   },
+   {
+    "sel": "section.back p",
+    "text": "Send us the lesson and date you want on ",
+    "fs": "24px",
+    "fw": "700",
+    "color": "24,29,16",
+    "min": 6.12,
+    "p05": 6.32,
+    "median": 6.51
+   },
+   {
+    "sel": ".hero-btn span, .hero-btn",
+    "text": "Ask on WhatsApp",
+    "fs": "17px",
+    "fw": "600",
+    "color": "255,255,255",
+    "min": 11.05,
+    "p05": 11.05,
+    "median": 11.05
+   }
+  ],
+  "fonts_m": [
+   "13px x12: Fish and hybrids / 5'8–6'4 / Performance shortboards",
+   "14px x16: Total beginner / I can stand up / Intermediate",
+   "15px x73: Menu / Total beginner, beginner | / per lesson",
+   "16px x59: Lessons / Boards / Sanjee",
+   "17px x28: Skip to lessons / Ask on WhatsApp / You can come to us as a to"
+  ],
+  "contrast_d": [
+   {
+    "sel": "h1",
+    "text": "Surf lessons in Weligama",
+    "fs": "56px",
+    "fw": "700",
+    "color": "24,29,16",
+    "min": 5.34,
+    "p05": 6.08,
+    "median": 7.34
+   },
+   {
+    "sel": "a.mark, .hdr a[href=\"#top\"]",
+    "text": "Sanjee Surf School",
+    "fs": "19px",
+    "fw": "800",
+    "color": "24,29,16",
+    "min": 7.84,
+    "p05": 8.43,
+    "median": 8.71
+   },
+   {
+    "sel": "section.feature p",
+    "text": "Making waves, one lesson at a time.",
+    "fs": "63.36px",
+    "fw": "400",
+    "color": "24,29,16",
+    "min": 8.69,
+    "p05": 8.88,
+    "median": 9.16
+   },
+   {
+    "sel": "section.back p",
+    "text": "Send us the lesson and date you want on ",
+    "fs": "44px",
+    "fw": "700",
+    "color": "24,29,16",
+    "min": 6.9,
+    "p05": 7.09,
+    "median": 7.49
+   },
+   {
+    "sel": ".hero-btn span, .hero-btn",
+    "text": "Ask on WhatsApp",
+    "fs": "17px",
+    "fw": "600",
+    "color": "255,255,255",
+    "min": 11.05,
+    "p05": 11.05,
+    "median": 11.05
+   }
+  ],
+  "fonts_d": [
+   "12px x5: 5' / 6' / 7'",
+   "13px x12: Fish and hybrids / 5'8–6'4 / Performance shortboards",
+   "14px x12: Add to my message / Add to my message / Add to my message",
+   "15px x82: Lessons / Boards / Sanjee",
+   "16px x30: Safety basics and ocean aw / Customized learning pace,  / Progress tracking, photo/v"
+  ],
+  "quotes": [
+   {
+    "a": "hal starkie",
+    "inPage": true,
+    "dossierSame": true,
+    "dnu": false
+   },
+   {
+    "a": "Rossana Encina",
+    "inPage": true,
+    "dossierSame": true,
+    "dnu": false
+   },
+   {
+    "a": "samagra singh",
+    "inPage": true,
+    "dossierSame": true,
+    "dnu": false
+   },
+   {
+    "a": "Tim St",
+    "inPage": true,
+    "dossierSame": true,
+    "dnu": false
+   }
+  ],
+  "quoteDeco": [],
+  "q_tag": 0,
+  "mapEq": [
+   true,
+   true,
+   true
+  ],
+  "forbidden": [
+   "$",
+   "up to 2",
+   "Mon",
+   "cancel"
+  ],
+  "kbd2": {
+   "n": 62,
+   "bad": [
+    {
+     "t": "INPUT:Date",
+     "inV": true,
+     "cov": false,
+     "hit": "INPUT.",
+     "ring": "none 3px none"
+    }
+   ]
+  }
+ },
+ "unique": {
+  "contrast_m": [
+   {
+    "sel": "h1",
+    "text": "Surf lessons in Weligama",
+    "fs": "42.9px",
+    "fw": "400",
+    "color": "26,34,48",
+    "min": 6.13,
+    "p05": 6.28,
+    "median": 6.87
+   },
+   {
+    "sel": "section.band p",
+    "text": "Making waves, one lesson at a time.",
+    "fs": "34px",
+    "fw": "400",
+    "color": "26,34,48",
+    "min": 4.65,
+    "p05": 8.19,
+    "median": 8.8
+   },
+   {
+    "sel": ".rate-line",
+    "text": "5/5, 13 Google reviews, as of 5 November",
+    "fs": "16px",
+    "fw": "400",
+    "color": "26,34,48",
+    "min": 8.16,
+    "p05": 8.26,
+    "median": 8.46
+   },
+   {
+    "sel": "section.hero .mark, a[href=\"#top\"]",
+    "text": "Sanjee Surf School",
+    "fs": "18px",
+    "fw": "700",
+    "color": "26,34,48",
+    "min": 5.76,
+    "p05": 5.93,
+    "median": 5.99
+   }
+  ],
+  "fonts_m": [
+   "14px x5: per hour / per hour / per day",
+   "16px x57: Menu / 5/5, 13 Google reviews, as / Total beginner, beginner |",
+   "17px x8: Lessons / Boards / Sanjee",
+   "18px x50: Skip to lessons / Sanjee Surf School / Ask on WhatsApp",
+   "20px x20: USD 5 / USD 7 / USD 8"
+  ],
+  "contrast_d": [
+   {
+    "sel": "h1",
+    "text": "Surf lessons in Weligama",
+    "fs": "68px",
+    "fw": "400",
+    "color": "26,34,48",
+    "min": 6.47,
+    "p05": 6.68,
+    "median": 7.01
+   },
+   {
+    "sel": "section.band p",
+    "text": "Making waves, one lesson at a time.",
+    "fs": "60px",
+    "fw": "400",
+    "color": "26,34,48",
+    "min": 4.68,
+    "p05": 6.52,
+    "median": 8.74
+   },
+   {
+    "sel": ".rate-line",
+    "text": "5/5, 13 Google reviews, as of 5 November",
+    "fs": "16px",
+    "fw": "400",
+    "color": "26,34,48",
+    "min": 7.14,
+    "p05": 7.14,
+    "median": 7.33
+   },
+   {
+    "sel": "section.hero .mark, a[href=\"#top\"]",
+    "text": "Sanjee Surf School",
+    "fs": "18px",
+    "fw": "700",
+    "color": "26,34,48",
+    "min": 7.19,
+    "p05": 7.3,
+    "median": 7.47
+   }
+  ],
+  "fonts_d": [
+   "14px x5: per hour / per hour / per day",
+   "16px x62: Lessons / Boards / Sanjee",
+   "17px x2: per lesson / per lesson",
+   "18px x46: Skip to lessons / Sanjee Surf School / Ask on WhatsApp",
+   "20px x24: USD 5 / USD 7 / USD 8"
+  ],
+  "quotes": [
+   {
+    "a": "hal starkie",
+    "inPage": true,
+    "dossierSame": true,
+    "dnu": false
+   },
+   {
+    "a": "Rossana Encina",
+    "inPage": true,
+    "dossierSame": true,
+    "dnu": false
+   },
+   {
+    "a": "samagra singh",
+    "inPage": true,
+    "dossierSame": true,
+    "dnu": false
+   },
+   {
+    "a": "Tim St",
+    "inPage": true,
+    "dossierSame": true,
+    "dnu": false
+   }
+  ],
+  "quoteDeco": [],
+  "q_tag": 0,
+  "mapEq": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "forbidden": [
+   "150",
+   "Mon",
+   "cancel"
+  ],
+  "kbd2": {
+   "n": 40,
+   "bad": []
+  }
+ }
+}

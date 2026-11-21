@@ -1,0 +1,505 @@
+{
+ "tenant": {
+  "id": null,
+  "slug": "sanjee-surf-school",
+  "name": "Sanjee Surf School"
+ },
+ "locales": {
+  "en": {
+   "businessName": "Sanjee Surf School",
+   "businessType": "surf_school",
+   "tagline": "Surf lessons in Weligama, on the south coast of Sri Lanka.",
+   "closing": "Send us the lesson and date you want on WhatsApp, or call the same number.",
+   "featureLine": "Making waves, one lesson at a time.",
+   "languages": [
+    "en"
+   ],
+   "copyBlocks": [
+    {
+     "slot": "intro",
+     "heading": "Who we teach",
+     "body": "You can come to us as a total beginner, a beginner who can already stand up, an intermediate or an advanced surfer.\n\nLessons are in English as standard."
+    },
+    {
+     "slot": "about",
+     "heading": "Sanjee, head instructor",
+     "body": "I was born in Weligama and learned to surf on a broken board my uncle fixed with resin and hope.\n\nToday I teach surfers from all over the world — and I still paddle out every single morning."
+    },
+    {
+     "slot": "offer",
+     "heading": "Lessons",
+     "body": "Every lesson includes professional instruction and a beach safety briefing. Board and rash guard rental is in the price too.\n\nThe Week Intensive is spread across 10 days, so you can pick your best days. After 2 hours of surfing, your muscles will be happily exhausted. Get in touch beforehand and we'll work out which days and times suit you.\n\nFor group bookings, please leave us a message."
+    },
+    {
+     "slot": "offer",
+     "heading": "Board rental",
+     "body": "Our shop sits 30 seconds from the sand at Coco Beach, Weligama. Free dry storage there while you eat or rest between sessions.\n\nWe rent soft-top foamies 8'0–9'0, mini-mals 7'2–7'10, mid-lengths and funboards 6'8–7'4, fish and hybrids 5'8–6'4, performance shortboards 5'10–6'2 and longboards 9'0–9'4.\n\nEach board comes with a leash sized for it (6 ft – 9 ft) and fins fitted to your style (FCS-II or Futures). You also get wax for tropical water and a fresh wax comb.\n\nTo rent a board we need an ID or passport copy and a refundable deposit. Ask us how much it is."
+    },
+    {
+     "slot": "offer",
+     "heading": "By tuk-tuk",
+     "body": "The Surf Spot Safari, the Full Coast Adventure and the Sunrise Session are the three tours that go looking for waves.\n\nThe other nine tours are outings along the coast and inland, at estimated introductory prices, with pickup and return within Weligama.\n\nThose outings don't include meals or activities.\n\nA tour's price is for the tour, not per person. Ask us how many people can come."
+    },
+    {
+     "slot": "info",
+     "heading": "Before you book",
+     "body": "You need to be able to swim at least 50 meters unaided.\n\nWe teach kids from age 6 and up. Anyone under 18 must be accompanied by a parent or legal guardian.\n\nCash on the day can be LKR, USD or EUR. All prices are as of 5 November 2026."
+    },
+    {
+     "slot": "info",
+     "heading": "Other waves, as we rate them",
+     "body": "Jungle Beach and Weligama Main Point are both beach breaks we'd call beginner waves. Mirissa, also a beach break, goes from beginner to intermediate.\n\nFor intermediates there's Fishermans (a reef break), Island Point (a point break), Plantation Point (a right-hand reef) and Lazy Left in Midigama, a long left-hand reef. Lazy Right, also in Midigama, is a right-hand reef that goes from intermediate to advanced.\n\nRam's Right, a reef break, and Kabalana (The Rock), an A-frame reef, are for advanced surfers."
+    },
+    {
+     "slot": "info",
+     "heading": "Finding us",
+     "body": "On Google Maps, look for Sanjee Surf School (plus code XC63+4H). You may also see us as Sanjee Surf."
+    }
+   ],
+   "openingHours": [],
+   "hoursNote": null,
+   "priceList": [
+    {
+     "label": "Surf Spot Safari (half day, 4 hours)",
+     "price": 80,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "5+ potential surf spots around Weligama Bay, chosen for your skill level. Flexible timing, photo stops."
+    },
+    {
+     "label": "Full Coast Adventure (full day, 8 hours)",
+     "price": 120,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "10+ potential surf spots, some of them local breaks. Sri Lankan lunch included."
+    },
+    {
+     "label": "Sunrise Session (3 hours)",
+     "price": 60,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "3 spots at dawn, with a 5:30 AM pickup and a breakfast stop."
+    },
+    {
+     "label": "Weligama Bay & Taprobane Island (approx. 2 hours)",
+     "price": 15,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "Bay viewpoints and photo stops, with the island seen from the shore. Island and other entry fees not included."
+    },
+    {
+     "label": "Midigama Reef Breaks (approx. 3 hours)",
+     "price": 25,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "Lazy Left and Lazy Right viewpoints, beach stops. Surfing optional, conditions permitting; not beginner lesson spots. No boards or lessons."
+    },
+    {
+     "label": "Mirissa Beach & Coconut Tree Hill (approx. 4 hours)",
+     "price": 30,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "Beach time and the viewpoint. No whale-watching boat trip. Entry fees not included."
+    },
+    {
+     "label": "Ahangama & Kabalana (approx. 4 hours)",
+     "price": 30,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "Coastal stops, Kabalana Beach and a view of the Rock reef break. Surfing depends on skill and sea conditions; no boards or lessons."
+    },
+    {
+     "label": "Secret Beach Mirissa (approx. 4 hours)",
+     "price": 30,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "Final access may need a walk. Swimming depends on the sea and is not guaranteed safe. Entry fees not included."
+    },
+    {
+     "label": "Turtle Bay & Snake Farm (approx. 4 hours)",
+     "price": 35,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "Coastal stops; snake farm optional if open and available, admission separate. Wildlife not guaranteed. Entry fees and snorkeling excluded."
+    },
+    {
+     "label": "Handunugoda Tea Estate (approx. 4 hours)",
+     "price": 40,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "Inland through the countryside. Estate entry, tours and tastings depend on current visitor arrangements and are not included."
+    },
+    {
+     "label": "Galle Fort (approx. 6 hours)",
+     "price": 55,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "Time on foot on the ramparts and historic streets. Museum entry not included."
+    },
+    {
+     "label": "Hiriketiya Bay (approx. 8 hours)",
+     "price": 70,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "Beach time and coastal stops. Surfing and swimming depend on conditions and ability; boards and lessons not included."
+    },
+    {
+     "label": "Rashguard (UV long-sleeve), to buy",
+     "price": 12,
+     "currency": "USD",
+     "unit": "flat",
+     "note": null
+    },
+    {
+     "label": "Reef booties, to buy, per pair",
+     "price": 15,
+     "currency": "USD",
+     "unit": "flat",
+     "note": null
+    }
+   ],
+   "photos": [
+    {
+     "image": {
+      "id": 1,
+      "alt": "Orange and peach sunset over the sea, the sun low on the horizon, lines of swell with small figures in the water, and a wave breaking on to the sand.",
+      "filename": "img-018.webp",
+      "mimeType": "image/webp",
+      "filesize": 288910,
+      "width": 1440,
+      "height": 1920,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 2,
+      "alt": "A woman and an instructor on the sand, each with arms out and knees bent, standing on a red and a blue soft-top board.",
+      "filename": "img-005.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 349362,
+      "width": 832,
+      "height": 464,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 3,
+      "alt": "A surfer standing on a white board with arms out, riding along a green wave with white water breaking behind.",
+      "filename": "img-006.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 228614,
+      "width": 848,
+      "height": 480,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 4,
+      "alt": "A surfer lying on a board, back to the camera, paddling at a low green wave with one arm lifted in a small splash. Another head in the water beyond it, open sea and a pale sky above.",
+      "filename": "img-009.webp",
+      "mimeType": "image/webp",
+      "filesize": 67874,
+      "width": 1600,
+      "height": 1067,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 5,
+      "alt": "Tall palms on a grass field above the beach, parasols and a path along the sand, and lines of white surf on a blue sea.",
+      "filename": "img-012.webp",
+      "mimeType": "image/webp",
+      "filesize": 64990,
+      "width": 750,
+      "height": 558,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 6,
+      "alt": "Sanjee from behind, hair tied up, turning hard on a yellow board with a pink rail, throwing white spray off a green wave.",
+      "filename": "img-007.webp",
+      "mimeType": "image/webp",
+      "filesize": 560108,
+      "width": 962,
+      "height": 938,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 7,
+      "alt": "Three thatched parasols on a sand beach, a line of surf and a green wave behind them under a grey sky.",
+      "filename": "img-014.webp",
+      "mimeType": "image/webp",
+      "filesize": 67034,
+      "width": 1280,
+      "height": 960,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 8,
+      "alt": "A rust-red headland with palms and tiled roofs running into a blue bay under a clear sky, seen from the sand.",
+      "filename": "img-002.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 440768,
+      "width": 2000,
+      "height": 1500,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    }
+   ],
+   "heroVideo": null,
+   "heroVideoPoster": null,
+   "videos": [],
+   "contact": {
+    "phone": "+94774004422",
+    "whatsapp": "+94774004422",
+    "email": "sanjee@sanjee-surf.com",
+    "address": "Kadabaddagama, Weligama 81700, Sri Lanka",
+    "mapUrl": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en"
+   },
+   "bookingLinks": [],
+   "amenities": [],
+   "ratings": [
+    {
+     "platform": "google",
+     "score": 5,
+     "scale": "5",
+     "count": 13,
+     "url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+     "capturedAt": "2026-11-05"
+    }
+   ],
+   "testimonials": [
+    {
+     "quote": "I would definitely recommend going out with Sanjee. I spent two mornings surfing with him and it was amazing. He made sure I was always in the best positions to catch the wave on the local break, meaning I was catching far more waves than if i was on my own. He is very friendly and a joy to surf with.",
+     "author": "hal starkie",
+     "source": "google",
+     "lang": "en"
+    },
+    {
+     "quote": "Sanjee is an outstanding surf coach. After just 7 intensive training days, he gave me the confidence to surf bigger waves and significantly improve my level. His teaching is clear, professional, and very motivating. I highly recommend him to anyone who wants to progress safely and effectively.”",
+     "author": "Rossana Encina",
+     "source": "google",
+     "lang": "en"
+    },
+    {
+     "quote": "Sanjee is one the best coaches there is to learn surfing.  He was very patient. And supportive.  I was able to catch waves and stand on my board till close to the shore in the first session itself. Id definitely recommend him and would come again to learn from him for intermediate and advanced course as well.",
+     "author": "samagra singh",
+     "source": "google",
+     "lang": "en"
+    },
+    {
+     "quote": "Great guy. Better then most other surf instructors i met before. Very calm and patient. Highly recommend.",
+     "author": "Tim St",
+     "source": "google",
+     "lang": "en"
+    }
+   ],
+   "spot": "Coco Beach is our home spot, a beach break. Smaller crowds than the main peak and a friendly, mellow vibe, ideal for first pop-ups.",
+   "season": "Best surf season runs November to April; peak swell and dry weather are December–February.",
+   "languagesSpoken": [
+    "en",
+    "si"
+   ],
+   "rooms": [],
+   "stayInfo": null,
+   "lessons": [
+    {
+     "label": "Beginner Lesson",
+     "durationMin": 120,
+     "level": [
+      "first_time",
+      "beginner"
+     ],
+     "groupSize": null,
+     "includes": "Safety basics and ocean awareness, board handling, paddle and pop-up practice, catching your first waves",
+     "price": 40,
+     "currency": "USD",
+     "unit": "per_lesson"
+    },
+    {
+     "label": "Private Coaching",
+     "durationMin": 120,
+     "level": [
+      "beginner",
+      "intermediate",
+      "advanced"
+     ],
+     "groupSize": "One-on-one",
+     "includes": "Customized learning pace, flexible scheduling",
+     "price": 50,
+     "currency": "USD",
+     "unit": "per_lesson"
+    },
+    {
+     "label": "Week Intensive",
+     "durationMin": 120,
+     "level": null,
+     "groupSize": "5 private sessions",
+     "includes": "Progress tracking, photo/video memories",
+     "price": 160,
+     "currency": "USD",
+     "unit": "flat"
+    }
+   ],
+   "credentials": [
+    {
+     "label": "ISA Level 1 Surf Instructor",
+     "issuer": "International Surfing Association"
+    },
+    {
+     "label": "Certified Surf Lifeguard",
+     "issuer": "Sri Lanka Lifesaving"
+    }
+   ],
+   "rentals": [
+    {
+     "label": "Soft-top, 1 hour",
+     "price": 5,
+     "currency": "USD",
+     "unit": "per_hour",
+     "note": "Walk-in"
+    },
+    {
+     "label": "Hardboard, 1 hour",
+     "price": 7,
+     "currency": "USD",
+     "unit": "per_hour",
+     "note": "Walk-in"
+    },
+    {
+     "label": "Soft-top, 2 hours",
+     "price": 8,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "One full session"
+    },
+    {
+     "label": "Hardboard, 2 hours",
+     "price": 12,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "One full session"
+    },
+    {
+     "label": "Soft-top, Half day (4 h)",
+     "price": 12,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "Dawn or afternoon session"
+    },
+    {
+     "label": "Hardboard, Half day (4 h)",
+     "price": 18,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "Dawn or afternoon session"
+    },
+    {
+     "label": "Soft-top, Full day (24 h)",
+     "price": 15,
+     "currency": "USD",
+     "unit": "per_day",
+     "note": "Two sessions + sunset"
+    },
+    {
+     "label": "Hardboard, Full day (24 h)",
+     "price": 20,
+     "currency": "USD",
+     "unit": "per_day",
+     "note": "Two sessions + sunset"
+    },
+    {
+     "label": "Soft-top, 3 days",
+     "price": 36,
+     "currency": "USD",
+     "unit": "flat",
+     "note": null
+    },
+    {
+     "label": "Hardboard, 3 days",
+     "price": 50,
+     "currency": "USD",
+     "unit": "flat",
+     "note": null
+    },
+    {
+     "label": "Soft-top, 7 days",
+     "price": 70,
+     "currency": "USD",
+     "unit": "flat",
+     "note": null
+    },
+    {
+     "label": "Hardboard, 7 days",
+     "price": 95,
+     "currency": "USD",
+     "unit": "flat",
+     "note": null
+    },
+    {
+     "label": "Soft-top, 14 days",
+     "price": 120,
+     "currency": "USD",
+     "unit": "flat",
+     "note": null
+    },
+    {
+     "label": "Hardboard, 14 days",
+     "price": 170,
+     "currency": "USD",
+     "unit": "flat",
+     "note": null
+    },
+    {
+     "label": "Soft-top, Monthly",
+     "price": 220,
+     "currency": "USD",
+     "unit": "flat",
+     "note": null
+    },
+    {
+     "label": "Hardboard, Monthly",
+     "price": 310,
+     "currency": "USD",
+     "unit": "flat",
+     "note": null
+    },
+    {
+     "label": "Bodyboard",
+     "price": 5,
+     "currency": "USD",
+     "unit": "per_day",
+     "note": null
+    }
+   ],
+   "brands": [],
+   "forecast": null
+  }
+ }
+}

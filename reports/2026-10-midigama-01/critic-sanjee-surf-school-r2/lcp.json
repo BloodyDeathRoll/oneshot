@@ -1,0 +1,701 @@
+{
+ "calm": [
+  {
+   "fcp": 308,
+   "lcp": [
+    {
+     "t": 308,
+     "size": 4620,
+     "el": "A.mark",
+     "url": ""
+    },
+    {
+     "t": 348,
+     "size": 17460,
+     "el": "H1",
+     "url": ""
+    },
+    {
+     "t": 1008,
+     "size": 65941,
+     "el": "IMG",
+     "url": "wave.webp"
+    },
+    {
+     "t": 1648,
+     "size": 263247,
+     "el": "IMG.hero-img",
+     "url": "hero-m.webp"
+    }
+   ],
+   "herofile": "hero-m.webp",
+   "heroArea": "391x678",
+   "heroRes": {
+    "n": "hero-m.webp",
+    "start": 178,
+    "end": 1629,
+    "type": "link"
+   },
+   "et": [
+    {
+     "id": "h1",
+     "t": 348,
+     "load": 0,
+     "url": "",
+     "size": "0x0"
+    },
+    {
+     "id": "img/hero-1400.webp",
+     "t": 1648,
+     "load": 1629,
+     "url": "hero-m.webp",
+     "size": "692x1500"
+    }
+   ],
+   "fonts": [],
+   "fontCss": [
+    513
+   ],
+   "first": {
+    "kb": 296,
+    "reqs": 8,
+    "hosts": [
+     "fonts.googleapis.com",
+     "self",
+     "fonts.gstatic.com"
+    ],
+    "files": [
+     "css2?family=Mr+Dafoe&family=Source 1k",
+     " 68k",
+     "wave.webp 19k",
+     "band-m.webp 21k",
+     "lJwE-pIzkS5NXuMMrFitibIgxC_D.woff2 17k",
+     "lesson.webp 39k",
+     "nwpStKy2OAdR1K-IwhWudF-R3w8aZejf5H 29k",
+     "hero-m.webp 102k"
+    ]
+   },
+   "after": {
+    "kb": 823,
+    "reqs": 17,
+    "hosts": [
+     "fonts.googleapis.com",
+     "self",
+     "fonts.gstatic.com"
+    ]
+   }
+  },
+  {
+   "fcp": 304,
+   "lcp": [
+    {
+     "t": 304,
+     "size": 4620,
+     "el": "A.mark",
+     "url": ""
+    },
+    {
+     "t": 364,
+     "size": 17460,
+     "el": "H1",
+     "url": ""
+    },
+    {
+     "t": 1016,
+     "size": 65941,
+     "el": "IMG",
+     "url": "wave.webp"
+    },
+    {
+     "t": 1644,
+     "size": 263247,
+     "el": "IMG.hero-img",
+     "url": "hero-m.webp"
+    }
+   ],
+   "herofile": "hero-m.webp",
+   "heroArea": "391x678",
+   "heroRes": {
+    "n": "hero-m.webp",
+    "start": 170,
+    "end": 1631,
+    "type": "link"
+   },
+   "et": [
+    {
+     "id": "h1",
+     "t": 364,
+     "load": 0,
+     "url": "",
+     "size": "0x0"
+    },
+    {
+     "id": "img/hero-1400.webp",
+     "t": 1644,
+     "load": 1632,
+     "url": "hero-m.webp",
+     "size": "692x1500"
+    }
+   ],
+   "fonts": [],
+   "fontCss": [
+    471
+   ],
+   "first": {
+    "kb": 296,
+    "reqs": 8,
+    "hosts": [
+     "fonts.googleapis.com",
+     "self",
+     "fonts.gstatic.com"
+    ],
+    "files": [
+     "css2?family=Mr+Dafoe&family=Source 1k",
+     " 68k",
+     "wave.webp 19k",
+     "band-m.webp 21k",
+     "lJwE-pIzkS5NXuMMrFitibIgxC_D.woff2 17k",
+     "nwpStKy2OAdR1K-IwhWudF-R3w8aZejf5H 28k",
+     "lesson.webp 39k",
+     "hero-m.webp 102k"
+    ]
+   },
+   "after": {
+    "kb": 823,
+    "reqs": 17,
+    "hosts": [
+     "fonts.googleapis.com",
+     "self",
+     "fonts.gstatic.com"
+    ]
+   }
+  },
+  {
+   "fcp": 308,
+   "lcp": [
+    {
+     "t": 308,
+     "size": 4620,
+     "el": "A.mark",
+     "url": ""
+    },
+    {
+     "t": 340,
+     "size": 17460,
+     "el": "H1",
+     "url": ""
+    },
+    {
+     "t": 1044,
+     "size": 65941,
+     "el": "IMG",
+     "url": "wave.webp"
+    },
+    {
+     "t": 1644,
+     "size": 263247,
+     "el": "IMG.hero-img",
+     "url": "hero-m.webp"
+    }
+   ],
+   "herofile": "hero-m.webp",
+   "heroArea": "391x678",
+   "heroRes": {
+    "n": "hero-m.webp",
+    "start": 172,
+    "end": 1624,
+    "type": "link"
+   },
+   "et": [
+    {
+     "id": "h1",
+     "t": 340,
+     "load": 0,
+     "url": "",
+     "size": "0x0"
+    },
+    {
+     "id": "img/hero-1400.webp",
+     "t": 1644,
+     "load": 1625,
+     "url": "hero-m.webp",
+     "size": "692x1500"
+    }
+   ],
+   "fonts": [],
+   "fontCss": [
+    472
+   ],
+   "first": {
+    "kb": 296,
+    "reqs": 8,
+    "hosts": [
+     "fonts.googleapis.com",
+     "self",
+     "fonts.gstatic.com"
+    ],
+    "files": [
+     "css2?family=Mr+Dafoe&family=Source 1k",
+     " 68k",
+     "wave.webp 19k",
+     "band-m.webp 21k",
+     "lJwE-pIzkS5NXuMMrFitibIgxC_D.woff2 17k",
+     "nwpStKy2OAdR1K-IwhWudF-R3w8aZejf5H 28k",
+     "lesson.webp 39k",
+     "hero-m.webp 102k"
+    ]
+   },
+   "after": {
+    "kb": 823,
+    "reqs": 17,
+    "hosts": [
+     "fonts.googleapis.com",
+     "self",
+     "fonts.gstatic.com"
+    ]
+   }
+  }
+ ],
+ "interactive": [
+  {
+   "fcp": 584,
+   "lcp": [
+    {
+     "t": 584,
+     "size": 16940,
+     "el": "H1",
+     "url": ""
+    }
+   ],
+   "herofile": "hero-img-018-tall-1000.webp",
+   "heroArea": "390x844",
+   "heroRes": {
+    "n": "hero-img-018-tall-1000.webp",
+    "start": 171,
+    "end": 2117,
+    "type": "link"
+   },
+   "et": [
+    {
+     "id": "h1",
+     "t": 584,
+     "load": 0,
+     "url": "",
+     "size": "0x0"
+    },
+    {
+     "id": "img/hero-img-018-wide-1440.webp",
+     "t": 2144,
+     "load": 2118,
+     "url": "hero-img-018-tall-1000.webp",
+     "size": "1000x1846"
+    }
+   ],
+   "fonts": [],
+   "fontCss": [
+    473
+   ],
+   "first": {
+    "kb": 395,
+    "reqs": 10,
+    "hosts": [
+     "fonts.googleapis.com",
+     "self",
+     "fonts.gstatic.com"
+    ],
+    "files": [
+     "css2?family=Courgette&family=Manro 1k",
+     "tile-img-006-384.webp 9k",
+     "tile-img-009-520.webp 14k",
+     "tile-img-010-520.webp 14k",
+     "wEO_EBrAnc9BLjLQAUk1VvoK_kgXiQ.wof 18k",
+     " 97k",
+     "xn7gYHE41ni1AdIRggexSvfedN4.woff2 24k",
+     "tile-img-005-380.webp 25k",
+     "tile-img-012-750.webp 58k",
+     "hero-img-018-tall-1000.webp 134k"
+    ]
+   },
+   "after": {
+    "kb": 617,
+    "reqs": 15,
+    "hosts": [
+     "fonts.googleapis.com",
+     "self",
+     "fonts.gstatic.com"
+    ]
+   }
+  },
+  {
+   "fcp": 648,
+   "lcp": [
+    {
+     "t": 648,
+     "size": 16940,
+     "el": "H1",
+     "url": ""
+    }
+   ],
+   "herofile": "hero-img-018-tall-1000.webp",
+   "heroArea": "390x844",
+   "heroRes": {
+    "n": "hero-img-018-tall-1000.webp",
+    "start": 175,
+    "end": 2116,
+    "type": "link"
+   },
+   "et": [
+    {
+     "id": "h1",
+     "t": 648,
+     "load": 0,
+     "url": "",
+     "size": "0x0"
+    },
+    {
+     "id": "img/hero-img-018-wide-1440.webp",
+     "t": 2168,
+     "load": 2117,
+     "url": "hero-img-018-tall-1000.webp",
+     "size": "1000x1846"
+    }
+   ],
+   "fonts": [],
+   "fontCss": [
+    472
+   ],
+   "first": {
+    "kb": 395,
+    "reqs": 10,
+    "hosts": [
+     "fonts.googleapis.com",
+     "self",
+     "fonts.gstatic.com"
+    ],
+    "files": [
+     "css2?family=Courgette&family=Manro 1k",
+     "tile-img-006-384.webp 9k",
+     "tile-img-009-520.webp 14k",
+     "tile-img-010-520.webp 14k",
+     "wEO_EBrAnc9BLjLQAUk1VvoK_kgXiQ.wof 18k",
+     " 97k",
+     "xn7gYHE41ni1AdIRggexSvfedN4.woff2 24k",
+     "tile-img-005-380.webp 25k",
+     "tile-img-012-750.webp 58k",
+     "hero-img-018-tall-1000.webp 134k"
+    ]
+   },
+   "after": {
+    "kb": 617,
+    "reqs": 15,
+    "hosts": [
+     "fonts.googleapis.com",
+     "self",
+     "fonts.gstatic.com"
+    ]
+   }
+  },
+  {
+   "fcp": 1120,
+   "lcp": [
+    {
+     "t": 1120,
+     "size": 16940,
+     "el": "H1",
+     "url": ""
+    }
+   ],
+   "herofile": "hero-img-018-tall-1000.webp",
+   "heroArea": "390x844",
+   "heroRes": {
+    "n": "hero-img-018-tall-1000.webp",
+    "start": 183,
+    "end": 2094,
+    "type": "link"
+   },
+   "et": [
+    {
+     "id": "h1",
+     "t": 1120,
+     "load": 0,
+     "url": "",
+     "size": "0x0"
+    },
+    {
+     "id": "img/hero-img-018-wide-1440.webp",
+     "t": 2120,
+     "load": 2096,
+     "url": "hero-img-018-tall-1000.webp",
+     "size": "1000x1846"
+    }
+   ],
+   "fonts": [],
+   "fontCss": [
+    521
+   ],
+   "first": {
+    "kb": 395,
+    "reqs": 10,
+    "hosts": [
+     "fonts.googleapis.com",
+     "self",
+     "fonts.gstatic.com"
+    ],
+    "files": [
+     "css2?family=Courgette&family=Manro 1k",
+     " 97k",
+     "wEO_EBrAnc9BLjLQAUk1VvoK_kgXiQ.wof 18k",
+     "xn7gYHE41ni1AdIRggexSvfedN4.woff2 24k",
+     "tile-img-006-384.webp 9k",
+     "tile-img-010-520.webp 14k",
+     "tile-img-009-520.webp 14k",
+     "tile-img-005-380.webp 25k",
+     "hero-img-018-tall-1000.webp 134k",
+     "tile-img-012-750.webp 58k"
+    ]
+   },
+   "after": {
+    "kb": 617,
+    "reqs": 15,
+    "hosts": [
+     "fonts.googleapis.com",
+     "self",
+     "fonts.gstatic.com"
+    ]
+   }
+  }
+ ],
+ "unique": [
+  {
+   "fcp": 528,
+   "lcp": [
+    {
+     "t": 528,
+     "size": 27072,
+     "el": "H1",
+     "url": ""
+    },
+    {
+     "t": 1512,
+     "size": 130662,
+     "el": "IMG.print p-007",
+     "url": "set-img-007-962.webp"
+    },
+    {
+     "t": 1656,
+     "size": 183300,
+     "el": "IMG.ground",
+     "url": "ground-img-002-phone.webp"
+    }
+   ],
+   "herofile": "ground-img-002-phone.webp",
+   "heroArea": "390x470",
+   "heroRes": {
+    "n": "ground-img-002-phone.webp",
+    "start": 295,
+    "end": 1624,
+    "type": "img"
+   },
+   "et": [
+    {
+     "id": "h1",
+     "t": 528,
+     "load": 0,
+     "url": "",
+     "size": "0x0"
+    },
+    {
+     "id": "img/ground-img-002-2000.webp",
+     "t": 1656,
+     "load": 1625,
+     "url": "ground-img-002-phone.webp",
+     "size": "900x1080"
+    }
+   ],
+   "fonts": [
+    887,
+    995
+   ],
+   "fontCss": [],
+   "first": {
+    "kb": 297,
+    "reqs": 7,
+    "hosts": [
+     "self",
+     "fonts.gstatic.com"
+    ],
+    "files": [
+     "set-img-006.webp 13k",
+     "a8IbNovtLWfR7T7bMJwrA4KR8TtctQ.wof 15k",
+     "_Xms-HUzqDCFdgfMm4S9DaRvzig.woff2 20k",
+     " 79k",
+     "print-img-005.webp 41k",
+     "set-img-007-962.webp 47k",
+     "ground-img-002-phone.webp 80k"
+    ]
+   },
+   "after": {
+    "kb": 614,
+    "reqs": 13,
+    "hosts": [
+     "self",
+     "fonts.gstatic.com"
+    ]
+   }
+  },
+  {
+   "fcp": 480,
+   "lcp": [
+    {
+     "t": 480,
+     "size": 27072,
+     "el": "H1",
+     "url": ""
+    },
+    {
+     "t": 1372,
+     "size": 130662,
+     "el": "IMG.print p-007",
+     "url": "set-img-007-962.webp"
+    },
+    {
+     "t": 1632,
+     "size": 183300,
+     "el": "IMG.ground",
+     "url": "ground-img-002-phone.webp"
+    }
+   ],
+   "herofile": "ground-img-002-phone.webp",
+   "heroArea": "390x470",
+   "heroRes": {
+    "n": "ground-img-002-phone.webp",
+    "start": 289,
+    "end": 1623,
+    "type": "img"
+   },
+   "et": [
+    {
+     "id": "h1",
+     "t": 480,
+     "load": 0,
+     "url": "",
+     "size": "0x0"
+    },
+    {
+     "id": "img/ground-img-002-2000.webp",
+     "t": 1632,
+     "load": 1624,
+     "url": "ground-img-002-phone.webp",
+     "size": "900x1080"
+    }
+   ],
+   "fonts": [
+    879,
+    986
+   ],
+   "fontCss": [],
+   "first": {
+    "kb": 297,
+    "reqs": 7,
+    "hosts": [
+     "self",
+     "fonts.gstatic.com"
+    ],
+    "files": [
+     "set-img-006.webp 13k",
+     "a8IbNovtLWfR7T7bMJwrA4KR8TtctQ.wof 15k",
+     "_Xms-HUzqDCFdgfMm4S9DaRvzig.woff2 20k",
+     " 79k",
+     "set-img-007-962.webp 47k",
+     "print-img-005.webp 41k",
+     "ground-img-002-phone.webp 80k"
+    ]
+   },
+   "after": {
+    "kb": 614,
+    "reqs": 13,
+    "hosts": [
+     "self",
+     "fonts.gstatic.com"
+    ]
+   }
+  },
+  {
+   "fcp": 480,
+   "lcp": [
+    {
+     "t": 480,
+     "size": 27072,
+     "el": "H1",
+     "url": ""
+    },
+    {
+     "t": 1376,
+     "size": 130662,
+     "el": "IMG.print p-007",
+     "url": "set-img-007-962.webp"
+    },
+    {
+     "t": 1636,
+     "size": 183300,
+     "el": "IMG.ground",
+     "url": "ground-img-002-phone.webp"
+    }
+   ],
+   "herofile": "ground-img-002-phone.webp",
+   "heroArea": "390x470",
+   "heroRes": {
+    "n": "ground-img-002-phone.webp",
+    "start": 287,
+    "end": 1623,
+    "type": "img"
+   },
+   "et": [
+    {
+     "id": "h1",
+     "t": 480,
+     "load": 0,
+     "url": "",
+     "size": "0x0"
+    },
+    {
+     "id": "img/ground-img-002-2000.webp",
+     "t": 1636,
+     "load": 1623,
+     "url": "ground-img-002-phone.webp",
+     "size": "900x1080"
+    }
+   ],
+   "fonts": [
+    880,
+    988
+   ],
+   "fontCss": [],
+   "first": {
+    "kb": 297,
+    "reqs": 7,
+    "hosts": [
+     "self",
+     "fonts.gstatic.com"
+    ],
+    "files": [
+     "set-img-006.webp 13k",
+     "a8IbNovtLWfR7T7bMJwrA4KR8TtctQ.wof 15k",
+     "_Xms-HUzqDCFdgfMm4S9DaRvzig.woff2 20k",
+     " 79k",
+     "set-img-007-962.webp 47k",
+     "print-img-005.webp 41k",
+     "ground-img-002-phone.webp 80k"
+    ]
+   },
+   "after": {
+    "kb": 614,
+    "reqs": 13,
+    "hosts": [
+     "self",
+     "fonts.gstatic.com"
+    ]
+   }
+  }
+ ]
+}

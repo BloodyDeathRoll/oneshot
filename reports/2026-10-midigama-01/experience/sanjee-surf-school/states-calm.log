@@ -1,0 +1,46 @@
+=== calm
+  phone {"y":60,"hdrBg":"rgba(0, 0, 0, 0)","hdrPos":"fixed","hdrH":64,"h1top":263,"h1bot":342,"bar":{"op":"1","tr":"matrix(1, 0, 0, 1, 0, 74.8)","vis":"hidden"}}
+  phone {"y":200,"hdrBg":"rgba(0, 0, 0, 0)","hdrPos":"fixed","hdrH":64,"h1top":123,"h1bot":202,"bar":{"op":"1","tr":"matrix(1, 0, 0, 1, 0, 74.8)","vis":"hidden"}}
+  phone {"y":400,"hdrBg":"rgba(0, 0, 0, 0)","hdrPos":"fixed","hdrH":64,"h1top":-77,"h1bot":2,"bar":{"op":"1","tr":"matrix(1, 0, 0, 1, 0, 74.8)","vis":"hidden"}}
+  phone {"y":560,"hdrBg":"rgb(255, 255, 255)","hdrPos":"fixed","hdrH":64,"h1top":-237,"h1bot":-158,"bar":{"op":"1","tr":"none","vis":"visible"}}
+  phone {"y":700,"hdrBg":"rgb(255, 255, 255)","hdrPos":"fixed","hdrH":64,"h1top":-377,"h1bot":-298,"bar":{"op":"1","tr":"none","vis":"visible"}}
+  laptop {"y":100,"hdrBg":"rgba(0, 0, 0, 0)","hdrPos":"fixed","hdrH":76,"h1top":188,"h1bot":254,"bar":{"op":"1","tr":"none","vis":"hidden"}}
+  laptop {"y":400,"hdrBg":"rgb(255, 255, 255)","hdrPos":"fixed","hdrH":76,"h1top":-112,"h1bot":-46,"bar":{"op":"1","tr":"none","vis":"visible"}}
+  laptop {"y":700,"hdrBg":"rgb(255, 255, 255)","hdrPos":"fixed","hdrH":76,"h1top":-412,"h1bot":-346,"bar":{"op":"1","tr":"none","vis":"visible"}}
+  laptop {"y":880,"hdrBg":"rgb(255, 255, 255)","hdrPos":"fixed","hdrH":76,"h1top":-592,"h1bot":-526,"bar":{"op":"1","tr":"none","vis":"visible"}}
+  menu links ["Lessons->#lessons","Boards->#boards","Sanjee->#sanjee","Waves->#waves","Tuk-tuk->#tuktuk","Finding us->#finding"]
+  menu tap "Waves" #waves {"y":6885,"targetTop":84,"hdrBottom":64,"open":false}
+  menu after Esc open=false
+  menu after outside tap open=false
+  wa.me links 22
+   [Ask on WhatsApp] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about surf lessons.
+   [Ask on WhatsApp] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about surf lessons.
+   [Ask on WhatsApp] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Beginner Lesson.
+   [Ask on WhatsApp] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about Private Coaching.
+   [Ask on WhatsApp] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Week Intensive.
+   [Ask on WhatsApp] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about surf lessons.
+   [Ask on WhatsApp] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about board rental.
+   [Ask on WhatsApp about the Surf Spot Safari tour] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Surf Spot Safari tour.
+   [Ask on WhatsApp about the Full Coast Adventure tour] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Full Coast Adventure tour.
+   [Ask on WhatsApp about the Sunrise Session tour] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Sunrise Session tour.
+   [Ask on WhatsApp about the Weligama Bay & Taprobane Island tour] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Weligama Bay & Taprobane Island tour.
+   [Ask on WhatsApp about the Midigama Reef Breaks tour] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Midigama Reef Breaks tour.
+   [Ask on WhatsApp about the Mirissa Beach & Coconut Tree Hill tour] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Mirissa Beach & Coconut Tree Hill tour.
+   [Ask on WhatsApp about the Ahangama & Kabalana tour] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Ahangama & Kabalana tour.
+   [Ask on WhatsApp about the Secret Beach Mirissa tour] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Secret Beach Mirissa tour.
+   [Ask on WhatsApp about the Turtle Bay & Snake Farm tour] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Turtle Bay & Snake Farm tour.
+   [Ask on WhatsApp about the Handunugoda Tea Estate tour] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Handunugoda Tea Estate tour.
+   [Ask on WhatsApp about the Galle Fort tour] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Galle Fort tour.
+   [Ask on WhatsApp about the Hiriketiya Bay tour] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Hiriketiya Bay tour.
+   [Ask on WhatsApp] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about surf lessons.
+   [Ask on WhatsApp] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about surf lessons.
+   [Ask on WhatsApp] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about surf lessons.
+  under 44 px targets []
+  overflow 390 vs 390
+  quotes start {"sl":0,"tr":"none","active":0,"h":12739,"trackH":298}
+  quotes swiped {"sl":342,"tr":"none","active":1,"h":12739,"trackH":298}
+  quotes dot 4 {"sl":1026,"tr":"none","active":3,"h":12739,"trackH":298}
+  hover cta {"tr":"none","sh":"none","bg":"rgb(222, 20, 70)"} -> {"tr":"none","sh":"none","bg":"rgb(194, 15, 59)"}
+  hover nav {"tr":"none","sh":"none","bg":"rgba(0, 0, 0, 0)"} -> {"tr":"none","sh":"none","bg":"rgba(255, 255, 255, 0.28)"}
+  hover row {"tr":"none","sh":"none","bg":"rgba(0, 0, 0, 0)"} -> {"tr":"none","sh":"none","bg":"rgb(210, 234, 247)"}
+  tab order ["Sanjee Surf School outline=solid 3px","Lessons outline=solid 3px","Boards outline=solid 3px","Sanjee outline=solid 3px","Waves outline=solid 3px","Tuk-tuk outline=solid 3px"]

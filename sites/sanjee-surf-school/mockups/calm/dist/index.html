@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sanjee Surf School | Surf lessons in Weligama</title>
+<meta name="description" content="Surf lessons in Weligama, on the south coast of Sri Lanka.">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sanjee Surf School | Surf lessons in Weligama">
+<meta property="og:description" content="Surf lessons in Weligama, on the south coast of Sri Lanka.">
+<meta property="og:image" content="img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Source+Sans+3:wght@400;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Source+Sans+3:wght@400;600&display=swap"></noscript>
+<link rel="preload" as="image" href="img/hero-m.webp" media="(max-width: 767px)">
+<link rel="preload" as="image" imagesrcset="img/hero-1400.webp 1400w, img/hero-2000.webp 1960w" imagesizes="100vw" media="(min-width: 768px)">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* The sand. Ground white, tint from the bay's shallows, ink from the school's navy tee, red from the learner's soft-top. */
+/* Fallbacks sized to the real faces (measured: Arial 8.7% wider than Source Sans 3, Brush Script 7.4% narrower than Mr Dafoe),
+   so the page does not rewrap and jump when the fonts arrive. */
+@font-face { font-family: 'Text Fallback'; font-weight: 400; src: local('Arial'), local('Helvetica'), local('Roboto'); size-adjust: 92%; ascent-override: 111%; descent-override: 43%; }
+@font-face { font-family: 'Text Fallback'; font-weight: 600; src: local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Bold'), local('Roboto Medium'); size-adjust: 90%; ascent-override: 113%; descent-override: 44%; }
+@font-face { font-family: 'Script Fallback'; src: local('Brush Script MT'); size-adjust: 108%; }
+:root {
+  --ground: #FFFFFF;
+  --tint: #D2EAF7;
+  --ink: #253864;
+  --sky: #5BB4FD;
+  --red: #DE1446;
+  --red-press: #C20F3B;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --text: 'Source Sans 3', 'Text Fallback', sans-serif;
+  --script: 'Mr Dafoe', 'Script Fallback', cursive;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 84px; }
+body { margin: 0; background: var(--ground); color: var(--ink); font: 400 18px/1.55 var(--text); -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
+img, svg { display: block; }
+img { max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p, ul { margin: 0; padding: 0; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; box-shadow: 0 0 0 7px var(--sky); border-radius: 6px; }
+
+/* ---- buttons: press to 0.97 over 120 ms */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 14px; font: 600 18px/1 var(--text); white-space: nowrap; touch-action: manipulation; user-select: none; -webkit-user-select: none; transition: transform 160ms var(--ease-out), background-color 160ms ease; }
+.btn:active { transform: scale(.97); transition-duration: 120ms, 160ms; }
+::selection { background: var(--tint); color: var(--ink); }
+.btn .ic { width: 22px; height: 22px; flex: none; }
+.btn-wa { background: var(--red); color: #fff; }
+.btn-soft { background: var(--tint); color: var(--ink); }
+.btn-sm { min-height: 44px; padding: 0 18px; font-size: 16px; border-radius: 12px; }
+.btn-icon { width: 52px; padding: 0; }
+@media (hover: hover) and (pointer: fine) {
+  .btn-wa:hover { background: var(--red-press); }
+  .btn-soft:hover { background: #BFE0F2; }
+}
+
+/* ---- header: ink on the sky, then white once the hero has gone */
+.top { position: absolute; z-index: 20; inset: 0 0 auto 0; display: flex; align-items: center; gap: 28px; height: 76px; padding: 0 40px; transition: background-color 200ms ease; }
+.js .top { position: fixed; }
+.top { color: #1C2C52; } /* a touch deeper than the ink: the sky is darkest at the zenith, and small text sits there. Measured, not a second brand colour */
+.top.solid { color: var(--ink); }
+.mark { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; font-size: 20px; margin-right: auto; }
+.nav { display: flex; gap: 4px; transform: translateX(214px); transition: transform 240ms var(--ease-out); }
+.top.armed .nav { transform: none; }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 10px; font-weight: 600; font-size: 16px; transition: background-color 160ms ease; }
+@media (hover: hover) and (pointer: fine) { .nav a:hover { background: rgba(255, 255, 255, .28); } .top.solid .nav a:hover { background: var(--tint); } }
+.top-book { width: 186px; padding: 0; opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 200ms ease, transform 200ms var(--ease-out), visibility 200ms, background-color 160ms ease; }
+.top.solid { background: var(--ground); }
+.top.armed .top-book { opacity: 1; visibility: visible; transform: none; }
+.menu { display: none; position: relative; }
+.menu summary { list-style: none; display: grid; place-items: center; width: 48px; height: 48px; margin-right: -10px; cursor: pointer; border-radius: 12px; }
+.menu summary::-webkit-details-marker { display: none; }
+.menu summary .ic { width: 26px; height: 26px; }
+.menu .m1, .menu .m2 { transform-origin: 12px 12px; transition: transform 200ms var(--ease-out); }
+.menu[open] .m1 { transform: translateY(4px) rotate(45deg); }
+.menu[open] .m2 { transform: translateY(-4px) rotate(-45deg); }
+.menu-panel { position: absolute; top: 58px; right: -6px; display: grid; min-width: 214px; padding: 8px; background: var(--ground); border-radius: 16px; box-shadow: 0 12px 36px rgba(37, 56, 100, .18); transform-origin: top right; animation: menu-in 200ms var(--ease-out); }
+.menu-panel a { display: flex; align-items: center; min-height: 48px; padding: 0 14px; border-radius: 10px; font-weight: 600; }
+.menu-panel a:active { background: var(--tint); }
+@keyframes menu-in { from { opacity: 0; transform: scale(.97) translateY(-4px); } }
+
+/* ---- first screen: the bay, and the white page coming up to your feet */
+.hero { --hh: 90; position: relative; height: 90vh; height: 90svh; min-height: 540px; overflow: hidden; background: linear-gradient(#3F9FF2, #79C2FB 62%, #2E90B4 80%, #E9DEC8 97%); }
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; transform-origin: 50% 100%; }
+/* The bay settles once, slowly, as the wash comes in, then stays. Transform only, and off under reduced motion. */
+.js .hero-img { transform: scale(1.035); }
+.js.go .hero-img { animation: bay 14s var(--ease-out) both; }
+@keyframes bay { from { transform: scale(1.035); } to { transform: none; } }
+/* The words sit in the open sky, their foot a fixed distance above the palm tops at any window shape.
+   The palm tops are 590 of the crop's 1225 rows above its foot (cover scale: vw/1960, or .9vh/1225 at a 90 svh hero).
+   On a very short window they stop under the header instead. */
+.hero-words { --palms: max(30.1vw, 43.4vh); position: absolute; left: 0; right: 0; bottom: min(calc(var(--palms) + 34px), calc(100% - 232px)); display: grid; justify-items: center; gap: 26px; padding: 0 24px; text-align: center; }
+h1 { font: 600 clamp(36px, 4.4vw, 60px)/1.1 var(--text); letter-spacing: -.005em; text-wrap: balance; }
+
+/* The wash: one long soft edge, all of it on the strip of sand. It comes in once over 1.4 s, its film of water
+   running a little ahead and draining away to nothing, so what stays is only the soft white edge. */
+.wash { --h: clamp(30px, 3.4vw, 52px); position: absolute; left: -10px; bottom: calc(var(--h) * -.4); width: calc(100% + 20px); height: calc(var(--h) * 1.4); fill: var(--ground); filter: blur(1px); } /* 10 px past each side, or the blur shows a faint edge */
+.wash.film { opacity: 0; filter: blur(3px); }
+.js .wash:not(.film) { transform: translate3d(0, 40px, 0); }
+.js.go .wash:not(.film) { animation: wash 1400ms 1 both; }
+.js .wash.film { transform: translate3d(0, 40px, 0); }
+.js.go .wash.film { animation: wash-film 1400ms 1 both; }
+@keyframes wash {
+  0% { transform: translate3d(0, 40px, 0); animation-timing-function: var(--ease-out); }
+  70% { transform: translate3d(0, -7px, 0); animation-timing-function: var(--ease-in-out); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+@keyframes wash-film {
+  0% { transform: translate3d(0, 40px, 0); opacity: 0; animation-timing-function: var(--ease-out); }
+  55% { transform: translate3d(0, -20px, 0); opacity: .7; animation-timing-function: var(--ease-in-out); }
+  100% { transform: translate3d(0, -6px, 0); opacity: 0; }
+}
+
+/* The surfer: a print that sits over the foot of the bay and the wash, half on the first screen, half on the page. */
+.hero-print { position: relative; z-index: 2; width: min(480px, 100% - 48px); margin: -236px 0 0 max(24px, calc(50vw - 660px)); box-shadow: 0 18px 44px rgba(37, 56, 100, .26); background: #3F7E86; }
+
+/* ---- the page: one left edge at 1080, text held to a reading measure inside it, full-bleed for pictures */
+h2 { font: 400 clamp(40px, 4.6vw, 64px)/1.12 var(--script); font-synthesis: none; word-spacing: .1em; margin-bottom: 18px; }
+h3 { font: 600 24px/1.25 var(--text); }
+p { text-wrap: pretty; }
+p + p { margin-top: 14px; }
+.sec { padding: 112px 0 0; }
+.wrap-read { width: min(720px, 100% - 48px); margin-inline: auto; }
+.wrap-wide { width: min(1080px, 100% - 48px); margin-inline: auto; }
+.measure p { max-width: 66ch; }
+.lead { font-size: 28px; line-height: 1.3; margin-bottom: 52px; text-wrap: balance; }
+.split { display: grid; gap: 64px; align-items: center; }
+.s75 { grid-template-columns: 7fr 5fr; }
+.s57 { grid-template-columns: 5fr 7fr; }
+.split-text p:not(.lead):not(.pl) { max-width: 58ch; }
+.print { border-radius: 16px; overflow: hidden; }
+.print img { width: 100%; }
+.js .print:not(.in) { transform: translateY(8px); }
+.js .print { transition: transform 480ms var(--ease-out); }
+
+/* ---- lessons: three rows on the shallows' tint */
+.rows { list-style: none; display: grid; gap: 14px; margin-top: 40px; }
+.row { display: grid; grid-template-columns: 1fr auto; gap: 24px 48px; align-items: start; padding: 32px 36px; background: var(--tint); border-radius: 20px; }
+/* Details separated by " | ". Every separator sits in its item's left padding and the list is pulled left by that
+   padding and clipped there, so one that would start a wrapped line is simply not shown. No script needed. */
+.pl { --gap: 1.3em; display: flex; flex-wrap: wrap; margin-top: 6px; margin-left: calc(var(--gap) * -1); clip-path: inset(0 0 0 var(--gap)); font-weight: 600; font-size: 16px; }
+.pi { position: relative; padding-left: var(--gap); }
+.pi::before { content: '|'; position: absolute; left: .5em; font-weight: 400; }
+.inc { margin-top: 8px; max-width: 54ch; }
+.row-more { margin-top: 14px; max-width: 54ch; }
+.row-buy { display: grid; justify-items: end; gap: 14px; min-width: 214px; }
+.price { font-size: 32px; line-height: 1.1; font-weight: 600; text-align: right; font-variant-numeric: lining-nums; }
+.unit { display: block; margin-top: 4px; font-size: 16px; font-weight: 400; }
+.after-rows { margin-top: 28px; }
+.decide { display: grid; grid-template-columns: 7fr 5fr; grid-template-areas: "before rate" "before buy"; column-gap: 64px; row-gap: 22px; margin-top: 64px; align-content: start; }
+.d-rate { grid-area: rate; align-self: end; }
+.d-before { grid-area: before; }
+.d-before p { max-width: 58ch; }
+.d-buy { grid-area: buy; align-self: start; }
+.rate a { display: inline-flex; align-items: center; gap: 16px; min-height: 44px; padding: 6px 18px 6px 0; border-radius: 14px; transition: transform 120ms var(--ease-out); }
+.rate a:active { transform: scale(.97); }
+.rate-score { font-size: 40px; line-height: 1; font-weight: 600; }
+.rate-words { display: grid; font-size: 16px; line-height: 1.3; font-weight: 600; text-align: left; }
+.rate-date { font-weight: 400; }
+.block-book { margin-top: 26px; }
+
+/* ---- the band: the one other full-colour moment */
+.band { position: relative; margin-top: 120px; height: 70vh; height: 70svh; min-height: 460px; overflow: hidden; background: #A6BCDD; }
+.band img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
+.feature { position: absolute; left: 0; right: 0; top: clamp(20px, 3.6vw, 56px); padding: 0 24px; font: 400 clamp(36px, 4.6vw, 64px)/1.1 var(--script); word-spacing: .1em; text-align: center; text-wrap: balance; }
+
+/* ---- boards */
+.boards .split { align-items: start; }
+.rates table { width: calc(100% + 24px); margin-inline: -12px; border-collapse: separate; border-spacing: 0; font-variant-numeric: tabular-nums lining-nums; }
+.rates th, .rates td { padding: 11px 12px; text-align: left; font-weight: 400; vertical-align: baseline; }
+.rates th[scope="row"] { font-weight: 600; border-radius: 10px 0 0 10px; }
+.rates thead th { padding-top: 0; font-weight: 600; font-size: 16px; }
+.rates td:last-child { border-radius: 0 10px 10px 0; }
+.rates .note { font-size: 16px; }
+.rates tbody tr { transition: background-color 160ms ease; }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (hover: hover) and (pointer: fine) { .rates tbody tr:hover { background: var(--tint); } .tour:hover { background: var(--tint); } .rate a:hover .rate-words { opacity: .78; } }
+.extras { list-style: none; margin-top: 30px; display: grid; gap: 8px; }
+.extras li { display: flex; justify-content: space-between; gap: 24px; }
+.extra-price { font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums lining-nums; }
+
+/* ---- Sanjee */
+.print-sanjee { max-width: 460px; }
+.said p { font-size: 24px; line-height: 1.38; }
+.sanjee .pl { margin-top: 24px; font-size: 16px; line-height: 1.5; }
+
+/* ---- guests: one quote at a time */
+.guests { text-align: center; }
+.rate-head { margin: 0; font: inherit; word-spacing: normal; }
+.track { display: flex; align-items: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-top: 28px; -webkit-overflow-scrolling: touch; border-radius: 12px; transition: height 240ms var(--ease-out); }
+.track::-webkit-scrollbar { display: none; }
+.slide { flex: 0 0 100%; margin: 0; padding: 0 4px; scroll-snap-align: start; display: grid; gap: 18px; }
+.slide blockquote { margin: 0; font-size: 24px; line-height: 1.42; }
+.slide figcaption { font-weight: 600; font-size: 16px; }
+.src { font-weight: 400; }
+.dots { display: none; justify-content: center; margin-top: 14px; }
+.js .dots { display: flex; }
+.dot { position: relative; width: 44px; height: 44px; padding: 0; border: 0; background: none; cursor: pointer; touch-action: manipulation; }
+.dot::before { content: ''; position: absolute; left: 8px; right: 8px; top: 18px; height: 8px; background: #7F8BA6; clip-path: inset(0 10px round 4px); transition: clip-path 350ms var(--ease-out), background-color 200ms ease; }
+.dot[aria-current="true"]::before { background: var(--sky); clip-path: inset(0 0 round 4px); }
+
+/* ---- outside: the spot in the text face, then the school's own pictures together, every one its own shape */
+.spot { display: grid; grid-template-columns: 7fr 5fr; column-gap: 64px; align-items: start; }
+.h-text { font: 600 32px/1.22 var(--text); word-spacing: normal; margin: 0; text-wrap: balance; }
+.mosaic { columns: 3; column-gap: 12px; width: min(1320px, 100% - 48px); margin: 56px auto 0; }
+.mosaic .print { break-inside: avoid; margin-bottom: 12px; border-radius: 10px; }
+.ladder { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 48px; row-gap: 8px; margin-top: 84px; align-items: start; }
+.ladder h2 { grid-column: 1 / -1; }
+.ladder p { margin: 0; }
+
+/* ---- along the coast: the three that look for waves beside a print, the nine outings below, compact and close */
+.coast .measure { display: grid; grid-template-columns: 1fr 1fr; column-gap: 64px; }
+.coast .measure h2 { grid-column: 1 / -1; }
+.coast .measure p { margin: 0 0 14px; max-width: none; }
+.surf-tours { display: grid; grid-template-columns: 7fr 5fr; column-gap: 64px; align-items: center; margin-top: 28px; }
+.tours { list-style: none; display: grid; gap: 2px; }
+.tours-9 { display: block; columns: 2; column-gap: 40px; margin-top: 32px; }
+.tours-9 .tour { break-inside: avoid; }
+.tour { display: grid; grid-template-columns: 1fr 44px; gap: 8px 16px; align-items: center; padding: 11px 12px; margin-inline: -12px; border-radius: 14px; transition: background-color 160ms ease; }
+/* name and price on one line; when the name fills it, the price wraps and its " | " is clipped, as in .pl */
+.tour h3 { --gap: 1.3em; display: flex; flex-wrap: wrap; margin-left: calc(var(--gap) * -1); clip-path: inset(0 0 0 var(--gap)); font-size: 18px; line-height: 1.3; }
+.tour-name { padding-left: var(--gap); }
+.tour-price { position: relative; padding-left: var(--gap); white-space: nowrap; font-variant-numeric: lining-nums; }
+.tour-price::before { content: '|'; position: absolute; left: .5em; font-weight: 400; }
+.tour p { margin: 2px 0 0; font-size: 16px; line-height: 1.4; }
+/* quiet at rest, red when it is about to be used */
+.btn-round { width: 44px; min-height: 44px; padding: 0; border-radius: 12px; background: var(--tint); color: var(--ink); }
+.btn-round:active, .btn-round:focus-visible { background: var(--red); color: #fff; }
+@media (hover: hover) and (pointer: fine) { .btn-round:hover { background: var(--red); color: #fff; } .tour:hover .btn-round { background: var(--red); color: #fff; } }
+.pricedate { margin-top: 18px; font-size: 16px; }
+.skip { position: absolute; z-index: 40; left: 12px; top: -80px; padding: 12px 18px; background: var(--ground); border-radius: 10px; font-weight: 600; transition: top 120ms var(--ease-out); }
+.skip:focus { top: 12px; }
+
+/* ---- back on the sand */
+.closing { display: grid; grid-template-columns: 1fr 1fr; margin-top: 120px; }
+.closing-text { padding: 72px 40px 96px max(24px, calc(50vw - 540px)); align-self: center; }
+.addr { font-weight: 600; }
+.closing-text .btn-soft { margin-top: 20px; }
+.close-line { margin-top: 44px; font-size: 24px; line-height: 1.34; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.actions .btn-soft { margin-top: 0; }
+.closing-pic { position: relative; min-height: 560px; overflow: hidden; }
+.closing-pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; }
+
+/* ---- footer: the same line, in the bay's pale shallows, coming up over the wet sand at the foot of the picture */
+.foot { position: relative; z-index: 1; overflow-x: clip; display: grid; justify-items: center; gap: 4px; padding: 48px 24px 72px; background: var(--tint); text-align: center; }
+.foot .tide { --h: clamp(30px, 3.4vw, 52px); position: absolute; left: -10px; bottom: calc(100% - 8px); width: calc(100% + 20px); height: var(--h); fill: var(--tint); pointer-events: none; filter: blur(1px); } /* overlaps the footer and runs past the sides, or the blur leaves a hairline of photograph */
+.foot-name { font: 400 40px/1.1 var(--script); word-spacing: .14em; }
+.foot .actions { justify-content: center; margin-top: 18px; }
+.foot .btn-soft { background: var(--ground); }
+.foot-addr { margin-top: 18px; }
+@media (hover: hover) and (pointer: fine) { .foot .btn-soft:hover { background: #F0F8FC; } }
+
+/* ---- phone bar */
+.bar { position: fixed; z-index: 15; left: 0; right: 0; bottom: 0; display: none; gap: 8px; padding: 8px 12px calc(8px + env(safe-area-inset-bottom)); background: var(--ground); }
+.bar .bar-book { flex: 1; }
+.js .bar { transform: translateY(110%); visibility: hidden; transition: transform 240ms var(--ease-drawer), visibility 240ms; } /* hidden too, so Tab never lands off screen */
+.js .bar.on { transform: none; visibility: visible; }
+
+/* Under 1024 the six nav links no longer fit beside the name: the menu and the bottom bar take over. */
+@media (max-width: 1023px) {
+  .nav, .top-book { display: none; }
+  .menu { display: block; }
+  .bar { display: flex; }
+  .foot { padding-bottom: calc(92px + env(safe-area-inset-bottom)); }
+}
+@media (max-width: 767px) {
+  body { font-size: 18px; }
+  .top { height: calc(64px + env(safe-area-inset-top)); padding: env(safe-area-inset-top) 20px 0; }
+  .sec { padding-top: 72px; }
+  .coast .measure { grid-template-columns: 1fr; }
+  .spot { grid-template-columns: 1fr; row-gap: 14px; }
+  .h-text { font-size: 28px; }
+  .mosaic { columns: 2; column-gap: 8px; width: calc(100% - 16px); margin-top: 36px; }
+  .mosaic .print { margin-bottom: 8px; }
+  .surf-tours { grid-template-columns: 1fr; row-gap: 20px; }
+  .tours-9 { columns: 1; margin-top: 20px; }
+  /* boards on a phone: the first paragraph, then the table, then the small print */
+  .boards .split { gap: 14px; }
+  .boards .split-text { display: contents; }
+  .boards .split-text h2 { order: 1; }
+  .boards .split-text p:first-of-type { order: 2; }
+  .boards .rates { order: 3; margin-block: 12px; }
+  .boards .split-text p { order: 4; margin: 0; }
+  .lead { font-size: 24px; margin-bottom: 36px; text-wrap: pretty; }
+  .split, .s75, .s57 { grid-template-columns: 1fr; gap: 28px; }
+  .decide { grid-template-columns: 1fr; grid-template-areas: "rate" "before" "buy"; margin-top: 40px; row-gap: 32px; }
+  .d-buy .btn { width: 100%; }
+  .row { grid-template-columns: 1fr; padding: 24px 20px; }
+  .row-buy { justify-items: stretch; min-width: 0; }
+  .price { text-align: left; }
+  .row-buy .btn { width: 100%; }
+  .block-book { width: 100%; }
+  .band { margin-top: 72px; height: 76svh; }
+  .print-sanjee { max-width: none; }
+  .rates th, .rates td { padding: 9px 8px; }
+  .rates tr { display: grid; grid-template-columns: 1.25fr .9fr .9fr; }
+  .rates thead .note { display: none; }
+  .rates td.note { grid-column: 1 / -1; padding-top: 0; font-size: 15px; }
+  .rates td.note:empty { display: none; }
+  .rates th[scope="row"] { border-radius: 10px 0 0 0; }
+  .slide blockquote { font-size: 20px; }
+  .said p { font-size: 20px; }
+  .ladder { grid-template-columns: 1fr; margin-top: 56px; row-gap: 14px; }
+  .tour { padding: 10px 12px; }
+  .closing { grid-template-columns: 1fr; margin-top: 72px; }
+  .closing-pic { min-height: 0; height: 82vw; }
+  .closing-text { padding: 0 24px 48px; }
+  .actions .btn { flex: 1 1 100%; }
+  .foot { padding-top: 40px; }
+  .foot .actions .btn { padding-inline: 14px; }
+  .hero { height: 80vh; height: 80svh; min-height: 500px; }
+  .hero-words { --palms: max(85.7vw, 31.7vh); gap: 22px; bottom: min(calc(var(--palms) + 28px), calc(100% - 222px)); }
+  .hero-print { width: calc(100% - 48px); margin: -112px auto 0; }
+  .wash { --h: 26px; width: 240%; left: -70%; }
+  .foot .tide { --h: 22px; width: 240%; left: -70%; }
+}
+@media (max-width: 1023px) and (scripting: none) { body { padding-bottom: 68px; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .wash:not(.film), .js.go .wash:not(.film) { transform: none; animation: none; }
+  .js .wash.film, .js.go .wash.film { transform: none; opacity: 0; animation: none; }
+  .js .hero-img, .js.go .hero-img { transform: none; animation: none; }
+  .menu-panel { animation: none; }
+  .btn, .top, .nav, .top-book, .bar, .js .bar, .menu .m1, .menu .m2, .dot::before, .rate a { transition-duration: 1ms; }
+  .js .print, .js .print:not(.in) { transform: none; transition: none; }
+  .track, .btn-round, .tour, .skip { transition-duration: 1ms; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#lessons">Skip to lessons</a>
+<header class="top" id="top">
+  <a class="mark" href="#top">Sanjee Surf School</a>
+  <nav class="nav" aria-label="Sections"><a href="#lessons">Lessons</a><a href="#boards">Boards</a><a href="#sanjee">Sanjee</a><a href="#waves">Waves</a><a href="#tuktuk">Tuk-tuk</a><a href="#finding">Finding us</a></nav>
+  <a class="btn btn-wa btn-sm top-book" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20surf%20lessons."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg><span>Ask on WhatsApp</span></a>
+  <details class="menu">
+    <summary aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path class="m1" fill="currentColor" d="M3 7h18v2H3z"/><path class="m2" fill="currentColor" d="M3 15h18v2H3z"/></svg></summary>
+    <nav class="menu-panel" aria-label="Sections, phone"><a href="#lessons">Lessons</a><a href="#boards">Boards</a><a href="#sanjee">Sanjee</a><a href="#waves">Waves</a><a href="#tuktuk">Tuk-tuk</a><a href="#finding">Finding us</a></nav>
+  </details>
+</header><main id="main">
+<section class="hero" aria-label="Sanjee Surf School">
+  <picture>
+    <source media="(max-width: 767px)" srcset="img/hero-m.webp" width="692" height="1500">
+    <img class="hero-img" src="img/hero-1400.webp" srcset="img/hero-1400.webp 1400w, img/hero-2000.webp 1960w" sizes="100vw"
+      width="1960" height="1224" alt="A blue bay seen from the sand under a clear sky, with a rust-red headland, palms and tiled roofs on the right" fetchpriority="high">
+  </picture>
+  <div class="hero-words">
+    <h1>Surf lessons in Weligama</h1>
+    <a class="btn btn-wa hero-book" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20surf%20lessons."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg><span>Ask on WhatsApp</span></a>
+  </div>
+  <svg class="wash film" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true"><path d="M0 89.2C20 87.8 80 86.5 120 80.9C160 75.2 200 61.9 240 55.4C280 48.8 320 43.3 360 41.7C400 40.1 440 43.8 480 45.7C520 47.5 560 49.3 600 52.7C640 56.1 680 63.1 720 65.9C760 68.8 800 69.9 840 69.8C880 69.6 920 66.8 960 64.9C1000 63.1 1040 59.6 1080 58.5C1120 57.4 1160 58.3 1200 58.4C1240 58.5 1280 58 1320 58.9C1360 59.8 1420 62.8 1440 63.6V140H0Z"/></svg>
+  <svg class="wash" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true"><path d="M0 89.2C20 87.8 80 86.5 120 80.9C160 75.2 200 61.9 240 55.4C280 48.8 320 43.3 360 41.7C400 40.1 440 43.8 480 45.7C520 47.5 560 49.3 600 52.7C640 56.1 680 63.1 720 65.9C760 68.8 800 69.9 840 69.8C880 69.6 920 66.8 960 64.9C1000 63.1 1040 59.6 1080 58.5C1120 57.4 1160 58.3 1200 58.4C1240 58.5 1280 58 1320 58.9C1360 59.8 1420 62.8 1440 63.6V140H0Z"/></svg>
+</section><div class="print hero-print"><img src="img/wave.webp" width="780" height="440" alt="A surfer turning across a green wave with white water breaking behind" decoding="async"></div>
+<section class="sec shallows" id="who">
+  <div class="split s75 wrap-wide">
+    <div class="split-text">
+      <p class="lead">Surf lessons in Weligama, on the south coast of Sri Lanka.</p>
+      <h2>Who we teach</h2>
+      <p>You can come to us as a total beginner, a beginner who can already stand up, an intermediate or an advanced surfer.</p><p>Lessons are in English as standard.</p>
+    </div>
+    <div class="print "><img src="img/lesson.webp" width="618" height="464" alt="An instructor and a student on the sand, knees bent in pop-up stance on a blue and a red soft-top" loading="lazy" decoding="async"></div>
+  </div>
+</section>
+
+<section class="sec lessons" id="lessons">
+  <div class="wrap-wide measure">
+    <h2>Lessons</h2>
+    <p>Every lesson includes professional instruction and a beach safety briefing. Board and rash guard rental is in the price too.</p>
+  </div>
+  <ul class="rows wrap-wide">
+    <li class="row">
+      <div class="row-text">
+        <h3>Beginner Lesson</h3>
+        <p class="pl"><span class="pi">Total beginner, beginner</span><span class="pi">2 hours</span></p>
+        <p class="inc">Safety basics and ocean awareness, board handling, paddle and pop-up practice, catching your first waves</p>
+        
+      </div>
+      <div class="row-buy">
+        <p class="price">USD 40<span class="unit">per lesson</span></p>
+        <a class="btn btn-wa " href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Beginner%20Lesson." aria-label="Ask on WhatsApp about the Beginner Lesson"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg><span>Ask on WhatsApp</span></a>
+      </div>
+    </li>
+    <li class="row">
+      <div class="row-text">
+        <h3>Private Coaching</h3>
+        <p class="pl"><span class="pi">Beginner, intermediate, advanced</span><span class="pi">2 hours</span><span class="pi">One-on-one</span></p>
+        <p class="inc">Customized learning pace, flexible scheduling</p>
+        
+      </div>
+      <div class="row-buy">
+        <p class="price">USD 50<span class="unit">per lesson</span></p>
+        <a class="btn btn-wa " href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20Private%20Coaching." aria-label="Ask on WhatsApp about Private Coaching"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg><span>Ask on WhatsApp</span></a>
+      </div>
+    </li>
+    <li class="row">
+      <div class="row-text">
+        <h3>Week Intensive</h3>
+        <p class="pl"><span class="pi">5 private sessions</span><span class="pi">2 hours each</span></p>
+        <p class="inc">Progress tracking, photo/video memories</p>
+        <div class="row-more"><p>The Week Intensive is spread across 10 days, so you can pick your best days. After 2 hours of surfing, your muscles will be happily exhausted. Get in touch beforehand and we&#x27;ll work out which days and times suit you.</p></div>
+      </div>
+      <div class="row-buy">
+        <p class="price">USD 160</p>
+        <a class="btn btn-wa " href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Week%20Intensive." aria-label="Ask on WhatsApp about the Week Intensive"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg><span>Ask on WhatsApp</span></a>
+      </div>
+    </li>
+  </ul>
+  <div class="wrap-wide after-rows">
+    <p>For group bookings, please leave us a message.</p>
+    <div class="decide">
+      <div class="d-rate"><p class="rate "><a href="https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en" rel="noopener"><span class="rate-score">5/5</span> <span class="rate-words"><span>13 Google reviews</span> <span class="rate-date">as of 5 November 2026</span></span></a></p></div>
+      <div class="d-before">
+        <h2>Before you book</h2>
+        <p>You need to be able to swim at least 50 meters unaided.</p><p>We teach kids from age 6 and up. Anyone under 18 must be accompanied by a parent or legal guardian.</p><p>Cash on the day can be LKR, USD or EUR. All prices are as of 5 November 2026.</p>
+      </div>
+      <div class="d-buy"><a class="btn btn-wa " href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20surf%20lessons."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg><span>Ask on WhatsApp</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-label="Making waves, one lesson at a time.">
+  <picture>
+    <source media="(max-width: 767px)" srcset="img/band-m.webp" width="740" height="1066">
+    <img src="img/band-1600.webp" width="1600" height="1067" alt="One surfer paddling towards a low aqua wave, seen from behind, with a pale sky above the horizon" loading="lazy" decoding="async">
+  </picture>
+  <p class="feature">Making waves, one lesson at a time.</p>
+</section>
+
+<section class="sec sanjee" id="sanjee">
+  <div class="split s57 wrap-wide">
+    <div class="print print-sanjee"><img src="img/sanjee.webp" width="676" height="844" alt="Sanjee smiling as he walks out of the shallows with a surfboard under his arm, a rust-coloured cliff behind him" loading="lazy" decoding="async"></div>
+    <div class="split-text">
+      <h2>Sanjee, head instructor</h2>
+      <div class="said"><p>I was born in Weligama and learned to surf on a broken board my uncle fixed with resin and hope.</p><p>Today I teach surfers from all over the world — and I still paddle out every single morning.</p></div>
+      <p class="pl"><span class="pi">ISA Level 1 Surf Instructor, International Surfing Association</span><span class="pi">Certified Surf Lifeguard, Sri Lanka Lifesaving</span></p>
+      <p class="pl"><span class="pi">Languages: English</span><span class="pi">Sinhala</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec guests" id="guests">
+  <h2 class="rate rate-head"><a href="https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en" rel="noopener"><span class="rate-score">5/5</span> <span class="rate-words"><span>13 Google reviews</span> <span class="rate-date">as of 5 November 2026</span></span></a></h2>
+  <div class="show wrap-read" role="region" aria-roledescription="carousel" aria-label="Reviews on Google">
+    <div class="track" tabindex="0">
+      <figure class="slide" role="group" aria-roledescription="slide" aria-label="1 of 4">
+        <blockquote lang="en">I would definitely recommend going out with Sanjee. I spent two mornings surfing with him and it was amazing. He made sure I was always in the best positions to catch the wave on the local break, meaning I was catching far more waves than if i was on my own. He is very friendly and a joy to surf with.</blockquote>
+        <figcaption>hal starkie <span class="src">| Google</span></figcaption>
+      </figure>
+      <figure class="slide" role="group" aria-roledescription="slide" aria-label="2 of 4">
+        <blockquote lang="en">Sanjee is an outstanding surf coach. After just 7 intensive training days, he gave me the confidence to surf bigger waves and significantly improve my level. His teaching is clear, professional, and very motivating. I highly recommend him to anyone who wants to progress safely and effectively.”</blockquote>
+        <figcaption>Rossana Encina <span class="src">| Google</span></figcaption>
+      </figure>
+      <figure class="slide" role="group" aria-roledescription="slide" aria-label="3 of 4">
+        <blockquote lang="en">Sanjee is one the best coaches there is to learn surfing.  He was very patient. And supportive.  I was able to catch waves and stand on my board till close to the shore in the first session itself. Id definitely recommend him and would come again to learn from him for intermediate and advanced course as well.</blockquote>
+        <figcaption>samagra singh <span class="src">| Google</span></figcaption>
+      </figure>
+      <figure class="slide" role="group" aria-roledescription="slide" aria-label="4 of 4">
+        <blockquote lang="en">Great guy. Better then most other surf instructors i met before. Very calm and patient. Highly recommend.</blockquote>
+        <figcaption>Tim St <span class="src">| Google</span></figcaption>
+      </figure>
+    </div>
+    <div class="dots" role="group" aria-label="Choose a review"></div>
+  </div>
+</section>
+
+<section class="sec boards" id="boards">
+  <div class="split s57 wrap-wide">
+    <div class="split-text">
+      <h2>Board rental</h2>
+      <p>Our shop sits 30 seconds from the sand at Coco Beach, Weligama. Free dry storage there while you eat or rest between sessions.</p><p>We rent soft-top foamies 8&#x27;0–9&#x27;0, mini-mals 7&#x27;2–7&#x27;10, mid-lengths and funboards 6&#x27;8–7&#x27;4, fish and hybrids 5&#x27;8–6&#x27;4, performance shortboards 5&#x27;10–6&#x27;2 and longboards 9&#x27;0–9&#x27;4.</p><p>Each board comes with a leash sized for it (6 ft – 9 ft) and fins fitted to your style (FCS-II or Futures). You also get wax for tropical water and a fresh wax comb.</p><p>To rent a board we need an ID or passport copy and a refundable deposit. Ask us how much it is.</p>
+    </div>
+    <div class="rates">
+      <table role="table">
+        <thead><tr role="row"><th role="columnheader" scope="col">Duration</th><th role="columnheader" scope="col">Soft-top</th><th role="columnheader" scope="col">Hardboard</th><th role="columnheader" scope="col" class="note"><span class="vh">Note</span></th></tr></thead>
+        <tbody><tr role="row"><th role="rowheader" scope="row">1 hour</th><td role="cell">USD 5</td><td role="cell">USD 7</td><td role="cell" class="note">Walk-in</td></tr><tr role="row"><th role="rowheader" scope="row">2 hours</th><td role="cell">USD 8</td><td role="cell">USD 12</td><td role="cell" class="note">One full session</td></tr><tr role="row"><th role="rowheader" scope="row">Half day (4 h)</th><td role="cell">USD 12</td><td role="cell">USD 18</td><td role="cell" class="note">Dawn or afternoon session</td></tr><tr role="row"><th role="rowheader" scope="row">Full day (24 h)</th><td role="cell">USD 15</td><td role="cell">USD 20</td><td role="cell" class="note">Two sessions + sunset</td></tr><tr role="row"><th role="rowheader" scope="row">3 days</th><td role="cell">USD 36</td><td role="cell">USD 50</td><td role="cell" class="note"></td></tr><tr role="row"><th role="rowheader" scope="row">7 days</th><td role="cell">USD 70</td><td role="cell">USD 95</td><td role="cell" class="note"></td></tr><tr role="row"><th role="rowheader" scope="row">14 days</th><td role="cell">USD 120</td><td role="cell">USD 170</td><td role="cell" class="note"></td></tr><tr role="row"><th role="rowheader" scope="row">Monthly</th><td role="cell">USD 220</td><td role="cell">USD 310</td><td role="cell" class="note"></td></tr></tbody>
+      </table>
+      <ul class="extras"><li><span>Bodyboard</span><span class="extra-price">USD 5 per day</span></li><li><span>Rashguard (UV long-sleeve), to buy</span><span class="extra-price">USD 12</span></li><li><span>Reef booties, to buy, per pair</span><span class="extra-price">USD 15</span></li></ul>
+      <p class="pricedate">All prices are as of 5 November 2026.</p>
+      <a class="btn btn-wa block-book" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20board%20rental." aria-label="Ask on WhatsApp about board rental"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg><span>Ask on WhatsApp</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec outside" id="waves">
+  <div class="spot wrap-wide">
+    <h2 class="h-text">Coco Beach is our home spot, a beach break.</h2>
+    <div>
+      <p>Smaller crowds than the main peak and a friendly, mellow vibe, ideal for first pop-ups.</p>
+      <p>Best surf season runs November to April; peak swell and dry weather are December–February.</p>
+    </div>
+  </div>
+  <div class="mosaic">
+    <div class="print "><img src="img/m-sunset.webp" width="860" height="1146" alt="An orange sunset over a breaking shore wave, with surfers small and dark in the water further out" loading="lazy" decoding="async"></div>
+    <div class="print "><img src="img/m-poles.webp" width="860" height="646" alt="Bare stilt poles standing in the shallows under a blue sky with thin cloud, seabirds perched on two of them" loading="lazy" decoding="async"></div>
+    <div class="print "><img src="img/m-beach.webp" width="860" height="646" alt="An empty sand beach with wooden posts in the foreground, white water breaking on the left and palms running down the coast under a deep blue sky" loading="lazy" decoding="async"></div>
+    <div class="print "><img src="img/m-dogs.webp" width="860" height="1146" alt="Four beach dogs in silhouette on the sand, looking out to sea at a red sun on the horizon" loading="lazy" decoding="async"></div>
+    <div class="print "><img src="img/m-silver.webp" width="860" height="1146" alt="Sun high behind thin cloud, silver light on the shore waves and on the wet sand" loading="lazy" decoding="async"></div>
+    <div class="print "><img src="img/m-thatch.webp" width="860" height="646" alt="Three thatched parasols on the sand with lines of surf breaking behind them under a grey sky" loading="lazy" decoding="async"></div>
+  </div>
+  <div class="ladder wrap-wide">
+    <h2>Other waves, as we rate them</h2>
+    <p>Jungle Beach and Weligama Main Point are both beach breaks we&#x27;d call beginner waves. Mirissa, also a beach break, goes from beginner to intermediate.</p>
+    <p>For intermediates there&#x27;s Fishermans (a reef break), Island Point (a point break), Plantation Point (a right-hand reef) and Lazy Left in Midigama, a long left-hand reef. Lazy Right, also in Midigama, is a right-hand reef that goes from intermediate to advanced.</p>
+    <p>Ram&#x27;s Right, a reef break, and Kabalana (The Rock), an A-frame reef, are for advanced surfers.</p>
+  </div>
+</section>
+
+<section class="sec coast" id="tuktuk">
+  <div class="wrap-wide measure">
+    <h2>By tuk-tuk</h2>
+    <p>The Surf Spot Safari, the Full Coast Adventure and the Sunrise Session are the three tours that go looking for waves.</p><p>The other nine tours are outings along the coast and inland, at estimated introductory prices, with pickup and return within Weligama.</p><p>Those outings don&#x27;t include meals or activities.</p><p>A tour&#x27;s price is for the tour, not per person. Ask us how many people can come.</p>
+  </div>
+  <div class="surf-tours wrap-wide">
+    <ul class="tours">
+    <li class="tour">
+      <div class="tour-text"><h3><span class="tour-name">Surf Spot Safari (half day, 4 hours)</span> <span class="tour-price">USD 80</span></h3><p>5+ potential surf spots around Weligama Bay, chosen for your skill level. Flexible timing, photo stops.</p></div>
+      <a class="btn btn-round" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Surf%20Spot%20Safari%20tour." aria-label="Ask on WhatsApp about the Surf Spot Safari tour"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg></a>
+    </li>
+    <li class="tour">
+      <div class="tour-text"><h3><span class="tour-name">Full Coast Adventure (full day, 8 hours)</span> <span class="tour-price">USD 120</span></h3><p>10+ potential surf spots, some of them local breaks. Sri Lankan lunch included.</p></div>
+      <a class="btn btn-round" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Full%20Coast%20Adventure%20tour." aria-label="Ask on WhatsApp about the Full Coast Adventure tour"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg></a>
+    </li>
+    <li class="tour">
+      <div class="tour-text"><h3><span class="tour-name">Sunrise Session (3 hours)</span> <span class="tour-price">USD 60</span></h3><p>3 spots at dawn, with a 5:30 AM pickup and a breakfast stop.</p></div>
+      <a class="btn btn-round" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Sunrise%20Session%20tour." aria-label="Ask on WhatsApp about the Sunrise Session tour"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg></a>
+    </li>
+    </ul>
+    <div class="print "><img src="img/coast.webp" width="750" height="558" alt="Tall palms on a grassy headland with a path and beach stalls, clean lines of swell coming in behind" loading="lazy" decoding="async"></div>
+  </div>
+  <ul class="tours tours-9 wrap-wide">
+    <li class="tour">
+      <div class="tour-text"><h3><span class="tour-name">Weligama Bay &amp; Taprobane Island (approx. 2 hours)</span> <span class="tour-price">USD 15</span></h3><p>Bay viewpoints and photo stops, with the island seen from the shore. Island and other entry fees not included.</p></div>
+      <a class="btn btn-round" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Weligama%20Bay%20%26%20Taprobane%20Island%20tour." aria-label="Ask on WhatsApp about the Weligama Bay &amp; Taprobane Island tour"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg></a>
+    </li>
+    <li class="tour">
+      <div class="tour-text"><h3><span class="tour-name">Midigama Reef Breaks (approx. 3 hours)</span> <span class="tour-price">USD 25</span></h3><p>Lazy Left and Lazy Right viewpoints, beach stops. Surfing optional, conditions permitting; not beginner lesson spots. No boards or lessons.</p></div>
+      <a class="btn btn-round" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Midigama%20Reef%20Breaks%20tour." aria-label="Ask on WhatsApp about the Midigama Reef Breaks tour"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg></a>
+    </li>
+    <li class="tour">
+      <div class="tour-text"><h3><span class="tour-name">Mirissa Beach &amp; Coconut Tree Hill (approx. 4 hours)</span> <span class="tour-price">USD 30</span></h3><p>Beach time and the viewpoint. No whale-watching boat trip. Entry fees not included.</p></div>
+      <a class="btn btn-round" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Mirissa%20Beach%20%26%20Coconut%20Tree%20Hill%20tour." aria-label="Ask on WhatsApp about the Mirissa Beach &amp; Coconut Tree Hill tour"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg></a>
+    </li>
+    <li class="tour">
+      <div class="tour-text"><h3><span class="tour-name">Ahangama &amp; Kabalana (approx. 4 hours)</span> <span class="tour-price">USD 30</span></h3><p>Coastal stops, Kabalana Beach and a view of the Rock reef break. Surfing depends on skill and sea conditions; no boards or lessons.</p></div>
+      <a class="btn btn-round" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Ahangama%20%26%20Kabalana%20tour." aria-label="Ask on WhatsApp about the Ahangama &amp; Kabalana tour"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg></a>
+    </li>
+    <li class="tour">
+      <div class="tour-text"><h3><span class="tour-name">Secret Beach Mirissa (approx. 4 hours)</span> <span class="tour-price">USD 30</span></h3><p>Final access may need a walk. Swimming depends on the sea and is not guaranteed safe. Entry fees not included.</p></div>
+      <a class="btn btn-round" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Secret%20Beach%20Mirissa%20tour." aria-label="Ask on WhatsApp about the Secret Beach Mirissa tour"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg></a>
+    </li>
+    <li class="tour">
+      <div class="tour-text"><h3><span class="tour-name">Turtle Bay &amp; Snake Farm (approx. 4 hours)</span> <span class="tour-price">USD 35</span></h3><p>Coastal stops; snake farm optional if open and available, admission separate. Wildlife not guaranteed. Entry fees and snorkeling excluded.</p></div>
+      <a class="btn btn-round" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Turtle%20Bay%20%26%20Snake%20Farm%20tour." aria-label="Ask on WhatsApp about the Turtle Bay &amp; Snake Farm tour"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg></a>
+    </li>
+    <li class="tour">
+      <div class="tour-text"><h3><span class="tour-name">Handunugoda Tea Estate (approx. 4 hours)</span> <span class="tour-price">USD 40</span></h3><p>Inland through the countryside. Estate entry, tours and tastings depend on current visitor arrangements and are not included.</p></div>
+      <a class="btn btn-round" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Handunugoda%20Tea%20Estate%20tour." aria-label="Ask on WhatsApp about the Handunugoda Tea Estate tour"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg></a>
+    </li>
+    <li class="tour">
+      <div class="tour-text"><h3><span class="tour-name">Galle Fort (approx. 6 hours)</span> <span class="tour-price">USD 55</span></h3><p>Time on foot on the ramparts and historic streets. Museum entry not included.</p></div>
+      <a class="btn btn-round" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Galle%20Fort%20tour." aria-label="Ask on WhatsApp about the Galle Fort tour"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg></a>
+    </li>
+    <li class="tour">
+      <div class="tour-text"><h3><span class="tour-name">Hiriketiya Bay (approx. 8 hours)</span> <span class="tour-price">USD 70</span></h3><p>Beach time and coastal stops. Surfing and swimming depend on conditions and ability; boards and lessons not included.</p></div>
+      <a class="btn btn-round" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Hiriketiya%20Bay%20tour." aria-label="Ask on WhatsApp about the Hiriketiya Bay tour"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg></a>
+    </li>
+  </ul>
+  <p class="pricedate wrap-wide">All prices are as of 5 November 2026.</p>
+</section>
+
+<section class="closing" id="finding">
+  <div class="closing-text">
+    <h2>Finding us</h2>
+    <p>On Google Maps, look for Sanjee Surf School (plus code XC63+4H). You may also see us as Sanjee Surf.</p>
+    <p class="addr">Kadabaddagama, Weligama 81700, Sri Lanka</p>
+    <a class="btn btn-soft" href="https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7.5 7.5 0 0 0-7.5 7.5c0 5.3 6.2 11.6 6.9 12.2.3.4.9.4 1.2 0 .7-.6 6.9-6.9 6.9-12.2A7.5 7.5 0 0 0 12 2Zm0 10.2a2.8 2.8 0 1 1 0-5.6 2.8 2.8 0 0 1 0 5.6Z"/></svg><span>Open in Google Maps</span></a>
+    <p class="close-line">Send us the lesson and date you want on WhatsApp, or call the same number.</p>
+    <div class="actions" id="book"><a class="btn btn-wa " href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20surf%20lessons."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg><span>Ask on WhatsApp</span></a>
+      <a class="btn btn-soft" href="tel:+94774004422"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 3.2c.5-.2 1 0 1.3.5l1.7 3c.2.4.2.9-.2 1.2L8 9.3a12 12 0 0 0 6.7 6.7l1.4-1.4c.3-.4.8-.4 1.2-.2l3 1.7c.5.3.7.8.5 1.3l-.8 2.3c-.2.6-.8 1-1.4 1A16.6 16.6 0 0 1 3 5.4c0-.6.4-1.2 1-1.4l2.6-.8Z"/></svg><span>Call</span></a>
+      <a class="btn btn-soft" href="mailto:sanjee@sanjee-surf.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm.4 2 7.6 5.6L19.6 7H4.4ZM20 8.8l-7.4 5.4a1 1 0 0 1-1.2 0L4 8.8V17h16V8.8Z"/></svg><span>Email</span></a></div>
+  </div>
+  <div class="closing-pic">
+    <picture>
+      <source media="(max-width: 767px)" srcset="img/sand-m.webp" width="900" height="548">
+      <img src="img/sand-d.webp" width="1240" height="754" alt="Footprints on wet gold sand beside a lacy line of foam at the water&#x27;s edge" loading="lazy" decoding="async">
+    </picture>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <svg class="tide" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true"><path d="M0 89.2C20 87.8 80 86.5 120 80.9C160 75.2 200 61.9 240 55.4C280 48.8 320 43.3 360 41.7C400 40.1 440 43.8 480 45.7C520 47.5 560 49.3 600 52.7C640 56.1 680 63.1 720 65.9C760 68.8 800 69.9 840 69.8C880 69.6 920 66.8 960 64.9C1000 63.1 1040 59.6 1080 58.5C1120 57.4 1160 58.3 1200 58.4C1240 58.5 1280 58 1320 58.9C1360 59.8 1420 62.8 1440 63.6V140H0Z"/></svg>
+  <p class="foot-name">Sanjee Surf School</p>
+  <div class="actions"><a class="btn btn-wa " href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20surf%20lessons."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg><span>Ask on WhatsApp</span></a>
+      <a class="btn btn-soft" href="tel:+94774004422"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 3.2c.5-.2 1 0 1.3.5l1.7 3c.2.4.2.9-.2 1.2L8 9.3a12 12 0 0 0 6.7 6.7l1.4-1.4c.3-.4.8-.4 1.2-.2l3 1.7c.5.3.7.8.5 1.3l-.8 2.3c-.2.6-.8 1-1.4 1A16.6 16.6 0 0 1 3 5.4c0-.6.4-1.2 1-1.4l2.6-.8Z"/></svg><span>Call +94 77 400 4422</span></a>
+      <a class="btn btn-soft" href="mailto:sanjee@sanjee-surf.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm.4 2 7.6 5.6L19.6 7H4.4ZM20 8.8l-7.4 5.4a1 1 0 0 1-1.2 0L4 8.8V17h16V8.8Z"/></svg><span>Email sanjee@sanjee-surf.com</span></a></div>
+  <p class="foot-addr">Kadabaddagama, Weligama 81700, Sri Lanka</p>
+</footer>
+<div class="bar" id="bar">
+  <a class="btn btn-wa bar-book" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20surf%20lessons."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 1.9a7.9 7.9 0 1 1-4.3 14.6l-.3-.2-2.5.7.7-2.4-.2-.3A7.9 7.9 0 0 1 12 4.1ZM8.9 7.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3s1 2.7 1.1 2.8c.2.2 2 3 4.8 4.2 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.6-.5h-.6Z"/></svg><span>Ask on WhatsApp</span></a>
+  <a class="btn btn-soft btn-icon" href="tel:+94774004422" aria-label="Call"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 3.2c.5-.2 1 0 1.3.5l1.7 3c.2.4.2.9-.2 1.2L8 9.3a12 12 0 0 0 6.7 6.7l1.4-1.4c.3-.4.8-.4 1.2-.2l3 1.7c.5.3.7.8.5 1.3l-.8 2.3c-.2.6-.8 1-1.4 1A16.6 16.6 0 0 1 3 5.4c0-.6.4-1.2 1-1.4l2.6-.8Z"/></svg></a>
+</div>
+<script>
+// The sand. Everything here is an enhancement: with JS off every link works and the slideshow is scroll-snap.
+(() => {
+  const root = document.documentElement;
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // The wash line runs up once, when the photograph is there to be washed over.
+  const heroImg = document.querySelector('.hero-img');
+  const go = () => root.classList.add('go');
+  if (calm) go();
+  else if (heroImg.complete) requestAnimationFrame(go);
+  else { heroImg.addEventListener('load', go, { once: true }); heroImg.addEventListener('error', go, { once: true }); setTimeout(go, 4000); }
+
+  // The header turns white as soon as the title reaches it, so nothing ever runs through the name.
+  // The header's button and the phone bar arrive once the hero's button has gone.
+  const top = document.querySelector('.top');
+  const bar = document.getElementById('bar');
+  const heroBook = document.querySelector('.hero-book');
+  const title = document.querySelector('h1');
+  let queued = false;
+  const place = () => {
+    queued = false;
+    const h = top.offsetHeight;
+    const past = heroBook.getBoundingClientRect().bottom < h;
+    top.classList.toggle('solid', scrollY > 4 && title.getBoundingClientRect().top < h + 6);
+    top.classList.toggle('armed', past);
+    bar.classList.toggle('on', past);
+  };
+  addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(place); } }, { passive: true });
+  place();
+
+  // The phone menu closes after a choice, on Esc and on a tap outside.
+  const menu = document.querySelector('.menu');
+  menu.addEventListener('click', (e) => { if (e.target.closest('a')) menu.open = false; });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector('summary').focus(); } });
+  document.addEventListener('click', (e) => { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+
+  // Prints settle 8 px the first time they come into view. Headings never move.
+  const prints = document.querySelectorAll('.print');
+  const seen = new IntersectionObserver((es) => {
+    for (const e of es) if (e.isIntersecting) { e.target.classList.add('in'); seen.unobserve(e.target); }
+  }, { rootMargin: '0px 0px -6% 0px' });
+  prints.forEach((p) => seen.observe(p));
+
+  // Guests: dots on a native scroll-snap track, so a swipe is the browser's own. A dot slides over 350 ms.
+  const track = document.querySelector('.track');
+  const slides = [...track.querySelectorAll('.slide')];
+  const dotsBox = document.querySelector('.dots');
+  const ease = (t) => 1 - Math.pow(1 - t, 3);
+  let raf = 0;
+  const go2 = (i) => {
+    cancelAnimationFrame(raf);
+    const to = slides[i].offsetLeft - track.offsetLeft;
+    if (calm) { track.scrollLeft = to; return; }
+    const from = track.scrollLeft;
+    const t0 = performance.now();
+    track.style.scrollSnapType = 'none';
+    const step = (now) => {
+      const p = Math.min(1, (now - t0) / 350);
+      track.scrollLeft = from + (to - from) * ease(p);
+      if (p < 1) raf = requestAnimationFrame(step);
+      else track.style.scrollSnapType = '';
+    };
+    raf = requestAnimationFrame(step);
+  };
+  const dots = slides.map((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'dot';
+    b.setAttribute('aria-label', `Review ${i + 1} of ${slides.length}`);
+    b.addEventListener('click', () => go2(i));
+    dotsBox.append(b);
+    return b;
+  });
+  // The track takes the height of the quote on show, so a short quote leaves no hole.
+  let shown = -1;
+  const fit = () => { track.style.height = `${slides[Math.max(0, shown)].offsetHeight}px`; };
+  const mark = () => {
+    const i = Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
+    if (i === shown) return;
+    shown = i;
+    dots.forEach((d, n) => d.setAttribute('aria-current', n === i ? 'true' : 'false'));
+    fit();
+  };
+  track.addEventListener('scroll', mark, { passive: true });
+  addEventListener('resize', fit, { passive: true });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  mark();
+})();
+</script>
+</body>
+</html>

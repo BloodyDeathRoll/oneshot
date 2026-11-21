@@ -1,0 +1,523 @@
+{
+ "slug": "sanjee-surf-school",
+ "run_id": "2026-10-midigama-01",
+ "auditor_version": "0.1.3",
+ "audited_at": "2026-11-05T09:35:00Z",
+ "scope": "site",
+ "measured": {
+  "url": "https://sanjee-surf.com/",
+  "status": 200,
+  "clicks_to_book": 1,
+  "primary_action": {
+   "class": "dated_form",
+   "label": "form (4 fields)",
+   "href": null
+  },
+  "cta_above_fold": true,
+  "terminal_above_fold": false,
+  "pages_crawled": 12,
+  "broken_pages": [],
+  "funnel_json": "funnel/funnel.json"
+ },
+ "findings": [
+  {
+   "id": "F1",
+   "area": "funnel",
+   "severity": "medium",
+   "title": "Booking takes five taps, three typed fields and a card payment, with no WhatsApp on the way",
+   "what_a_visitor_meets": "Book Your Lesson opens a four-step dialog: lessons or tuk-tuk, then the offer, then a date, then a time. After those five taps the visitor types a name, email and phone, ticks the terms and presses \"Pay $8 Now\" on a $40 lesson, with $32 in cash on the day. The dialog has no WhatsApp or phone link. Its only contact is an email address on the date step, for someone who sees no slot that works.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/11-wizard-1-after-hero.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/11-wizard-2-type.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/11-wizard-3-offer.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/11-wizard-4-date.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/11-wizard-5-slot.png"
+    },
+    {
+     "type": "click_path",
+     "value": [
+      "/",
+      "Book Your Lesson",
+      "Surf Lessons & Rentals",
+      "Beginner Lesson",
+      "November 11",
+      "8:00 AM",
+      "Your Details: Pay $8 Now (read, not pressed)"
+     ]
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#booking.engine_url"
+    }
+   ],
+   "playbook_ref": "§5 booking path",
+   "fix_in_new_site": "contact.whatsapp as the primary action, one tap, with a prefilled message naming the lesson and date (playbook §5). lessons[] carries the prices. No payment capture on the site.",
+   "pitch_point": true,
+   "notes": "funnel.json reports clicks_to_book 1 and primary dated_form. That form, 14,236 px down the home page, is the spot finder (\"Get my recommendations\"); it books nothing. The real path is this dialog, which the tool cannot see: its hero button has no href, so hero_action.class is null."
+  },
+  {
+   "id": "F2",
+   "area": "contact",
+   "severity": "medium",
+   "title": "The home page has no phone or WhatsApp link, and its contact block carries a placeholder place and a dead email",
+   "what_a_visitor_meets": "The home page runs 30,387 px on a phone. It says \"please leave us a message\" for group bookings and \"Contact us beforehand\" for the Week Intensive, yet it has no tel: or WhatsApp link anywhere. Its contact block gives the location as \"Tropical Beach, Paradise Coast\" and prints sanjee@sanjeesurf.com as plain text, on a domain with no mail record. What is left is a form 28,823 px down.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/07-home-contact-block.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/05-home-all-private.png"
+    },
+    {
+     "type": "click_path",
+     "value": [
+      "/",
+      "Contact Us"
+     ]
+    },
+    {
+     "type": "url",
+     "value": "https://sanjee-surf.com/"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#contradictions"
+    }
+   ],
+   "playbook_ref": "§5 booking path, §6 exact location",
+   "fix_in_new_site": "contact.whatsapp and contact.phone as tap-to-act links, contact.email = the address on /faq, contact.address = the Google listing's wording (playbook §6), repeated in the footer block (playbook §3).",
+   "pitch_point": true,
+   "notes": "WhatsApp links exist on other pages (/surfboard-rental-weligama, /faq and its answers), and the wizard shows the working email. The contact form was not submitted, so whether it delivers is unknown."
+  },
+  {
+   "id": "F3",
+   "area": "cta",
+   "severity": "medium",
+   "title": "The home page has no menu on a phone and no booking action that stays on screen",
+   "what_a_visitor_meets": "The home page shows no header, logo or menu button at 390 px, on load or while scrolling; the inner pages do have one. Board rental, FAQ and About are reachable only from the footer list, about 29,700 px down. Once the hero button has scrolled away, the next booking action is whichever card button comes next.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/01-home-fold-settled.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/02-home-scroll-3000.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/08-home-footer.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/20-rental-instagram-line.png"
+    },
+    {
+     "type": "click_path",
+     "value": [
+      "/",
+      "scroll to the footer",
+      "Explore"
+     ]
+    }
+   ],
+   "playbook_ref": "§3 content hierarchy, persistent booking action",
+   "fix_in_new_site": "Playbook §3: the booking action persistent on mobile, reachable from every screen, built on contact.whatsapp.",
+   "pitch_point": true
+  },
+  {
+   "id": "F4",
+   "area": "mobile",
+   "severity": "medium",
+   "title": "A red error box covers the top of the first screen a few seconds after loading",
+   "what_a_visitor_meets": "About six seconds after the home page opens, a red box reading \"Could not refresh surf conditions\" covers the top of the first screen for about five seconds and runs off its right edge. Further down, the surf report reads \"Live data temporarily unavailable\" under the words \"LIVE CONDITIONS\", beside \"5/5 Excellent\". All 3 fresh loads made for this audit showed it, at 09:05, 09:10 and 09:24 UTC.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/01-home-toast.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/landing-fold.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/04-home-surf-report.png"
+    },
+    {
+     "type": "click_path",
+     "value": [
+      "/",
+      "wait about 6 s"
+     ]
+    },
+    {
+     "type": "url",
+     "value": "https://sanjee-surf.com/assets/index-Dqm5eYLp.js"
+    }
+   ],
+   "playbook_ref": "§4 nothing may cover the content on load",
+   "fix_in_new_site": "Nothing covers the first screen on load (playbook §4). If the concept carries surf data it is the forecast block with its plain-link fallback (forecast.enabled, playbook §4), which never shows an error.",
+   "pitch_point": true,
+   "notes": "The harvester suspected its own page loads. They are not the cause: the page calls its surf-conditions function in a loop, about every 130 ms, until the server refuses it (41 calls then a 429 on one load, 32 then a 429 on another; funnel/walk-hand.json). The bundle shows why: each successful answer changes the callback that the effect depends on. Measured from one network and in headless Chromium, so the 'all visitors' reading rests on the code, not on a test from elsewhere. On a slower connection the box comes later."
+  },
+  {
+   "id": "F5",
+   "area": "mobile",
+   "severity": "low",
+   "title": "The cookie notice stays over the bottom of every screen, and its button is cut off on the first one",
+   "what_a_visitor_meets": "A second after load a cookie notice takes the bottom 180 px of the screen and follows the page until dismissed, with a small animated surfer crossing it. On the first screen its only button, \"Got it\", is cut off by the bottom edge (829 to 869 px on an 844 px screen), because the page loads 417 px wide on a 390 px phone.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/01-home-fold-settled.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/02-home-scroll-3000.png"
+    },
+    {
+     "type": "click_path",
+     "value": [
+      "/"
+     ]
+    }
+   ],
+   "playbook_ref": "§4 no cookie walls, nothing covers the content on load",
+   "fix_in_new_site": "Playbook §4: no cookie notice is needed on a site with no trackers, and a layout that fits 390 px from the first paint.",
+   "pitch_point": false,
+   "notes": "The sideways overflow is smaller than the scout's score suggests. It lasts only until the About section has slid in: after scrolling the page is 390 px wide (wizard steps in walk-hand.json; assets/old-site-mobile.png is 390 px wide). Inner pages load at 390. This overflow was the scout's only measured fault (presence.criteria: not_mobile)."
+  },
+  {
+   "id": "F6",
+   "area": "content",
+   "severity": "medium",
+   "title": "The first screen does not say what the business is called or where it is",
+   "what_a_visitor_meets": "The first screen reads \"Professional Surf Instructor\", \"Ride the Wave of Your Life\" and a sentence about personalized lessons. Neither Sanjee's name nor Weligama appears. The top line is teal on tree branches and hard to read. The photograph is an infinity pool, with no surfer and nobody in it.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/01-home-fold-settled.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/landing-fold.png"
+    },
+    {
+     "type": "url",
+     "value": "https://sanjee-surf.com/"
+    }
+   ],
+   "playbook_ref": "§2 what is this and where, §3 first screen",
+   "fix_in_new_site": "businessName and tagline state the type and place on the first screen (playbook §3), over photos[0], the strongest of the business's own photographs.",
+   "pitch_point": true,
+   "notes": "The page title and the link preview do name Weligama; the screen does not. The dossier warns that no strong large photograph of the school at work exists (images_note)."
+  },
+  {
+   "id": "F7",
+   "area": "offer",
+   "severity": "medium",
+   "title": "Lesson prices and formats differ from page to page",
+   "what_a_visitor_meets": "The home page sells a Beginner Lesson at $40 and Private Coaching at $50 and says all sessions are private. The site's own price answer says a group lesson of 2 to 4 is around 25 USD and a private one around 45 USD. A visitor comparing schools cannot tell which price and format they would get, though that answer does point to the home page for current prices.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/05-home-all-private.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/22-faq-lesson-price.png"
+    },
+    {
+     "type": "url",
+     "value": "https://sanjee-surf.com/faq/how-much-does-a-surf-lesson-cost-in-weligama"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#contradictions"
+    }
+   ],
+   "playbook_ref": "§2 what does it cost, §7 honesty of facts",
+   "fix_in_new_site": "lessons[] holds each lesson once with its label, durationMin, price, currency, unit and groupSize, as the owner confirms them (schema: a fact lives in one field).",
+   "pitch_point": true
+  },
+  {
+   "id": "F8",
+   "area": "trust",
+   "severity": "medium",
+   "title": "Two different cancellation policies apply to the same deposit",
+   "what_a_visitor_meets": "A visitor about to press \"Pay $8 Now\" is linked to Terms that refund in full only beyond 48 hours and 50% between 24 and 48 hours. The FAQ says 24 hours or more gets the full deposit back. Someone cancelling 30 hours ahead cannot tell which applies.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/24-terms-cancellation.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/23-faq-cancellation.png"
+    },
+    {
+     "type": "url",
+     "value": "https://sanjee-surf.com/terms"
+    },
+    {
+     "type": "url",
+     "value": "https://sanjee-surf.com/faq/cancellation-and-refund-policy"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#contradictions"
+    }
+   ],
+   "playbook_ref": "§6 trust signals, §7 honesty of facts",
+   "fix_in_new_site": "One policy, as the owner confirms it, in a copyBlocks[] row with slot info. Until then it is a gap, never a guess (playbook §7).",
+   "pitch_point": true
+  },
+  {
+   "id": "F9",
+   "area": "trust",
+   "severity": "medium",
+   "title": "The experience and student numbers disagree, some of them inside one card",
+   "what_a_visitor_meets": "Sanjee's card on the home page has a badge saying 500+ students taught, and its text says more than 2,000. The About page says 3,000+. Years also move: 15+ on the home page, 20+ surfing and 12+ teaching on the About page. A careful visitor stops believing any of them.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/06-home-stats.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/25-about-students.png"
+    },
+    {
+     "type": "url",
+     "value": "https://sanjee-surf.com/about"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#claims_unconfirmed"
+    }
+   ],
+   "playbook_ref": "§6 trust signals, §7 honesty of facts",
+   "fix_in_new_site": "credentials[] and copyBlocks[] slot about carry only what the owner confirms; no count until then (playbook §7).",
+   "pitch_point": true
+  },
+  {
+   "id": "F10",
+   "area": "trust",
+   "severity": "medium",
+   "title": "The reviews carry no names, and their dates read as last week",
+   "what_a_visitor_meets": "The \"Google Reviews\" block shows quotes with no reviewer name, and most are dated \"1 week ago\". On Google nearly the same words, from samagra singh, are shown as 10 months ago. The badge says 5.0/5 on Google without saying it rests on 13 reviews, and the page's structured data claims 150.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/06-home-review-dates.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/06-home-google-badge.png"
+    },
+    {
+     "type": "url",
+     "value": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#reviews.quotes"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#reviews.site_claim"
+    }
+   ],
+   "playbook_ref": "§6 trust signals",
+   "fix_in_new_site": "ratings[] with platform, score, count, url and capturedAt; testimonials[] with the quote verbatim, author, source and date (playbook §6).",
+   "pitch_point": true,
+   "notes": "The review by the reviewer who shares the legal operator's name is marked do_not_use in the dossier and is not relied on here."
+  },
+  {
+   "id": "F11",
+   "area": "offsite",
+   "severity": "medium",
+   "title": "All three social links lead nowhere, and the rental page sends people to one of them",
+   "what_a_visitor_meets": "The footer's Instagram link opens \"Sorry, this page isn't available\", Facebook opens a login page, and YouTube opens \"This page isn't available\". The rental page's Reservations card still says \"or message us on Instagram\". A traveller checking whether the school is real finds three dead ends.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/31-instagram.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/32-facebook.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/33-youtube.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/08-home-footer.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/20-rental-instagram-line.png"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#contact.socials"
+    }
+   ],
+   "playbook_ref": "§3 contact block, §6 trust signals",
+   "fix_in_new_site": "No social link until the owner confirms an account that loads. The new site's own WhatsApp action replaces \"message us on Instagram\" (contact.whatsapp).",
+   "pitch_point": true,
+   "notes": "Logged out only. An account may exist under another name, and Facebook may show more when logged in."
+  },
+  {
+   "id": "F12",
+   "area": "offer",
+   "severity": "medium",
+   "title": "Rental deposit, swap and payment terms differ between the rental page and the FAQ",
+   "what_a_visitor_meets": "The rental page asks a $50 or $100 deposit by board type, in cash or as a card hold, with free swaps at any time and cash or card accepted. The FAQ says a $100 or 30,000 LKR cash deposit on all rentals, one swap a day on weekly or monthly rentals only, and no card payments on the beach. Someone walking down with a card may not have what is needed.",
+   "evidence": [
+    {
+     "type": "url",
+     "value": "https://sanjee-surf.com/surfboard-rental-weligama"
+    },
+    {
+     "type": "url",
+     "value": "https://sanjee-surf.com/faq/is-there-a-deposit-for-board-rental"
+    },
+    {
+     "type": "url",
+     "value": "https://sanjee-surf.com/faq"
+    },
+    {
+     "type": "url",
+     "value": "https://sanjee-surf.com/faq/how-to-book-a-surf-lesson-with-sanjee-surf"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#contradictions"
+    }
+   ],
+   "playbook_ref": "§2 by business type, board_rental, §7 honesty of facts",
+   "fix_in_new_site": "rentals[] rows with price, currency and unit, deposit and damage terms in rentals[].note, as the owner confirms them.",
+   "pitch_point": false
+  },
+  {
+   "id": "F13",
+   "area": "offer",
+   "severity": "medium",
+   "title": "Tuk-tuk tour prices and inclusions differ across the site",
+   "what_a_visitor_meets": "The home page and /tuktuk price a half day at $80 and a full day at $120 for up to 2 surfers. An FAQ answer says from about $60 for up to 3 and from about $110. On /tuktuk itself the text promises a guided tasting, snorkelling and surfboards, while the priced cards on the same page exclude them.",
+   "evidence": [
+    {
+     "type": "url",
+     "value": "https://sanjee-surf.com/tuktuk"
+    },
+    {
+     "type": "url",
+     "value": "https://sanjee-surf.com/faq/how-much-does-a-tuk-tuk-safari-cost"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#contradictions"
+    }
+   ],
+   "playbook_ref": "§2 what's included, §7 honesty of facts",
+   "fix_in_new_site": "priceList[] rows for the tours (label, price, currency, flat unit, note), carrying the narrower inclusions of the priced cards until the owner confirms more.",
+   "pitch_point": false
+  },
+  {
+   "id": "F14",
+   "area": "offsite",
+   "severity": "medium",
+   "title": "Google says 9 to 5 while the booking dialog sells a 6:00 AM lesson",
+   "what_a_visitor_meets": "The Google listing shows 9 am to 5 pm every day. The home page says 6AM to 6PM, the rental page 06:00 to 18:30, and the booking dialog offers a 6:00 AM Sunrise Session. Someone who found the school on Maps would not expect a dawn lesson, or may not expect anyone there at 8 am.",
+   "evidence": [
+    {
+     "type": "dossier",
+     "value": "dossier.json#hours_candidates"
+    },
+    {
+     "type": "url",
+     "value": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/11-wizard-4-date.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/07-home-contact-block.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/20-rental-instagram-line.png"
+    }
+   ],
+   "playbook_ref": "§2 how do I book, §6 exact location and hours",
+   "fix_in_new_site": "openingHours[] holds one set, as the owner confirms it; none is recorded as fact until then (dossier.hours_note).",
+   "pitch_point": false,
+   "notes": "The hours on Google were read by the harvester in its desktop view. The phone view is behind Google's app prompt (funnel/walk/30-google-listing-fold.png), so that shot does not show them."
+  }
+ ],
+ "recommended": {
+  "primary_action": "whatsapp",
+  "primary_label": "Message Sanjee on WhatsApp about a lesson",
+  "secondary_actions": [
+   "tel",
+   "email"
+  ],
+  "clicks_to_book": 1,
+  "above_fold": [
+   "what_where",
+   "level",
+   "price",
+   "included",
+   "trust",
+   "primary_action"
+  ],
+  "offer_framing": "lessons[] first: Beginner, Private Coaching and Week Intensive with length, price in USD with its capture date, and what is included, once the owner has settled private versus group (F7). Then rentals[] with sizes, day and hour rates and deposit terms in note. Then the tuk-tuk tours as priceList[] rows. Prices sit in the booking section, never on the first screen.",
+  "closing_intent": "send the reader to WhatsApp with the lesson and date they want, and name the phone as the other way to reach the school",
+  "off_site": [
+   {
+    "channel": "google_business_profile",
+    "finding": "F14",
+    "advice": "set the listing's hours to the ones the school really keeps, and match them on the site"
+   },
+   {
+    "channel": "instagram",
+    "finding": "F11",
+    "advice": "reopen the Instagram, Facebook and YouTube accounts, or take their links and the 'message us on Instagram' line off the old site while it runs"
+   }
+  ]
+ },
+ "built_site_gaps": [],
+ "not_measurable": [
+  "Stripe checkout and whether the $8 payment completes: the walk stopped at the unfilled details step, with Pay disabled and never pressed",
+  "Whether WhatsApp, the phone or the email is answered, and how fast: no contact in test mode. The FAQ's own words are 'within a few hours'",
+  "Whether the home page contact form delivers: not submitted",
+  "A lesson card's own Book Now: not walked, because the dialog from the previous step was still open. Only the hero path was measured",
+  "The toast (F4) from another network or on a real phone: all loads were headless Chromium from one network",
+  "tools/funnel.mjs crawled 12 pages, capped to keep the load light, and 11 of them were blog posts. The 67 sitemap URLs were checked by the harvester (all 200). The pages with WhatsApp links were opened in the hand walk instead",
+  "Google listing on a phone beyond the app prompt; the 8 reviews behind Google's sign-in prompt (harvester)",
+  "Tripadvisor listing: 403 to a headless browser; X: needs a login (harvester)",
+  "Conversion rate and traffic: no analytics access"
+ ]
+}

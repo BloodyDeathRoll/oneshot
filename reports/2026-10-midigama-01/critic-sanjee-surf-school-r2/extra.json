@@ -1,0 +1,206 @@
+{
+ "calm": {
+  "skip": "Skip to lessons top=12 left=12 151x52 op=1 vis=visible outline=solid bg=rgb(255, 255, 255) color=rgb(37, 56, 100) pos=absolute z=40 hit=true",
+  "rentals": {
+   "1 hour": [
+    "USD 5",
+    "USD 7",
+    "Walk-in"
+   ],
+   "2 hours": [
+    "USD 8",
+    "USD 12",
+    "One full session"
+   ],
+   "Half day (4 h)": [
+    "USD 12",
+    "USD 18",
+    "Dawn or afternoon session"
+   ],
+   "Full day (24 h)": [
+    "USD 15",
+    "USD 20",
+    "Two sessions + sunset"
+   ],
+   "3 days": [
+    "USD 36",
+    "USD 50",
+    ""
+   ],
+   "7 days": [
+    "USD 70",
+    "USD 95",
+    ""
+   ],
+   "14 days": [
+    "USD 120",
+    "USD 170",
+    ""
+   ],
+   "Monthly": [
+    "USD 220",
+    "USD 310",
+    ""
+   ]
+  },
+  "tourDateNear": [
+   "lessons: y=2583",
+   "boards: y=5188",
+   "tuktuk: y=8131"
+  ],
+  "ratings": [
+   "5/5 13 Google reviews as of 5 November 2026",
+   "5/5 13 Google reviews as of 5 November 2026",
+   "Open in Google Maps"
+  ]
+ },
+ "interactive": {
+  "skip": "Skip to lessons top=12 left=12 153x47 op=1 vis=visible outline=solid bg=rgb(255, 255, 255) color=rgb(24, 29, 16) pos=absolute z=30 hit=true",
+  "rentals": {
+   "1 hourWalk-in": [
+    "USD 5",
+    "USD 7",
+    "USD 57"
+   ],
+   "2 hoursOne full session": [
+    "USD 8",
+    "USD 12",
+    "USD 182"
+   ],
+   "Half day (4 h)Dawn or afternoon session": [
+    "USD 12",
+    "USD 18",
+    "USD 1128"
+   ],
+   "Full day (24 h)Two sessions + sunset": [
+    "USD 15",
+    "USD 20",
+    "USD 1250"
+   ],
+   "3 days": [
+    "USD 36",
+    "USD 50",
+    "USD 3560"
+   ],
+   "7 days": [
+    "USD 70",
+    "USD 95",
+    "USD 7905"
+   ],
+   "14 days": [
+    "USD 120",
+    "USD 170",
+    "USD 112700"
+   ],
+   "Monthly": [
+    "USD 220",
+    "USD 310",
+    "USD 232100"
+   ]
+  },
+  "tourDateNear": [
+   "message: y=2621",
+   "boards: y=4014",
+   "tuk-tuk: y=8267"
+  ],
+  "ratings": [
+   "5/5 13 Google reviews | as of 5 November 2026",
+   "5/5 13 Google reviews | as of 5 November 2026",
+   "Open in Google Maps"
+  ],
+  "dateStops": [
+   "INPUT#date fv=true outline=solid 3px sr=0",
+   "INPUT#date fv=true outline=solid 3px sr=0",
+   "INPUT#date fv=true outline=solid 3px sr=0",
+   "INPUT#date fv=false outline=none 3px sr=0",
+   "BUTTON# fv=true outline=solid 3px sr=0"
+  ],
+  "dateCss": [
+   "\n.date input{height:44px;min-width:158px;padding:0 14px;border:0;border-radius:999px;background:#fff;color:var(--ink);font:600 16px/1 var(--body);transition:background-color var(--state) ease}",
+   "\n.date input:focus-visible{outline:3px solid var(--book);outline-offset:2px;border-radius:999px}",
+   "\n.date input.filled{background:var(--sel)}",
+   "\n  /* the visitor's words only: nothing here states a fact about the school */\n  function tail() {\n    var w = '';\n    if (state.level) w += ' ' + SITE.levels[state.level];\n    if (state.date === 'unsure') w += \" I'm not sure of the date yet.\";\n    else if (state.date) w += ' The date I have in mind is ' + fmtDate(state.date) + '.';\n    if (state.people === 'unsure') w += \" I'm not sure how many of us there will be.\";\n    else if (state.people === '1') w += \" It's just me.\";\n    else if (state.people === '2') w += ' There are 2 of us.';\n    else if (state.people === '3') w += ' There are 3 or more of us.';\n    return w;\n  }\n  var hello = function () { return 'Hello ' + SITE.biz + \", I'd like to ask about \"; }",
+   ");\n    bubble.textContent = '';\n    bubble.appendChild(frag);\n    shown = next;\n    syncLinks(text);\n    /* the phone bar shows what it will send, the moment there is something to send */\n    var built = state.level || state.lesson || state.date || state.people;\n    barText.textContent = text.replace(hello(), '').replace(SITE.generic + '. ', '');\n    barMsg.classList.toggle('on', !!built);\n    barMsg.tabIndex = built ? 0 : -1;\n  }\n\n  /* ---- tiles: a ring slides to the choice; matching cards take a dot; nothing is ever dimmed ---- */\n  var tilesBox = $('.tiles'), ring = $('.tile-ring'), tiles = $$('.tile'), cards = $$('.card');\n  function moveRing(t, instant) {\n    if (!t) { tilesBox.classList.remove('on'); return; }",
+   ");\n\n  var dateIn = $('#date');\n  var today = new Date(Date.now() - new Date().getTimezoneOffset() * 6e4).toISOString().slice(0, 10);\n  dateIn.min = today;\n  dateIn.addEventListener('change', function () {\n    state.date = dateIn.value || null;\n    dateIn.classList.toggle('filled', !!dateIn.value);\n    $$('.chip[data-group=date]').forEach(function (b) { b.setAttribute('aria-pressed', false); }"
+  ],
+  "phone320": {
+   "over": 0,
+   "tiles": [
+    "136x170",
+    "136x170",
+    "136x170",
+    "136x170",
+    "280x140"
+   ]
+  },
+  "phone360": {
+   "over": 0,
+   "tiles": [
+    "156x195",
+    "156x195",
+    "156x195",
+    "156x195",
+    "320x160"
+   ]
+  }
+ },
+ "unique": {
+  "skip": "Skip to lessons top=12 left=12 156x52 op=1 vis=visible outline=solid bg=rgb(26, 34, 48) color=rgb(255, 255, 255) pos=absolute z=40 hit=true",
+  "rentals": {
+   "1 hour": "1 hour Soft-top USD 5 per hour Hardboard USD 7 per hour Walk-in",
+   "2 hours": "2 hours Soft-top USD 8 Hardboard USD 12 One full session",
+   "Half day (4 h)": "Half day (4 h) Soft-top USD 12 Hardboard USD 18 Dawn or afternoon session",
+   "Full day (24 h)": "Full day (24 h) Soft-top USD 15 per day Hardboard USD 20 per day Two sessions + sunset",
+   "3 days": "3 days Soft-top USD 36 Hardboard USD 50",
+   "7 days": "7 days Soft-top USD 70 Hardboard USD 95",
+   "14 days": "14 days Soft-top USD 120 Hardboard USD 170",
+   "Monthly": "Monthly Soft-top USD 220 Hardboard USD 310",
+   "Bodyboard": "Bodyboard USD 5 per day"
+  },
+  "tourDateNear": [
+   "before: y=2526",
+   "boards: y=3279",
+   "tuktuk: y=7271"
+  ],
+  "ratings": [
+   "5/5, 13 Google reviews, as of 5 November 2026",
+   "5/5 13 Google reviews as of 5 November 2026",
+   "5/5 13 Google reviews as of 5 November 2026",
+   "Open in Google Maps"
+  ],
+  "sheet320": {
+   "before": {
+    "sendBottom": 558,
+    "vh": 568,
+    "dH": 523,
+    "dSH": 766,
+    "fH": 766,
+    "fSH": 766,
+    "over": 0
+   },
+   "after": {
+    "sendTop": 506,
+    "sendBottom": 558,
+    "vh": 568,
+    "hit": true
+   }
+  },
+  "sheet360": {
+   "before": {
+    "sendBottom": 630,
+    "vh": 640,
+    "dH": 589,
+    "dSH": 716,
+    "fH": 716,
+    "fSH": 716,
+    "over": 0
+   },
+   "after": {
+    "sendTop": 578,
+    "sendBottom": 630,
+    "vh": 640,
+    "hit": true
+   }
+  }
+ }
+}

@@ -1,0 +1,585 @@
+{
+ "calm": {
+  "fold": [
+   "10 A Sanjee Surf School -> #top",
+   "8 SUMMARY Menu -> ",
+   "118 A null -> #lessons",
+   "164 A null -> #boards",
+   "211 A null -> #sanjee",
+   "258 A null -> #waves",
+   "304 A null -> #tuktuk",
+   "351 A null -> #finding",
+   "261 A Ask on WhatsApp -> https://wa.me/94774004422?text=Hello%20S"
+  ],
+  "heroText": "Ask on WhatsApp",
+  "heroHref": "https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about surf lessons.",
+  "navOnTap": [
+   "https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about surf lessons."
+  ],
+  "errs": [],
+  "bar": [
+   "Ask on WhatsApp https://wa.me/9477400442 342x52 top=756 hit=false",
+   "Ask on WhatsApp https://wa.me/9477400442 306x52 top=784 hit=true",
+   "Call tel:+94774004422 52x52 top=784 hit=true"
+  ],
+  "menu": [
+   "Lessons #lessons 198x48",
+   "Boards #boards 198x48",
+   "Sanjee #sanjee 198x48",
+   "Waves #waves 198x48",
+   "Tuk-tuk #tuktuk 198x48",
+   "Finding us #finding 198x48"
+  ],
+  "afterMenu": {
+   "t": "#sanjee",
+   "y": 4038,
+   "open": false,
+   "targetTop": 84,
+   "headerBottom": 64
+  },
+  "firstTab": "A Skip to lessons #lessons top=-80 h=52",
+  "afterSkip": {
+   "hash": "#lessons",
+   "y": 1191,
+   "active": "BODY ",
+   "lessonsTop": 84
+  },
+  "reviewBtns": [
+   "Review 1 of 4 true 44x44",
+   "Review 2 of 4 false 44x44",
+   "Review 3 of 4 false 44x44",
+   "Review 4 of 4 false 44x44"
+  ]
+ },
+ "interactive": {
+  "fold": [
+   "10 A Sanjee Surf School -> #top",
+   "10 SUMMARY Menu -> ",
+   "66 A null -> #lessons",
+   "110 A null -> #boards",
+   "154 A null -> #sanjee",
+   "198 A null -> #waves",
+   "242 A null -> #tuk-tuk",
+   "287 A null -> #finding-us",
+   "216 A Ask on WhatsApp -> https://wa.me/94774004422?text=Hello%20S"
+  ],
+  "heroText": "Ask on WhatsApp",
+  "heroHref": "https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about a surf lesson.",
+  "navOnTap": [
+   "https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about a surf lesson."
+  ],
+  "errs": [],
+  "bar": [
+   "Ask on WhatsApp https://wa.me/9477400442 288x52 top=782 hit=true",
+   "Call +94 77 400 4422 tel:+94774004422 52x52 top=782 hit=true"
+  ],
+  "menu": [
+   "Lessons #lessons 204x46",
+   "Boards #boards 204x46",
+   "Sanjee #sanjee 204x46",
+   "Waves #waves 204x46",
+   "Tuk-tuk #tuk-tuk 204x46",
+   "Finding us #finding-us 204x46"
+  ],
+  "afterMenu": {
+   "t": "#sanjee",
+   "y": 5851,
+   "open": false,
+   "targetTop": 95,
+   "headerBottom": 60
+  },
+  "firstTab": "A Skip to lessons #lessons top=12 h=47",
+  "afterSkip": {
+   "hash": "#lessons",
+   "y": 1530,
+   "active": "BODY ",
+   "lessonsTop": 84
+  },
+  "attrs": {
+   "waLinks": 22,
+   "dataAsk": 22,
+   "own": [
+    "the Beginner Lesson",
+    "Private Coaching",
+    "the Week Intensive",
+    "renting a board",
+    "the Surf Spot Safari tour",
+    "the Full Coast Adventure tour",
+    "the Sunrise Session tour",
+    "the Weligama Bay & Taprobane Island tour",
+    "the Midigama Reef Breaks tour",
+    "the Mirissa Beach & Coconut Tree Hill tour",
+    "the Ahangama & Kabalana tour",
+    "the Secret Beach Mirissa tour",
+    "the Turtle Bay & Snake Farm tour",
+    "the Handunugoda Tea Estate tour",
+    "the Galle Fort tour",
+    "the Hiriketiya Bay tour"
+   ],
+   "notAsk": []
+  },
+  "combos": 450,
+  "distinctMessages": 1620,
+  "sentences": [
+   "I'm a beginner who can already stand up.",
+   "I'm a total beginner.",
+   "I'm an advanced surfer.",
+   "I'm an intermediate surfer.",
+   "I'm not sure how many of us there will be.",
+   "I'm not sure of my level yet.",
+   "I'm not sure of the date yet.",
+   "It's just me.",
+   "The date I have in mind is 10 December 2026.",
+   "There are 2 of us.",
+   "There are 3 or more of us.",
+   "§I'd like to ask about Private Coaching.",
+   "§I'd like to ask about a surf lesson, I'm not sure which one.",
+   "§I'd like to ask about a surf lesson.",
+   "§I'd like to ask about renting a board.",
+   "§I'd like to ask about the Ahangama & Kabalana tour.",
+   "§I'd like to ask about the Beginner Lesson.",
+   "§I'd like to ask about the Full Coast Adventure tour.",
+   "§I'd like to ask about the Galle Fort tour.",
+   "§I'd like to ask about the Handunugoda Tea Estate tour.",
+   "§I'd like to ask about the Hiriketiya Bay tour.",
+   "§I'd like to ask about the Midigama Reef Breaks tour.",
+   "§I'd like to ask about the Mirissa Beach & Coconut Tree Hill tour.",
+   "§I'd like to ask about the Secret Beach Mirissa tour.",
+   "§I'd like to ask about the Sunrise Session tour.",
+   "§I'd like to ask about the Surf Spot Safari tour.",
+   "§I'd like to ask about the Turtle Bay & Snake Farm tour.",
+   "§I'd like to ask about the Week Intensive.",
+   "§I'd like to ask about the Weligama Bay & Taprobane Island tour."
+  ],
+  "badNumber": [],
+  "bubbleMismatch": {},
+  "tiles": {
+   "Total beginner": {
+    "fit": [
+     "Beginner Lesson:true:1",
+     "Private Coaching:false:0",
+     "Week Intensive:false:0"
+    ],
+    "chips": [
+     "Beginner Lesson | USD 40 233x44",
+     "Your message 131x44"
+    ],
+    "lit": [
+     true,
+     false,
+     false
+    ],
+    "send": "Hello Sanjee Surf School, I'd like to ask about a surf lesson. I'm a total beginner.",
+    "heroLink": "Hello Sanjee Surf School, I'd like to ask about a surf lesson. I'm a total beginner.",
+    "barText": "I'm a total beginner.",
+    "barOn": true
+   },
+   "I can stand up": {
+    "fit": [
+     "Beginner Lesson:true:1",
+     "Private Coaching:true:1",
+     "Week Intensive:false:0"
+    ],
+    "chips": [
+     "Beginner Lesson | USD 40 233x44",
+     "Private Coaching | USD 50 236x44",
+     "Your message 131x44"
+    ],
+    "lit": [
+     true,
+     false,
+     false
+    ],
+    "send": "Hello Sanjee Surf School, I'd like to ask about a surf lesson. I'm a beginner who can already stand up.",
+    "heroLink": "Hello Sanjee Surf School, I'd like to ask about a surf lesson. I'm a beginner who can already stand up.",
+    "barText": "I'm a beginner who can already stand up.",
+    "barOn": true
+   },
+   "Intermediate": {
+    "fit": [
+     "Beginner Lesson:false:0",
+     "Private Coaching:true:1",
+     "Week Intensive:false:0"
+    ],
+    "chips": [
+     "Private Coaching | USD 50 236x44",
+     "Your message 131x44"
+    ],
+    "lit": [
+     false,
+     true,
+     false
+    ],
+    "send": "Hello Sanjee Surf School, I'd like to ask about a surf lesson. I'm an intermediate surfer.",
+    "heroLink": "Hello Sanjee Surf School, I'd like to ask about a surf lesson. I'm an intermediate surfer.",
+    "barText": "I'm an intermediate surfer.",
+    "barOn": true
+   },
+   "Advanced": {
+    "fit": [
+     "Beginner Lesson:false:0",
+     "Private Coaching:true:1",
+     "Week Intensive:false:0"
+    ],
+    "chips": [
+     "Private Coaching | USD 50 236x44",
+     "Your message 131x44"
+    ],
+    "lit": [
+     false,
+     false,
+     true
+    ],
+    "send": "Hello Sanjee Surf School, I'd like to ask about a surf lesson. I'm an advanced surfer.",
+    "heroLink": "Hello Sanjee Surf School, I'd like to ask about a surf lesson. I'm an advanced surfer.",
+    "barText": "I'm an advanced surfer.",
+    "barOn": true
+   },
+   "Not sure": {
+    "fit": [
+     "Beginner Lesson:false:0",
+     "Private Coaching:false:0",
+     "Week Intensive:false:0"
+    ],
+    "chips": [
+     "Your message 131x44"
+    ],
+    "lit": [
+     false,
+     false,
+     false
+    ],
+    "send": "Hello Sanjee Surf School, I'd like to ask about a surf lesson. I'm not sure of my level yet.",
+    "heroLink": "Hello Sanjee Surf School, I'd like to ask about a surf lesson. I'm not sure of my level yet.",
+    "barText": "I'm not sure of my level yet.",
+    "barOn": true
+   }
+  },
+  "afterAllOff": "Hello Sanjee Surf School, I'd like to ask about a surf lesson.",
+  "fullState": {
+   "send": "Hello Sanjee Surf School, I'd like to ask about Private Coaching. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "tour": "Hello Sanjee Surf School, I'd like to ask about the Surf Spot Safari tour. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "board": "Hello Sanjee Surf School, I'd like to ask about renting a board. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "card": [
+    "Hello Sanjee Surf School, I'd like to ask about the Beginner Lesson. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+    "Hello Sanjee Surf School, I'd like to ask about Private Coaching. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+    "Hello Sanjee Surf School, I'd like to ask about the Week Intensive. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us."
+   ],
+   "tel": 3,
+   "dateMin": "2026-11-05",
+   "bar": "390x44 top=728 op=1 text=\"Private Coaching. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.\""
+  },
+  "pastDate": {
+   "valid": false,
+   "send": "Hello Sanjee Surf School, I'd like to ask about Private Coaching. I'm a total beginner. The date I have in mind is 1 January 2020. There are 3 or more of us."
+  },
+  "afterAddWeek": "Hello Sanjee Surf School, I'd like to ask about the Week Intensive. I'm a total beginner. The date I have in mind is 1 January 2020. There are 3 or more of us.",
+  "dateFocus": {
+   "outline": "solid 3px rgb(5, 54, 138)",
+   "box": "none",
+   "parentBox": "none",
+   "parentOutline": "none 3px"
+  },
+  "pillSoft": [
+   "1 hour=USD 5 soft=5 hard=7",
+   "2 hours=USD 8 soft=8 hard=12",
+   "Half day (4 h)=USD 12 soft=12 hard=18",
+   "Full day (24 h)=USD 15 soft=15 hard=20",
+   "3 days=USD 36 soft=36 hard=50",
+   "7 days=USD 70 soft=70 hard=95",
+   "14 days=USD 120 soft=120 hard=170",
+   "Monthly=USD 220 soft=220 hard=310"
+  ],
+  "pillHard": [
+   "1 hour=USD 7 soft=5 hard=7",
+   "2 hours=USD 12 soft=8 hard=12",
+   "Half day (4 h)=USD 18 soft=12 hard=18",
+   "Full day (24 h)=USD 20 soft=15 hard=20",
+   "3 days=USD 50 soft=36 hard=50",
+   "7 days=USD 95 soft=70 hard=95",
+   "14 days=USD 170 soft=120 hard=170",
+   "Monthly=USD 310 soft=220 hard=310"
+  ],
+  "chart": {
+   "html": "<div class=\"chart done\">\n      <svg width=\"0\" height=\"0\" class=\"defs\" aria-hidden=\"true\"><linearGradient id=\"g0\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"10.53%\" stop-color=\"#F4CFA4\"></stop><stop offset=\"10.53%\" stop-color=\"#E9A45C\"></stop></linearGradient><linearGradient id=\"g1\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"5.41%\" stop-color=\"#F3EAD8\"></stop><stop offset=\"5.41%\" stop-color=\"#E9D8B8\"></stop></linearGradient><linearGradient id=\"g2\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"9.09%\" stop-color=\"#A5CBCF\"></stop><stop offset=\"9.09%\" stop-color=\"#53969D\"></stop></linearGradient><linearGradient id=\"g3\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"8.51%\" stop-color=\"#C6D6E3\"></stop><stop offset=\"8.51%\" stop-color=\"#91B0C8\"></stop></linearGradient><linearGradient id=\"g4\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"11.11%\" stop-color=\"#F08CA3\"></stop><stop offset=\"11.11%\" stop-color=\"#DE1446\"></stop></linearGradient><linearGradient id=\"g5\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"3.57%\" stop-color=\"#8FBBE3\"></stop><stop offset=\"3.57%\" stop-color=\"#1E78C8\"></stop></linearGradient></svg>\n      <div class=\"chart-in\">\n        <div class=\"feet\" aria-hidden=\"true\"><span style=\"--ft:5\">5'</span><span style=\"--ft:6\">6'</span><span style=\"--ft:7\">7'</span><span style=\"--ft:8\">8'</span><span style=\"--ft:9\">9'</span></div>\n        <ul class=\"boards\" tabindex=\"0\" aria-label=\"Board types and",
+   "boards": [
+    {
+     "h": 0,
+     "w": 0,
+     "top": 212,
+     "bottom": 212,
+     "vb": null,
+     "aria": null,
+     "lab": "5' 6' 7' 8' 9' Fish and hybrids 5'8–6'4 Performanc"
+    },
+    {
+     "h": 320,
+     "w": 92,
+     "top": 367,
+     "bottom": 687,
+     "vb": "-1 -1 22.5 78",
+     "aria": null,
+     "lab": "Fish and hybrids 5'8–6'4"
+    },
+    {
+     "h": 312,
+     "w": 84,
+     "top": 376,
+     "bottom": 687,
+     "vb": "-1 -1 20.5 76",
+     "aria": null,
+     "lab": "Performance shortboards 5'10–6'2"
+    },
+    {
+     "h": 369,
+     "w": 94,
+     "top": 318,
+     "bottom": 687,
+     "vb": "-1 -1 23 90",
+     "aria": null,
+     "lab": "Mid-lengths and funboards 6'8–7'4"
+    },
+    {
+     "h": 394,
+     "w": 100,
+     "top": 294,
+     "bottom": 687,
+     "vb": "-1 -1 24.5 96",
+     "aria": null,
+     "lab": "Mini-mals 7'2–7'10"
+    },
+    {
+     "h": 451,
+     "w": 107,
+     "top": 236,
+     "bottom": 687,
+     "vb": "-1 -1 26 110",
+     "aria": null,
+     "lab": "Soft-top foamies 8'0–9'0"
+    },
+    {
+     "h": 467,
+     "w": 103,
+     "top": 220,
+     "bottom": 687,
+     "vb": "-1 -1 25 114",
+     "aria": null,
+     "lab": "Longboards 9'0–9'4"
+    }
+   ]
+  }
+ },
+ "unique": {
+  "fold": [
+   "8 A Sanjee Surf School -> #top",
+   "8 SUMMARY Menu -> ",
+   "108 A null -> #lessons",
+   "152 A null -> #boards",
+   "196 A null -> #sanjee",
+   "240 A null -> #waves",
+   "284 A null -> #tuktuk",
+   "329 A null -> #finding",
+   "187 A Ask on WhatsApp -> https://wa.me/94774004422?text=Hello%20S",
+   "243 A 5/5, 13 Google reviews, as of  -> https://www.google.com/maps/place/Sanjee"
+  ],
+  "heroText": "Ask on WhatsApp",
+  "heroHref": "https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about a surf lesson.",
+  "navOnTap": [
+   "https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about a surf lesson."
+  ],
+  "errs": [],
+  "bar": [
+   "Ask on WhatsApp https://wa.me/9477400442 304x52 top=784 hit=true",
+   "Call tel:+94774004422 52x52 top=784 hit=true"
+  ],
+  "menu": [
+   "Lessons #lessons 194x46",
+   "Boards #boards 194x46",
+   "Sanjee #sanjee 194x46",
+   "Waves #waves 194x46",
+   "Tuk-tuk #tuktuk 194x46",
+   "Finding us #finding 194x46"
+  ],
+  "afterMenu": {
+   "t": "#sanjee",
+   "y": 4867,
+   "open": false,
+   "targetTop": 68,
+   "headerBottom": 60
+  },
+  "firstTab": "A Skip to lessons #lessons top=12 h=52",
+  "afterSkip": {
+   "hash": "#lessons",
+   "y": 1025,
+   "active": "BODY ",
+   "lessonsTop": 84
+  },
+  "sheet": [
+   {
+    "open": true,
+    "rect": [
+     0,
+     128,
+     390,
+     716
+    ],
+    "checked": [
+     "Beginner Lesson"
+    ],
+    "bubble": "Hello Sanjee Surf School, I'd like to ask about the Beginner Lesson.",
+    "send": "Hello Sanjee Surf School, I'd like to ask about the Beginner Lesson.",
+    "sendRect": "358x52 bottom=830",
+    "vh": 844,
+    "scrollable": false,
+    "focus": "INPUT:Beginner Lesson"
+   },
+   {
+    "open": true,
+    "rect": [
+     0,
+     83,
+     390,
+     761
+    ],
+    "checked": [
+     "Private Coaching",
+     "Not sure",
+     "Not sure",
+     "Not sure"
+    ],
+    "bubble": "Hello Sanjee Surf School, I'd like to ask about Private Coaching. I'm not sure of my level. I'm not sure of the date yet. I'm not sure how many people yet.",
+    "send": "Hello Sanjee Surf School, I'd like to ask about Private Coaching. I'm not sure of my level. I'm not sure of the date yet. I'm not sure how many people yet.",
+    "sendRect": "358x52 bottom=830",
+    "vh": 844,
+    "scrollable": false,
+    "focus": "INPUT:Private Coaching"
+   },
+   {
+    "open": true,
+    "rect": [
+     0,
+     83,
+     390,
+     761
+    ],
+    "checked": [
+     "Week Intensive",
+     "Not sure",
+     "Not sure",
+     "Not sure"
+    ],
+    "bubble": "Hello Sanjee Surf School, I'd like to ask about the Week Intensive. I'm not sure of my level. I'm not sure of the date yet. I'm not sure how many people yet.",
+    "send": "Hello Sanjee Surf School, I'd like to ask about the Week Intensive. I'm not sure of my level. I'm not sure of the date yet. I'm not sure how many people yet.",
+    "sendRect": "358x52 bottom=830",
+    "vh": 844,
+    "scrollable": false,
+    "focus": "INPUT:Week Intensive"
+   }
+  ],
+  "lessonHrefStatic0": "https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Beginner Lesson.",
+  "sheetFull": {
+   "send": "Hello Sanjee Surf School, I'd like to ask about the Beginner Lesson. My level: total beginner. Date: 10 December 2026. People: 3+.",
+   "min": "",
+   "sizes": "48x48 358x44 358x44 358x44 131x44 93x44 119x44 100x44 90x44 262x44 90x44 35x44 37x44 47x44 90x44"
+  },
+  "combos": 270,
+  "distinctMessages": 270,
+  "sentences": [
+   "Date: 10 December 2026.",
+   "I'm not sure how many people yet.",
+   "I'm not sure of my level.",
+   "I'm not sure of the date yet.",
+   "My level: advanced.",
+   "My level: beginner.",
+   "My level: intermediate.",
+   "My level: total beginner.",
+   "People: 1.",
+   "People: 2.",
+   "People: 3+.",
+   "§I'd like to ask about Private Coaching.",
+   "§I'd like to ask about the Beginner Lesson.",
+   "§I'd like to ask about the Week Intensive."
+  ],
+  "afterEsc0": {
+   "open": false,
+   "focus": "Ask about this lesson"
+  },
+  "lessonHrefStatic1": "https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about Private Coaching.",
+  "afterEsc1": {
+   "open": false,
+   "focus": "Ask about this lesson"
+  },
+  "lessonHrefStatic2": "https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Week Intensive.",
+  "afterEsc2": {
+   "open": false,
+   "focus": "Ask about this lesson"
+  },
+  "navSend": [
+   "https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about Private Coaching. I'm not sure of my level. I'm not sure of the date yet. I'm not sure how many people yet."
+  ],
+  "sheetTabs": [
+   "in:INPUT:Total beginner ring=solid/nonenone",
+   "in:INPUT: ring=solid/nonenone",
+   "in:INPUT: ring=solid/nonenone",
+   "in:INPUT: ring=solid/nonenone",
+   "in:INPUT: ring=none/nonenone",
+   "in:INPUT:Not sure ring=solid/nonenone",
+   "in:INPUT:1 ring=solid/nonenone",
+   "in:A:Ask on WhatsApp ring=solid/",
+   "OUT:BODY:Skip to lessons\nSa ring=none/",
+   "in:BUTTON:close ring=solid/",
+   "in:INPUT:Beginner Lesson ring=solid/nonenone",
+   "in:INPUT:Total beginner ring=solid/nonenone",
+   "in:INPUT: ring=solid/nonenone",
+   "in:INPUT: ring=solid/nonenone",
+   "in:INPUT: ring=solid/nonenone",
+   "in:INPUT: ring=none/nonenone",
+   "in:INPUT:Not sure ring=solid/nonenone",
+   "in:INPUT:1 ring=solid/nonenone",
+   "in:A:Ask on WhatsApp ring=solid/",
+   "OUT:BODY:Skip to lessons\nSa ring=none/",
+   "in:BUTTON:close ring=solid/",
+   "in:INPUT:Beginner Lesson ring=solid/nonenone",
+   "in:INPUT:Total beginner ring=solid/nonenone",
+   "in:INPUT: ring=solid/nonenone",
+   "in:INPUT: ring=solid/nonenone",
+   "in:INPUT: ring=solid/nonenone"
+  ],
+  "sheetEscDesktop": {
+   "open": false,
+   "focus": "Ask about this lesson"
+  },
+  "q?nogl": {
+   "errs": [],
+   "canvas": [
+    "300x150 op=0"
+   ]
+  },
+  "q?still": {
+   "errs": [],
+   "canvas": [
+    "300x150 op=0"
+   ]
+  },
+  "q?swell=0.5": {
+   "errs": [],
+   "canvas": [
+    "1440x1030 op=1"
+   ]
+  }
+ },
+ "hostsSeen": {
+  "calm": [
+   "fonts.googleapis.com",
+   "wa.me"
+  ],
+  "interactive": [
+   "fonts.googleapis.com",
+   "wa.me"
+  ],
+  "unique": [
+   "fonts.gstatic.com",
+   "wa.me"
+  ]
+ }
+}

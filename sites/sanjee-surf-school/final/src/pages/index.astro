@@ -1,0 +1,354 @@
+---
+/* Home: a port of mockups/interactive/dist/index.html ("Where you start"), picked by Alon at gate b. Markup, class names,
+   CSS and JS are the mockup's (mockups/interactive/src/build.py, page.css, page.js, swell.js), bound to the content
+   schema: every word, photo, link and number comes from src/tenant/content.json or the template's labels
+   (src/lib/labels.json). 4g changes are commented. */
+import css from '../styles/site.css?raw'
+import pageJs from '../scripts/site.js?raw'
+import swellJs from '../scripts/swell.js?raw'
+import { SWELL } from '../lib/slots.mjs'
+import {
+  S, L, M, P, e, t, paras, ps, block, wa, lessonAsk, lessonDetails, date, ICON, BIZ, WA_DIGITS, PHONE, PHONE_PRINT, EMAIL, ADDRESS, MAP,
+  HERO_LINE, PRICE_DATE, rentalTable, SHOP, TOURS, boards, outline,
+  IS_PREVIEW, metaDescription, seoHead, businessLd, ldJson,
+} from '../lib/site.mjs'
+
+const PRIMARY = L.primary
+const H2 = (b) => (b?.heading ? `<h2 class="script">${e(b.heading)}</h2>` : '')
+const P1 = (x, cls = '') => (x ? `<p${cls ? ` class="${cls}"` : ''}>${e(x)}</p>` : '')
+const GENERIC = M.generic
+
+/* every booking control is a real link with JS off; data-ask is what the button is about (site.js adds level, date, people).
+   With no WhatsApp number the schema's next path is the phone. */
+const btn = (ask = GENERIC, label = PRIMARY, cls = '') => {
+  if (!WA_DIGITS) return PHONE ? `<a class="btn ${cls}" href="tel:${e(PHONE)}">${ICON.phone}<span>${e(PHONE_PRINT)}</span></a>` : ''
+  const own = ask === GENERIC ? '' : ' data-own="1"'
+  return `<a class="btn ${cls}" href="${e(wa(ask))}" data-ask="${e(ask)}"${own}>${ICON.wa}<span>${e(label)}</span></a>`
+}
+const contactButtons = (withMap = true) =>
+  (withMap && MAP ? `<a class="btn2" href="${e(MAP)}">${ICON.pin}<span>${e(L.open_map)}</span></a>` : '')
+  + (PHONE ? `<a class="btn2" href="tel:${e(PHONE)}" aria-label="${e(t(L.call_aria, { phone: PHONE_PRINT }))}">${ICON.phone}<span>${e(PHONE_PRINT)}</span></a>` : '')
+  + (EMAIL ? `<a class="btn2" href="mailto:${e(EMAIL)}" aria-label="${e(t(L.email_aria, { email: EMAIL }))}">${ICON.mail}<span>${e(EMAIL)}</span></a>` : '')
+
+const navLinks = L.nav.map(([n, i]) => `<a href="#${i}">${e(n)}</a>`).join('')
+const header = `<header class="hdr" id="top">
+  <a class="brand" href="#top"><h1>${e(BIZ)}</h1></a>
+  <nav class="nav" aria-label="${e(L.nav_aria)}">${navLinks}</nav>
+  ${btn(GENERIC, PRIMARY, 'btn-s hdr-cta needs-js')}
+  <details class="menu">
+    <summary>${e(L.menu)}</summary>
+    <nav class="menu-panel" aria-label="${e(L.menu_aria)}">${navLinks}</nav>
+  </details>
+</header>`
+
+/* ---- the first screen. The swell runs only on the photograph it was measured on: any other hero photo stays a still ---- */
+const heroPhoto = S.photos?.[0]?.image
+const heroW = P('hero-wide'), heroT = P('hero-tall')
+const swellOn = heroPhoto?.filename === SWELL.file
+const crop = (a) => `${a[0].toFixed(5)} ${a[1].toFixed(5)} ${a[2].toFixed(5)} ${a[3].toFixed(5)}`
+const stage = heroW ? `<div class="stage"${swellOn ? ` data-swell data-crop-wide="${crop(SWELL.wide)}" data-crop-tall="${crop(SWELL.tall)}"` : ''}>
+    <picture>
+      <source media="(max-width:700px)" srcset="${heroT.src}" width="${heroT.w}" height="${heroT.h}">
+      <img src="${heroW.src}" width="${heroW.w}" height="${heroW.h}" alt="${e(heroPhoto.alt)}" fetchpriority="high" decoding="async" elementtiming="hero">
+    </picture>
+    ${swellOn ? '<canvas aria-hidden="true"></canvas>' : ''}
+  </div>` : '<div class="stage"></div>'
+const hero = `<section class="hero" aria-label="${e(BIZ)}">
+  <div class="hero-copy">
+    <p class="hero-title">${e(HERO_LINE)}</p>
+    ${btn(GENERIC, PRIMARY, 'hero-btn')}
+  </div>
+  ${stage}
+</section>`
+
+/* ---- level tiles. Which picture sits on which level is the template's (slots.mjs): no field ties a picture to a level ---- */
+const small = (a, b, sizes = '(max-width:900px) 46vw, 20vw') => (a && b
+  ? `<img src="${a.src}" srcset="${a.src} ${a.w}w, ${b.src} ${b.w}w" sizes="${sizes}" width="${b.w}" height="${b.h}" alt="" loading="lazy" decoding="async">` : '')
+const TILE_IMG = {
+  first_time: small(P('tile-first-1'), P('tile-first-2')),
+  beginner: small(P('tile-stand-1'), P('tile-stand-2')),
+  intermediate: small(P('tile-mid-1'), P('tile-mid-2')),
+  advanced: small(P('tile-adv-1'), P('tile-adv-2')),
+  unsure: P('tile-unsure-tall') ? `<picture><source media="(max-width:900px)" srcset="${P('tile-unsure-1').src} ${P('tile-unsure-1').w}w, ${P('tile-unsure-2').src} ${P('tile-unsure-2').w}w" sizes="92vw" width="${P('tile-unsure-2').w}" height="${P('tile-unsure-2').h}"><img src="${P('tile-unsure-tall').src}" width="${P('tile-unsure-tall').w}" height="${P('tile-unsure-tall').h}" alt="" loading="lazy" decoding="async"></picture>` : '',
+}
+/* in Manrope a | reads as a capital I; the text stays "a | b" */
+const SEP = '<span class="sep">|</span>'
+const cards = (S.lessons ?? []).length ? `<ul class="cards">${S.lessons.map((l) => {
+  const details = lessonDetails(l)
+  const unit = l.unit === 'per_lesson' ? ` <span class="per">${e(L.per_lesson)}</span>` : ''
+  const id = `card-${l.label.split(' ')[0].toLowerCase().replace(/[^a-z0-9-]/g, '')}`
+  return `<li class="card" id="${id}" data-lesson="${e(l.label)}" data-ask="${e(lessonAsk(l.label))}" data-levels="${(l.level ?? []).join(' ')}" data-price="${e(l.currency)} ${l.price}">
+      <span class="foryou" aria-hidden="true"><i></i>${e(L.for_you)}</span>
+      <h3>${e(l.label)}</h3>
+      <p class="details">${details.map(e).join(` ${SEP} `)}</p>
+      <p class="price">${e(l.currency)} ${l.price}${unit}</p>
+      <p class="incl">${e(l.includes)}</p>
+      <div class="card-actions">
+        ${btn(lessonAsk(l.label))}
+        <button type="button" class="add needs-js" aria-pressed="false"><span class="add-a">${e(L.add)}</span><span class="add-b">${e(L.added)}</span></button>
+      </div>
+    </li>`
+}).join('')}</ul>` : ''
+
+const r0 = S.ratings?.[0]
+const rating = (cls = '') => (r0 ? `<a class="rating ${cls}" href="${e(r0.url)}"><b>${r0.score}/${r0.scale}</b><span class="r-t"><span>${e(t(L.reviews, { n: r0.count }))}</span><i> ${SEP} </i><span>${e(t(L.as_of, { date: date(r0.capturedAt) }))}</span></span></a>` : '')
+
+const who = block('intro', 0), lessonsB = block('offer', 0), lessonsP = paras(lessonsB)
+const where = `<section class="where">
+  <div class="where-top">
+    ${P1(S.tagline, 'lead')}
+    <div class="who">
+      ${H2(who)}
+      ${ps(paras(who))}
+    </div>
+  </div>
+  <div class="tiles needs-js" role="group" aria-label="${e(L.tiles_aria)}">
+    ${L.tiles.map((x) => `<button type="button" class="tile" data-level="${x.key}" aria-pressed="false">${TILE_IMG[x.key]}<span class="tile-l">${e(x.label)}</span></button>`).join('')}
+    <span class="tile-ring" aria-hidden="true"></span>
+  </div>
+  <div class="fits needs-js" id="fits" aria-live="polite"></div>
+  <div class="lessons-head" id="lessons">
+    ${H2(lessonsB)}
+    ${P1(lessonsP[0])}
+  </div>
+  ${cards}
+  <div class="after-cards">
+    <div class="after-a">
+      ${P1(lessonsP[2])}
+      ${rating()}
+    </div>
+    ${P1(lessonsP[1], 'card-more week-more')}
+  </div>
+</section>`
+
+/* ---- the message ---- */
+const chip = (group, value, label) => `<button type="button" class="chip" data-group="${group}" data-value="${e(value)}" aria-pressed="false">${e(label)}</button>`
+const before = block('info', 0)
+const message = `<section class="msg-wrap" id="message">
+  <div class="msg needs-js"${WA_DIGITS ? '' : ' hidden'}>
+    <p class="msg-title" id="msg-title">${e(L.your_message)}</p>
+    <div class="bubble" role="status" aria-live="polite" aria-labelledby="msg-title"><p id="bubble"></p></div>
+    <div class="msg-controls">
+      <div class="ctl" role="group" aria-label="${e(L.ctl_lesson)}"><span class="ctl-l">${e(L.ctl_lesson)}</span><div class="chips">${(S.lessons ?? []).map((l) => chip('lesson', l.label, l.label)).join('')}${chip('lesson', 'unsure', L.not_sure)}</div></div>
+      <div class="ctl" role="group" aria-label="${e(L.ctl_date)}"><span class="ctl-l">${e(L.ctl_date)}</span><div class="chips">
+        <label class="date"><input type="date" id="date" aria-label="${e(L.ctl_date)}"></label>
+        ${chip('date', 'unsure', L.not_sure)}
+      </div></div>
+      <div class="ctl" role="group" aria-label="${e(L.ctl_people)}"><span class="ctl-l">${e(L.ctl_people)}</span><div class="chips">${L.people.map(([v, l]) => chip('people', v, l)).join('')}</div></div>
+    </div>
+    ${WA_DIGITS ? `<a class="btn msg-send" id="send" href="${e(wa(GENERIC))}" data-ask="${e(GENERIC)}">${ICON.wa}<span>${e(PRIMARY)}</span></a>` : ''}
+  </div>
+  <div class="before">
+    ${H2(before)}
+    ${ps(paras(before))}
+  </div>
+</section>`
+
+/* ---- boards, to scale, one scale in inches ---- */
+const BOARDS = boards()
+const chart = BOARDS.length ? (() => {
+  const defs = [], items = []
+  BOARDS.forEach((x, i) => {
+    const stop = (1 - x.a / x.b) * 100, cx = x.W / 2
+    const end = x.tail === 'swallow' ? x.b - x.W * .26 : x.b - .5
+    const finY = x.b - x.W * .42
+    const fx = x.W * { swallow: .27, squash: .2, round: .15 }[x.tail]
+    defs.push(`<linearGradient id="g${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="${stop.toFixed(2)}%" stop-color="${x.tip}"/><stop offset="${stop.toFixed(2)}%" stop-color="${x.deck}"/></linearGradient>`)
+    const fins = `<g fill="${x.rail}"><path d="M${(cx - fx).toFixed(1)},${finY.toFixed(1)} q-.5,3 .9,4.2 l.5,-.4 q-.8,-2 -.2,-3.8 Z"/><path d="M${(cx + fx).toFixed(1)},${finY.toFixed(1)} q.5,3 -.9,4.2 l-.5,-.4 q.8,-2 .2,-3.8 Z"/></g>`
+    items.push(`<li class="board" style="--l:${x.b};--w:${x.W};--i:${i}"><svg class="b-v" viewBox="-1 -1 ${x.W + 2} ${x.b + 2}" aria-hidden="true"><path d="${outline(x.b, x.W, x.nose, x.tail)}" fill="url(#g${i})" stroke="${x.rail}" stroke-width=".7"/><path d="M${cx},.6 V${end.toFixed(1)}" stroke="#fff" stroke-width=".4" stroke-opacity=".75" fill="none"/>${fins}</svg><p><b>${e(x.name)}</b><span>${e(x.lo)}–${e(x.hi)}</span></p></li>`)
+  })
+  const feet = [5, 6, 7, 8, 9].map((n) => `<span style="--ft:${n}">${n}'</span>`).join('')
+  return `<div class="chart">
+      <svg width="0" height="0" class="defs" aria-hidden="true">${defs.join('')}</svg>
+      <div class="chart-in">
+        <div class="feet" aria-hidden="true">${feet}</div>
+        <ul class="boards" tabindex="0" aria-label="${e(L.boards_aria)}">${items.join('')}</ul>
+      </div>
+    </div>`
+})() : ''
+
+const asof = (cls = '') => (PRICE_DATE ? `<p class="asof${cls}">${e(PRICE_DATE)}</p>` : '')
+const rental = rentalTable()
+const money = (r) => (r ? `${e(r.currency)} ${r.price}` : '')
+const rates = !(rental.rows.length || rental.extra.length || SHOP.length) ? '' : `<div class="rates" data-show="soft">
+      <div class="kind needs-js" role="group" aria-label="${e(L.board_type_aria)}">
+        <span class="kind-pill" aria-hidden="true"></span>
+        <button type="button" data-kind="soft" aria-pressed="true">${e(L.soft)}</button>
+        <button type="button" data-kind="hard" aria-pressed="false">${e(L.hard)}</button>
+      </div>
+      <table>
+        <thead><tr><th scope="col">${e(L.duration)}</th><th scope="col" class="soft">${e(L.soft)}</th><th scope="col" class="hard">${e(L.hard)}</th><th class="roll" aria-hidden="true"></th></tr></thead>
+        <tbody>${rental.rows.map(({ dur, soft, hard }) => {
+          const note = (soft ?? hard).note
+          return `<tr data-soft="${soft?.price ?? ''}" data-hard="${hard?.price ?? ''}" data-cur="${e((soft ?? hard).currency)}"><th scope="row">${e(dur)}${note ? `<span class="r-note">${e(note)}</span>` : ''}</th><td class="soft">${money(soft)}</td><td class="hard">${money(hard)}</td><td class="roll" aria-hidden="true"></td></tr>`
+        }).join('')}</tbody>
+      </table>
+      ${rental.extra.length || SHOP.length ? `<ul class="extras">${[...rental.extra.map((r) => [r, r.unit === 'per_day' ? L.per_day : '']), ...SHOP.map((r) => [r, ''])].map(([r, u]) => `<li><span>${e(r.label)}${u ? ` | ${e(u)}` : ''}</span><b>${money(r)}</b></li>`).join('')}</ul>` : ''}
+      ${asof()}
+    </div>`
+const boardB = block('offer', 1)
+const boardsSec = `<section class="boards-sec" id="boards">
+  <div class="boards-copy">
+    ${H2(boardB)}
+    ${ps(paras(boardB))}
+    ${btn(M.renting)}
+  </div>
+  <div class="boards-data">
+    ${chart}
+    ${rates}
+  </div>
+</section>`
+
+const fw = P('feature-wide'), fn = P('feature-near'), fm = S.photos?.[3]?.image
+const feature = fw ? `<section class="feature" aria-label="${e(S.featureLine)}">
+  <p class="script">${e(S.featureLine)}</p>
+  <picture>
+    <source media="(max-width:700px)" srcset="${fn.src}" width="${fn.w}" height="${fn.h}">
+    <img src="${fw.src}" width="${fw.w}" height="${fw.h}" alt="${e(fm.alt)}" loading="lazy" decoding="async">
+  </picture>
+</section>` : ''
+
+const about = block('about', 0), s1 = P('sanjee-1'), s2 = P('sanjee-2')
+const names = (S.languagesSpoken ?? []).map((x) => e(L.language_names[x] ?? x)).join(` ${SEP} `)
+/* credentials and languages sit with Sanjee only */
+const sanjee = `<section class="sanjee" id="sanjee">
+  ${s2 ? `<div class="print-wrap" data-parallax>
+    <img src="${s2.src}" srcset="${s1.src} ${s1.w}w, ${s2.src} ${s2.w}w" sizes="(max-width:900px) 100vw, 620px" width="${s2.w}" height="${s2.h}" alt="${e(S.photos[5].image.alt)}" loading="lazy" decoding="async">
+  </div>` : ''}
+  <div class="sanjee-copy">
+    ${H2(about)}
+    ${ps(paras(about), 'say')}
+    <ul class="creds">${(S.credentials ?? []).map((c) => `<li>${e(c.label)} ${SEP} ${e(c.issuer)}</li>`).join('')}${names ? `<li>${t(e(L.languages), { list: names })}</li>` : ''}</ul>
+  </div>
+</section>`
+
+const T = S.testimonials ?? []
+const quotes = T.length ? `<section class="quotes-sec" aria-label="${e(L.reviews_aria)}">
+  <div class="quotes-head">${rating('rating-big')}</div>
+  <ul class="quotes" tabindex="0" aria-label="${e(L.reviews_row_aria)}">${T.map((q) => `<li class="quote"><blockquote>${e(q.quote)}</blockquote><p class="by"><b>${e(q.author)}</b> ${SEP} ${e(L.platform)}</p></li>`).join('')}</ul>
+  <div class="dots needs-js">${T.map((_, i) => `<button type="button" class="dot" aria-label="${e(t(L.review_n, { i: i + 1, n: T.length }))}"><i></i></button>`).join('')}</div>
+</section>` : ''
+
+/* SCHEMA GAP spots[]: which paragraph of the block lights for which level is by paragraph order */
+const waveB = block('info', 1), WAVE_FOR = ['first_time beginner', 'intermediate', 'advanced']
+const pw6 = P('print-wave'), pb = P('print-beach')
+const waves = `<section class="waves" id="waves">
+  <div class="waves-a">
+    <div class="spot">
+      ${P1(S.spot, 'lead-s')}
+      ${P1(S.season)}
+    </div>
+    ${pw6 ? `<img class="print" src="${pw6.src}" width="${pw6.w}" height="${pw6.h}" alt="${e(S.photos[2].image.alt)}" loading="lazy" decoding="async">` : ''}
+  </div>
+  <div class="waves-b">
+    ${pb ? `<img class="print" src="${pb.src}" width="${pb.w}" height="${pb.h}" alt="${e(S.photos[6].image.alt)}" loading="lazy" decoding="async">` : ''}
+    <div class="waves-copy">
+      ${H2(waveB)}
+      ${paras(waveB).map((x, i) => `<p class="wave" data-for="${WAVE_FOR[i] ?? ''}">${e(x)}</p>`).join('')}
+    </div>
+  </div>
+</section>`
+
+const tourB = block('offer', 2)
+const tours = `<section class="tours" id="tuk-tuk">
+  <div class="tours-copy">
+    ${H2(tourB)}
+    ${ps(paras(tourB))}
+  </div>
+  <div>
+    <ol class="tour-list">${TOURS.map((r) => {
+      const ask = t(M.tour, { x: r.name })
+      return `<li class="tour${r.firstOuting ? ' first-outing' : ''}">
+      <div><h3>${e(r.name)}${r.when ? ` <span>${e(r.when)}</span>` : ''}</h3><p>${e(r.note)}</p></div>
+      <b class="t-price">${money(r)}</b>
+      ${WA_DIGITS ? `<a class="ico" href="${e(wa(ask))}" data-ask="${e(ask)}" data-own="1"${r.outing ? ' data-outing="1"' : ''} aria-label="${e(t(L.tour_aria, { primary: PRIMARY, name: r.name }))}">${ICON.wa}</a>` : ''}
+    </li>`
+    }).join('')}</ol>
+    ${asof(' asof-t')}
+  </div>
+</section>`
+
+const bw = P('back-wide'), bt = P('back-tall')
+const back = bw ? `<section class="back" aria-label="${e(S.closing)}">
+  <picture>
+    <source media="(max-width:700px)" srcset="${bt.src}" width="${bt.w}" height="${bt.h}">
+    <img src="${bw.src}" width="${bw.w}" height="${bw.h}" alt="${e(S.photos[7].image.alt)}" loading="lazy" decoding="async">
+  </picture>
+  <div class="back-copy">
+    ${P1(S.closing)}
+    ${btn()}
+  </div>
+</section>` : ''
+
+const findB = block('info', 2)
+const finding = `<section class="finding" id="finding-us">
+  <div>
+    ${H2(findB)}
+    ${ps(paras(findB))}
+  </div>
+  <div class="finding-b">
+    ${P1(ADDRESS, 'addr')}
+    <div class="btn-row">${contactButtons()}</div>
+  </div>
+</section>`
+
+const footer = `<footer class="foot" id="book">
+  <p class="foot-name">${e(BIZ)}</p>
+  <div class="btn-row">
+    ${btn(GENERIC, PRIMARY, 'btn-s')}
+    ${contactButtons(false)}
+  </div>
+  ${P1(ADDRESS, 'foot-addr')}
+</footer>`
+
+const bar = `<aside class="bar" aria-label="Quick contact">
+  <a class="bar-msg needs-js" href="#message" tabindex="-1"><span class="vh">${e(L.your_message)}: </span><span id="bar-text"></span></a>
+  ${btn()}
+  ${PHONE ? `<a class="ico ico-l" href="tel:${e(PHONE)}" aria-label="${e(t(L.call_aria, { phone: PHONE_PRINT }))}">${ICON.phone}</a>` : ''}
+</aside>`
+
+/* 4h: name first for the brand query (base.md 6), then what and where; the name alone if that passes 60 characters */
+const title = `${BIZ} | ${HERO_LINE}`.length <= 60 ? `${BIZ} | ${HERO_LINE}` : BIZ
+/* 4h: owner fields only, cut at a sentence to 155: the tagline, the first sentence of spot, the language line */
+const description = metaDescription([S.tagline, (S.spot ?? '').split(/(?<=\.)\s/)[0], paras(who)[1]])
+const SITE = {
+  wa: WA_DIGITS, msg: M, yourMessage: L.your_message, soft: L.soft, hard: L.hard,
+  levels: Object.fromEntries(L.tiles.map((x) => [x.key, x.say])),
+  lessonAsk: Object.fromEntries((S.lessons ?? []).map((l) => [l.label, lessonAsk(l.label)])),
+}
+/* 4g: og:image's host is the build's SITE_URL (astro.config.mjs); no site, no tags */
+const og = P('og')
+const head = seoHead({ title, description, image: og && { ...og, alt: heroPhoto?.alt } })
+const ld = ldJson(businessLd({ description }))
+const body = [hero, where, message, boardsSec, feature, sanjee, quotes, waves, tours, back, finding].join('\n')
+---
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{title}</title>
+{IS_PREVIEW && <meta name="robots" content="noindex, nofollow">}
+<meta name="description" content={description}>
+<Fragment set:html={head} />
+<meta name="theme-color" content="#c9b9a8">
+<meta name="color-scheme" content="light">
+<script is:inline>document.documentElement.className='js'</script>
+{heroT && <link rel="preload" as="image" href={heroT.src} media="(max-width:700px)" fetchpriority="high">}
+{heroW && <link rel="preload" as="image" href={heroW.src} media="(min-width:701px)" fetchpriority="high">}
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/manrope-latin-wght-normal.woff2">
+<style is:inline set:html={css}></style>
+</head>
+<body>
+<a class="skip" href="#lessons">{L.skip}</a>
+<Fragment set:html={header} />
+<main>
+<Fragment set:html={body} />
+</main>
+<Fragment set:html={footer} />
+<Fragment set:html={bar} />
+<script is:inline set:html={`var SITE=${JSON.stringify(SITE).replace(/</g, '\\u003c')};${swellJs}${pageJs}`}></script>
+{/* 4h: the JSON-LD at the end of <body>, out of the critical path (as the other finals) */}
+<script type="application/ld+json" is:inline set:html={ld}></script>
+</body>
+</html>

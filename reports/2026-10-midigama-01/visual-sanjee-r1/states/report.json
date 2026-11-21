@@ -1,0 +1,236 @@
+{
+ "calm-d-imgs": [
+  {
+   "src": "hero-2000.webp",
+   "nat": "1439x899",
+   "drawn": "1440x900",
+   "top": 0,
+   "vis": "visible",
+   "op": "1"
+  }
+ ],
+ "calm-m-imgs": [
+  {
+   "src": "hero-m.webp",
+   "nat": "692x1500",
+   "drawn": "390x844",
+   "top": 0,
+   "vis": "visible",
+   "op": "1"
+  }
+ ],
+ "calm-w-imgs": [
+  {
+   "src": "hero-2000.webp",
+   "nat": "1919x1199",
+   "drawn": "1920x1080",
+   "top": 0,
+   "vis": "visible",
+   "op": "1"
+  }
+ ],
+ "interactive-d-imgs": [
+  {
+   "src": "7UO6NR3LnipB3wWszG8CQAA",
+   "nat": "1600x1067",
+   "drawn": "1440x900",
+   "top": 0,
+   "vis": "visible",
+   "op": "1"
+  }
+ ],
+ "interactive-m-imgs": [
+  {
+   "src": "7UO6NR3LnipB3wWszG8CQAA",
+   "nat": "1600x1067",
+   "drawn": "390x844",
+   "top": 0,
+   "vis": "visible",
+   "op": "1"
+  }
+ ],
+ "interactive-w-imgs": [
+  {
+   "src": "7UO6NR3LnipB3wWszG8CQAA",
+   "nat": "1600x1067",
+   "drawn": "1920x1080",
+   "top": 0,
+   "vis": "visible",
+   "op": "1"
+  }
+ ],
+ "unique-d-imgs": [
+  {
+   "src": "set-img-009.webp",
+   "nat": "400x267",
+   "drawn": "400x267",
+   "top": 266,
+   "vis": "visible",
+   "op": "0"
+  },
+  {
+   "src": "set-img-018.webp",
+   "nat": "300x150",
+   "drawn": "300x150",
+   "top": 292,
+   "vis": "visible",
+   "op": "0"
+  },
+  {
+   "src": "set-img-006.webp",
+   "nat": "360x203",
+   "drawn": "360x204",
+   "top": 246,
+   "vis": "visible",
+   "op": "0"
+  },
+  {
+   "src": "set-img-002-1100.webp",
+   "nat": "880x484",
+   "drawn": "880x485",
+   "top": 428,
+   "vis": "visible",
+   "op": "0"
+  },
+  {
+   "src": "set-img-007-640.webp",
+   "nat": "519x506",
+   "drawn": "520x507",
+   "top": 402,
+   "vis": "visible",
+   "op": "0"
+  }
+ ],
+ "unique-m-imgs": [
+  {
+   "src": "set-img-009.webp",
+   "nat": "1x0",
+   "drawn": "0x0",
+   "top": 0,
+   "vis": "visible",
+   "op": "0"
+  },
+  {
+   "src": "set-img-018.webp",
+   "nat": "1x0",
+   "drawn": "0x0",
+   "top": 0,
+   "vis": "visible",
+   "op": "0"
+  },
+  {
+   "src": "set-img-006.webp",
+   "nat": "150x84",
+   "drawn": "156x88",
+   "top": 358,
+   "vis": "visible",
+   "op": "0"
+  },
+  {
+   "src": "set-img-002-phone.webp",
+   "nat": "760x380",
+   "drawn": "343x172",
+   "top": 304,
+   "vis": "visible",
+   "op": "0"
+  },
+  {
+   "src": "set-img-007-962.webp",
+   "nat": "366x357",
+   "drawn": "367x357",
+   "top": 438,
+   "vis": "visible",
+   "op": "0"
+  }
+ ],
+ "unique-w-imgs": [
+  {
+   "src": "set-img-009.webp",
+   "nat": "400x267",
+   "drawn": "444x297",
+   "top": 296,
+   "vis": "visible",
+   "op": "0"
+  },
+  {
+   "src": "set-img-018.webp",
+   "nat": "300x150",
+   "drawn": "333x167",
+   "top": 324,
+   "vis": "visible",
+   "op": "0"
+  },
+  {
+   "src": "set-img-006.webp",
+   "nat": "360x203",
+   "drawn": "400x226",
+   "top": 273,
+   "vis": "visible",
+   "op": "0"
+  },
+  {
+   "src": "set-img-002-1100.webp",
+   "nat": "880x484",
+   "drawn": "978x539",
+   "top": 476,
+   "vis": "visible",
+   "op": "0"
+  },
+  {
+   "src": "set-img-007-640.webp",
+   "nat": "519x506",
+   "drawn": "578x563",
+   "top": 447,
+   "vis": "visible",
+   "op": "0"
+  }
+ ],
+ "interactiveMenuErr": "TimeoutError: locator.tap: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Menu/i }).first()\u001b[22m\n",
+ "uniqueMenuErr": "TimeoutError: locator.tap: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Menu/i }).first()\u001b[22m\n",
+ "calmAnims": [
+  {
+   "n": "wash-film",
+   "d": 1200,
+   "delay": 0
+  },
+  {
+   "n": "wash",
+   "d": 900,
+   "delay": 0
+  }
+ ],
+ "calmAnimsAtLoad": [
+  {
+   "d": 200,
+   "kf": [
+    "",
+    ""
+   ]
+  },
+  {
+   "d": 350,
+   "kf": [
+    "",
+    ""
+   ]
+  },
+  {
+   "n": "wash-film",
+   "d": 1200,
+   "kf": [
+    "translate3d(0px, 30px, 0px)",
+    "translate3d(0px, -10px, 0px)",
+    "translate3d(0px, 0px, 0px)"
+   ]
+  },
+  {
+   "n": "wash",
+   "d": 900,
+   "kf": [
+    "translate3d(0px, 22px, 0px)",
+    "translate3d(0px, -12px, 0px)",
+    "translate3d(0px, 0px, 0px)"
+   ]
+  }
+ ]
+}
