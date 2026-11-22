@@ -1,0 +1,174 @@
+{
+ "interactive": {
+  "m390": {
+   "n": 106,
+   "fails": [
+    {
+     "s": "Deluxe Double",
+     "fs": 15,
+     "cr": 1,
+     "large": false,
+     "color": "rgb(255, 255, 255)",
+     "tag": "BUTTON",
+     "cls": ""
+    },
+    {
+     "s": "Live dates are on Booking.com, and group",
+     "fs": 22,
+     "cr": 1,
+     "large": false,
+     "color": "rgb(255, 255, 255)",
+     "tag": "P",
+     "cls": ""
+    },
+    {
+     "s": "Book the whole house on Airbnb",
+     "fs": 15,
+     "cr": 1,
+     "large": false,
+     "color": "rgb(255, 255, 255)",
+     "tag": "SPAN",
+     "cls": ""
+    },
+    {
+     "s": "Book a room on Airbnb",
+     "fs": 15,
+     "cr": 1,
+     "large": false,
+     "color": "rgb(255, 255, 255)",
+     "tag": "SPAN",
+     "cls": ""
+    }
+   ],
+   "min_font": 13,
+   "chars_under_12px": [],
+   "body_p_px": [
+    16,
+    20,
+    16.5,
+    15
+   ]
+  },
+  "d1440": {
+   "n": 110,
+   "fails": [
+    {
+     "s": "Deluxe Double",
+     "fs": 15,
+     "cr": 1,
+     "large": false,
+     "color": "rgb(255, 255, 255)",
+     "tag": "BUTTON",
+     "cls": ""
+    },
+    {
+     "s": "Live dates are on Booking.com, and group",
+     "fs": 28,
+     "cr": 1,
+     "large": true,
+     "color": "rgb(255, 255, 255)",
+     "tag": "P",
+     "cls": ""
+    },
+    {
+     "s": "Book the whole house on Airbnb",
+     "fs": 16,
+     "cr": 1,
+     "large": false,
+     "color": "rgb(255, 255, 255)",
+     "tag": "SPAN",
+     "cls": ""
+    },
+    {
+     "s": "Book a room on Airbnb",
+     "fs": 16,
+     "cr": 1,
+     "large": false,
+     "color": "rgb(255, 255, 255)",
+     "tag": "SPAN",
+     "cls": ""
+    }
+   ],
+   "min_font": 14,
+   "chars_under_12px": [],
+   "body_p_px": [
+    16,
+    17,
+    22,
+    18,
+    15
+   ]
+  }
+ },
+ "unique": {
+  "m390": {
+   "n": 94,
+   "fails": [],
+   "min_font": 13,
+   "chars_under_12px": [],
+   "body_p_px": [
+    15,
+    19,
+    17.5,
+    16,
+    22,
+    18,
+    17
+   ],
+   "door": {
+    "triggers": [
+     "A:More ways to book:::door"
+    ],
+    "trigText": "More ways to book",
+    "opened": {
+     "url": "http://localhost:8997/",
+     "dialog": true,
+     "open": true,
+     "modal": "true",
+     "label": "door-h",
+     "focus": "See rooms and live dates on Booking.com"
+    },
+    "tabs_inside": "20/20",
+    "after_esc": {
+     "focus": "More ways to book",
+     "url": "http://localhost:8997/"
+    }
+   }
+  },
+  "d1440": {
+   "n": 94,
+   "fails": [],
+   "min_font": 13,
+   "chars_under_12px": [],
+   "body_p_px": [
+    14.5,
+    22,
+    15,
+    17.5,
+    17,
+    28,
+    18,
+    20
+   ],
+   "door": {
+    "triggers": [
+     "A:More ways to book:::door"
+    ],
+    "trigText": "More ways to book",
+    "opened": {
+     "url": "http://localhost:8997/",
+     "dialog": true,
+     "open": true,
+     "modal": "true",
+     "label": "door-h",
+     "focus": "See rooms and live dates on Booking.com"
+    },
+    "tabs_inside": "20/20",
+    "after_esc": {
+     "focus": "More ways to book",
+     "url": "http://localhost:8997/"
+    }
+   }
+  }
+ }
+}

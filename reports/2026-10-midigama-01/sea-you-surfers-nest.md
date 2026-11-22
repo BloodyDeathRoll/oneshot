@@ -322,3 +322,118 @@ All three pass dimensions 1–7 with no hard fail. Every round-1 item is fixed a
 - `jsoff-keyboard-and-fold.json`: the JS-off Tab walk, type line and CTAs on the first screen, and interactive LCP re-runs.
 - `check-design.txt`.
 - Screenshots: scratch, deleted after the round; described in words above.
+
+## Round 3 — quick (station 4f), interactive and unique
+
+critic 0.4.3 · rubric 0.3.2 · 2026-11-22 · interactive and unique as committed in **8d8d821** (+ the media manifest 1b826e9). Calm passed in round 2 and is unchanged: `git diff 83d0358 HEAD -- …/mockups/calm` is empty, so its round-2 scorecard (76.5 / 80) stands and calm was not re-measured.
+
+Method:
+- Each `dist/` was served on :8996 / :8997 (served `index.html` = `dist/index.html`, `cmp`).
+- Same checks, order and viewports as rounds 1–2:
+  - `audit-mockup` (report-folder copy, run one at a time);
+  - `shoot.mjs` at 1440 / 390 (interactive 10 / 13 captures, page 8,156 / 9,430 px; unique 15 / 16, page 11,563 / 12,204 px; 0 console errors; scratch, deleted after the round);
+  - axe at 390 / 1440 after a full scroll;
+  - JS-on and JS-off Tab walks;
+  - a phone-bar probe;
+  - solid-ground and over-photo contrast;
+  - reduced motion;
+  - quote and copy scripts;
+  - the unique door;
+  - `check-design --no-shots`.
+- I did not read the visual-critic or experience-critic reports.
+
+**Re-confirmed:**
+- **No phone or chat link:** 0 `tel:`, 0 `wa.me` / WhatsApp, and `715880052` appears in none of interactive `index.html`, unique `index.html` or unique `stay/index.html`.
+- **No prices:** a currency and per-night scan finds no prices in any of the three files.
+- **img-008 / img-010:** **absent from unique** (no reference in either HTML file, and its Standard slideshow is img-026, 009, 005, 025). **Interactive still shows img-010** (WC door) in its Standard stage, as in rounds 1 and 2: Booking.com-tagged to Standard, alt states only the door, never deducted. img-008 is in neither page.
+
+### Round-2 items, verified
+
+| item | result | evidence |
+|---|---|---|
+| Interactive: one "bed and breakfast" on the first phone screen | **done**. The hero's "Bed and breakfast" span is `display:none` at 390. The only type line is the tagline at y 697 (of 844). At 1440, "Bed and breakfast \| Midigama, Sri Lanka" stays in the hero (y 404). | `jsoff-keyboard-fold-lcp.json.first_screen` |
+| Interactive: skip link visible on focus with JS off | **done**. The JS-off Tab walk finds 0 off-screen or hidden stops at 390 and 1440 (round 2: the skip link). | `jsoff-keyboard-fold-lcp.json` |
+| Interactive: closing line contrast | **done**. White 22 px / 600 over the palms at 390: median **11.27:1**, worst 10 % **9.64:1**, worst 2 % 9.19:1. The designer's claim was 9.7. At 1440: 11.35 / 10.26. The closing's outlined Airbnb buttons, now white text on the photograph, measure ≥ 11.6:1 (390) and ≥ 10.3:1 (1440) for the worst 10 %. | `photo-contrast.json`, `photo-contrast-buttons.json` |
+| Interactive: phone bar out of the Tab order when slid away | **done**. With JS at the top of the page the bar is off-screen with 0 focusable links. Once shown it has 1, and the JS-on Tab walk finds 0 invisible stops of 36. | `phone-bar.json`, `interactive/a11y.json` |
+| Unique: summary amenities not repeated | **done**. "Free WiFi", "Kitchen", "Fan and mosquito net" and "Free private parking" each occur **once** in the page text. The old Facilities line is now "Also at the house: Free toiletries \| Airport shuttle (additional charge) \| Laundry (additional charge) \| Security cameras outside", the other four `amenities[]`. | text count, `unique/a11y.json` |
+| Unique: phone bar out of the Tab order while off-screen, JS on and off | **done**. JS on: off-screen at the top with 0 focusable, then on screen with 2 focusable from the second screen to the end (wheel probe). JS off: the bar is never shown and has 0 focusable links. Both Tab walks find 0 invisible stops (42 / 49 with JS). | `phone-bar.json`, `jsoff-keyboard-fold-lcp.json`, `unique/a11y.json` |
+| Unique: rooms earlier on the phone | **done, by one screen**. Page 12,204 px (round 2: 12,868). "Deluxe or Standard" at capture **05 of 16** (round 2: 06 of 17). | shoot sheets (scratch) |
+
+**No regressions found:**
+- Facts unchanged; the only non-copy line that changed is unique's "Also at the house" label over copy `amenities[]`.
+- 5/5 testimonials verbatim with attribution; Kenza's line break kept (`quotes.json`, `misc.json`).
+- The A/C sentence appears once in interactive. Unique has it on the page plus in the door and `stay/`.
+- Booking hrefs are exact. `audit.json.booking.tapped` = the engine URL at 390 touch, with the primary action above the fold. JS off: 3 booking links reachable on each page.
+- axe 0 violations, no overflow, 0 page errors, 0 tap targets under 44 px.
+- Reduced motion: canvases `display:none`, hero opaque, 0 running animations.
+- The unique door: dialog, `aria-modal`, focus on the Booking.com tile, 20/20 Tabs inside, Esc returns focus.
+- `check-design`: 0 problems and 0 warnings on both; fonts unchanged (interactive Courgette / Plus Jakarta Sans, unique Leckerli One / Instrument Sans). Google Fonts is the only third-party host.
+
+### interactive — "In the palms"
+
+```
+mode: quick        round: 3        variant: interactive
+total (dims 1–7): 77.8 / 80      result: pass (dims 1–7; dim 8 pending)      hard_fails: []
+```
+
+| # | dimension | weight | score | weighted | evidence |
+|---|---|---|---|---|---|
+| 1 | facts | 20 | 10 | 20.0 | 0 mismatches and 0 unsourced claims. Round-1 table stands. img-010 note as above. |
+| 2 | mobile + performance | 15 | 10 | 15.0 | `interactive/audit.json`: first load **561 KB** in 17 requests, 0 external JS, fonts 46 KB, largest image 51 KB. **LCP 796 ms** (second run 820). CLS 0.0026, scroll 0 / 0 (second run early 0.0026 from `::before` at y 0, under 0.01). 0 of 33 targets under 44 px. No overflow at 390 or 1440. |
+| 3 | booking CTA | 15 | 9 | 13.5 | Engine class, 1 click, exact URLs. The hero "See live dates" is at y 290 (390) / 450 (1440). The tiles are buttons, and with JS off the answers are links. −1: the listing's top, without room or dates (no deep link in the dossier). |
+| 4 | brand fit | 5 | 10 | 5.0 | Type + place on the first screen at both widths. §3 order and the interactive brief hold, with one CTA on the first screen. |
+| 5 | copy | 10 | 10 | 10.0 | Copy unedited. One type line on the first phone screen, and the A/C sentence once. The round-2 repetition is gone. |
+| 6 | accessibility | 8 | 10 | 8.0 | axe **0 violations** at 390 and 1440 (27 pass). Skip link first, and visible with JS off. 36 / 43 Tab stops all on screen with a 3 px outline, with JS on and off. Phone bar out of the Tab order while hidden. Closing text ≥ 9.6:1 for the worst 10 % of its photo. 0/26 images without alt, headings in order, reduced motion still. |
+| 7 | security + delivery | 7 | 9 | 6.3 | Static, no secrets, no root-absolute URLs, 0 iframes, 0 external scripts, 1.6 MB. −1: Google Fonts (4e only). |
+| | **total 1–7** | 80 | | **77.8** | |
+
+### unique — "Every side of the four-poster"
+
+```
+mode: quick        round: 3        variant: unique
+total (dims 1–7): 77.3 / 80      result: pass (dims 1–7; dim 8 pending)      hard_fails: []
+```
+
+| # | dimension | weight | score | weighted | evidence |
+|---|---|---|---|---|---|
+| 1 | facts | 20 | 10 | 20.0 | 0 mismatches and 0 unsourced claims. img-008 / img-010 absent. "Also at the house" lists `amenities[]` rows 3, 6, 7, 8 with their "additional charge" notes. |
+| 2 | mobile + performance | 15 | 10 | 15.0 | `unique/audit.json`: first load **187 KB** in 5 requests (HTML 95 KB inline, images 45 KB, fonts 47 KB). **LCP 996 ms.** CLS 0.0015, scroll 0.0004 / 0. **Outlier:** one of five runs measured **3,220 ms**, which is over 2.5 s but under the +50 % line. The others measured 996, 844, 744 and 704 ms, all run one at a time, while 6–8 other headless Chromium processes from the other reviewers were running. I kept it as `unique/audit-outlier-3220ms.json` and treat it as noise. 0 of 38 targets under 44 px. No overflow. |
+| 3 | booking CTA | 15 | 9 | 13.5 | Engine class, 1 click, exact URLs. The hero "See live dates" is at y 427 / 472. "More ways to book" → `stay/` (JS-off safe), and with JS it opens the door, keyboard-correct. −1: the listing's top, as interactive. |
+| 4 | brand fit | 5 | 9 | 4.5 | Type + place on the first screen at both widths, and §3 order holds. −1: the rooms still arrive at phone capture 05 of 16, against capture 02 in calm and interactive. This improved by one screen since round 2. |
+| 5 | copy | 10 | 10 | 10.0 | Copy unedited. Each summary amenity now appears once; the round-2 repetition is gone. |
+| 6 | accessibility | 8 | 10 | 8.0 | axe **0 violations** at 390 and 1440 (26 pass). Skip link first. 42 / 49 Tab stops all on screen with a 3 px outline, with JS on and off. Phone bar focusable only while shown. The door traps and returns focus. Hero text over the photograph: h1 median 6.65:1 (large), subtitle median 9.65:1 (390). 0/32 images without alt. Reduced motion: both canvases `display:none`. |
+| 7 | security + delivery | 7 | 9 | 6.3 | Static, `stay/` relative, no secrets, 0 iframes, 0 external scripts, 1.6 MB. −1: Google Fonts (4e only). |
+| | **total 1–7** | 80 | | **77.3** | |
+
+### Playbook §4 budget, measured (390, throttled, no scroll)
+
+| line | target | interactive | unique |
+|---|---|---|---|
+| first-load transfer | ≤ 1.5 MB | 561 KB | 187 KB |
+| JS | ≤ 300 KB | 0 external (inline) | 0 external (inline) |
+| largest above-fold image | ≤ 300 KB | 51 KB | 45 KB |
+| fonts | ≤ 2 families, ≤ 150 KB | 2, 46 KB | 2, 47 KB |
+| LCP | ≤ 2.5 s | 796 / 820 ms | 996 ms (runs: 996, 3,220 outlier, 844, 744, 704) |
+| CLS (load / scroll early / settled) | < 0.1; scroll < 0.01 | 0.0026 / 0 / 0 | 0.0015 / 0.0004 / 0 |
+| third-party on load | 0 (4e: fonts allowed) | Google Fonts only | Google Fonts only |
+
+### The one sentence the human needs
+
+Calm (76.5, round 2), interactive (77.8) and unique (77.3) all pass dimensions 1–7 with no hard fail. Every round-2 item on interactive and unique is fixed and measured, and the rebuild introduced no regression. What remains:
+- **Unique's rooms** arrive at phone screen 5 of 16.
+- **Interactive's img-010** WC-door photo is still in its Standard stage. It is unscored, as before, but unique and calm leave it out.
+- **Google Fonts** on all three, which is allowed at 4e only.
+
+**what the designer prompt got wrong:** Nothing new this round; every critic item was applied and holds. The one systemic lesson is measurement, not design. Two of the 13 `audit-mockup` runs across rounds 2–3 produced a largest paint 4–8× the median while other reviewers' browsers shared the machine. One of them (6.4 s) would have read as a hard fail. Proposal material: `audit-mockup` should take the median of three runs, or refuse to run while other headless Chromium processes are busy.
+
+**fix list (not gating):** 1. Interactive, dim 1 (consistency): drop img-010 from the Standard stage, as calm and unique do. 2. All, dim 7 (at build): self-host the fonts.
+
+### Evidence files (`critic-sea-you-surfers-nest-r3/`)
+
+- `{interactive,unique}/audit.json`: `audit-mockup`, this round. `unique/audit-outlier-3220ms.json` is the outlier run.
+- `{interactive,unique}/a11y.json`: axe at 390 / 1440, overflow, third-party attempts, page errors, every Tab stop, JS-off link counts, page text, links and alts.
+- `quotes.json`, `misc.json`: testimonials and attributions, Kenza's line break, A/C sentence count, Standard gallery images, reduced motion at both widths.
+- `contrast-type.json`: solid-ground contrast and type sizes; unique door keyboard test.
+- `photo-contrast.json`, `photo-contrast-buttons.json`: text over hero and closing photographs.
+- `phone-bar.json`, `jsoff-keyboard-fold-lcp.json`: phone-bar focusability on and off screen, the JS-off Tab walk, the first-screen type line and CTAs, the LCP runs, and the wheel-scroll bar probe.
+- `check-design.txt`.

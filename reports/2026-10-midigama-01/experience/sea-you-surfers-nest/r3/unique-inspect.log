@@ -1,0 +1,11 @@
+  [shadow] @1440px (+390)  8 box-shadow(s) on elements at rest: figure.print → rgba(19, 43, 41, 0.5) 0px 22px 50px -30px, rgba(19, 43, 41, 0.06) 0px 2px 6px 0p | figure.print.carved-r → rgba(19, 43, 4
+  [off-centre] @1440px  The page sits off-centre: its content comes to 65px from the left edge but only to 148px from the right, at 1440px.
+  [empty-screens] @1440px  4 of 12 desktop screens are almost empty ground (under 20% of the screen holds text, a picture or a colour field): screens 1, 2, 3, 4.
+  [covered-text] @390px  Large text lies under another element at some scroll position: "Carved doors and a surfboard shower" (screen 9, 100% hidden); "4.9/5" (screen 11, 50% hidden); "8.0/10" (screen
+  [palette-cream] @1440px (+390)  Yellow-cream background (section #ecebe5).
+  [size-count] @1440px (+390)  17 different font sizes (13, 14, 15, 16, 17, 18, 20, 26, 27, 28, 32, 34, 38, 44, 48, 56, 58).
+  [no-footage] @1440px  No video anywhere on the page.
+  [side-scroll] @1440px (+390)  2 row(s) scroll sideways with content past their edge.
+  [empty-middle] @1440px  1 section(s) have content at both edges and 1276px of nothing between: "Deluxe or Standard"
+  [pinned-over-picture] @1440px (+390)  Pinned large text slides across pictures while the page scrolls: "Seven rooms" (screen 4, 100% over a picture)
+RESULT: 4 FAIL, 6 WARN — not done.

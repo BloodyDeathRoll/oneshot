@@ -470,3 +470,87 @@ What changed against my round-1 list:
 | unique | 7 | **8** | **PASS** |
 
 All three are clearly better than the Google and Booking.com listings, and all three are 1 tap to the live dates. From the experience side, any of them can go to the human pick.
+
+---
+---
+
+# Round 3
+
+experience-critic 0.2.0 · station 4f (quick), round 3 · run `2026-10-midigama-01` · 2026-11-22
+Pages: interactive and unique only, as rebuilt in commits 8d8d821 and 1b826e9. Calm passed in round 2 and is unchanged, so I did not walk it again. Each variant's `notes.md` section "4f round 2 → round 3" was read for what changed. Written without reading the other reviewers' round-3 reports.
+
+Evidence is in `reports/2026-10-midigama-01/experience/sea-you-surfers-nest/r3/`:
+- PNG frames, which git ignores;
+- the logs `interactive-walk.log`, `unique-walk.log`, `states.log`, `cold.log` and `*-inspect.log`;
+- the recipes `walk.mjs.txt`, `states.mjs.txt` and `cold.mjs.txt`.
+
+The method was the same as rounds 1 and 2, on random local ports, with interactive's shader walked with `?palms`. The other reviewers were running at the same time (load average 15–22). The throttled timings in `cold.log` are therefore noisy and are noted only.
+
+## Summary
+
+| | interactive | unique |
+|---|---|---|
+| **Dimension 8 (experience), round 3** | **8 / 10** (round 2: 8) | **8 / 10** (round 2: 8) |
+| Pass / fail (this critic) | **pass** (no regression) | **pass** (no regression; firmer than round 2) |
+| Better than the current presence | yes | yes |
+| Taps to booking | 1 (groups: 2) | 1 (via the door: 2) |
+
+**Checked in both variants:**
+- The hero CTA lands on `https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html` in one tap ("tap 1" in each walk log).
+- `tel:` 0.
+- Tap targets under 44 px: 0.
+- Only local hosts plus Google Fonts on load.
+- The door, the tiles, the pill and the shelf all still work (`states.log`).
+
+## Interactive: 8/10, pass
+
+Checked against the round-3 change list:
+1. **Stronger still grade.** The fronds now read as green palm leaves even in the still (`interactive-phone-s00.png`, `interactive-laptop-s00.png`, and the default-URL cold frames `interactive-cold-t*.png`, where the shader does not run). That helps reduced motion, no-WebGL and Save-Data visitors too. Improved.
+2. **Gust clamp and edge fade.** The motion is unchanged in strength on the laptop: the palm band changes by PSNR 17.1 dB in 1.5 s (round 2: 16.7). A gust frame shows no smear and no edge streaks (`interactive-laptop-palms-gust.png`). On the phone it moves a little more than in round 2: 21.2–22.9 dB (round 2: 23.7).
+   - **The flat green block from round 2 did not appear,** even with the machine loaded. Every phone frame in the walk shows real fronds (`interactive-phone-t1500/t3000/t6000.png`), so the read-back guard does its job.
+   - In the separate state run the phone canvas was still at opacity 0 at 2.5 s (`states.log`), so the still shows a little longer before the motion starts. That is acceptable.
+3. **The carved-door band** now sits right under "At a glance" (`interactive-laptop-s02.png`, `interactive-phone-s02/s03`). The house's character arrives by the second screen, before the rooms. Improved.
+4. **The closing band:** Booking.com is the solid white button, and the two Airbnb buttons are outlined (`interactive-phone-s14`, `interactive-laptop-s10`). My round-2 polish item 1 is fixed.
+5. **The first phone screen:** "Sea You Surfers Nest", "Midigama, Sri Lanka" and one button, with the tagline "A bed and breakfast in Midigama, on Sri Lanka's south coast." just below the 76 svh hero. The business type is said once (`interactive-phone-s00.png`). Clean.
+
+**No regressions found:**
+- "Who's coming?" now sits on white with tinted tiles, and the three answers still switch correctly (`states.log`).
+- The phone bar shows from screen 2, and the page is 11.2 phone screens (round 2: 10.2, because the door band was added).
+- One laptop frame caught the header nav mid-slide, with blurred labels beside the wordmark (`interactive-laptop-s02.png`). That is the 320 ms nav transition captured mid-way, not a defect.
+
+**Inspector notes (not gates):**
+- `contrast` on "Deluxe Double" (white on white) is a false reading: the active pill label is white on the dark green indicator (`interactive-phone-s04`).
+- `empty-middle` on "Around the courtyard" and "Ashly" at 1440 is mild.
+
+## Unique: 8/10, pass
+
+Checked against the round-3 change list:
+1. **The new bed model.** The rails are slimmer, the boards are panelled with recessed panels, the edges are bevelled, and the shading reads as painted wood (`unique-laptop-s02/s03`, `unique-phone-s03…s05`). It reads as a crafted object, not a CAD block. Improved.
+2. **The photo is seated through the turn.** In the dense phone frames (`unique-phone-turn-*.png`, 20 frames 211 px apart), the photograph keeps the full opening between rests, and the corner posts sweep in front of it. There is no floating card and no double-photo ghost of the round-2 kind. Fixed.
+3. **The phone turn is shorter.** The set-piece is 3805 px (round 2: 4058; round 1: 6020). Every frame keeps the whole bed inside 390 px, and only one caption shows at a time. The rooms arrive at walk step s06 (y 3546), and the page is 14.5 phone screens (round 2: 15.2).
+   - One near-empty frame remains: as the glance sheet leaves (y ≈ 1266) the stage shows only the footboard on the tint for one step (`unique-phone-turn-06.png`). It is brief.
+4. **Six courtyard photos on the phone:** the two-column masonry fits in about 1.3 screens (`unique-phone-s10/s11`). Improved.
+5. **One booking button on the first laptop screen.** The header "Book" is held back until the hero button has gone (`unique-laptop-s00.png`; `states.log` shows the header button at opacity 0.04 while the hero button is in view). My round-2 polish item 3 is fixed.
+6. **"Also at the house"** lists only what the glance does not (`unique-phone-s09`). Fixed.
+
+**No regressions found:**
+- At y 720 on the laptop the bed is already on the right half, and the glance column is clear (`unique-laptop-s01.png`). My round-2 overlap note is fixed.
+- The door still opens with focus on the Booking.com tile; Tab stays inside, Esc closes and returns focus (`states.log`).
+- `/stay/` works with JS off, and the quote stack still turns.
+
+**Inspector notes (not gates):**
+- `covered-text` on "Carved doors and a surfboard shower" at 390 is the fixed bottom booking bar passing over the heading as it scrolls by, which happens to any heading.
+- `empty-screens` 4 of 12: the inspector cannot see the canvas.
+- `pinned-over-picture` is the set-piece's caption column.
+
+**What keeps it at 8, not higher:** it is still the longest phone page of the three (14.5 screens). After the turn, the middle runs evenly (rooms, masonry, prints, breakfast, Ashly, finding) with no second change of pace.
+
+## Round 3 verdict
+
+| variant | round 1 | round 2 | round 3 | result |
+|---|---|---|---|---|
+| calm | 8 | 8 | not re-walked (unchanged) | **PASS** (round 2) |
+| interactive | 7 | 8 | **8** | **PASS** |
+| unique | 7 | 8 | **8** | **PASS** |
+
+There is no fail list. From the experience side, all three can go to the human pick.

@@ -1,0 +1,58 @@
+{
+ "interactive": {
+  "390 a[href*=\"1793988904511877292\"] span": {
+   "t": "Book the whole house on Airbnb",
+   "color": "rgb(255, 255, 255)",
+   "fs": "15px",
+   "fw": "600",
+   "median": 13.66,
+   "worst10": 12.44,
+   "worst2": 11.87
+  },
+  "390 a[href*=\"1508895627217411616\"] span": {
+   "t": "Book a room on Airbnb",
+   "color": "rgb(255, 255, 255)",
+   "fs": "15px",
+   "fw": "600",
+   "median": 11.84,
+   "worst10": 11.65,
+   "worst2": 11.62
+  },
+  "390 .pill button, [role=tablist] button, [role=tab]": {
+   "t": "Deluxe Double",
+   "color": "rgb(255, 255, 255)",
+   "fs": "15px",
+   "fw": "600",
+   "median": 10.03,
+   "worst10": 10.03,
+   "worst2": 1
+  },
+  "1440 a[href*=\"1793988904511877292\"] span": {
+   "t": "Book the whole house on Airbnb",
+   "color": "rgb(255, 255, 255)",
+   "fs": "16px",
+   "fw": "600",
+   "median": 10.56,
+   "worst10": 10.27,
+   "worst2": 10.23
+  },
+  "1440 a[href*=\"1508895627217411616\"] span": {
+   "t": "Book a room on Airbnb",
+   "color": "rgb(255, 255, 255)",
+   "fs": "16px",
+   "fw": "600",
+   "median": 10.74,
+   "worst10": 10.47,
+   "worst2": 10.31
+  },
+  "1440 .pill button, [role=tablist] button, [role=tab]": {
+   "t": "Deluxe Double",
+   "color": "rgb(255, 255, 255)",
+   "fs": "15px",
+   "fw": "600",
+   "median": 10.03,
+   "worst10": 10.03,
+   "worst2": 1
+  }
+ }
+}

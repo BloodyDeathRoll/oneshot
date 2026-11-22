@@ -1,0 +1,12 @@
+interactive shot fail 500 page.screenshot: Timeout 8000ms exceeded.
+interactive t=500 (shot at 528 ms) {"ready":"complete","h1":"Courgette","webfonts":["Courgette","Plus Jakarta Sans","Plus Jakarta Sans","Plus Jakarta Sans"],"img":{"src":"hero-tall-600.webp","done":true},"cta":true}
+interactive t=1500 (shot at 8857 ms) {"ready":"complete","h1":"Courgette","webfonts":["Courgette","Plus Jakarta Sans","Plus Jakarta Sans","Plus Jakarta Sans"],"img":{"src":"hero-tall-600.webp","done":true},"cta":true}
+interactive t=3000 (shot at 10466 ms) {"ready":"complete","h1":"Courgette","webfonts":["Courgette","Plus Jakarta Sans","Plus Jakarta Sans","Plus Jakarta Sans"],"img":{"src":"hero-tall-600.webp","done":true},"cta":true}
+interactive t=6000 (shot at 12435 ms) {"ready":"complete","h1":"Courgette","webfonts":["Courgette","Plus Jakarta Sans","Plus Jakarta Sans","Plus Jakarta Sans"],"img":{"src":"hero-tall-600.webp","done":true},"cta":true}
+interactive load event ms 14021 LCP [7300,"","H1"] transfer KB to load 546 hosts ["127.0.0.1:51352","fonts.googleapis.com","fonts.gstatic.com"]
+unique shot fail 500 page.screenshot: Timeout 8000ms exceeded.
+unique t=500 (shot at 500 ms) {"ready":"complete","h1":"\"Leckerli One\"","webfonts":["Instrument Sans","Instrument Sans","Instrument Sans","Leckerli One"],"img":{"src":"h005-1000.webp","done":true},"cta":true}
+unique t=1500 (shot at 10125 ms) {"ready":"complete","h1":"\"Leckerli One\"","webfonts":["Instrument Sans","Instrument Sans","Instrument Sans","Leckerli One"],"img":{"src":"h005-1000.webp","done":true},"cta":true}
+unique t=3000 (shot at 11977 ms) {"ready":"complete","h1":"\"Leckerli One\"","webfonts":["Instrument Sans","Instrument Sans","Instrument Sans","Leckerli One"],"img":{"src":"h005-1000.webp","done":true},"cta":true}
+unique t=6000 (shot at 13377 ms) {"ready":"complete","h1":"\"Leckerli One\"","webfonts":["Instrument Sans","Instrument Sans","Instrument Sans","Leckerli One"],"img":{"src":"h005-1000.webp","done":true},"cta":true}
+unique load event ms 14438 LCP [5604,"","H1"] transfer KB to load 182 hosts ["127.0.0.1:51352","fonts.googleapis.com","fonts.gstatic.com"]

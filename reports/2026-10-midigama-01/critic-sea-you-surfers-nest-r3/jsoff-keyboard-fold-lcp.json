@@ -1,0 +1,16 @@
+{
+ "note": "Round 3, builds 8d8d821/1b826e9, run 2026-11-22 ~14:05-14:25 IST. JS-off Tab walk (focused element off-screen, opacity < 0.5 or hidden); first-screen type line and visible Booking.com links (JS on, no scroll); audit-mockup LCP runs, one at a time; unique phone-bar wheel-scroll probe.",
+ "jsoff_invisible_focus": {"interactive_390": [], "interactive_1440": [], "unique_390": [], "unique_1440": []},
+ "first_screen": {
+  "interactive_390": {"type": "hero span.type 'Bed and breakfast' display:none on the phone; tagline h2 'A bed and breakfast in Midigama…' at y 697 (of 844)", "ctas": ["See live dates @ 290"]},
+  "interactive_1440": {"type": "'Bed and breakfast | Midigama, Sri Lanka' @ y 404", "ctas": ["See live dates @ 450"]},
+  "unique_390": {"type": "tagline @ y 360", "ctas": ["See live dates @ 427"]},
+  "unique_1440": {"type": "tagline @ y 422", "ctas": ["See live dates @ 472"]}
+ },
+ "lcp_runs_ms": {
+  "interactive": [796, 820],
+  "unique": [996, 3220, 844, 744, 704],
+  "unique_note": "3,220 ms run kept as unique/audit-outlier-3220ms.json; 6-8 other headless Chromium processes were running on the machine (other reviewers) during these runs"
+ },
+ "unique_phone_bar_wheel_probe_390": "scrollY:onscreen:focusable — 422:off:0, then 844 … 11438 on:2 at every step (bar shown from the second screen to the end, focusable only while on screen). phone-bar.json's 'mid' row (bar off) came from an instant scrollTo and is a probe artefact; the wheel probe and the shoot sheets show the bar."
+}

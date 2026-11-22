@@ -245,3 +245,84 @@ Independence: I did not open the critic's or the experience-critic's round-2 out
 3. **interactive "In the palms" (7/10, FAIL):** much cleaner, with a visible cinemagraph, but the hero is still a white haze, and one gust frame glitched.
 
 **What the designer prompt got wrong (for the learn step):** a grade or effect applied only inside the shader leaves the still, the poster and the LCP frame unchanged. The prompt should say that every look fix to a hero photograph is made to the still first, and that the shader starts from it. Header CTAs added to the first screen must not duplicate the hero CTA (the Lavish round-1 note).
+
+---
+
+# Round 3: quick (station 4f), interactive and unique only
+
+Run `2026-10-midigama-01` · station 4f · **round 3** · visual-critic 0.2.0 · 2026-11-22. Calm passed in round 2, is unchanged, and was not re-scored.
+Pages: interactive and unique as rebuilt in commits `8d8d821` and `1b826e9`. What changed is in interactive `notes.md` "4f round 2 → round 3" (rounds R3-1, R3-2) and unique `notes.md` "4f round 2 → designer round 3" (rounds 9–12).
+
+Shot sets (shared, scratch):
+- Interactive was re-shot this round by `tools/shoot.mjs` (desktop-00…09, mobile-00…12, `file://`, so the hero is the baked still).
+- Unique (build `aa687e9b`, shot by the designer 11:55) was reused unchanged (desktop-00…14, mobile-00…15).
+- My own walk, in `reports/2026-10-midigama-01/visual-sea-you-r3/`:
+  - interactive served over http with `?palms`: 20 frames 0.5 s apart at 1440 and at 390 (`seq/1440-NN.png`, `seq/390-NN.png`, SwiftShader), the tile `seq-1440-tile.png`, and `palms-right-02-18.png` (the top-right fronds and the right edge, frames 02 and 18).
+- Inspector, in `inspect-<variant>.txt`:
+  - interactive: 4 FAIL / 5 WARN. The `contrast` "Deluxe Double" is a false reading (white on the dark thumb). Also `edge-text` "Jan 2026", `still-page` (`file://`), `eyebrow`, and `empty-middle` in "Around the courtyard" and "Ashly".
+  - unique: 4 FAIL / 6 WARN. `empty-screens` 4 of 12 (the tool does not see the canvas; desktop-01…04 hold the bed). `covered-text` at 390 is the bottom bar passing over headings. Also `off-centre` (the set-piece), `shadow` (the prints), and 17 font sizes.
+
+Independence: I did not open the critic's or the experience-critic's round-3 output.
+
+---
+
+## 2 · interactive "In the palms" (round 3)
+
+**Three-second test**
+- **1440 (desktop-00, the still):** the fronds are now green palm leaves with visible ribs, orange stems and darker gaps, not white haze. Their tops are still light, but they read as palms. The Courgette title, "Bed and breakfast | Midigama, Sri Lanka" and the bottle-green button are centred both ways, with the pothos and the mint table below. It is fresh, green and calm. I would scroll.
+- **390 (mobile-00):** greener fronds behind the name, "Midigama, Sri Lanka" and the button, then the table. The tagline starts at the foot of the first screen.
+
+**Checklist**
+- **Media, and the main item:** the grade is now in the still, so the LCP, no-WebGL and reduced-motion frames all show palms. Live, 20 frames 0.5 s apart: frame-to-frame PSNR is a steady 17.9–20.4 dB at 1440 and 21.6–23.9 dB at 390. That is a visible, even sway with no spike. Across the whole run (`seq-1440-tile`) there is no smear and no flat block. The right edge (`palms-right-02-18`) stays clean, with no streaks. The table, pot and parapet never move. The round-2 glitch is fixed.
+- **Make it this house:** the carved-door band now arrives as the second full screen after the glance (desktop-02): the room door under its fanlight, the mint four-poster with the teal throw inside, the masks, the carved shutters and the plants, full-bleed and sharp. That is the most "Sea You" picture on the page, placed where it counts. "Who's coming?" now sits on white with only the tiles tinted (desktop-01). It reads as part of the page, not a widget.
+- **Composition and grid:** hero → glance (quote, " | " line, address and Maps, ratings as large figures, then the tiles and the two buttons) → the carved-door band → "Seven rooms" with the 520×650 stage → "In every room" → courtyard heading and shelf → board-shower 7/5 → breakfast → Ashly with the quote row → the sign → the dark palms closing → footer (desktop sheet). Pace changes at least four times. The inspector's 1786 px `empty-middle` in "Around the courtyard" and "Ashly" is visible as wide gutters, but it is not empty-looking at viewing size.
+- **Typography:** Courgette + Plus Jakarta Sans, consistent and readable.
+- **Colour:** white and pale mint with bottle green. The middle is still all pale mint (desktop-03 to -08), but the carved-door band and the dark closing give it two strong photographic beats.
+- **Polish:** clean. The closing buttons now read: solid white Booking.com and two white outlines (desktop-09).
+- **Distinctiveness:** better. The carved door, the masks and the board shower now carry the house. The hero subject is still a potted plant on a table, which is a gentle opening for a "surfers' nest".
+- **Hero and motion:** centred, one CTA, and a visible palm cinemagraph that holds up frame by frame.
+
+**Score: 8 / 10.** Clean, green, calm, with a working main item and the house's most characterful photograph early. It is close to the Global Surf `postcard` level of finish. It is below gold on the strength of its hero subject.
+**Better than the current presence?** **Yes:** first screen (desktop-00 / mobile-00 against 03-booking-com-fold and 05-airbnb-1-fold) and whole page.
+**Result: PASS.**
+
+**Fixes before the pick (none blocking)**
+1. Pull the light tops of the fronds down a little more at 1440 (the top-right quarter of desktop-00 is still near-white), so the hero has one deep tone above the title.
+2. Give the pale-mint middle one deeper beat: for example, Ashly's section on bottle green `#334825` with white type (desktop-07).
+3. End the quote row inside the grid so "Jan 2026" is not clipped at the right edge (inspector `edge-text`).
+
+---
+
+## 3 · unique "Every side of the four-poster" (round 3)
+
+**Three-second test**
+- **1440 (desktop-00):** img-015 full-bleed, the name, the tagline, one teal "See live dates" and the scroll hint. The header now shows no "Book" until the hero button has scrolled away (desktop-01 shows it fading in), so the first screen has one CTA. Clean and colourful.
+- **390 (mobile-00):** unchanged and clean.
+
+**Checklist**
+- **The model:** it now reads as furniture. The posts are slimmer. The footboard and headboard are rails and a stile with two recessed panels (desktop-01 to -04), the edges carry a soft bevel, and the canopy tops are lighter than the shaded sides. It is still stylised, but it is no longer a CAD slab. It now looks like a drawing of the bed in the photographs.
+- **The photo through the turn:** at the rests it fills the opening (desktop-02: img-015, about 470×440; desktop-03: img-017 over the foot; desktop-04: img-053 on the long side, about 600×470). On the phone the whole bed stays inside 390 px at every capture (mobile-02 to -05), and only one caption shows at a time. **One transient flaw:** mid-turn on the phone (mobile-03) the opening shows three photographs side by side with hard vertical seams (the towel-ladder room, img-017 and a sliver of a third), so for a moment it reads as a collage, not one room.
+- **desktop-02:** now carries "Seven rooms" and the first sentence at about 30 px in the left column beside the bed, with the glance's address and Maps line at the top. No stranded screen.
+- **Composition:** after the set-piece, as in round 2: 2-up room slideshows at about 505×630, true masonry, the offset carved-door / board-shower pair, breakfast, Ashly with the quote stack, the sign, and the gabled panel over img-002 full-bleed (desktop-05 to -14). The bed's feet are cut by the bottom edge of the viewport at 1440×900 (desktop-02/03: the legs run off the screen), so the "whole bed" framing is just short on a laptop.
+- **Typography, colour, polish:** Leckerli One + Instrument Sans, the warm grey ground and teal, consistent. The masonry still ends a little ragged (desktop-08).
+- **Distinctiveness:** the highest in the set. The four-poster as the object, the gable as the shape, and the photos as the rooms seen through it.
+- **Hero and motion:** one CTA, and a scroll-driven WebGL main item that now looks finished and adds meaning (one bed, seven rooms alike).
+
+**Score: 8 / 10.** The idea now lands and looks made, not prototyped, and the page around it is the most editorial of the three. It is close to `the-lavish-haven.html` in method and now near it in finish. It is below it because Lavish's water is richer and more alive than a turning frame.
+**Better than the current presence?** **Yes:** first screen (desktop-00 / mobile-00 against 03-booking-com-fold and 05-airbnb-1-fold) and whole page.
+**Result: PASS.**
+
+**Fixes before the pick (none blocking)**
+1. Remove the mid-turn seams on the phone. Cross-fade one photo to the next across the whole opening, rather than clipping per face, so the opening never shows three photographs side by side (mobile-03).
+2. Frame the whole bed at 1440×900. Scale or lift it by about 6 %, so the feet and the contact shadow stay on screen at every rest (desktop-02/03).
+3. Even out the masonry column ends (desktop-08), and keep the bottom bar from covering "Carved doors and a surfboard shower" and the rating figures at 390 as they pass (inspector `covered-text`).
+
+---
+
+## Round 3 ranking (visual quality only, all three)
+
+1. **unique "Every side of the four-poster" (8/10, PASS):** the strongest idea, now finished. The only page no other business could have.
+2. **calm "The board rack" (8/10, PASS in round 2):** the best first screens and the most honest, calm page.
+3. **interactive "In the palms" (8/10, PASS):** clean and green, with a visible palm cinemagraph and the carved door early. Its hero subject is the gentlest of the three.
+
+All three mockups now pass dimension 8 from this critic and are better than the business's current presence (OTA listings only).

@@ -1,0 +1,114 @@
+{
+ "interactive": {
+  "390 h1": {
+   "t": "Sea You Surfers Nest",
+   "color": "rgb(29, 40, 20)",
+   "fs": "38px",
+   "fw": "400",
+   "median": 8.29,
+   "worst10": 4.91,
+   "worst2": 2.97
+  },
+  "390 .hero p, .hero .sub, .hero-sub": {
+   "t": "Midigama, Sri Lanka",
+   "color": "rgb(29, 40, 20)",
+   "fs": "15px",
+   "fw": "600",
+   "median": 9.25,
+   "worst10": 5.69,
+   "worst2": 4.08
+  },
+  "390 #close p, .closing p, section:last-of-type p": {
+   "t": "Live dates are on Booking.com, and group",
+   "color": "rgb(255, 255, 255)",
+   "fs": "22px",
+   "fw": "600",
+   "median": 11.27,
+   "worst10": 9.64,
+   "worst2": 9.19
+  },
+  "1440 h1": {
+   "t": "Sea You Surfers Nest",
+   "color": "rgb(29, 40, 20)",
+   "fs": "60px",
+   "fw": "400",
+   "median": 10.53,
+   "worst10": 7.79,
+   "worst2": 6.42
+  },
+  "1440 .hero p, .hero .sub, .hero-sub": {
+   "t": "Bed and breakfast | Midigama, Sri Lanka",
+   "color": "rgb(29, 40, 20)",
+   "fs": "17px",
+   "fw": "600",
+   "median": 11.36,
+   "worst10": 9.11,
+   "worst2": 7.41
+  },
+  "1440 #close p, .closing p, section:last-of-type p": {
+   "t": "Live dates are on Booking.com, and group",
+   "color": "rgb(255, 255, 255)",
+   "fs": "28px",
+   "fw": "600",
+   "median": 11.35,
+   "worst10": 10.26,
+   "worst2": 9.62
+  }
+ },
+ "unique": {
+  "390 h1": {
+   "t": "Sea You Surfers Nest",
+   "color": "rgb(19, 43, 41)",
+   "fs": "40px",
+   "fw": "400",
+   "median": 6.65,
+   "worst10": 3.86,
+   "worst2": 2.21
+  },
+  "390 .hero p, .hero-sub": {
+   "t": "A bed and breakfast in Midigama, on Sri ",
+   "color": "rgb(19, 43, 41)",
+   "fs": "16px",
+   "fw": "500",
+   "median": 9.65,
+   "worst10": 6.55,
+   "worst2": 4.42
+  },
+  "390 .hero-hint, .hint": {
+   "t": "Scroll, and the bed turns",
+   "color": "rgb(19, 43, 41)",
+   "fs": "13px",
+   "fw": "500",
+   "median": 12.97,
+   "worst10": 12.39,
+   "worst2": 4.31
+  },
+  "1440 h1": {
+   "t": "Sea You Surfers Nest",
+   "color": "rgb(19, 43, 41)",
+   "fs": "58px",
+   "fw": "400",
+   "median": 9.61,
+   "worst10": 8.7,
+   "worst2": 8.21
+  },
+  "1440 .hero p, .hero-sub": {
+   "t": "A bed and breakfast in Midigama, on Sri ",
+   "color": "rgb(19, 43, 41)",
+   "fs": "17px",
+   "fw": "500",
+   "median": 10.7,
+   "worst10": 9.91,
+   "worst2": 9.72
+  },
+  "1440 .hero-hint, .hint": {
+   "t": "Scroll, and the bed turns",
+   "color": "rgb(19, 43, 41)",
+   "fs": "13px",
+   "fw": "500",
+   "median": 6.91,
+   "worst10": 6.6,
+   "worst2": 6.59
+  }
+ }
+}
