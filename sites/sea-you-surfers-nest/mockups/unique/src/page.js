@@ -115,7 +115,7 @@ const cvB = $('.gl-back', stage), cvF = $('.gl-front', stage);
 if (phoneMQ.matches && ph0img.dataset.altPhone) ph0img.alt = ph0img.dataset.altPhone;
 
 // ---- the bed, in metres, proportioned by eye from img-015 (gabled canopy) and img-002 / img-053 (panels)
-const PX = 0.77, PZ = 1.02, PT = 0.075, PH = 2.1, G = 0.4;
+const PX = 0.77, PZ = 1.02, PT = 0.075, PH = 2.1, G = 0.34;
 const RAF = Math.atan2(G, PX), RL = Math.hypot(PX, G);
 const PANEL = (z, y0, y1, dz) => [                       // a framed board: rails and stiles proud of a recessed panel
   { c: [0, (y0 + y1) / 2, z], s: [2 * PX - PT, y1 - y0, 0.026] },
@@ -133,8 +133,16 @@ const BOXES = [
   ...[-1, 1].map((sx) => ({ c: [sx * PX, 0.3, 0], s: [0.03, 0.26, 2 * PZ - PT - 0.004] })),                   // side boards
   ...[-1, 1].map((sx) => ({ c: [sx * PX, 0.445, 0], s: [0.055, 0.04, 2 * PZ - PT - 0.004] })),
 ];
-const BB = { c: [0, 1.36, 0], w: 1.36, h: 1.7 };             // the photograph inside the frame, 4:5, facing the camera
-const FOV = 28 * Math.PI / 180, F = 1 / Math.tan(FOV / 2), TGT = [0, 1.22, 0], ELEV = 0.2, YAW0 = -0.15;
+// The photograph is seated in the opening of the face turned to the camera at each rest: post to post, from the
+// footboard / side board / headboard rail up to the canopy rail. Its edges tuck under the drawn posts and rails.
+const TOPY = PH - 0.04, TUCK = 0.012;
+const FACE = [
+  [[-(PX - TUCK), 0.6, PZ], [PX - TUCK, 0.6, PZ], [PX - TUCK, TOPY, PZ], [-(PX - TUCK), TOPY, PZ]],          // 0: the foot
+  [[-PX, 0.445, -(PZ - TUCK)], [-PX, 0.445, PZ - TUCK], [-PX, TOPY, PZ - TUCK], [-PX, TOPY, -(PZ - TUCK)]],  // 90: a long side
+  [[-(PX - TUCK), 0.95, -PZ], [PX - TUCK, 0.95, -PZ], [PX - TUCK, TOPY, -PZ], [-(PX - TUCK), TOPY, -PZ]],   // 180: the head
+  [[PX, 0.445, -(PZ - TUCK)], [PX, 0.445, PZ - TUCK], [PX, TOPY, PZ - TUCK], [PX, TOPY, -(PZ - TUCK)]],      // 270: the other side
+];
+const FOV = 28 * Math.PI / 180, F = 1 / Math.tan(FOV / 2), TGT = [0, 1.2, 0], ELEV = 0.13, YAW0 = -0.1;
 
 // ---- geometry: one merged buffer of boxes (36 vertices each), positions + normals
 function boxGeo() {
@@ -181,14 +189,14 @@ const FS = `precision mediump float;uniform float uSplit,uSide;uniform vec3 uCol
 void main(){if(uSide*(vZ-uSplit)>0.)discard;vec3 n=normalize(vN);vec3 L=normalize(vec3(-.5,.85,.62));
 float dif=max(dot(n,L),0.);vec3 amb=mix(vec3(.5,.52,.5),vec3(1.),.5+.5*n.y);
 float ao=mix(.74,1.,smoothstep(0.,.9,vW.y));vec3 V=normalize(uEye-vW);vec3 H=normalize(L+V);
-float ed=min(vE.z-abs(vE.x),vE.w-abs(vE.y));float edge=mix(.8,1.,smoothstep(.0,.011,ed));
-vec3 lin=uCol*(amb*.5+vec3(1.,.96,.9)*dif*.72)*ao*edge+pow(max(dot(n,H),0.),30.)*.045+(1.-smoothstep(.0,.006,abs(ed-.016)))*.018;
+float ed=min(vE.z-abs(vE.x),vE.w-abs(vE.y));float edge=mix(.86,1.,smoothstep(.0,.014,ed));
+vec3 lin=uCol*(amb*.56+vec3(1.,.95,.86)*dif*.62)*ao*edge+pow(max(dot(n,H),0.),24.)*.03;
 gl_FragColor=vec4(pow(lin,vec3(1./2.2)),1.);}`;
 const SVS = `attribute vec2 p;uniform mat4 uM,uV,uP;uniform vec2 uOff,uHalf;varying vec2 vU;
 void main(){vU=p;vec4 v=uV*uM*vec4(p.x*uHalf.x,.002,p.y*uHalf.y,1.);gl_Position=uP*v;gl_Position.xy+=uOff*gl_Position.w;}`;
 const SFS = `precision mediump float;varying vec2 vU;uniform vec2 uPost;
-void main(){float a=.13*(1.-smoothstep(.15,1.,length(vU)));
-vec2 q=abs(vU)-uPost;a+=.2*(1.-smoothstep(0.,.11,length(q)));
+void main(){float a=.17*(1.-smoothstep(.1,1.,length(vU)));
+vec2 q=abs(vU)-uPost;a+=.32*(1.-smoothstep(0.,.075,length(q)))+.1*(1.-smoothstep(0.,.2,length(q)));
 gl_FragColor=vec4(vec3(.075,.17,.16)*a,a);}`;
 
 function makeGL(canvas, withShadow) {
@@ -251,20 +259,23 @@ let W = 0, H = 0, phone = false, geo = null, D1 = 7, OFF = [0, 0], dpr = 1;
 function measure() {
   W = stage.clientWidth; H = stage.clientHeight; phone = phoneMQ.matches;
   const pTop = piece.getBoundingClientRect().top + scrollY;
+  const gTop = glance.getBoundingClientRect().top + scrollY - pTop;
   const gBot = glance.getBoundingClientRect().bottom + scrollY - pTop;
   const asp = W / H;
   if (phone) {
-    const ext = PZ * Math.cos(YAW0) + PX * Math.abs(Math.sin(YAW0));
-    D1 = Math.max(F * 1.3 / 0.5, F * ext / (0.94 * asp) + 1.0);
-    OFF = [0, 0.29];
-    const pull0 = gBot;
-    geo = { top: pTop, pull0, pull1: pull0 + 0.7 * H, turn0: pull0 + 0.8 * H, capsOn: pull0 + 0.55 * H };
+    // the glance is an opaque sheet over the stage: the photograph backs into the bed while it is covered,
+    // so the stage is revealed already showing the bed (the hero is never shown twice), and the turn starts at once
+    D1 = F * (PZ + PT / 2) / (0.98 * asp) + PX;
+    OFF = [0, 0.28];
+    const p0 = gTop + 0.02 * H, p1 = Math.max(p0 + 1, gBot - 1.02 * H);
+    geo = { top: pTop, pull0: p0, pull1: p1, turn0: gBot - 0.45 * H, capsOn: gBot - 0.5 * H, turnLen: 2.2 * H };
   } else {
-    D1 = Math.max(F * 1.3 / 0.66, F * Math.hypot(PX, PZ) / (0.56 * asp) + 1.28);
-    OFF = [0.32, -0.03];
-    geo = { top: pTop, pull0: 0, pull1: 0.7 * H, turn0: gBot - 0.36 * H, capsOn: gBot - 0.38 * H };
+    D1 = Math.max(F * 1.25 / 0.78 + 0.3, F * Math.hypot(PX, PZ) / (0.6 * asp) + 1.28);
+    OFF = [0.27, -0.09];
+    geo = { top: pTop, pull0: 0, pull1: 0.7 * H, turn0: gBot - 0.3 * H, capsOn: gBot - 0.3 * H, turnLen: 1.6 * H };
   }
-  geo.turnLen = 3 * H; geo.exit = geo.turn0 + geo.turnLen;
+  geo.exit = geo.turn0 + geo.turnLen;
+  geo.loadAt = phone ? gTop - 0.5 * H : 0.08 * H;
   for (const cv of [cvB, cvF]) {
     const px = W * H * dpr * dpr, cap = soft ? 1.0e6 : 4.2e6, k = px > cap ? Math.sqrt(cap / px) : 1;
     cv.width = Math.round(W * dpr * k); cv.height = Math.round(H * dpr * k);
@@ -280,29 +291,30 @@ function place(el, im, R) {
   const [iw, ih] = natural(im);
   const s = Math.max(R.w / iw, R.h / ih) / Math.max(W / iw, H / ih);
   im.style.transform = `translate(-50%,-50%) translate(${(R.x + R.w / 2 - W / 2).toFixed(2)}px,${(R.y + R.h / 2 - H / 2).toFixed(2)}px) scale(${s.toFixed(5)})`;
-  const r = Math.min(10, R.w * 0.02);
+  const r = 2;
   el.style.clipPath = `inset(${R.y.toFixed(2)}px ${(W - R.x - R.w).toFixed(2)}px ${(H - R.y - R.h).toFixed(2)}px ${R.x.toFixed(2)}px round ${r.toFixed(1)}px)`;
 }
 
 // ---- state: targets from scroll, damped toward in the loop
 const cur = { e: 0, q: 0 }, tgt = { e: 0, q: 0 };
-let dirty = true, last = 0, running = false, glB = null, glF = null, soft = false, side = 0, capI = -1, capsVisible = false;
+let sidesAsked = false, dirty = true, last = 0, running = false, glB = null, glF = null, soft = false, side = 0, capI = -1, capsVisible = false;
 function targets() {
   const s = scrollY - geo.top;
   tgt.e = clamp((s - geo.pull0) / (geo.pull1 - geo.pull0));
-  const t = clamp((s - geo.turn0) / geo.turnLen) * 4.6 - 0.3, i = Math.floor(t);   // a full rest at the first and last label too
-  tgt.q = clamp(i + sstep(0.28, 0.72, t - i), 0, 4);      // rests at every quarter turn (the labels)
-  const on = s >= geo.capsOn && s <= geo.exit + 0.25 * H;
+  const t = clamp((s - geo.turn0) / geo.turnLen) * 3.6 - 0.3, i = Math.floor(t);   // four rests: 0, 90, 180, 270
+  tgt.q = clamp(i + sstep(0.28, 0.72, t - i), 0, 3);      // a rest at every quarter turn (the labels)
+  const on = s >= geo.capsOn && s <= geo.exit + H;   // the last sentence leaves with the stage
   if (on !== capsVisible) { capsVisible = on; caps.classList.toggle('on', on); }
   if (!phone) {
     const f = 1 - sstep(0.02 * H, 0.16 * H, s);
     heroIn.style.opacity = f.toFixed(3); hint.style.opacity = f.toFixed(3);
   }
+  if (!sidesAsked && s > geo.loadAt) { sidesAsked = true; loadSides(); }   // the four sides load once the visitor heads for the turn
   const wantLoad = s > geo.turn0 - 0.3 * H;
   loadingEl.classList.toggle('show', wantLoad);
 }
 function frame(now) {
-  const dt = Math.min(0.1, (now - last) / 1000 || 0.016); last = now;
+  const dt = clamp((now - last) / 1000, 0, 0.1) || 0.016; last = now;   // rAF time can run behind performance.now()
   const k = 1 - Math.exp(-6 * dt);                       // damp, lambda 6
   let moving = false;
   for (const key of ['e', 'q']) {
@@ -315,25 +327,45 @@ function frame(now) {
 }
 function kick() { targets(); if (!running) { running = true; last = performance.now(); requestAnimationFrame(frame); } }
 
+function openRect(k, V, asp, off) {
+  const M = rotY(YAW0 + k * Math.PI / 2);
+  const pts = FACE[k].map((p) => {
+    const v = xf(V, xf(M, p)), z = -v[2];
+    return [((F / asp * v[0] / z + off[0]) + 1) / 2 * W, (1 - (F * v[1] / z + off[1])) / 2 * H];
+  });
+  // corners 0,1 bottom, 2,3 top; 0,3 one end, 1,2 the other: the middle of inner and outer edges, hidden under the wood
+  const xa = [pts[0][0], pts[3][0]], xb = [pts[1][0], pts[2][0]];
+  const lx = Math.min(...xa) < Math.min(...xb) ? xa : xb, rx = lx === xa ? xb : xa;
+  const x0 = (lx[0] + lx[1]) / 2, x1 = (rx[0] + rx[1]) / 2;
+  const y0 = (pts[2][1] + pts[3][1]) / 2, y1 = (pts[0][1] + pts[1][1]) / 2;
+  return { x: x0, y: y0, w: x1 - x0, h: y1 - y0 };
+}
 function render() {
   const e = cur.e, q = cur.q, asp = W / H;
   const D = lerp(D1 * 0.56, D1, sstep(0, 1, e));
   const off = [OFF[0] * sstep(0, 1, e), OFF[1] * sstep(0, 1, e)];
   const eye = [0, TGT[1] + D * Math.sin(ELEV), D * Math.cos(ELEV)];
   const V = lookAt(eye, TGT), P = perspective(asp);
-  const c = xf(V, BB.c), zc = -c[2];
-  const nx = F / asp * c[0] / zc + off[0], ny = F * c[1] / zc + off[1];
-  const hw = F / asp * (BB.w / 2) / zc, hh = F * (BB.h / 2) / zc;
-  const B = { x: (nx - hw + 1) / 2 * W, y: (1 - (ny + hh)) / 2 * H, w: hw * W, h: hh * H };
+  const zc = -xf(V, [0, 1.2, 0])[2];
+  const k0 = clamp(Math.floor(q), 0, 3), k1 = Math.min(3, k0 + 1), f = q - k0;
+  const A = openRect(k0, V, asp, off), Bq = k1 === k0 ? A : openRect(k1, V, asp, off);
+  // between rests the corner posts sweep across the middle: the photograph draws in a little and comes back
+  const sh = 1 - 0.32 * Math.sin(Math.PI * f), cw = lerp(A.w, Bq.w, f) * sh, ch = lerp(A.h, Bq.h, f) * sh;
+  const cx = lerp(A.x + A.w / 2, Bq.x + Bq.w / 2, f), cy = lerp(A.y + A.h / 2, Bq.y + Bq.h / 2, f);
+  const B = { x: cx - cw / 2, y: cy - ch / 2, w: cw, h: ch };
   const kk = sstep(0, 0.62, e);
   const R = { x: lerp(0, B.x, kk), y: lerp(0, B.y, kk), w: lerp(W, B.w, kk), h: lerp(H, B.h, kk) };
-  place(ph0, ph0img, R);
   const attached = kk > 0.985;
-  const si = attached ? ((Math.round(q) % 4) + 4) % 4 : 0;
+  const si = attached ? ((Math.round(q) % 4) + 4) % 4 : -1;
+  // desktop: the hero photograph itself stays the 0-degree side; phone: the hero is img-005, so img-015 takes 0
+  const usePh0 = !phone || !attached;
+  place(ph0, ph0img, R);
+  ph0.style.opacity = usePh0 ? '1' : '0';
   sides.forEach((el) => {
-    const im = el.firstElementChild;
+    const im = el.firstElementChild, k = +el.dataset.side;
     if (attached || el.classList.contains('on')) place(el, im, B);
-    const on = +el.dataset.side === si && im.complete && im.naturalWidth > 0;
+    const want = k === si && !(k === 0 && usePh0);
+    const on = want && im.complete && im.naturalWidth > 0;
     if (on !== el.classList.contains('on')) { el.classList.toggle('on', on); el.setAttribute('aria-hidden', on ? 'false' : 'true'); }
   });
   side = si;
@@ -380,7 +412,7 @@ addEventListener('resize', () => { measure(); kick(); });
 phoneMQ.addEventListener?.('change', () => location.reload());
 document.fonts?.ready.then(() => { measure(); kick(); });
 const later = () => {
-  const go = () => { loadSides(); bootGL(); };
+  const go = () => { bootGL(); };
   'requestIdleCallback' in window ? requestIdleCallback(go, { timeout: 1500 }) : setTimeout(go, 200);
 };
 document.readyState === 'complete' ? later() : addEventListener('load', later, { once: true });

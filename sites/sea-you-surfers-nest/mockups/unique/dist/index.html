@@ -57,16 +57,16 @@ figure{margin:0}
 .top.solid{background:rgba(255,255,255,.94);box-shadow:0 1px 0 rgba(19,43,41,.06);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .mark{font-size:26px;text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;min-height:44px}
 .nav{display:flex;gap:4px;margin-left:auto}
-.nav a{font:500 15px/1 var(--text);text-decoration:none;padding:12px 14px;border-radius:10px;transition:background-color .2s ease}
+.nav a{font:500 15px/1 var(--text);text-decoration:none;padding:15px 14px;display:inline-flex;align-items:center;min-height:44px;border-radius:10px;transition:background-color .2s ease}
 .nav a:hover{background:rgba(236,235,229,.8)}
-.top:not(.solid) .nav{background:rgba(255,255,255,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-radius:14px;padding:4px}
-.mark{padding:0 14px;margin-left:-14px;border-radius:14px;transition:background-color .3s ease}
-.top:not(.solid) .mark{background:rgba(255,255,255,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.top::before{content:"";position:absolute;inset:0 0 -56px;z-index:-1;pointer-events:none;opacity:1;transition:opacity .3s ease;
+  background:linear-gradient(rgba(255,255,255,.72),rgba(255,255,255,.38) 55%,rgba(255,255,255,0))}
+.top.solid::before{opacity:0}
 .nav{transition:background-color .3s ease}
 
 /* ------------------------------------------------------------ the piece: stage + flow */
 .piece{position:relative}
-.stage{position:absolute;inset:0 0 auto;height:100svh;overflow:hidden;background:#fff;z-index:0;contain:layout paint}
+.stage{position:absolute;inset:0 0 auto;height:100svh;overflow:hidden;background:var(--tint);z-index:0;contain:layout paint}
 .ph{position:absolute;inset:0;transform-origin:50% 50%}
 .ph img{position:absolute;left:50%;top:50%;width:max(100%,calc(100svh * var(--a)));height:auto;aspect-ratio:var(--a);max-width:none;
   transform:translate(-50%,-50%);transform-origin:50% 50%}
@@ -82,7 +82,7 @@ figure{margin:0}
   background:radial-gradient(closest-side,rgba(255,255,255,.72),rgba(255,255,255,.4) 55%,rgba(255,255,255,0))}
 @media (max-width:899px){.veil{width:120%;height:150%;background:radial-gradient(closest-side,rgba(255,255,255,.78),rgba(255,255,255,.45) 55%,rgba(255,255,255,0))}}
 .hero-name{font-size:58px;line-height:1.08;margin:0}
-.hero-where{font:500 17px/1.4 var(--text);margin:10px 0 26px;color:var(--ink)}
+.hero-where{font:500 17px/1.4 var(--text);margin:10px 0 26px;color:var(--ink);text-wrap:balance}
 .hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);margin:0;font:500 13px/1 var(--text);
   background:rgba(255,255,255,.88);padding:10px 16px;border-radius:999px;white-space:nowrap}
 html:not(.piece) .hint{display:none}
@@ -105,7 +105,12 @@ html:not(.piece) .hint{display:none}
 .rate{text-decoration:none;color:var(--ink);white-space:nowrap;display:inline-flex;align-items:center;gap:.3em;min-height:44px}
 .rate b{font-weight:600}
 .rate span{color:var(--ink2)}
+.rate{transition:color .2s ease,transform .16s var(--e-out)}
 .rate:hover span{color:var(--ink)}
+.rate:hover b{color:var(--accent)}
+.rate:active{transform:scale(.97)}
+.g-where{grid-column:3/13;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;margin-top:22px}
+.g-where .addr{margin:0;font-weight:500;font-size:15.5px}
 .g-asof{display:block;font-size:13.5px;margin-top:2px}
 .g-acts{grid-column:3/13;display:flex;flex-wrap:wrap;gap:12px}
 
@@ -128,13 +133,13 @@ html.piece .caps{display:block}
 html.piece .loading{display:flex}
 html.piece .ph{will-change:transform,clip-path}
 .turn-room{display:none}
-html.piece .turn-room{display:block;height:418svh}
-.caps{position:absolute;left:max(56px,4.5vw);top:50%;width:min(36vw,500px);transform:translateY(-50%);opacity:0;
+html.piece .turn-room{display:block;height:229svh}
+.caps{position:absolute;left:max(56px,4.5vw);top:50%;width:min(29vw,420px);transform:translateY(-50%);opacity:0;
   transition:opacity .45s ease,visibility 0s linear .45s;pointer-events:none;visibility:hidden}
 .caps.on{opacity:1;visibility:visible;transition:opacity .45s ease,visibility 0s}
-.cap-title{font-size:50px;line-height:1.1;margin:0 0 22px}
+.cap-title{font-size:60px;line-height:1.05;margin:0 0 24px}
 .cap-stack{display:grid}
-.cap{grid-area:1/1;margin:0;font-size:25px;line-height:1.45;opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .5s var(--e-out)}
+.cap{grid-area:1/1;margin:0;font-size:30px;line-height:1.38;opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .5s var(--e-out)}
 .cap.on{opacity:1;transform:none}
 .cap-dots{display:flex;gap:8px;margin-top:26px}
 .cap-dots i{display:block;width:9px;height:9px;border-radius:5px;background:rgba(19,43,41,.16);transition:background-color .3s ease,transform .35s var(--e-out)}
@@ -153,7 +158,8 @@ html.piece .turn-room{display:block;height:418svh}
   html.piece .g-spot .title{font-size:44px}
   html.piece .g-inc{margin-bottom:10px}
   html.piece .g-price{margin-bottom:22px}
-  html.piece .g-rates{margin-bottom:28px}
+  html.piece .g-rates{margin-bottom:28px;font-size:14.5px}
+  html.piece .g-rates .rate{gap:.25em}
 }
 
 /* ------------------------------------------------------------ sections */
@@ -253,7 +259,9 @@ html:not(.js) .ctrl{display:none}
 .stayline{font-size:15px;color:var(--ink2);margin:0 0 4px}
 .staynote{font-size:15px;color:var(--ink2);max-width:34em}
 
-.closing{background:var(--tint);padding:110px 24px 120px}
+.closing{position:relative;overflow:hidden;background:var(--tint);padding:190px 24px 150px}
+.close-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gable-panel{position:relative}
 .gable-panel{max-width:1020px;margin:0 auto;background:#fff;text-align:center;padding:150px 64px 76px;
   clip-path:polygon(0 118px,50% 0,100% 118px,100% 100%,0 100%);border-radius:0 0 24px 24px}
 .close-line{font-size:27px;line-height:1.45;max-width:30em;margin:0 auto 34px}
@@ -304,14 +312,14 @@ html:not(.js) .ctrl{display:none}
 @media (max-width:899px){
   body{font-size:16px}
   .wrap{padding:0 20px}
-  .top{position:absolute;height:64px;padding:0 14px 0 20px;gap:12px}
+  .top{display:none}
   .top.solid{background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
   .mark{font-size:22px}
   .nav{display:none}
   .top .btn-sm{margin-left:auto}
   .hero-in{transform:translateY(-6svh)}
   .hero-name{font-size:40px}
-  .hero-where{font-size:16px;margin-bottom:22px}
+  .hero-where{font-size:16px;margin-bottom:22px;max-width:19em}
   .glance{padding:64px 0 72px}
   .glance-in{display:block;padding:0 20px}
   .g-tag{font-size:18px}
@@ -323,10 +331,10 @@ html:not(.js) .ctrl{display:none}
 
   .g-acts .btn{width:100%}
   html.piece .glance{background:#fff;box-shadow:0 -30px 50px -30px rgba(19,43,41,.18)}
-  html.piece .turn-room{height:520svh}
+  html.piece .turn-room{height:280svh}
   .caps{left:20px;right:20px;width:auto;top:auto;bottom:calc(92px + env(safe-area-inset-bottom));transform:none}
   .cap-title{font-size:34px;margin-bottom:12px}
-  .cap{font-size:19px;line-height:1.45}
+  .cap{font-size:21px;line-height:1.42}
   .cap-dots{margin-top:16px}
   .loading{bottom:auto;top:calc(16svh)}
   .still-turn{padding:8px 0 72px}
@@ -371,7 +379,7 @@ html:not(.js) .ctrl{display:none}
   .finding{padding:80px 0}
   .find-grid{display:block}
   .sign{max-width:none;width:78%;margin-bottom:40px}
-  .closing{padding:72px 12px 80px}
+  .closing{padding:120px 12px 96px}
   .gable-panel{padding:104px 22px 40px;clip-path:polygon(0 70px,50% 0,100% 70px,100% 100%,0 100%)}
   .close-line{font-size:21px}
   .close-acts .btn{width:100%}
@@ -415,9 +423,10 @@ html:not(.js) .ctrl{display:none}
     <img src="img/h015-1920.webp" srcset="img/h015-1280.webp 1280w, img/h015-1920.webp 1920w" sizes="100vw"
       width="1920" height="1080" alt="A mint-green four-poster with a gabled canopy, lime sheets, striped pillows and a teal velvet throw, grey panelled doors either side" data-alt-phone="A mint-green four-poster with a teal velvet throw over grey sheets, a timber towel ladder and a green cabinet beside it" fetchpriority="high" decoding="async">
   </picture></div>
-  <div class="ph side" data-side="1" aria-hidden="true"><img data-src="img/side-002.webp" width="760" height="950" alt="A mint-green four-poster made up in white linen, a grey panelled door open onto the veranda and its green table" decoding="async"></div>
-  <div class="ph side" data-side="2" aria-hidden="true"><img data-src="img/side-017.webp" width="760" height="950" alt="The foot of a mint-green four-poster: lime sheets, a teal velvet throw and a rolled towel, the door open to the balcony chairs" decoding="async"></div>
-  <div class="ph side" data-side="3" aria-hidden="true"><img data-src="img/side-053.webp" width="760" height="950" alt="The long side of a mint-green four-poster with a teal velvet throw and rolled towels, a barred window and a towel ladder behind" decoding="async"></div>
+  <div class="ph side" data-side="0" aria-hidden="true"><img data-src="img/side-015.webp" width="1400" height="934" alt="A mint-green four-poster with a gabled canopy, lime sheets, striped pillows and a teal velvet throw, grey panelled doors either side" decoding="async"></div>
+  <div class="ph side" data-side="1" aria-hidden="true"><img data-src="img/side-002.webp" width="1400" height="934" alt="A mint-green four-poster made up in white linen, a grey panelled door open onto the veranda and its green table" decoding="async"></div>
+  <div class="ph side" data-side="2" aria-hidden="true"><img data-src="img/side-017.webp" width="1400" height="934" alt="The foot of a mint-green four-poster: lime sheets, a teal velvet throw and a rolled towel, the door open to the balcony chairs" decoding="async"></div>
+  <div class="ph side" data-side="3" aria-hidden="true"><img data-src="img/side-053.webp" width="1400" height="934" alt="The long side of a mint-green four-poster with a teal velvet throw and rolled towels, a barred window and a towel ladder behind" decoding="async"></div>
   <canvas class="gl gl-front" aria-hidden="true"></canvas>
   <div class="caps" aria-live="off">
     <p class="title cap-title">Seven rooms</p>
@@ -431,14 +440,13 @@ html:not(.js) .ctrl{display:none}
   <div class="hero-in">
     <div class="veil" aria-hidden="true"></div>
     <h1 class="title hero-name" id="h-name">Sea You Surfers Nest</h1>
-    <p class="hero-where">Midigama, Sri Lanka</p>
+    <p class="hero-where">A bed and breakfast in Midigama, on Sri Lanka’s south coast.</p>
     <a class="btn btn-book btn-hero" href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" aria-label="See rooms and live dates on Booking.com"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>See live dates</span></a>
   </div>
   <p class="hint"><svg class="ic ic-gable" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M5 21V9.5L12 4l7 5.5V21M5 9.5h14M5 16.5h14M5 13h14"/></svg>Scroll, and the bed turns</p>
 </section>
 <section class="glance" id="glance" aria-label="At a glance">
   <div class="glance-in">
-    <p class="g-tag">A bed and breakfast in Midigama, on Sri Lanka’s south coast.</p>
     <p class="g-spot"><span class="title">“Hello to waves in a minute walk,”</span> <span class="g-by">says the house’s own listing.</span></p>
     <ul class="g-inc" aria-label="Included">
       <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.5a9.5 9.5 0 0 1 13 0M8.6 16a5 5 0 0 1 6.8 0"/><circle cx="12" cy="19.3" r="1"/></svg><span>Free WiFi (in public areas)</span></li>
@@ -449,6 +457,7 @@ html:not(.js) .ctrl{display:none}
     <p class="g-price"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Live dates on Booking.com</span></p>
     <p class="g-rates"><span><a class="rate" href="https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0" rel="noopener"><b>4.9/5</b> <span>Google, 11 reviews</span></a></span> <span class="sep" aria-hidden="true">|</span> <span><a class="rate" href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" rel="noopener"><b>8.0/10</b> <span>Booking.com, 8 reviews</span></a></span> <span class="sep" aria-hidden="true">|</span> <span><a class="rate" href="https://www.airbnb.co.uk/rooms/1508895627217411616" rel="noopener"><b>5.0/5</b> <span>Airbnb, 10 reviews</span></a></span><span class="g-asof">Ratings as of 21 Nov 2026</span></p>
     <div class="g-acts"><a class="btn btn-book " href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>See rooms and live dates on Booking.com</span></a><a class="btn btn-line" href="stay/" data-door><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 11.5 12 4l8.5 7.5M6 9.5V20h12V9.5"/><path d="M9.5 14.5h5"/></svg><span>More ways to book</span></a></div>
+    <div class="g-where"><p class="addr"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21.5s-7-6.2-7-11.5a7 7 0 0 1 14 0c0 5.3-7 11.5-7 11.5z"/><circle cx="12" cy="10" r="2.6"/></svg><span>151 Weliwaththa Rd, Midigama 80650, Sri Lanka</span></p><a class="btn btn-line" href="https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 4 3 6.5v13.5L9 17.5l6 2.5 6-2.5V4l-6 2.5zM9 4v13.5M15 6.5V20"/></svg><span>Open in Google Maps</span></a></div>
   </div>
 </section><div class="turn-room" aria-hidden="true"></div></div>
 </div>
@@ -456,7 +465,7 @@ html:not(.js) .ctrl{display:none}
 <section class="still-turn" aria-labelledby="h-seven">
   <div class="wrap still-grid">
     <div class="still-photos">
-      <img src="img/p015-900.webp" width="900" height="1124" alt="A mint-green four-poster with a gabled canopy, lime sheets, striped pillows and a teal velvet throw, grey panelled doors either side" loading="lazy" decoding="async"><img src="img/side-002.webp" width="760" height="950" alt="A mint-green four-poster made up in white linen, a grey panelled door open onto the veranda and its green table" loading="lazy" decoding="async"><img src="img/side-017.webp" width="760" height="950" alt="The foot of a mint-green four-poster: lime sheets, a teal velvet throw and a rolled towel, the door open to the balcony chairs" loading="lazy" decoding="async"><img src="img/side-053.webp" width="760" height="950" alt="The long side of a mint-green four-poster with a teal velvet throw and rolled towels, a barred window and a towel ladder behind" loading="lazy" decoding="async">
+      <img src="img/side-015.webp" width="1400" height="934" alt="A mint-green four-poster with a gabled canopy, lime sheets, striped pillows and a teal velvet throw, grey panelled doors either side" loading="lazy" decoding="async"><img src="img/side-002.webp" width="1400" height="934" alt="A mint-green four-poster made up in white linen, a grey panelled door open onto the veranda and its green table" loading="lazy" decoding="async"><img src="img/side-017.webp" width="1400" height="934" alt="The foot of a mint-green four-poster: lime sheets, a teal velvet throw and a rolled towel, the door open to the balcony chairs" loading="lazy" decoding="async"><img src="img/side-053.webp" width="1400" height="934" alt="The long side of a mint-green four-poster with a teal velvet throw and rolled towels, a barred window and a towel ladder behind" loading="lazy" decoding="async">
     </div>
     <div class="still-text">
       <h2 class="title" id="h-seven">Seven rooms</h2>
@@ -476,7 +485,7 @@ html:not(.js) .ctrl{display:none}
       <a class="btn btn-book " href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>See rooms and live dates on Booking.com</span></a>
     </article>
     <article class="room">
-      <div class="show" data-show id="show-standard" role="region" aria-roledescription="carousel" aria-label="Standard Double Room photographs"><ul class="track" tabindex="0"><li class="slide" aria-roledescription="slide" aria-label="1 of 6"><img src="img/r-img-026.webp" width="820" height="1026" alt="A mint four-poster with a slatted canopy, grey sheets and a teal throw, a ceiling fan above" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="2 of 6"><img src="img/r-img-009.webp" width="820" height="1024" alt="A mint four-poster in grey linen seen from its corner, a green cabinet, a mirror, a towel ladder and a green WC door behind" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="3 of 6"><img src="img/r-img-005.webp" width="820" height="1026" alt="A mint-green four-poster with a teal velvet throw over grey sheets, a timber towel ladder and a green cabinet beside it" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="4 of 6"><img src="img/r-img-025.webp" width="820" height="1026" alt="A small wooden table with a white tea set between two green chairs, the foot of the bed at the edge" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="5 of 6"><img src="img/r-img-010.webp" width="820" height="1026" alt="A timber towel ladder and a green cabinet beside a green door marked WC, the four-poster at the edge" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="6 of 6"><img src="img/r-img-008.webp" width="820" height="1026" alt="A white bathroom with a toilet, an instant shower heater and a rain shower head" loading="lazy" decoding="async"></li></ul><div class="ctrl"><button class="arw prev" type="button" aria-label="Previous photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg></button><div class="dots" role="group" aria-label="Choose a photo"><button type="button" class="dot" aria-label="Photo 1 of 6"></button><button type="button" class="dot" aria-label="Photo 2 of 6"></button><button type="button" class="dot" aria-label="Photo 3 of 6"></button><button type="button" class="dot" aria-label="Photo 4 of 6"></button><button type="button" class="dot" aria-label="Photo 5 of 6"></button><button type="button" class="dot" aria-label="Photo 6 of 6"></button></div><button class="arw next" type="button" aria-label="Next photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
+      <div class="show" data-show id="show-standard" role="region" aria-roledescription="carousel" aria-label="Standard Double Room photographs"><ul class="track" tabindex="0"><li class="slide" aria-roledescription="slide" aria-label="1 of 4"><img src="img/r-img-026.webp" width="820" height="1026" alt="A mint four-poster with a slatted canopy, grey sheets and a teal throw, a ceiling fan above" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="2 of 4"><img src="img/r-img-009.webp" width="820" height="1024" alt="A mint four-poster in grey linen seen from its corner, a green cabinet, a mirror, a towel ladder and a green WC door behind" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="3 of 4"><img src="img/r-img-005.webp" width="820" height="1026" alt="A mint-green four-poster with a teal velvet throw over grey sheets, a timber towel ladder and a green cabinet beside it" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="4 of 4"><img src="img/r-img-025.webp" width="820" height="1026" alt="A small wooden table with a white tea set between two green chairs, the foot of the bed at the edge" loading="lazy" decoding="async"></li></ul><div class="ctrl"><button class="arw prev" type="button" aria-label="Previous photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg></button><div class="dots" role="group" aria-label="Choose a photo"><button type="button" class="dot" aria-label="Photo 1 of 4"></button><button type="button" class="dot" aria-label="Photo 2 of 4"></button><button type="button" class="dot" aria-label="Photo 3 of 4"></button><button type="button" class="dot" aria-label="Photo 4 of 4"></button></div><button class="arw next" type="button" aria-label="Next photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
       <h3 class="title room-name">Standard Double Room</h3>
       <p class="room-facts"><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>sleeps 2</span></p>
       <p class="room-note">12 m², with a private entrance and a wardrobe.</p>
@@ -573,6 +582,7 @@ html:not(.js) .ctrl{display:none}
   </div>
 </section>
 <section class="closing" id="book" aria-labelledby="h-close">
+  <img class="close-bg" src="img/close-002.webp" width="1920" height="1280" alt="A mint-green four-poster made up in white linen, a grey panelled door open onto the veranda and its green table" loading="lazy" decoding="async">
   <div class="gable-panel">
     <h2 class="visually-hidden" id="h-close">Book</h2>
     <p class="close-line">Live dates are on Booking.com, and groups can rent the whole house on Airbnb.</p>
@@ -721,7 +731,7 @@ const cvB = $('.gl-back', stage), cvF = $('.gl-front', stage);
 if (phoneMQ.matches && ph0img.dataset.altPhone) ph0img.alt = ph0img.dataset.altPhone;
 
 // ---- the bed, in metres, proportioned by eye from img-015 (gabled canopy) and img-002 / img-053 (panels)
-const PX = 0.77, PZ = 1.02, PT = 0.075, PH = 2.1, G = 0.4;
+const PX = 0.77, PZ = 1.02, PT = 0.075, PH = 2.1, G = 0.34;
 const RAF = Math.atan2(G, PX), RL = Math.hypot(PX, G);
 const PANEL = (z, y0, y1, dz) => [                       // a framed board: rails and stiles proud of a recessed panel
   { c: [0, (y0 + y1) / 2, z], s: [2 * PX - PT, y1 - y0, 0.026] },
@@ -739,8 +749,16 @@ const BOXES = [
   ...[-1, 1].map((sx) => ({ c: [sx * PX, 0.3, 0], s: [0.03, 0.26, 2 * PZ - PT - 0.004] })),                   // side boards
   ...[-1, 1].map((sx) => ({ c: [sx * PX, 0.445, 0], s: [0.055, 0.04, 2 * PZ - PT - 0.004] })),
 ];
-const BB = { c: [0, 1.36, 0], w: 1.36, h: 1.7 };             // the photograph inside the frame, 4:5, facing the camera
-const FOV = 28 * Math.PI / 180, F = 1 / Math.tan(FOV / 2), TGT = [0, 1.22, 0], ELEV = 0.2, YAW0 = -0.15;
+// The photograph is seated in the opening of the face turned to the camera at each rest: post to post, from the
+// footboard / side board / headboard rail up to the canopy rail. Its edges tuck under the drawn posts and rails.
+const TOPY = PH - 0.04, TUCK = 0.012;
+const FACE = [
+  [[-(PX - TUCK), 0.6, PZ], [PX - TUCK, 0.6, PZ], [PX - TUCK, TOPY, PZ], [-(PX - TUCK), TOPY, PZ]],          // 0: the foot
+  [[-PX, 0.445, -(PZ - TUCK)], [-PX, 0.445, PZ - TUCK], [-PX, TOPY, PZ - TUCK], [-PX, TOPY, -(PZ - TUCK)]],  // 90: a long side
+  [[-(PX - TUCK), 0.95, -PZ], [PX - TUCK, 0.95, -PZ], [PX - TUCK, TOPY, -PZ], [-(PX - TUCK), TOPY, -PZ]],   // 180: the head
+  [[PX, 0.445, -(PZ - TUCK)], [PX, 0.445, PZ - TUCK], [PX, TOPY, PZ - TUCK], [PX, TOPY, -(PZ - TUCK)]],      // 270: the other side
+];
+const FOV = 28 * Math.PI / 180, F = 1 / Math.tan(FOV / 2), TGT = [0, 1.2, 0], ELEV = 0.13, YAW0 = -0.1;
 
 // ---- geometry: one merged buffer of boxes (36 vertices each), positions + normals
 function boxGeo() {
@@ -787,14 +805,14 @@ const FS = `precision mediump float;uniform float uSplit,uSide;uniform vec3 uCol
 void main(){if(uSide*(vZ-uSplit)>0.)discard;vec3 n=normalize(vN);vec3 L=normalize(vec3(-.5,.85,.62));
 float dif=max(dot(n,L),0.);vec3 amb=mix(vec3(.5,.52,.5),vec3(1.),.5+.5*n.y);
 float ao=mix(.74,1.,smoothstep(0.,.9,vW.y));vec3 V=normalize(uEye-vW);vec3 H=normalize(L+V);
-float ed=min(vE.z-abs(vE.x),vE.w-abs(vE.y));float edge=mix(.8,1.,smoothstep(.0,.011,ed));
-vec3 lin=uCol*(amb*.5+vec3(1.,.96,.9)*dif*.72)*ao*edge+pow(max(dot(n,H),0.),30.)*.045+(1.-smoothstep(.0,.006,abs(ed-.016)))*.018;
+float ed=min(vE.z-abs(vE.x),vE.w-abs(vE.y));float edge=mix(.86,1.,smoothstep(.0,.014,ed));
+vec3 lin=uCol*(amb*.56+vec3(1.,.95,.86)*dif*.62)*ao*edge+pow(max(dot(n,H),0.),24.)*.03;
 gl_FragColor=vec4(pow(lin,vec3(1./2.2)),1.);}`;
 const SVS = `attribute vec2 p;uniform mat4 uM,uV,uP;uniform vec2 uOff,uHalf;varying vec2 vU;
 void main(){vU=p;vec4 v=uV*uM*vec4(p.x*uHalf.x,.002,p.y*uHalf.y,1.);gl_Position=uP*v;gl_Position.xy+=uOff*gl_Position.w;}`;
 const SFS = `precision mediump float;varying vec2 vU;uniform vec2 uPost;
-void main(){float a=.13*(1.-smoothstep(.15,1.,length(vU)));
-vec2 q=abs(vU)-uPost;a+=.2*(1.-smoothstep(0.,.11,length(q)));
+void main(){float a=.17*(1.-smoothstep(.1,1.,length(vU)));
+vec2 q=abs(vU)-uPost;a+=.32*(1.-smoothstep(0.,.075,length(q)))+.1*(1.-smoothstep(0.,.2,length(q)));
 gl_FragColor=vec4(vec3(.075,.17,.16)*a,a);}`;
 
 function makeGL(canvas, withShadow) {
@@ -857,20 +875,23 @@ let W = 0, H = 0, phone = false, geo = null, D1 = 7, OFF = [0, 0], dpr = 1;
 function measure() {
   W = stage.clientWidth; H = stage.clientHeight; phone = phoneMQ.matches;
   const pTop = piece.getBoundingClientRect().top + scrollY;
+  const gTop = glance.getBoundingClientRect().top + scrollY - pTop;
   const gBot = glance.getBoundingClientRect().bottom + scrollY - pTop;
   const asp = W / H;
   if (phone) {
-    const ext = PZ * Math.cos(YAW0) + PX * Math.abs(Math.sin(YAW0));
-    D1 = Math.max(F * 1.3 / 0.5, F * ext / (0.94 * asp) + 1.0);
-    OFF = [0, 0.29];
-    const pull0 = gBot;
-    geo = { top: pTop, pull0, pull1: pull0 + 0.7 * H, turn0: pull0 + 0.8 * H, capsOn: pull0 + 0.55 * H };
+    // the glance is an opaque sheet over the stage: the photograph backs into the bed while it is covered,
+    // so the stage is revealed already showing the bed (the hero is never shown twice), and the turn starts at once
+    D1 = F * (PZ + PT / 2) / (0.98 * asp) + PX;
+    OFF = [0, 0.28];
+    const p0 = gTop + 0.02 * H, p1 = Math.max(p0 + 1, gBot - 1.02 * H);
+    geo = { top: pTop, pull0: p0, pull1: p1, turn0: gBot - 0.45 * H, capsOn: gBot - 0.5 * H, turnLen: 2.2 * H };
   } else {
-    D1 = Math.max(F * 1.3 / 0.66, F * Math.hypot(PX, PZ) / (0.56 * asp) + 1.28);
-    OFF = [0.32, -0.03];
-    geo = { top: pTop, pull0: 0, pull1: 0.7 * H, turn0: gBot - 0.36 * H, capsOn: gBot - 0.38 * H };
+    D1 = Math.max(F * 1.25 / 0.78 + 0.3, F * Math.hypot(PX, PZ) / (0.6 * asp) + 1.28);
+    OFF = [0.27, -0.09];
+    geo = { top: pTop, pull0: 0, pull1: 0.7 * H, turn0: gBot - 0.3 * H, capsOn: gBot - 0.3 * H, turnLen: 1.6 * H };
   }
-  geo.turnLen = 3 * H; geo.exit = geo.turn0 + geo.turnLen;
+  geo.exit = geo.turn0 + geo.turnLen;
+  geo.loadAt = phone ? gTop - 0.5 * H : 0.08 * H;
   for (const cv of [cvB, cvF]) {
     const px = W * H * dpr * dpr, cap = soft ? 1.0e6 : 4.2e6, k = px > cap ? Math.sqrt(cap / px) : 1;
     cv.width = Math.round(W * dpr * k); cv.height = Math.round(H * dpr * k);
@@ -886,29 +907,30 @@ function place(el, im, R) {
   const [iw, ih] = natural(im);
   const s = Math.max(R.w / iw, R.h / ih) / Math.max(W / iw, H / ih);
   im.style.transform = `translate(-50%,-50%) translate(${(R.x + R.w / 2 - W / 2).toFixed(2)}px,${(R.y + R.h / 2 - H / 2).toFixed(2)}px) scale(${s.toFixed(5)})`;
-  const r = Math.min(10, R.w * 0.02);
+  const r = 2;
   el.style.clipPath = `inset(${R.y.toFixed(2)}px ${(W - R.x - R.w).toFixed(2)}px ${(H - R.y - R.h).toFixed(2)}px ${R.x.toFixed(2)}px round ${r.toFixed(1)}px)`;
 }
 
 // ---- state: targets from scroll, damped toward in the loop
 const cur = { e: 0, q: 0 }, tgt = { e: 0, q: 0 };
-let dirty = true, last = 0, running = false, glB = null, glF = null, soft = false, side = 0, capI = -1, capsVisible = false;
+let sidesAsked = false, dirty = true, last = 0, running = false, glB = null, glF = null, soft = false, side = 0, capI = -1, capsVisible = false;
 function targets() {
   const s = scrollY - geo.top;
   tgt.e = clamp((s - geo.pull0) / (geo.pull1 - geo.pull0));
-  const t = clamp((s - geo.turn0) / geo.turnLen) * 4.6 - 0.3, i = Math.floor(t);   // a full rest at the first and last label too
-  tgt.q = clamp(i + sstep(0.28, 0.72, t - i), 0, 4);      // rests at every quarter turn (the labels)
-  const on = s >= geo.capsOn && s <= geo.exit + 0.25 * H;
+  const t = clamp((s - geo.turn0) / geo.turnLen) * 3.6 - 0.3, i = Math.floor(t);   // four rests: 0, 90, 180, 270
+  tgt.q = clamp(i + sstep(0.28, 0.72, t - i), 0, 3);      // a rest at every quarter turn (the labels)
+  const on = s >= geo.capsOn && s <= geo.exit + H;   // the last sentence leaves with the stage
   if (on !== capsVisible) { capsVisible = on; caps.classList.toggle('on', on); }
   if (!phone) {
     const f = 1 - sstep(0.02 * H, 0.16 * H, s);
     heroIn.style.opacity = f.toFixed(3); hint.style.opacity = f.toFixed(3);
   }
+  if (!sidesAsked && s > geo.loadAt) { sidesAsked = true; loadSides(); }   // the four sides load once the visitor heads for the turn
   const wantLoad = s > geo.turn0 - 0.3 * H;
   loadingEl.classList.toggle('show', wantLoad);
 }
 function frame(now) {
-  const dt = Math.min(0.1, (now - last) / 1000 || 0.016); last = now;
+  const dt = clamp((now - last) / 1000, 0, 0.1) || 0.016; last = now;   // rAF time can run behind performance.now()
   const k = 1 - Math.exp(-6 * dt);                       // damp, lambda 6
   let moving = false;
   for (const key of ['e', 'q']) {
@@ -921,25 +943,45 @@ function frame(now) {
 }
 function kick() { targets(); if (!running) { running = true; last = performance.now(); requestAnimationFrame(frame); } }
 
+function openRect(k, V, asp, off) {
+  const M = rotY(YAW0 + k * Math.PI / 2);
+  const pts = FACE[k].map((p) => {
+    const v = xf(V, xf(M, p)), z = -v[2];
+    return [((F / asp * v[0] / z + off[0]) + 1) / 2 * W, (1 - (F * v[1] / z + off[1])) / 2 * H];
+  });
+  // corners 0,1 bottom, 2,3 top; 0,3 one end, 1,2 the other: the middle of inner and outer edges, hidden under the wood
+  const xa = [pts[0][0], pts[3][0]], xb = [pts[1][0], pts[2][0]];
+  const lx = Math.min(...xa) < Math.min(...xb) ? xa : xb, rx = lx === xa ? xb : xa;
+  const x0 = (lx[0] + lx[1]) / 2, x1 = (rx[0] + rx[1]) / 2;
+  const y0 = (pts[2][1] + pts[3][1]) / 2, y1 = (pts[0][1] + pts[1][1]) / 2;
+  return { x: x0, y: y0, w: x1 - x0, h: y1 - y0 };
+}
 function render() {
   const e = cur.e, q = cur.q, asp = W / H;
   const D = lerp(D1 * 0.56, D1, sstep(0, 1, e));
   const off = [OFF[0] * sstep(0, 1, e), OFF[1] * sstep(0, 1, e)];
   const eye = [0, TGT[1] + D * Math.sin(ELEV), D * Math.cos(ELEV)];
   const V = lookAt(eye, TGT), P = perspective(asp);
-  const c = xf(V, BB.c), zc = -c[2];
-  const nx = F / asp * c[0] / zc + off[0], ny = F * c[1] / zc + off[1];
-  const hw = F / asp * (BB.w / 2) / zc, hh = F * (BB.h / 2) / zc;
-  const B = { x: (nx - hw + 1) / 2 * W, y: (1 - (ny + hh)) / 2 * H, w: hw * W, h: hh * H };
+  const zc = -xf(V, [0, 1.2, 0])[2];
+  const k0 = clamp(Math.floor(q), 0, 3), k1 = Math.min(3, k0 + 1), f = q - k0;
+  const A = openRect(k0, V, asp, off), Bq = k1 === k0 ? A : openRect(k1, V, asp, off);
+  // between rests the corner posts sweep across the middle: the photograph draws in a little and comes back
+  const sh = 1 - 0.32 * Math.sin(Math.PI * f), cw = lerp(A.w, Bq.w, f) * sh, ch = lerp(A.h, Bq.h, f) * sh;
+  const cx = lerp(A.x + A.w / 2, Bq.x + Bq.w / 2, f), cy = lerp(A.y + A.h / 2, Bq.y + Bq.h / 2, f);
+  const B = { x: cx - cw / 2, y: cy - ch / 2, w: cw, h: ch };
   const kk = sstep(0, 0.62, e);
   const R = { x: lerp(0, B.x, kk), y: lerp(0, B.y, kk), w: lerp(W, B.w, kk), h: lerp(H, B.h, kk) };
-  place(ph0, ph0img, R);
   const attached = kk > 0.985;
-  const si = attached ? ((Math.round(q) % 4) + 4) % 4 : 0;
+  const si = attached ? ((Math.round(q) % 4) + 4) % 4 : -1;
+  // desktop: the hero photograph itself stays the 0-degree side; phone: the hero is img-005, so img-015 takes 0
+  const usePh0 = !phone || !attached;
+  place(ph0, ph0img, R);
+  ph0.style.opacity = usePh0 ? '1' : '0';
   sides.forEach((el) => {
-    const im = el.firstElementChild;
+    const im = el.firstElementChild, k = +el.dataset.side;
     if (attached || el.classList.contains('on')) place(el, im, B);
-    const on = +el.dataset.side === si && im.complete && im.naturalWidth > 0;
+    const want = k === si && !(k === 0 && usePh0);
+    const on = want && im.complete && im.naturalWidth > 0;
     if (on !== el.classList.contains('on')) { el.classList.toggle('on', on); el.setAttribute('aria-hidden', on ? 'false' : 'true'); }
   });
   side = si;
@@ -986,7 +1028,7 @@ addEventListener('resize', () => { measure(); kick(); });
 phoneMQ.addEventListener?.('change', () => location.reload());
 document.fonts?.ready.then(() => { measure(); kick(); });
 const later = () => {
-  const go = () => { loadSides(); bootGL(); };
+  const go = () => { bootGL(); };
   'requestIdleCallback' in window ? requestIdleCallback(go, { timeout: 1500 }) : setTimeout(go, 200);
 };
 document.readyState === 'complete' ? later() : addEventListener('load', later, { once: true });

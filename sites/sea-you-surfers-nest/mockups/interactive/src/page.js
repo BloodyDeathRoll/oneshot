@@ -35,10 +35,11 @@ void main(){
   float m=texture2D(uM,uv).r;
   vec2 p=uv*vec2(3.,2.);
   float t=uT;
-  vec2 d=vec2(sn(p+vec2(t*.12,t*.05)),sn(p+vec2(17.3-t*.07,4.1+t*.12)))*.0045;
-  d+=vec2(sn(p*3.1+vec2(t*.55,-t*.4)),sn(p*3.1+vec2(9.7+t*.45,t*.5)))*.0011;
-  d.x+=sin(t*.7+uv.x*2.3+uv.y*3.1)*.0016;
-  d.x+=uG*.009*m;
+  float tip=smoothstep(.0,.6,m);                     // fronds far from the parapet move most
+  vec2 d=vec2(sn(p+vec2(t*.12,t*.05)),sn(p+vec2(17.3-t*.07,4.1+t*.12)))*.009;
+  d+=vec2(sn(p*3.1+vec2(t*.55,-t*.4)),sn(p*3.1+vec2(9.7+t*.45,t*.5)))*.0022;
+  d.x+=sin(t*.7+uv.x*2.3+uv.y*3.1)*.0032;
+  d+=vec2(uG*.016,-abs(uG)*.004)*tip;
   gl_FragColor=vec4(texture2D(uI,uv+d*m).rgb,1.);
 }`;
     const sh = (type, s) => { const o = gl.createShader(type); gl.shaderSource(o, s); gl.compileShader(o); if (force && !gl.getShaderParameter(o, gl.COMPILE_STATUS)) console.warn('palms shader:', gl.getShaderInfoLog(o)); return o; };
@@ -90,12 +91,14 @@ void main(){
     addEventListener('deviceorientation', e => { if (e.gamma == null) return; if (lg !== null) kick += Math.max(-.6, Math.min(.6, (e.gamma - lg) / 12)); lg = e.gamma; }, { passive: true });
 
     let running = false, raf = 0, t0 = performance.now(), last = t0, frames = 0, slow = 0, visible = true;
+    let nextGust = t0 + 2500;                          // the first gust soon after load, then every 6-9 s
     const frame = now => {
       raf = 0; if (!running) return;
       const dt = Math.min(.05, (now - last) / 1000);
       if (frames < 60) { frames++; if (now - last > 40) slow++; if (frames === 60 && slow > 25 && !force) { cv.classList.remove('on'); running = false; return; } }
       last = now;
-      kick *= Math.exp(-dt * 6);
+      if (now > nextGust) { kick += (Math.random() < .75 ? 1 : -1) * (.75 + Math.random() * .35); nextGust = now + 6000 + Math.random() * 3000; }
+      kick *= Math.exp(-dt * 2.2);
       const a = 46 * (kick - g) - 7 * gv; gv += a * dt; g += gv * dt;
       gl.uniform1f(uT, (now - t0) / 1000); gl.uniform1f(uG, g);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);

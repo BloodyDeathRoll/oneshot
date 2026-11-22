@@ -1,32 +1,32 @@
 {
  "slug": "sea-you-surfers-nest",
  "variant": "unique",
- "measured_at": "2026-11-22T00:53:34.694Z",
+ "measured_at": "2026-11-22T10:51:54.374Z",
  "first_load": {
-  "requests": 8,
+  "requests": 5,
   "hosts": [
-   "localhost:8980",
    "fonts.googleapis.com",
+   "localhost:8980",
    "fonts.gstatic.com"
   ],
   "third_party_hosts": [
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 291689,
-  "bytes_html": 120635,
+  "bytes_total": 183778,
+  "bytes_html": 91762,
   "bytes_js": 0,
   "bytes_css": 0,
-  "bytes_fonts": 16640,
-  "bytes_images": 154414,
-  "largest_image_bytes": 53718,
-  "lcp_ms": 988,
-  "cls": 0.0014,
-  "dcl_ms": 1056
+  "bytes_fonts": 46544,
+  "bytes_images": 45472,
+  "largest_image_bytes": 45472,
+  "lcp_ms": 1236,
+  "cls": 0.0015,
+  "dcl_ms": 1302
  },
  "scroll": {
   "early": {
-   "cls": 0.0002,
+   "cls": 0.0001,
    "shifts": []
   },
   "settled": {
@@ -57,7 +57,7 @@
   "images": 32,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
-  "tapables": 43,
+  "tapables": 40,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
   "headings": [
@@ -79,9 +79,9 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 4816,
+  "text_length": 4837,
   "booking_links_reachable": 3,
-  "visible_images": 29
+  "visible_images": 28
  },
  "reduced_motion": {
   "canvases": 2,

@@ -52,6 +52,8 @@ RATINGS = COPY['ratings']
 ORDER = ['Kenza', 'Niamh', 'Marina, Italy', 'Molly Jayne', 'Raul']
 QUOTES = sorted(COPY['testimonials'], key=lambda t: ORDER.index(t['author']))
 CHECKOUT = f"Check-out {STAY['checkOutFrom']}–{STAY['checkOutTo']}"
+TYPE_LINE = DOSSIER['business']['google_category']['value'].replace('&', 'and')   # "Bed and breakfast", Google's category
+SPOT_Q, SPOT_BY = COPY['spot'].split(',” ')[0] + ',”', COPY['spot'].split(',” ')[1]
 
 # ---------------------------------------------------------------- images
 def webp_size(p):
@@ -96,6 +98,7 @@ ALT = {
     'img-077': 'The long upstairs balcony: a settee with green cushions, mint tables and chairs, and palms beyond the railing',
     'img-036': 'A wooden surfboard fixed upright to a grey garden wall with a tap and a shower head, palms above the wall',
     'img-069': 'Carved wooden masks hanging on a wall beside a doorway, leaves at the edge',
+    'img-051': 'A courtyard doorway under a carved grey fanlight, a mint four-poster with a teal throw inside, carved masks and a carved shutter on the white wall, plants in pots',
     'img-001': 'The round sign by the road: Sea You, The Surfers Nest, Midigama, with a wave, a board, a sun and a palm, against palms and a cloudy sky',
 }
 DELUXE = ['img-002', 'img-015', 'img-012', 'img-022', 'img-013', 'img-033']   # Booking.com tags these to Deluxe
@@ -138,12 +141,12 @@ def book(cls='', short=None): return btn(BOOK, BOOK_LABEL, 'book', 'out', short,
 def call(cls=''):
     return '' if not PHONE_CONFIRMED else f'<a class="btn btn-soft {cls}" href="tel:{PHONE}">{svg("phone")}<span>Call Ashly</span></a>'
 
-def rating(r, big=False):
-    return (f'<a class="chip{" chip-big" if big else ""}" href="{E(r["url"])}" rel="noopener">'
-            f'<b>{score(r)}</b><span><span class="plat">{PLATFORM[r["platform"]]}</span>'
-            f'<small><span>{r["count"]} reviews</span> {SEP} <span>{day(r["capturedAt"])}</span></small></span></a>')
-def ratings(big=False):
-    return f'<div class="chips{" chips-big" if big else ""}">' + ''.join(rating(r, big) for r in RATINGS) + '</div>'
+def ratings():
+    """Shown once on the page (4f r1): large figures, no boxes, each linked to its listing, with count and date."""
+    return ('<ul class="rates" aria-label="Ratings">' + ''.join(
+        f'<li><a href="{E(r["url"])}" rel="noopener"><b>{score(r)}</b>'
+        f'<span>{PLATFORM[r["platform"]]}</span><small>{r["count"]} reviews {SEP} {day(r["capturedAt"])}</small></a></li>'
+        for r in RATINGS) + '</ul>')
 
 def show(sid, names, label):
     n = len(names)
@@ -162,7 +165,7 @@ def who(p):
     """The "Who's coming?" panel: the closing sentence made into a control. Every answer is plain links."""
     two = (f'<div class="ans is-on" id="{p}-two" data-ans="two"><p class="ans-h">Two of you</p>'
            f'<div class="ans-btns">{book()}{btn(AIR_ROOM, AIR_ROOM_LABEL, "soft")}</div>'
-           f'<p class="ans-note">{E(AC_LINE)}</p></div>')
+           f'<p class="ans-note">{pipe([E(ROOMS[0]["label"]), E(ROOMS[1]["label"]), E(ROOMS[0]["beds"]) + " each"])}</p></div>')
     group = (f'<div class="ans" id="{p}-group" data-ans="group"><p class="ans-h">A group</p>'
              f'<div class="ans-btns">{btn(AIR_HOUSE, AIR_HOUSE_LABEL)}</div>'
              f'<p class="ans-note">{E(SLEEPS_LINE)}</p></div>')
@@ -174,13 +177,14 @@ def who(p):
         f'{svg(icon)}<span>{label}</span>'
         f'<svg class="ring" aria-hidden="true"><rect x="1" y="1" rx="17" ry="17" pathLength="1"/></svg></button>')
     return (f'<div class="who" data-who>'
-            f'<div class="who-q"><h3 class="hand">Who’s coming?</h3>'
+            f'<div class="who-q"><h3 class="hand" id="who-h">Who’s coming?</h3>'
             f'<div class="tiles" role="group" aria-label="Who’s coming?">'
             f'{tile("two", "two", "Two of you", True)}{tile("group", "group", "A group")}{tile("ask", "ask", "A question first")}</div></div>'
             f'<div class="answers" aria-live="polite">{two}{group}{ask}</div></div>')
 
 # ---------------------------------------------------------------- page
 hero = f'''
+<a class="skip" href="#rooms">Skip to the rooms</a>
 <header class="top" data-top>
   <a class="mark hand" href="#top">{E(NAME)}</a>
   <nav class="nav" aria-label="Sections"><a href="#rooms">Rooms</a><a href="#house">Courtyard</a><a href="#guests">Guests</a><a href="#find">Finding the house</a></nav>
@@ -190,32 +194,31 @@ hero = f'''
 <section class="hero" aria-label="{E(NAME)}">
   <div class="hero-media">
     <picture>
-      <source media="(max-width: 767px)" srcset="{src('hero-tall-720')} 720w, {src('hero-tall-960')} 960w" sizes="100vw">
-      <img class="hero-img" data-asset="img-003" src="{src('hero-wide-1920')}" srcset="{src('hero-wide-1280')} 1280w, {src('hero-wide-1920')} 1920w" sizes="100vw"
-        width="1920" height="1079" alt="{E(ALT['img-003'])}" fetchpriority="high" draggable="false">
+      <source media="(max-width: 767px)" srcset="{src('hero-tall-600')} 600w" sizes="100vw">
+      <img class="hero-img" data-asset="img-003" src="{src('hero-wide-1400')}" srcset="{src('hero-wide-1000')} 1000w, {src('hero-wide-1400')} 1400w" sizes="100vw"
+        width="1400" height="788" alt="{E(ALT['img-003'])}" fetchpriority="high" draggable="false">
     </picture>
     <canvas class="palms" aria-hidden="true"></canvas>
   </div>
   <div class="hero-text">
     <h1 class="hand">{E(NAME)}</h1>
-    <p class="where">{E(TOWN)}</p>
+    <p class="where">{pipe([E(TYPE_LINE), E(TOWN)])}</p>
     {book('btn-hero', 'See live dates')}
   </div>
 </section>'''
 
 glance = f'''
 <section class="glance" id="glance" aria-labelledby="glance-h">
-  <div class="wrap">
-    <h2 class="tag" id="glance-h">{E(COPY['tagline'])}</h2>
-    <ul class="facts">
-      <li>{svg('wave')}<span><b>{E(COPY['spot'].split(',”')[0] + ',”')}</b><small>{E(COPY['spot'].split(',” ')[1])}</small></span></li>
-      <li>{svg('bed')}<span><b>7 rooms</b><small>All doubles {SEP} sleeps 14</small></span></li>
-      <li>{svg('wifi')}<span><b>{E(AMEN['Free WiFi']['label'])}</b><small>{E(AMEN['Free WiFi']['note'])} {SEP} {E(AMEN['Kitchen']['label'])}</small></span></li>
-      <li>{svg('cal')}<span><b>Live dates</b><small>on Booking.com</small></span></li>
-    </ul>
+  <div class="wrap glance-grid">
+    <div class="glance-main">
+      <h2 class="tag" id="glance-h">{E(COPY['tagline'])}</h2>
+      <p class="spot">{E(SPOT_Q)} <span>{E(SPOT_BY)}</span></p>
+      <p class="incl">{pipe(['7 rooms, all doubles', 'sleeps 14', E(AMEN['Free WiFi']['label'] + ' ' + AMEN['Free WiFi']['note']), E(AMEN['Kitchen']['label']), E(AMEN['Fan and mosquito net']['label']), 'Live dates on Booking.com'])}</p>
+      <div class="where-row"><p class="addr">{svg('pin')}<span>{E(ADDRESS)}</span></p>{btn(MAP, 'Open in Google Maps', 'soft', 'out')}</div>
+    </div>
     {ratings()}
-    {who('w1')}
   </div>
+  <div class="wrap">{who('w1')}</div>
 </section>'''
 
 def room(r, key, names, on):
@@ -252,15 +255,22 @@ rooms = f'''
 
 house = f'''
 <section class="house" id="house" aria-labelledby="house-h">
+  <div class="court">
+    <picture>
+      <source media="(max-width: 767px)" srcset="{src('court-tall-800')} 800w" sizes="100vw">
+      <img src="{src('court-1920')}" srcset="{src('court-1280')} 1280w, {src('court-1920')} 1920w" sizes="100vw" width="1920" height="960"
+        alt="{E(ALT['img-051'])}" loading="lazy" decoding="async" draggable="false">
+    </picture>
+  </div>
   <div class="wrap house-head">
     <h2 class="hand" id="house-h">Around the courtyard</h2>
     <div>{''.join(f'<p>{E(p)}</p>' for p in paras('Around the courtyard'))}</div>
   </div>
-  <div class="shelf" data-shelf>
+  <div class="wrap shelf" data-shelf>
     <ul class="shelf-track" tabindex="0" aria-label="Around the house, {len(SHELF)} photos">
       {''.join(f'<li class="card">{img("shelf-" + x, ALT[x], sizes="320px")}</li>' for x in SHELF)}
     </ul>
-    <div class="wrap shelf-ctrl">
+    <div class="shelf-ctrl">
       <button class="arw prev" type="button" aria-label="Previous photos">{svg('prev')}</button>
       <button class="arw next" type="button" aria-label="Next photos">{svg('next')}</button>
     </div>
@@ -299,7 +309,6 @@ guests = f'''
       {''.join(f'<p>{E(p)}</p>' for p in ASHLY)}
     </div>
     <div class="said">
-      {ratings(True)}
       <div class="qrow" data-qrow>
         <ul class="qtrack" tabindex="0" aria-label="What guests wrote">{''.join(quote(t, i) for i, t in enumerate(QUOTES))}</ul>
         <div class="dots qdots">{''.join(f'<button type="button" class="dot" aria-label="Review {i+1}"{" aria-current=\"true\"" if i == 0 else ""}></button>' for i in range(len(QUOTES)))}</div>
@@ -327,9 +336,11 @@ closing = f'''
   <div class="band">
     <picture><img src="{src('band-1920')}" srcset="{src('band-1280')} 1280w, {src('band-1920')} 1920w" sizes="100vw"
       width="1920" height="822" alt="{E(ALT['img-003'])}" loading="lazy" decoding="async" draggable="false"></picture>
-    <div class="band-txt"><p id="close-h">{E(COPY['closing'])}</p></div>
+    <div class="band-txt">
+      <p id="close-h">{E(COPY['closing'])}</p>
+      <div class="band-btns">{book()}{btn(AIR_HOUSE, AIR_HOUSE_LABEL, 'light')}{btn(AIR_ROOM, AIR_ROOM_LABEL, 'light')}</div>
+    </div>
   </div>
-  <div class="wrap">{who('w2')}</div>
 </section>
 </main>'''
 
@@ -342,14 +353,14 @@ footer = f'''
       {btn(MAP, 'Google Maps', 'soft', 'pin')}{call()}
     </div>
   </div>
-  <div class="wrap foot-small"><p>© 2026 {E(NAME)} {SEP} Ratings as of {day(RATINGS[0]['capturedAt'])}</p></div>
+  <div class="wrap foot-small"><p>© 2026 {E(NAME)}</p></div>
 </footer>
 <div class="bar" data-bar>
   <span class="bar-name"><b class="hand">{E(NAME)}</b><small>{E(TOWN)}</small></span>
   {book('btn-bar', 'See live dates')}
 </div>'''
 
-FONTS = 'https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap'
+FONTS = 'https://fonts.googleapis.com/css2?family=Courgette&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap'
 page = f'''<!doctype html>
 <html lang="en">
 <head>
@@ -361,8 +372,8 @@ page = f'''<!doctype html>
 <script>document.documentElement.className='js'</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{FONTS}">
-<link rel="preload" as="image" href="{src('hero-wide-1920')}" imagesrcset="{src('hero-wide-1280')} 1280w, {src('hero-wide-1920')} 1920w" imagesizes="100vw" media="(min-width: 768px)">
-<link rel="preload" as="image" href="{src('hero-tall-720')}" imagesrcset="{src('hero-tall-720')} 720w, {src('hero-tall-960')} 960w" imagesizes="100vw" media="(max-width: 767px)">
+<link rel="preload" as="image" href="{src('hero-wide-1400')}" imagesrcset="{src('hero-wide-1000')} 1000w, {src('hero-wide-1400')} 1400w" imagesizes="100vw" media="(min-width: 768px)">
+<link rel="preload" as="image" href="{src('hero-tall-600')}" media="(max-width: 767px)">
 <style>
 {(HERE / 'page.css').read_text()}
 </style>

@@ -1,11 +1,11 @@
 # Sea You Surfers Nest: interactive mockup, "In the palms" (concept 2)
 
-Station 4e · designer 0.7.1 · run `2026-10-midigama-01` (mode `test`, operator alon) · 2026-11-22.
+Station 4e · designer 0.7.1 · run `2026-10-midigama-01` (mode `test`, operator alon) · 2026-11-22. Revised after 4f round 1 (reports at commit 0ead646): see "4f round 1 → round 2" at the end of the look-log.
 
 - Page: `dist/index.html`. It is one file. CSS and JS are inlined from `src/page.css` and `src/page.js` by `src/build.py`.
 - Words come from `copy/en.json`. The booking URL is asserted against `dossier.json`'s `booking.engine_url`, and the two Airbnb URLs against `other_engines`.
 - Media: `src/make-media.sh`, with the header `# media: sites/sea-you-surfers-nest/mockups/interactive/dist/img/**`.
-- Fonts: Plus Jakarta Sans 400/600/700 and Kalam 400/700, from Google Fonts at 4e.
+- Fonts: Plus Jakarta Sans 400/600/700 and Courgette (titles only; Kalam until 4f round 1), from Google Fonts at 4e.
 - Rebuild: `bash src/make-media.sh && python3 src/build.py`.
 - To see the shader headless, serve `dist/` over http and open `?palms`. A `file://` URL cannot upload the texture, and a software renderer is treated as a weak device, so both keep the still.
 
@@ -101,13 +101,70 @@ Skills: `/animate`, `/find-animation-opportunities`, `/impeccable` and the revie
 - Motion follows the concept's own list: the pill at 320 ms on a mild spring (`.34,1.36,.64,1`); tiles lift 2 px with the ring drawn in 500 ms; 280 ms cross-fades on slides, rooms, answers and quotes; buttons press to 0.97; the bar on a 340 ms ease-out; the header fade at 260 ms; the shelf with inertial drag (friction 0.93), edge resistance (0.3) and snap.
 - Everything animates transform and opacity only, except the ring's `stroke-dashoffset`.
 
+### 4f round 1 → round 2
+
+The 4f round 1 scores were: visual 6 (fail), experience 7 (fail), critic 72.4/80 with no hard fail. Their fixes, all applied:
+- **The title face:** Kalam, a marker hand, read "like a note on a fridge". It is now **Courgette**, a refined connected script, on titles and the name only; everything else is in Plus Jakarta Sans. Courgette is not used elsewhere in the run (Coconut only tested it).
+- **The hero (visual fix 2, experience fix 1, critic d4):**
+  - Recropped: desktop is 1400×788 from x 300, and the phone is 600×860 from x 650. The fronds now fill the top half or more, and the plastic chairs are nearly out of frame.
+  - The title block is centred both ways. The pothos sits just under the button.
+  - The fronds are graded through the palm mask (about −0.5 EV, more contrast and saturation). The table, pot and parapet are untouched.
+  - The displacement is doubled, the tips move most, and automatic gusts come every 6–9 s on top of the pointer and tilt gusts.
+  - Measured on `?palms` at 1440: two frames 1.8 s apart differ at PSNR 17.4 dB, against 25.5 before. The pot and parapet are unchanged at full size.
+  - The place line is now "Bed and breakfast | Midigama, Sri Lanka", so the business type is on the first screen at both widths. "Bed and breakfast" is Google's category from `dossier.business.google_category`.
+- **One full-bleed change of pace (visual fix 3):** img-051 (the room door under its carved fanlight, the four-poster inside, the masks and the carved shutter) opens "Around the courtyard" full-bleed at 78 vh, and as a portrait crop on the phone. It is the copy's "doors … have carved fanlights over them", so it is not decoration.
+- **"Who's coming?" once:** the panel stays in section 2, as the reports asked. The closing is now the palms band with the `closing` line in white on a dark shade, and the three listing buttons, with no second panel and no white text box.
+- **De-carded (visual fix 5, experience fix 2):**
+  - The 4-up fact grid is one designed band: the tagline, the `spot` quote large, one " | " line of what's included, the address and **"Open in Google Maps"**, which moved up from the end of the page (experience).
+  - The ratings are shown **once**, as large figures with count and date, without boxes. They are gone from the guests section and from the footer note.
+  - "In every room" is a plain icon list.
+  - No resting shadows on buttons, tiles, shelf cards, quote cards or prints. Only the floating bar and the solid header keep one.
+  - The shelf ends inside the grid.
+- **The A/C sentence appears once,** in the "Seven rooms" copy (critic d5). The couple's answer now carries the two room types instead.
+- **Accessibility (critic d6):**
+  - A real "Skip to the rooms" link is the first Tab stop.
+  - The peeking quote card is no longer half-transparent: the inactive card is scaled to 0.96, so the byline keeps full contrast.
+  - axe 4.10.2 (WCAG 2.0/2.1 A + AA): 0 violations at 390 and 1440.
+- **Reduced motion:** the hero h1, the line and the button are visible (opacity 1, measured). The header's name and button are `display:none` until the header turns solid, so the reduced page never has hidden text. The canvas stays off.
+
+**Round R2-1, first screen.** The palms read as palms now, darker and defined, and they visibly sway.
+- On desktop the title is centred, with the pothos below the button.
+- **Flaw:** on the phone the button touched the leaf tips. Change: the phone block lifted by 5 vh.
+
+**Round R2-2, whole page.** Each section is its own moment again, and the full-bleed courtyard gives the page a second gear after the hero. Three flaws:
+- the bottle-green button on the closing band's dark shade nearly disappeared;
+- "Compare the two rooms" was underlined text, which custom.md forbids for actions;
+- the phone spot quote left "walk,”" alone on a line.
+
+Changes:
+- a white outline on that one button (not a shadow);
+- the couple's note became the " | " room-type line;
+- `text-wrap:balance` on the spot quote, which is 24 px on the phone.
+
+**Round R2-3, checks and final sheets.** The inspector's real items were fixed:
+- the 26 px spot paragraph at 390;
+- the text shadow on the closing line (replaced by a deeper gradient);
+- the ring shadow on the closing button;
+- type sizes cut from 15 to about 11.
+
+Its remaining FAILs are readings, not defects:
+- `contrast` "Deluxe Double" #fff on #fff: the selected pill label sits on the sliding accent thumb, a sibling element the tool does not see; axe passes it;
+- `edge-text` "Jan 2026": text clipped inside the quote row's scroll area;
+- `eyebrow`: the rating meta line;
+- `still-page`: software GL keeps the still;
+- `no-footage`: none exists.
+
+Final sheets in `shots/` (served with `?palms`): no overflow at 390, 768 or 1440, and no overlap.
+
+
 ## images
 
 All are `business-owned` Booking.com and Airbnb property uploads (dossier `images[]`). There is no stock and no atmosphere. Nothing is upscaled: full-bleed images are 1920 w from 2000 px sources, drawn at most 1440 wide.
 
 | use | asset | crop |
 |---|---|---|
-| first screen + WebGL texture | img-003 | desktop 16:9 2000×1124 from y 0; phone 1008×1260 from x 496 (above the extinguisher) |
+| first screen + WebGL texture | img-003 | desktop 1400×788 from x 300; phone 600×860 from x 650 (never upscaled); fronds graded through the mask |
+| courtyard opener, full-bleed | img-051 | 1920×960 from y 80; phone 1000×1250 from x 120 |
 | palm mask (WebGL only) | made from img-003's geometry | parapet line y = 550 + 0.014x; pot ellipse (950, 515), r 250×120; ramp 220 px; blur σ 10; the same two crops at half size |
 | Deluxe stage, 4:5 | img-002, 015, 012, 022, 013, 033 | all Booking.com-tagged to Deluxe |
 | Standard stage, 4:5 | img-005, 026, 009, 025, 010 | all Booking.com-tagged to Standard |
@@ -115,7 +172,7 @@ All are `business-owned` Booking.com and Airbnb property uploads (dossier `image
 | board shower, 2:3 native print | img-036 | 1000 w |
 | masks, 4:5 print | img-069 | 1136×1420 from y 290 |
 | the sign, 4:5 print | img-001 | 1333×1666 from y 160 |
-| closing band, 21:9 | img-003 | 2000×856 from y 0 |
+| closing band, 21:9 | img-003 (graded) | 2000×856 from y 0, under a dark shade |
 
 Alt text was written from the crops themselves, not from the dossier's notes.
 
@@ -131,24 +188,18 @@ Alt text was written from the crops themselves, not from the dossier's notes.
 
 ## conflicts
 
-1. **BLOCKING, for the human before the pick: the closing line promises a call that the page cannot offer.**
-   - `closing` (copy, passed 4c) ends "If you want to ask Ashly something first, call."
-   - Per the concept and dossier `gaps[0]`, the Call button stays out until a human confirms +94715880052. So the sentence sits over a panel with no call action.
-   - It cannot be fixed at 4e. I may not edit audited copy, and confirming the number is a human decision.
-   - Either way fixes it: (a) confirm the number, then set `PHONE_CONFIRMED = True` in `src/build.py` and rebuild, and "Call Ashly" appears under "A question first" and in the find and footer rows; or (b) send `closing` back to the copywriter.
-2. **The title is set in the palm band, not at the vertical centre.**
-   - The calibration says "title centred horizontally and vertically". The concept says "centred … the title sits in the pale palm band".
-   - Centred vertically, the button covered the potted plant and the block straddled the parapet (round 1).
-   - The block sits about 13 vh from the top on desktop and 84 px on the phone, still centred horizontally. The alternative cost the photograph its subject.
+1. **No longer a conflict: the closing line.** It now reads "Live dates are on Booking.com, and groups can rent the whole house on Airbnb." The call clause was dropped by the copywriter (5b022e1) while the phone is unconfirmed. `PHONE_CONFIRMED` stays `False`: no Call button, and the number appears nowhere except on the business's own sign in img-001.
+2. **Superseded at 4f round 2: the title placement.** The title is now centred both ways, which the recrop made possible: the pothos tops out at 58 % of the desktop frame, and the phone frame is mostly fronds.
 3. **The Standard gallery has 5 photographs, not 6.** The concept listed img-044, but Booking.com does not tag img-044 to either room (dossier `room_types[].note`). Showing it under Standard would be a claim about that room, so it was dropped. Every stage photo is room-tagged.
 4. **The phone order in "Seven rooms" is heading, sticky pill, stage, room line and button, then the copy.** The concept says "the stage comes first and the pill sits sticky under the header". Putting the pill above the stage lets it stick while the stage is in view, and there is no header on the phone. The stage still comes before the copy.
 5. **The "Who's coming?" panel is wired at load, not on first interaction (references #5).** Its code is about 1 KB inline and fetches nothing. Deferring it would only add a dead first tap.
-6. **Ratings on first screen: none,** per concepts §3. **Shadows:** gentle resting shadows on buttons, cards and prints are kept against the inspector (custom.md allows them).
-7. **Visual-critic bar, honestly.** I cannot score myself. What holds this page below the gold pages is the material, not the build: no footage, no sea, no people. The concept's §6 shot list is what would lift it. I do not consider it below 8 for anything fixable at 4e.
+6. **Ratings on first screen: none,** per concepts §3. They are shown once, in the band right under it. **Shadows:** removed at 4f round 2.
+7. **The concept's 4-up fact row and its second "Who's coming?" panel in the closing** were replaced at 4f round 2, at the critics' request (de-carding; the panel shown once).
+8. **Visual-critic bar, honestly.** I cannot score myself. What holds this page below the gold pages is the material, not the build: no footage, no sea, no people. The concept's §6 shot list is what would lift it. I do not consider it below 8 for anything fixable at 4e.
 
 ## other businesses in this run
 
-- **Lotus Surf House interactive ("Dappled")**, the nearest sibling, shot this session. It opens on a shady garden with a white title in Patrick Hand and table-blue buttons, over a centred row of fact cards on cool grey, with a floor switch and room tiles. This page opens on a bright balcony whose palms move, with an ink Kalam title in the palm band and one bottle-green button on white and mint. Its booking device is a "Who's coming?" question, not a floor switch. Its middle is a draggable shelf of the house's objects. Both carry a 4-up fact row and a sliding pill because both concepts specify them, but nothing else is shared.
+- **Lotus Surf House interactive ("Dappled")**, the nearest sibling, shot this session. It opens on a shady garden with a white title in Patrick Hand and table-blue buttons, over a centred row of fact cards on cool grey, with a floor switch and room tiles. This page opens on a bright balcony whose palms move, with an ink Courgette title centred over darkened fronds and one bottle-green button on white and mint. Its booking device is a "Who's coming?" question, not a floor switch. Its middle is a full-bleed carved doorway and a draggable shelf of the house's objects. Both carry a sliding pill because both concepts specify one; since round 2 this page has no fact cards.
 - **Cheeky Monkey** (by its concepts and its interactive sheet) is a loud surf shop of boards, reels and painted lettering in magenta, red and blue. This page shows no boards or road, and no saturated colour.
 - **Coconut Surf Inn** is told by the clock from a roof over the reef, with a forecast and a depth parallax. This page never shows the sea, carries no forecast, and moves only the fronds.
 - **The variant this sits beside, in the same business:** calm is the board rack, unique the turning four-poster.
@@ -163,9 +214,12 @@ Alt text was written from the crops themselves, not from the dossier's notes.
 6. **Other businesses compared: pass** (above).
 7. **Video: pass.** None exists. The first screen is img-003 (2000 px), with the WebGL palms as the main item.
 
-audit-mockup (phone, slow 4G, last run):
-- first load 785 KB / 767 KiB: images 663 KB, fonts 40 KB (Google Fonts, the only third party, allowed at 4e), HTML 82 KB with all CSS and JS inlined (18 KB gzipped);
-- largest image 66 KB;
-- LCP 1156 ms, CLS 0.0031;
-- tap targets under 44 px: 0; images without alt: 0;
-- no-JS: 4 booking links reachable.
+audit-mockup (phone, slow 4G, after 4f round 2):
+- first load 554 KB: images 432 KB, fonts 46 KB (Google Fonts, the only third party, allowed at 4e), HTML 77 KB with CSS and JS inlined;
+- largest image 49 KB;
+- LCP 896 ms, CLS 0.0041;
+- `scroll.early.cls` 0 and `scroll.settled.cls` 0;
+- tap targets under 44 px: 0;
+- reduced motion: 1 canvas, hidden, photograph visible.
+
+`check-design`: 0 problems, 0 warnings. axe: 0 violations at 390 and 1440.

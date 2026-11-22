@@ -1,46 +1,33 @@
 {
  "slug": "sea-you-surfers-nest",
  "variant": "interactive",
- "measured_at": "2026-11-22T00:42:12.655Z",
+ "measured_at": "2026-11-22T10:49:47.813Z",
  "first_load": {
-  "requests": 22,
+  "requests": 17,
   "hosts": [
-   "fonts.googleapis.com",
    "localhost:8980",
+   "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
   "third_party_hosts": [
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 785095,
-  "bytes_html": 81909,
+  "bytes_total": 554300,
+  "bytes_html": 76600,
   "bytes_js": 0,
   "bytes_css": 0,
-  "bytes_fonts": 40376,
-  "bytes_images": 662810,
-  "largest_image_bytes": 66126,
-  "lcp_ms": 1156,
-  "cls": 0.0031,
-  "dcl_ms": 754
+  "bytes_fonts": 45580,
+  "bytes_images": 432120,
+  "largest_image_bytes": 49456,
+  "lcp_ms": 896,
+  "cls": 0.0041,
+  "dcl_ms": 882
  },
  "scroll": {
   "early": {
-   "cls": 0.0085,
-   "shifts": [
-    {
-     "value": 0.0085,
-     "at_ms": 1899,
-     "y": 3375,
-     "sources": [
-      "section#house.house",
-      "li",
-      "li",
-      "li",
-      "span"
-     ]
-    }
-   ]
+   "cls": 0,
+   "shifts": []
   },
   "settled": {
    "cls": 0,
@@ -67,10 +54,10 @@
   "note": "no drawer; every action is a plain link"
  },
  "a11y": {
-  "images": 25,
+  "images": 26,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
-  "tapables": 37,
+  "tapables": 34,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
   "headings": [
@@ -85,16 +72,15 @@
    "H2",
    "H2",
    "H2",
-   "H2",
-   "H3"
+   "H2"
   ],
   "has_skip_link": true,
   "lang": "en"
  },
  "no_js": {
-  "text_length": 5275,
-  "booking_links_reachable": 4,
-  "visible_images": 25
+  "text_length": 4880,
+  "booking_links_reachable": 3,
+  "visible_images": 26
  },
  "reduced_motion": {
   "canvases": 1,

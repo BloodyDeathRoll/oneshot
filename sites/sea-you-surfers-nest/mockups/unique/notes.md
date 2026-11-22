@@ -33,7 +33,26 @@ Change: rooms column capped at 1180 px; captions on when the glance's bottom pas
 
 **Round 5, whole page (final sheets in `shots/`).** No overflow, overlap or unreadable text at 1440 or 390 (layout width = viewport). In order: the bed full-bleed → the pull-back with the glance on the left (tagline, the spot line large, included | live dates, three dated ratings, two actions) → four rests of the turn, each with its photo (015, 002, 017, 053) and sentence → "Deluxe or Standard", two 4:5 slideshows of six, "In every room" with the mint gable icon and the full facilities line → the courtyard as true 3-column masonry → the carved door and the surfboard shower as an offset pair of matted prints → Breakfast, type only → Ashly, the three rating blocks and the turning quote stack (Kenza first, her line break kept) → the sign print beside "Finding the house" → the closing in the gabled white panel with all three listings → footer. The closing now reads the copy's new one-sentence version (commit 5b022e1 dropped the call clause while the phone is unconfirmed); the build picked it up unchanged. Also looked at: the door open at 1440 (panel swings in on its right hinge, focus on the Booking.com tile) and 390 (full-height sheet with the gabled top); Esc closes and focus returns to the trigger; Tab stays inside; `stay/` with JS off; reduced motion at 1440 (still hero, then the static 2×2 grid of the four sides beside the four sentences). Clearly better than the Booking.com listing side by side, and nothing like any other page in this run.
 
-Skill notes (tools.md: notes, never gates). Inspector (`design-taste-frontend/scripts/inspect.mjs`), last run before round 5:
+
+### 4f round 1 → designer round 2 (2026-11-22)
+
+Reports read in full (commit 0ead646): `reports/2026-10-midigama-01/sea-you-surfers-nest.visual.md` (unique 6/10), `.experience.md` (7/10), `sea-you-surfers-nest.md` (critic 72.5/80, dimension 1 at 9). What they agreed on: the photograph sat in the drawn bed as a 310×390 card that the rails cut across; the pin was too long and too empty (six near-empty desktop screens, about seven phone screens for four sentences); the model looked like a CAD block with white seams; the phone first screen showed the name and two booking buttons twice; the type of business was not on the first screen; "Open in Google Maps" was 15 phone screens down; the Standard gallery showed a toilet and a WC door for a room with no bathroom. Kept as asked: the laptop gabled-bed opening and the booking door.
+
+**Round 6, the set-piece rebuilt.**
+- **The photograph is seated in the bed.** At each rest it fills the opening of the face turned to the camera, post to post and from the footboard, side board or headboard rail up to the canopy rail; its edges tuck under the drawn wood, so the front posts frame it and no drawn post crosses it. Rects are projected per face from the scene (`FACE` in `page.js`) and morph between rests; between rests the photo draws in by up to 32% while the corner posts sweep past. Sides are now whole landscape frames (1400 w), so the opening crops them by cover-fit.
+- **Bigger:** the bed fills about 78–83% of the desktop viewport (round 1: 66%); at rest the photo is about 430×425 CSS px on the foot, 590×470 on the long side, 430×320 over the headboard (round 1: 310×390). Captions 30 px desktop, 21 px phone; "Seven rooms" 60 px.
+- **Shorter:** four rests (0, 90, 180, 270), no 360° return and no captionless exit. Desktop turn 160 vh (was 300), turn-room 229 svh (was 418); phone turn 220 vh, turn-room 280 svh (was 520). Pages: desktop 13,137 → 11,563 px, phone 14,766 → 12,868 px; the rooms now start at phone capture 06 of 17 (was 08 of 20) and desktop capture 05 of 15.
+- **Phone:** the photograph backs into the bed while the glance sheet covers the stage, so the stage is revealed already showing the bed at rest 0 (the hero is no longer shown a second time full-bleed). On phones the 0° side is img-015 (side-015), the hero stays img-005.
+- **Material:** a warm tint ground (#ECEBE5) under the bed instead of white; a stronger contact shadow (soft ellipse + darker spots under each post); softer key/ambient balance; the thin highlight band that read as white seams removed; a gentler painted-edge darkening; gable lowered (0.34 m) so the opening dominates.
+- **Bug found and fixed:** the damping step could run with a negative `dt` (rAF time behind `performance.now()`), pushing the turn below 0 and throwing in round 6's first build; dt is now clamped. It may have caused odd states in round 1 too.
+
+**Round 7, first screen and order.** The hero subtitle is now the copy's `tagline` ("A bed and breakfast in Midigama, on Sri Lanka's south coast."), so type + place are on the first screen at both widths (critic dimension 4); the glance no longer repeats it. The phone header is gone: the first phone screen is one name, the tagline, one button and the hint; the bottom bar takes over once the hero button leaves. Desktop header: no more white sticker pills; a soft white top scrim that fades once the header turns solid; nav links 44 px tall. "Open in Google Maps" and the address moved into the glance (phone screen 2, desktop beside the bed), and stay in "Finding the house". Glance ratings fit one line at 1440 and gained hover/press feedback. The closing gabled panel now sits on img-002 full-bleed, so the page ends on the house. Standard gallery: img-008 and img-010 removed (4 photos: 026, 009, 005, 025), asserted in `build.py`.
+
+**Round 8, whole page (final sheets in `shots/`).** Desktop: hero → pull-back with the glance and Maps on the left → foot, side, head and other side rests, each photo seated in its opening with its sentence beside it → rooms at capture 05 → courtyard masonry → carved pair → breakfast → Ashly and guests → Finding the house → the gabled panel over img-002 → footer. Phone: hero (name, tagline, button, hint) → glance sheet with Maps → the bed already standing, four rests with captions under it → rooms. No overflow or overlap at 1440 or 390. Door re-tested at both widths: opens, focus on the Booking.com tile, Tab stays inside, Esc closes and returns focus. Against the Booking.com fold it is clearly better at a glance, as before; against round 1 the set-piece now shows the house's photographs larger and inside the bed, in about half the scroll.
+
+Inspector after round 8 (notes, not gates): `empty-screens` 4 of 12 (was 6; it does not see the canvas, and the bed now fills the right of those screens), `pinned-over-picture` and `off-centre` (the set-piece), `shadow` (the matted prints, kept), `covered-text` at 390 on "Deluxe or Standard" at one scroll position (the fixed bottom booking bar over a heading as it scrolls past; not fixable without dropping the bar), `palette-cream` (the concept's tint), `size-count` 17, `side-scroll` (slideshows), `empty-middle` in the rooms section.
+
+Skill notes from round 5 (tools.md: notes, never gates). Inspector (`design-taste-frontend/scripts/inspect.mjs`), last run before round 5:
 - `empty-screens`, `off-centre`, `long-pin`, `pinned-over-picture`: the set-piece screens. The inspector does not see the canvas, so the drawn bed counts as empty ground; the pin is the concept's 300 vh rotation (pattern 2), and the captions sit beside the bed, not over it. Kept.
 - `palette-cream` (#ECEBE5): the concept's tint, sampled from img-002's linen. Kept.
 - `size-count` (20 sizes), `grey-body` (secondary lines at 6.8:1): not changed at 4e; body copy is full ink.
@@ -48,11 +67,12 @@ All are the property's own Booking.com uploads (`business-owned`, uploaded 2025-
 | use | asset | crop |
 |---|---|---|
 | first screen, desktop (16:9, 1280/1920 w) | img-015 | 2000×1125 from y 0 |
-| first screen, phone, and the turn's 0° side on phones | img-005 | 1000×2000 from x 333 (720/1000 w) |
-| turn sides 90° / 180° / 270° (4:5, 760 w) | img-002, img-017, img-053 | at the bed (fx .62 / .45 / .30) |
-| still layout 2×2 | img-015 (4:5, 900 w) + the three sides | |
+| first screen, phone | img-005 | 1000×2000 from x 333 (720/1000 w) |
+| turn sides 0° / 90° / 180° / 270° (1400 w, whole frame; cover-fit into the bed's opening) | img-015, img-002, img-017, img-053 | none |
+| still layout 2×2 (CSS 4:5 cover) | the four sides | |
+| closing, full-bleed behind the gabled panel (1920 w) | img-002 | none |
 | Deluxe slideshow (4:5, 820 w) | img-012, 002, 022, 033, 013, 032 | Booking.com's Deluxe tags |
-| Standard slideshow (4:5, 820 w) | img-026, 009, 005, 025, 010, 008 | Booking.com's Standard tags |
+| Standard slideshow (4:5, 820 w) | img-026, 009, 005, 025 | Booking.com's Standard tags, minus the toilet/shower (img-008) and WC door (img-010): the unit has 0 bathrooms on Booking.com |
 | courtyard masonry, own ratios (820 w) | img-071 (extinguishers cropped out, 1600×1081), 003, 045, 041, 004, 007, 076, 038, 042 | |
 | matted prints (2:3) | img-027, img-036, img-001 | whole frame |
 
@@ -65,9 +85,10 @@ No price (live dates only), no WhatsApp, email or Instagram, no video, no photog
 None blocking. Departures from concepts.md, each a deliberate call:
 1. **270° side is img-053, not img-059.** img-059 is the same room from almost the same spot as img-015 (the 0° side), so the turn would have shown one photograph twice; img-053 (1920×1280) shows the long side.
 2. **At a glance sits beside the bed on desktop, not as its own offset 12-column band.** The concept puts section 2 between the hero and the set-piece and also starts the pull-back on the first scroll; both hold only if the glance scrolls up the left columns while the photograph backs into the frame on the right. Without JS / under reduced motion it is the offset 12-column band as written.
-3. **On phones the hero is img-005 and the pull-back starts after the glance.** The phone hero (img-005, as specified) is the stage's own photograph: the glance slides over it as a white sheet, then the same photograph backs into the frame. So on phones the 0° side is img-005, not img-015.
+3. **On phones the hero is img-005 and the pull-back happens under the glance.** The phone hero (img-005, as specified) is the stage's own photograph; it backs into the bed while the glance sheet covers it, and the bed is revealed already standing with img-015 at 0° (round 2, so the hero is not shown twice).
 4. **No `snap: "labels"`.** The rotation has a plateau at every quarter turn (the scroll rests there by itself) instead of a programmatic snap, which would fight the visitor's scroll.
-5. **Exit:** the frame does not fade; it stays at 360° and the stage scrolls away with the page as the rooms arrive. The captions fade.
+5. **Four rests, no return to 360°, no fade (round 2).** The turn ends at 270° and the stage scrolls away with the last sentence as the rooms arrive; 160 vh desktop / 220 vh phone instead of the concept's 300 vh, at the critics' request.
+6a. **Photo size (round 2, not blocking).** The visual critic asked for a photo plane of at least 560×700 CSS px. Seated in the bed's real opening, with the whole bed at about 80% of the viewport height, the photo is about 430×425 (foot), 590×470 (long side) and 430×320 (head) at 1440×900. Reaching 700 px tall would need the bed taller than the screen; I kept the bed whole.
 6. **No library.** The concept names OGL; the bed is 40 boxes and needed none, so the set-piece is raw WebGL in the page's inline script (no CDN request at all). The photographs stay DOM images moved by `transform`/`clip-path` between two canvases (the frame's far half behind, near half in front), so they are pixel-sharp, need no texture upload (file:// pages cannot upload images to WebGL), and cause no layout shift.
 7. **"8.0"**: Booking.com's score is `8` on a scale of 10 in the copy; the page prints it as 8.0/10, as Booking.com does (audit lists "8.0" as not in the copy).
 8. Interface labels the template owns: "See live dates", "More ways to book", "Book a room", "Live dates on Booking.com", "Ratings as of", "Deluxe or Standard", "In every room", "Facilities", "Spoken here: English", "Open in Google Maps", "Scroll, and the bed turns", the nav labels, the footer button labels.
@@ -86,7 +107,9 @@ Cheeky Monkey opens on a road or a reel through board noses, with a board-shaped
 6. Other businesses compared above. **pass**
 7. No video exists; the first screen is the strongest own landscape (img-015, 2000 px) full-bleed, with the WebGL four-poster as the main item from the first scroll. **pass**
 
-audit-mockup (phone, slow 4G, 4× CPU):
+audit-mockup after round 8 (phone, slow 4G, 4× CPU; 2026-11-22T10:51Z): first load 184 KB (HTML 92 KB, images 45 KB, fonts 47 KB; the four turn photos now load only once the visitor scrolls toward the turn), LCP 1,236 ms, CLS 0.0015, scroll CLS early 0.0001 / settled 0, 0 tap targets under 44 px, 0 images without alt, 3 booking links in `#book` with JS off, reduced motion: 2 canvases hidden. `check-design`: ok, 0 problems, 0 warnings.
+
+Round 5 numbers, for the record:
 - first load 285 KB (HTML 85 KB with inline CSS/JS, images 154 KB, fonts 47 KB incl. Google's CSS; Google Fonts the only third party, allowed at 4e);
 - JS 23.5 KB raw, 8.6 KB gzipped, inline (no library);
 - largest image 54 KB;

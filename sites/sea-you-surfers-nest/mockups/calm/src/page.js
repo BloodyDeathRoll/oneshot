@@ -10,7 +10,10 @@
     ctrl.hidden = false;
     let cur = 0;
     const go = (i) => {
+      const was = items[cur];
       cur = (i + items.length) % items.length;
+      // the photo being left stays drawn under the new one for the length of the cross-fade
+      if (was !== items[cur]) { was.classList.add('leaving'); setTimeout(() => was.classList.remove('leaving'), 300); }
       items.forEach((it, j) => { it.classList.toggle('on', j === cur); it.setAttribute('aria-hidden', j === cur ? 'false' : 'true'); });
       dots.forEach((d, j) => d.setAttribute('aria-current', j === cur ? 'true' : 'false'));
       pill.style.transform = `translateX(${dots[cur].offsetLeft}px)`;
@@ -48,11 +51,11 @@
   const top = document.querySelector('.top'), bar = document.getElementById('bar');
   const heroBtn = document.querySelector('.btn-hero'), hero = document.querySelector('.hero');
   new IntersectionObserver(([e]) => top.classList.toggle('solid', !e.isIntersecting), { rootMargin: '-72px 0px 0px 0px' }).observe(hero);
-  new IntersectionObserver(([e]) => {
-    const past = !e.isIntersecting && e.boundingClientRect.top < 0;
-    bar.classList.toggle('on', past);
-    if (!past) close();
-  }).observe(heroBtn);
+  // ...and steps aside again once the closing's own buttons are on screen, so it never covers the footer
+  let past = false, atEnd = false;
+  const sync = () => { const on = past && !atEnd; bar.classList.toggle('on', on); if (!on) close(); };
+  new IntersectionObserver(([e]) => { past = !e.isIntersecting && e.boundingClientRect.top < 0; sync(); }).observe(heroBtn);
+  new IntersectionObserver(([e]) => { atEnd = e.isIntersecting || e.boundingClientRect.top < 0; sync(); }).observe(document.querySelector('.close-actions'));
 
   // the bar's chevron opens the at-a-glance summary above it (a disclosure, not a modal); Esc closes it
   const more = bar.querySelector('.bar-more'), panel = document.getElementById('bar-panel');

@@ -34,24 +34,41 @@ print(f"{int(w)}:{int(h)}:{int((W-w)*fx)}:{int((H-h)*fy)}")' "$@"
 }
 
 # ---- first screen: img-003, the mint table on the upstairs balcony in the palms (2000x1333).
-# Desktop 16:9 from the top (palms over the top edge, the table's front legs in); phone 4:5 centred on x 1000,
-# stopping at y 1260 so the fire-extinguisher label behind the right chair (x 1340-1380, y 1280+) stays out.
-WIDE=2000:1124:0:0; TALL=1008:1260:496:0
-img img-003 hero-wide-1920 $WIDE 1920 70
-img img-003 hero-wide-1280 $WIDE 1280 70
-img img-003 hero-tall-960  $TALL 960 72
-img img-003 hero-tall-720  $TALL 720 72
+# Round 2 (4f): tighter, so the table, the pothos and a deep band of fronds fill the frame and the plastic
+# chairs fall mostly out. Desktop 16:9 from x 300 (1400x788): the pothos tops out at 58 % of the height,
+# so a title centred both ways sits in the palms. Phone 600x860 from x 650: the palm band is the top half.
+# Never upscaled: the outputs stop at the crop's own width.
+WIDE=1400:788:300:0; TALL=600:860:650:0
 
-# ---- the palm mask for the WebGL cinemagraph, in img-003's own pixels, cropped exactly like the hero.
-# Parapet top edge: y = 550 + 0.014 x. The pot plant rises over it at x 765-1135, y 460-550: an
-# ellipse kept black. Feathered with a blur, then the same crops as above, at half size.
+# The palm mask, in img-003's own pixels. Parapet top edge: y = 550 + 0.014 x. The pot plant rises over
+# it at x 765-1135, y 460-550: an ellipse kept black. Feathered with a blur. It gates both the grade
+# below and the WebGL displacement, so only the fronds change.
 ff -f lavfi -i "color=black:s=2000x1333,format=gray" -frames:v 1 \
   -vf "geq=lum='255*clip((550+0.014*X-34-Y)/220,0,1)*clip((pow((X-950)/250,2)+pow((Y-515)/120,2)-1)*1.6,0,1)',gblur=sigma=10" \
   "$T/mask.png"
-ff -i "$T/mask.png" -vf "crop=$WIDE,scale=1000:-2:flags=area,format=gray" "$T/mw.png"
-ff -i "$T/mask.png" -vf "crop=$TALL,scale=533:-2:flags=area,format=gray" "$T/mt.png"
+# The fronds are blown out to near white, so motion in them could not be seen (visual + experience, 4f r1).
+# Inside the mask only: about -0.5 EV, more local contrast and a little saturation. Table, pot, parapet untouched.
+ff -i "$A/img-003.jpg" -i "$T/mask.png" -filter_complex \
+  "[0:v]format=gbrp,split[a][b];[b]eq=gamma=0.78:contrast=1.22:brightness=-0.03:saturation=1.25,unsharp=9:9:0.6[d];[1:v]format=gbrp[m];[a][d][m]maskedmerge,format=rgb24" \
+  "$T/g003.png"
+G="$T/g003.png"
+imgg() { # imgg <out> <crop> <width> [q]: crops of the graded img-003
+  ff -i "$G" -vf "crop=$2,scale='min($3,iw)':-2:flags=lanczos" "$T/x.png"
+  cwebp -quiet -q "${4:-72}" -m 6 -sharp_yuv "$T/x.png" -o "$D/img/$1.webp"
+}
+imgg hero-wide-1400 $WIDE 1400 72
+imgg hero-wide-1000 $WIDE 1000 70
+imgg hero-tall-600  $TALL 600 74
+ff -i "$T/mask.png" -vf "crop=$WIDE,scale=700:-2:flags=area,format=gray" "$T/mw.png"
+ff -i "$T/mask.png" -vf "crop=$TALL,scale=300:-2:flags=area,format=gray" "$T/mt.png"
 cwebp -quiet -q 80 "$T/mw.png" -o "$D/img/mask-wide.webp"
 cwebp -quiet -q 80 "$T/mt.png" -o "$D/img/mask-tall.webp"
+
+# ---- around the courtyard opener (round 2's full-bleed change of pace): img-051 (1920x1280), the room
+# door under its carved fanlight, the four-poster inside, the masks and the carved shutter. 2:1 from y 80.
+img img-051 court-1920 1920:960:0:80 1920 70
+img img-051 court-1280 1920:960:0:80 1280 70
+img img-051 court-tall-800 1000:1250:120:30 800 72
 
 # ---- seven rooms: the stage, 4:5, photos Booking.com tags to each room type (dossier room_types[].note)
 r45() { img "$1" "room-$1" "$(rc "$2" "$3" 4 5 "${4:-.5}" "${5:-.5}")" 880 70; }
@@ -75,8 +92,8 @@ img img-069 masks-600 1136:1420:0:290 600 72
 # ---- finding the house: the sign, 4:5 from y 160
 img img-001 sign-840 1333:1666:0:160 840 72
 
-# ---- closing band: img-003 at 21:9 from the top, the palms still here
-img img-003 band-1920 2000:856:0:0 1920 68
-img img-003 band-1280 2000:856:0:0 1280 68
+# ---- closing band: the graded img-003 at 21:9 from the top, the palms still here
+imgg band-1920 2000:856:0:0 1920 68
+imgg band-1280 2000:856:0:0 1280 68
 
 ls -la "$D/img" | awk '{s+=$5} END {print "total bytes", s}'

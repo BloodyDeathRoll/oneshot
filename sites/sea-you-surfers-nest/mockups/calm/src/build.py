@@ -72,6 +72,9 @@ ALT = {
     'img-036': 'A shower built into a wooden surfboard fixed to a grey garden wall, the shower head above it and palms behind',
     'img-001': "The house's round sign on a post, a wave, a surfboard and a palm drawn on it with the words Sea You, The Surfers Nest, Midigama; palms and a roof behind",
 }
+# the spot line is set as a quote and its credit; the copy's words are split at the closing quote mark, never changed
+SPOT_Q, SPOT_BY = re.match(r'(“[^”]+”)\s+(.+)$', SPOT).groups()
+assert f'{SPOT_Q} {SPOT_BY}' == SPOT
 DELUXE = ['img-002', 'img-015', 'img-012', 'img-022', 'img-033', 'img-032']
 STANDARD = ['img-009', 'img-026', 'img-005', 'img-025']
 
@@ -127,13 +130,12 @@ def airbnb(link, icon, cls=''):
 SEP = '<span class="sep" aria-hidden="true">|</span>'
 def pipe(items): return f' {SEP} '.join(f'<span>{E(i)}</span>' for i in items)
 
-def rating(r, big=False):
-    return (f'<a class="rating{" big" if big else ""}" href="{E(r["url"])}" rel="noopener">'
+def rating(r):
+    return (f'<li><a class="rating" href="{E(r["url"])}" rel="noopener">'
             f'<span class="score">{r["shown"]}<small>/{r["scale"]}</small></span>'
-            f'<span class="rname">{E(r["name"])}</span>'
-            f'<span class="rmeta">{r["count"]} reviews</span><span class="rday">{E(day(r["capturedAt"]))}</span></a>')
-def ratings(big=False):
-    return f'<div class="ratings{" big" if big else ""}">' + ''.join(rating(r, big) for r in RATINGS) + '</div>'
+            f'<span class="rmeta"><b>{E(r["name"])}</b> {r["count"]} reviews</span><span class="rday">{E(day(r["capturedAt"]))}</span></a></li>')
+def ratings(cls=''):
+    return f'<ul class="ratings {cls}" aria-label="Ratings">' + ''.join(rating(r) for r in RATINGS) + '</ul>'
 
 def ctrl(n, what):
     return (f'<div class="ctrl" hidden><button class="arw prev" type="button" aria-label="Previous {what}">{svg("prev")}</button>'
@@ -145,7 +147,7 @@ def show(sid, names, label):
     """A 3:2 dot slideshow. Without JS it is a scroll-snap row; with JS the slides stack and cross-fade."""
     slides = ''.join(
         f'<li class="slide{" on" if i == 0 else ""}" aria-roledescription="slide" aria-label="{i + 1} of {len(names)}">'
-        f'{img([f"room-{a}-720", f"room-{a}-1080"], ALT[a], "(max-width: 899px) calc(100vw - 32px), 680px")}</li>'
+        f'{img([f"room-{a}-720", f"room-{a}-1080", f"room-{a}-1600"], ALT[a], "(max-width: 1199px) calc(100vw - 2 * var(--gut)), 1120px")}</li>'
         for i, a in enumerate(names))
     return (f'<div class="show" data-show id="{sid}" role="region" aria-roledescription="carousel" aria-label="{E(label)}">'
             f'<ul class="track" tabindex="0">{slides}</ul>{ctrl(len(names), "photo")}</div>')
@@ -164,7 +166,7 @@ hero = f"""
   </picture>
   <div class="hero-text">
     <h1 class="script">{E(NAME)}</h1>
-    <p class="where">{E(WHERE)}</p>
+    <p class="where">{E(TAGLINE)}</p>
     {book('btn-hero', full=False)}
   </div>
 </section>"""
@@ -173,23 +175,25 @@ glance = f"""
 <section class="glance" id="glance" aria-labelledby="h-glance">
   <div class="col center">
     <h2 class="sr" id="h-glance">At a glance</h2>
-    <p class="tagline">{E(TAGLINE)}</p>
-    <p class="spot script">{E(SPOT)}</p>
+    <figure class="spot-q">
+      <blockquote><p>{E(SPOT_Q)}</p></blockquote>
+      <figcaption>{E(SPOT_BY)}</figcaption>
+    </figure>
     <p class="inc">{pipe(INCLUDED)}</p>
+    {ratings('glance-r')}
     <p class="price">Live dates on Booking.com</p>
-    {ratings()}
     <div class="actions">{book()}{call()}</div>
   </div>
 </section>"""
 
 def room_row(r, sid, names, flip=False):
     return f"""
-  <article class="room{' flip' if flip else ''}" aria-labelledby="h-{sid}">
+  <article class="room" aria-labelledby="h-{sid}">
     {show(sid, names, r['label'] + ' photographs')}
     <div class="room-text">
-      <h3 id="h-{sid}">{E(r['label'])}</h3>
-      <p class="room-facts">{pipe([r['beds'], f"Sleeps {r['sleeps']}"])}</p>
-      <p>{E(r['note'])}</p>
+      <div><h3 id="h-{sid}">{E(r['label'])}</h3>
+      <p class="room-facts">{pipe([r['beds'], f"Sleeps {r['sleeps']}"])}</p></div>
+      <p class="room-note">{E(r['note'])}</p>
       <div class="actions">{book('btn-room', full=False)}{call()}</div>
     </div>
   </article>"""
@@ -201,14 +205,12 @@ rooms = f"""
 <section class="rooms tint" id="rooms" aria-labelledby="h-rooms">
   <div class="wrap">
     <div class="rooms-head">
-      <div class="rooms-intro">
-        <h2 class="script" id="h-rooms">{E(rooms_b['heading'])}</h2>
-        {paras(rooms_b['body'])}
-      </div>
-      <div class="every">
-        <h3>In every room</h3>
-        <ul>{''.join(f'<li>{svg(i, "ic ic-mint")}<span>{E(t)}</span></li>' for i, t in EVERY)}</ul>
-      </div>
+      <h2 class="script" id="h-rooms">{E(rooms_b['heading'])}</h2>
+      <div class="rooms-intro">{paras(rooms_b['body'])}</div>
+    </div>
+    <div class="every">
+      <h3>In every room</h3>
+      <ul>{''.join(f'<li>{svg(i, "ic ic-mint")}<span>{E(t)}</span></li>' for i, t in EVERY)}</ul>
     </div>
     {room_row(ROOMS[0], 'deluxe', DELUXE)}
     {room_row(ROOMS[1], 'standard', STANDARD)}
@@ -236,36 +238,34 @@ carved = f"""
 <section class="carved tint" id="carved" aria-labelledby="h-carved">
   <div class="wrap">
     <h2 class="script center" id="h-carved">{E(carved_b['heading'])}</h2>
-    <div class="prints">{''.join(f'<div class="print">{img([f"print-{a}-640"], ALT[a], "(max-width: 699px) 62vw, 340px")}</div>' for a in ['img-027', 'img-035', 'img-036'])}</div>
+    <div class="prints" role="region" tabindex="0" aria-label="Photographs: the carved door, the masks and the surfboard shower">{''.join(f'<div class="print">{img([f"print-{a}-640"], ALT[a], "(max-width: 699px) 62vw, 340px")}</div>' for a in ['img-027', 'img-035', 'img-036'])}</div>
     <div class="col">{paras(carved_b['body'])}</div>
   </div>
 </section>"""
 
 bf_b = BLOCK['Breakfast']
-breakfast = f"""
-<section class="breakfast" id="breakfast" aria-labelledby="h-bf">
-  <div class="col center">
-    <h2 class="script" id="h-bf">{E(bf_b['heading'])}</h2>
-    <p class="big-line">{E(bf_b['body'])}</p>
-  </div>
-</section>"""
 
 ashly_b = BLOCK['Ashly']
+# Kenza first (4f round 1): her "steps away from the sea" is the page's one guest line about the water
+TESTI = sorted(COPY['testimonials'], key=lambda t: t['author'] != 'Kenza')
 quotes = ''.join(
     f'<figure class="q{" on" if i == 0 else ""}" aria-roledescription="slide" aria-label="{i + 1} of {len(COPY["testimonials"])}">'
     f'<blockquote lang="{t["lang"]}"><p>{E(t["quote"])}</p></blockquote>'
     f'<figcaption>{pipe([t["author"], PLATFORM[t["source"]], month(t["date"])])}</figcaption></figure>'
-    for i, t in enumerate(COPY['testimonials']))
+    for i, t in enumerate(TESTI))
 guests = f"""
-<section class="guests tint" id="guests" aria-labelledby="h-ashly">
+<section class="guests" id="guests" aria-labelledby="h-ashly">
   <div class="wrap guests-grid">
     <div class="ashly">
       <h2 class="script" id="h-ashly">{E(ashly_b['heading'])}</h2>
       {paras(ashly_b['body'])}
+      <div class="bf">
+        <h3 class="script">{E(bf_b['heading'])}</h3>
+        <p>{E(bf_b['body'])}</p>
+      </div>
     </div>
     <div class="said">
       <h3 class="sr">What guests wrote</h3>
-      {ratings(big=True)}
       <div class="quotes" data-quotes role="region" aria-roledescription="carousel" aria-label="Guest reviews">
         <div class="qstack" aria-live="polite">{quotes}</div>
         {ctrl(len(COPY['testimonials']), 'review')}
@@ -277,14 +277,14 @@ guests = f"""
 find_b = BLOCK['Finding the house']
 checkout = f"Check-out {STAY['checkOutFrom']}–{STAY['checkOutTo']}"
 finding = f"""
-<section class="finding" id="finding" aria-labelledby="h-find">
+<section class="finding tint" id="finding" aria-labelledby="h-find">
   <div class="wrap find-grid">
     <div class="sign print">{img(['sign-img-001-720'], ALT['img-001'], '(max-width: 899px) 60vw, 400px')}</div>
     <div class="find-text">
       <h2 class="script" id="h-find">{E(find_b['heading'])}</h2>
-      {paras(find_b['body'])}
       <p class="addr">{svg('map')}<span>{E(CONTACT['address'])}</span></p>
       <div class="actions"><a class="btn btn-ink" href="{E(MAP)}" rel="noopener">{svg('map')}<span>Open in Google Maps</span></a>{call()}</div>
+      <div class="find-body">{paras(find_b['body'])}</div>
       <p class="stay">{pipe([checkout, STAY['note']])}</p>
     </div>
   </div>
@@ -324,11 +324,10 @@ foot = f"""<footer class="foot">
 </footer>
 <nav class="bar" id="bar" aria-label="Book">
   <div class="bar-panel" id="bar-panel" hidden>
-    <p class="spot script">{E(SPOT)}</p>
+    <p class="bar-spot">{E(SPOT)}</p>
     <p class="inc">{pipe(INCLUDED)}</p>
+    {ratings('bar-r')}
     <p class="price">Live dates on Booking.com</p>
-    {ratings()}
-    {book('bar-full')}
   </div>
   <div class="bar-row">
     <button class="bar-more" type="button" aria-expanded="false" aria-controls="bar-panel" aria-label="At a glance">{svg('up')}</button>
@@ -366,7 +365,6 @@ page = f'''<!doctype html>
 {rooms}
 {court}
 {carved}
-{breakfast}
 {guests}
 {finding}
 {closing}

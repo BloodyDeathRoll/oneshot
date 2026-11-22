@@ -33,21 +33,23 @@ print(f"{int(w)}:{int(h)}:{int((W-w)*fx)}:{int((H-h)*fy)}")' "$@"
 # ---- first screen, desktop: img-015 (the gabled four-poster) 16:9, 2000x1125 from y 0 (concept 3)
 img img-015 h015-1920 "2000:1125:0:0" 1920 72
 img img-015 h015-1280 "2000:1125:0:0" 1280 72
-# the same photograph as the set-piece's portrait start on phones (4:5 at the bed)
-img img-015 p015-900 "$(rc 2000 1333 4 5 .52 .5)" 900 72
 # ---- first screen, phone: img-005 (four-poster with the teal throw), 1000x2000 from x 333
 img img-005 h005-1000 "1000:2000:333:0" 1000 70
 img img-005 h005-720  "1000:2000:333:0" 720 70
 
-# ---- the turn: the other three sides, 4:5 at the bed
-img img-002 side-002 "$(rc 2000 1333 4 5 .62 .5)" 760 74
-img img-017 side-017 "$(rc 2000 1333 4 5 .45 .5)" 760 74
-img img-053 side-053 "$(rc 1920 1280 4 5 .30 .5)" 760 74
+# ---- the turn: the four sides, whole landscape frames (the drawn bed's opening crops them by cover-fit)
+img img-015 side-015 - 1400 72
+img img-002 side-002 - 1400 72
+img img-017 side-017 - 1400 72
+img img-053 side-053 - 1400 72
+# ---- the closing: img-002 full-bleed behind the gabled panel
+img img-002 close-002 - 1920 70
 
 # ---- the two room types, 4:5 slideshows (Booking.com's own room tags decide the photographs)
 g() { img "$1" "r-$1" "$(rc "$2" "$3" 4 5 "${4:-.5}" .5)" 820 73; }
 g img-012 2000 1333 .55; g img-002 2000 1333 .62; g img-022 2000 1333 .35; g img-033 1333 2000; g img-013 1333 2000; g img-032 1333 2000
-g img-026 1333 2000;     g img-009 2000 1127 .55; g img-005 1333 2000;     g img-025 1333 2000; g img-010 1125 2000; g img-008 1333 2000
+# Standard: no bathroom or WC photograph (Booking.com lists 0 bathrooms in the unit; concepts §2)
+g img-026 1333 2000;     g img-009 2000 1127 .55; g img-005 1333 2000;     g img-025 1333 2000
 
 # ---- around the courtyard: true masonry, each photograph keeps its own ratio
 m() { img "$1" "m-$1" "$2" 820 73; }

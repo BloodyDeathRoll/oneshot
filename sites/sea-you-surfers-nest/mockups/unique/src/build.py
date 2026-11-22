@@ -98,11 +98,14 @@ ALT = {
 }
 # Booking.com's own room tags (dossier room_types[].note) decide each gallery; bathrooms never lead.
 GALLERY = {'Deluxe Double Room': ['img-012', 'img-002', 'img-022', 'img-033', 'img-013', 'img-032'],
-           'Standard Double Room': ['img-026', 'img-009', 'img-005', 'img-025', 'img-010', 'img-008']}
+           'Standard Double Room': ['img-026', 'img-009', 'img-005', 'img-025']}
+# No bathroom or WC photograph in the Standard gallery: Booking.com lists 0 bathrooms in that unit and a guest's
+# was outside the room (dossier room_types[1]); concepts §2. Round 2, critic dimension 1.
+assert not {'img-008', 'img-010', 'img-011'} & set(GALLERY['Standard Double Room'])
 tags = {rt['value']['label']: rt['note'] for rt in dossier['room_types'] if 'label' in rt['value']}
 for room, ids in GALLERY.items():
     for i in ids: assert i.split('-')[1] in tags[room], (room, i)
-SIDES = [('img-015', None), ('img-002', 'side-002'), ('img-017', 'side-017'), ('img-053', 'side-053')]
+SIDES = [('img-015', 'side-015'), ('img-002', 'side-002'), ('img-017', 'side-017'), ('img-053', 'side-053')]
 MASONRY = ['img-071', 'img-003', 'img-045', 'img-041', 'img-004', 'img-007', 'img-076', 'img-038', 'img-042']
 
 def webp_size(path):
@@ -205,7 +208,6 @@ def head(title, desc, pre=''):
             + FONTS)
 
 hw, hh = wh('h015-1920')
-pw, ph = wh('p015-900')
 mw, mh = wh('h005-1000')
 
 def caption_dots():
@@ -234,7 +236,7 @@ hero = f'''
   <div class="hero-in">
     <div class="veil" aria-hidden="true"></div>
     <h1 class="title hero-name" id="h-name">{E(NAME)}</h1>
-    <p class="hero-where">{E(TOWN)}</p>
+    <p class="hero-where">{E(TAGLINE)}</p>
     {btn_book('btn-hero', short=True)}
   </div>
   <p class="hint">{GABLE_ICON}Scroll, and the bed turns</p>
@@ -244,7 +246,6 @@ spot_q, spot_by = SPOT.split('” ', 1)
 glance = f'''
 <section class="glance" id="glance" aria-label="At a glance">
   <div class="glance-in">
-    <p class="g-tag">{E(TAGLINE)}</p>
     <p class="g-spot"><span class="title">{E(spot_q)}”</span> <span class="g-by">{E(spot_by)}</span></p>
     <ul class="g-inc" aria-label="Included">
       <li>{svg('wifi')}<span>{E(amen(AMEN_BY['Free WiFi']))}</span></li>
@@ -255,6 +256,7 @@ glance = f'''
     <p class="g-price">{svg('cal')}<span>Live dates on Booking.com</span></p>
     <p class="g-rates">{pipe([rating_inline(r) for r in RATINGS])}<span class="g-asof">Ratings as of {E(RATED_ON)}</span></p>
     <div class="g-acts">{btn_book()}{btn_door()}{btn_call()}</div>
+    <div class="g-where"><p class="addr">{svg('pin')}<span>{E(ADDRESS)}</span></p><a class="btn btn-line" href="{E(MAP)}" rel="noopener">{svg('map')}<span>Open in Google Maps</span></a></div>
   </div>
 </section>'''
 
@@ -262,7 +264,7 @@ static_turn = f'''
 <section class="still-turn" aria-labelledby="h-seven">
   <div class="wrap still-grid">
     <div class="still-photos">
-      {img('p015-900', ALT['img-015'])}{img('side-002', ALT['img-002'])}{img('side-017', ALT['img-017'])}{img('side-053', ALT['img-053'])}
+      {img('side-015', ALT['img-015'])}{img('side-002', ALT['img-002'])}{img('side-017', ALT['img-017'])}{img('side-053', ALT['img-053'])}
     </div>
     <div class="still-text">
       <h2 class="title" id="h-seven">Seven rooms</h2>
@@ -377,6 +379,7 @@ finding = f'''
 
 closing = f'''
 <section class="closing" id="book" aria-labelledby="h-close">
+  {img('close-002', ALT['img-002'], cls='close-bg')}
   <div class="gable-panel">
     <h2 class="visually-hidden" id="h-close">Book</h2>
     <p class="close-line">{E(CLOSING)}</p>
