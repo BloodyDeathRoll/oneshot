@@ -1,0 +1,52 @@
+TASTESKILL · INSPECT   sites/sea-you-surfers-nest/mockups/interactive/dist/index.html
+
+MEASURED (first viewport listed)
+  hero headline   "Sea You Surfers Nest"  4 words · 1 line(s) · 56px (3.9vw) · Kalam 700 · tracking -0.005em · leading 1.02
+  @768px          1 line(s) · 56px
+  @390px          1 line(s) · 36px
+  typefaces       Plus Jakarta Sans 96%, Kalam 4%
+  sizes in use    13 / 14 / 15 / 16 / 17 / 18 / 21 / 22 / 23 / 24 / 28 / 34 / 36 / 50 / 56 px   body 17px / 1.62
+  colour          page #ffffff · sections #e9f2e7 · button #334825
+  page            8.6 screens · 836 words · 25 images · hero media 100% img
+  headings        14 · longest 2 line(s) · median 2 words
+
+FAIL — fix every one of these
+  [shadow] @1440px (+768, 390)  43 box-shadow(s) on elements at rest: a.btn.btn-book → rgba(29, 40, 20, 0.18) 0px 1px 2px 0px, rgba(51, 72, 37, 0.55) 0px 10px 22px -10 | button.tile → rgba(29, 40, 20, 0.45) 0px 12px 26px -14px | button.tile → rgba(29, 40, 20, 0.06) 0px 1px 2px 0px
+      → Remove. Separate surfaces with a tone step or space. Shadows are for things that really float (menus, dialogs, sticky bars).
+  [button-fx] @1440px (+768, 390)  Buttons with shadow/glow.
+      → Flat fill, one colour.
+  [edge-text] @1440px (+768)  1 text block(s) sit within 16px of the screen edge: "Jan 2026" (-1px from the right)
+      → Keep text inside the page margin (16–32px or more). Only display type deliberately bled past the edge may touch it.
+  [still-page] @1440px  Only 6 element(s) moved while the page loaded and scrolled.
+      → Build the motion layer (SKILL.md step 9, references/motion.md): the signature move, an entrance for the parts of every section, feedback on every control, and one moving picture. Transform and opacity only, with a reduced-motion fallback.
+  [reduced-hidden] @1440px  With reduced motion requested, 2 text block(s) on the first screen stay invisible: "Sea You Surfers Nest", "See live dates"
+      → Put every hidden starting state inside @media (prefers-reduced-motion: no-preference); the reduced page is the finished page (references/motion.md §8).
+
+WARN — fix, or be able to defend
+  [card-rows] @1440px  2 rows of identical boxed cards.
+      → Vary the composition; not every section is a card grid.
+  [size-count] @1440px (+768, 390)  15 different font sizes (13, 14, 15, 16, 17, 18, 21, 22, 23, 24, 28, 34, 36, 50, 56).
+      → A page needs about five: display, heading, lead, body, small.
+  [no-footage] @1440px  No video anywhere on the page.
+      → Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject.
+  [side-scroll] @1440px (+768, 390)  2 row(s) scroll sideways with content past their edge.
+      → Jurors and most visitors read a row cut at the edge as clipped, not as scrollable. Wrap it onto more lines, or end it inside the grid.
+  [empty-middle] @1440px (+768)  2 section(s) have content at both edges and 1792px of nothing between: "Around the courtyard"; "Ashly"
+      → Bring the two parts together on the grid, or put the picture or figure of the section in the middle. An empty middle third reads as a hole, the same as an empty half.
+  [off-centre] @768px  The margins differ: 31px on the left, 14px on the right, at 768px.
+      → Put the navigation and the content on one pair of margins; check for padding on one side only, a scrollbar gutter, or a header on another inset than the page.
+
+LOOK AT THE RENDER — open these with your image viewer / Read tool before saying anything about quality:
+  desktop 1440px  .taste-skill/inspect/desktop-fold.jpg
+                  .taste-skill/inspect/desktop-page-01.jpg
+                  .taste-skill/inspect/desktop-page-02.jpg
+                  .taste-skill/inspect/desktop-page-03.jpg
+  tablet 768px    .taste-skill/inspect/tablet-fold.jpg
+                  .taste-skill/inspect/tablet-page-01.jpg
+                  .taste-skill/inspect/tablet-page-02.jpg
+  mobile 390px    .taste-skill/inspect/mobile-fold.jpg
+                  .taste-skill/inspect/mobile-page-01.jpg
+                  .taste-skill/inspect/mobile-page-02.jpg
+
+report: .taste-skill/inspect/report.json
+RESULT: 5 FAIL, 6 WARN — not done.

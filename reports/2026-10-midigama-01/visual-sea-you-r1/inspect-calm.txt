@@ -1,0 +1,48 @@
+TASTESKILL · INSPECT   sites/sea-you-surfers-nest/mockups/calm/dist/index.html
+
+MEASURED (first viewport listed)
+  hero headline   "Sea You Surfers Nest"  4 words · 1 line(s) · 76px (5.3vw) · Grand Hotel 400 · tracking 0.005em · leading 1
+  @768px          1 line(s) · 76px
+  @390px          1 line(s) · 44px
+  typefaces       Karla 93%, Grand Hotel 7%
+  sizes in use    14 / 15 / 16 / 17 / 18 / 22 / 26 / 30 / 34 / 38 / 40 / 56 / 76 px   body 17px / 1.6
+  colour          page #ffffff · sections #f0f0ed · button #3c5965
+  page            9.3 screens · 644 words · 19 images · hero media 100% img
+  headings        17 · longest 2 line(s) · median 2 words
+
+FAIL — fix every one of these
+  [shadow] @1440px (+768, 390)  5 box-shadow(s) on elements at rest: div.print → rgba(20, 16, 8, 0.1) 0px 10px 28px 0px, rgba(20, 16, 8, 0.08) 0px 1px 3px 0px | div.print → rgba(20, 16, 8, 0.1) 0px 10px 28px 0px, rgba(20, 16, 8, 0.08) 0px 1px 3px 0px | div.print → rgba(20, 16, 8, 0.1) 0px 10px 28px 0px, rgba(20, 16, 8, 0.08) 0px 1px 3px 0px
+      → Remove. Separate surfaces with a tone step or space. Shadows are for things that really float (menus, dialogs, sticky bars).
+  [still-page] @1440px  Only 7 element(s) moved while the page loaded and scrolled.
+      → Build the motion layer (SKILL.md step 9, references/motion.md): the signature move, an entrance for the parts of every section, feedback on every control, and one moving picture. Transform and opacity only, with a reduced-motion fallback.
+  [covered-text] @390px  Large text lies under another element at some scroll position: "Sea You Surfers Nest" (screen 10, 100% hidden)
+      → Nothing may sit on top of a headline or statement. Move the picture, shorten the pinned run, or raise the text above it (z-index) and give it a ground.
+  [reduced-hidden] @1440px  With reduced motion requested, 2 text block(s) on the first screen stay invisible: "Sea You Surfers Nest", "See live dates"
+      → Put every hidden starting state inside @media (prefers-reduced-motion: no-preference); the reduced page is the finished page (references/motion.md §8).
+
+WARN — fix, or be able to defend
+  [card-rows] @1440px (+768)  2 rows of identical boxed cards.
+      → Vary the composition; not every section is a card grid.
+  [size-count] @1440px (+768, 390)  13 different font sizes (14, 15, 16, 17, 18, 22, 26, 30, 34, 38, 40, 56, 76).
+      → A page needs about five: display, heading, lead, body, small.
+  [no-footage] @1440px  No video anywhere on the page.
+      → Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject.
+  [off-centre] @1440px  The margins differ: 160px on the left, 179px on the right, at 1440px.
+      → Put the navigation and the content on one pair of margins; check for padding on one side only, a scrollbar gutter, or a header on another inset than the page.
+  [side-scroll] @390px  1 row(s) scroll sideways with content past their edge.
+      → Jurors and most visitors read a row cut at the edge as clipped, not as scrollable. Wrap it onto more lines, or end it inside the grid.
+
+LOOK AT THE RENDER — open these with your image viewer / Read tool before saying anything about quality:
+  desktop 1440px  .taste-skill/inspect/desktop-fold.jpg
+                  .taste-skill/inspect/desktop-page-01.jpg
+                  .taste-skill/inspect/desktop-page-02.jpg
+                  .taste-skill/inspect/desktop-page-03.jpg
+  tablet 768px    .taste-skill/inspect/tablet-fold.jpg
+                  .taste-skill/inspect/tablet-page-01.jpg
+                  .taste-skill/inspect/tablet-page-02.jpg
+  mobile 390px    .taste-skill/inspect/mobile-fold.jpg
+                  .taste-skill/inspect/mobile-page-01.jpg
+                  .taste-skill/inspect/mobile-page-02.jpg
+
+report: .taste-skill/inspect/report.json
+RESULT: 4 FAIL, 5 WARN — not done.
