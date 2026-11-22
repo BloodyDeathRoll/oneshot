@@ -324,3 +324,149 @@ It is the most memorable idea, and its laptop hero is the best single frame here
   - `still-page` on calm is expected;
   - `reduced-hidden` refers to the header mark and header button, which are hidden on the first screen by design; the hero title and button are visible under reduced motion in my frames;
   - `empty-screens` and `long-pin` on unique match my walk.
+
+---
+---
+
+# Round 2
+
+experience-critic 0.2.0 · station 4f (quick), round 2 · run `2026-10-midigama-01` · 2026-11-22
+Pages: the same three files, as rebuilt in commit b0cce9b. Each variant's `notes.md` look-log ("4f round 1 → round 2") was read for what changed. Written without reading the other two reviewers' round-2 reports.
+
+Evidence is in `reports/2026-10-midigama-01/experience/sea-you-surfers-nest/r2/`:
+- PNG frames, which git ignores;
+- the logs `calm-walk.log`, `interactive-walk.log`, `unique-walk.log`, `states.log`, `cold.log`, `palms.log` and `*-inspect.log`;
+- the recipes `walk.mjs.txt`, `states.mjs.txt`, `cold.mjs.txt` and `palms.mjs.txt`.
+
+The method was the same as round 1: phone 390×844 @2x with touch, a throttled cold load, a human-pace scroll, laptop 1440×900, hover, reduced motion, JS off, the booking tap-through with third-party requests stubbed, and the per-variant states. Interactive's shader was walked with `?palms`, as before.
+
+**Machine load.** The other reviewers were running at the same time (load average 20–35), so:
+- The first `states` run timed out and was re-run.
+- Two throttled cold loads took over 140 s and were discarded. The cold loads in `cold.log` are a serial re-run at load average about 12.
+- I use load timings only as notes; they belong to dimension 2, which the critic scores.
+
+## Summary
+
+| | calm | interactive | unique |
+|---|---|---|---|
+| **Dimension 8 (experience), round 2** | **8 / 10** (round 1: 8) | **8 / 10** (round 1: 7) | **8 / 10** (round 1: 7) |
+| Pass / fail (this critic) | **pass** (no regression) | **pass** | **pass**, narrowly |
+| Better than the current presence | yes | yes | yes |
+| Taps to booking | 1 | 1 (groups: 2) | 1 (via the door: 2) |
+
+**Experience ranking at 4f round 2: 1 calm · 2 interactive · 3 unique.** All three now clear the bar.
+- **Calm** is still the clearest "surfers' nest" on a phone, and its rooms are now the page's second big moment.
+- **Interactive's** hero now pulls, and it keeps the best booking choice of the three.
+- **Unique** fixed its pacing and seated its photos. It is still the longest phone page and the least warm in the middle.
+
+**Checked in every variant:**
+- The hero CTA lands on `https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html` in one tap ("tap 1" in each walk log).
+- `tel:` 0 and Agoda 0.
+- Tap targets under 44 px: 0 (`states.log`).
+- Only local hosts plus Google Fonts on load.
+
+## Calm: 8/10, pass (no regression)
+
+What changed against my round-1 list, checked on the page:
+1. **Courtyard:** now a low 4:1 strip of the bench and cushion. It is no longer a screen of grey wall (`calm-laptop-s05.png`, phone `calm-phone-s04/05`). Fixed.
+2. **The second half:** Breakfast sits inside the Ashly section as a small script heading (`calm-phone-s08`). The guests slideshow opens on Kenza's "just steps away from the sea" (`calm-phone-s09`). The ratings appear once as cards, in the glance, plus a compact copy in the bar's summary. Fixed.
+3. **Phone bar:**
+   - the panel is opaque, with one button;
+   - it opens 284 px tall from y 499 (`calm-phone-bar-open.png`, `states.log`);
+   - the bar steps aside once the closing's buttons are on screen (`calm-walk.log`: bar hidden from s11).
+
+   Fixed.
+4. **The full-label button** fits on one line at 390 (`calm-phone-s01/s02`). Fixed.
+5. **"In every room"** is hidden on the phone and is one row of five icons on desktop. Fixed.
+
+**Not regressed:**
+- The phone first screen still has the board rack, the name, the business type (now the tagline, "A bed and breakfast in Midigama, on Sri Lanka's south coast.") and one slate button (`calm-phone-t3000.png`).
+- The rooms are better than round 1: 1120 px galleries on the laptop (`calm-laptop-s02/s03`) and full-width on the phone. The Deluxe photo with the door open to the veranda now carries a whole screen.
+- Reduced motion and JS off still give the finished page (`calm-phone-reduced-*`, `calm-phone-nojs-*`).
+
+**One new note, not blocking:** the header is now on the first screen at both widths.
+- On the phone it is a small script wordmark above the large script title, so the name appears twice (`calm-phone-t3000.png`).
+- On desktop a header "See live dates" pill sits beside the hero's button (`calm-laptop-s00`).
+
+The designer did this so nothing is hidden under reduced motion. It costs a little of the round-1 cleanliness but does not change the pull of the screen.
+
+**Timing note (dimension 2, not mine):** calm's LCP is again the H1 in Grand Hotel, the slowest of the three. It was 8.9 s in the serial throttled run on a loaded machine, against 5.5 s in round 1 (`cold.log`).
+
+**Polish (optional, not a fail list):**
+1. On the phone, hide the header wordmark while the hero title is on screen. The reduced-motion concern can be met with `display:none` on the wordmark until scroll, rather than a hidden opacity.
+2. Self-host and preload Grand Hotel at 4g, so the title is not the late LCP.
+
+## Interactive: 8/10, pass
+
+What changed against my round-1 list:
+1. **The hero pulls now.**
+   - The recrop fills the top half or more with fronds, graded darker and better defined (`interactive-laptop-s00.png`, `interactive-phone-s00.png`).
+   - "Sea You Surfers Nest" is centred in Courgette, a tidier connected script than Kalam, over "Bed and breakfast | Midigama, Sri Lanka" and one bottle-green button.
+   - The motion is now legible: on the laptop the palm band changes by **PSNR 16.7 dB in 1.5 s** (round 1: 23.3), while the table band stays effectively unchanged (54.8 dB) (`interactive-laptop-palms-0/1500/3000.png`). Side by side, the fronds visibly shift between frames.
+   - Automatic gusts every 6–9 s mean it moves without a pointer.
+   - **Cap lifted:** the first screen is clean and on-subject, and the main item registers.
+2. **De-carded:**
+   - the glance is one designed band (tagline, the spot quote large, one " | " included line, the address and "Open in Google Maps");
+   - the ratings appear once, as large figures without boxes;
+   - "In every room" is a plain icon list;
+   - there are no resting shadows on tiles or cards (`interactive-phone-s01/s02`, `interactive-laptop-s01`).
+3. **"Who's coming?"** appears once. The closing is the palms band with the closing line and three buttons (`interactive-laptop-s10`, `interactive-phone-s13`).
+4. **Ratings:** once.
+5. **Title:** Kalam replaced by Courgette.
+6. **"Open in Google Maps":** moved up to phone screen 2.
+
+**New:**
+- A full-bleed carved doorway with the four-poster inside (img-051) opens the courtyard section and gives the page a second gear (`interactive-laptop-s04`).
+- The shelf drags with inertia (`states.log`: scrollLeft 710 after a drag).
+
+**States:**
+- The tiles still switch the answer with the ring drawn in: the group answer is the whole house on Airbnb (`interactive-phone-tiles-group.png`).
+- The pill is sticky and cross-fades the stage (`interactive-phone-rooms-standard.png`).
+- The bar shows from screen 2 and works with JS off.
+- Reduced motion keeps the still.
+
+**One harness observation, not scored.** In the first, parallel walk under heavy machine load, the forced shader painted the palm band as a flat green gradient with a stair-stepped mask edge for several seconds (`interactive-phone-t1500/t3000/t6000.png`). I re-ran it serially under four conditions: network + CPU throttled, network only, CPU only, and none. **It did not recur**; every frame showed the real fronds (`palms.log`, `palms-*-*.png`). It is probably SwiftShader starved by three browsers. Cheap insurance would be to add `on` only after a first frame has been read back as non-uniform, or to fade in only after `load()` resolves and one frame has been drawn.
+
+**Polish (optional):**
+1. **The closing band inverts the hierarchy.** The primary Booking.com button is outlined on the dark shade, while the two Airbnb buttons are solid white (`interactive-laptop-s10`, `interactive-phone-s13`). Make Booking.com the solid one.
+2. **On the phone the fronds are paler and move less** (PSNR 23.7 dB in 1.5 s, against 16.7 on the laptop). Apply the same grade and amplitude to the phone crop.
+
+## Unique: 8/10, pass (narrowly)
+
+What changed against my round-1 list:
+1. **Pacing:**
+   - **Phone:** the set-piece is 4058 px (round 1: 6020). Captions run from y 1477 to 4009, and there is no captionless exit (`states.log`). "Deluxe or Standard" arrives at phone screen 4.2 (round 1: 6.3) (`unique-walk.log`, s06), and the page is 15.2 phone screens (round 1: 17.5).
+   - **Laptop:** the piece is 3958 px (round 1: 5643), and the rooms arrive at screen 5.
+   - Fixed.
+2. **The photograph sits in the bed:**
+   - at each rest it fills the opening, post to post, from the footboard or side rail up to the canopy rail, and no drawn post crosses it (`unique-laptop-turn-09.png`, `unique-phone-s03/s04/s05`);
+   - the white gap above the footboard is gone;
+   - between rests the photos still cross-fade inside a rectangle, and you see two photos blended for a moment (`unique-laptop-turn-13.png`). That is acceptable in motion.
+
+   Fixed.
+3. **Phone first screen:** one name, the tagline, one button and the "Scroll, and the bed turns" hint. The header is gone until the hero leaves (`unique-phone-t3000.png`; `unique-walk.log` hero `firstScreen` lists one link). Fixed.
+4. **Warmth:** the bed stands on the `#ECEBE5` tint with a contact shadow, not on pure white (`unique-laptop-s02/s03`). The drawn bed reads as painted wood, less like a configurator. Fixed.
+5. **Small items:** "Open in Google Maps" and the address are now in the glance, on phone screen 2. The ratings still have no hover or press feedback (not re-measured as a gate).
+
+**States:** the door still opens from "More" (phone) and "Book" (laptop) with focus on the Booking.com tile; Tab stays inside, Esc closes and returns focus (`states.log`). `/stay/` works with JS off. The quote stack still turns.
+
+**Why only narrowly:**
+- It is still the longest page on the phone (15.2 screens, against 10–11 for the other two).
+- The middle (rooms, then masonry, prints, breakfast, Ashly) is long and evenly paced after the one big idea.
+- On the laptop the first screen still carries a name pill and a "Book" button in the header beside the hero's button (`unique-laptop-s00`).
+- One load-related frame: in the parallel walk the glance text overlapped the photo and bed at y 720 (`unique-laptop-s01.png`: "Fan and mosquito net" and "5.0/5 Airbnb" over the photograph). It did not appear in the serial dense frames at y 675 (`unique-laptop-turn-03`). It is a damping lag at low frame rates; clip the glance column or hold the bed to the right until the glance has passed.
+
+**Polish (optional):**
+1. Keep the bed out of the glance column at any frame rate. Pin its x to the right half from the first pull-back frame, rather than easing it there.
+2. Trim the phone middle. Show the courtyard masonry at six photos instead of nine on the phone, and put the two room slideshows behind the same Deluxe | Standard switch, so the rooms take one screen, not two.
+3. On the laptop first screen, let the header "Book" appear only once the hero button has scrolled away.
+
+## Round 2 verdict
+
+| variant | round 1 | round 2 | result |
+|---|---|---|---|
+| calm | 8 | **8** | **PASS** |
+| interactive | 7 | **8** | **PASS** |
+| unique | 7 | **8** | **PASS** |
+
+All three are clearly better than the Google and Booking.com listings, and all three are 1 tap to the live dates. From the experience side, any of them can go to the human pick.

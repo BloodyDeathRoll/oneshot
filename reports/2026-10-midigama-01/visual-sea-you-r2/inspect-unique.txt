@@ -1,0 +1,50 @@
+TASTESKILL · INSPECT   sites/sea-you-surfers-nest/mockups/unique/dist/index.html
+
+MEASURED (first viewport listed)
+  hero headline   "Sea You Surfers Nest"  4 words · 1 line(s) · 58px (4vw) · Leckerli One 400 · tracking 0em · leading 1.08
+  @768px          1 line(s) · 40px
+  @390px          2 line(s) · 40px
+  typefaces       Instrument Sans 93%, Leckerli One 7%
+  sizes in use    13 / 14 / 15 / 16 / 17 / 18 / 20 / 26 / 27 / 28 / 32 / 34 / 38 / 44 / 48 / 56 / 58 px   body 17px / 1.4
+  colour          page #ffffff · sections #ecebe5 #ffffff · button #1b5654
+  page            12.8 screens · 631 words · 32 images · hero media 100% canvas
+  headings        15 · longest 2 line(s) · median 3 words
+
+FAIL — fix every one of these
+  [shadow] @1440px (+768, 390)  8 box-shadow(s) on elements at rest: figure.print → rgba(19, 43, 41, 0.5) 0px 22px 50px -30px, rgba(19, 43, 41, 0.06) 0px 2px 6px 0p | figure.print.carved-r → rgba(19, 43, 41, 0.5) 0px 22px 50px -30px, rgba(19, 43, 41, 0.06) 0px 2px 6px 0p | figure.qcard → rgba(19, 43, 41, 0.55) 0px 26px 50px -34px
+      → Remove. Separate surfaces with a tone step or space. Shadows are for things that really float (menus, dialogs, sticky bars).
+  [off-centre] @1440px  The page sits off-centre: its content comes to 65px from the left edge but only to 148px from the right, at 1440px.
+      → Give the page one pair of equal margins. Check the wrapper for a max-width without margin-inline: auto, a grid with an empty last column, or padding on one side only. If one side is meant to hold air, it must still be closed by something that reaches the margin (a picture, the navigation's last item, a figure).
+  [empty-screens] @1440px  4 of 12 desktop screens are almost empty ground (under 20% of the screen holds text, a picture or a colour field): screens 1, 2, 3, 4.
+      → An empty screen is a rest only once per page. Elsewhere it means the section is underbuilt: set its content larger, give it the full information, put it on a colour field, or cut it.
+  [covered-text] @390px  Large text lies under another element at some scroll position: "Deluxe or Standard" (screen 5, 100% hidden)
+      → Nothing may sit on top of a headline or statement. Move the picture, shorten the pinned run, or raise the text above it (z-index) and give it a ground.
+
+WARN — fix, or be able to defend
+  [palette-cream] @1440px (+768, 390)  Yellow-cream background (section #ecebe5).
+      → Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.
+  [size-count] @1440px (+768, 390)  17 different font sizes (13, 14, 15, 16, 17, 18, 20, 26, 27, 28, 32, 34, 38, 44, 48, 56, 58).
+      → A page needs about five: display, heading, lead, body, small.
+  [no-footage] @1440px  No video anywhere on the page.
+      → Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject.
+  [side-scroll] @1440px (+768, 390)  2 row(s) scroll sideways with content past their edge.
+      → Jurors and most visitors read a row cut at the edge as clipped, not as scrollable. Wrap it onto more lines, or end it inside the grid.
+  [empty-middle] @1440px (+768)  1 section(s) have content at both edges and 1276px of nothing between: "Deluxe or Standard"
+      → Bring the two parts together on the grid, or put the picture or figure of the section in the middle. An empty middle third reads as a hole, the same as an empty half.
+  [pinned-over-picture] @1440px (+768, 390)  Pinned large text slides across pictures while the page scrolls: "Seven rooms" (screen 4, 100% over a picture)
+      → Jurors read a pinned title crossing drawings or photographs as a collision. Keep the pictures in the column the title does not occupy, or unpin it.
+
+LOOK AT THE RENDER — open these with your image viewer / Read tool before saying anything about quality:
+  desktop 1440px  .taste-skill/inspect/desktop-fold.jpg
+                  .taste-skill/inspect/desktop-page-01.jpg
+                  .taste-skill/inspect/desktop-page-02.jpg
+                  .taste-skill/inspect/desktop-page-03.jpg
+  tablet 768px    .taste-skill/inspect/tablet-fold.jpg
+                  .taste-skill/inspect/tablet-page-01.jpg
+                  .taste-skill/inspect/tablet-page-02.jpg
+  mobile 390px    .taste-skill/inspect/mobile-fold.jpg
+                  .taste-skill/inspect/mobile-page-01.jpg
+                  .taste-skill/inspect/mobile-page-02.jpg
+
+report: .taste-skill/inspect/report.json
+RESULT: 4 FAIL, 6 WARN — not done.

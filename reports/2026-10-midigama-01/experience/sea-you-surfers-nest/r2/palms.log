@@ -1,0 +1,16 @@
+netcpu console warning [.WebGL-0x11c005cc800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+netcpu console warning [.WebGL-0x11c005cc800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+netcpu console warning [.WebGL-0x11c005cc800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+netcpu console warning [.WebGL-0x11c005cc800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+netcpu t=4s {"img":"hero-tall-600.webp","nw":390,"nh":559,"complete":true,"cv":{"on":true,"op":"0.236139","w":585,"h":1013,"cw":390,"ch":675}}
+netcpu t=10s {"img":"hero-tall-600.webp","nw":390,"nh":559,"complete":true,"cv":{"on":true,"op":"0.999","w":585,"h":1013,"cw":390,"ch":675}}
+netcpu t=20s {"img":"hero-tall-600.webp","nw":390,"nh":559,"complete":true,"cv":{"on":true,"op":"0.999","w":585,"h":1013,"cw":390,"ch":675}}
+net t=4s {"img":"hero-tall-600.webp","nw":390,"nh":559,"complete":true,"cv":{"on":true,"op":"0.999","w":585,"h":1013,"cw":390,"ch":675}}
+net t=10s {"img":"hero-tall-600.webp","nw":390,"nh":559,"complete":true,"cv":{"on":true,"op":"0.999","w":585,"h":1013,"cw":390,"ch":675}}
+net t=20s {"img":"hero-tall-600.webp","nw":390,"nh":559,"complete":true,"cv":{"on":true,"op":"0.999","w":585,"h":1013,"cw":390,"ch":675}}
+cpu t=4s {"img":"hero-tall-600.webp","nw":390,"nh":559,"complete":true,"cv":{"on":true,"op":"0.999","w":585,"h":1013,"cw":390,"ch":675}}
+cpu t=10s {"img":"hero-tall-600.webp","nw":390,"nh":559,"complete":true,"cv":{"on":true,"op":"0.999","w":585,"h":1013,"cw":390,"ch":675}}
+cpu t=20s {"img":"hero-tall-600.webp","nw":390,"nh":559,"complete":true,"cv":{"on":true,"op":"0.999","w":585,"h":1013,"cw":390,"ch":675}}
+none t=4s {"img":"hero-tall-600.webp","nw":390,"nh":559,"complete":true,"cv":{"on":true,"op":"0.999","w":585,"h":1013,"cw":390,"ch":675}}
+none t=10s {"img":"hero-tall-600.webp","nw":390,"nh":559,"complete":true,"cv":{"on":true,"op":"0.999","w":585,"h":1013,"cw":390,"ch":675}}
+none t=20s {"img":"hero-tall-600.webp","nw":390,"nh":559,"complete":true,"cv":{"on":true,"op":"0.999","w":585,"h":1013,"cw":390,"ch":675}}

@@ -1,0 +1,20 @@
+{
+ "note": "JS off, Tab through the whole page: focused elements that are off-screen, opacity < 0.5 or hidden. Then, JS on, no scroll: where the business type line and the visible Booking.com links sit on the first screen. Run 2026-11-22 ~13:20 IST on the b0cce9b builds served from dist/.",
+ "jsoff_invisible_focus": {
+  "calm_390": [{"t":"At a glance","inView":false},{"t":"See live dates","inView":false}],
+  "calm_1440": [],
+  "interactive_390": [{"t":"Skip to the rooms","inView":false}],
+  "interactive_1440": [{"t":"Skip to the rooms","inView":false}],
+  "unique_390": [{"t":"See live dates","inView":false},{"t":"More","inView":false}],
+  "unique_1440": []
+ },
+ "first_screen": {
+  "calm_390": {"type":"A bed and breakfast in Midigama, on Sri Lanka… @ y 384","ctas":["See live dates @ 454"]},
+  "calm_1440": {"type":"A bed and breakfast in Midigama, on Sri Lanka… @ y 437","ctas":["See live dates @ 14 (header)","See live dates @ 497 (hero)"]},
+  "interactive_390": {"type":"Bed and breakfast @ y 267; A bed and breakfast in Midigama… @ y 731","ctas":["See live dates @ 307"]},
+  "interactive_1440": {"type":"Bed and breakfast @ y 404","ctas":["See live dates @ 450"]},
+  "unique_390": {"type":"A bed and breakfast in Midigama, on Sri Lanka… @ y 360","ctas":["See live dates @ 427"]},
+  "unique_1440": {"type":"A bed and breakfast in Midigama, on Sri Lanka… @ y 422","ctas":["See live dates @ 472"]}
+ },
+ "interactive_lcp_reruns_ms": {"run1_concurrent_outlier": 6372, "rerun_a": 772, "rerun_b": 760, "rerun_c_kept_as_audit.json": 748, "lcp_observer_x3": [768, 744, 760], "lcp_element": "IMG.hero-img img/hero-tall-600.webp"}
+}

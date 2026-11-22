@@ -1,0 +1,9 @@
+  [contrast] @1440px (+390)  Unreadable text: "Deluxe Double" 1:1 (#ffffff on #ffffff)
+  [edge-text] @1440px  1 text block(s) sit within 16px of the screen edge: "Jan 2026" (8px from the right)
+  [still-page] @1440px  Only 6 element(s) moved while the page loaded and scrolled.
+  [eyebrow] @390px  2 eyebrow/kicker label(s) above headings: "Open in Google Maps" (pill) above "4.9/5"; "10 reviews 21 Nov 2026" above "Who’s coming?"
+  [size-count] @1440px (+390)  11 different font sizes (14, 15, 16, 17, 18, 22, 28, 34, 40, 46, 60).
+  [no-footage] @1440px  No video anywhere on the page.
+  [side-scroll] @1440px (+390)  2 row(s) scroll sideways with content past their edge.
+  [empty-middle] @1440px  1 section(s) have content at both edges and 1786px of nothing between: "Ashly"
+RESULT: 4 FAIL, 4 WARN — not done.

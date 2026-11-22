@@ -1,0 +1,44 @@
+TASTESKILL · INSPECT   sites/sea-you-surfers-nest/mockups/calm/dist/index.html
+
+MEASURED (first viewport listed)
+  hero headline   "Sea You Surfers Nest"  4 words · 1 line(s) · 80px (5.6vw) · Grand Hotel 400 · tracking 0.005em · leading 1
+  @768px          1 line(s) · 80px
+  @390px          1 line(s) · 44px
+  typefaces       Karla 94%, Grand Hotel 6%
+  sizes in use    14 / 15 / 16 / 17 / 20 / 26 / 30 / 40 / 44 / 46 / 56 / 80 px   body 17px / 1.6
+  colour          page #ffffff · sections #f0f0ed · button #3c5965
+  page            9.2 screens · 617 words · 19 images · hero media 100% img
+  headings        15 · longest 1 line(s) · median 3 words
+
+FAIL — fix every one of these
+  [eyebrow] @1440px (+768, 390)  3 eyebrow/kicker label(s) above headings: "Free WiFi in public areas" above "4.9/5"; "Fan and mosquito net" above "8.0/10"; "Free private parking on site" above "5.0/5"
+      → Delete them. If the label carried real information, fold it into the headline or the supporting sentence.
+  [shadow] @1440px (+768, 390)  5 box-shadow(s) on elements at rest: div.print → rgba(20, 16, 8, 0.1) 0px 10px 28px 0px, rgba(20, 16, 8, 0.08) 0px 1px 3px 0px | div.print → rgba(20, 16, 8, 0.1) 0px 10px 28px 0px, rgba(20, 16, 8, 0.08) 0px 1px 3px 0px | div.print → rgba(20, 16, 8, 0.1) 0px 10px 28px 0px, rgba(20, 16, 8, 0.08) 0px 1px 3px 0px
+      → Remove. Separate surfaces with a tone step or space. Shadows are for things that really float (menus, dialogs, sticky bars).
+  [text-shadow] @1440px (+768)  2 text-shadow(s).
+      → Remove; fix legibility with a scrim or a different crop.
+  [still-page] @1440px  Only 7 element(s) moved while the page loaded and scrolled.
+      → Build the motion layer (SKILL.md step 9, references/motion.md): the signature move, an entrance for the parts of every section, feedback on every control, and one moving picture. Transform and opacity only, with a reduced-motion fallback.
+
+WARN — fix, or be able to defend
+  [size-count] @1440px (+768, 390)  12 different font sizes (14, 15, 16, 17, 20, 26, 30, 40, 44, 46, 56, 80).
+      → A page needs about five: display, heading, lead, body, small.
+  [no-footage] @1440px  No video anywhere on the page.
+      → Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject.
+  [side-scroll] @390px  1 row(s) scroll sideways with content past their edge.
+      → Jurors and most visitors read a row cut at the edge as clipped, not as scrollable. Wrap it onto more lines, or end it inside the grid.
+
+LOOK AT THE RENDER — open these with your image viewer / Read tool before saying anything about quality:
+  desktop 1440px  .taste-skill/inspect/desktop-fold.jpg
+                  .taste-skill/inspect/desktop-page-01.jpg
+                  .taste-skill/inspect/desktop-page-02.jpg
+                  .taste-skill/inspect/desktop-page-03.jpg
+  tablet 768px    .taste-skill/inspect/tablet-fold.jpg
+                  .taste-skill/inspect/tablet-page-01.jpg
+                  .taste-skill/inspect/tablet-page-02.jpg
+  mobile 390px    .taste-skill/inspect/mobile-fold.jpg
+                  .taste-skill/inspect/mobile-page-01.jpg
+                  .taste-skill/inspect/mobile-page-02.jpg
+
+report: .taste-skill/inspect/report.json
+RESULT: 4 FAIL, 3 WARN — not done.
