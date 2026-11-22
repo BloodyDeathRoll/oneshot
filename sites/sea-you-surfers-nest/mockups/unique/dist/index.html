@@ -50,6 +50,9 @@ figure{margin:0}
   .btn-book:active,.btn-line:active{transform:scale(.97)}
 }
 .btn-sm{min-height:44px;padding:0 18px;font-size:15px}
+/* one booking button on the first screen: the header's waits until the hero's has scrolled away */
+html.js .top .btn-sm{opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s ease,transform .25s var(--e-out),visibility 0s linear .25s}
+html.js .top.past .btn-sm{opacity:1;visibility:visible;transform:none;transition:opacity .25s ease,transform .25s var(--e-out),visibility 0s}
 
 /* ------------------------------------------------------------ header */
 .top{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;gap:28px;height:76px;padding:0 40px;
@@ -134,13 +137,13 @@ html.piece .loading{display:flex}
 html.piece .ph{will-change:transform,clip-path}
 .turn-room{display:none}
 html.piece .turn-room{display:block;height:229svh}
-.caps{position:absolute;left:max(56px,4.5vw);top:50%;width:min(29vw,420px);transform:translateY(-50%);opacity:0;
-  transition:opacity .45s ease,visibility 0s linear .45s;pointer-events:none;visibility:hidden}
-.caps.on{opacity:1;visibility:visible;transition:opacity .45s ease,visibility 0s}
+.caps{position:absolute;left:max(56px,4.5vw);top:46%;width:min(29vw,420px);opacity:0;
+  transition:opacity .3s ease,visibility 0s linear .3s;pointer-events:none;visibility:hidden}
+.caps.on{opacity:1;visibility:visible;transition:opacity .3s ease,visibility 0s}
 .cap-title{font-size:60px;line-height:1.05;margin:0 0 24px}
 .cap-stack{display:grid}
-.cap{grid-area:1/1;margin:0;font-size:30px;line-height:1.38;opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .5s var(--e-out)}
-.cap.on{opacity:1;transform:none}
+.cap{grid-area:1/1;margin:0;font-size:30px;line-height:1.38;opacity:0;transform:translateY(8px);transition:opacity .22s ease,transform .3s var(--e-out)}
+.cap.on{opacity:1;transform:none;transition:opacity .3s ease .2s,transform .4s var(--e-out) .2s}   /* the outgoing sentence is gone before the next arrives */
 .cap-dots{display:flex;gap:8px;margin-top:26px}
 .cap-dots i{display:block;width:9px;height:9px;border-radius:5px;background:rgba(19,43,41,.16);transition:background-color .3s ease,transform .35s var(--e-out)}
 .cap-dots i.on{background:var(--lime);transform:scale(1.35)}
@@ -331,7 +334,7 @@ html:not(.js) .ctrl{display:none}
 
   .g-acts .btn{width:100%}
   html.piece .glance{background:#fff;box-shadow:0 -30px 50px -30px rgba(19,43,41,.18)}
-  html.piece .turn-room{height:280svh}
+  html.piece .turn-room{height:250svh}
   .caps{left:20px;right:20px;width:auto;top:auto;bottom:calc(92px + env(safe-area-inset-bottom));transform:none}
   .cap-title{font-size:34px;margin-bottom:12px}
   .cap{font-size:21px;line-height:1.42}
@@ -357,6 +360,7 @@ html:not(.js) .ctrl{display:none}
   .court{padding:80px 0 64px}
   .masonry{columns:2;column-gap:12px}
   .m-text{column-span:all;padding:0 0 26px}
+  .m-item:nth-of-type(n+7){display:none}   /* six photographs on the phone */
   .m-item{margin-bottom:12px;border-radius:12px}
   .carved{padding:80px 0 90px}
   .carved-grid{display:block}
@@ -386,10 +390,10 @@ html:not(.js) .ctrl{display:none}
   .foot{padding:56px 0 120px}
   .foot-grid{grid-template-columns:1fr}
   .foot-acts{justify-content:flex-start}
-  .bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+  .bar{display:flex;visibility:hidden;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
     background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 -10px 30px -18px rgba(19,43,41,.35);
-    transform:translateY(110%);transition:transform .26s var(--e-out)}
-  .bar.on{transform:none}
+    transform:translateY(110%);transition:transform .26s var(--e-out),visibility 0s linear .26s}
+  .bar.on{transform:none;visibility:visible;transition:transform .26s var(--e-out),visibility 0s}
   .bar-book{flex:1}
   .bar-more{padding:0 18px}
   .door-panel{top:7svh;width:100vw;transform-origin:100% 50%;clip-path:polygon(0 64px,50% 0,100% 64px,100% 100%,0 100%);box-shadow:none}
@@ -499,7 +503,7 @@ html:not(.js) .ctrl{display:none}
         <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 2.5 6.5 21.5M16 2.5l1.5 19M7.6 7h8.8M7.2 12h9.6M6.8 17h10.4"/></svg><span>Timber towel ladder</span></li>
         <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="7" y="2.5" width="10" height="7" rx="1"/><rect x="6" y="12" width="12" height="9.5" rx="1"/><path d="M12 12v9.5M10.5 16.5h.01M13.5 16.5h.01"/></svg><span>Green cabinet with a mirror</span></li>
       </ul>
-      <p class="facil"><span class="facil-h">Facilities</span> <span>Free WiFi (in public areas)</span> <span class="sep" aria-hidden="true">|</span> <span>Fan and mosquito net</span> <span class="sep" aria-hidden="true">|</span> <span>Free toiletries</span> <span class="sep" aria-hidden="true">|</span> <span>Kitchen</span> <span class="sep" aria-hidden="true">|</span> <span>Free private parking on site</span> <span class="sep" aria-hidden="true">|</span> <span>Airport shuttle (additional charge)</span> <span class="sep" aria-hidden="true">|</span> <span>Laundry (additional charge)</span> <span class="sep" aria-hidden="true">|</span> <span>Security cameras outside</span></p>
+      <p class="facil"><span class="facil-h">Also at the house</span> <span>Free toiletries</span> <span class="sep" aria-hidden="true">|</span> <span>Airport shuttle (additional charge)</span> <span class="sep" aria-hidden="true">|</span> <span>Laundry (additional charge)</span> <span class="sep" aria-hidden="true">|</span> <span>Security cameras outside</span></p>
     </div>
   </div>
 </section>
@@ -635,8 +639,10 @@ const onScrollTop = () => top.classList.toggle('solid', scrollY > 40);
 addEventListener('scroll', onScrollTop, { passive: true }); onScrollTop();
 const bar = $('#bar'), heroBtn = $('.btn-hero');
 if (bar && heroBtn && 'IntersectionObserver' in window) {
-  new IntersectionObserver(([e]) => bar.classList.toggle('on', !e.isIntersecting && e.boundingClientRect.top < 0))
-    .observe(heroBtn);
+  new IntersectionObserver(([e]) => {
+    const past = !e.isIntersecting && e.boundingClientRect.top < 0;
+    bar.classList.toggle('on', past); top.classList.toggle('past', past);
+  }).observe(heroBtn);
 }
 
 /* ------------------------------------------------------------ 2. the door: a side sheet hinged on its right edge */
@@ -731,38 +737,44 @@ const cvB = $('.gl-back', stage), cvF = $('.gl-front', stage);
 if (phoneMQ.matches && ph0img.dataset.altPhone) ph0img.alt = ph0img.dataset.altPhone;
 
 // ---- the bed, in metres, proportioned by eye from img-015 (gabled canopy) and img-002 / img-053 (panels)
-const PX = 0.77, PZ = 1.02, PT = 0.075, PH = 2.1, G = 0.34;
+const PX = 0.77, PZ = 1.02, PT = 0.056, PH = 2.1, G = 0.34, RT = 0.046;      // slim posts (5.6 cm) and rails
 const RAF = Math.atan2(G, PX), RL = Math.hypot(PX, G);
-const PANEL = (z, y0, y1, dz) => [                       // a framed board: rails and stiles proud of a recessed panel
-  { c: [0, (y0 + y1) / 2, z], s: [2 * PX - PT, y1 - y0, 0.026] },
-  { c: [0, y1, z], s: [2 * PX + 0.03, 0.075, 0.07] }, { c: [0, y0, z], s: [2 * PX - PT, 0.06, 0.05] },
-  ...[-0.42, 0, 0.42].map((x) => ({ c: [x, (y0 + y1) / 2, z + dz * 0.012], s: [0.05, y1 - y0 - 0.04, 0.03] })),
-];
+// A framed board as a joiner makes it: a top rail and a bottom rail, a middle stile, and two thin panels set back
+// between them (kind 1, which the shader darkens into its recess). Posts are kind 2.
+const PANEL = (z, y0, y1) => {
+  const m = (y0 + y1) / 2, w = PX - PT / 2, pw = w - 0.035;
+  return [
+    { c: [0, y1, z], s: [2 * w, 0.064, 0.058] }, { c: [0, y0, z], s: [2 * w, 0.05, 0.05] },
+    { c: [0, m, z], s: [0.056, y1 - y0, 0.048] },
+    ...[-1, 1].map((sx) => ({ c: [sx * (pw / 2 + 0.014), m, z], s: [pw - 0.012, y1 - y0 - 0.03, 0.012], k: 1 })),
+  ];
+};
+const FOOT = [0.2, 0.52], HEAD = [0.3, 0.92];
 const BOXES = [
-  ...[-1, 1].flatMap((sx) => [-1, 1].map((sz) => ({ c: [sx * PX, PH / 2, sz * PZ], s: [PT, PH, PT] }))),        // posts
-  ...[-1, 1].map((sz) => ({ c: [0, PH - 0.035, sz * PZ], s: [2 * PX - PT + 0.002, 0.06, 0.058] })),           // top rails across
-  ...[-1, 1].map((sx) => ({ c: [sx * PX, PH - 0.035, 0], s: [0.058, 0.06, 2 * PZ - PT + 0.002] })),           // top rails along
-  ...[-1, 1].flatMap((sz) => [-1, 1].map((sx) => ({ c: [sx * PX / 2, PH + G / 2 - 0.02, sz * PZ], s: [RL + 0.05, 0.052, 0.052], rz: -sx * RAF }))), // gable rafters
-  { c: [0, PH + G - 0.02, 0], s: [0.056, 0.056, 2 * PZ + 0.05] },                                              // ridge
-  ...PANEL(-PZ, 0.32, 0.95, 1),                                                                                // headboard
-  ...PANEL(PZ, 0.17, 0.6, -1),                                                                                 // footboard
-  ...[-1, 1].map((sx) => ({ c: [sx * PX, 0.3, 0], s: [0.03, 0.26, 2 * PZ - PT - 0.004] })),                   // side boards
-  ...[-1, 1].map((sx) => ({ c: [sx * PX, 0.445, 0], s: [0.055, 0.04, 2 * PZ - PT - 0.004] })),
+  ...[-1, 1].flatMap((sx) => [-1, 1].map((sz) => ({ c: [sx * PX, PH / 2, sz * PZ], s: [PT, PH, PT], k: 2 }))),  // posts
+  ...[-1, 1].map((sz) => ({ c: [0, PH - 0.03, sz * PZ], s: [2 * PX - PT, RT, RT] })),                          // top rails across
+  ...[-1, 1].map((sx) => ({ c: [sx * PX, PH - 0.03, 0], s: [RT, RT, 2 * PZ - PT] })),                          // top rails along
+  ...[-1, 1].flatMap((sz) => [-1, 1].map((sx) => ({ c: [sx * PX / 2, PH + G / 2 - 0.018, sz * PZ], s: [RL + 0.03, 0.042, 0.042], rz: -sx * RAF }))), // gable rafters
+  { c: [0, PH + G - 0.018, 0], s: [0.044, 0.044, 2 * PZ + 0.03] },                                            // ridge
+  ...PANEL(-PZ, ...HEAD), ...PANEL(PZ, ...FOOT),                                                               // headboard, footboard
+  ...[-1, 1].map((sx) => ({ c: [sx * PX, 0.285, 0], s: [0.022, 0.22, 2 * PZ - PT - 0.06], k: 1 })),        // side boards, set back
+  ...[-1, 1].map((sx) => ({ c: [sx * PX, 0.17, 0], s: [0.046, 0.04, 2 * PZ - PT] })),
+  ...[-1, 1].map((sx) => ({ c: [sx * PX, 0.42, 0], s: [0.048, 0.036, 2 * PZ - PT] })),
 ];
 // The photograph is seated in the opening of the face turned to the camera at each rest: post to post, from the
 // footboard / side board / headboard rail up to the canopy rail. Its edges tuck under the drawn posts and rails.
-const TOPY = PH - 0.04, TUCK = 0.012;
+const TOPY = PH - 0.03, TUCK = 0.008;
 const FACE = [
-  [[-(PX - TUCK), 0.6, PZ], [PX - TUCK, 0.6, PZ], [PX - TUCK, TOPY, PZ], [-(PX - TUCK), TOPY, PZ]],          // 0: the foot
-  [[-PX, 0.445, -(PZ - TUCK)], [-PX, 0.445, PZ - TUCK], [-PX, TOPY, PZ - TUCK], [-PX, TOPY, -(PZ - TUCK)]],  // 90: a long side
-  [[-(PX - TUCK), 0.95, -PZ], [PX - TUCK, 0.95, -PZ], [PX - TUCK, TOPY, -PZ], [-(PX - TUCK), TOPY, -PZ]],   // 180: the head
-  [[PX, 0.445, -(PZ - TUCK)], [PX, 0.445, PZ - TUCK], [PX, TOPY, PZ - TUCK], [PX, TOPY, -(PZ - TUCK)]],      // 270: the other side
+  [[-(PX - TUCK), FOOT[1], PZ], [PX - TUCK, FOOT[1], PZ], [PX - TUCK, TOPY, PZ], [-(PX - TUCK), TOPY, PZ]],      // 0: the foot
+  [[-PX, 0.42, -(PZ - TUCK)], [-PX, 0.42, PZ - TUCK], [-PX, TOPY, PZ - TUCK], [-PX, TOPY, -(PZ - TUCK)]],        // 90: a long side
+  [[-(PX - TUCK), HEAD[1], -PZ], [PX - TUCK, HEAD[1], -PZ], [PX - TUCK, TOPY, -PZ], [-(PX - TUCK), TOPY, -PZ]], // 180: the head
+  [[PX, 0.42, -(PZ - TUCK)], [PX, 0.42, PZ - TUCK], [PX, TOPY, PZ - TUCK], [PX, TOPY, -(PZ - TUCK)]],            // 270: the other side
 ];
 const FOV = 28 * Math.PI / 180, F = 1 / Math.tan(FOV / 2), TGT = [0, 1.2, 0], ELEV = 0.13, YAW0 = -0.1;
 
-// ---- geometry: one merged buffer of boxes (36 vertices each), positions + normals
+// ---- geometry: one merged buffer of boxes (36 vertices each): position, normal, face coordinates, face axes
 function boxGeo() {
-  const P = [], N = [], Q = [];
+  const P = [], N = [], Q = [], U = [], Vv = [];
   const faces = [[[1,0,0],[0,1,0],[0,0,1]],[[-1,0,0],[0,1,0],[0,0,-1]],[[0,1,0],[0,0,1],[1,0,0]],
                  [[0,-1,0],[0,0,-1],[1,0,0]],[[0,0,1],[1,0,0],[0,1,0]],[[0,0,-1],[-1,0,0],[0,1,0]]];
   for (const b of BOXES) {
@@ -771,18 +783,16 @@ function boxGeo() {
     for (const [n, u, v] of faces) {
       const corner = (a, c) => rot([(n[0] + a * u[0] + c * v[0]) * b.s[0] / 2, (n[1] + a * u[1] + c * v[1]) * b.s[1] / 2, (n[2] + a * u[2] + c * v[2]) * b.s[2] / 2]).map((x, i) => x + b.c[i]);
       const q = [corner(-1, -1), corner(1, -1), corner(1, 1), corner(-1, -1), corner(1, 1), corner(-1, 1)];
-      // keep counter-clockwise winding outward
+      const ac = [[-1, -1], [1, -1], [1, 1], [-1, -1], [1, 1], [-1, 1]];
       const e1 = q[1].map((x, i) => x - q[0][i]), e2 = q[2].map((x, i) => x - q[0][i]);
       const cr = [e1[1] * e2[2] - e1[2] * e2[1], e1[2] * e2[0] - e1[0] * e2[2], e1[0] * e2[1] - e1[1] * e2[0]];
-      const rn = rot(n);
-      if (cr[0] * rn[0] + cr[1] * rn[1] + cr[2] * rn[2] < 0) q.reverse();
+      const rn = rot(n), ru = rot(u), rv = rot(v);
+      if (cr[0] * rn[0] + cr[1] * rn[1] + cr[2] * rn[2] < 0) { q.reverse(); ac.reverse(); }   // counter-clockwise outward
       const hu = Math.abs(u[0] * b.s[0] + u[1] * b.s[1] + u[2] * b.s[2]) / 2, hv = Math.abs(v[0] * b.s[0] + v[1] * b.s[1] + v[2] * b.s[2]) / 2;
-      const ac = [[-1, -1], [1, -1], [1, 1], [-1, -1], [1, 1], [-1, 1]];
-      if (cr[0] * rn[0] + cr[1] * rn[1] + cr[2] * rn[2] < 0) ac.reverse();
-      q.forEach((p, k) => { P.push(...p); N.push(...rn); Q.push(ac[k][0] * hu, ac[k][1] * hv, hu, hv); });
+      q.forEach((p, k) => { P.push(...p); N.push(...rn); Q.push(ac[k][0] * hu, ac[k][1] * hv, hu, hv); U.push(...ru, b.k || 0); Vv.push(...rv); });
     }
   }
-  return { P: new Float32Array(P), N: new Float32Array(N), Q: new Float32Array(Q), count: P.length / 3 };
+  return { P: new Float32Array(P), N: new Float32Array(N), Q: new Float32Array(Q), U: new Float32Array(U), V: new Float32Array(Vv), count: P.length / 3 };
 }
 
 // ---- small matrix kit (column-major)
@@ -798,15 +808,32 @@ const xf = (m, p) => [m[0]*p[0]+m[4]*p[1]+m[8]*p[2]+m[12], m[1]*p[0]+m[5]*p[1]+m
 const rotY = (a) => { const c = Math.cos(a), s = Math.sin(a); return [c,0,-s,0, 0,1,0,0, s,0,c,0, 0,0,0,1]; };
 const mat3of = (m) => [m[0],m[1],m[2], m[4],m[5],m[6], m[8],m[9],m[10]];
 
-const VS = `attribute vec3 p;attribute vec3 n;attribute vec4 e;uniform mat4 uM,uV,uP;uniform mat3 uR;uniform vec2 uOff;
-varying vec3 vN,vW;varying vec4 vE;varying float vZ;
-void main(){vE=e;vec4 w=uM*vec4(p,1.);vW=w.xyz;vN=uR*n;vec4 v=uV*w;vZ=-v.z;gl_Position=uP*v;gl_Position.xy+=uOff*gl_Position.w;}`;
-const FS = `precision mediump float;uniform float uSplit,uSide;uniform vec3 uCol,uEye;varying vec3 vN,vW;varying vec4 vE;varying float vZ;
-void main(){if(uSide*(vZ-uSplit)>0.)discard;vec3 n=normalize(vN);vec3 L=normalize(vec3(-.5,.85,.62));
-float dif=max(dot(n,L),0.);vec3 amb=mix(vec3(.5,.52,.5),vec3(1.),.5+.5*n.y);
-float ao=mix(.74,1.,smoothstep(0.,.9,vW.y));vec3 V=normalize(uEye-vW);vec3 H=normalize(L+V);
-float ed=min(vE.z-abs(vE.x),vE.w-abs(vE.y));float edge=mix(.86,1.,smoothstep(.0,.014,ed));
-vec3 lin=uCol*(amb*.56+vec3(1.,.95,.86)*dif*.62)*ao*edge+pow(max(dot(n,H),0.),24.)*.03;
+// Painted timber: a 7 mm rounded bevel on every edge (the normal bends toward the edge, so edges catch the light),
+// a recess shadow round each panel, soft occlusion where rails meet posts and toward the floor, a faint brush grain
+// along each board, and a low satin sheen.
+const VS = `attribute vec3 p;attribute vec3 n;attribute vec4 e;attribute vec4 tu;attribute vec3 tv;
+uniform mat4 uM,uV,uP;uniform mat3 uR;uniform vec2 uOff;
+varying vec3 vN,vW,vL,vTU,vTV;varying vec4 vE;varying float vZ,vK;
+void main(){vE=e;vL=p;vK=tu.w;vec4 w=uM*vec4(p,1.);vW=w.xyz;vN=uR*n;vTU=uR*tu.xyz;vTV=uR*tv;
+vec4 v=uV*w;vZ=-v.z;gl_Position=uP*v;gl_Position.xy+=uOff*gl_Position.w;}`;
+const FS = `precision mediump float;uniform float uSplit,uSide;uniform vec3 uCol,uEye;uniform vec2 uPost;
+varying vec3 vN,vW,vL,vTU,vTV;varying vec4 vE;varying float vZ,vK;
+float h(vec2 q){return fract(sin(dot(q,vec2(12.9898,78.233)))*43758.5453);}
+float vn(vec2 q){vec2 i=floor(q),f=fract(q);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+1.),f.x),f.y);}
+void main(){if(uSide*(vZ-uSplit)>0.)discard;
+float bwu=min(.012,vE.z*.42),bwv=min(.012,vE.w*.42);
+float bu=smoothstep(vE.z-bwu,vE.z,abs(vE.x))*sign(vE.x),bv=smoothstep(vE.w-bwv,vE.w,abs(vE.y))*sign(vE.y);
+vec3 n=normalize(normalize(vN)+.95*(bu*normalize(vTU)+bv*normalize(vTV)));
+vec3 L=normalize(vec3(-.5,.85,.62));float dif=max(dot(n,L),0.);
+vec3 amb=mix(vec3(.52,.53,.5),vec3(1.,.99,.97),.5+.5*n.y);
+float ao=mix(.7,1.,smoothstep(0.,.75,vW.y));
+float ed=min(vE.z-abs(vE.x),vE.w-abs(vE.y));
+float rec=vK>.5&&vK<1.5?mix(.66,1.,smoothstep(0.,.045,ed)):1.;
+float dp=length(abs(vL.xz)-uPost);float joint=vK>1.5?1.:mix(.8,1.,smoothstep(.03,.15,dp));
+float grain=1.+.035*(vn(vec2(vE.x*55.,vE.y*3.))-.5)+.02*(vn(vec2(vE.y*55.,vE.x*3.))-.5);
+vec3 V=normalize(uEye-vW);vec3 H=normalize(L+V);
+float fill=max(dot(n,normalize(vec3(.7,.2,.5))),0.);
+vec3 lin=uCol*grain*(amb*.4+vec3(1.,.95,.86)*dif*.95+vec3(.8,.9,1.)*fill*.14)*ao*rec*joint+pow(max(dot(n,H),0.),36.)*.09*rec;
 gl_FragColor=vec4(pow(lin,vec3(1./2.2)),1.);}`;
 const SVS = `attribute vec2 p;uniform mat4 uM,uV,uP;uniform vec2 uOff,uHalf;varying vec2 vU;
 void main(){vU=p;vec4 v=uV*uM*vec4(p.x*uHalf.x,.002,p.y*uHalf.y,1.);gl_Position=uP*v;gl_Position.xy+=uOff*gl_Position.w;}`;
@@ -835,6 +862,8 @@ function makeGL(canvas, withShadow) {
   const bp = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, bp); gl.bufferData(gl.ARRAY_BUFFER, geo.P, gl.STATIC_DRAW);
   const bn = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, bn); gl.bufferData(gl.ARRAY_BUFFER, geo.N, gl.STATIC_DRAW);
   const be = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, be); gl.bufferData(gl.ARRAY_BUFFER, geo.Q, gl.STATIC_DRAW);
+  const bu = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, bu); gl.bufferData(gl.ARRAY_BUFFER, geo.U, gl.STATIC_DRAW);
+  const bv = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, bv); gl.bufferData(gl.ARRAY_BUFFER, geo.V, gl.STATIC_DRAW);
   let sh = null, sb = null;
   if (withShadow) {
     sh = prog(SVS, SFS);
@@ -861,7 +890,10 @@ function makeGL(canvas, withShadow) {
       gl.uniformMatrix3fv(bed.u.uR, false, mat3of(st.M)); gl.uniform2fv(bed.u.uOff, st.off);
       gl.uniform1f(bed.u.uSplit, st.split); gl.uniform1f(bed.u.uSide, withShadow ? -1 : 1);
       gl.uniform3fv(bed.u.uCol, col); gl.uniform3fv(bed.u.uEye, st.eye);
-      const ap = bed.a('p'), an = bed.a('n'), ae = bed.a('e');
+      const ap = bed.a('p'), an = bed.a('n'), ae = bed.a('e'), atu = bed.a('tu'), atv = bed.a('tv');
+      gl.uniform2f(bed.u.uPost, PX, PZ);
+      gl.bindBuffer(gl.ARRAY_BUFFER, bu); gl.enableVertexAttribArray(atu); gl.vertexAttribPointer(atu, 4, gl.FLOAT, false, 0, 0);
+      gl.bindBuffer(gl.ARRAY_BUFFER, bv); gl.enableVertexAttribArray(atv); gl.vertexAttribPointer(atv, 3, gl.FLOAT, false, 0, 0);
       gl.bindBuffer(gl.ARRAY_BUFFER, be); gl.enableVertexAttribArray(ae); gl.vertexAttribPointer(ae, 4, gl.FLOAT, false, 0, 0);
       gl.bindBuffer(gl.ARRAY_BUFFER, bp); gl.enableVertexAttribArray(ap); gl.vertexAttribPointer(ap, 3, gl.FLOAT, false, 0, 0);
       gl.bindBuffer(gl.ARRAY_BUFFER, bn); gl.enableVertexAttribArray(an); gl.vertexAttribPointer(an, 3, gl.FLOAT, false, 0, 0);
@@ -871,7 +903,7 @@ function makeGL(canvas, withShadow) {
 }
 
 // ---- layout numbers, measured once per resize (never per frame)
-let W = 0, H = 0, phone = false, geo = null, D1 = 7, OFF = [0, 0], dpr = 1;
+let W = 0, H = 0, phone = false, geo = null, D1 = 7, DK = [7, 7], DMID = 7, OFF = [0, 0], dpr = 1;
 function measure() {
   W = stage.clientWidth; H = stage.clientHeight; phone = phoneMQ.matches;
   const pTop = piece.getBoundingClientRect().top + scrollY;
@@ -881,17 +913,24 @@ function measure() {
   if (phone) {
     // the glance is an opaque sheet over the stage: the photograph backs into the bed while it is covered,
     // so the stage is revealed already showing the bed (the hero is never shown twice), and the turn starts at once
-    D1 = F * (PZ + PT / 2) / (0.98 * asp) + PX;
-    OFF = [0, 0.28];
+    // the whole bed stays inside the screen at every angle: each rest is framed for its own width, and the camera
+    // steps back between rests just enough for the diagonal to pass (92 % of the width)
+    const fit = (half, depth) => F * half / (0.92 * asp) + depth, hmin = F * 1.25 / 0.5;
+    DK = [Math.max(hmin, fit(PX + PT / 2, PZ)), Math.max(hmin, fit(PZ + PT / 2, PX))];
+    DMID = Math.max(hmin, fit(Math.hypot(PX, PZ) + PT, Math.hypot(PX, PZ)));
+    D1 = DK[0];
+    OFF = [0, 0.29];
     const p0 = gTop + 0.02 * H, p1 = Math.max(p0 + 1, gBot - 1.02 * H);
-    geo = { top: pTop, pull0: p0, pull1: p1, turn0: gBot - 0.45 * H, capsOn: gBot - 0.5 * H, turnLen: 2.2 * H };
+    geo = { top: pTop, pull0: p0, pull1: p1, turn0: gBot - 0.45 * H, capsOn: gBot - 0.5 * H, turnLen: 1.9 * H };
   } else {
     D1 = Math.max(F * 1.25 / 0.78 + 0.3, F * Math.hypot(PX, PZ) / (0.6 * asp) + 1.28);
+    DK = [D1, D1]; DMID = D1;
     OFF = [0.27, -0.09];
-    geo = { top: pTop, pull0: 0, pull1: 0.7 * H, turn0: gBot - 0.3 * H, capsOn: gBot - 0.3 * H, turnLen: 1.6 * H };
+    // the first sentence arrives below the glance's last line as it leaves, so no screen holds a stranded line
+    geo = { top: pTop, pull0: 0, pull1: 0.7 * H, turn0: gBot - 0.42 * H, capsOn: gBot - 0.5 * H, turnLen: 1.6 * H };
   }
   geo.exit = geo.turn0 + geo.turnLen;
-  geo.loadAt = phone ? gTop - 0.5 * H : 0.08 * H;
+  geo.loadAt = phone ? 1 : 0.08 * H;                          // on the first scroll
   for (const cv of [cvB, cvF]) {
     const px = W * H * dpr * dpr, cap = soft ? 1.0e6 : 4.2e6, k = px > cap ? Math.sqrt(cap / px) : 1;
     cv.width = Math.round(W * dpr * k); cv.height = Math.round(H * dpr * k);
@@ -933,7 +972,8 @@ function frame(now) {
   const dt = clamp((now - last) / 1000, 0, 0.1) || 0.016; last = now;   // rAF time can run behind performance.now()
   const k = 1 - Math.exp(-6 * dt);                       // damp, lambda 6
   let moving = false;
-  for (const key of ['e', 'q']) {
+  if (cur.e !== tgt.e) { cur.e = tgt.e; dirty = true; }   // the pull-back follows the scroll directly
+  for (const key of ['q']) {
     const d = tgt[key] - cur[key];
     if (Math.abs(d) > 1e-4) { cur[key] += d * k; moving = true; } else cur[key] = tgt[key];
   }
@@ -958,25 +998,27 @@ function openRect(k, V, asp, off) {
 }
 function render() {
   const e = cur.e, q = cur.q, asp = W / H;
-  const D = lerp(D1 * 0.56, D1, sstep(0, 1, e));
-  const off = [OFF[0] * sstep(0, 1, e), OFF[1] * sstep(0, 1, e)];
+  const fq = q - Math.floor(q), kq = clamp(Math.floor(q), 0, 3);
+  const Drest = lerp(DK[kq % 2], DK[(kq + 1) % 2], fq), Dt = Math.max(Drest, lerp(Drest, DMID, Math.sin(Math.PI * fq)));
+  const D = lerp(Dt * 0.56, Dt, sstep(0, 1, e));
+  const off = [OFF[0] * sstep(0, 0.6, e), OFF[1] * sstep(0, 0.6, e)];   // the bed is in the right half from the first frames
   const eye = [0, TGT[1] + D * Math.sin(ELEV), D * Math.cos(ELEV)];
   const V = lookAt(eye, TGT), P = perspective(asp);
   const zc = -xf(V, [0, 1.2, 0])[2];
   const k0 = clamp(Math.floor(q), 0, 3), k1 = Math.min(3, k0 + 1), f = q - k0;
   const A = openRect(k0, V, asp, off), Bq = k1 === k0 ? A : openRect(k1, V, asp, off);
-  // between rests the corner posts sweep across the middle: the photograph draws in a little and comes back
-  const sh = 1 - 0.32 * Math.sin(Math.PI * f), cw = lerp(A.w, Bq.w, f) * sh, ch = lerp(A.h, Bq.h, f) * sh;
+  // between rests the photograph keeps the full opening and the corner posts sweep past in front of it
+  const cw = lerp(A.w, Bq.w, f), ch = lerp(A.h, Bq.h, f);
   const cx = lerp(A.x + A.w / 2, Bq.x + Bq.w / 2, f), cy = lerp(A.y + A.h / 2, Bq.y + Bq.h / 2, f);
   const B = { x: cx - cw / 2, y: cy - ch / 2, w: cw, h: ch };
-  const kk = sstep(0, 0.62, e);
+  const kk = sstep(0, 0.45, e);
   const R = { x: lerp(0, B.x, kk), y: lerp(0, B.y, kk), w: lerp(W, B.w, kk), h: lerp(H, B.h, kk) };
   const attached = kk > 0.985;
   const si = attached ? ((Math.round(q) % 4) + 4) % 4 : -1;
   // desktop: the hero photograph itself stays the 0-degree side; phone: the hero is img-005, so img-015 takes 0
-  const usePh0 = !phone || !attached;
+  const s0 = sides[0] && sides[0].firstElementChild, s0ready = s0 && s0.complete && s0.naturalWidth > 0;
+  const usePh0 = !phone || !attached || !s0ready;            // until img-015 has arrived, the hero photograph holds the opening
   place(ph0, ph0img, R);
-  ph0.style.opacity = usePh0 ? '1' : '0';
   sides.forEach((el) => {
     const im = el.firstElementChild, k = +el.dataset.side;
     if (attached || el.classList.contains('on')) place(el, im, B);

@@ -296,7 +296,7 @@ rooms = f'''
         <li>{svg('ladder')}<span>Timber towel ladder</span></li>
         <li>{svg('cabinet')}<span>Green cabinet with a mirror</span></li>
       </ul>
-      <p class="facil"><span class="facil-h">Facilities</span> {pipe([E(amen(a)) for a in AMEN])}</p>
+      <p class="facil"><span class="facil-h">Also at the house</span> {pipe([E(amen(a)) for a in AMEN if a['label'] not in INCLUDED])}</p>
     </div>
   </div>
 </section>'''

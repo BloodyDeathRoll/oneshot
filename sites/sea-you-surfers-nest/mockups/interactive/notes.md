@@ -157,14 +157,62 @@ Its remaining FAILs are readings, not defects:
 Final sheets in `shots/` (served with `?palms`): no overflow at 390, 768 or 1440, and no overlap.
 
 
+### 4f round 2 → round 3
+
+The 4f round 2 scores (reports at 83d0358) were: experience 8 (pass), critic 76.0/80 (pass), visual 7 (fail, blocking). The fixes, in the visual critic's order:
+
+1. **The still was white haze.** The critic read the round-2 grade as "shader only". It was in fact baked into the stills (`imgg` in `make-media.sh`), but it was too mild to show. The grade is now much stronger, with its own short-ramp mask so it reaches the lower fronds:
+   - a tone curve that pulls the highlights down (about −0.7 EV in the mid-tones);
+   - saturation ×1.7, greener mid-tones and local contrast.
+
+   It is baked into every still made from img-003 (the desktop and phone hero, i.e. the LCP image and the no-WebGL, no-JS and reduced-motion frame, and the closing band). The shader samples those same files, so nothing about the look lives only in WebGL.
+
+   Checked on the still itself (`shots/desktop-00`, `mobile-00`, shot without `?palms`): the fronds read as green palm leaves, not haze. On the phone the white veil behind the title was tightened and the top scrim dropped, because they were washing the fronds out again.
+2. **The gust glitch.** The shader is now safe on any GPU and at any frame time:
+   - the gust is clamped (|g| ≤ 1.2, kick ≤ 1.1, shader ≤ 1);
+   - the total displacement is hard-capped at 0.02 uv;
+   - the displacement fades to zero over the outer 60 px of the canvas, so the texture is never sampled clamped at the edge;
+   - the gust amplitude dropped from 0.016 to 0.011.
+
+   **The guard for the flat green block:** the canvas is shown only after a drawn frame has been read back at five points and is not flat. After 30 flat frames it gives up and the still stays.
+
+   Checked on SwiftShader at 1440 and 390, 16 frames 0.5 s apart over 8 s, including a gust: no smear and no edge streaks (a crop of the right edge, calm against gust). Frames differ from frame 0 by PSNR 19–22 dB at 1440 and 23–25 dB at 390.
+   - The phone now gets an amplitude factor (`uA`, about ×2 at 390), so its narrower crop moves about as much on screen as the laptop does.
+3. **Make it this house:**
+   - The img-051 carved-door band now sits directly under "At a glance", as the page's second screen: the carved fanlight, the four-poster and the teal throw inside, the masks.
+   - "Who's coming?" lost its mint panel. It now sits on the white ground, with only the tiles tinted. "Around the courtyard" now opens on its heading and the shelf.
+
+Small items:
+- **The closing band:** Booking.com is now the solid button (white, with bottle-green text), and the two Airbnb buttons are outlined in white.
+- **The shade under the closing line is deeper,** and deeper again on the phone. Measured with the text hidden, the photograph behind the line gives a weakest 10 % of 9.7:1 at 390 (it was 3.45) and 10.3:1 at 1440.
+- **One type line on the first phone screen:** the hero line is "Midigama, Sri Lanka" on the phone, and the tagline "A bed and breakfast in Midigama…" sits on that first screen (the hero is now 76 svh). The desktop keeps "Bed and breakfast | Midigama, Sri Lanka".
+- **The skip link** moves into view on `:focus` with no transition and no JS.
+- **The phone bar** is `visibility:hidden` while it is slid away, so it is out of the Tab order too.
+
+**Round R3-1, first screen.**
+- Desktop: palms, not haze, with the title, line and button centred and the pothos below. Hero text over the photograph, weakest 10 %: h1 7.8:1, line 9.1:1.
+- **Flaw:** on the phone the veil and scrim made the fronds pale again. Change: a tighter, lighter veil and no scrim on the phone. Re-measured at 390: h1 weakest 10 % 4.9:1 (large text, needs 3), line 5.7:1.
+
+**Round R3-2, whole page.**
+- The order is now hero → glance with "Who's coming?" on white → the carved-door band → Seven rooms → courtyard → board shower → breakfast → Ashly → finding the house → closing → footer.
+- The closing reads: solid Booking.com, outlined Airbnb.
+- No overflow at 390, 768 or 1440, and no overlap.
+
+Checks after round 3:
+- **Tab walk with reduced motion:** JS on, 36 stops at 390 and 43 at 1440; JS off, 30 and 37. Every focused element is on screen, the skip link included.
+- **axe 4.10.2:** 0 violations at 390 and 1440.
+- **`check-design`:** 0 problems, 0 warnings.
+- **`audit-mockup`:** first load 555 KB, LCP 800 ms, CLS 0.0026, scroll CLS 0 early and 0 settled, 0 tap targets under 44 px, canvas hidden under reduced motion.
+
+
 ## images
 
 All are `business-owned` Booking.com and Airbnb property uploads (dossier `images[]`). There is no stock and no atmosphere. Nothing is upscaled: full-bleed images are 1920 w from 2000 px sources, drawn at most 1440 wide.
 
 | use | asset | crop |
 |---|---|---|
-| first screen + WebGL texture | img-003 | desktop 1400×788 from x 300; phone 600×860 from x 650 (never upscaled); fronds graded through the mask |
-| courtyard opener, full-bleed | img-051 | 1920×960 from y 80; phone 1000×1250 from x 120 |
+| first screen + WebGL texture | img-003 | desktop 1400×788 from x 300; phone 600×860 from x 650 (never upscaled); fronds graded through a short-ramp mask, baked into the still |
+| full-bleed band under "At a glance" (round 3) | img-051 | 1920×960 from y 80; phone 1000×1250 from x 120 |
 | palm mask (WebGL only) | made from img-003's geometry | parapet line y = 550 + 0.014x; pot ellipse (950, 515), r 250×120; ramp 220 px; blur σ 10; the same two crops at half size |
 | Deluxe stage, 4:5 | img-002, 015, 012, 022, 013, 033 | all Booking.com-tagged to Deluxe |
 | Standard stage, 4:5 | img-005, 026, 009, 025, 010 | all Booking.com-tagged to Standard |
@@ -214,7 +262,7 @@ Alt text was written from the crops themselves, not from the dossier's notes.
 6. **Other businesses compared: pass** (above).
 7. **Video: pass.** None exists. The first screen is img-003 (2000 px), with the WebGL palms as the main item.
 
-audit-mockup (phone, slow 4G, after 4f round 2):
+audit-mockup (phone, slow 4G, after 4f round 2; round 3 numbers are in the look-log):
 - first load 554 KB: images 432 KB, fonts 46 KB (Google Fonts, the only third party, allowed at 4e), HTML 77 KB with CSS and JS inlined;
 - largest image 49 KB;
 - LCP 896 ms, CLS 0.0041;

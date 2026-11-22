@@ -1,28 +1,28 @@
 {
  "slug": "sea-you-surfers-nest",
  "variant": "interactive",
- "measured_at": "2026-11-22T10:49:47.813Z",
+ "measured_at": "2026-11-22T11:54:47.158Z",
  "first_load": {
   "requests": 17,
   "hosts": [
-   "localhost:8980",
    "fonts.googleapis.com",
+   "localhost:8980",
    "fonts.gstatic.com"
   ],
   "third_party_hosts": [
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 554300,
-  "bytes_html": 76600,
+  "bytes_total": 555303,
+  "bytes_html": 99865,
   "bytes_js": 0,
   "bytes_css": 0,
-  "bytes_fonts": 45580,
-  "bytes_images": 432120,
-  "largest_image_bytes": 49456,
-  "lcp_ms": 896,
-  "cls": 0.0041,
-  "dcl_ms": 882
+  "bytes_fonts": 18308,
+  "bytes_images": 437130,
+  "largest_image_bytes": 51042,
+  "lcp_ms": 800,
+  "cls": 0.0026,
+  "dcl_ms": 749
  },
  "scroll": {
   "early": {
@@ -57,7 +57,7 @@
   "images": 26,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
-  "tapables": 34,
+  "tapables": 33,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
   "headings": [
@@ -78,7 +78,7 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 4880,
+  "text_length": 4860,
   "booking_links_reachable": 3,
   "visible_images": 26
  },

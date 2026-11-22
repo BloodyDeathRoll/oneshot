@@ -46,10 +46,18 @@ WIDE=1400:788:300:0; TALL=600:860:650:0
 ff -f lavfi -i "color=black:s=2000x1333,format=gray" -frames:v 1 \
   -vf "geq=lum='255*clip((550+0.014*X-34-Y)/220,0,1)*clip((pow((X-950)/250,2)+pow((Y-515)/120,2)-1)*1.6,0,1)',gblur=sigma=10" \
   "$T/mask.png"
-# The fronds are blown out to near white, so motion in them could not be seen (visual + experience, 4f r1).
-# Inside the mask only: about -0.5 EV, more local contrast and a little saturation. Table, pot, parapet untouched.
-ff -i "$A/img-003.jpg" -i "$T/mask.png" -filter_complex \
-  "[0:v]format=gbrp,split[a][b];[b]eq=gamma=0.78:contrast=1.22:brightness=-0.03:saturation=1.25,unsharp=9:9:0.6[d];[1:v]format=gbrp[m];[a][d][m]maskedmerge,format=rgb24" \
+# The fronds are blown out to near white, so motion in them could not be seen (visual + experience, 4f r1),
+# and the round-2 grade was too mild to show on the still (visual, 4f r2). The grade is baked into every
+# still made from img-003 here (hero, LCP image, no-WebGL and reduced-motion frame, closing band), and
+# the shader samples these same stills, so nothing about the look lives only in WebGL. Inside the fronds:
+# a tone curve pulling the highlights down (about -0.7 EV in the mid-tones), more saturation, greener
+# mid-tones, local contrast. Its own mask has a short 40 px ramp at the parapet so the grade reaches the
+# lower fronds; the shader's mask (above) keeps the long ramp so the parapet never moves.
+ff -f lavfi -i "color=black:s=2000x1333,format=gray" -frames:v 1 \
+  -vf "geq=lum='255*clip((550+0.014*X-6-Y)/40,0,1)*clip((pow((X-950)/240,2)+pow((Y-515)/112,2)-1)*3,0,1)',gblur=sigma=4" \
+  "$T/gmask.png"
+ff -i "$A/img-003.jpg" -i "$T/gmask.png" -filter_complex \
+  "[0:v]format=gbrp,split[a][b];[b]curves=all='0/0 0.35/0.2 0.7/0.48 1/0.82',eq=contrast=1.2:saturation=1.7,colorbalance=rm=-0.08:gm=0.05:bm=-0.06,unsharp=11:11:1.0[d];[1:v]format=gbrp[m];[a][d][m]maskedmerge,format=rgb24" \
   "$T/g003.png"
 G="$T/g003.png"
 imgg() { # imgg <out> <crop> <width> [q]: crops of the graded img-003

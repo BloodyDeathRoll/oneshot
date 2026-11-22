@@ -202,7 +202,7 @@ hero = f'''
   </div>
   <div class="hero-text">
     <h1 class="hand">{E(NAME)}</h1>
-    <p class="where">{pipe([E(TYPE_LINE), E(TOWN)])}</p>
+    <p class="where"><span class="type">{E(TYPE_LINE)} {SEP} </span><span>{E(TOWN)}</span></p>
     {book('btn-hero', 'See live dates')}
   </div>
 </section>'''
@@ -219,7 +219,14 @@ glance = f'''
     {ratings()}
   </div>
   <div class="wrap">{who('w1')}</div>
-</section>'''
+</section>
+<div class="court">
+  <picture>
+    <source media="(max-width: 767px)" srcset="{src('court-tall-800')} 800w" sizes="100vw">
+    <img src="{src('court-1920')}" srcset="{src('court-1280')} 1280w, {src('court-1920')} 1920w" sizes="100vw" width="1920" height="960"
+      alt="{E(ALT['img-051'])}" loading="lazy" decoding="async" draggable="false">
+  </picture>
+</div>'''
 
 def room(r, key, names, on):
     note = pipe([E(r['beds']), f"Sleeps {r['sleeps']}", E(r['note'])])
@@ -255,13 +262,6 @@ rooms = f'''
 
 house = f'''
 <section class="house" id="house" aria-labelledby="house-h">
-  <div class="court">
-    <picture>
-      <source media="(max-width: 767px)" srcset="{src('court-tall-800')} 800w" sizes="100vw">
-      <img src="{src('court-1920')}" srcset="{src('court-1280')} 1280w, {src('court-1920')} 1920w" sizes="100vw" width="1920" height="960"
-        alt="{E(ALT['img-051'])}" loading="lazy" decoding="async" draggable="false">
-    </picture>
-  </div>
   <div class="wrap house-head">
     <h2 class="hand" id="house-h">Around the courtyard</h2>
     <div>{''.join(f'<p>{E(p)}</p>' for p in paras('Around the courtyard'))}</div>
@@ -338,7 +338,7 @@ closing = f'''
       width="1920" height="822" alt="{E(ALT['img-003'])}" loading="lazy" decoding="async" draggable="false"></picture>
     <div class="band-txt">
       <p id="close-h">{E(COPY['closing'])}</p>
-      <div class="band-btns">{book()}{btn(AIR_HOUSE, AIR_HOUSE_LABEL, 'light')}{btn(AIR_ROOM, AIR_ROOM_LABEL, 'light')}</div>
+      <div class="band-btns">{btn(BOOK, BOOK_LABEL, 'solid-light')}{btn(AIR_HOUSE, AIR_HOUSE_LABEL, 'ghost')}{btn(AIR_ROOM, AIR_ROOM_LABEL, 'ghost')}</div>
     </div>
   </div>
 </section>

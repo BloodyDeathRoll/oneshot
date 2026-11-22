@@ -20,7 +20,7 @@
 
     const VS = 'attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
     const FS = `precision mediump float;
-varying vec2 v;uniform sampler2D uI,uM;uniform vec2 uS,uO;uniform float uT,uG;
+varying vec2 v;uniform sampler2D uI,uM;uniform vec2 uS,uO,uE;uniform float uT,uG,uA;
 vec3 pm(vec3 x){return mod(((x*34.)+1.)*x,289.);}
 float sn(vec2 P){const vec4 C=vec4(.211324865,.366025404,-.577350269,.024390244);
 vec2 i=floor(P+dot(P,C.yy));vec2 x0=P-i+dot(i,C.xx);vec2 i1=(x0.x>x0.y)?vec2(1.,0.):vec2(0.,1.);
@@ -39,8 +39,11 @@ void main(){
   vec2 d=vec2(sn(p+vec2(t*.12,t*.05)),sn(p+vec2(17.3-t*.07,4.1+t*.12)))*.009;
   d+=vec2(sn(p*3.1+vec2(t*.55,-t*.4)),sn(p*3.1+vec2(9.7+t*.45,t*.5)))*.0022;
   d.x+=sin(t*.7+uv.x*2.3+uv.y*3.1)*.0032;
-  d+=vec2(uG*.016,-abs(uG)*.004)*tip;
-  gl_FragColor=vec4(texture2D(uI,uv+d*m).rgb,1.);
+  d+=vec2(clamp(uG,-1.,1.)*.011,-abs(clamp(uG,-1.,1.))*.003)*tip;
+  d*=uA;                                             // the phone crop is narrower: same motion on screen as the laptop
+  float l=length(d);if(l>.02)d*=.02/l;                // hard cap: no frame can smear, whatever the frame time
+  vec2 e=smoothstep(vec2(0.),uE,v)*smoothstep(vec2(0.),uE,1.-v);   // fade to still over the outer ~60 px
+  gl_FragColor=vec4(texture2D(uI,uv+d*m*e.x*e.y).rgb,1.);
 }`;
     const sh = (type, s) => { const o = gl.createShader(type); gl.shaderSource(o, s); gl.compileShader(o); if (force && !gl.getShaderParameter(o, gl.COMPILE_STATUS)) console.warn('palms shader:', gl.getShaderInfoLog(o)); return o; };
     const pr = gl.createProgram();
@@ -51,7 +54,7 @@ void main(){
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
     const loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
     const U = n => gl.getUniformLocation(pr, n);
-    const uS = U('uS'), uO = U('uO'), uT = U('uT'), uG = U('uG');
+    const uS = U('uS'), uO = U('uO'), uT = U('uT'), uG = U('uG'), uE = U('uE'), uA = U('uA');
     gl.uniform1i(U('uI'), 0); gl.uniform1i(U('uM'), 1);
     const tex = unit => { const t = gl.createTexture(); gl.activeTexture(gl.TEXTURE0 + unit); gl.bindTexture(gl.TEXTURE_2D, t);
       for (const [k, val] of [[gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE], [gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR]]) gl.texParameteri(gl.TEXTURE_2D, k, val);
@@ -78,6 +81,8 @@ void main(){
       const ca = w / h, ia = iw / ih;
       let sx = 1, sy = 1; if (ca > ia) sy = ia / ca; else sx = ca / ia;
       gl.uniform2f(uS, sx, sy); gl.uniform2f(uO, (1 - sx) * pos[0], (1 - sy) * (1 - pos[1]));
+      gl.uniform2f(uE, Math.min(.2, 60 / w), Math.min(.2, 60 / h));
+      gl.uniform1f(uA, Math.min(2.2, Math.max(1, 1440 / Math.max(w, 1) * .55)));
     };
     // the gust: pointer speed (or a tilt of the phone) pushes the fronds, and a spring brings them back in ~1.2 s
     let g = 0, gv = 0, kick = 0, lx = null, lt = 0;
@@ -91,7 +96,7 @@ void main(){
     addEventListener('deviceorientation', e => { if (e.gamma == null) return; if (lg !== null) kick += Math.max(-.6, Math.min(.6, (e.gamma - lg) / 12)); lg = e.gamma; }, { passive: true });
 
     let running = false, raf = 0, t0 = performance.now(), last = t0, frames = 0, slow = 0, visible = true;
-    let nextGust = t0 + 2500;                          // the first gust soon after load, then every 6-9 s
+    let nextGust = t0 + 2500, shown = false, checks = 0;                          // the first gust soon after load, then every 6-9 s
     const frame = now => {
       raf = 0; if (!running) return;
       const dt = Math.min(.05, (now - last) / 1000);
@@ -99,10 +104,16 @@ void main(){
       last = now;
       if (now > nextGust) { kick += (Math.random() < .75 ? 1 : -1) * (.75 + Math.random() * .35); nextGust = now + 6000 + Math.random() * 3000; }
       kick *= Math.exp(-dt * 2.2);
-      const a = 46 * (kick - g) - 7 * gv; gv += a * dt; g += gv * dt;
+      kick = Math.max(-1.1, Math.min(1.1, kick));
+      const a = 46 * (kick - g) - 7 * gv; gv += a * dt; g = Math.max(-1.2, Math.min(1.2, g + gv * dt));
       gl.uniform1f(uT, (now - t0) / 1000); gl.uniform1f(uG, g);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-      if (!cv.classList.contains('on')) cv.classList.add('on');
+      if (!shown) {                                    // a starved renderer can paint a flat block: check before showing
+        const px = new Uint8Array(4), seen = [];
+        for (const [fx, fy] of [[.2, .8], [.5, .9], [.8, .75], [.35, .65], [.65, .85]]) { gl.readPixels(Math.floor(cv.width * fx), Math.floor(cv.height * fy), 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px); seen.push(px[0] + px[1] + px[2]); }
+        if (Math.max(...seen) - Math.min(...seen) > 24) { shown = true; cv.classList.add('on'); }
+        else if (++checks > 30) { running = false; return; }
+      }
       raf = requestAnimationFrame(frame);
     };
     const play = () => { if (!ready || running || !visible || document.hidden) return; running = true; last = performance.now(); raf = requestAnimationFrame(frame); };

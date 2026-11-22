@@ -49,6 +49,9 @@ figure{margin:0}
   .btn-book:active,.btn-line:active{transform:scale(.97)}
 }
 .btn-sm{min-height:44px;padding:0 18px;font-size:15px}
+/* one booking button on the first screen: the header's waits until the hero's has scrolled away */
+html.js .top .btn-sm{opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s ease,transform .25s var(--e-out),visibility 0s linear .25s}
+html.js .top.past .btn-sm{opacity:1;visibility:visible;transform:none;transition:opacity .25s ease,transform .25s var(--e-out),visibility 0s}
 
 /* ------------------------------------------------------------ header */
 .top{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;gap:28px;height:76px;padding:0 40px;
@@ -133,13 +136,13 @@ html.piece .loading{display:flex}
 html.piece .ph{will-change:transform,clip-path}
 .turn-room{display:none}
 html.piece .turn-room{display:block;height:229svh}
-.caps{position:absolute;left:max(56px,4.5vw);top:50%;width:min(29vw,420px);transform:translateY(-50%);opacity:0;
-  transition:opacity .45s ease,visibility 0s linear .45s;pointer-events:none;visibility:hidden}
-.caps.on{opacity:1;visibility:visible;transition:opacity .45s ease,visibility 0s}
+.caps{position:absolute;left:max(56px,4.5vw);top:46%;width:min(29vw,420px);opacity:0;
+  transition:opacity .3s ease,visibility 0s linear .3s;pointer-events:none;visibility:hidden}
+.caps.on{opacity:1;visibility:visible;transition:opacity .3s ease,visibility 0s}
 .cap-title{font-size:60px;line-height:1.05;margin:0 0 24px}
 .cap-stack{display:grid}
-.cap{grid-area:1/1;margin:0;font-size:30px;line-height:1.38;opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .5s var(--e-out)}
-.cap.on{opacity:1;transform:none}
+.cap{grid-area:1/1;margin:0;font-size:30px;line-height:1.38;opacity:0;transform:translateY(8px);transition:opacity .22s ease,transform .3s var(--e-out)}
+.cap.on{opacity:1;transform:none;transition:opacity .3s ease .2s,transform .4s var(--e-out) .2s}   /* the outgoing sentence is gone before the next arrives */
 .cap-dots{display:flex;gap:8px;margin-top:26px}
 .cap-dots i{display:block;width:9px;height:9px;border-radius:5px;background:rgba(19,43,41,.16);transition:background-color .3s ease,transform .35s var(--e-out)}
 .cap-dots i.on{background:var(--lime);transform:scale(1.35)}
@@ -330,7 +333,7 @@ html:not(.js) .ctrl{display:none}
 
   .g-acts .btn{width:100%}
   html.piece .glance{background:#fff;box-shadow:0 -30px 50px -30px rgba(19,43,41,.18)}
-  html.piece .turn-room{height:280svh}
+  html.piece .turn-room{height:250svh}
   .caps{left:20px;right:20px;width:auto;top:auto;bottom:calc(92px + env(safe-area-inset-bottom));transform:none}
   .cap-title{font-size:34px;margin-bottom:12px}
   .cap{font-size:21px;line-height:1.42}
@@ -356,6 +359,7 @@ html:not(.js) .ctrl{display:none}
   .court{padding:80px 0 64px}
   .masonry{columns:2;column-gap:12px}
   .m-text{column-span:all;padding:0 0 26px}
+  .m-item:nth-of-type(n+7){display:none}   /* six photographs on the phone */
   .m-item{margin-bottom:12px;border-radius:12px}
   .carved{padding:80px 0 90px}
   .carved-grid{display:block}
@@ -385,10 +389,10 @@ html:not(.js) .ctrl{display:none}
   .foot{padding:56px 0 120px}
   .foot-grid{grid-template-columns:1fr}
   .foot-acts{justify-content:flex-start}
-  .bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+  .bar{display:flex;visibility:hidden;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
     background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 -10px 30px -18px rgba(19,43,41,.35);
-    transform:translateY(110%);transition:transform .26s var(--e-out)}
-  .bar.on{transform:none}
+    transform:translateY(110%);transition:transform .26s var(--e-out),visibility 0s linear .26s}
+  .bar.on{transform:none;visibility:visible;transition:transform .26s var(--e-out),visibility 0s}
   .bar-book{flex:1}
   .bar-more{padding:0 18px}
   .door-panel{top:7svh;width:100vw;transform-origin:100% 50%;clip-path:polygon(0 64px,50% 0,100% 64px,100% 100%,0 100%);box-shadow:none}
