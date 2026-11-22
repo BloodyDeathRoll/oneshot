@@ -1,6 +1,6 @@
 # copy sources: sea-you-surfers-nest · en
 
-Copywriter 0.5.0 · run 2026-10-midigama-01 (test) · 2026-11-22. Facts come from `dossier/sea-you-surfers-nest/dossier.json` only (harvester 0.5.0, harvested 2026-11-21). `audit.json` `recommended` (auditor 0.1.3) is used only for how to sell: the primary action and its label, the offer framing (F4, F5, F7) and the closing intent. It is never a fact source. Caps were re-read from `schemas/site-content.md` v0.11 this round: `copyBlocks` ≤ 8 (6 used), `testimonials` ≤ 12 × ≤ 600 chars (5 used, longest 386), `rooms[].note` ≤ 140 (longest 74), `stayInfo.note` ≤ 200 (127), `tagline` / `closing` ≤ 140 (60 / 125 after the humanizer pass), `spot` ≤ 200 (64 after the humanizer pass), `bookingLinks[].label` ≤ 60 (longest 39).
+Copywriter 0.5.0 · run 2026-10-midigama-01 (test) · 2026-11-22. Facts come from `dossier/sea-you-surfers-nest/dossier.json` only (harvester 0.5.0, harvested 2026-11-21). `audit.json` `recommended` (auditor 0.1.3) is used only for how to sell: the primary action and its label, the offer framing (F4, F5, F7) and the closing intent. It is never a fact source. Caps were re-read from `schemas/site-content.md` v0.11 this round: `copyBlocks` ≤ 8 (6 used), `testimonials` ≤ 12 × ≤ 600 chars (5 used, longest 386), `rooms[].note` ≤ 140 (longest 74), `stayInfo.note` ≤ 200 (127), `tagline` / `closing` ≤ 140 (60 / 77 after round 2), `spot` ≤ 200 (64 after the humanizer pass), `bookingLinks[].label` ≤ 60 (longest 39).
 
 `en.json` was the copywriter's output. After the humanizer 0.2.1 pass (2026-11-22), `en.draft.json` is the copywriter's draft and `en.json` the rewrite; the changes are in `humanizer-notes.md`, and the rows below describe `en.json`. No fact was added, removed or moved between fields, so the "Each fact once" table still holds. **Round 2** (2026-11-22, after the 4c copy review, round 1) changed four strings in `en.json` only; `en.draft.json` is untouched. See "Round 2 changes" at the end.
 
@@ -20,7 +20,7 @@ Index keys: `reviews.quotes[n]` follows the dossier's order (0 = Sanna … 12 = 
 | No check-in time until the owner confirms (`contradictions[0]`, audit F9) | `stayInfo.checkInFrom/To` = null. |
 | Address = Google listing, postcode 80650 (`contradictions[1]`) | `contact.address`. Booking's 81700 is not used. |
 | Host-conduct complaints are never used (`reviews.critical_themes`, severity high: Camilla, Daniel) | Neither is quoted or paraphrased, and nothing in the copy refers to refunds, overbooking or the host's manner. |
-| Phone read from the sign, not yet confirmed by a human (`contact.phone.confidence` medium-high, `gaps[0]` human_decision) | `contact.phone` = +94715880052 as the dossier records it. The closing says "call" without the number. **The deployer and the human gate must confirm the number before it goes live as a tap-to-call action;** audit item 4 says the secondary action is empty if it is not confirmed. |
+| Phone read from the sign, not yet confirmed by a human (`contact.phone.confidence` medium-high, `gaps[0]` human_decision) | `contact.phone` = +94715880052 as the dossier records it. The closing does not mention the phone (round 2, 4e follow-up: the mockups show no Call button while the number is unconfirmed). **The deployer and the human gate must confirm the number before it goes live as a tap-to-call action;** audit item 4 says the secondary action is empty if it is not confirmed. |
 | Primary action Booking.com; Airbnb secondary; Agoda not linked (audit `recommended`, item 7) | `bookingLinks[0]` Booking.com, `[1]` Airbnb listing 1 (rooms), `[2]` Airbnb listing 2 (whole house). No WhatsApp, no email. |
 | Live prices are not content (`offers_note`) | `priceList[] = []`; no room carries a price. |
 
@@ -31,7 +31,7 @@ Index keys: `reviews.quotes[n]` follows the dossier's order (0 = Sanna … 12 = 
 | `businessName` | "Sea You Surfers Nest" | `business.name.value` (Google). The sign's "Sea You – The Surfers Nest – Midigama" and the OTA name suffix are not used as the name (audit F7 advises one name). |
 | `businessType` | `beach_lodging` | `businessType`, `businessType_why` |
 | `tagline` | "A bed and breakfast in Midigama, on Sri Lanka's south coast." (60) | "Bed and breakfast": `business.google_category` ("Bed & breakfast"). "Midigama": `location.address`. "South coast of Sri Lanka": shared context about the place (Midigama lies between Weligama and Koggala, both in `location.nearby`). |
-| `closing` | "Live dates are on Booking.com, and groups can rent the whole house on Airbnb. If you want to ask Ashly something first, call." (125; humanizer 0.2.1 reworded the second sentence) | Task: `audit.recommended.closing_intent` (not a fact). Booking.com: `booking.engine_url`. Whole house on Airbnb: `booking.other_engines[1]` (listing 1793988904511877292, "whole guest house, 14 guests"). Ashly: `business.owner`. "Call": `contact.phone`, the only direct channel (`booking.path.note`). |
+| `closing` | "Live dates are on Booking.com, and groups can rent the whole house on Airbnb." (77) | Task: `audit.recommended.closing_intent` (not a fact). Booking.com: `booking.engine_url`. Whole house on Airbnb: `booking.other_engines[1]` (listing 1793988904511877292, "whole guest house, 14 guests"). Round 2 (4e follow-up) dropped the humanizer's second sentence, "If you want to ask Ashly something first, call.": the phone (`contact.phone`) is read from a sign and unconfirmed (`gaps[0]`), so the mockups show no Call button, and the line pointed to an action the page does not offer. Airbnb messaging is not offered in its place, because it needs a login (audit F1). The third part of the closing intent ("give the phone as the way to ask Ashly first") waits for the number to be confirmed; it is then a one-line owner edit. |
 | `featureLine` | null | No owner line suits a feature image that is not already used elsewhere ("Hello to waves in a minute walk" is in `spot`). Left for the designer and owner. |
 | `spot` | "“Hello to waves in a minute walk,” says the house’s own listing." (64; humanizer 0.2.1 replaced the label-and-colon with a plain attribution) | `location.distance_to_beach[0]` (owner's Booking/Agoda listing-name suffix), verbatim; "the house's own listing" = that listing name (author: owner). Attributed because it is the owner's claim; `contradictions[2]` resolution. No break is named: `location.spot.gap`. |
 | `season` | null | `season.gap` |
@@ -120,7 +120,7 @@ Index keys: `reviews.quotes[n]` follows the dossier's order (0 = Sanna … 12 = 
 | bed and breakfast, Midigama, south coast | `tagline` only ("Midigama" again in block [5] ¶1, to say the listings' other place names are this house: a different fact, on a different screen) |
 | white two-storey house, courtyard, carved fanlights | block [0] ¶1 only |
 | upstairs balconies, garden, palms | block [0] ¶2 only (Niamh's quote mentions a private balcony in her words) |
-| Ashly as host, Superhost, replies within hours | block [1] ¶1 only; "Ashly" is named again in `closing` as the person to call, which adds no fact |
+| Ashly as host, Superhost, replies within hours | block [1] ¶1 only |
 | Ashly's quoted sentence | block [1] ¶2 only |
 | seven rooms, 14 guests, one A/C room, ask when booking | block [2] ¶1 only |
 | the rooms' furniture and colours | block [2] ¶2 only |
@@ -131,7 +131,7 @@ Index keys: `reviews.quotes[n]` follows the dossier's order (0 = Sanna … 12 = 
 | room sizes, bathroom, entrance, terrace, wardrobe | `rooms[]` notes only |
 | check-out, children, cots, pets, parties | `stayInfo` only |
 | live dates on Booking.com; whole house on Airbnb | `closing` (the sentence) and `bookingLinks[0]`/`[2]` (the buttons), as in the passed sites |
-| phone | `contact.phone` only ("call" in `closing` gives no number) |
+| phone | `contact.phone` only |
 
 No slogan lines, and no keyword list repeated across tagline, intro and CTA. "Surf" appears in the business name, the owner's quoted sentence and the shower block only, and no surf service is implied.
 
@@ -164,5 +164,6 @@ After the 4c copy review, round 1 (two blocking sentences, two notes). Edited in
 | `copyBlocks[4]` ¶1 | "The front door is a carved grey double door, and the wooden chair beside it is carved too." | "One of the rooms has a carved grey double door, and the wooden chair beside it is carved too." | Blocking: img-027 is an "entrance" tagged to the Standard Double Room (Booking) and "Bedroom 2" (Airbnb), not the front door. |
 | `copyBlocks[5]` ¶2 | "Midigama railway station is 950 m away on foot, by Booking.com’s count, and Weligama Beach is 3.4 km." | "Midigama railway station is 950 m away on foot and Weligama Beach is 3.4 km, both by Booking.com’s count." | Note: the 3.4 km is now plainly Booking.com's. |
 | `testimonials[1].quote` (Kenza) | "…steps away from the sea and restaurants. \nWe would…" | "…steps away from the sea and restaurants.\nWe would…" | Note: stray space before the line break removed; words verbatim. |
+| `closing` (4e follow-up, raised by two designers at 4e) | "Live dates are on Booking.com, and groups can rent the whole house on Airbnb. If you want to ask Ashly something first, call." | "Live dates are on Booking.com, and groups can rent the whole house on Airbnb." | The phone is unconfirmed, so the mockups have no Call button; the sentence asked for an action the page does not offer. No replacement channel (Airbnb messaging needs a login, audit F1). |
 
-Caps after round 2: offer body 332, carved body 297, info body 209 (≤ 1500); Kenza 259 (≤ 600).
+Caps after round 2: `closing` 77 (≤ 140); offer body 332, carved body 297, info body 209 (≤ 1500); Kenza 259 (≤ 600).

@@ -268,3 +268,26 @@ Unchanged from round 1. `rooms[]` has 2 rows, `bookingLinks[]` has 3, `stayInfo`
 0 `unsourced`, 0 `contradicted`, voice clean (8.5/10), required fields covered. Both round-1 blocking sentences are fixed with no new claim, and no other field changed.
 
 Ledger line due (not written by me): `copy_failed → copy_passed`, note "round 2 PASS (copyeditor 0.4.2), full re-check: 72 rows, 57 sourced / 1 shared-context / 6 framing / 8 correctly empty, 0 unsourced, 0 contradicted. B1 fixed (Airbnb rate clause cut; advice to ask rests on both listings), B2 fixed ('one of the rooms' per img-027's Booking/Airbnb room tags), N1 fixed (both distances attributed to Booking.com); Kenza's quote whitespace-only change, words verbatim; voice 8.5/10. Before go-live: confirm the sign's phone number, re-read the live stats, owner to confirm check-in/out, breakfast, A/C room and bathrooms".
+
+---
+
+## Addendum — 4e follow-up change to `closing` (2026-11-22)
+
+Reviewer: copyeditor 0.4.2, run `2026-10-midigama-01`. Scope: one copy change made after the round 2 PASS. Two designers raised it at 4e.
+
+**What changed.** I diffed `en.json` field by field against the round 2 input (`cc1f29c`, unchanged in the round 2 commit `4cc8258`). Exactly one value changed, `closing`. Its second sentence, "If you want to ask Ashly something first, call.", was dropped. Every other field is byte-identical. The dossier has not changed (last commit `71f0c22`).
+
+| # | Field | Sentence | Dossier key | Verdict |
+|---|---|---|---|---|
+| 5 | `closing` S1a | Live dates are on Booking.com, … | `booking.engine_url`, `booking.path` ("engine") | sourced (unchanged) |
+| 6 | `closing` S1b | … and groups can rent the whole house on Airbnb. | `booking.other_engines[1]` ("whole guest house, 14 guests") | sourced (unchanged) |
+| 7 | `closing` S2 | *(removed)* | — | — |
+
+- **Length:** 77 characters, within the 140 limit.
+- **Facts:** nothing was added, and the removed sentence was the one leaning on the unconfirmed phone (round 2 note). No claim remains that points at an action the page does not offer. The "Each fact once" table in `sources.md` is still correct: Ashly is now named only in block [1], and the phone only in `contact.phone`.
+- **Voice:** one plain sentence that offers two real choices. Clean. The closing no longer mentions a direct way to ask a question. That is a consequence of the phone not being confirmed yet, not a copy defect.
+- **`sources.md`:** the rows for the caps line, the phone decision, `closing`, "Each fact once" and the round 2 changes table match `en.json`.
+
+Counts are now 71 rows: 56 `sourced`, 1 `shared-context`, 6 `framing`, 8 correctly empty, **0 `unsourced`, 0 `contradicted`**.
+
+**The round 2 PASS stands.** Before go-live: once a person confirms +94715880052, the closing can get its "call" line back and the page its Call button (an owner edit). Until then, the template must not show `contact.phone` as a tap-to-call action.
