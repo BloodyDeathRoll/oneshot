@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sea You Surfers Nest · Midigama, Sri Lanka</title>
+<meta name="description" content="A bed and breakfast in Midigama, on Sri Lanka’s south coast. Seven double rooms, live dates on Booking.com.">
+<meta property="og:title" content="Sea You Surfers Nest">
+<meta property="og:description" content="A bed and breakfast in Midigama, on Sri Lanka’s south coast. Seven double rooms, live dates on Booking.com.">
+<meta property="og:image" content="img/hero-img-004-1280.webp">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Karla:wght@400;600&display=swap">
+<link rel="preload" as="image" media="(min-width: 700px)" imagesrcset="img/hero-img-004-1280.webp 1280w, img/hero-img-004-1920.webp 1920w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" media="(max-width: 699px)" imagesrcset="img/hero-img-034-600.webp 600w, img/hero-img-034-900.webp 900w" imagesizes="100vw" fetchpriority="high">
+<script>document.documentElement.classList.add('js')</script>
+<style>/* Sea You Surfers Nest, calm ("The board rack"). Colours sampled from the house's own photographs
+   (concepts.md §4 concept 1): white ground, the veranda wall as tint, the sign's slate for booking only. */
+:root {
+  --ground: #ffffff;
+  --tint: #f0f0ed;          /* img-004, the veranda's white back wall */
+  --ink: #141008;           /* img-004, the shadow under the teak table */
+  --ink-2: #4a463f;         /* ink, softened for secondary lines: 8.9:1 on white, 7.9:1 on the tint */
+  --wood: #be8c53;          /* img-004, the wooden board on the rack: icons and the active dot only */
+  --mint: #74c29a;          /* img-015, the four-poster frame: the "In every room" icons */
+  --mint-ink: #2f7a55;      /* the mint, deepened for strokes that must read on the tint */
+  --accent: #3c5965;        /* img-001, the slate lettering of "Sea You" on the sign: booking only */
+  --accent-press: #314a54;
+  --text: 'Karla', 'Karla Fallback', system-ui, sans-serif;
+  --script: 'Grand Hotel', 'Grand Hotel Fallback', cursive;
+  --ease: cubic-bezier(.23, 1, .32, 1);
+  --drawer: cubic-bezier(.32, .72, 0, 1);
+  --wrap: 1200px;
+  --gut: 16px;
+}
+/* fallbacks matched to the web fonts' measured widths and line boxes (Karla/Arial 1.014, Grand Hotel/Georgia 0.684), so the swap moves nothing */
+@font-face { font-family: 'Karla Fallback'; src: local('Arial'); size-adjust: 101.4%; ascent-override: 90.7%; descent-override: 24.7%; line-gap-override: 0%; }
+@font-face { font-family: 'Grand Hotel Fallback'; src: local('Georgia'); size-adjust: 68.4%; ascent-override: 138.9%; descent-override: 59.9%; line-gap-override: 0%; }
+@media (min-width: 700px) { :root { --gut: 40px; } }
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 84px; }
+body { margin: 0; background: var(--ground); color: var(--ink); font: 400 17px/1.6 var(--text); -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; -webkit-tap-highlight-color: transparent; }
+button { font: inherit; color: inherit; -webkit-tap-highlight-color: transparent; }
+p { margin: 0 0 1em; }
+h1, h2, h3 { margin: 0; font-weight: 400; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 50; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 10px; text-decoration: none; }
+.skip:focus { top: 12px; }
+.script { font-family: var(--script); font-weight: 400; letter-spacing: .005em; line-height: 1.05; }
+h2, .spot, .big-line, .close-line, .tagline { text-wrap: balance; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gut); }
+.col { max-width: calc(680px + 2 * var(--gut)); margin: 0 auto; padding: 0 var(--gut); }
+.center { text-align: center; }
+.tint { background: var(--tint); }
+section { padding: 96px 0; }
+@media (max-width: 699px) { section { padding: 64px 0; } }
+h2.script { font-size: clamp(40px, 5vw, 56px); margin-bottom: 20px; }
+.sep { color: var(--wood); padding: 0 .35em; }
+/* ---------------------------------------------------------------- buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 52px; padding: 0 24px; border-radius: 999px; text-decoration: none;
+  font: 600 16px/1.2 var(--text); letter-spacing: .01em; white-space: nowrap;
+  transition: transform 160ms var(--ease), background-color 200ms var(--ease), box-shadow 200ms var(--ease);
+  -webkit-user-select: none; user-select: none; touch-action: manipulation;
+}
+.btn .ic { width: 20px; height: 20px; flex: none; }
+.btn:active { transform: scale(.97); transition-duration: 100ms; }
+.btn-book { background: var(--accent); color: #fff; }
+.btn-ink { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+@media (hover: hover) and (pointer: fine) {
+  .btn-book:hover { background: var(--accent-press); box-shadow: 0 6px 18px rgba(60, 89, 101, .28); transform: translateY(-1px); }
+  .btn-ink:hover { background: rgba(20, 16, 8, .05); }
+  .btn:active { transform: scale(.97); }
+}
+.btn-sm { min-height: 44px; padding: 0 18px; font-size: 15px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.actions.center, .center .actions { justify-content: center; }
+.ic { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+/* ---------------------------------------------------------------- header */
+.top {
+  position: fixed; inset: 0 0 auto; z-index: 20; height: 72px;
+  display: flex; align-items: center; justify-content: space-between; padding: 0 var(--gut);
+  transition: background-color 240ms var(--ease), box-shadow 240ms var(--ease);
+}
+.mark { font-size: 30px; text-decoration: none; color: var(--ink); display: inline-flex; align-items: center; min-height: 44px; }
+.mark, .top-book { opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 240ms var(--ease), transform 240ms var(--ease), visibility 0s 240ms; }
+.top.solid { background: rgba(255, 255, 255, .96); box-shadow: 0 2px 18px rgba(20, 16, 8, .07); }
+.top.solid .mark, .top.solid .top-book { opacity: 1; visibility: visible; transform: none; transition: opacity 240ms var(--ease), transform 240ms var(--ease); }
+@media (max-width: 699px) { .top { height: 60px; } .mark { font-size: 26px; } .top-book { display: none; } }
+@supports (backdrop-filter: blur(1px)) { .top.solid { background: rgba(255, 255, 255, .86); backdrop-filter: blur(14px) saturate(1.2); } }
+/* ---------------------------------------------------------------- hero */
+.hero { position: relative; height: 100vh; height: 100svh; min-height: 560px; padding: 0; overflow: hidden; display: grid; place-items: center; }
+.hero-media, .hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-media img { object-fit: cover; object-position: 50% 50%; }
+.js .hero-media img { height: calc(100% + 4rem); will-change: transform; }
+.hero-text {
+  position: relative; z-index: 1; text-align: center; padding: 48px 72px 52px;
+  display: flex; flex-direction: column; align-items: center;
+}
+.hero-text::before { /* the soft white veil, behind the title block only */
+  content: ''; position: absolute; inset: -14% -22%; z-index: -1; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(255, 255, 255, .8), rgba(255, 255, 255, .66) 46%, rgba(255, 255, 255, .26) 76%, rgba(255, 255, 255, 0));
+}
+.hero h1 { font-size: 76px; color: var(--ink); line-height: 1; white-space: nowrap; }
+.where { font-size: 18px; font-weight: 600; letter-spacing: .02em; margin: 12px 0 26px; color: var(--ink); }
+.btn-hero { min-height: 56px; padding: 0 30px; font-size: 17px; }
+@media (max-width: 699px) {
+  .hero-media img { object-position: 50% 40%; }
+  .js .hero-media img { height: 100%; }
+  .hero-text { padding: 40px 28px 44px; }
+  .hero h1 { font-size: 44px; }
+  .where { font-size: 17px; margin: 10px 0 22px; }
+}
+/* ---------------------------------------------------------------- at a glance */
+.glance { padding: 88px 0 96px; }
+.tagline { font-size: 22px; line-height: 1.45; margin-bottom: 14px; }
+.spot { font-size: 34px; line-height: 1.2; margin: 0 auto 26px; max-width: 600px; }
+.inc { color: var(--ink-2); font-size: 15px; margin-bottom: 6px; }
+.price { font-weight: 600; margin-bottom: 26px; }
+.ratings { display: flex; justify-content: center; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
+.rating {
+  flex: 1 1 0; min-width: 150px; max-width: 210px; text-decoration: none; padding: 16px 14px 14px; border-radius: 16px;
+  background: var(--tint); display: grid; justify-items: center; gap: 2px;
+  transition: transform 200ms var(--ease), box-shadow 200ms var(--ease);
+}
+.tint .rating { background: #fff; }
+.rating:active { transform: scale(.98); transition-duration: 120ms; }
+@media (hover: hover) and (pointer: fine) { .rating:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(20, 16, 8, .08); } }
+.score { font-size: 30px; font-weight: 600; line-height: 1.1; letter-spacing: -.01em; }
+.score small { font-size: 15px; font-weight: 400; color: var(--ink-2); letter-spacing: 0; }
+.rname { font-weight: 600; font-size: 15px; }
+.rmeta, .rday { font-size: 13.5px; color: var(--ink-2); line-height: 1.35; }
+@media (max-width: 699px) {
+  .tagline { font-size: 20px; }
+  .spot { font-size: 30px; }
+  .ratings { gap: 8px; }
+  .rating { min-width: 0; padding: 14px 6px 12px; }
+  .score { font-size: 26px; }
+  .rmeta, .rday { font-size: 12.5px; }
+  .glance .actions .btn, .close-actions .btn { width: 100%; white-space: normal; text-align: center; padding: 10px 20px; }
+}
+/* ---------------------------------------------------------------- rooms */
+.rooms-head { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; margin-bottom: 72px; }
+.rooms-intro p { max-width: 520px; }
+.every { background: #fff; border-radius: 20px; padding: 28px 32px 22px; margin-top: 10px; }
+.every h3 { font-size: 15px; font-weight: 600; letter-spacing: .02em; margin-bottom: 14px; color: var(--ink-2); }
+.every ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+.every li { display: flex; align-items: center; gap: 14px; font-size: 17px; line-height: 1.35; }
+.ic-mint { width: 40px; height: 40px; padding: 8px; flex: none; border-radius: 12px; background: rgba(116, 194, 154, .18); color: var(--mint-ink); }
+.room { display: grid; grid-template-columns: 7fr 5fr; gap: 56px; align-items: center; }
+.room + .room { margin-top: 72px; }
+.room h3 { font-family: var(--script); font-size: 40px; line-height: 1.1; margin-bottom: 10px; }
+.room-facts { font-weight: 600; margin-bottom: 8px; }
+.room-text p:not(.room-facts) { color: var(--ink-2); max-width: 420px; }
+.room .actions { margin-top: 22px; }
+@media (max-width: 899px) {
+  .rooms-head, .room { grid-template-columns: 1fr; gap: 28px; }
+  .rooms-head { margin-bottom: 48px; }
+  .every { padding: 22px 20px 18px; }
+  .room + .room { margin-top: 56px; }
+}
+@media (max-width: 520px) { .every ul { grid-template-columns: 1fr; gap: 10px; } }
+/* slideshows: a scroll-snap row without JS, a cross-fading stack with it */
+.show { position: relative; }
+.track { list-style: none; margin: 0; padding: 0; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; border-radius: 18px; scrollbar-width: none; }
+.track::-webkit-scrollbar { display: none; }
+.slide { flex: 0 0 100%; scroll-snap-align: start; aspect-ratio: 3 / 2; }
+.slide img { width: 100%; height: 100%; object-fit: cover; }
+.js .track { display: grid; overflow: hidden; touch-action: pan-y; }
+.js .slide { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity 280ms var(--ease), visibility 0s 280ms; }
+.js .slide.on { opacity: 1; visibility: visible; transition: opacity 280ms var(--ease); }
+.ctrl { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 14px; }
+.ctrl[hidden] { display: none; }
+.js .ctrl[hidden] { display: flex; visibility: hidden; }
+.arw { width: 44px; height: 44px; border: 0; border-radius: 50%; background: transparent; display: grid; place-items: center; cursor: pointer; transition: background-color 200ms var(--ease), transform 120ms var(--ease); }
+.arw .ic { width: 22px; height: 22px; }
+.arw:active { transform: scale(.92); }
+@media (hover: hover) and (pointer: fine) { .arw:hover { background: rgba(20, 16, 8, .06); } }
+.dots { position: relative; display: flex; }
+.dot { position: relative; width: 24px; height: 44px; border: 0; background: transparent; cursor: pointer; padding: 0; }
+.dot::after { content: ''; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: rgba(20, 16, 8, .22); transition: background-color 200ms var(--ease); }
+.pill { position: absolute; left: 0; top: 50%; width: 22px; height: 10px; margin: -5px 0 0 1px; border-radius: 6px; background: var(--wood); transition: transform 280ms var(--ease); pointer-events: none; z-index: 1; }
+.ctrl[hidden] .pill { display: none; }
+/* ---------------------------------------------------------------- courtyard */
+.court { padding-top: 0; }
+.band img { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; }
+.court-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; padding-top: 80px; }
+.court-text p { max-width: 460px; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.pair img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 18px; }
+@media (max-width: 899px) {
+  .band img { aspect-ratio: 16 / 9; }
+  .court-grid { grid-template-columns: 1fr; gap: 32px; padding-top: 56px; }
+  .pair { gap: 10px; }
+}
+/* ---------------------------------------------------------------- carved doors and the shower: matted prints */
+.carved h2 { margin-bottom: 44px; }
+.prints { display: grid; grid-template-columns: repeat(3, minmax(0, 340px)); justify-content: center; gap: 32px; margin-bottom: 48px; }
+.print { background: #fff; padding: 12px; border-radius: 6px; box-shadow: 0 10px 28px rgba(20, 16, 8, .10), 0 1px 3px rgba(20, 16, 8, .08); }
+.print img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 2px; }
+.prints .print:nth-child(1) { transform: rotate(-1.2deg); }
+.prints .print:nth-child(3) { transform: rotate(1deg); }
+.carved .col p { font-size: 17px; }
+@media (max-width: 699px) {
+  .carved h2 { margin-bottom: 28px; }
+  .prints { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; margin: 0 calc(-1 * var(--gut)) 36px; padding: 8px var(--gut) 24px; scrollbar-width: none; }
+  .prints::-webkit-scrollbar { display: none; }
+  .prints { scroll-padding-left: var(--gut); }
+  .prints .print { flex: 0 0 62%; scroll-snap-align: start; }
+}
+/* ---------------------------------------------------------------- breakfast */
+.breakfast { padding: 104px 0; }
+.big-line { font-size: 26px; line-height: 1.45; margin: 0; }
+@media (max-width: 699px) { .breakfast { padding: 72px 0; } .big-line { font-size: 22px; } }
+/* ---------------------------------------------------------------- Ashly and the guests */
+.guests-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; }
+.ashly p { max-width: 460px; }
+.ashly p + p { font-size: 17px; color: var(--ink-2); }
+.said .ratings { justify-content: flex-start; margin-bottom: 28px; }
+.ratings.big .rating { max-width: none; padding: 20px 14px 18px; }
+.ratings.big .score { font-size: 38px; }
+.quotes { background: #fff; border-radius: 20px; padding: 32px 36px 18px; }
+.qstack { display: grid; }
+.q { grid-area: 1 / 1; margin: 0; }
+.js .q { opacity: 0; visibility: hidden; transition: opacity 280ms var(--ease), visibility 0s 280ms; }
+.js .q.on { opacity: 1; visibility: visible; transition: opacity 280ms var(--ease); }
+html:not(.js) .top { position: absolute; }
+html:not(.js) .mark { opacity: 1; visibility: visible; transform: none; }
+html:not(.js) .qstack { display: block; } html:not(.js) .q + .q { margin-top: 28px; }
+.q blockquote { margin: 0; }
+.q blockquote p { font-size: 18px; line-height: 1.55; white-space: pre-line; margin-bottom: 14px; }
+.q figcaption { font-size: 15px; color: var(--ink-2); font-weight: 600; }
+.quotes .ctrl { justify-content: flex-start; margin: 14px 0 0 -12px; }
+@media (max-width: 899px) {
+  .guests-grid { grid-template-columns: 1fr; gap: 36px; }
+  .quotes { padding: 24px 20px 12px; }
+  .q blockquote p { font-size: 17.5px; }
+  .ratings.big .score { font-size: 30px; }
+  .ratings.big .rating { padding: 16px 6px 14px; }
+}
+/* ---------------------------------------------------------------- finding the house */
+.find-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 72px; align-items: center; }
+.sign { max-width: 400px; justify-self: center; transform: rotate(-1deg); }
+.addr { display: flex; gap: 10px; align-items: flex-start; font-weight: 600; margin: 22px 0 18px; }
+.addr .ic { width: 22px; height: 22px; margin-top: 2px; color: var(--wood); flex: none; }
+.stay { margin-top: 24px; font-size: 15.5px; color: var(--ink-2); }
+.find-text p:not(.addr):not(.stay) { max-width: 520px; }
+@media (max-width: 899px) {
+  .find-grid { grid-template-columns: 1fr; gap: 40px; }
+  .sign { max-width: 62%; }
+}
+/* ---------------------------------------------------------------- closing: the band, and a white card over its lower edge */
+.closing { padding: 0 0 96px; }
+.close-band img { width: 100%; aspect-ratio: 21 / 9; object-fit: cover; }
+.close-card {
+  position: relative; max-width: 1120px; margin: -112px auto 0; padding: 40px 48px 44px; text-align: center;
+  background: #fff; border-radius: 24px; box-shadow: 0 18px 50px rgba(20, 16, 8, .12);
+}
+.close-line { font: 600 26px/1.4 var(--text); letter-spacing: -.005em; color: var(--ink); max-width: 720px; margin: 0 auto; }
+.close-actions { padding-top: 28px; }
+@media (max-width: 899px) { .close-card { margin: -64px var(--gut) 0; padding: 32px 24px 36px; } }
+@media (max-width: 699px) {
+  .closing { padding-bottom: 64px; }
+  .close-band img { aspect-ratio: 4 / 3; }
+  .close-card { margin: 0; padding: 32px var(--gut) 0; box-shadow: none; border-radius: 0; }
+  .close-line { font-size: 23px; }
+  .close-actions { padding-top: 24px; }
+}
+/* ---------------------------------------------------------------- footer */
+.foot { background: var(--tint); padding: 64px 0 120px; }
+.foot-grid { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: start; }
+.foot-name { font-size: 40px; margin-bottom: 12px; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
+.fine { font-size: 14px; color: var(--ink-2); }
+.copy { margin-top: 32px; }
+@media (min-width: 700px) { .foot { padding-bottom: 56px; } }
+@media (max-width: 899px) { .foot-grid { grid-template-columns: 1fr; gap: 28px; } .foot-links { justify-content: flex-start; } }
+/* ---------------------------------------------------------------- phone bar */
+.bar { display: none; }
+@media (max-width: 699px) {
+  .bar {
+    display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: rgba(255, 255, 255, .97);
+    box-shadow: 0 -4px 24px rgba(20, 16, 8, .10); border-radius: 20px 20px 0 0;
+    transform: translateY(110%); transition: transform 240ms var(--drawer);
+  }
+  .bar.on { transform: none; }
+  .bar-row { display: flex; gap: 10px; align-items: center; }
+  .bar-more { width: 52px; height: 52px; flex: none; border: 0; border-radius: 50%; background: var(--tint); display: grid; place-items: center; cursor: pointer; transition: transform 120ms var(--ease); }
+  .bar-more:active { transform: scale(.94); }
+  .bar-more .ic { transition: transform 240ms var(--drawer); }
+  .bar-more[aria-expanded="true"] .ic { transform: rotate(180deg); }
+  .bar-book { flex: 1; }
+  .bar-call { width: 52px; padding: 0; flex: none; }
+  .bar-call span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .bar-panel { padding: 14px 6px 16px; text-align: center; }
+  .bar-panel:not([hidden]) { animation: rise 240ms var(--drawer); }
+  .bar-panel.out { animation: fall 180ms var(--drawer) forwards; }
+  .bar-panel .spot { font-size: 26px; margin-bottom: 12px; }
+  .bar-panel .inc { font-size: 14.5px; }
+  .bar-panel .price { margin-bottom: 14px; }
+  .bar-panel .ratings { margin-bottom: 16px; }
+  .bar-full { width: 100%; white-space: normal; }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } }
+@keyframes fall { to { opacity: 0; transform: translateY(12px); } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0s !important; animation: none !important; }
+  .js .hero-media img { height: 100%; transform: none !important; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#rooms">Skip to the rooms</a>
+<main>
+<header class="top" id="top">
+  <a class="mark script" href="#top">Sea You Surfers Nest</a>
+  <a class="btn btn-book btn-sm top-book" href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" aria-label="See rooms and live dates on Booking.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>See live dates</span></a>
+</header>
+<section class="hero" aria-label="Sea You Surfers Nest">
+  <picture class="hero-media">
+    <source media="(max-width: 699px)" srcset="img/hero-img-034-600.webp 600w, img/hero-img-034-900.webp 900w" sizes="100vw" width="900" height="1800">
+    <img src="img/hero-img-004-1920.webp" srcset="img/hero-img-004-1280.webp 1280w, img/hero-img-004-1920.webp 1920w" sizes="100vw"
+      width="1920" height="1080" alt="A covered veranda: a wooden armchair with a cane seat, a low wooden table, potted plants and grey carved doors at the back, and three surfboards standing on a wall rack on the right" fetchpriority="high">
+  </picture>
+  <div class="hero-text">
+    <h1 class="script">Sea You Surfers Nest</h1>
+    <p class="where">Midigama, Sri Lanka</p>
+    <a class="btn btn-book btn-hero" href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" aria-label="See rooms and live dates on Booking.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>See live dates</span></a>
+  </div>
+</section>
+<section class="glance" id="glance" aria-labelledby="h-glance">
+  <div class="col center">
+    <h2 class="sr" id="h-glance">At a glance</h2>
+    <p class="tagline">A bed and breakfast in Midigama, on Sri Lanka’s south coast.</p>
+    <p class="spot script">“Hello to waves in a minute walk,” says the house’s own listing.</p>
+    <p class="inc"><span>Free WiFi in public areas</span> <span class="sep" aria-hidden="true">|</span> <span>Kitchen</span> <span class="sep" aria-hidden="true">|</span> <span>Fan and mosquito net</span> <span class="sep" aria-hidden="true">|</span> <span>Free private parking on site</span></p>
+    <p class="price">Live dates on Booking.com</p>
+    <div class="ratings"><a class="rating" href="https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0" rel="noopener"><span class="score">4.9<small>/5</small></span><span class="rname">Google</span><span class="rmeta">11 reviews</span><span class="rday">21 Nov 2026</span></a><a class="rating" href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" rel="noopener"><span class="score">8.0<small>/10</small></span><span class="rname">Booking.com</span><span class="rmeta">8 reviews</span><span class="rday">21 Nov 2026</span></a><a class="rating" href="https://www.airbnb.co.uk/rooms/1508895627217411616" rel="noopener"><span class="score">5.0<small>/5</small></span><span class="rname">Airbnb</span><span class="rmeta">10 reviews</span><span class="rday">21 Nov 2026</span></a></div>
+    <div class="actions"><a class="btn btn-book " href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>See rooms and live dates on Booking.com</span></a></div>
+  </div>
+</section>
+<section class="rooms tint" id="rooms" aria-labelledby="h-rooms">
+  <div class="wrap">
+    <div class="rooms-head">
+      <div class="rooms-intro">
+        <h2 class="script" id="h-rooms">Seven rooms</h2>
+        <p>All seven rooms are doubles, and between them they sleep fourteen. Only one has air conditioning, so ask when you book if you want the one that has it.</p><p>The rooms are furnished much alike. The bed is a mint-green four-poster double with a teal velvet throw on it, and there’s a timber towel ladder and a green cabinet with a mirror.</p>
+      </div>
+      <div class="every">
+        <h3>In every room</h3>
+        <ul><li><svg class="ic ic-mint" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 21V3M20 21V3M4 3h16M4 6.5h16"/><path d="M4 14.5h16v3.5H4zM6.5 14.5v-2.2a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v2.2M12.5 14.5v-2.2a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v2.2"/></svg><span>Mint-green four-poster double</span></li><li><svg class="ic ic-mint" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 7.5c3-1.6 6-1.6 8.5 0s5.5 1.6 8.5 0v10c-3 1.6-6 1.6-8.5 0s-5.5-1.6-8.5 0z"/><path d="M3.5 12.5c3-1.6 6-1.6 8.5 0s5.5 1.6 8.5 0"/></svg><span>Teal velvet throw</span></li><li><svg class="ic ic-mint" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 2.5 6 21.5M16 2.5l2 19M7.6 6.5h8.8M7.2 10.5h9.6M6.8 14.5h10.4M6.4 18.5h11.2"/></svg><span>Timber towel ladder</span></li><li><svg class="ic ic-mint" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="7" y="2.5" width="10" height="8" rx="1.2"/><rect x="5.5" y="12.5" width="13" height="9" rx="1.2"/><path d="M5.5 16.5h13M10.5 14.5h3"/></svg><span>Green cabinet with a mirror</span></li><li><svg class="ic ic-mint" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="9" r="1.6"/><path d="M12 7.4C11 4.5 12.6 3 14.6 3.4M13.6 9.4c3 .3 3.8 2.4 2.6 4M10.5 9.6c-2.4 1.8-4.5 1.1-4.6-.9"/><path d="M12 10.6V14"/><path d="M5 21c0-4 3-6.6 7-6.6s7 2.6 7 6.6"/></svg><span>Fan and mosquito net</span></li></ul>
+      </div>
+    </div>
+  <article class="room" aria-labelledby="h-deluxe">
+    <div class="show" data-show id="deluxe" role="region" aria-roledescription="carousel" aria-label="Deluxe Double Room photographs"><ul class="track" tabindex="0"><li class="slide on" aria-roledescription="slide" aria-label="1 of 6"><img src="img/room-img-002-1080.webp" srcset="img/room-img-002-720.webp 720w, img/room-img-002-1080.webp 1080w" sizes="(max-width: 899px) calc(100vw - 32px), 680px" width="1080" height="720" alt="A mint-green four-poster double with white sheets and striped pillows; a grey panelled double door stands open onto a veranda with a green table and chairs" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="2 of 6"><img src="img/room-img-015-1080.webp" srcset="img/room-img-015-720.webp 720w, img/room-img-015-1080.webp 1080w" sizes="(max-width: 899px) calc(100vw - 32px), 680px" width="1080" height="720" alt="A mint-green four-poster with green sheets and a teal velvet throw, between two grey doors" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="3 of 6"><img src="img/room-img-012-1080.webp" srcset="img/room-img-012-720.webp 720w, img/room-img-012-1080.webp 1080w" sizes="(max-width: 899px) calc(100vw - 32px), 680px" width="1080" height="720" alt="A mint-green four-poster with lime-green sheets and pillows beside a shuttered window" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="4 of 6"><img src="img/room-img-022-1080.webp" srcset="img/room-img-022-720.webp 720w, img/room-img-022-1080.webp 1080w" sizes="(max-width: 899px) calc(100vw - 32px), 680px" width="1080" height="720" alt="Lime-green pillows and sheets on a mint-green bed, a teal throw across the foot and a potted plant beside it" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="5 of 6"><img src="img/room-img-033-1080.webp" srcset="img/room-img-033-720.webp 720w, img/room-img-033-1080.webp 1080w" sizes="(max-width: 899px) calc(100vw - 32px), 680px" width="1080" height="720" alt="A mint-green four-poster with white sheets next to a grey panelled door, a dark mirror shelf and a green bedside cabinet" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="6 of 6"><img src="img/room-img-032-1080.webp" srcset="img/room-img-032-720.webp 720w, img/room-img-032-1080.webp 1080w" sizes="(max-width: 899px) calc(100vw - 32px), 680px" width="1080" height="720" alt="A white bathroom with a pedestal sink under a black-framed mirror" loading="lazy" decoding="async"></li></ul><div class="ctrl" hidden><button class="arw prev" type="button" aria-label="Previous photo"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.5 6 8.5 12l6 6"/></svg></button><div class="dots" role="group" aria-label="Choose a photo"><span class="pill" aria-hidden="true"></span><button type="button" class="dot" aria-label="Photo 1 of 6"></button><button type="button" class="dot" aria-label="Photo 2 of 6"></button><button type="button" class="dot" aria-label="Photo 3 of 6"></button><button type="button" class="dot" aria-label="Photo 4 of 6"></button><button type="button" class="dot" aria-label="Photo 5 of 6"></button><button type="button" class="dot" aria-label="Photo 6 of 6"></button></div><button class="arw next" type="button" aria-label="Next photo"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.5 6l6 6-6 6"/></svg></button></div></div>
+    <div class="room-text">
+      <h3 id="h-deluxe">Deluxe Double Room</h3>
+      <p class="room-facts"><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 2</span></p>
+      <p>13 m², with its own bathroom, a private entrance, a terrace and a balcony.</p>
+      <div class="actions"><a class="btn btn-book btn-room" href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" aria-label="See rooms and live dates on Booking.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>See live dates</span></a></div>
+    </div>
+  </article>
+  <article class="room" aria-labelledby="h-standard">
+    <div class="show" data-show id="standard" role="region" aria-roledescription="carousel" aria-label="Standard Double Room photographs"><ul class="track" tabindex="0"><li class="slide on" aria-roledescription="slide" aria-label="1 of 4"><img src="img/room-img-009-1080.webp" srcset="img/room-img-009-720.webp 720w, img/room-img-009-1080.webp 1080w" sizes="(max-width: 899px) calc(100vw - 32px), 680px" width="1080" height="720" alt="A mint-green four-poster with grey sheets, a timber towel ladder, a mirror and a green cabinet beside a dark green door" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="2 of 4"><img src="img/room-img-026-1080.webp" srcset="img/room-img-026-720.webp 720w, img/room-img-026-1080.webp 1080w" sizes="(max-width: 899px) calc(100vw - 32px), 680px" width="1080" height="720" alt="A mint-green four-poster with grey pillows and a teal velvet throw under a ceiling fan" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="3 of 4"><img src="img/room-img-005-1080.webp" srcset="img/room-img-005-720.webp 720w, img/room-img-005-1080.webp 1080w" sizes="(max-width: 899px) calc(100vw - 32px), 680px" width="1080" height="720" alt="A mint-green four-poster with a teal throw beside a timber towel ladder, a green cabinet and a mirror" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="4 of 4"><img src="img/room-img-025-1080.webp" srcset="img/room-img-025-720.webp 720w, img/room-img-025-1080.webp 1080w" sizes="(max-width: 899px) calc(100vw - 32px), 680px" width="1080" height="720" alt="A wooden side table with a white tea set and a mint-green chair beside the foot of a four-poster" loading="lazy" decoding="async"></li></ul><div class="ctrl" hidden><button class="arw prev" type="button" aria-label="Previous photo"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.5 6 8.5 12l6 6"/></svg></button><div class="dots" role="group" aria-label="Choose a photo"><span class="pill" aria-hidden="true"></span><button type="button" class="dot" aria-label="Photo 1 of 4"></button><button type="button" class="dot" aria-label="Photo 2 of 4"></button><button type="button" class="dot" aria-label="Photo 3 of 4"></button><button type="button" class="dot" aria-label="Photo 4 of 4"></button></div><button class="arw next" type="button" aria-label="Next photo"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.5 6l6 6-6 6"/></svg></button></div></div>
+    <div class="room-text">
+      <h3 id="h-standard">Standard Double Room</h3>
+      <p class="room-facts"><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 2</span></p>
+      <p>12 m², with a private entrance and a wardrobe.</p>
+      <div class="actions"><a class="btn btn-book btn-room" href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" aria-label="See rooms and live dates on Booking.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>See live dates</span></a></div>
+    </div>
+  </article>
+  </div>
+</section>
+<section class="court" id="courtyard" aria-labelledby="h-court">
+  <div class="band"><img src="img/court-img-071-1600.webp" srcset="img/court-img-071-800.webp 800w, img/court-img-071-1600.webp 1600w" sizes="100vw" width="1600" height="800" alt="A concrete bench with a teal cushion in the courtyard, potted plants either side and palm trees above the wall" loading="lazy" decoding="async"></div>
+  <div class="wrap court-grid">
+    <div class="court-text">
+      <h2 class="script" id="h-court">Around the courtyard</h2>
+      <p>Sea You is a white two-storey house. Downstairs there’s an inner courtyard, with potted plants and a cushioned bench, and the room doors that open onto it have carved fanlights over them.</p><p>From the balconies upstairs you look out over the garden to the coconut palms. There are tables and chairs out there, and the long one has a settee with green cushions.</p>
+    </div>
+    <div class="pair">
+      <img src="img/balc-img-003-800.webp" width="800" height="1000" alt="A mint-green table with a potted plant and two mint-green chairs on the upstairs balcony, palm fronds beyond the parapet" loading="lazy" decoding="async">
+      <img src="img/balc-img-045-800.webp" width="800" height="1000" alt="Two carved wooden armchairs with cane seats and a round wooden table on a balcony" loading="lazy" decoding="async">
+    </div>
+  </div>
+</section>
+<section class="carved tint" id="carved" aria-labelledby="h-carved">
+  <div class="wrap">
+    <h2 class="script center" id="h-carved">Carved doors and a surfboard shower</h2>
+    <div class="prints"><div class="print"><img src="img/print-img-027-640.webp" width="640" height="960" alt="A carved grey double door under a carved fanlight, a wall lamp beside it and a carved wooden chair" loading="lazy" decoding="async"></div><div class="print"><img src="img/print-img-035-640.webp" width="640" height="960" alt="Carved wooden masks hanging beside a grey door with a carved panel, ferns and plants below" loading="lazy" decoding="async"></div><div class="print"><img src="img/print-img-036-640.webp" width="640" height="960" alt="A shower built into a wooden surfboard fixed to a grey garden wall, the shower head above it and palms behind" loading="lazy" decoding="async"></div></div>
+    <div class="col"><p>One of the rooms has a carved grey double door, and the wooden chair beside it is carved too. Elsewhere, carved wooden masks hang by a doorway among the ferns.</p><p>Out in the garden there’s a shower built into a wooden surfboard, fixed to the wall under the palms. It’s for rinsing off after the sea.</p></div>
+  </div>
+</section>
+<section class="breakfast" id="breakfast" aria-labelledby="h-bf">
+  <div class="col center">
+    <h2 class="script" id="h-bf">Breakfast</h2>
+    <p class="big-line">Breakfast here is Asian, with local specialities and warm dishes, and there’s juice and fruit too.</p>
+  </div>
+</section>
+<section class="guests tint" id="guests" aria-labelledby="h-ashly">
+  <div class="wrap guests-grid">
+    <div class="ashly">
+      <h2 class="script" id="h-ashly">Ashly</h2>
+      <p>Your host is Ashly. He’s a Superhost on Airbnb and usually replies there within a few hours.</p><p>“Whether you’re chasing the perfect wave, soaking up the beach vibes, or just looking to unwind,” he writes, “our place is your perfect home away from home.”</p>
+    </div>
+    <div class="said">
+      <h3 class="sr">What guests wrote</h3>
+      <div class="ratings big"><a class="rating big" href="https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0" rel="noopener"><span class="score">4.9<small>/5</small></span><span class="rname">Google</span><span class="rmeta">11 reviews</span><span class="rday">21 Nov 2026</span></a><a class="rating big" href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" rel="noopener"><span class="score">8.0<small>/10</small></span><span class="rname">Booking.com</span><span class="rmeta">8 reviews</span><span class="rday">21 Nov 2026</span></a><a class="rating big" href="https://www.airbnb.co.uk/rooms/1508895627217411616" rel="noopener"><span class="score">5.0<small>/5</small></span><span class="rname">Airbnb</span><span class="rmeta">10 reviews</span><span class="rday">21 Nov 2026</span></a></div>
+      <div class="quotes" data-quotes role="region" aria-roledescription="carousel" aria-label="Guest reviews">
+        <div class="qstack" aria-live="polite"><figure class="q on" aria-roledescription="slide" aria-label="1 of 5"><blockquote lang="en"><p>We really enjoyed our stay! Great location and price! Private balcony outside of rooms. The host is extremely responsive and helpful. Let us check in sooner, was able to book an additional night, recommend where to get laundry done &amp; sorted an airport transfer for us! Highly recommend staying here</p></blockquote><figcaption><span>Niamh</span> <span class="sep" aria-hidden="true">|</span> <span>Airbnb</span> <span class="sep" aria-hidden="true">|</span> <span>Jan 2026</span></figcaption></figure><figure class="q" aria-roledescription="slide" aria-label="2 of 5"><blockquote lang="en"><p>We had a great stay! Ashly was incredibly friendly, welcoming, and very accomodating. The room was clean, comfortable, and exactly as described. The location is amazing, just steps away from the sea and restaurants.
+We would definitely recommend staying here!</p></blockquote><figcaption><span>Kenza</span> <span class="sep" aria-hidden="true">|</span> <span>Airbnb</span> <span class="sep" aria-hidden="true">|</span> <span>Feb 2026</span></figcaption></figure><figure class="q" aria-roledescription="slide" aria-label="3 of 5"><blockquote lang="en"><p>I had a very pleasant stay at this place. For the paid price, the room were absolutely good value and met my expectations. Outside, there is a lovely and well-maintained patio area, which is very nice to relax in. Ashley, the owner, is truly fantastic, very kind, attentive, and always ready to help with anything you might need. He really makes you feel welcome and well taken care of.</p></blockquote><figcaption><span>Marina, Italy</span> <span class="sep" aria-hidden="true">|</span> <span>Booking.com</span> <span class="sep" aria-hidden="true">|</span> <span>Feb 2026</span></figcaption></figure><figure class="q" aria-roledescription="slide" aria-label="4 of 5"><blockquote lang="en"><p>Amazing location in Midigama. Great place to stay, would recommend</p></blockquote><figcaption><span>Molly Jayne</span> <span class="sep" aria-hidden="true">|</span> <span>Airbnb</span> <span class="sep" aria-hidden="true">|</span> <span>Feb 2026</span></figcaption></figure><figure class="q" aria-roledescription="slide" aria-label="5 of 5"><blockquote lang="en"><p>It was a nice place to stay. Would recommend to go there.</p></blockquote><figcaption><span>Raul</span> <span class="sep" aria-hidden="true">|</span> <span>Airbnb</span> <span class="sep" aria-hidden="true">|</span> <span>Mar 2026</span></figcaption></figure></div>
+        <div class="ctrl" hidden><button class="arw prev" type="button" aria-label="Previous review"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.5 6 8.5 12l6 6"/></svg></button><div class="dots" role="group" aria-label="Choose a review"><span class="pill" aria-hidden="true"></span><button type="button" class="dot" aria-label="Review 1 of 5"></button><button type="button" class="dot" aria-label="Review 2 of 5"></button><button type="button" class="dot" aria-label="Review 3 of 5"></button><button type="button" class="dot" aria-label="Review 4 of 5"></button><button type="button" class="dot" aria-label="Review 5 of 5"></button></div><button class="arw next" type="button" aria-label="Next review"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.5 6l6 6-6 6"/></svg></button></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="finding" id="finding" aria-labelledby="h-find">
+  <div class="wrap find-grid">
+    <div class="sign print"><img src="img/sign-img-001-720.webp" width="720" height="1080" alt="The house&#x27;s round sign on a post, a wave, a surfboard and a palm drawn on it with the words Sea You, The Surfers Nest, Midigama; palms and a roof behind" loading="lazy" decoding="async"></div>
+    <div class="find-text">
+      <h2 class="script" id="h-find">Finding the house</h2>
+      <p>Booking.com lists the house under Kumbalgama and Airbnb under Matara, but it’s one house, in Midigama.</p><p>Midigama railway station is 950 m away on foot and Weligama Beach is 3.4 km, both by Booking.com’s count.</p>
+      <p class="addr"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg><span>151 Weliwaththa Rd, Midigama 80650, Sri Lanka</span></p>
+      <div class="actions"><a class="btn btn-ink" href="https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg><span>Open in Google Maps</span></a></div>
+      <p class="stay"><span>Check-out 06:00–10:00</span> <span class="sep" aria-hidden="true">|</span> <span>Children of any age are welcome; there are no cots or extra beds. Pets on request, and charges may apply. No parties or events.</span></p>
+    </div>
+  </div>
+</section>
+<section class="closing" id="book" aria-labelledby="h-close">
+  <div class="close-band">
+    <picture>
+      <source media="(max-width: 699px)" srcset="img/close-img-002-800.webp" width="800" height="600">
+      <img src="img/close-img-002-1600.webp" width="1600" height="686" alt="A mint-green four-poster double with white sheets and striped pillows; a grey panelled double door stands open onto a veranda with a green table and chairs" loading="lazy" decoding="async">
+    </picture>
+  </div>
+  <div class="close-card">
+    <h2 class="sr" id="h-close">Book your stay</h2>
+    <p class="close-line">Live dates are on Booking.com, and groups can rent the whole house on Airbnb.</p>
+    <div class="actions center close-actions"><a class="btn btn-book " href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>See rooms and live dates on Booking.com</span></a><a class="btn btn-ink " href="https://www.airbnb.co.uk/rooms/1508895627217411616" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20V5.5A1.5 1.5 0 0 1 5.5 4h9A1.5 1.5 0 0 1 16 5.5V20M2.5 20h19"/><circle cx="12.6" cy="12.4" r=".9"/><path d="M16 8h3.5v12"/></svg><span>Book a room on Airbnb</span></a><a class="btn btn-ink " href="https://www.airbnb.co.uk/rooms/1793988904511877292" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 11 12 4l8.5 7M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg><span>Book the whole house on Airbnb</span></a></div>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-id">
+      <p class="foot-name script">Sea You Surfers Nest</p>
+      <p>151 Weliwaththa Rd, Midigama 80650, Sri Lanka</p>
+      <p class="fine">Ratings as published on Google, Booking.com and Airbnb, read 21 Nov 2026.</p>
+    </div>
+    <nav class="foot-links" aria-label="Book and find the house">
+      <a class="btn btn-ink btn-sm" href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>Booking.com</span></a>
+      <a class="btn btn-ink btn-sm" href="https://www.airbnb.co.uk/rooms/1508895627217411616" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20V5.5A1.5 1.5 0 0 1 5.5 4h9A1.5 1.5 0 0 1 16 5.5V20M2.5 20h19"/><circle cx="12.6" cy="12.4" r=".9"/><path d="M16 8h3.5v12"/></svg><span>Airbnb, a room</span></a>
+      <a class="btn btn-ink btn-sm" href="https://www.airbnb.co.uk/rooms/1793988904511877292" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 11 12 4l8.5 7M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg><span>Airbnb, the whole house</span></a>
+      <a class="btn btn-ink btn-sm" href="https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg><span>Google Maps</span></a>
+    </nav>
+  </div>
+  <p class="wrap fine copy">© 2026 Sea You Surfers Nest</p>
+</footer>
+<nav class="bar" id="bar" aria-label="Book">
+  <div class="bar-panel" id="bar-panel" hidden>
+    <p class="spot script">“Hello to waves in a minute walk,” says the house’s own listing.</p>
+    <p class="inc"><span>Free WiFi in public areas</span> <span class="sep" aria-hidden="true">|</span> <span>Kitchen</span> <span class="sep" aria-hidden="true">|</span> <span>Fan and mosquito net</span> <span class="sep" aria-hidden="true">|</span> <span>Free private parking on site</span></p>
+    <p class="price">Live dates on Booking.com</p>
+    <div class="ratings"><a class="rating" href="https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0" rel="noopener"><span class="score">4.9<small>/5</small></span><span class="rname">Google</span><span class="rmeta">11 reviews</span><span class="rday">21 Nov 2026</span></a><a class="rating" href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" rel="noopener"><span class="score">8.0<small>/10</small></span><span class="rname">Booking.com</span><span class="rmeta">8 reviews</span><span class="rday">21 Nov 2026</span></a><a class="rating" href="https://www.airbnb.co.uk/rooms/1508895627217411616" rel="noopener"><span class="score">5.0<small>/5</small></span><span class="rname">Airbnb</span><span class="rmeta">10 reviews</span><span class="rday">21 Nov 2026</span></a></div>
+    <a class="btn btn-book bar-full" href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>See rooms and live dates on Booking.com</span></a>
+  </div>
+  <div class="bar-row">
+    <button class="bar-more" type="button" aria-expanded="false" aria-controls="bar-panel" aria-label="At a glance"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 14.5l6-6 6 6"/></svg></button>
+    <a class="btn btn-book bar-book" href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" aria-label="See rooms and live dates on Booking.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>See live dates</span></a>
+  </div>
+</nav>
+<script>/* Sea You Surfers Nest, calm: cross-fading dot slideshows, the reviews, the header, the phone bar and the
+   desktop hero parallax. Everything on the page works without it: slideshows are scroll-snap rows and every
+   button is a link. */
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // one control for both slideshow kinds: the active dot gets aria-current and the wood pill slides under it
+  const wire = (root, items, onGo) => {
+    const ctrl = root.querySelector('.ctrl'), dots = [...ctrl.querySelectorAll('.dot')], pill = ctrl.querySelector('.pill');
+    ctrl.hidden = false;
+    let cur = 0;
+    const go = (i) => {
+      cur = (i + items.length) % items.length;
+      items.forEach((it, j) => { it.classList.toggle('on', j === cur); it.setAttribute('aria-hidden', j === cur ? 'false' : 'true'); });
+      dots.forEach((d, j) => d.setAttribute('aria-current', j === cur ? 'true' : 'false'));
+      pill.style.transform = `translateX(${dots[cur].offsetLeft}px)`;
+      onGo && onGo(cur);
+    };
+    dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+    ctrl.querySelector('.prev').addEventListener('click', () => go(cur - 1));
+    ctrl.querySelector('.next').addEventListener('click', () => go(cur + 1));
+    root.addEventListener('keydown', (e) => {
+      if (e.target.closest('.dot, .arw') || e.target.matches('.track')) {
+        if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1); }
+      }
+    });
+    // a horizontal swipe on a phone steps once; vertical scrolling is left alone (touch-action: pan-y)
+    let x0 = null, y0 = 0;
+    root.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse' && !e.target.closest('.ctrl')) { x0 = e.clientX; y0 = e.clientY; } });
+    root.addEventListener('pointerup', (e) => {
+      if (x0 === null) return;
+      const dx = e.clientX - x0, dy = e.clientY - y0; x0 = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) go(cur + (dx < 0 ? 1 : -1));
+    });
+    root.addEventListener('pointercancel', () => { x0 = null; });
+    go(0);
+  };
+  for (const show of document.querySelectorAll('[data-show]')) {
+    const slides = [...show.querySelectorAll('.slide')];
+    // the next photo is fetched as soon as one is shown, so a tap never waits on a blank frame
+    wire(show, slides, (i) => { const n = slides[(i + 1) % slides.length].querySelector('img'); if (n.loading === 'lazy') n.loading = 'eager'; });
+  }
+  for (const box of document.querySelectorAll('[data-quotes]')) wire(box, [...box.querySelectorAll('.q')]);
+  // the header turns solid and the phone bar slides up once the hero's own button has left the screen
+  const top = document.querySelector('.top'), bar = document.getElementById('bar');
+  const heroBtn = document.querySelector('.btn-hero'), hero = document.querySelector('.hero');
+  new IntersectionObserver(([e]) => top.classList.toggle('solid', !e.isIntersecting), { rootMargin: '-72px 0px 0px 0px' }).observe(hero);
+  new IntersectionObserver(([e]) => {
+    const past = !e.isIntersecting && e.boundingClientRect.top < 0;
+    bar.classList.toggle('on', past);
+    if (!past) close();
+  }).observe(heroBtn);
+  // the bar's chevron opens the at-a-glance summary above it (a disclosure, not a modal); Esc closes it
+  const more = bar.querySelector('.bar-more'), panel = document.getElementById('bar-panel');
+  const close = (refocus) => {
+    if (panel.hidden || panel.classList.contains('out')) return;
+    const done = () => { panel.classList.remove('out'); panel.hidden = true; };
+    if (reduce) done(); else { panel.classList.add('out'); setTimeout(done, 180); }
+    more.setAttribute('aria-expanded', 'false'); more.setAttribute('aria-label', 'At a glance');
+    if (refocus) more.focus();
+  };
+  more.addEventListener('click', () => {
+    if (!panel.hidden && !panel.classList.contains('out')) return close();
+    panel.classList.remove('out'); panel.hidden = false; more.setAttribute('aria-expanded', 'true'); more.setAttribute('aria-label', 'Close the summary');
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(true); });
+  // desktop only: the Kube parallax, the hero photo drifts up by 4 rem as the hero leaves (off on phones)
+  const img = document.querySelector('.hero-media img');
+  const wide = matchMedia('(min-width: 700px)');
+  if (!reduce) {
+    let ticking = false;
+    const step = () => {
+      ticking = false;
+      if (!wide.matches) { img.style.transform = ''; return; }
+      const h = hero.offsetHeight, y = Math.min(Math.max(scrollY, 0), h);
+      img.style.transform = `translate3d(0, ${(-64 * y / h).toFixed(2)}px, 0)`;
+    };
+    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(step); } }, { passive: true });
+    wide.addEventListener('change', step);
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sea You Surfers Nest: a bed and breakfast in Midigama, Sri Lanka</title>
+<meta name="description" content="A bed and breakfast in Midigama, on Sri Lanka’s south coast. Seven double rooms, live dates on Booking.com, the whole house on Airbnb.">
+<meta name="theme-color" content="#ffffff">
+<script>document.documentElement.className='js'</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap">
+<link rel="preload" as="image" href="img/hero-wide-1920.webp" imagesrcset="img/hero-wide-1280.webp 1280w, img/hero-wide-1920.webp 1920w" imagesizes="100vw" media="(min-width: 768px)">
+<link rel="preload" as="image" href="img/hero-tall-720.webp" imagesrcset="img/hero-tall-720.webp 720w, img/hero-tall-960.webp 960w" imagesizes="100vw" media="(max-width: 767px)">
+<style>
+/* Sea You Surfers Nest — interactive mockup, "In the palms" (concepts.md §4, concept 2). */
+@font-face{font-family:"Jakarta Fallback";src:local("Arial");size-adjust:104%;ascent-override:96%;descent-override:24%;line-gap-override:0%}
+@font-face{font-family:"Kalam Fallback";src:local("Arial");size-adjust:96%;ascent-override:118%;descent-override:56%;line-gap-override:0%}
+:root{
+  --ground:#fff; --tint:#E9F2E7; --ink:#1D2814; --ink2:#46523e; --mint:#73C592; --haze:#DFD9C0;
+  --accent:#334825; --accent-hi:#283a1c;
+  --text:"Plus Jakarta Sans","Jakarta Fallback",system-ui,sans-serif;
+  --hand:"Kalam","Kalam Fallback",cursive;
+  --ease-out:cubic-bezier(.22,1,.36,1); --spring:cubic-bezier(.34,1.36,.64,1);
+  --wrap:1200px; --gut:clamp(20px,4vw,48px);
+  --shadow:0 1px 2px rgba(29,40,20,.06),0 8px 24px -10px rgba(29,40,20,.18);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:84px}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 17px/1.62 var(--text);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+p{margin:0 0 1em}
+h1,h2,h3{margin:0;font-weight:700}
+.hand{font-family:var(--hand);font-weight:700;letter-spacing:-.005em}
+h2.hand{font-size:clamp(36px,4.2vw,50px);line-height:1.08;margin-bottom:22px}
+.wrap{width:min(100% - 2*var(--gut),var(--wrap));margin-inline:auto}
+.narrow{max-width:680px}
+.center{text-align:center}
+.sep{color:var(--mint);padding:0 .15em;font-weight:400}
+.ico{width:22px;height:22px;flex:none}
+:focus-visible{outline:3px solid var(--mint);outline-offset:3px;border-radius:12px}
+
+/* ---------- buttons: real links, pressed to .97 on tap */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;
+  font:600 16px/1.2 var(--text);text-decoration:none;text-align:center;cursor:pointer;
+  transition:transform .16s var(--ease-out),background-color .2s,box-shadow .2s;-webkit-user-select:none;user-select:none}
+.btn:active{transform:scale(.97)}
+.btn .ico-end{width:18px;height:18px;transition:transform .22s var(--ease-out)}
+.btn-book{background:var(--accent);color:#fff;box-shadow:0 1px 2px rgba(29,40,20,.18),0 10px 22px -10px rgba(51,72,37,.55)}
+.btn-soft{background:#fff;color:var(--ink);box-shadow:var(--shadow)}
+@media (hover:hover){
+  .btn-book:hover{background:var(--accent-hi);transform:translateY(-1px)}
+  .btn-soft:hover{transform:translateY(-1px);box-shadow:0 1px 2px rgba(29,40,20,.06),0 12px 28px -12px rgba(29,40,20,.28)}
+  .btn:hover .ico-end{transform:translate(2px,-2px)}
+  .btn:active{transform:scale(.97)}
+}
+.btn-sm{min-height:44px;padding:0 18px;font-size:15px}
+
+/* ---------- header */
+.top{position:fixed;inset:0 0 auto;z-index:30;display:flex;align-items:center;gap:28px;padding:14px var(--gut);
+  transition:background-color .28s,box-shadow .28s,padding .28s}
+.top .mark{font-size:24px;text-decoration:none;line-height:1;margin-right:auto}
+.nav{display:flex;gap:6px;transition:margin .32s var(--ease-out)}
+.js .top .btn{position:absolute;right:var(--gut)}
+.js .top.solid .nav{margin-right:172px}
+.nav a{font-weight:600;font-size:15px;text-decoration:none;padding:10px 12px;border-radius:999px;transition:background-color .2s}
+.nav a:hover{background:rgba(255,255,255,.55)}
+.top.solid{background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 6px 24px -14px rgba(29,40,20,.35);padding-block:10px}
+.top.solid .nav a:hover{background:var(--tint)}
+.js .top .mark,.js .top .btn{opacity:0;transform:translateY(-6px);visibility:hidden;
+  transition:opacity .26s var(--ease-out),transform .26s var(--ease-out),visibility 0s .26s}
+.js .top.solid .mark,.js .top.solid .btn{opacity:1;transform:none;visibility:visible;transition:opacity .26s var(--ease-out),transform .26s var(--ease-out)}
+
+/* ---------- hero: img-003, the palms moving in WebGL over the identical still */
+.hero{position:relative;height:100vh;height:100svh;min-height:620px;max-height:1100px;display:grid;place-items:start center;overflow:hidden;isolation:isolate}
+.hero-media{position:absolute;inset:0;z-index:-1}
+.hero-img,.palms{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.palms{opacity:0;transition:opacity .9s var(--ease-out)}
+.palms.on{opacity:.999}
+.hero-media::after{content:"";position:absolute;inset:0 0 auto;height:140px;background:linear-gradient(rgba(255,255,255,.55),rgba(255,255,255,0))}
+.hero-text{position:relative;text-align:center;padding:40px 56px 44px;margin-top:clamp(80px,12.5vh,180px)}
+.hero-text::before{content:"";position:absolute;inset:-30% -40%;z-index:-1;
+  background:radial-gradient(closest-side,rgba(255,255,255,.62),rgba(255,255,255,.38) 55%,rgba(255,255,255,0))}
+.hero h1{font-size:56px;line-height:1.02;margin-bottom:6px}
+.where{font-size:17px;font-weight:600;letter-spacing:.01em;margin:0 0 22px;color:var(--ink)}
+.btn-hero{min-height:56px;padding:0 30px;font-size:17px}
+
+/* ---------- at a glance */
+.glance{padding:96px 0 112px}
+.tag{font:600 clamp(22px,2.3vw,28px)/1.3 var(--text);max-width:760px;margin:0 0 44px;letter-spacing:-.01em}
+.facts{list-style:none;margin:0 0 36px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.facts li{display:flex;flex-direction:column;gap:14px}
+.facts .ico{width:30px;height:30px;color:var(--accent)}
+.facts b{display:block;font:700 21px/1.3 var(--text);letter-spacing:-.01em}
+.facts small{display:block;font-size:15px;color:var(--ink2);margin-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:44px}
+.chip{display:inline-flex;align-items:center;gap:12px;padding:10px 18px 10px 12px;border-radius:999px;background:var(--tint);text-decoration:none;
+  transition:transform .16s var(--ease-out),background-color .2s}
+.chip:hover{background:#dcebd8}
+.chip:active{transform:scale(.97)}
+.chip b{font:700 16px/1 var(--text);background:#fff;border-radius:999px;padding:9px 11px;min-width:56px;text-align:center}
+.chip .plat{display:block;font-weight:600;font-size:15px;line-height:1.2}
+.chip small{display:block;font-size:13px;color:var(--ink2);line-height:1.3}
+.chips-big{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.chips-big .chip{background:#fff;box-shadow:var(--shadow);padding:18px 18px 16px;border-radius:20px;flex-direction:column;align-items:flex-start;gap:8px}
+.chips-big .chip b{background:none;font-size:28px;padding:0;min-width:0;text-align:left;letter-spacing:-.02em}
+.chips-big .chip .sep{display:none}
+.chips-big .chip small{display:flex;flex-direction:column}
+
+/* ---------- "Who's coming?" panel */
+.who{background:var(--tint);border-radius:28px;padding:36px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:center}
+.who-q h3{font-size:36px;line-height:1.1;margin-bottom:20px}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.tile{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:18px;min-height:112px;padding:16px;border:0;border-radius:18px;
+  background:#fff;color:var(--ink);font:600 15px/1.25 var(--text);text-align:left;cursor:pointer;box-shadow:0 1px 2px rgba(29,40,20,.06);
+  transition:transform .3s var(--spring),box-shadow .3s}
+.tile .ico{width:28px;height:28px;color:var(--accent)}
+.tile:hover{transform:translateY(-2px);box-shadow:0 10px 24px -14px rgba(29,40,20,.4)}
+.tile:active{transform:scale(.97)}
+.tile[aria-pressed=true]{transform:translateY(-2px);box-shadow:0 12px 26px -14px rgba(29,40,20,.45)}
+.ring{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.ring rect{width:calc(100% - 2px);height:calc(100% - 2px);fill:none;stroke:var(--mint);stroke-width:2.5;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .5s var(--ease-out)}
+.tile[aria-pressed=true] .ring rect{stroke-dashoffset:0}
+.answers{display:grid}
+.ans{grid-area:1/1;transition:opacity .28s var(--ease-out),transform .28s var(--ease-out)}
+.ans-btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px}
+.ans-note{margin:0;font-size:16px;color:var(--ink2);max-width:560px}
+.ans-h{font-weight:700;margin:0 0 10px}
+.js .ans-h{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.js .ans:not(.is-on){opacity:0;transform:translateY(8px);visibility:hidden;pointer-events:none}
+html:not(.js) .tiles{display:none}
+html:not(.js) .answers{gap:24px}
+html:not(.js) .ans{grid-area:auto}
+
+/* ---------- seven rooms: list + stage */
+.rooms{background:var(--tint);padding:112px 0 96px}
+.rooms-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;align-items:start}
+.rooms-intro{position:sticky;top:110px}
+.pill{position:relative;display:inline-flex;padding:5px;border-radius:999px;background:#fff;box-shadow:var(--shadow);margin:4px 0 28px}
+.pill button{position:relative;z-index:1;border:0;background:none;font:600 15px/1 var(--text);color:var(--ink);padding:14px 20px;border-radius:999px;cursor:pointer;min-height:44px;transition:transform .16s var(--ease-out)}
+.pill button:active{transform:scale(.97)}
+.pill-thumb{position:absolute;z-index:0;top:5px;bottom:5px;left:0;width:0;border-radius:999px;background:var(--mint)}
+.pill.ready .pill-thumb{transition:transform .32s var(--spring),width .32s var(--spring)}
+html:not(.js) .pill{display:none}
+.rooms-copy p{max-width:520px}
+.stage{display:grid}
+.room{grid-area:1/1;transition:opacity .28s var(--ease-out)}
+.js .room:not(.is-on){opacity:0;visibility:hidden;pointer-events:none}
+html:not(.js) .stage{gap:56px}
+html:not(.js) .room{grid-area:auto}
+.room-txt{padding-top:22px}
+.room-h{font:700 22px/1.25 var(--text);margin-bottom:8px}
+.room-note{color:var(--ink2);font-size:16px;margin-bottom:20px}
+.every{margin-top:80px}
+.every h3{font:600 15px/1 var(--text);color:var(--ink2);margin-bottom:16px}
+.every ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.every li{display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:16px;font-weight:600;font-size:15px;line-height:1.3}
+.every .ico{width:28px;height:28px;color:var(--accent)}
+
+/* ---------- slideshows: cross-fade with dots; a scroll-snap row without JS */
+.show{position:relative;max-width:520px}
+.track{list-style:none;margin:0;padding:0;display:grid;border-radius:22px;overflow:hidden;background:#dfe7dc;aspect-ratio:4/5}
+.slide{grid-area:1/1;transition:opacity .28s var(--ease-out)}
+.slide img{width:100%;height:100%;object-fit:cover}
+.js .slide:not(.is-on){opacity:0}
+html:not(.js) .track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;aspect-ratio:auto}
+html:not(.js) .slide{flex:0 0 100%;scroll-snap-align:start}
+html:not(.js) .ctrl{display:none}
+.ctrl{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}
+.arw{width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow);
+  transition:transform .16s var(--ease-out),background-color .2s}
+.arw:hover{background:var(--tint)}
+.arw:active{transform:scale(.92)}
+.arw .ico{width:20px;height:20px}
+.dots{display:flex;gap:0;align-items:center}
+.dot{width:44px;height:44px;border:0;padding:0;background:none;cursor:pointer;display:grid;place-items:center}
+.dot::before{content:"";width:8px;height:8px;border-radius:999px;background:rgba(29,40,20,.24);transition:width .28s var(--spring),background-color .2s}
+.dot[aria-current=true]::before{width:22px;background:var(--accent)}
+
+/* ---------- around the courtyard: the momentum shelf */
+.house{padding:112px 0 104px;overflow:hidden}
+.house-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:start}
+.house-head p{max-width:600px}
+.shelf{position:relative;margin-top:40px}
+.shelf::before{content:"";position:absolute;left:0;right:0;bottom:56px;height:48%;background:var(--haze);opacity:.5}
+.shelf-track{position:relative;list-style:none;margin:0;padding:0 max(var(--gut),(100vw - var(--wrap))/2);display:flex;gap:18px;overflow-x:auto;
+  scroll-snap-type:x mandatory;scroll-padding-inline:max(var(--gut),(100vw - var(--wrap))/2);scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab}
+.shelf-track::-webkit-scrollbar{display:none}
+.shelf-track.dragging{scroll-snap-type:none;cursor:grabbing}
+.shelf-track.dragging img{pointer-events:none}
+.card{flex:0 0 320px;scroll-snap-align:start;border-radius:20px;overflow:hidden;aspect-ratio:4/5;background:#e4e2d6;box-shadow:0 16px 30px -20px rgba(29,40,20,.45);
+  transition:transform .3s var(--spring)}
+.card img{width:100%;height:100%;object-fit:cover}
+@media (hover:hover){.card:hover{transform:translateY(-4px)}}
+.shelf-ctrl{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}
+
+/* ---------- carved doors and a surfboard shower */
+.character{background:var(--tint);padding:112px 0}
+.char-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;align-items:center}
+.print{margin:0;border-radius:18px;overflow:hidden;box-shadow:0 2px 4px rgba(29,40,20,.08),0 30px 50px -30px rgba(29,40,20,.5);transition:transform .5s var(--ease-out)}
+.print-shower{max-width:520px;justify-self:center;width:100%}
+.print-masks{max-width:280px;margin-top:20px;transform:rotate(-2deg)}
+@media (hover:hover){.print-masks:hover{transform:rotate(0) translateY(-3px)}}
+
+/* ---------- breakfast */
+.breakfast{padding:104px 0}
+.big{font-size:clamp(20px,2vw,24px);line-height:1.5;margin:0 auto;max-width:620px}
+
+/* ---------- Ashly, and the guests */
+.guests{background:var(--tint);padding:112px 0}
+.guests-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:64px;align-items:start}
+.ashly p{max-width:440px}
+.said .chips{margin-bottom:28px}
+.qrow{position:relative;display:flex;flex-direction:column}
+.qtrack{list-style:none;margin:0;padding:4px 0 20px;display:flex;align-items:flex-start;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.qtrack::-webkit-scrollbar{display:none}
+.q{flex:0 0 84%;scroll-snap-align:start;background:#fff;border-radius:22px;padding:32px 34px 26px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between;
+  transition:opacity .28s var(--ease-out)}
+.js .q:not(.is-on){opacity:.5}
+.q blockquote{margin:0}
+.q blockquote p{font-size:18px;line-height:1.6;margin:0 0 18px}
+.q-by{margin:0;font-size:15px;color:var(--ink2);font-weight:600}
+.qdots{order:-1;margin:0 0 6px -14px}
+
+/* ---------- finding the house */
+.find{padding:112px 0}
+.find-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:center}
+.print-sign{max-width:420px;width:100%;justify-self:center}
+.addr{display:flex;gap:10px;align-items:flex-start;font-weight:600}
+.addr .ico{color:var(--accent);margin-top:2px}
+.find-btns{display:flex;flex-wrap:wrap;gap:12px;margin:6px 0 22px}
+.stay{font-size:15px;color:var(--ink2);margin:0}
+
+/* ---------- closing */
+.closing{padding:0 0 104px}
+.band{position:relative;display:grid;place-items:center;min-height:420px;overflow:hidden}
+.band picture,.band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.band-txt{position:relative;margin:56px var(--gut) 120px;max-width:720px;text-align:center;background:rgba(255,255,255,.88);border-radius:26px;padding:28px 34px;box-shadow:var(--shadow)}
+.band-txt p{margin:0;font:600 clamp(19px,1.9vw,23px)/1.45 var(--text)}
+.closing .who{margin-top:-88px;position:relative;background:#fff;box-shadow:0 2px 6px rgba(29,40,20,.06),0 30px 60px -30px rgba(29,40,20,.4)}
+.closing .tile{background:var(--tint)}
+
+/* ---------- footer */
+.foot{background:var(--tint);padding:64px 0 36px}
+.foot-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:start}
+.foot .mark{font-size:34px;line-height:1.1;margin:0 0 8px}
+.foot-addr{color:var(--ink2);margin:0}
+.foot-btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+.foot-btns .btn{min-height:46px;padding:0 18px;font-size:15px}
+.foot-small{margin-top:44px;font-size:14px;color:var(--ink2)}
+.foot-small p{margin:0}
+
+/* ---------- phone bar */
+.bar{display:none}
+
+/* ---------- phone */
+@media (min-width:768px) and (max-width:1100px){
+  .char-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+  .house-head{grid-template-columns:minmax(0,1fr);gap:0}
+}
+@media (max-width:767px){
+  body{font-size:16px}
+  .house-head{grid-template-columns:minmax(0,1fr);gap:0}
+  .top{display:none}
+  .hero{height:80vh;height:80svh;min-height:520px}
+  .hero-img,.palms{object-position:50% 30%}
+  .hero-text{padding:24px 12px 28px;margin-top:84px}
+  .hero h1{font-size:36px;white-space:nowrap}
+  .where{font-size:16px;margin-bottom:18px}
+  .glance{padding:56px 0 72px}
+  .tag{margin-bottom:32px}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 18px}
+  .facts b{font-size:18px}
+  .facts small{font-size:14px}
+  .chips{gap:8px}
+  .chips:not(.chips-big) .chip{width:100%}
+  .chips-big{gap:8px}
+  .chips-big .chip{padding:14px 12px 12px}
+  .chips-big .chip b{font-size:22px}
+  .chips-big .chip .plat{font-size:14px}
+  .chips-big .chip small{font-size:12.5px}
+  .who{grid-template-columns:minmax(0,1fr);padding:24px 18px;gap:24px;border-radius:24px}
+  .who-q h3{font-size:30px;margin-bottom:16px}
+  .tiles{gap:8px}
+  .tile{min-height:100px;padding:12px;font-size:14px;gap:12px}
+  .ans-btns .btn{width:100%}
+  .rooms{padding:72px 0 64px}
+  .rooms-grid{grid-template-columns:minmax(0,1fr);gap:0}
+  .rooms-intro{position:static;display:contents}
+  .rooms-intro h2{order:0}
+  .pill{order:1;position:sticky;top:10px;z-index:5;justify-self:start;margin:0 0 18px}
+  .stage{order:2}
+  .rooms-copy{order:3;margin-top:28px}
+  .show{max-width:none}
+  .show .arw{display:none}
+  .show .ctrl{justify-content:center}
+  .room .btn{width:100%}
+  .every{margin-top:48px}
+  .every ul{grid-template-columns:1fr 1fr;gap:8px}
+  .every li{padding:12px;font-size:14px}
+  .every li:last-child{grid-column:1/-1}
+  .house{padding:72px 0}
+  .card{flex-basis:76vw}
+  .shelf-ctrl{display:none}
+  .character,.guests,.find{padding:72px 0}
+  .char-grid,.guests-grid,.find-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+  .print-masks{max-width:220px}
+  .breakfast{padding:72px 0}
+  .q{flex-basis:88%;padding:24px 22px 20px}
+  .q blockquote p{font-size:16.5px}
+  .find-grid .print-sign{order:2;max-width:320px}
+  .band{min-height:420px}
+  .band-txt{padding:22px 20px;margin-bottom:110px}
+  .closing{padding-bottom:64px}
+  .foot{padding-bottom:110px}
+  .foot-grid{grid-template-columns:minmax(0,1fr)}
+  .foot-btns{justify-content:flex-start}
+  .bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;align-items:center;gap:12px;
+    padding:10px 12px calc(10px + env(safe-area-inset-bottom)) 18px;background:rgba(255,255,255,.96);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 -8px 28px -16px rgba(29,40,20,.4);
+    transition:transform .34s var(--ease-out)}
+  .js .bar{transform:translateY(115%)}
+  .js .bar.on{transform:none}
+  .bar-name{display:flex;flex-direction:column;min-width:0;margin-right:auto;line-height:1.15}
+  .bar-name b{font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bar-name small{font-size:13px;color:var(--ink2)}
+  .btn-bar{min-height:48px;padding:0 20px;flex:none}
+}
+@media (max-width:767px) and (hover:none){.btn:hover{transform:none}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:0s!important;animation:none!important;scroll-behavior:auto!important}
+  .palms{display:none}
+}
+
+</style>
+</head>
+<body>
+
+<header class="top" data-top>
+  <a class="mark hand" href="#top">Sea You Surfers Nest</a>
+  <nav class="nav" aria-label="Sections"><a href="#rooms">Rooms</a><a href="#house">Courtyard</a><a href="#guests">Guests</a><a href="#find">Finding the house</a></nav>
+  <a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" rel="noopener" aria-label="See rooms and live dates on Booking.com"><span>See live dates</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+</header>
+<main id="top">
+<section class="hero" aria-label="Sea You Surfers Nest">
+  <div class="hero-media">
+    <picture>
+      <source media="(max-width: 767px)" srcset="img/hero-tall-720.webp 720w, img/hero-tall-960.webp 960w" sizes="100vw">
+      <img class="hero-img" data-asset="img-003" src="img/hero-wide-1920.webp" srcset="img/hero-wide-1280.webp 1280w, img/hero-wide-1920.webp 1920w" sizes="100vw"
+        width="1920" height="1079" alt="A mint-green table with a potted pothos and two mint chairs on the upstairs balcony, coconut palm fronds filling the view beyond the white parapet" fetchpriority="high" draggable="false">
+    </picture>
+    <canvas class="palms" aria-hidden="true"></canvas>
+  </div>
+  <div class="hero-text">
+    <h1 class="hand">Sea You Surfers Nest</h1>
+    <p class="where">Midigama, Sri Lanka</p>
+    <a class="btn btn-book btn-hero" href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" rel="noopener" aria-label="See rooms and live dates on Booking.com"><span>See live dates</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+  </div>
+</section>
+
+<section class="glance" id="glance" aria-labelledby="glance-h">
+  <div class="wrap">
+    <h2 class="tag" id="glance-h">A bed and breakfast in Midigama, on Sri Lanka’s south coast.</h2>
+    <ul class="facts">
+      <li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/><path d="M2 19c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/><path d="M9 9a4 4 0 0 1 7-2.6"/></svg><span><b>“Hello to waves in a minute walk,”</b><small>says the house’s own listing.</small></span></li>
+      <li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V4M20 21V4M4 4h16M4 14h16M4 18h16"/><path d="M7 14v-2.5a1.5 1.5 0 0 1 1.5-1.5h7a1.5 1.5 0 0 1 1.5 1.5V14"/></svg><span><b>7 rooms</b><small>All doubles <span class="sep" aria-hidden="true">|</span> sleeps 14</small></span></li>
+      <li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 9a14 14 0 0 1 19 0"/><path d="M6 12.5a9 9 0 0 1 12 0"/><path d="M9.5 16a4 4 0 0 1 5 0"/><circle cx="12" cy="19" r=".8" fill="currentColor"/></svg><span><b>Free WiFi</b><small>in public areas <span class="sep" aria-hidden="true">|</span> Kitchen</small></span></li>
+      <li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17"/><path d="M8 14h2M14 14h2M8 17h2"/></svg><span><b>Live dates</b><small>on Booking.com</small></span></li>
+    </ul>
+    <div class="chips"><a class="chip" href="https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0" rel="noopener"><b>4.9/5</b><span><span class="plat">Google</span><small><span>11 reviews</span> <span class="sep" aria-hidden="true">|</span> <span>21 Nov 2026</span></small></span></a><a class="chip" href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" rel="noopener"><b>8.0/10</b><span><span class="plat">Booking.com</span><small><span>8 reviews</span> <span class="sep" aria-hidden="true">|</span> <span>21 Nov 2026</span></small></span></a><a class="chip" href="https://www.airbnb.co.uk/rooms/1508895627217411616" rel="noopener"><b>5.0/5</b><span><span class="plat">Airbnb</span><small><span>10 reviews</span> <span class="sep" aria-hidden="true">|</span> <span>21 Nov 2026</span></small></span></a></div>
+    <div class="who" data-who><div class="who-q"><h3 class="hand">Who’s coming?</h3><div class="tiles" role="group" aria-label="Who’s coming?"><button class="tile" type="button" data-for="two" aria-controls="w1-two" aria-pressed="true"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.5" cy="8" r="3"/><circle cx="16" cy="8.5" r="2.6"/><path d="M3 19.5c0-3.2 2.5-5.5 5.5-5.5s5.5 2.3 5.5 5.5M14 14.3c3.4-.4 6.5 1.6 6.5 5.2"/></svg><span>Two of you</span><svg class="ring" aria-hidden="true"><rect x="1" y="1" rx="17" ry="17" pathLength="1"/></svg></button><button class="tile" type="button" data-for="group" aria-controls="w1-group" aria-pressed="false"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="2.6"/><circle cx="5.5" cy="9.5" r="2.1"/><circle cx="18.5" cy="9.5" r="2.1"/><path d="M7 19.5c0-3 2.2-5.2 5-5.2s5 2.2 5 5.2M1.8 18.5c0-2.4 1.6-4.2 3.7-4.2M22.2 18.5c0-2.4-1.6-4.2-3.7-4.2"/></svg><span>A group</span><svg class="ring" aria-hidden="true"><rect x="1" y="1" rx="17" ry="17" pathLength="1"/></svg></button><button class="tile" type="button" data-for="ask" aria-controls="w1-ask" aria-pressed="false"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 4v-4A2.5 2.5 0 0 1 4 13.5z"/><path d="M10 8a2 2 0 1 1 2.6 1.9c-.4.2-.6.5-.6.9v.4M12 13.2h0"/></svg><span>A question first</span><svg class="ring" aria-hidden="true"><rect x="1" y="1" rx="17" ry="17" pathLength="1"/></svg></button></div></div><div class="answers" aria-live="polite"><div class="ans is-on" id="w1-two" data-ans="two"><p class="ans-h">Two of you</p><div class="ans-btns"><a class="btn btn-book " href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" rel="noopener"><span>See rooms and live dates on Booking.com</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="btn btn-soft " href="https://www.airbnb.co.uk/rooms/1508895627217411616" rel="noopener"><span>Book a room on Airbnb</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div><p class="ans-note">Only one has air conditioning, so ask when you book if you want the one that has it.</p></div><div class="ans" id="w1-group" data-ans="group"><p class="ans-h">A group</p><div class="ans-btns"><a class="btn btn-book " href="https://www.airbnb.co.uk/rooms/1793988904511877292" rel="noopener"><span>Book the whole house on Airbnb</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div><p class="ans-note">All seven rooms are doubles, and between them they sleep fourteen.</p></div><div class="ans" id="w1-ask" data-ans="ask"><p class="ans-h">A question first</p><div class="ans-btns"><a class="btn btn-book " href="https://www.airbnb.co.uk/rooms/1508895627217411616" rel="noopener"><span>Ask Ashly on Airbnb</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 4v-4A2.5 2.5 0 0 1 4 13.5z"/><path d="M10 8a2 2 0 1 1 2.6 1.9c-.4.2-.6.5-.6.9v.4M12 13.2h0"/></svg></a></div><p class="ans-note">Your host is Ashly. He’s a Superhost on Airbnb and usually replies there within a few hours.</p></div></div></div>
+  </div>
+</section>
+
+<section class="rooms" id="rooms" aria-labelledby="rooms-h">
+  <div class="wrap rooms-grid">
+    <div class="rooms-intro">
+      <h2 class="hand" id="rooms-h">Seven rooms</h2>
+      <div class="pill" role="tablist" aria-label="Room type">
+        <span class="pill-thumb" aria-hidden="true"></span>
+        <button role="tab" id="tab-deluxe" aria-controls="room-deluxe" aria-selected="true" type="button">Deluxe Double</button>
+        <button role="tab" id="tab-standard" aria-controls="room-standard" aria-selected="false" type="button" tabindex="-1">Standard Double</button>
+      </div>
+      <div class="rooms-copy"><p>All seven rooms are doubles, and between them they sleep fourteen. Only one has air conditioning, so ask when you book if you want the one that has it.</p><p>The rooms are furnished much alike. The bed is a mint-green four-poster double with a teal velvet throw on it, and there’s a timber towel ladder and a green cabinet with a mirror.</p></div>
+    </div>
+    <div class="stage">
+      <article class="room is-on" id="room-deluxe" role="tabpanel" aria-labelledby="tab-deluxe"><div class="show" data-show id="show-deluxe" role="region" aria-roledescription="carousel" aria-label="Deluxe Double Room photos"><ul class="track" tabindex="0"><li class="slide is-on" aria-roledescription="slide" aria-label="1 of 6"><img src="img/room-img-002.webp" width="880" height="1100" alt="A mint-green four-poster double made up in white linen, a grey panelled door and a small black mirror on the wall behind it" draggable="false" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="2 of 6"><img src="img/room-img-015.webp" width="880" height="1100" alt="A gabled mint-green four-poster with lime sheets, grey and striped pillows and a teal velvet throw, grey doors either side" draggable="false" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="3 of 6"><img src="img/room-img-012.webp" width="880" height="1100" alt="A mint four-poster with lime-green sheets and pillows and a towel roll, a timber towel ladder by the shuttered window" draggable="false" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="4 of 6"><img src="img/room-img-022.webp" width="880" height="1100" alt="Lime-green sheets and pillows on a mint four-poster, the teal throw at the foot and a potted plant beside the bed" draggable="false" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="5 of 6"><img src="img/room-img-013.webp" width="880" height="1100" alt="A mint-framed mirror with a little shelf on the bedroom wall, the corner of a lime-green bed below it and a dark green door to the side" draggable="false" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="6 of 6"><img src="img/room-img-033.webp" width="880" height="1100" alt="A grey panelled door with a carved roundel, a black mirror and a mint bedside cabinet beside a bed in white linen" draggable="false" loading="lazy" decoding="async"></li></ul><div class="ctrl"><button class="arw prev" type="button" aria-label="Previous photo"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dots"><button type="button" class="dot" aria-label="Photo 1" aria-current="true"></button><button type="button" class="dot" aria-label="Photo 2"></button><button type="button" class="dot" aria-label="Photo 3"></button><button type="button" class="dot" aria-label="Photo 4"></button><button type="button" class="dot" aria-label="Photo 5"></button><button type="button" class="dot" aria-label="Photo 6"></button></div><button class="arw next" type="button" aria-label="Next photo"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div><div class="room-txt"><h3 class="room-h">Deluxe Double Room</h3><p class="room-note"><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 2</span> <span class="sep" aria-hidden="true">|</span> <span>13 m², with its own bathroom, a private entrance, a terrace and a balcony.</span></p><a class="btn btn-book " href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" rel="noopener"><span>See rooms and live dates on Booking.com</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div></article>
+      <article class="room" id="room-standard" role="tabpanel" aria-labelledby="tab-standard"><div class="show" data-show id="show-standard" role="region" aria-roledescription="carousel" aria-label="Standard Double Room photos"><ul class="track" tabindex="0"><li class="slide is-on" aria-roledescription="slide" aria-label="1 of 5"><img src="img/room-img-005.webp" width="880" height="1100" alt="A mint four-poster with grey pillows and a teal velvet throw, a timber towel ladder and a mint cabinet with a plant beside it" draggable="false" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="2 of 5"><img src="img/room-img-026.webp" width="880" height="1100" alt="A mint four-poster with a teal velvet throw over lime sheets and striped pillows, a grey door behind" draggable="false" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="3 of 5"><img src="img/room-img-009.webp" width="880" height="1098" alt="A mint four-poster with grey sheets and a folded towel, a timber towel ladder and a green mirror on the wall behind" draggable="false" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="4 of 5"><img src="img/room-img-025.webp" width="880" height="1100" alt="A round wooden side table with a white tea set between two green chairs, the foot of a bed with a teal throw at the edge" draggable="false" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="5 of 5"><img src="img/room-img-010.webp" width="880" height="1100" alt="A timber towel ladder and a mint cabinet beside a dark green door marked WC, the end of a grey-sheeted bed at the side" draggable="false" loading="lazy" decoding="async"></li></ul><div class="ctrl"><button class="arw prev" type="button" aria-label="Previous photo"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dots"><button type="button" class="dot" aria-label="Photo 1" aria-current="true"></button><button type="button" class="dot" aria-label="Photo 2"></button><button type="button" class="dot" aria-label="Photo 3"></button><button type="button" class="dot" aria-label="Photo 4"></button><button type="button" class="dot" aria-label="Photo 5"></button></div><button class="arw next" type="button" aria-label="Next photo"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div><div class="room-txt"><h3 class="room-h">Standard Double Room</h3><p class="room-note"><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>Sleeps 2</span> <span class="sep" aria-hidden="true">|</span> <span>12 m², with a private entrance and a wardrobe.</span></p><a class="btn btn-book " href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" rel="noopener"><span>See rooms and live dates on Booking.com</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div></article>
+    </div>
+  </div>
+  <div class="wrap every">
+    <h3>In every room</h3>
+    <ul><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V4M20 21V4M4 4h16M4 14h16M4 18h16"/><path d="M7 14v-2.5a1.5 1.5 0 0 1 1.5-1.5h7a1.5 1.5 0 0 1 1.5 1.5V14"/></svg><span>Mint-green four-poster double</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v9H4z"/><path d="M4 15c2 0 2 3 4 3s2-3 4-3 2 3 4 3 2-3 4-3"/></svg><span>Teal velvet throw</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3l-1 18M16 3l1 18M7.8 7h8.4M7.5 11.5h9M7.2 16h9.6"/></svg><span>Timber towel ladder</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="11" width="12" height="10" rx="1.5"/><path d="M12 11v10M10.5 15.5h0M13.5 15.5h0"/><rect x="8" y="3" width="8" height="6" rx="1"/></svg><span>Green cabinet with a mirror</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1.6"/><path d="M12 10.4c0-3 1-6 3.5-6s2 3.5-2 6.4M13.4 12.8c2.6 1.5 4.8 3.8 3.5 6s-4-.3-4.6-4.9M10.6 12.8c-2.6 1.5-5.7 2-6.6-.3s2.6-3.2 6.4-1.9"/></svg><span>Fan and mosquito net</span></li></ul>
+  </div>
+</section>
+
+<section class="house" id="house" aria-labelledby="house-h">
+  <div class="wrap house-head">
+    <h2 class="hand" id="house-h">Around the courtyard</h2>
+    <div><p>Sea You is a white two-storey house. Downstairs there’s an inner courtyard, with potted plants and a cushioned bench, and the room doors that open onto it have carved fanlights over them.</p><p>From the balconies upstairs you look out over the garden to the coconut palms. There are tables and chairs out there, and the long one has a settee with green cushions.</p></div>
+  </div>
+  <div class="shelf" data-shelf>
+    <ul class="shelf-track" tabindex="0" aria-label="Around the house, 9 photos">
+      <li class="card"><img src="img/shelf-img-071.webp" width="640" height="800" alt="The courtyard bench with turquoise cushions against a grey wall, a small wooden stool in front and palms above the wall" draggable="false" loading="lazy" decoding="async"></li><li class="card"><img src="img/shelf-img-006.webp" width="640" height="800" alt="A corner of the courtyard: a potted plant, a wooden stool with a chequerboard top and a concrete bench below a grey door" draggable="false" loading="lazy" decoding="async"></li><li class="card"><img src="img/shelf-img-007.webp" width="640" height="800" alt="A mint table laid with a white teapot, two cups and a pink rose in a little pot, on a red-oxide floor" draggable="false" loading="lazy" decoding="async"></li><li class="card"><img src="img/shelf-img-039.webp" width="640" height="800" alt="A round wooden table with a white tea set between two green chairs" draggable="false" loading="lazy" decoding="async"></li><li class="card"><img src="img/shelf-img-041.webp" width="640" height="800" alt="A carved wooden settee with a cane seat beside a low table, big leaves in the foreground" draggable="false" loading="lazy" decoding="async"></li><li class="card"><img src="img/shelf-img-045.webp" width="640" height="800" alt="Two carved wooden chairs with cane seats at a small round table on the balcony" draggable="false" loading="lazy" decoding="async"></li><li class="card"><img src="img/shelf-img-037.webp" width="640" height="800" alt="A wooden stool with a chequerboard top beside a concrete bench, a leaf in the foreground" draggable="false" loading="lazy" decoding="async"></li><li class="card"><img src="img/shelf-img-038.webp" width="640" height="800" alt="A variegated pothos in a white pot on a concrete ledge, big leaves behind it" draggable="false" loading="lazy" decoding="async"></li><li class="card"><img src="img/shelf-img-077.webp" width="640" height="800" alt="The long upstairs balcony: a settee with green cushions, mint tables and chairs, and palms beyond the railing" draggable="false" loading="lazy" decoding="async"></li>
+    </ul>
+    <div class="wrap shelf-ctrl">
+      <button class="arw prev" type="button" aria-label="Previous photos"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="arw next" type="button" aria-label="Next photos"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<section class="character" id="character" aria-labelledby="char-h">
+  <div class="wrap char-grid">
+    <figure class="print print-shower"><img src="img/shower-1000.webp" width="1000" height="1500" alt="A wooden surfboard fixed upright to a grey garden wall with a tap and a shower head, palms above the wall" draggable="false" loading="lazy" decoding="async"></figure>
+    <div class="char-txt">
+      <h2 class="hand" id="char-h">Carved doors and a surfboard shower</h2>
+      <p>One of the rooms has a carved grey double door, and the wooden chair beside it is carved too. Elsewhere, carved wooden masks hang by a doorway among the ferns.</p><p>Out in the garden there’s a shower built into a wooden surfboard, fixed to the wall under the palms. It’s for rinsing off after the sea.</p>
+      <figure class="print print-masks"><img src="img/masks-600.webp" width="600" height="750" alt="Carved wooden masks hanging on a wall beside a doorway, leaves at the edge" draggable="false" loading="lazy" decoding="async"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="breakfast" aria-labelledby="bf-h">
+  <div class="wrap narrow center">
+    <h2 class="hand" id="bf-h">Breakfast</h2>
+    <p class="big">Breakfast here is Asian, with local specialities and warm dishes, and there’s juice and fruit too.</p>
+  </div>
+</section>
+
+<section class="guests" id="guests" aria-labelledby="ashly-h">
+  <div class="wrap guests-grid">
+    <div class="ashly">
+      <h2 class="hand" id="ashly-h">Ashly</h2>
+      <p>Your host is Ashly. He’s a Superhost on Airbnb and usually replies there within a few hours.</p><p>“Whether you’re chasing the perfect wave, soaking up the beach vibes, or just looking to unwind,” he writes, “our place is your perfect home away from home.”</p>
+    </div>
+    <div class="said">
+      <div class="chips chips-big"><a class="chip chip-big" href="https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0" rel="noopener"><b>4.9/5</b><span><span class="plat">Google</span><small><span>11 reviews</span> <span class="sep" aria-hidden="true">|</span> <span>21 Nov 2026</span></small></span></a><a class="chip chip-big" href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" rel="noopener"><b>8.0/10</b><span><span class="plat">Booking.com</span><small><span>8 reviews</span> <span class="sep" aria-hidden="true">|</span> <span>21 Nov 2026</span></small></span></a><a class="chip chip-big" href="https://www.airbnb.co.uk/rooms/1508895627217411616" rel="noopener"><b>5.0/5</b><span><span class="plat">Airbnb</span><small><span>10 reviews</span> <span class="sep" aria-hidden="true">|</span> <span>21 Nov 2026</span></small></span></a></div>
+      <div class="qrow" data-qrow>
+        <ul class="qtrack" tabindex="0" aria-label="What guests wrote"><li class="q is-on"><blockquote><p>We had a great stay! Ashly was incredibly friendly, welcoming, and very accomodating. The room was clean, comfortable, and exactly as described. The location is amazing, just steps away from the sea and restaurants.<br>We would definitely recommend staying here!</p></blockquote><p class="q-by"><span>Kenza</span> <span class="sep" aria-hidden="true">|</span> <span>Airbnb</span> <span class="sep" aria-hidden="true">|</span> <span>Feb 2026</span></p></li><li class="q"><blockquote><p>We really enjoyed our stay! Great location and price! Private balcony outside of rooms. The host is extremely responsive and helpful. Let us check in sooner, was able to book an additional night, recommend where to get laundry done &amp; sorted an airport transfer for us! Highly recommend staying here</p></blockquote><p class="q-by"><span>Niamh</span> <span class="sep" aria-hidden="true">|</span> <span>Airbnb</span> <span class="sep" aria-hidden="true">|</span> <span>Jan 2026</span></p></li><li class="q"><blockquote><p>I had a very pleasant stay at this place. For the paid price, the room were absolutely good value and met my expectations. Outside, there is a lovely and well-maintained patio area, which is very nice to relax in. Ashley, the owner, is truly fantastic, very kind, attentive, and always ready to help with anything you might need. He really makes you feel welcome and well taken care of.</p></blockquote><p class="q-by"><span>Marina, Italy</span> <span class="sep" aria-hidden="true">|</span> <span>Booking.com</span> <span class="sep" aria-hidden="true">|</span> <span>Feb 2026</span></p></li><li class="q"><blockquote><p>Amazing location in Midigama. Great place to stay, would recommend</p></blockquote><p class="q-by"><span>Molly Jayne</span> <span class="sep" aria-hidden="true">|</span> <span>Airbnb</span> <span class="sep" aria-hidden="true">|</span> <span>Feb 2026</span></p></li><li class="q"><blockquote><p>It was a nice place to stay. Would recommend to go there.</p></blockquote><p class="q-by"><span>Raul</span> <span class="sep" aria-hidden="true">|</span> <span>Airbnb</span> <span class="sep" aria-hidden="true">|</span> <span>Mar 2026</span></p></li></ul>
+        <div class="dots qdots"><button type="button" class="dot" aria-label="Review 1" aria-current="true"></button><button type="button" class="dot" aria-label="Review 2"></button><button type="button" class="dot" aria-label="Review 3"></button><button type="button" class="dot" aria-label="Review 4"></button><button type="button" class="dot" aria-label="Review 5"></button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="find" id="find" aria-labelledby="find-h">
+  <div class="wrap find-grid">
+    <figure class="print print-sign"><img src="img/sign-840.webp" width="840" height="1050" alt="The round sign by the road: Sea You, The Surfers Nest, Midigama, with a wave, a board, a sun and a palm, against palms and a cloudy sky" draggable="false" loading="lazy" decoding="async"></figure>
+    <div class="find-txt">
+      <h2 class="hand" id="find-h">Finding the house</h2>
+      <p>Booking.com lists the house under Kumbalgama and Airbnb under Matara, but it’s one house, in Midigama.</p><p>Midigama railway station is 950 m away on foot and Weligama Beach is 3.4 km, both by Booking.com’s count.</p>
+      <p class="addr"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>151 Weliwaththa Rd, Midigama 80650, Sri Lanka</span></p>
+      <div class="find-btns"><a class="btn btn-soft " href="https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0" rel="noopener"><span>Open in Google Maps</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+      <p class="stay"><span>Check-out 06:00–10:00</span> <span class="sep" aria-hidden="true">|</span> <span>Children of any age are welcome; there are no cots or extra beds. Pets on request, and charges may apply. No parties or events.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="closing" id="book" aria-labelledby="close-h">
+  <div class="band">
+    <picture><img src="img/band-1920.webp" srcset="img/band-1280.webp 1280w, img/band-1920.webp 1920w" sizes="100vw"
+      width="1920" height="822" alt="A mint-green table with a potted pothos and two mint chairs on the upstairs balcony, coconut palm fronds filling the view beyond the white parapet" loading="lazy" decoding="async" draggable="false"></picture>
+    <div class="band-txt"><p id="close-h">Live dates are on Booking.com, and groups can rent the whole house on Airbnb.</p></div>
+  </div>
+  <div class="wrap"><div class="who" data-who><div class="who-q"><h3 class="hand">Who’s coming?</h3><div class="tiles" role="group" aria-label="Who’s coming?"><button class="tile" type="button" data-for="two" aria-controls="w2-two" aria-pressed="true"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.5" cy="8" r="3"/><circle cx="16" cy="8.5" r="2.6"/><path d="M3 19.5c0-3.2 2.5-5.5 5.5-5.5s5.5 2.3 5.5 5.5M14 14.3c3.4-.4 6.5 1.6 6.5 5.2"/></svg><span>Two of you</span><svg class="ring" aria-hidden="true"><rect x="1" y="1" rx="17" ry="17" pathLength="1"/></svg></button><button class="tile" type="button" data-for="group" aria-controls="w2-group" aria-pressed="false"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="2.6"/><circle cx="5.5" cy="9.5" r="2.1"/><circle cx="18.5" cy="9.5" r="2.1"/><path d="M7 19.5c0-3 2.2-5.2 5-5.2s5 2.2 5 5.2M1.8 18.5c0-2.4 1.6-4.2 3.7-4.2M22.2 18.5c0-2.4-1.6-4.2-3.7-4.2"/></svg><span>A group</span><svg class="ring" aria-hidden="true"><rect x="1" y="1" rx="17" ry="17" pathLength="1"/></svg></button><button class="tile" type="button" data-for="ask" aria-controls="w2-ask" aria-pressed="false"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 4v-4A2.5 2.5 0 0 1 4 13.5z"/><path d="M10 8a2 2 0 1 1 2.6 1.9c-.4.2-.6.5-.6.9v.4M12 13.2h0"/></svg><span>A question first</span><svg class="ring" aria-hidden="true"><rect x="1" y="1" rx="17" ry="17" pathLength="1"/></svg></button></div></div><div class="answers" aria-live="polite"><div class="ans is-on" id="w2-two" data-ans="two"><p class="ans-h">Two of you</p><div class="ans-btns"><a class="btn btn-book " href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" rel="noopener"><span>See rooms and live dates on Booking.com</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="btn btn-soft " href="https://www.airbnb.co.uk/rooms/1508895627217411616" rel="noopener"><span>Book a room on Airbnb</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div><p class="ans-note">Only one has air conditioning, so ask when you book if you want the one that has it.</p></div><div class="ans" id="w2-group" data-ans="group"><p class="ans-h">A group</p><div class="ans-btns"><a class="btn btn-book " href="https://www.airbnb.co.uk/rooms/1793988904511877292" rel="noopener"><span>Book the whole house on Airbnb</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div><p class="ans-note">All seven rooms are doubles, and between them they sleep fourteen.</p></div><div class="ans" id="w2-ask" data-ans="ask"><p class="ans-h">A question first</p><div class="ans-btns"><a class="btn btn-book " href="https://www.airbnb.co.uk/rooms/1508895627217411616" rel="noopener"><span>Ask Ashly on Airbnb</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 4v-4A2.5 2.5 0 0 1 4 13.5z"/><path d="M10 8a2 2 0 1 1 2.6 1.9c-.4.2-.6.5-.6.9v.4M12 13.2h0"/></svg></a></div><p class="ans-note">Your host is Ashly. He’s a Superhost on Airbnb and usually replies there within a few hours.</p></div></div></div></div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div><p class="mark hand">Sea You Surfers Nest</p><p class="foot-addr">151 Weliwaththa Rd, Midigama 80650, Sri Lanka</p></div>
+    <div class="foot-btns">
+      <a class="btn btn-soft " href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" rel="noopener"><span>Booking.com</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="btn btn-soft " href="https://www.airbnb.co.uk/rooms/1508895627217411616" rel="noopener"><span>Airbnb, a room</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="btn btn-soft " href="https://www.airbnb.co.uk/rooms/1793988904511877292" rel="noopener"><span>Airbnb, the whole house</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <a class="btn btn-soft " href="https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0" rel="noopener"><span>Google Maps</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></a>
+    </div>
+  </div>
+  <div class="wrap foot-small"><p>© 2026 Sea You Surfers Nest <span class="sep" aria-hidden="true">|</span> Ratings as of 21 Nov 2026</p></div>
+</footer>
+<div class="bar" data-bar>
+  <span class="bar-name"><b class="hand">Sea You Surfers Nest</b><small>Midigama, Sri Lanka</small></span>
+  <a class="btn btn-book btn-bar" href="https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" rel="noopener" aria-label="See rooms and live dates on Booking.com"><span>See live dates</span><svg class="ico ico-end" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+</div>
+<script>
+/* Sea You Surfers Nest — interactive mockup, "In the palms". No library. */
+(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData = navigator.connection && navigator.connection.saveData === true;
+  const q = new URLSearchParams(location.search);
+  const force = q.has('palms');                       // ?palms : run the shader even on a software renderer (headless checks)
+
+  /* ---------------------------------------------------------- the palm cinemagraph (WebGL, raw) */
+  function palms() {
+    const hero = $('.hero'), img = $('.hero-img', hero), cv = $('canvas.palms', hero);
+    if (!cv || calm || (saveData && !force)) return;     // reduced motion always wins
+    if (img.dataset.asset !== 'img-003') return;      // the mask was painted for this photograph only
+    let gl;
+    try { gl = cv.getContext('webgl', { alpha: false, antialias: false, depth: false, stencil: false, powerPreference: 'low-power' }); } catch (e) {}
+    if (!gl) return;
+    const dbg = gl.getExtension('WEBGL_debug_renderer_info');
+    const renderer = dbg ? String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL)) : '';
+    if (!force && /swiftshader|llvmpipe|software|basic render/i.test(renderer)) return;   // weak device: the still stays
+
+    const VS = 'attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
+    const FS = `precision mediump float;
+varying vec2 v;uniform sampler2D uI,uM;uniform vec2 uS,uO;uniform float uT,uG;
+vec3 pm(vec3 x){return mod(((x*34.)+1.)*x,289.);}
+float sn(vec2 P){const vec4 C=vec4(.211324865,.366025404,-.577350269,.024390244);
+vec2 i=floor(P+dot(P,C.yy));vec2 x0=P-i+dot(i,C.xx);vec2 i1=(x0.x>x0.y)?vec2(1.,0.):vec2(0.,1.);
+vec4 x12=x0.xyxy+C.xxzz;x12.xy-=i1;i=mod(i,289.);
+vec3 p=pm(pm(i.y+vec3(0.,i1.y,1.))+i.x+vec3(0.,i1.x,1.));
+vec3 m=max(.5-vec3(dot(x0,x0),dot(x12.xy,x12.xy),dot(x12.zw,x12.zw)),0.);m=m*m;m=m*m;
+vec3 x=2.*fract(p*C.www)-1.;vec3 h=abs(x)-.5;vec3 ox=floor(x+.5);vec3 a0=x-ox;
+m*=1.79284291400159-.85373472095314*(a0*a0+h*h);
+vec3 g;g.x=a0.x*x0.x+h.x*x0.y;g.yz=a0.yz*x12.xz+h.yz*x12.yw;return 130.*dot(m,g);}
+void main(){
+  vec2 uv=v*uS+uO;
+  float m=texture2D(uM,uv).r;
+  vec2 p=uv*vec2(3.,2.);
+  float t=uT;
+  vec2 d=vec2(sn(p+vec2(t*.12,t*.05)),sn(p+vec2(17.3-t*.07,4.1+t*.12)))*.0045;
+  d+=vec2(sn(p*3.1+vec2(t*.55,-t*.4)),sn(p*3.1+vec2(9.7+t*.45,t*.5)))*.0011;
+  d.x+=sin(t*.7+uv.x*2.3+uv.y*3.1)*.0016;
+  d.x+=uG*.009*m;
+  gl_FragColor=vec4(texture2D(uI,uv+d*m).rgb,1.);
+}`;
+    const sh = (type, s) => { const o = gl.createShader(type); gl.shaderSource(o, s); gl.compileShader(o); if (force && !gl.getShaderParameter(o, gl.COMPILE_STATUS)) console.warn('palms shader:', gl.getShaderInfoLog(o)); return o; };
+    const pr = gl.createProgram();
+    gl.attachShader(pr, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, FS)); gl.linkProgram(pr);
+    if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return;
+    gl.useProgram(pr);
+    const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    const U = n => gl.getUniformLocation(pr, n);
+    const uS = U('uS'), uO = U('uO'), uT = U('uT'), uG = U('uG');
+    gl.uniform1i(U('uI'), 0); gl.uniform1i(U('uM'), 1);
+    const tex = unit => { const t = gl.createTexture(); gl.activeTexture(gl.TEXTURE0 + unit); gl.bindTexture(gl.TEXTURE_2D, t);
+      for (const [k, val] of [[gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE], [gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR]]) gl.texParameteri(gl.TEXTURE_2D, k, val);
+      return t; };
+    const tI = tex(0), tM = tex(1);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+    const phone = matchMedia('(max-width: 767px)');
+    let iw = 16, ih = 9, src = '', ready = false;
+    const load = () => new Promise((ok, no) => {
+      src = img.currentSrc || img.src;
+      const mask = new Image(); mask.src = phone.matches ? 'img/mask-tall.webp' : 'img/mask-wide.webp';
+      Promise.all([img.decode ? img.decode() : Promise.resolve(), mask.decode()]).then(() => {
+        try {
+          gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, tI); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
+          gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, tM); gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, gl.LUMINANCE, gl.UNSIGNED_BYTE, mask);
+        } catch (e) { return no(e); }                  // file:// or a tainted source: the still photograph stays
+        iw = img.naturalWidth; ih = img.naturalHeight; ok();
+      }, no);
+    }).catch(e => { if (force) console.warn('palms:', e && e.message); throw e; });
+    const fit = () => {                                // object-fit: cover, at the same object-position as the <img>
+      const dpr = Math.min(devicePixelRatio || 1, 1.5), w = cv.clientWidth, h = cv.clientHeight;
+      cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); gl.viewport(0, 0, cv.width, cv.height);
+      const pos = getComputedStyle(img).objectPosition.split(' ').map(s => parseFloat(s) / 100);
+      const ca = w / h, ia = iw / ih;
+      let sx = 1, sy = 1; if (ca > ia) sy = ia / ca; else sx = ca / ia;
+      gl.uniform2f(uS, sx, sy); gl.uniform2f(uO, (1 - sx) * pos[0], (1 - sy) * (1 - pos[1]));
+    };
+    // the gust: pointer speed (or a tilt of the phone) pushes the fronds, and a spring brings them back in ~1.2 s
+    let g = 0, gv = 0, kick = 0, lx = null, lt = 0;
+    hero.addEventListener('pointermove', e => {
+      const now = performance.now();
+      if (lx !== null && now > lt) kick += Math.max(-1, Math.min(1, (e.clientX - lx) / (now - lt) / 2.2));
+      lx = e.clientX; lt = now;
+    }, { passive: true });
+    hero.addEventListener('pointerleave', () => { lx = null; });
+    let lg = null;
+    addEventListener('deviceorientation', e => { if (e.gamma == null) return; if (lg !== null) kick += Math.max(-.6, Math.min(.6, (e.gamma - lg) / 12)); lg = e.gamma; }, { passive: true });
+
+    let running = false, raf = 0, t0 = performance.now(), last = t0, frames = 0, slow = 0, visible = true;
+    const frame = now => {
+      raf = 0; if (!running) return;
+      const dt = Math.min(.05, (now - last) / 1000);
+      if (frames < 60) { frames++; if (now - last > 40) slow++; if (frames === 60 && slow > 25 && !force) { cv.classList.remove('on'); running = false; return; } }
+      last = now;
+      kick *= Math.exp(-dt * 6);
+      const a = 46 * (kick - g) - 7 * gv; gv += a * dt; g += gv * dt;
+      gl.uniform1f(uT, (now - t0) / 1000); gl.uniform1f(uG, g);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      if (!cv.classList.contains('on')) cv.classList.add('on');
+      raf = requestAnimationFrame(frame);
+    };
+    const play = () => { if (!ready || running || !visible || document.hidden) return; running = true; last = performance.now(); raf = requestAnimationFrame(frame); };
+    const stop = () => { running = false; if (raf) cancelAnimationFrame(raf); raf = 0; };
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; visible ? play() : stop(); }).observe(hero);
+    document.addEventListener('visibilitychange', () => document.hidden ? stop() : play());
+    addEventListener('resize', () => {
+      if (!ready) return;
+      if ((img.currentSrc || img.src) !== src) { ready = false; stop(); cv.classList.remove('on'); load().then(() => { ready = true; fit(); play(); }, () => {}); }
+      else fit();
+    });
+    const start = () => load().then(() => { ready = true; fit(); play(); }, () => {});
+    // after first paint, so the LCP is the photograph
+    if (document.readyState === 'complete') requestAnimationFrame(() => setTimeout(start, 0));
+    else addEventListener('load', () => requestAnimationFrame(() => setTimeout(start, 0)), { once: true });
+  }
+
+  /* ---------------------------------------------------------- header turns solid once the hero is gone; phone bar */
+  function chrome() {
+    const top = $('[data-top]'), bar = $('[data-bar]'), hero = $('.hero'), cta = $('.hero .btn');
+    new IntersectionObserver(([e]) => top.classList.toggle('solid', !e.isIntersecting), { rootMargin: '-72px 0px 0px 0px' }).observe(hero);
+    new IntersectionObserver(([e]) => bar.classList.toggle('on', !e.isIntersecting && e.boundingClientRect.top < 0)).observe(cta);
+  }
+
+  /* ---------------------------------------------------------- "Who's coming?" tiles */
+  function who() {
+    for (const w of $$('[data-who]')) {
+      const tiles = $$('.tile', w), ans = $$('.ans', w);
+      tiles.forEach(t => t.addEventListener('click', () => {
+        tiles.forEach(x => x.setAttribute('aria-pressed', String(x === t)));
+        ans.forEach(a => a.classList.toggle('is-on', a.dataset.ans === t.dataset.for));
+      }));
+    }
+  }
+
+  /* ---------------------------------------------------------- the room pill */
+  function pill() {
+    const p = $('.pill'); if (!p) return;
+    const thumb = $('.pill-thumb', p), tabs = $$('[role=tab]', p);
+    const place = b => { thumb.style.width = b.offsetWidth + 'px'; thumb.style.transform = `translateX(${b.offsetLeft}px)`; };
+    const select = (b, focus) => {
+      tabs.forEach(x => { const on = x === b; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
+        document.getElementById(x.getAttribute('aria-controls')).classList.toggle('is-on', on); });
+      place(b); if (focus) b.focus();
+    };
+    tabs.forEach((b, i) => {
+      b.addEventListener('click', () => {
+        select(b);
+        const stage = $('.stage'); if (matchMedia('(max-width: 767px)').matches && stage.getBoundingClientRect().top < 0) stage.scrollIntoView({ block: 'start', behavior: calm ? 'auto' : 'smooth' });
+      });
+      b.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); select(tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length], true); } });
+    });
+    const init = () => place(tabs.find(b => b.getAttribute('aria-selected') === 'true'));
+    init(); requestAnimationFrame(() => p.classList.add('ready'));
+    document.fonts && document.fonts.ready.then(init);
+    addEventListener('resize', init);
+  }
+
+  /* ---------------------------------------------------------- slideshows: cross-fade, dots, arrows, swipe, keys */
+  function shows() {
+    for (const s of $$('[data-show]')) {
+      const slides = $$('.slide', s), dots = $$('.dot', s); let i = 0;
+      const go = n => {
+        i = (n + slides.length) % slides.length;
+        slides.forEach((x, k) => { x.classList.toggle('is-on', k === i); x.setAttribute('aria-hidden', String(k !== i)); });
+        dots.forEach((d, k) => d.setAttribute('aria-current', String(k === i)));
+        const nx = slides[(i + 1) % slides.length].querySelector('img'); if (nx) nx.loading = 'eager';   // the next one is ready
+      };
+      $('.prev', s).addEventListener('click', () => go(i - 1));
+      $('.next', s).addEventListener('click', () => go(i + 1));
+      dots.forEach((d, k) => d.addEventListener('click', () => go(k)));
+      const tr = $('.track', s); let x0 = null;
+      tr.addEventListener('pointerdown', e => { x0 = e.clientX; });
+      tr.addEventListener('pointerup', e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 36) go(i + (dx < 0 ? 1 : -1)); });
+      tr.addEventListener('keydown', e => { if (e.key === 'ArrowRight') go(i + 1); if (e.key === 'ArrowLeft') go(i - 1); });
+      slides.forEach((x, k) => x.setAttribute('aria-hidden', String(k !== 0)));
+    }
+  }
+
+  /* ---------------------------------------------------------- drag with momentum, snap and edge resistance (mouse); native on touch */
+  function drag(track, onSettle) {
+    let down = false, sx = 0, ss = 0, lx = 0, lt = 0, v = 0, raf = 0, moved = false;
+    const max = () => track.scrollWidth - track.clientWidth;
+    const snap = () => {
+      track.classList.remove('dragging');
+      const items = [...track.children], pad = parseFloat(getComputedStyle(track).scrollPaddingLeft) || 0;
+      let best = 0, bd = 1e9; for (const it of items) { const d = Math.abs(it.offsetLeft - pad - track.scrollLeft); if (d < bd) { bd = d; best = it.offsetLeft - pad; } }
+      track.scrollTo({ left: Math.max(0, Math.min(max(), best)), behavior: calm ? 'auto' : 'smooth' });
+      onSettle && onSettle();
+    };
+    track.addEventListener('pointerdown', e => {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      cancelAnimationFrame(raf); down = true; moved = false; sx = lx = e.clientX; ss = track.scrollLeft; lt = performance.now(); v = 0;
+      track.setPointerCapture(e.pointerId);
+    });
+    track.addEventListener('pointermove', e => {
+      if (!down) return;
+      const now = performance.now(), dx = e.clientX - sx;
+      if (!moved && Math.abs(dx) > 4) { moved = true; track.classList.add('dragging'); }
+      if (!moved) return;
+      const want = ss - dx, m = max(), over = want < 0 ? want : want > m ? want - m : 0;
+      track.scrollLeft = Math.max(0, Math.min(m, want));
+      track.style.transform = over ? `translateX(${(-over * .3).toFixed(1)}px)` : '';
+      v = .8 * v + .2 * ((e.clientX - lx) / Math.max(1, now - lt)); lx = e.clientX; lt = now;
+    });
+    const up = () => {
+      if (!down) return; down = false;
+      if (track.style.transform) { track.style.transition = 'transform .45s cubic-bezier(.22,1,.36,1)'; track.style.transform = ''; setTimeout(() => { track.style.transition = ''; }, 460); }
+      if (!moved) { track.classList.remove('dragging'); return; }
+      let vel = -v * 16;
+      const step = () => { if (Math.abs(vel) < .6 || calm) return snap(); const before = track.scrollLeft; track.scrollLeft += vel; vel *= .93; if (track.scrollLeft === before) return snap(); raf = requestAnimationFrame(step); };
+      raf = requestAnimationFrame(step);
+    };
+    track.addEventListener('pointerup', up); track.addEventListener('pointercancel', up);
+    track.addEventListener('click', e => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+  }
+
+  function shelf() {
+    const s = $('[data-shelf]'); if (!s) return;
+    const tr = $('.shelf-track', s); drag(tr);
+    const by = d => { const c = tr.children[0]; tr.scrollBy({ left: d * (c.offsetWidth + 18) * 2, behavior: calm ? 'auto' : 'smooth' }); };
+    $('.prev', s).addEventListener('click', () => by(-1));
+    $('.next', s).addEventListener('click', () => by(1));
+  }
+
+  function quotes() {
+    const r = $('[data-qrow]'); if (!r) return;
+    const tr = $('.qtrack', r), cards = [...tr.children], dots = $$('.dot', r);
+    const mark = () => {
+      let best = 0, bd = 1e9; cards.forEach((c, k) => { const d = Math.abs(c.offsetLeft - tr.scrollLeft); if (d < bd) { bd = d; best = k; } });
+      cards.forEach((c, k) => c.classList.toggle('is-on', k === best));
+      dots.forEach((d, k) => d.setAttribute('aria-current', String(k === best)));
+    };
+    let tm = 0; tr.addEventListener('scroll', () => { cancelAnimationFrame(tm); tm = requestAnimationFrame(mark); }, { passive: true });
+    dots.forEach((d, k) => d.addEventListener('click', () => tr.scrollTo({ left: cards[k].offsetLeft, behavior: calm ? 'auto' : 'smooth' })));
+    drag(tr, mark);
+  }
+
+  palms(); chrome(); who(); pill(); shows(); shelf(); quotes();
+})();
+
+</script>
+</body>
+</html>
