@@ -1,0 +1,103 @@
+{
+ "final": {
+  "m390": {
+   "n": 106,
+   "fails": [
+    {
+     "s": "Deluxe Double",
+     "fs": 15,
+     "cr": 1,
+     "large": false,
+     "color": "rgb(255, 255, 255)",
+     "tag": "BUTTON",
+     "cls": ""
+    },
+    {
+     "s": "Live dates are on Booking.com, and group",
+     "fs": 22,
+     "cr": 1,
+     "large": false,
+     "color": "rgb(255, 255, 255)",
+     "tag": "P",
+     "cls": ""
+    },
+    {
+     "s": "Book the whole house on Airbnb",
+     "fs": 15,
+     "cr": 1,
+     "large": false,
+     "color": "rgb(255, 255, 255)",
+     "tag": "SPAN",
+     "cls": ""
+    },
+    {
+     "s": "Book a room on Airbnb",
+     "fs": 15,
+     "cr": 1,
+     "large": false,
+     "color": "rgb(255, 255, 255)",
+     "tag": "SPAN",
+     "cls": ""
+    }
+   ],
+   "min_font": 13,
+   "chars_under_12px": [],
+   "body_p_px": [
+    16,
+    20,
+    16.5,
+    15
+   ]
+  },
+  "d1440": {
+   "n": 110,
+   "fails": [
+    {
+     "s": "Deluxe Double",
+     "fs": 15,
+     "cr": 1,
+     "large": false,
+     "color": "rgb(255, 255, 255)",
+     "tag": "BUTTON",
+     "cls": ""
+    },
+    {
+     "s": "Live dates are on Booking.com, and group",
+     "fs": 28,
+     "cr": 1,
+     "large": true,
+     "color": "rgb(255, 255, 255)",
+     "tag": "P",
+     "cls": ""
+    },
+    {
+     "s": "Book the whole house on Airbnb",
+     "fs": 16,
+     "cr": 1,
+     "large": false,
+     "color": "rgb(255, 255, 255)",
+     "tag": "SPAN",
+     "cls": ""
+    },
+    {
+     "s": "Book a room on Airbnb",
+     "fs": 16,
+     "cr": 1,
+     "large": false,
+     "color": "rgb(255, 255, 255)",
+     "tag": "SPAN",
+     "cls": ""
+    }
+   ],
+   "min_font": 14,
+   "chars_under_12px": [],
+   "body_p_px": [
+    16,
+    17,
+    22,
+    18,
+    15
+   ]
+  }
+ }
+}

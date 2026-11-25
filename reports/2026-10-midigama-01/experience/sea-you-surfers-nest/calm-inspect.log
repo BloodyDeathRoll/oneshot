@@ -1,0 +1,10 @@
+  [shadow] @1440px (+390)  5 box-shadow(s) on elements at rest: div.print → rgba(20, 16, 8, 0.1) 0px 10px 28px 0px, rgba(20, 16, 8, 0.08) 0px 1px 3px 0px | div.print → rgba(20, 16, 8, 0.1) 0px 10px 28
+  [still-page] @1440px  Only 7 element(s) moved while the page loaded and scrolled.
+  [covered-text] @390px  Large text lies under another element at some scroll position: "Sea You Surfers Nest" (screen 10, 100% hidden)
+  [reduced-hidden] @1440px  With reduced motion requested, 2 text block(s) on the first screen stay invisible: "Sea You Surfers Nest", "See live dates"
+  [card-rows] @1440px  2 rows of identical boxed cards.
+  [size-count] @1440px (+390)  13 different font sizes (14, 15, 16, 17, 18, 22, 26, 30, 34, 38, 40, 56, 76).
+  [no-footage] @1440px  No video anywhere on the page.
+  [off-centre] @1440px  The margins differ: 160px on the left, 179px on the right, at 1440px.
+  [side-scroll] @390px  1 row(s) scroll sideways with content past their edge.
+RESULT: 4 FAIL, 5 WARN — not done.

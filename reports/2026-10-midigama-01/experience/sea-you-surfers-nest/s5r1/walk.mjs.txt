@@ -1,0 +1,191 @@
+// experience-critic 0.2.0, 4f round 1, sea-you-surfers-nest: the walk for one variant.
+// usage: node walk.mjs <variant> <outdir>
+// Phone cold (390x844 @2x touch, CDP 1.6 Mbps / 150 ms / 4x CPU), human-pace scroll, laptop 1440x900,
+// hover, reduced motion, JS off, booking tap-through (third-party requests recorded and stubbed, never loaded).
+import { chromium } from '/Users/alonlavi/.paradev/worktrees/oneshot/pull-latest-version-from-ff5cf4f5/node_modules/playwright/index.mjs';
+import fs from 'node:fs';
+import http from 'node:http';
+import path from 'node:path';
+
+const V = process.argv[2];
+const OUT = process.argv[3];
+const ROOT = V === 'final' ? '/Users/alonlavi/.paradev/worktrees/oneshot/pull-latest-version-from-ff5cf4f5/sites/sea-you-surfers-nest/final/dist' : `/Users/alonlavi/.paradev/worktrees/oneshot/pull-latest-version-from-ff5cf4f5/sites/sea-you-surfers-nest/mockups/${V}/dist`;
+fs.mkdirSync(OUT, { recursive: true });
+const LOG = `${OUT}/${V}-walk.log`;
+fs.writeFileSync(LOG, '');
+const log = (...a) => { const s = a.map(x => typeof x === 'string' ? x : JSON.stringify(x)).join(' '); console.log(s); fs.appendFileSync(LOG, s + '\n'); };
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+// static server on a random port (no fixed-port collisions with the other reviewers)
+const TYPES = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.avif': 'image/avif', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.txt': 'text/plain; charset=utf-8', '.mp4': 'video/mp4', '.webm': 'video/webm', '.json': 'application/json' };
+const server = http.createServer((req, res) => {
+  let p = decodeURIComponent(new URL(req.url, 'http://x').pathname);
+  if (p.endsWith('/')) p += 'index.html';
+  const f = path.join(ROOT, p);
+  if (!f.startsWith(ROOT) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.writeHead(404); return res.end('404'); }
+  res.writeHead(200, { 'content-type': TYPES[path.extname(f).toLowerCase()] || 'application/octet-stream' });
+  fs.createReadStream(f).pipe(res);
+});
+await new Promise(r => server.listen(0, '127.0.0.1', r));
+const BASE = `http://127.0.0.1:${server.address().port}/`;
+const URLQ = (V === 'interactive' || V === 'final') ? BASE + '?palms' : BASE;   // ?palms: the shader a GPU phone runs; headless SwiftShader is otherwise treated as weak
+log('variant', V, 'served at', BASE, 'walked', new Date().toISOString());
+
+const UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1';
+const phone = { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, userAgent: UA };
+const laptop = { viewport: { width: 1440, height: 900 } };
+
+async function throttle(page) {
+  const c = await page.context().newCDPSession(page);
+  await c.send('Network.enable');
+  await c.send('Network.emulateNetworkConditions', { offline: false, latency: 150, downloadThroughput: 1.6e6 / 8, uploadThroughput: 750e3 / 8 });
+  await c.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+}
+function netlog(page) {
+  const reqs = []; const t0 = Date.now();
+  page.on('request', r => reqs.push({ u: r.url(), t: Date.now() - t0, type: r.resourceType() }));
+  page.on('requestfinished', async r => { const s = await r.sizes().catch(() => null); const e = reqs.find(x => x.u === r.url() && !x.done); if (e) { e.done = Date.now() - t0; e.bytes = s ? s.responseBodySize + s.responseHeadersSize : 0; } });
+  return () => reqs;
+}
+// third-party: record, never load
+async function stubThirdParty(ctx, seen) {
+  await ctx.route(u => !u.href.startsWith(BASE) && !/fonts\.(googleapis|gstatic)\.com/.test(u.href), route => {
+    seen.push(route.request().url());
+    route.fulfill({ status: 200, contentType: 'text/html', body: '<title>stub</title><h1>third-party stub</h1>' });
+  });
+}
+
+const state = () => {
+  const vis = el => { if (!el) return null; const cs = getComputedStyle(el); const r = el.getBoundingClientRect(); return cs.display !== 'none' && cs.visibility !== 'hidden' && +cs.opacity > 0.05 && r.bottom > 0 && r.top < innerHeight && r.height > 0; };
+  const bar = document.querySelector('#bar, .bar');
+  return {
+    y: Math.round(scrollY),
+    ready: document.readyState,
+    fonts: [...new Set([...document.fonts].filter(f => f.status === 'loaded').map(f => f.family))],
+    heroImg: (() => { const i = document.querySelector('.hero img, .hero-media img, #piece img, img'); return i ? { src: (i.currentSrc || '').split('/').pop(), complete: i.complete, nw: i.naturalWidth } : null; })(),
+    canvases: [...document.querySelectorAll('canvas')].map(c => ({ cls: c.className, op: getComputedStyle(c).opacity, disp: getComputedStyle(c).display, w: c.width, h: c.height })),
+    bar: bar ? { vis: vis(bar), cls: bar.className, top: Math.round(bar.getBoundingClientRect().top) } : null,
+    inView: [...document.querySelectorAll('h1,h2,h3')].filter(h => { const r = h.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight && r.height > 0 && getComputedStyle(h).visibility !== 'hidden'; }).map(h => h.tagName + ':' + h.textContent.trim().replace(/\s+/g, ' ').slice(0, 44)),
+  };
+};
+
+const browser = await chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--enable-webgl'] });
+log('GPU note: headless SwiftShader WebGL');
+
+// 1. phone cold, throttled
+{
+  const ctx = await browser.newContext(phone); const seen = []; await stubThirdParty(ctx, seen);
+  const page = await ctx.newPage(); await throttle(page); const reqs = netlog(page);
+  page.on('pageerror', e => log('PAGEERROR', e.message));
+  const t0 = Date.now(); page.goto(URLQ).catch(() => {});
+  for (const t of [500, 1500, 3000, 6000]) {
+    await sleep(Math.max(0, t - (Date.now() - t0)));
+    await page.screenshot({ path: `${OUT}/${V}-phone-t${t}.png` }).catch(e => log('shot fail', t, e.message));
+    log(`phone-cold t=${t}`, await page.evaluate(state).catch(e => ({ err: e.message })));
+  }
+  await page.waitForLoadState('load').catch(() => {});
+  log('phone-cold load at ms', Date.now() - t0);
+  const lcp = await page.evaluate(() => new Promise(r => { new PerformanceObserver(l => { const e = l.getEntries().pop(); r([Math.round(e.startTime), (e.url || '').split('/').pop(), e.element && (e.element.tagName + '.' + e.element.className)]); }).observe({ type: 'largest-contentful-paint', buffered: true }); setTimeout(() => r('none'), 3000); }));
+  log('phone-cold LCP', lcp);
+  const rs = reqs(); const hosts = [...new Set(rs.map(r => new URL(r.u).host))];
+  log('phone-cold hosts', hosts, 'requests', rs.length, 'bytes', rs.reduce((a, r) => a + (r.bytes || 0), 0));
+  log('phone-cold third-party stubbed on load', seen);
+  // the first screen: what, where, CTA
+  log('hero', await page.evaluate(() => {
+    const h1 = document.querySelector('h1');
+    const firstScreen = [...document.querySelectorAll('a,button')].filter(a => { const r = a.getBoundingClientRect(); const cs = getComputedStyle(a); return r.top < innerHeight && r.bottom > 0 && r.width > 0 && cs.visibility !== 'hidden' && +cs.opacity > 0.1; }).map(a => ({ t: a.textContent.trim().replace(/\s+/g, ' ').slice(0, 50), aria: a.getAttribute('aria-label'), href: a.getAttribute('href'), box: (r => [Math.round(r.x), Math.round(r.y), Math.round(r.width), Math.round(r.height)])(a.getBoundingClientRect()), bg: getComputedStyle(a).backgroundColor, color: getComputedStyle(a).color, font: getComputedStyle(a).fontFamily.split(',')[0] + ' ' + getComputedStyle(a).fontSize }));
+    const links = [...document.querySelectorAll('a[href]')].map(a => a.href);
+    return {
+      h1: h1 && h1.textContent.trim(), h1font: h1 && getComputedStyle(h1).fontFamily.split(',')[0] + ' ' + getComputedStyle(h1).fontSize,
+      firstScreen,
+      booking: links.filter(h => /booking\.com/.test(h)).length, airbnb: [...new Set(links.filter(h => /airbnb/.test(h)))], tel: links.filter(h => /^tel:/.test(h)), wa: links.filter(h => /wa\.me|whatsapp/.test(h)).length, agoda: links.filter(h => /agoda/.test(h)).length,
+      bookingUrls: [...new Set(links.filter(h => /booking\.com/.test(h)))],
+      pageH: document.documentElement.scrollHeight, sw: document.documentElement.scrollWidth,
+      titles: [...document.querySelectorAll('h1,h2,h3')].map(h => h.tagName + ':' + h.textContent.trim().replace(/\s+/g, ' ').slice(0, 60)),
+    };
+  }));
+  await ctx.close();
+}
+
+// 2. phone human-pace scroll (unthrottled network, real wheel steps so scroll-linked motion fires)
+{
+  const ctx = await browser.newContext(phone); const seen = []; await stubThirdParty(ctx, seen);
+  const page = await ctx.newPage(); page.on('pageerror', e => log('PAGEERROR', e.message));
+  await page.goto(URLQ, { waitUntil: 'load' }); await sleep(1500);
+  const H = await page.evaluate(() => document.documentElement.scrollHeight);
+  const step = Math.round(844 * 0.7); let i = 0;
+  for (let y = 0; y <= H; y += step) {
+    // smooth human scroll: 6 small increments
+    const cur = await page.evaluate(() => scrollY);
+    for (let k = 1; k <= 6; k++) { await page.evaluate(v => scrollTo(0, v), Math.round(cur + (y - cur) * k / 6)); await sleep(40); }
+    await sleep(650);
+    await page.screenshot({ path: `${OUT}/${V}-phone-s${String(i).padStart(2, '0')}.png` });
+    log(`phone s${String(i).padStart(2, '0')}`, await page.evaluate(state));
+    i++;
+    if (i > 60) break;
+  }
+  log('phone steps', i, 'page height', H, 'screens', (H / 844).toFixed(1));
+  await ctx.close();
+}
+
+// 3. laptop
+{
+  const ctx = await browser.newContext(laptop); const seen = []; await stubThirdParty(ctx, seen);
+  const page = await ctx.newPage(); page.on('pageerror', e => log('PAGEERROR', e.message));
+  const t0 = Date.now(); page.goto(URLQ).catch(() => {});
+  await sleep(2000); await page.screenshot({ path: `${OUT}/${V}-laptop-t2000.png` });
+  log('laptop t2000', await page.evaluate(state));
+  await page.waitForLoadState('load'); await sleep(800);
+  const cta = await page.$('.hero a.btn, .hero-in a.btn, .btn-hero, section.hero a[href*="booking"]');
+  if (cta) { await cta.hover(); await sleep(450); await page.screenshot({ path: `${OUT}/${V}-laptop-hover-cta.png` }); log('laptop CTA hover style', await cta.evaluate(a => ({ bg: getComputedStyle(a).backgroundColor, tf: getComputedStyle(a).transform, sh: getComputedStyle(a).boxShadow, tr: getComputedStyle(a).transition.slice(0, 120) }))); }
+  log('laptop transitions on interactive elements', await page.evaluate(() => { const els = [...document.querySelectorAll('a,button,[role=tab],[tabindex]')]; const withT = els.filter(e => { const cs = getComputedStyle(e); return (cs.transitionDuration.split(',').some(d => parseFloat(d) > 0)) || cs.animationName !== 'none'; }); return { total: els.length, withTransition: withT.length, without: els.filter(e => !withT.includes(e)).map(e => (e.className || e.tagName) + ':' + e.textContent.trim().slice(0, 25)).slice(0, 20) }; }));
+  const H = await page.evaluate(() => document.documentElement.scrollHeight); let i = 0;
+  for (let y = 0; y <= H; y += 720) {
+    const cur = await page.evaluate(() => scrollY);
+    for (let k = 1; k <= 6; k++) { await page.evaluate(v => scrollTo(0, v), Math.round(cur + (y - cur) * k / 6)); await sleep(40); }
+    await sleep(650);
+    await page.screenshot({ path: `${OUT}/${V}-laptop-s${String(i).padStart(2, '0')}.png` });
+    log(`laptop s${String(i).padStart(2, '0')}`, await page.evaluate(state)); i++;
+    if (i > 50) break;
+  }
+  log('laptop height', H, 'screens', (H / 900).toFixed(1));
+  await ctx.close();
+}
+
+// 4. reduced motion + JS off (phone)
+for (const [tag, opts] of [['reduced', { ...phone, reducedMotion: 'reduce' }], ['nojs', { ...phone, javaScriptEnabled: false }]]) {
+  const ctx = await browser.newContext(opts); const seen = []; await stubThirdParty(ctx, seen);
+  const page = await ctx.newPage(); page.on('pageerror', e => log('PAGEERROR', e.message));
+  await page.goto(URLQ, { waitUntil: 'load' }); await sleep(1500);
+  const H = await page.evaluate(() => document.documentElement.scrollHeight);
+  const n = Math.min(14, Math.ceil(H / 844));
+  for (let i = 0; i < n; i++) {
+    const y = Math.round(i * (H - 844) / Math.max(1, n - 1));
+    await page.evaluate(v => scrollTo(0, v), y); await sleep(500);
+    await page.screenshot({ path: `${OUT}/${V}-phone-${tag}-${String(i).padStart(2, '0')}.png` });
+    log(`${tag} ${i}`, await page.evaluate(state).catch(e => ({ err: e.message })));
+  }
+  log(tag, 'height', H, 'booking links', await page.evaluate(() => [...document.querySelectorAll('a[href*="booking.com"],a[href*="airbnb"]')].length));
+  await ctx.close();
+}
+
+// 5. booking tap-through (phone): the hero CTA, then the persistent bar
+{
+  const ctx = await browser.newContext(phone); const seen = []; await stubThirdParty(ctx, seen);
+  const page = await ctx.newPage();
+  await page.goto(URLQ, { waitUntil: 'load' }); await sleep(1000);
+  const cta = await page.$('.hero a.btn, .hero-in a.btn, .btn-hero, section.hero a[href*="booking"]');
+  log('hero CTA', cta ? await cta.evaluate(a => ({ text: a.textContent.trim(), aria: a.getAttribute('aria-label'), href: a.href, target: a.target, rel: a.rel })) : 'NONE');
+  if (cta) {
+    const popupP = ctx.waitForEvent('page', { timeout: 4000 }).catch(() => null);
+    await cta.tap(); await sleep(1500);
+    const pop = await popupP;
+    log('tap 1 -> landed', pop ? pop.url() : page.url(), 'third-party requested', seen);
+    await page.screenshot({ path: `${OUT}/${V}-phone-tap1.png` });
+  }
+  await ctx.close();
+}
+
+await browser.close();
+server.close();
+log('done');

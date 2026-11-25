@@ -1,0 +1,553 @@
+{
+ "tenant": {
+  "id": null,
+  "slug": "sea-you-surfers-nest",
+  "name": "Sea You Surfers Nest"
+ },
+ "locales": {
+  "en": {
+   "businessName": "Sea You Surfers Nest",
+   "businessType": "beach_lodging",
+   "tagline": "A bed and breakfast in Midigama, on Sri Lanka’s south coast.",
+   "closing": "Live dates are on Booking.com, and groups can rent the whole house on Airbnb.",
+   "featureLine": null,
+   "languages": [
+    "en"
+   ],
+   "copyBlocks": [
+    {
+     "slot": "intro",
+     "heading": "Around the courtyard",
+     "body": "Sea You is a white two-storey house. Downstairs there’s an inner courtyard, with potted plants and a cushioned bench, and the room doors that open onto it have carved fanlights over them.\n\nFrom the balconies upstairs you look out over the garden to the coconut palms. There are tables and chairs out there, and the long one has a settee with green cushions."
+    },
+    {
+     "slot": "about",
+     "heading": "Ashly",
+     "body": "Your host is Ashly. He’s a Superhost on Airbnb and usually replies there within a few hours.\n\n“Whether you’re chasing the perfect wave, soaking up the beach vibes, or just looking to unwind,” he writes, “our place is your perfect home away from home.”"
+    },
+    {
+     "slot": "offer",
+     "heading": "Seven rooms",
+     "body": "All seven rooms are doubles, and between them they sleep fourteen. Only one has air conditioning, so ask when you book if you want the one that has it.\n\nThe rooms are furnished much alike. The bed is a mint-green four-poster double with a teal velvet throw on it, and there’s a timber towel ladder and a green cabinet with a mirror."
+    },
+    {
+     "slot": "about",
+     "heading": "Breakfast",
+     "body": "Breakfast here is Asian, with local specialities and warm dishes, and there’s juice and fruit too."
+    },
+    {
+     "slot": "about",
+     "heading": "Carved doors and a surfboard shower",
+     "body": "One of the rooms has a carved grey double door, and the wooden chair beside it is carved too. Elsewhere, carved wooden masks hang by a doorway among the ferns.\n\nOut in the garden there’s a shower built into a wooden surfboard, fixed to the wall under the palms. It’s for rinsing off after the sea."
+    },
+    {
+     "slot": "info",
+     "heading": "Finding the house",
+     "body": "Booking.com lists the house under Kumbalgama and Airbnb under Matara, but it’s one house, in Midigama.\n\nMidigama railway station is 950 m away on foot and Weligama Beach is 3.4 km, both by Booking.com’s count."
+    }
+   ],
+   "openingHours": [],
+   "hoursNote": null,
+   "priceList": [],
+   "photos": [
+    {
+     "image": {
+      "id": 1,
+      "alt": "A mint-green table with a potted pothos and two mint chairs on the upstairs balcony, coconut palm fronds filling the view beyond the white parapet",
+      "filename": "img-003-graded.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 266504,
+      "width": 2000,
+      "height": 1333,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 2,
+      "alt": "A courtyard doorway under a carved grey fanlight, a mint four-poster with a teal throw inside, carved masks and a carved shutter on the white wall, plants in pots",
+      "filename": "img-051.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 254755,
+      "width": 1920,
+      "height": 1280,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 3,
+      "alt": "A mint-green four-poster double made up in white linen, a grey panelled door and a small black mirror on the wall behind it",
+      "filename": "img-002.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 196637,
+      "width": 2000,
+      "height": 1333,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 4,
+      "alt": "A gabled mint-green four-poster with lime sheets, grey and striped pillows and a teal velvet throw, grey doors either side",
+      "filename": "img-015.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 196439,
+      "width": 2000,
+      "height": 1333,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 5,
+      "alt": "A mint four-poster with lime-green sheets and pillows and a towel roll, a timber towel ladder by the shuttered window",
+      "filename": "img-012.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 228394,
+      "width": 2000,
+      "height": 1333,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 6,
+      "alt": "Lime-green sheets and pillows on a mint four-poster, the teal throw at the foot and a potted plant beside the bed",
+      "filename": "img-022.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 194722,
+      "width": 2000,
+      "height": 1333,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 7,
+      "alt": "A mint-framed mirror with a little shelf on the bedroom wall, the corner of a lime-green bed below it and a dark green door to the side",
+      "filename": "img-013.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 120642,
+      "width": 1333,
+      "height": 2000,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 8,
+      "alt": "A grey panelled door with a carved roundel, a black mirror and a mint bedside cabinet beside a bed in white linen",
+      "filename": "img-033.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 145749,
+      "width": 1333,
+      "height": 2000,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 9,
+      "alt": "A mint four-poster with grey pillows and a teal velvet throw, a timber towel ladder and a mint cabinet with a plant beside it",
+      "filename": "img-005.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 169826,
+      "width": 1333,
+      "height": 2000,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 10,
+      "alt": "A mint four-poster with a teal velvet throw over lime sheets and striped pillows, a grey door behind",
+      "filename": "img-026.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 175085,
+      "width": 1333,
+      "height": 2000,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 11,
+      "alt": "A mint four-poster with grey sheets and a folded towel, a timber towel ladder and a green mirror on the wall behind",
+      "filename": "img-009.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 141219,
+      "width": 2000,
+      "height": 1127,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 12,
+      "alt": "A round wooden side table with a white tea set between two green chairs, the foot of a bed with a teal throw at the edge",
+      "filename": "img-025.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 147256,
+      "width": 1333,
+      "height": 2000,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 13,
+      "alt": "The courtyard bench with turquoise cushions against a grey wall, a small wooden stool in front and palms above the wall",
+      "filename": "img-071.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 361568,
+      "width": 1920,
+      "height": 1081,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 14,
+      "alt": "A corner of the courtyard: a potted plant, a wooden stool with a chequerboard top and a concrete bench below a grey door",
+      "filename": "img-006.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 313162,
+      "width": 2000,
+      "height": 1333,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 15,
+      "alt": "A mint table laid with a white teapot, two cups and a pink rose in a little pot, on a red-oxide floor",
+      "filename": "img-007.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 207777,
+      "width": 2000,
+      "height": 1333,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 16,
+      "alt": "A round wooden table with a white tea set between two green chairs",
+      "filename": "img-039.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 150476,
+      "width": 2000,
+      "height": 1333,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 17,
+      "alt": "A carved wooden settee with a cane seat beside a low table, big leaves in the foreground",
+      "filename": "img-041.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 313642,
+      "width": 2000,
+      "height": 1333,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 18,
+      "alt": "Two carved wooden chairs with cane seats at a small round table on the balcony",
+      "filename": "img-045.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 318120,
+      "width": 2000,
+      "height": 1333,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 19,
+      "alt": "A wooden stool with a chequerboard top beside a concrete bench, a leaf in the foreground",
+      "filename": "img-037.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 266830,
+      "width": 1333,
+      "height": 2000,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 20,
+      "alt": "A variegated pothos in a white pot on a concrete ledge, big leaves behind it",
+      "filename": "img-038.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 250414,
+      "width": 1333,
+      "height": 2000,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 21,
+      "alt": "The long upstairs balcony: a settee with green cushions, mint tables and chairs, and palms beyond the railing",
+      "filename": "img-077.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 421113,
+      "width": 1920,
+      "height": 1082,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 22,
+      "alt": "A wooden surfboard fixed upright to a grey garden wall with a tap and a shower head, palms above the wall",
+      "filename": "img-036.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 291368,
+      "width": 1333,
+      "height": 2000,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 23,
+      "alt": "Carved wooden masks hanging on a wall beside a doorway, leaves at the edge",
+      "filename": "img-069.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 283352,
+      "width": 1136,
+      "height": 2000,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 24,
+      "alt": "The round sign by the road: Sea You, The Surfers Nest, Midigama, with a wave, a board, a sun and a palm, against palms and a cloudy sky",
+      "filename": "img-001.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 199048,
+      "width": 1333,
+      "height": 2000,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    }
+   ],
+   "heroVideo": null,
+   "heroVideoPoster": null,
+   "videos": [],
+   "contact": {
+    "phone": "+94715880052",
+    "whatsapp": null,
+    "email": null,
+    "address": "151 Weliwaththa Rd, Midigama 80650, Sri Lanka",
+    "mapUrl": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0"
+   },
+   "bookingLinks": [
+    {
+     "label": "See rooms and live dates on Booking.com",
+     "url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"
+    },
+    {
+     "label": "Book a room on Airbnb",
+     "url": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    },
+    {
+     "label": "Book the whole house on Airbnb",
+     "url": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    }
+   ],
+   "amenities": [
+    {
+     "label": "Free WiFi",
+     "note": "in public areas"
+    },
+    {
+     "label": "Fan and mosquito net",
+     "note": null
+    },
+    {
+     "label": "Free toiletries",
+     "note": null
+    },
+    {
+     "label": "Kitchen",
+     "note": null
+    },
+    {
+     "label": "Free private parking on site",
+     "note": null
+    },
+    {
+     "label": "Airport shuttle",
+     "note": "additional charge"
+    },
+    {
+     "label": "Laundry",
+     "note": "additional charge"
+    },
+    {
+     "label": "Security cameras outside",
+     "note": null
+    }
+   ],
+   "ratings": [
+    {
+     "platform": "google",
+     "score": 4.9,
+     "scale": "5",
+     "count": 11,
+     "url": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0",
+     "capturedAt": "2026-11-21"
+    },
+    {
+     "platform": "booking",
+     "score": 8,
+     "scale": "10",
+     "count": 8,
+     "url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+     "capturedAt": "2026-11-21"
+    },
+    {
+     "platform": "airbnb",
+     "score": 5,
+     "scale": "5",
+     "count": 10,
+     "url": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+     "capturedAt": "2026-11-21"
+    }
+   ],
+   "testimonials": [
+    {
+     "quote": "We had a great stay! Ashly was incredibly friendly, welcoming, and very accomodating. The room was clean, comfortable, and exactly as described. The location is amazing, just steps away from the sea and restaurants.\nWe would definitely recommend staying here!",
+     "author": "Kenza",
+     "source": "airbnb",
+     "lang": "en",
+     "date": "2026-02"
+    },
+    {
+     "quote": "We really enjoyed our stay! Great location and price! Private balcony outside of rooms. The host is extremely responsive and helpful. Let us check in sooner, was able to book an additional night, recommend where to get laundry done & sorted an airport transfer for us! Highly recommend staying here",
+     "author": "Niamh",
+     "source": "airbnb",
+     "lang": "en",
+     "date": "2026-01"
+    },
+    {
+     "quote": "I had a very pleasant stay at this place. For the paid price, the room were absolutely good value and met my expectations. Outside, there is a lovely and well-maintained patio area, which is very nice to relax in. Ashley, the owner, is truly fantastic, very kind, attentive, and always ready to help with anything you might need. He really makes you feel welcome and well taken care of.",
+     "author": "Marina, Italy",
+     "source": "booking",
+     "lang": "en",
+     "date": "2026-02"
+    },
+    {
+     "quote": "Amazing location in Midigama. Great place to stay, would recommend",
+     "author": "Molly Jayne",
+     "source": "airbnb",
+     "lang": "en",
+     "date": "2026-02"
+    },
+    {
+     "quote": "It was a nice place to stay. Would recommend to go there.",
+     "author": "Raul",
+     "source": "airbnb",
+     "lang": "en",
+     "date": "2026-03"
+    }
+   ],
+   "spot": "“Hello to waves in a minute walk,” says the house’s own listing.",
+   "season": null,
+   "languagesSpoken": [
+    "en"
+   ],
+   "rooms": [
+    {
+     "label": "Deluxe Double Room",
+     "beds": "1 large double bed",
+     "sleeps": 2,
+     "note": "13 m², with its own bathroom, a private entrance, a terrace and a balcony.",
+     "photo": null
+    },
+    {
+     "label": "Standard Double Room",
+     "beds": "1 large double bed",
+     "sleeps": 2,
+     "note": "12 m², with a private entrance and a wardrobe.",
+     "photo": null
+    }
+   ],
+   "stayInfo": {
+    "checkInFrom": null,
+    "checkInTo": null,
+    "checkOutFrom": "06:00",
+    "checkOutTo": "10:00",
+    "minNights": null,
+    "note": "Children of any age are welcome; there are no cots or extra beds. Pets on request, and charges may apply. No parties or events."
+   },
+   "lessons": [],
+   "credentials": [],
+   "rentals": [],
+   "brands": [],
+   "forecast": {
+    "enabled": false,
+    "rosaSpotId": null,
+    "spotName": null
+   },
+   "updatedAt": null,
+   "createdAt": null
+  }
+ }
+}

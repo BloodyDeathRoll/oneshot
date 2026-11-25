@@ -1,0 +1,11 @@
+  [shadow] @1440px (+390)  43 box-shadow(s) on elements at rest: a.btn.btn-book → rgba(29, 40, 20, 0.18) 0px 1px 2px 0px, rgba(51, 72, 37, 0.55) 0px 10px 22px -10 | button.tile → rgba(29, 40, 20, 0.45
+  [button-fx] @1440px (+390)  Buttons with shadow/glow.
+  [edge-text] @1440px  1 text block(s) sit within 16px of the screen edge: "Jan 2026" (-1px from the right)
+  [still-page] @1440px  Only 6 element(s) moved while the page loaded and scrolled.
+  [reduced-hidden] @1440px  With reduced motion requested, 2 text block(s) on the first screen stay invisible: "Sea You Surfers Nest", "See live dates"
+  [card-rows] @1440px  2 rows of identical boxed cards.
+  [size-count] @1440px (+390)  15 different font sizes (13, 14, 15, 16, 17, 18, 21, 22, 23, 24, 28, 34, 36, 50, 56).
+  [no-footage] @1440px  No video anywhere on the page.
+  [side-scroll] @1440px (+390)  2 row(s) scroll sideways with content past their edge.
+  [empty-middle] @1440px  2 section(s) have content at both edges and 1792px of nothing between: "Around the courtyard"; "Ashly"
+RESULT: 5 FAIL, 5 WARN — not done.

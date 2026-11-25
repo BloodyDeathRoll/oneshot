@@ -1,0 +1,167 @@
+// experience-critic 0.2.0, 4f round 1, sea-you-surfers-nest: the interactive states the scroll walk cannot show.
+// usage: node states.mjs <outdir>
+import { chromium } from '/Users/alonlavi/.paradev/worktrees/oneshot/pull-latest-version-from-ff5cf4f5/node_modules/playwright/index.mjs';
+import fs from 'node:fs';
+import http from 'node:http';
+import path from 'node:path';
+
+const OUT = process.argv[2];
+const MOCK = '/Users/alonlavi/.paradev/worktrees/oneshot/pull-latest-version-from-ff5cf4f5/sites/sea-you-surfers-nest/mockups';
+fs.mkdirSync(OUT, { recursive: true });
+const LOG = `${OUT}/states.log`; fs.writeFileSync(LOG, '');
+const log = (...a) => { const s = a.map(x => typeof x === 'string' ? x : JSON.stringify(x)).join(' '); console.log(s); fs.appendFileSync(LOG, s + '\n'); };
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const TYPES = { '.html': 'text/html; charset=utf-8', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif', '.png': 'image/png', '.svg': 'image/svg+xml' };
+const server = http.createServer((req, res) => {
+  let p = decodeURIComponent(new URL(req.url, 'http://x').pathname); if (p.endsWith('/')) p += 'index.html';
+  const f = path.join(MOCK, p);
+  if (!f.startsWith(MOCK) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.writeHead(404); return res.end('404'); }
+  res.writeHead(200, { 'content-type': TYPES[path.extname(f)] || 'application/octet-stream' }); fs.createReadStream(f).pipe(res);
+});
+await new Promise(r => server.listen(0, '127.0.0.1', r));
+const B = `http://127.0.0.1:${server.address().port}/`;
+const U = v => `${B}${v}/dist/`;
+const UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1';
+const phone = { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, userAgent: UA };
+const laptop = { viewport: { width: 1440, height: 900 } };
+const browser = await chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--enable-webgl'] });
+async function ctxFor(opts, seen = []) {
+  const ctx = await browser.newContext(opts);
+  await ctx.route(u => !u.href.startsWith(B) && !/fonts\.(googleapis|gstatic)\.com/.test(u.href), r => { seen.push(r.request().url()); r.fulfill({ status: 200, contentType: 'text/html', body: 'stub' }); });
+  return ctx;
+}
+const shot = (page, name, clip) => page.screenshot({ path: `${OUT}/${name}.png`, timeout: 60000, ...(clip ? { clip } : {}) }).catch(e => log("shot fail", name, e.message.split("\n")[0]));
+
+// ---------------- CALM
+{
+  const ctx = await ctxFor(phone); const page = await ctx.newPage(); page.on('pageerror', e => log('calm PAGEERROR', e.message));
+  await page.goto(U('calm'), { waitUntil: 'load' }); await sleep(800);
+  await page.evaluate(() => scrollTo(0, 1100)); await sleep(900);
+  await shot(page, 'calm-phone-bar');
+  log('calm bar', await page.evaluate(() => [...document.querySelectorAll('#bar a,#bar button')].filter(e => e.getBoundingClientRect().height > 0).map(e => ({ t: e.textContent.trim().replace(/\s+/g, ' ').slice(0, 50), aria: e.getAttribute('aria-label'), h: Math.round(e.getBoundingClientRect().height), w: Math.round(e.getBoundingClientRect().width) }))));
+  const more = await page.$('#bar .bar-more');
+  if (more) { await more.tap(); await sleep(120); await shot(page, 'calm-phone-bar-opening'); await sleep(500); await shot(page, 'calm-phone-bar-open'); log('calm bar panel open', await page.evaluate(() => { const p = document.getElementById('bar-panel'); const r = p.getBoundingClientRect(); return { hidden: p.hidden, top: Math.round(r.top), h: Math.round(r.height) }; })); await more.tap(); await sleep(400); }
+  // room slideshow: swipe on phone
+  await page.evaluate(() => document.getElementById('deluxe').scrollIntoView({ block: 'center' })); await sleep(700);
+  await shot(page, 'calm-phone-deluxe-0');
+  const box = await page.evaluate(() => { const r = document.querySelector('#deluxe').getBoundingClientRect(); return { x: r.x, y: r.y, w: r.width, h: r.height }; });
+  const cdp = await ctx.newCDPSession(page);
+  const swipe = async () => { const y = box.y + box.h * 0.4, x0 = box.x + box.w * 0.8, x1 = box.x + box.w * 0.15; await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: x0, y }] }); for (let k = 1; k <= 8; k++) { await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: x0 + (x1 - x0) * k / 8, y }] }); await sleep(16); } await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }); };
+  await swipe(); await sleep(140); await shot(page, 'calm-phone-deluxe-swipe-mid'); await sleep(500); await shot(page, 'calm-phone-deluxe-1');
+  log('calm deluxe after swipe', await page.evaluate(() => [...document.querySelectorAll('#deluxe .dot')].map(d => d.getAttribute('aria-current') || d.getAttribute('aria-selected') || d.className).join(' ')));
+  // quote slideshow
+  await page.evaluate(() => document.querySelector('.qstack').scrollIntoView({ block: 'center' })); await sleep(700); await shot(page, 'calm-phone-quotes');
+  // phone hit areas under 44px
+  log('calm tap targets < 44', await page.evaluate(() => [...document.querySelectorAll('a,button')].filter(e => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && (r.height < 44 || r.width < 44) && getComputedStyle(e).visibility !== 'hidden'; }).map(e => (e.className || e.tagName) + ' ' + Math.round(e.getBoundingClientRect().width) + 'x' + Math.round(e.getBoundingClientRect().height)).slice(0, 15)));
+  await ctx.close();
+  // laptop: parallax frames, room row hover
+  const c2 = await ctxFor(laptop); const p2 = await c2.newPage(); await p2.goto(U('calm'), { waitUntil: 'load' }); await sleep(800);
+  for (const y of [0, 300, 600]) { await p2.evaluate(v => scrollTo(0, v), y); await sleep(400); await shot(p2, `calm-laptop-parallax-${y}`); }
+  await p2.evaluate(() => document.getElementById('deluxe').scrollIntoView({ block: 'center' })); await sleep(600);
+  const nx = await p2.$('#deluxe .arw.next'); if (nx) { await nx.hover(); await sleep(250); await shot(p2, 'calm-laptop-arrow-hover'); await nx.click(); await sleep(140); await shot(p2, 'calm-laptop-slide-mid'); await sleep(400); await shot(p2, 'calm-laptop-slide-next'); }
+  await c2.close();
+}
+
+// ---------------- INTERACTIVE
+{
+  // shader frames, forced (a GPU phone runs it; headless SwiftShader otherwise keeps the still)
+  for (const [tag, opts] of [['phone', phone], ['laptop', laptop]]) {
+    const ctx = await ctxFor(opts); const page = await ctx.newPage(); page.on('pageerror', e => log('interactive PAGEERROR', e.message)); page.on('console', m => { if (m.type() === 'warning' || m.type() === 'error') log('interactive console', m.text().slice(0, 200)); });
+    await page.goto(U('interactive') + '?palms', { waitUntil: 'load' }); await sleep(2500);
+    log(`interactive ${tag} canvas`, await page.evaluate(() => [...document.querySelectorAll('canvas')].map(c => ({ op: getComputedStyle(c).opacity, w: c.width, h: c.height, cls: c.className }))));
+    for (const t of [0, 1500, 3000]) { if (t) await sleep(1500); await shot(page, `interactive-${tag}-palms-${t}`); }
+    // gust: pointer sweep on laptop
+    if (tag === 'laptop') { await page.mouse.move(200, 400); for (let k = 0; k < 10; k++) { await page.mouse.move(200 + k * 110, 400); await sleep(16); } await sleep(150); await shot(page, 'interactive-laptop-palms-gust'); }
+    await ctx.close();
+  }
+  // default (non-forced) cold load on SwiftShader: does the canvas run?
+  {
+    const ctx = await ctxFor(phone); const page = await ctx.newPage(); await page.goto(U('interactive'), { waitUntil: 'load' }); await sleep(2000);
+    log('interactive default-url canvas (SwiftShader)', await page.evaluate(() => [...document.querySelectorAll('canvas')].map(c => ({ op: getComputedStyle(c).opacity, w: c.width }))));
+    await ctx.close();
+  }
+  // tiles, pill, shelf, bar on phone
+  const ctx = await ctxFor(phone); const page = await ctx.newPage(); page.on('pageerror', e => log('interactive PAGEERROR', e.message));
+  await page.goto(U('interactive'), { waitUntil: 'load' }); await sleep(800);
+  await page.evaluate(() => document.querySelector('.tiles').scrollIntoView({ block: 'start' })); await page.evaluate(() => scrollBy(0, -120)); await sleep(700);
+  await shot(page, 'interactive-phone-tiles-two');
+  for (const k of ['group', 'ask']) {
+    const t = await page.$(`.tiles .tile[data-for="${k}"]`); await t.tap(); await sleep(130); await shot(page, `interactive-phone-tiles-${k}-mid`); await sleep(500); await shot(page, `interactive-phone-tiles-${k}`);
+    log('interactive tile', k, await page.evaluate(k => { const a = document.getElementById('w1-' + k); return { on: a.classList.contains('is-on'), text: a.textContent.trim().replace(/\s+/g, ' ').slice(0, 220), links: [...a.querySelectorAll('a')].map(x => x.textContent.trim().replace(/\s+/g, ' ') + ' -> ' + x.href) }; }, k));
+  }
+  log('interactive w1-two', await page.evaluate(() => { const a = document.getElementById('w1-two'); return { text: a.textContent.trim().replace(/\s+/g, ' ').slice(0, 260), links: [...a.querySelectorAll('a')].map(x => x.textContent.trim().replace(/\s+/g, ' ') + ' -> ' + x.href) }; }));
+  // pill
+  await page.evaluate(() => document.getElementById('rooms').scrollIntoView({ block: 'start' })); await sleep(700); await shot(page, 'interactive-phone-rooms-deluxe');
+  await (await page.$('#tab-standard')).tap(); await sleep(150); await shot(page, 'interactive-phone-rooms-standard-mid'); await sleep(500); await shot(page, 'interactive-phone-rooms-standard');
+  log('interactive pill sticky?', await page.evaluate(() => { scrollBy(0, 500); const p = document.querySelector('.pill'); return { pos: getComputedStyle(p).position, top: Math.round(p.getBoundingClientRect().top) }; }));
+  await sleep(500); await shot(page, 'interactive-phone-rooms-scrolled');
+  // shelf
+  await page.evaluate(() => document.querySelector('.shelf-track').scrollIntoView({ block: 'center' })); await sleep(700); await shot(page, 'interactive-phone-shelf');
+  // bar
+  await page.evaluate(() => scrollTo(0, 1600)); await sleep(800); await shot(page, 'interactive-phone-bar');
+  log('interactive bar', await page.evaluate(() => { const b = document.querySelector('[data-bar]'); const r = b.getBoundingClientRect(); return { cls: b.className, top: Math.round(r.top), h: Math.round(r.height), btn: (x => [Math.round(x.width), Math.round(x.height)])(b.querySelector('a').getBoundingClientRect()) }; }));
+  log('interactive tap targets < 44', await page.evaluate(() => [...document.querySelectorAll('a,button')].filter(e => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && (r.height < 44 || r.width < 44); }).map(e => (e.className || e.tagName) + ' ' + Math.round(e.getBoundingClientRect().width) + 'x' + Math.round(e.getBoundingClientRect().height)).slice(0, 15)));
+  await ctx.close();
+  // laptop: shelf drag, tile hover
+  const c2 = await ctxFor(laptop); const p2 = await c2.newPage(); await p2.goto(U('interactive'), { waitUntil: 'load' }); await sleep(800);
+  await p2.evaluate(() => document.querySelector('.tiles').scrollIntoView({ block: 'center' })); await sleep(600);
+  await p2.hover('.tiles .tile[data-for="group"]'); await sleep(300); await shot(p2, 'interactive-laptop-tile-hover');
+  await p2.evaluate(() => document.querySelector('.shelf-track').scrollIntoView({ block: 'center' })); await sleep(700); await shot(p2, 'interactive-laptop-shelf-0');
+  const sb = await p2.evaluate(() => { const r = document.querySelector('.shelf-track').getBoundingClientRect(); return { x: r.x, y: r.y, w: r.width, h: r.height }; });
+  await p2.mouse.move(sb.x + sb.w * 0.7, sb.y + sb.h / 2); await p2.mouse.down();
+  for (let k = 1; k <= 12; k++) { await p2.mouse.move(sb.x + sb.w * 0.7 - k * 45, sb.y + sb.h / 2); await sleep(16); }
+  await p2.mouse.up(); await sleep(120); await shot(p2, 'interactive-laptop-shelf-fling'); await sleep(1200); await shot(p2, 'interactive-laptop-shelf-rest');
+  log('interactive shelf scroll after drag', await p2.evaluate(() => { const s = document.querySelector('.shelf-track'); return { sl: s.scrollLeft, tf: getComputedStyle(s.firstElementChild || s).transform }; }));
+  await c2.close();
+}
+
+// ---------------- UNIQUE
+{
+  for (const [tag, opts] of [['phone', phone], ['laptop', laptop]]) {
+    const ctx = await ctxFor(opts); const page = await ctx.newPage(); page.on('pageerror', e => log('unique PAGEERROR', e.message));
+    await page.goto(U('unique'), { waitUntil: 'load' }); await sleep(1500);
+    const vh = opts.viewport.height;
+    // dense frames through the pull-back and the turn
+    const info = await page.evaluate(() => { const p = document.getElementById('piece'); const r = p.getBoundingClientRect(); return { top: Math.round(r.top + scrollY), h: Math.round(r.height) }; });
+    log(`unique ${tag} piece`, info);
+    const end = info.top + info.h; let i = 0;
+    for (let y = 0; y <= end; y += Math.round(vh * 0.25)) {
+      const cur = await page.evaluate(() => scrollY);
+      for (let k = 1; k <= 4; k++) { await page.evaluate(v => scrollTo(0, v), Math.round(cur + (y - cur) * k / 4)); await sleep(30); }
+      await sleep(450);
+      await shot(page, `unique-${tag}-turn-${String(i).padStart(2, '0')}`);
+      log(`unique ${tag} turn ${i}`, await page.evaluate(() => ({ y: Math.round(scrollY), caps: [...document.querySelectorAll('.cap-stack *')].filter(e => getComputedStyle(e).visibility !== 'hidden' && +getComputedStyle(e).opacity > 0.5 && e.children.length === 0 && e.textContent.trim()).map(e => e.textContent.trim().slice(0, 50)), canv: [...document.querySelectorAll('canvas')].map(c => getComputedStyle(c).opacity).join('/') })));
+      i++; if (i > 40) break;
+    }
+    // the door
+    await page.evaluate(() => scrollTo(0, 0)); await sleep(600);
+    const opener = tag === 'phone' ? '#bar .bar-more' : 'header a.btn-sm, .top a.btn-sm';
+    if (tag === 'phone') { await page.evaluate(() => scrollTo(0, 2400)); await sleep(800); await shot(page, 'unique-phone-bar'); log('unique bar', await page.evaluate(() => [...document.querySelectorAll('#bar a')].map(a => ({ t: a.textContent.trim(), w: Math.round(a.getBoundingClientRect().width), h: Math.round(a.getBoundingClientRect().height), top: Math.round(a.getBoundingClientRect().top) })))); }
+    else { await page.evaluate(() => scrollTo(0, 1200)); await sleep(800); }
+    const el = await page.$(opener);
+    log(`unique ${tag} opener`, el ? await el.evaluate(a => ({ t: a.textContent.trim(), vis: getComputedStyle(a).visibility, op: getComputedStyle(a).opacity })) : 'none');
+    if (el) {
+      tag === 'phone' ? await el.tap() : await el.click();
+      await sleep(140); await shot(page, `unique-${tag}-door-mid`); await sleep(600); await shot(page, `unique-${tag}-door-open`);
+      log(`unique ${tag} door`, await page.evaluate(() => ({ hidden: document.getElementById('door').hidden, url: location.href, focus: document.activeElement && (document.activeElement.className + ':' + document.activeElement.textContent.trim().slice(0, 30)) })));
+      // focus trap: tab 6 times
+      const seq = []; for (let k = 0; k < 6; k++) { await page.keyboard.press('Tab'); seq.push(await page.evaluate(() => document.activeElement.className.slice(0, 20) + ':' + document.activeElement.textContent.trim().slice(0, 20))); }
+      log(`unique ${tag} tab order inside door`, seq);
+      await page.keyboard.press('Escape'); await sleep(600);
+      log(`unique ${tag} after Esc`, await page.evaluate(() => ({ hidden: document.getElementById('door').hidden, focus: document.activeElement && (document.activeElement.className + ':' + document.activeElement.textContent.trim().slice(0, 30)) })));
+    }
+    // quote stack
+    await page.evaluate(() => document.getElementById('h-ashly').scrollIntoView({ block: 'start' })); await sleep(800); await shot(page, `unique-${tag}-quotes-0`);
+    const qn = await page.$('.arw.qnext');
+    if (qn && await qn.isVisible()) { tag === 'phone' ? await qn.tap() : await qn.click(); await sleep(180); await shot(page, `unique-${tag}-quotes-mid`); await sleep(700); await shot(page, `unique-${tag}-quotes-1`); }
+    else log(`unique ${tag} qnext not visible`);
+    if (tag === 'phone') log('unique tap targets < 44', await page.evaluate(() => [...document.querySelectorAll('a,button')].filter(e => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && (r.height < 44 || r.width < 44) && getComputedStyle(e).visibility !== 'hidden'; }).map(e => (e.className || e.tagName) + ' ' + Math.round(e.getBoundingClientRect().width) + 'x' + Math.round(e.getBoundingClientRect().height)).slice(0, 15)));
+    await ctx.close();
+  }
+  // /stay/ with JS off
+  const ctx = await ctxFor({ ...phone, javaScriptEnabled: false }); const page = await ctx.newPage();
+  await page.goto(U('unique') + 'stay/', { waitUntil: 'load' }); await sleep(800); await shot(page, 'unique-phone-nojs-stay');
+  log('unique /stay/ nojs', await page.evaluate(() => ({ title: document.title, links: [...document.querySelectorAll('a')].map(a => a.textContent.trim().replace(/\s+/g, ' ').slice(0, 45) + ' -> ' + a.getAttribute('href')).slice(0, 12) })));
+  await ctx.close();
+}
+await browser.close(); server.close(); log('done');

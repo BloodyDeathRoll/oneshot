@@ -1,0 +1,1304 @@
+{
+ "m390": {
+  "axe": {
+   "violations": [
+    {
+     "id": "scrollable-region-focusable",
+     "impact": "serious",
+     "n": 1,
+     "targets": [
+      ".prints :: Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+     ]
+    }
+   ],
+   "passes": 24,
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 3
+    }
+   ]
+  },
+  "overflow": {
+   "sw": 390,
+   "cw": 390
+  },
+  "external_attempted": [
+   "https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Karla:wght@400;600&display=swa"
+  ],
+  "errors": [],
+  "tab_count": 45,
+  "tab_invisible": 0,
+  "tabs": [
+   {
+    "t": "Skip to the rooms",
+    "tag": "A",
+    "href": "#rooms",
+    "w": 166,
+    "h": 47,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "See rooms and live dates on Booking.com",
+    "tag": "A",
+    "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.",
+    "w": 201,
+    "h": 56,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "4.9/5\nGoogle\n11 reviews\n21 Nov 2026",
+    "tag": "A",
+    "href": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=",
+    "w": 114,
+    "h": 118,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "8.0/10\nBooking.com\n8 reviews\n21 Nov 2026",
+    "tag": "A",
+    "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.",
+    "w": 114,
+    "h": 118,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "5.0/5\nAirbnb\n10 reviews\n21 Nov 2026",
+    "tag": "A",
+    "href": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "w": 114,
+    "h": 118,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "See rooms and live dates on Booking.com",
+    "tag": "A",
+    "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.",
+    "w": 358,
+    "h": 58,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "UL",
+    "tag": "UL",
+    "href": "",
+    "w": 358,
+    "h": 239,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Previous photo",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 44,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 1 of 6",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 2 of 6",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 3 of 6",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 4 of 6",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 5 of 6",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 6 of 6",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Next photo",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 44,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "See rooms and live dates on Booking.com",
+    "tag": "A",
+    "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.",
+    "w": 182,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "UL",
+    "tag": "UL",
+    "href": "",
+    "w": 358,
+    "h": 239,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Previous photo",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 44,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 1 of 4",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 2 of 4",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 3 of 4",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 4 of 4",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Next photo",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 44,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "See rooms and live dates on Booking.com",
+    "tag": "A",
+    "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.",
+    "w": 182,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "DIV",
+    "tag": "DIV",
+    "href": "",
+    "w": 390,
+    "h": 353,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "4.9/5\nGoogle\n11 reviews\n21 Nov 2026",
+    "tag": "A",
+    "href": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=",
+    "w": 114,
+    "h": 127,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "8.0/10\nBooking.com\n8 reviews\n21 Nov 2026",
+    "tag": "A",
+    "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.",
+    "w": 114,
+    "h": 127,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "5.0/5\nAirbnb\n10 reviews\n21 Nov 2026",
+    "tag": "A",
+    "href": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "w": 114,
+    "h": 127,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Previous review",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 44,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Review 1 of 5",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Review 2 of 5",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Review 3 of 5",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Review 4 of 5",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Review 5 of 5",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Next review",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 44,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Open in Google Maps",
+    "tag": "A",
+    "href": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=",
+    "w": 239,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "See rooms and live dates on Booking.com",
+    "tag": "A",
+    "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.",
+    "w": 358,
+    "h": 58,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Book a room on Airbnb",
+    "tag": "A",
+    "href": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "w": 358,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Book the whole house on Airbnb",
+    "tag": "A",
+    "href": "https://www.airbnb.co.uk/rooms/1793988904511877292",
+    "w": 358,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Booking.com",
+    "tag": "A",
+    "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.",
+    "w": 156,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Airbnb, a room",
+    "tag": "A",
+    "href": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "w": 168,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Airbnb, the whole house",
+    "tag": "A",
+    "href": "https://www.airbnb.co.uk/rooms/1793988904511877292",
+    "w": 233,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Google Maps",
+    "tag": "A",
+    "href": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=",
+    "w": 158,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "At a glance",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 52,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "See rooms and live dates on Booking.com",
+    "tag": "A",
+    "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.",
+    "w": 304,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   }
+  ]
+ },
+ "text": "Skip to the rooms\nSea You Surfers Nest\nSea You Surfers Nest\n\nMidigama, Sri Lanka\n\nSee live dates\nAt a glance\n\nA bed and breakfast in Midigama, on Sri Lanka’s south coast.\n\n“Hello to waves in a minute walk,” says the house’s own listing.\n\nFree WiFi in public areas | Kitchen | Fan and mosquito net | Free private parking on site\n\nLive dates on Booking.com\n\n4.9/5\nGoogle\n11 reviews\n21 Nov 2026\n8.0/10\nBooking.com\n8 reviews\n21 Nov 2026\n5.0/5\nAirbnb\n10 reviews\n21 Nov 2026\nSee rooms and live dates on Booking.com\nSeven rooms\n\nAll seven rooms are doubles, and between them they sleep fourteen. Only one has air conditioning, so ask when you book if you want the one that has it.\n\nThe rooms are furnished much alike. The bed is a mint-green four-poster double with a teal velvet throw on it, and there’s a timber towel ladder and a green cabinet with a mirror.\n\nIn every room\nMint-green four-poster double\nTeal velvet throw\nTimber towel ladder\nGreen cabinet with a mirror\nFan and mosquito net\nDeluxe Double Room\n\n1 large double bed | Sleeps 2\n\n13 m², with its own bathroom, a private entrance, a terrace and a balcony.\n\nSee live dates\nStandard Double Room\n\n1 large double bed | Sleeps 2\n\n12 m², with a private entrance and a wardrobe.\n\nSee live dates\nAround the courtyard\n\nSea You is a white two-storey house. Downstairs there’s an inner courtyard, with potted plants and a cushioned bench, and the room doors that open onto it have carved fanlights over them.\n\nFrom the balconies upstairs you look out over the garden to the coconut palms. There are tables and chairs out there, and the long one has a settee with green cushions.\n\nCarved doors and a surfboard shower\n\nOne of the rooms has a carved grey double door, and the wooden chair beside it is carved too. Elsewhere, carved wooden masks hang by a doorway among the ferns.\n\nOut in the garden there’s a shower built into a wooden surfboard, fixed to the wall under the palms. It’s for rinsing off after the sea.\n\nBreakfast\n\nBreakfast here is Asian, with local specialities and warm dishes, and there’s juice and fruit too.\n\nAshly\n\nYour host is Ashly. He’s a Superhost on Airbnb and usually replies there within a few hours.\n\n“Whether you’re chasing the perfect wave, soaking up the beach vibes, or just looking to unwind,” he writes, “our place is your perfect home away from home.”\n\nWhat guests wrote\n4.9/5\nGoogle\n11 reviews\n21 Nov 2026\n8.0/10\nBooking.com\n8 reviews\n21 Nov 2026\n5.0/5\nAirbnb\n10 reviews\n21 Nov 2026\n\nWe really enjoyed our stay! Great location and price! Private balcony outside of rooms. The host is extremely responsive and helpful. Let us check in sooner, was able to book an additional night, recommend where to get laundry done & sorted an airport transfer for us! Highly recommend staying here\n\nNiamh | Airbnb | Jan 2026\nFinding the house\n\nBooking.com lists the house under Kumbalgama and Airbnb under Matara, but it’s one house, in Midigama.\n\nMidigama railway station is 950 m away on foot and Weligama Beach is 3.4 km, both by Booking.com’s count.\n\n151 Weliwaththa Rd, Midigama 80650, Sri Lanka\n\nOpen in Google Maps\n\nCheck-out 06:00–10:00 | Children of any age are welcome; there are no cots or extra beds. Pets on request, and charges may apply. No parties or events.\n\nBook your stay\n\nLive dates are on Booking.com, and groups can rent the whole house on Airbnb.\n\nSee rooms and live dates on Booking.com\nBook a room on Airbnb\nBook the whole house on Airbnb\n\nSea You Surfers Nest\n\n151 Weliwaththa Rd, Midigama 80650, Sri Lanka\n\nRatings as published on Google, Booking.com and Airbnb, read 21 Nov 2026.\n\nBooking.com\nAirbnb, a room\nAirbnb, the whole house\nGoogle Maps\n\n© 2026 Sea You Surfers Nest\n\nSee live dates",
+ "textContent": " Skip to the rooms Sea You Surfers Nest See live dates Sea You Surfers Nest Midigama, Sri Lanka See live dates At a glance A bed and breakfast in Midigama, on Sri Lanka’s south coast. “Hello to waves in a minute walk,” says the house’s own listing. Free WiFi in public areas | Kitchen | Fan and mosquito net | Free private parking on site Live dates on Booking.com 4.9/5Google11 reviews21 Nov 20268.0/10Booking.com8 reviews21 Nov 20265.0/5Airbnb10 reviews21 Nov 2026 See rooms and live dates on Booking.com Seven rooms All seven rooms are doubles, and between them they sleep fourteen. Only one has air conditioning, so ask when you book if you want the one that has it.The rooms are furnished much alike. The bed is a mint-green four-poster double with a teal velvet throw on it, and there’s a timber towel ladder and a green cabinet with a mirror. In every room Mint-green four-poster doubleTeal velvet throwTimber towel ladderGreen cabinet with a mirrorFan and mosquito net Deluxe Double Room 1 large double bed | Sleeps 2 13 m², with its own bathroom, a private entrance, a terrace and a balcony. See live dates Standard Double Room 1 large double bed | Sleeps 2 12 m², with a private entrance and a wardrobe. See live dates Around the courtyard Sea You is a white two-storey house. Downstairs there’s an inner courtyard, with potted plants and a cushioned bench, and the room doors that open onto it have carved fanlights over them.From the balconies upstairs you look out over the garden to the coconut palms. There are tables and chairs out there, and the long one has a settee with green cushions. Carved doors and a surfboard shower One of the rooms has a carved grey double door, and the wooden chair beside it is carved too. Elsewhere, carved wooden masks hang by a doorway among the ferns.Out in the garden there’s a shower built into a wooden surfboard, fixed to the wall under the palms. It’s for rinsing off after the sea. Breakfast Breakfast here is Asian, with local specialities and warm dishes, and there’s juice and fruit too. Ashly Your host is Ashly. He’s a Superhost on Airbnb and usually replies there within a few hours.“Whether you’re chasing the perfect wave, soaking up the beach vibes, or just looking to unwind,” he writes, “our place is your perfect home away from home.” What guests wrote 4.9/5Google11 reviews21 Nov 20268.0/10Booking.com8 reviews21 Nov 20265.0/5Airbnb10 reviews21 Nov 2026 We really enjoyed our stay! Great location and price! Private balcony outside of rooms. The host is extremely responsive and helpful. Let us check in sooner, was able to book an additional night, recommend where to get laundry done & sorted an airport transfer for us! Highly recommend staying hereNiamh | Airbnb | Jan 2026We had a great stay! Ashly was incredibly friendly, welcoming, and very accomodating. The room was clean, comfortable, and exactly as described. The location is amazing, just steps away from the sea and restaurants. We would definitely recommend staying here!Kenza | Airbnb | Feb 2026I had a very pleasant stay at this place. For the paid price, the room were absolutely good value and met my expectations. Outside, there is a lovely and well-maintained patio area, which is very nice to relax in. Ashley, the owner, is truly fantastic, very kind, attentive, and always ready to help with anything you might need. He really makes you feel welcome and well taken care of.Marina, Italy | Booking.com | Feb 2026Amazing location in Midigama. Great place to stay, would recommendMolly Jayne | Airbnb | Feb 2026It was a nice place to stay. Would recommend to go there.Raul | Airbnb | Mar 2026 Finding the house Booking.com lists the house under Kumbalgama and Airbnb under Matara, but it’s one house, in Midigama.Midigama railway station is 950 m away on foot and Weligama Beach is 3.4 km, both by Booking.com’s count. 151 Weliwaththa Rd, Midigama 80650, Sri Lanka Open in Google Maps Check-out 06:00–10:00 | Children of any age are welcome; there are no cots or extra beds. Pets on request, and charges may apply. No parties or events. Book your stay Live dates are on Booking.com, and groups can rent the whole house on Airbnb. See rooms and live dates on Booking.comBook a room on AirbnbBook the whole house on Airbnb Sea You Surfers Nest 151 Weliwaththa Rd, Midigama 80650, Sri Lanka Ratings as published on Google, Booking.com and Airbnb, read 21 Nov 2026. Booking.com Airbnb, a room Airbnb, the whole house Google Maps © 2026 Sea You Surfers Nest “Hello to waves in a minute walk,” says the house’s own listing. Free WiFi in public areas | Kitchen | Fan and mosquito net | Free private parking on site Live dates on Booking.com 4.9/5Google11 reviews21 Nov 20268.0/10Booking.com8 reviews21 Nov 20265.0/5Airbnb10 reviews21 Nov 2026 See rooms and live dates on Booking.com See live dates /* Sea You Surfers Nest, calm: cross-fading dot slideshows, the reviews, the header, the phone bar and the desktop hero parallax. Everything on the page works without it: slideshows are scroll-snap rows and every button is a link. */ (() => { const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches; // one control for both slideshow kinds: the active dot gets aria-current and the wood pill slides under it const wire = (root, items, onGo) => { const ctrl = root.querySelector('.ctrl'), dots = [...ctrl.querySelectorAll('.dot')], pill = ctrl.querySelector('.pill'); ctrl.hidden = false; let cur = 0; const go = (i) => { cur = (i + items.length) % items.length; items.forEach((it, j) => { it.classList.toggle('on', j === cur); it.setAttribute('aria-hidden', j === cur ? 'false' : 'true'); }); dots.forEach((d, j) => d.setAttribute('aria-current', j === cur ? 'true' : 'false')); pill.style.transform = `translateX(${dots[cur].offsetLeft}px)`; onGo && onGo(cur); }; dots.forEach((d, i) => d.addEventListener('click', () => go(i))); ctrl.querySelector('.prev').addEventListener('click', () => go(cur - 1)); ctrl.querySelector('.next').addEventListener('click', () => go(cur + 1)); root.addEventListener('keydown', (e) => { if (e.target.closest('.dot, .arw') || e.target.matches('.track')) { if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1); } } }); // a horizontal swipe on a phone steps once; vertical scrolling is left alone (touch-action: pan-y) let x0 = null, y0 = 0; root.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse' && !e.target.closest('.ctrl')) { x0 = e.clientX; y0 = e.clientY; } }); root.addEventListener('pointerup', (e) => { if (x0 === null) return; const dx = e.clientX - x0, dy = e.clientY - y0; x0 = null; if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) go(cur + (dx < 0 ? 1 : -1)); }); root.addEventListener('pointercancel', () => { x0 = null; }); go(0); }; for (const show of document.querySelectorAll('[data-show]')) { const slides = [...show.querySelectorAll('.slide')]; // the next photo is fetched as soon as one is shown, so a tap never waits on a blank frame wire(show, slides, (i) => { const n = slides[(i + 1) % slides.length].querySelector('img'); if (n.loading === 'lazy') n.loading = 'eager'; }); } for (const box of document.querySelectorAll('[data-quotes]')) wire(box, [...box.querySelectorAll('.q')]); // the header turns solid and the phone bar slides up once the hero's own button has left the screen const top = document.querySelector('.top'), bar = document.getElementById('bar'); const heroBtn = document.querySelector('.btn-hero'), hero = document.querySelector('.hero'); new IntersectionObserver(([e]) => top.classList.toggle('solid', !e.isIntersecting), { rootMargin: '-72px 0px 0px 0px' }).observe(hero); new IntersectionObserver(([e]) => { const past = !e.isIntersecting && e.boundingClientRect.top < 0; bar.classList.toggle('on', past); if (!past) close(); }).observe(heroBtn); // the bar's chevron opens the at-a-glance summary above it (a disclosure, not a modal); Esc closes it const more = bar.querySelector('.bar-more'), panel = document.getElementById('bar-panel'); const close = (refocus) => { if (panel.hidden || panel.classList.contains('out')) return; const done = () => { panel.classList.remove('out'); panel.hidden = true; }; if (reduce) done(); else { panel.classList.add('out'); setTimeout(done, 180); } more.setAttribute('aria-expanded', 'false'); more.setAttribute('aria-label', 'At a glance'); if (refocus) more.focus(); }; more.addEventListener('click', () => { if (!panel.hidden && !panel.classList.contains('out')) return close(); panel.classList.remove('out'); panel.hidden = false; more.setAttribute('aria-expanded', 'true'); more.setAttribute('aria-label', 'Close the summary'); }); document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(true); }); // desktop only: the Kube parallax, the hero photo drifts up by 4 rem as the hero leaves (off on phones) const img = document.querySelector('.hero-media img'); const wide = matchMedia('(min-width: 700px)'); if (!reduce) { let ticking = false; const step = () => { ticking = false; if (!wide.matches) { img.style.transform = ''; return; } const h = hero.offsetHeight, y = Math.min(Math.max(scrollY, 0), h); img.style.transform = `translate3d(0, ${(-64 * y / h).toFixed(2)}px, 0)`; }; addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(step); } }, { passive: true }); wide.addEventListener('change', step); } })(); ",
+ "links": [
+  {
+   "t": "Skip to the rooms",
+   "aria": null,
+   "href": "#rooms"
+  },
+  {
+   "t": "Sea You Surfers Nest",
+   "aria": null,
+   "href": "#top"
+  },
+  {
+   "t": "See live dates",
+   "aria": "See rooms and live dates on Booking.com",
+   "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"
+  },
+  {
+   "t": "See live dates",
+   "aria": "See rooms and live dates on Booking.com",
+   "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"
+  },
+  {
+   "t": "4.9/5\nGoogle\n11 reviews\n21 Nov 2026",
+   "aria": null,
+   "href": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0"
+  },
+  {
+   "t": "8.0/10\nBooking.com\n8 reviews\n21 Nov 2026",
+   "aria": null,
+   "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"
+  },
+  {
+   "t": "5.0/5\nAirbnb\n10 reviews\n21 Nov 2026",
+   "aria": null,
+   "href": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+  },
+  {
+   "t": "See rooms and live dates on Booking.com",
+   "aria": null,
+   "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"
+  },
+  {
+   "t": "See live dates",
+   "aria": "See rooms and live dates on Booking.com",
+   "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"
+  },
+  {
+   "t": "See live dates",
+   "aria": "See rooms and live dates on Booking.com",
+   "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"
+  },
+  {
+   "t": "4.9/5\nGoogle\n11 reviews\n21 Nov 2026",
+   "aria": null,
+   "href": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0"
+  },
+  {
+   "t": "8.0/10\nBooking.com\n8 reviews\n21 Nov 2026",
+   "aria": null,
+   "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"
+  },
+  {
+   "t": "5.0/5\nAirbnb\n10 reviews\n21 Nov 2026",
+   "aria": null,
+   "href": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+  },
+  {
+   "t": "Open in Google Maps",
+   "aria": null,
+   "href": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0"
+  },
+  {
+   "t": "See rooms and live dates on Booking.com",
+   "aria": null,
+   "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"
+  },
+  {
+   "t": "Book a room on Airbnb",
+   "aria": null,
+   "href": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+  },
+  {
+   "t": "Book the whole house on Airbnb",
+   "aria": null,
+   "href": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+  },
+  {
+   "t": "Booking.com",
+   "aria": null,
+   "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"
+  },
+  {
+   "t": "Airbnb, a room",
+   "aria": null,
+   "href": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+  },
+  {
+   "t": "Airbnb, the whole house",
+   "aria": null,
+   "href": "https://www.airbnb.co.uk/rooms/1793988904511877292"
+  },
+  {
+   "t": "Google Maps",
+   "aria": null,
+   "href": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0"
+  },
+  {
+   "t": "4.9/5Google11 reviews21 Nov 2026",
+   "aria": null,
+   "href": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0"
+  },
+  {
+   "t": "8.0/10Booking.com8 reviews21 Nov 2026",
+   "aria": null,
+   "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"
+  },
+  {
+   "t": "5.0/5Airbnb10 reviews21 Nov 2026",
+   "aria": null,
+   "href": "https://www.airbnb.co.uk/rooms/1508895627217411616"
+  },
+  {
+   "t": "See rooms and live dates on Booking.com",
+   "aria": null,
+   "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"
+  },
+  {
+   "t": "See live dates",
+   "aria": "See rooms and live dates on Booking.com",
+   "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"
+  }
+ ],
+ "quotes": [
+  {
+   "text": "We really enjoyed our stay! Great location and price! Private balcony outside of rooms. The host is extremely responsive and helpful. Let us check in sooner, was able to book an additional night, recommend where to get laundry done & sorted an airport transfer for us! Highly recommend staying here",
+   "html": "<p>We really enjoyed our stay! Great location and price! Private balcony outside"
+  },
+  {
+   "text": "",
+   "html": "<p>We had a great stay! Ashly was incredibly friendly, welcoming, and very accom"
+  },
+  {
+   "text": "",
+   "html": "<p>I had a very pleasant stay at this place. For the paid price, the room were a"
+  },
+  {
+   "text": "",
+   "html": "<p>Amazing location in Midigama. Great place to stay, would recommend</p>"
+  },
+  {
+   "text": "",
+   "html": "<p>It was a nice place to stay. Would recommend to go there.</p>"
+  }
+ ],
+ "imgs": [
+  {
+   "src": "img/hero-img-004-1920.webp",
+   "alt": "A covered veranda: a wooden armchair with a cane seat, a low wooden table, potted plants and grey carved doors at the back, and three surfboards standing on a wall rack on the right",
+   "nw": 390,
+   "cw": 390
+  },
+  {
+   "src": "img/room-img-002-1080.webp",
+   "alt": "A mint-green four-poster double with white sheets and striped pillows; a grey panelled double door stands open onto a veranda with a green table and chairs",
+   "nw": 358,
+   "cw": 358
+  },
+  {
+   "src": "img/room-img-015-1080.webp",
+   "alt": "A mint-green four-poster with green sheets and a teal velvet throw, between two grey doors",
+   "nw": 358,
+   "cw": 358
+  },
+  {
+   "src": "img/room-img-012-1080.webp",
+   "alt": "A mint-green four-poster with lime-green sheets and pillows beside a shuttered window",
+   "nw": 358,
+   "cw": 358
+  },
+  {
+   "src": "img/room-img-022-1080.webp",
+   "alt": "Lime-green pillows and sheets on a mint-green bed, a teal throw across the foot and a potted plant beside it",
+   "nw": 358,
+   "cw": 358
+  },
+  {
+   "src": "img/room-img-033-1080.webp",
+   "alt": "A mint-green four-poster with white sheets next to a grey panelled door, a dark mirror shelf and a green bedside cabinet",
+   "nw": 358,
+   "cw": 358
+  },
+  {
+   "src": "img/room-img-032-1080.webp",
+   "alt": "A white bathroom with a pedestal sink under a black-framed mirror",
+   "nw": 358,
+   "cw": 358
+  },
+  {
+   "src": "img/room-img-009-1080.webp",
+   "alt": "A mint-green four-poster with grey sheets, a timber towel ladder, a mirror and a green cabinet beside a dark green door",
+   "nw": 358,
+   "cw": 358
+  },
+  {
+   "src": "img/room-img-026-1080.webp",
+   "alt": "A mint-green four-poster with grey pillows and a teal velvet throw under a ceiling fan",
+   "nw": 358,
+   "cw": 358
+  },
+  {
+   "src": "img/room-img-005-1080.webp",
+   "alt": "A mint-green four-poster with a teal throw beside a timber towel ladder, a green cabinet and a mirror",
+   "nw": 358,
+   "cw": 358
+  },
+  {
+   "src": "img/room-img-025-1080.webp",
+   "alt": "A wooden side table with a white tea set and a mint-green chair beside the foot of a four-poster",
+   "nw": 358,
+   "cw": 358
+  },
+  {
+   "src": "img/court-img-071-1600.webp",
+   "alt": "A concrete bench with a teal cushion in the courtyard, potted plants either side and palm trees above the wall",
+   "nw": 390,
+   "cw": 390
+  },
+  {
+   "src": "img/balc-img-003-800.webp",
+   "alt": "A mint-green table with a potted plant and two mint-green chairs on the upstairs balcony, palm fronds beyond the parapet",
+   "nw": 800,
+   "cw": 174
+  },
+  {
+   "src": "img/balc-img-045-800.webp",
+   "alt": "Two carved wooden armchairs with cane seats and a round wooden table on a balcony",
+   "nw": 800,
+   "cw": 174
+  },
+  {
+   "src": "img/print-img-027-640.webp",
+   "alt": "A carved grey double door under a carved fanlight, a wall lamp beside it and a carved wooden chair",
+   "nw": 640,
+   "cw": 204
+  },
+  {
+   "src": "img/print-img-035-640.webp",
+   "alt": "Carved wooden masks hanging beside a grey door with a carved panel, ferns and plants below",
+   "nw": 640,
+   "cw": 198
+  },
+  {
+   "src": "img/print-img-036-640.webp",
+   "alt": "A shower built into a wooden surfboard fixed to a grey garden wall, the shower head above it and palms behind",
+   "nw": 640,
+   "cw": 203
+  },
+  {
+   "src": "img/sign-img-001-720.webp",
+   "alt": "The house's round sign on a post, a wave, a surfboard and a palm drawn on it with the words Sea You, The Surfers Nest, Midigama; palms and a roof behind",
+   "nw": 720,
+   "cw": 203
+  },
+  {
+   "src": "img/close-img-002-1600.webp",
+   "alt": "A mint-green four-poster double with white sheets and striped pillows; a grey panelled double door stands open onto a veranda with a green table and chairs",
+   "nw": 800,
+   "cw": 390
+  }
+ ],
+ "d1440": {
+  "axe": {
+   "violations": [],
+   "passes": 25,
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 4
+    }
+   ]
+  },
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440
+  },
+  "external_attempted": [
+   "https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Karla:wght@400;600&display=swa"
+  ],
+  "errors": [],
+  "tab_count": 42,
+  "tab_invisible": 0,
+  "tabs": [
+   {
+    "t": "Skip to the rooms",
+    "tag": "A",
+    "href": "#rooms",
+    "w": 166,
+    "h": 47,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "See rooms and live dates on Booking.com",
+    "tag": "A",
+    "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.",
+    "w": 201,
+    "h": 56,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "4.9/5\nGoogle\n11 reviews\n21 Nov 2026",
+    "tag": "A",
+    "href": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=",
+    "w": 210,
+    "h": 129,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "8.0/10\nBooking.com\n8 reviews\n21 Nov 2026",
+    "tag": "A",
+    "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.",
+    "w": 210,
+    "h": 129,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "5.0/5\nAirbnb\n10 reviews\n21 Nov 2026",
+    "tag": "A",
+    "href": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "w": 210,
+    "h": 129,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "See rooms and live dates on Booking.com",
+    "tag": "A",
+    "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.",
+    "w": 388,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "UL",
+    "tag": "UL",
+    "href": "",
+    "w": 621,
+    "h": 414,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Previous photo",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 44,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 1 of 6",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 2 of 6",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 3 of 6",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 4 of 6",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 5 of 6",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 6 of 6",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Next photo",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 44,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "See rooms and live dates on Booking.com",
+    "tag": "A",
+    "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.",
+    "w": 182,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "UL",
+    "tag": "UL",
+    "href": "",
+    "w": 621,
+    "h": 414,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Previous photo",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 44,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 1 of 4",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 2 of 4",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 3 of 4",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Photo 4 of 4",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Next photo",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 44,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "See rooms and live dates on Booking.com",
+    "tag": "A",
+    "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.",
+    "w": 182,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "4.9/5\nGoogle\n11 reviews\n21 Nov 2026",
+    "tag": "A",
+    "href": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=",
+    "w": 197,
+    "h": 146,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "8.0/10\nBooking.com\n8 reviews\n21 Nov 2026",
+    "tag": "A",
+    "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.",
+    "w": 197,
+    "h": 146,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "5.0/5\nAirbnb\n10 reviews\n21 Nov 2026",
+    "tag": "A",
+    "href": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "w": 197,
+    "h": 146,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Previous review",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 44,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Review 1 of 5",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Review 2 of 5",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Review 3 of 5",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Review 4 of 5",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Review 5 of 5",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Next review",
+    "tag": "BUTTON",
+    "href": "",
+    "w": 44,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Open in Google Maps",
+    "tag": "A",
+    "href": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=",
+    "w": 239,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "See rooms and live dates on Booking.com",
+    "tag": "A",
+    "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.",
+    "w": 388,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Book a room on Airbnb",
+    "tag": "A",
+    "href": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "w": 246,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Book the whole house on Airbnb",
+    "tag": "A",
+    "href": "https://www.airbnb.co.uk/rooms/1793988904511877292",
+    "w": 315,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Booking.com",
+    "tag": "A",
+    "href": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.",
+    "w": 156,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Airbnb, a room",
+    "tag": "A",
+    "href": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+    "w": 168,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Airbnb, the whole house",
+    "tag": "A",
+    "href": "https://www.airbnb.co.uk/rooms/1793988904511877292",
+    "w": 233,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   },
+   {
+    "t": "Google Maps",
+    "tag": "A",
+    "href": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=",
+    "w": 158,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px",
+    "vis": "visible"
+   }
+  ]
+ },
+ "nojs390": {
+  "visible_links": 21,
+  "booking": 15,
+  "tel": 0,
+  "first_booking_top": 444,
+  "first_booking_text": "See live dates",
+  "text_len": 4584
+ },
+ "nojs1440": {
+  "visible_links": 20,
+  "booking": 14,
+  "tel": 0,
+  "first_booking_top": 8,
+  "first_booking_text": "",
+  "text_len": 4568
+ }
+}

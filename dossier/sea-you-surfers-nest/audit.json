@@ -1,0 +1,190 @@
+{
+ "slug": "sea-you-surfers-nest",
+ "run_id": "2026-10-midigama-01",
+ "auditor_version": "0.1.3",
+ "audited_at": "2026-11-21T23:40:00Z",
+ "scope": "no_site",
+ "measured": null,
+ "findings": [
+  {
+   "id": "F1",
+   "area": "offsite",
+   "severity": "high",
+   "title": "Every way to book or ask goes through a platform, and none lets a visitor reach the hosts before booking",
+   "what_a_visitor_meets": "The rooms are sold only on Booking.com, Agoda and two Airbnb listings. On Booking.com, \"Contacting the property\" says \"Once you book, we'll provide details so you can contact the property directly\", and tapping \"Ask a question\" opens a Booking.com sign-in page. On Airbnb, \"Message host\" opens \"Log in or sign up\". Agoda shows no phone, WhatsApp or email. A visitor who wants to ask which room has the air-conditioning, or whether a board can be rented, has to make an account or book first. The Booking.com listing also tells the visitor, under \"Preferred Partner Programme\": \"It will pay us a higher commission if you make a booking.\"",
+   "evidence": [
+    { "type": "screenshot", "value": "assets/walk/03-booking-com-contacting.png" },
+    { "type": "screenshot", "value": "assets/walk/03-booking-com-ask-tapped.png" },
+    { "type": "screenshot", "value": "assets/walk/05-airbnb-1-message-host-tapped.png" },
+    { "type": "screenshot", "value": "assets/walk/03-booking-com-preferred-partner.png" },
+    { "type": "click_path", "value": ["https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html", "Ask a question", "account.booking.com/sign-in"] },
+    { "type": "click_path", "value": ["https://www.airbnb.co.uk/rooms/1508895627217411616", "Message host", "Log in or sign up"] },
+    { "type": "url", "value": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html" }
+   ],
+   "playbook_ref": "§5 booking path, §2 how do I book and how fast will they answer",
+   "fix_in_new_site": "contact.phone as a tap-to-call link beside bookingLinks[0] in the booking section and the persistent mobile bar, so the visitor can ask Ashly before going to a platform (once a human confirms the number, see F3)",
+   "pitch_point": true,
+   "notes": "walk.json steps 03-06: tel_links [], whatsapp_links 0, mailto_links 0 on every marketplace page. The commission sentence is Booking.com's own words on the listing (accordion 'Preferred Partner Programme'), quoted verbatim; no rate is stated and none is computed. Airbnb host stats on the same page: 'Response rate: 70%', 'Responds within a few hours' (assets/walk/05-airbnb-1-host-details.png)."
+  },
+  {
+   "id": "F2",
+   "area": "offsite",
+   "severity": "medium",
+   "title": "The Google listing is unclaimed: no phone, no website, and its only buttons lead to Agoda and Booking.com",
+   "what_a_visitor_meets": "Sea You Surfers Nest has 4.9 from 11 reviews on Google Maps. Under \"Add missing information\" the listing shows \"Add place's phone number\" and \"Add website\", plus \"Claim this business\". The only action besides directions is \"Check availability\", which compares Agoda and Booking.com. On a phone the listing offers Directions, Start and Save, and there is no Call button. A traveller who found the place on the map cannot phone it or read anything the hosts wrote.",
+   "evidence": [
+    { "type": "screenshot", "value": "assets/walk/02-google-listing-desktop-add-website.png" },
+    { "type": "screenshot", "value": "assets/walk/02-google-listing-desktop-offers.png" },
+    { "type": "screenshot", "value": "assets/walk/01-google-listing-fold.png" },
+    { "type": "url", "value": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0?hl=en" }
+   ],
+   "playbook_ref": "§1 the customer finds them on Google Maps, §6 exact location",
+   "fix_in_new_site": null,
+   "pitch_point": true,
+   "notes": "walk.json 02-google-listing-desktop: add_phone true, add_website true, claim true, tel_links []; offer_links are Google travel click-outs to Agoda and Booking.com."
+  },
+  {
+   "id": "F3",
+   "area": "offsite",
+   "severity": "medium",
+   "title": "The hosts' phone number is only a picture: painted on the sign in the listings' first photo",
+   "what_a_visitor_meets": "The first photo on Booking.com (1/45) and on Agoda (1/44) is the business's own street sign. It reads \"Sea You / THE SURFERS NEST / MIDIGAMA / +94 715880052\". The number is part of the image, so a visitor on a phone can read it but cannot tap it. To call, they have to copy eleven digits from a photo by hand. The number appears as text on no page walked, and the Google listing has no phone (F2).",
+   "evidence": [
+    { "type": "screenshot", "value": "assets/walk/03-booking-com-fold.png" },
+    { "type": "screenshot", "value": "assets/walk/04-agoda-on-load.png" },
+    { "type": "screenshot", "value": "assets/img-001.jpg" },
+    { "type": "dossier", "value": "dossier.json#contact.phone" }
+   ],
+   "playbook_ref": "§5 phone as tel: fallback, §4 tap targets: phone and WhatsApp are tap-to-act links",
+   "fix_in_new_site": "contact.phone (+94715880052) rendered as a tel: link in the booking section, the persistent mobile bar and the footer contact block (playbook §3 item 9)",
+   "pitch_point": true,
+   "notes": "walk.json: phone_715880052_in_text false and tel_links [] on all 8 pages. The dossier reads the number from img-001 (Booking photo 755289509) with confidence medium-high and asks a human to confirm it before it becomes the call button. A Booking.com review (Camilla, 2026-01, review 9e7670457ab0f400, dossier reviews.all_booking) tells future guests 'I suggest ringing several days before arrival to check your booking is correct!'. It is a host-conduct complaint flagged for a human in the dossier, so it is not cited in the finding; whether the pitch may refer to it is a human decision."
+  },
+  {
+   "id": "F4",
+   "area": "offsite",
+   "severity": "medium",
+   "title": "The listings disagree about what a room has: air-conditioning, a bathroom, a restaurant",
+   "what_a_visitor_meets": "Booking.com's description, copied word for word on Agoda, says the place \"offers family rooms with air-conditioning, private entrances, and balconies\". Agoda's FAQ answers \"Is there an on-site restaurant\" with \"The on-site restaurant provides a welcoming atmosphere for meals\". The owner's own Airbnb text says \"We have one A/C room & Six Non A/C rooms\". No guest review mentions a restaurant on site; guests describe a shared kitchen. Airbnb listing 1 says \"Private attached bathroom\", listing 2 says \"0 bathrooms\", and Booking.com's Standard Double Room has no bathroom of its own. A visitor comparing these pages cannot tell what the room they are booking has.",
+   "evidence": [
+    { "type": "screenshot", "value": "assets/walk/03-booking-com-summary.png" },
+    { "type": "screenshot", "value": "assets/walk/04-agoda-faq-restaurant.png" },
+    { "type": "screenshot", "value": "assets/walk/05-airbnb-1-inquire-open.png" },
+    { "type": "screenshot", "value": "assets/walk/05-airbnb-1-fold.png" },
+    { "type": "screenshot", "value": "assets/walk/06-airbnb-2-summary.png" },
+    { "type": "dossier", "value": "dossier.json#contradictions" }
+   ],
+   "playbook_ref": "§2 what's included, §7 honesty of facts",
+   "fix_in_new_site": "rooms[] with one row per room type; rooms[].note states plainly which has the air-conditioning and the balcony door, and which has a private bathroom, as the dossier resolves it (one A/C room; private bathroom only for the Deluxe Double Room). amenities[] lists breakfast, the shared kitchen and food on request, and no restaurant",
+   "pitch_point": true,
+   "notes": "walk.json 03-booking-com summary_text and ac_phrases; 04-agoda restaurant_phrases and ac_phrases (the FAQ 'Is air conditioning available in all rooms' is collapsed and its answer was not read); 05-airbnb-1 and 06-airbnb-2 ac_phrases and overview."
+  },
+  {
+   "id": "F5",
+   "area": "offsite",
+   "severity": "medium",
+   "title": "On Airbnb the shown rate is for a fan room, and every other rate is \"Pls inquire\" behind a login",
+   "what_a_visitor_meets": "Both Airbnb listings show \"Add dates for prices\". The descriptions then say \"(Pls inquire for per room rate for individual rooms)\" and \"(rates are for Non A/C double room, Pls inquire when booking)\". A visitor who wants the air-conditioned room, or more than one room, is told to ask, and asking means \"Message host\", which opens \"Log in or sign up\" (F1).",
+   "evidence": [
+    { "type": "screenshot", "value": "assets/walk/05-airbnb-1-inquire-open.png" },
+    { "type": "screenshot", "value": "assets/walk/06-airbnb-2-description-open.png" },
+    { "type": "screenshot", "value": "assets/walk/05-airbnb-1-message-host-tapped.png" },
+    { "type": "click_path", "value": ["https://www.airbnb.co.uk/rooms/1793988904511877292", "Show more", "About this space"] }
+   ],
+   "playbook_ref": "§2 what does it cost, §5 booking path",
+   "fix_in_new_site": "rooms[] tells the A/C room and the fan rooms apart; price is the link to live dates (bookingLinks[], no copied rate) with contact.phone beside it so the visitor can ask about a room without an account",
+   "pitch_point": true,
+   "notes": "walk.json 05-airbnb-1 and 06-airbnb-2 inquire_phrases."
+  },
+  {
+   "id": "F6",
+   "area": "offsite",
+   "severity": "medium",
+   "title": "Agoda's mobile page opens behind an app pop-up",
+   "what_a_visitor_meets": "On a phone the Agoda listing opens under a dialog, \"We have even lower prices in our app!\", with \"See this property in our app\" as the main button. The visitor has to find \"Continue to mobile site\" before seeing the rooms.",
+   "evidence": [
+    { "type": "screenshot", "value": "assets/walk/04-agoda-on-load.png" },
+    { "type": "click_path", "value": ["https://www.agoda.com/en-gb/sea-you-surfers-nest/hotel/all/midigama-east-lk.html", "Continue to mobile site"] }
+   ],
+   "playbook_ref": "§4 nothing may cover the content or the booking action on load",
+   "fix_in_new_site": "the site's booking section and persistent bar link straight to bookingLinks[0]; nothing covers the content on load (playbook §4)",
+   "pitch_point": false,
+   "notes": "walk.json 04-agoda on_load_dialogs. Agoda's listing is fed from Booking.com (same photos, 'Provided by verified guests of Booking.com', assets/walk/04-agoda-reviews-source.png), so the site has no reason to link it."
+  },
+  {
+   "id": "F7",
+   "area": "offsite",
+   "severity": "low",
+   "title": "The same house has four names and four places across the listings",
+   "what_a_visitor_meets": "Google calls it \"Sea You Surfers Nest\" at \"151 Weliwaththa Rd, Midigama 80650\". Booking.com calls it \"Sea You Surfers Nest! Hello to waves in a minute walk\" on \"Weliwaththa Road, Kumbalgama\", and Agoda puts the same name in \"Midigama Beach, Mirissa, Matara, Sri Lanka, 81700\". The Airbnb listings are \"Wake up to waves, 2026 rates, Sea You Surfers Nest\" and \"Sea You Surfer's Nest, Escape to the Sun & Sea!\", both a \"Room\" or \"guest house in Matara\". A visitor comparing tabs has to work out that these are one place.",
+   "evidence": [
+    { "type": "screenshot", "value": "assets/walk/01-google-listing-fold.png" },
+    { "type": "screenshot", "value": "assets/walk/03-booking-com-fold.png" },
+    { "type": "screenshot", "value": "assets/walk/04-agoda-on-load.png" },
+    { "type": "screenshot", "value": "assets/walk/05-airbnb-1-fold.png" },
+    { "type": "screenshot", "value": "assets/walk/06-airbnb-2-summary.png" }
+   ],
+   "playbook_ref": "§6 exact location; the address is the Google listing's",
+   "fix_in_new_site": "businessName and contact.address from the Google listing (playbook §6); bookingLinks[].label names each platform so the visitor knows where each button goes",
+   "pitch_point": false
+  },
+  {
+   "id": "F8",
+   "area": "offsite",
+   "severity": "low",
+   "title": "The whole-house Airbnb listing shows \"New\", no reviews and \"0 bathrooms\"",
+   "what_a_visitor_meets": "The second Airbnb listing, for the whole guest house, shows \"14 guests · 7 bedrooms · 6 beds · 0 bathrooms\" and \"★ New\". The ten 5-star reviews and the \"Guest favourite\" badge sit on the other listing. A group looking at the whole house sees a new listing with no bathrooms and no reviews.",
+   "evidence": [
+    { "type": "screenshot", "value": "assets/walk/06-airbnb-2-summary.png" },
+    { "type": "url", "value": "https://www.airbnb.co.uk/rooms/1793988904511877292" }
+   ],
+   "playbook_ref": "§6 trust signals",
+   "fix_in_new_site": "ratings[] carries the Airbnb score from listing 1 with its count and capture date; the whole-house listing is a separate bookingLinks[] row labelled as the whole house",
+   "pitch_point": false,
+   "notes": "walk.json 06-airbnb-2 overview."
+  },
+  {
+   "id": "F9",
+   "area": "offsite",
+   "severity": "low",
+   "title": "Check-in time differs between Booking.com and Airbnb",
+   "what_a_visitor_meets": "Booking.com and Agoda say check-in \"From 14:00 to 18:00\". Both Airbnb listings say \"Check in after 15:00\". A visitor who reads both will not know when they can arrive.",
+   "evidence": [
+    { "type": "screenshot", "value": "assets/walk/03-booking-com-policies.png" },
+    { "type": "screenshot", "value": "assets/walk/04-agoda-checkin.png" },
+    { "type": "screenshot", "value": "assets/walk/05-airbnb-1-checkin.png" }
+   ],
+   "playbook_ref": "§2 what they need to decide, §7 gaps are flagged",
+   "fix_in_new_site": "stayInfo.checkInFrom / checkInTo once the owner confirms one time; until then the site states no time (dossier contradiction, resolution none)",
+   "pitch_point": false
+  }
+ ],
+ "recommended": {
+  "primary_action": "engine",
+  "primary_label": "See rooms and live dates on Booking.com",
+  "secondary_actions": ["tel"],
+  "clicks_to_book": 1,
+  "above_fold": ["what_where", "spot", "included", "price", "trust", "primary_action"],
+  "offer_framing": "rooms[] from the two Booking.com room types (Deluxe Double Room 13 m², Standard Double Room 12 m², one large double each) inside the owner's count of seven rooms sleeping 14. The one air-conditioned room with the balcony door and the six fan rooms are told apart in plain words, and a private bathroom is claimed only for the Deluxe room (F4, F5). Then what every stay has as the dossier records it: breakfast, the shared kitchen, the balconies and courtyard, the outdoor workspace, and a minute's walk to the beach in the owner's and guests' words. Price means the link to live dates, never a copied nightly rate. bookingLinks[]: Booking.com first, then Airbnb listing 1 (rooms) and Airbnb listing 2 (the whole house, for groups). Agoda is not linked because it copies Booking.com.",
+  "closing_intent": "send the reader to live dates on Booking.com, offer the whole-house Airbnb listing to groups, and give the phone as the way to ask Ashly first",
+  "off_site": [
+   { "channel": "google_business_profile", "finding": "F2", "advice": "claim the listing, add the sign's phone number and the new site as its website" },
+   { "channel": "booking_com", "finding": "F4", "advice": "correct the facilities in the Booking.com extranet so only the one room shows air-conditioning, and no restaurant is listed unless there is one (Agoda copies Booking.com)" },
+   { "channel": "airbnb", "finding": "F5", "advice": "state the air-conditioned room's rate in the listing, or list it on its own, instead of 'Pls inquire'" },
+   { "channel": "airbnb", "finding": "F8", "advice": "set the whole-house listing's bathroom count" },
+   { "channel": "airbnb", "finding": "F9", "advice": "use the same check-in time on Airbnb and Booking.com" },
+   { "channel": "ota_listings", "finding": "F7", "advice": "use the business name from the sign, 'Sea You Surfers Nest', and the Midigama address on every platform" }
+  ]
+ },
+ "built_site_gaps": [],
+ "not_measurable": [
+  "Booking.com, Agoda and Airbnb past the listing page: no dates entered and no booking started, so no live prices, availability or cancellation terms per room",
+  "Booking.com through tools/shoot.mjs: its mobile pass crashed on Booking.com's 202 JS-challenge reload ('Execution context was destroyed'); the Booking.com listing is covered by the hand walk (walk.json step 03) instead",
+  "What Agoda or Airbnb charges the property: no page opened states it. Booking.com's only statement is the Preferred Partner sentence quoted in F1, which gives no rate",
+  "Google web search for the name: Google answered with its 'unusual traffic' page (assets/walk/08-google-search-fold.png); not bypassed",
+  "Google review texts: not shown in the signed-out limited view (harvester)",
+  "Instagram and Facebook: login walls; no profile could be confirmed or ruled out (harvester)",
+  "Whether +94715880052 is answered, whether it is on WhatsApp, and how fast: no contact in test mode",
+  "Conversion rate and traffic: no analytics access"
+ ]
+}

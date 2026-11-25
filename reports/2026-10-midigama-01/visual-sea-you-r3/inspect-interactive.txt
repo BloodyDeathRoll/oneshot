@@ -1,0 +1,48 @@
+TASTESKILL · INSPECT   sites/sea-you-surfers-nest/mockups/interactive/dist/index.html
+
+MEASURED (first viewport listed)
+  hero headline   "Sea You Surfers Nest"  4 words · 1 line(s) · 60px (4.2vw) · Courgette 400 · tracking -0.005em · leading 1.1
+  @768px          1 line(s) · 60px
+  @390px          1 line(s) · 38px
+  typefaces       Plus Jakarta Sans 97%, Courgette 3%
+  sizes in use    14 / 15 / 16 / 17 / 18 / 22 / 28 / 34 / 40 / 46 / 60 px   body 17px / 1.62
+  colour          page #ffffff · sections #c9d3bf #e9f2e7 · button #334825
+  page            9.1 screens · 804 words · 26 images · hero media 100% img
+  headings        14 · longest 2 line(s) · median 2 words
+
+FAIL — fix every one of these
+  [contrast] @1440px (+768, 390)  Unreadable text: "Deluxe Double" 1:1 (#ffffff on #ffffff)
+      → Raise contrast to at least 4.5:1 for text, 3:1 for large display.
+  [edge-text] @1440px (+768)  1 text block(s) sit within 16px of the screen edge: "Jan 2026" (8px from the right)
+      → Keep text inside the page margin (16–32px or more). Only display type deliberately bled past the edge may touch it.
+  [still-page] @1440px  Only 6 element(s) moved while the page loaded and scrolled.
+      → Build the motion layer (SKILL.md step 9, references/motion.md): the signature move, an entrance for the parts of every section, feedback on every control, and one moving picture. Transform and opacity only, with a reduced-motion fallback.
+  [eyebrow] @768px (+390)  1 eyebrow/kicker label(s) above headings: "10 reviews 21 Nov 2026" above "Who’s coming?"
+      → Delete them. If the label carried real information, fold it into the headline or the supporting sentence.
+
+WARN — fix, or be able to defend
+  [size-count] @1440px (+768, 390)  11 different font sizes (14, 15, 16, 17, 18, 22, 28, 34, 40, 46, 60).
+      → A page needs about five: display, heading, lead, body, small.
+  [no-footage] @1440px  No video anywhere on the page.
+      → Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject.
+  [side-scroll] @1440px (+768, 390)  2 row(s) scroll sideways with content past their edge.
+      → Jurors and most visitors read a row cut at the edge as clipped, not as scrollable. Wrap it onto more lines, or end it inside the grid.
+  [empty-middle] @1440px (+768)  2 section(s) have content at both edges and 1786px of nothing between: "Around the courtyard"; "Ashly"
+      → Bring the two parts together on the grid, or put the picture or figure of the section in the middle. An empty middle third reads as a hole, the same as an empty half.
+  [off-centre] @768px  The margins differ: 31px on the left, 5px on the right, at 768px.
+      → Put the navigation and the content on one pair of margins; check for padding on one side only, a scrollbar gutter, or a header on another inset than the page.
+
+LOOK AT THE RENDER — open these with your image viewer / Read tool before saying anything about quality:
+  desktop 1440px  .taste-skill/inspect/desktop-fold.jpg
+                  .taste-skill/inspect/desktop-page-01.jpg
+                  .taste-skill/inspect/desktop-page-02.jpg
+                  .taste-skill/inspect/desktop-page-03.jpg
+  tablet 768px    .taste-skill/inspect/tablet-fold.jpg
+                  .taste-skill/inspect/tablet-page-01.jpg
+                  .taste-skill/inspect/tablet-page-02.jpg
+  mobile 390px    .taste-skill/inspect/mobile-fold.jpg
+                  .taste-skill/inspect/mobile-page-01.jpg
+                  .taste-skill/inspect/mobile-page-02.jpg
+
+report: .taste-skill/inspect/report.json
+RESULT: 4 FAIL, 5 WARN — not done.

@@ -1,0 +1,15 @@
+calm t=500 (shot at 501 ms) {"ready":"complete","h1":"\"Grand Hotel\"","webfonts":["Grand Hotel","Karla","Karla"],"img":{"src":"hero-img-034-900.webp","done":true},"cta":true}
+calm t=1500 (shot at 5280 ms) {"ready":"complete","h1":"\"Grand Hotel\"","webfonts":["Grand Hotel","Karla","Karla"],"img":{"src":"hero-img-034-900.webp","done":true},"cta":true}
+calm t=3000 (shot at 8862 ms) {"ready":"complete","h1":"\"Grand Hotel\"","webfonts":["Grand Hotel","Karla","Karla"],"img":{"src":"hero-img-034-900.webp","done":true},"cta":true}
+calm t=6000 (shot at 9577 ms) {"ready":"complete","h1":"\"Grand Hotel\"","webfonts":["Grand Hotel","Karla","Karla"],"img":{"src":"hero-img-034-900.webp","done":true},"cta":true}
+calm load event ms 10403 LCP [5452,"","H1"] transfer KB to load 362 hosts ["127.0.0.1:53835","fonts.googleapis.com","fonts.gstatic.com"]
+interactive t=500 (shot at 503 ms) {"ready":"complete","h1":"Kalam","webfonts":["Kalam","Plus Jakarta Sans","Plus Jakarta Sans","Plus Jakarta Sans"],"img":{"src":"hero-tall-960.webp","done":true},"cta":true}
+interactive t=1500 (shot at 4908 ms) {"ready":"complete","h1":"Kalam","webfonts":["Kalam","Plus Jakarta Sans","Plus Jakarta Sans","Plus Jakarta Sans"],"img":{"src":"hero-tall-960.webp","done":true},"cta":true}
+interactive t=3000 (shot at 6292 ms) {"ready":"complete","h1":"Kalam","webfonts":["Kalam","Plus Jakarta Sans","Plus Jakarta Sans","Plus Jakarta Sans"],"img":{"src":"hero-tall-960.webp","done":true},"cta":true}
+interactive t=6000 (shot at 7553 ms) {"ready":"complete","h1":"Kalam","webfonts":["Kalam","Plus Jakarta Sans","Plus Jakarta Sans","Plus Jakarta Sans"],"img":{"src":"hero-tall-960.webp","done":true},"cta":true}
+interactive load event ms 9301 LCP [2284,"","H1"] transfer KB to load 764 hosts ["127.0.0.1:53835","fonts.googleapis.com","fonts.gstatic.com"]
+unique t=500 (shot at 503 ms) {"ready":"complete","h1":"\"Leckerli One\"","webfonts":["Instrument Sans","Instrument Sans","Instrument Sans","Leckerli One"],"img":{"src":"h005-1000.webp","done":true},"cta":true}
+unique t=1500 (shot at 7349 ms) {"ready":"complete","h1":"\"Leckerli One\"","webfonts":["Instrument Sans","Instrument Sans","Instrument Sans","Leckerli One"],"img":{"src":"h005-1000.webp","done":true},"cta":true}
+unique t=3000 (shot at 9023 ms) {"ready":"complete","h1":"\"Leckerli One\"","webfonts":["Instrument Sans","Instrument Sans","Instrument Sans","Leckerli One"],"img":{"src":"h005-1000.webp","done":true},"cta":true}
+unique t=6000 (shot at 10719 ms) {"ready":"complete","h1":"\"Leckerli One\"","webfonts":["Instrument Sans","Instrument Sans","Instrument Sans","Leckerli One"],"img":{"src":"h005-1000.webp","done":true},"cta":true}
+unique load event ms 12631 LCP [4504,"","H1"] transfer KB to load 281 hosts ["127.0.0.1:53835","fonts.googleapis.com","fonts.gstatic.com"]

@@ -1,0 +1,761 @@
+{
+ "walked_at": "2026-11-21T23:35:07.501Z",
+ "scope": "no_site",
+ "viewport": "390x844 DPR2 mobile, iPhone Safari UA, en-GB, logged out (the Google listing also at 1440x1000, where its detail rows show)",
+ "rules": "read-only; cookie dialogs declined (\"Only necessary\" / reject), sign-in prompts closed; a visitor's ask button tapped once to see where it leads, nothing typed or sent; no form submitted, no dates or personal data entered, no login, no contact",
+ "recipe": "dossier/sea-you-surfers-nest/funnel/make-walk.mjs",
+ "shoot_sets": "scrolled whole-page sets from tools/shoot.mjs (desktop 1440 + mobile 390, cookie dialogs not declined by that tool): assets/walk/shoot-agoda/, shoot-airbnb-1/, shoot-airbnb-2/; Booking.com crashed tools/shoot.mjs on the mobile pass (its 202 JS-challenge reload destroys the page context), so Booking.com is covered by step 03 only",
+ "steps": [
+  {
+   "step": "01-google-listing",
+   "viewport": "390x844",
+   "requested": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0?hl=en",
+   "status": 200,
+   "error": null,
+   "navigation_chain": [
+    [
+     200,
+     "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2"
+    ]
+   ],
+   "screenshot_on_load": "assets/walk/01-google-listing-on-load.png",
+   "on_load_dialogs": [],
+   "cookie_declined": null,
+   "dismissed": [
+    "Go back to web"
+   ],
+   "final_url": "https://www.google.com/maps/place/Sea+You+Surfers+Nest,+151+Weliwaththa+Rd,+Midigama+80650,+Sri+Lanka/@5.9621402,80.3974064,15z/data=!4m6!3m5!1s0x3ae11500586794a3:0xed458ea29dd833eb!8m2!3d5.9621402!4d",
+   "screenshot": "assets/walk/01-google-listing-fold.png",
+   "title": "Sea You Surfers Nest, Midigama - Explore in Google Maps",
+   "doc_width": 390,
+   "page_height": 844,
+   "text_chars": 437,
+   "tel_links": [],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_715880052_in_text": false,
+   "add_website": false,
+   "add_phone": false,
+   "claim": false,
+   "offsite_booking_links": [],
+   "commission_phrases": [],
+   "contact_phrases": [],
+   "inquire_phrases": [],
+   "ac_phrases": [],
+   "restaurant_phrases": [],
+   "checkin_phrases": [],
+   "review_source_phrases": [],
+   "login_wall": false,
+   "captcha": false,
+   "text_head": "\n\nSea You Surfers Nest\n\nOpen in the app\nYour location\n\n\nStreet View\nSea You Surfers Nest\n4.9\n(11)·Bed & breakfast\n\nDirections\n\nStart\n\nSave\n\nShare\nSee all 50 photos in the app\nContinue\n\nTraffic\n\nTransit\n\nBicycling\n\nSatellite\n\nTerrain\n\nWildfires\n\nMap movement controls\n\nReal-time location sharing\n\nYour contributions\n\nYour places\nSettings\nLanguage\nHelp\nMy Maps\nSend Product Feedback\n\tIsrael\tEDIT\n\tUse the Google Maps app",
+   "at": [
+    {
+     "needle": "Add place",
+     "found": false
+    }
+   ]
+  },
+  {
+   "step": "02-google-listing-desktop",
+   "viewport": "1440x1000",
+   "requested": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0?hl=en",
+   "status": 200,
+   "error": null,
+   "navigation_chain": [
+    [
+     200,
+     "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2"
+    ]
+   ],
+   "screenshot_on_load": "assets/walk/02-google-listing-desktop-on-load.png",
+   "on_load_dialogs": [
+    " Select your dates to see the best prices"
+   ],
+   "cookie_declined": null,
+   "final_url": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/@5.9621402,80.3974064,17z/data=!3m1!4b1!4m9!3m8!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9",
+   "screenshot": "assets/walk/02-google-listing-desktop-fold.png",
+   "title": "Sea You Surfers Nest - Google Maps",
+   "doc_width": 1440,
+   "page_height": 1000,
+   "text_chars": 987,
+   "tel_links": [],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_715880052_in_text": false,
+   "add_website": true,
+   "add_phone": true,
+   "claim": true,
+   "offsite_booking_links": [],
+   "commission_phrases": [],
+   "contact_phrases": [],
+   "inquire_phrases": [],
+   "ac_phrases": [],
+   "restaurant_phrases": [
+    "Restaurants"
+   ],
+   "checkin_phrases": [
+    "Check in / Check out"
+   ],
+   "review_source_phrases": [],
+   "login_wall": true,
+   "captcha": false,
+   "text_head": " Select your dates to see the best prices\n\n\n\nNearby hotels\n\nRestaurants\n\nThings to do\n\nBars\n\nCoffee\n\nPharmacies\n\nParking\n\n\n\nSaved\n\nRecents\nSea You Surfers Nest\n\nGet app\n24% less than usual\nDEAL\n₪63\n\nSee photos\nSea You Surfers Nest\n4.9\nBed & breakfast\nOverview\nPrices\n\nDirections\n\nSave\n\nNearby\n\nShare\n\nCheck availability\n \nCompare prices\nFree cancellation only\n\nCheck in / Check out\nMon, Nov 23\n\n\nTue, Nov 24\n\n\n\n2\n\n \nAll options\nAgoda\n₪63\n\nSee rooms \nBooking.com\n₪63\nGet price\n\nMember discount available\nSee rooms \nMore prices from ₪63\n \n \n\n151 Weliwaththa Rd, Midigama 80650, Sri Lanka\n\n\nX96W+VX Ahangama, Sri Lanka\n\n\n\nClaim this business\n\n \n\nSuggest an edit\n \nAdd missing information\n\n\nAdd place's phone number\n\nAdd website\n \nPhotos\n\n \n\nAdd photos & videos\n \n \n\nWrite a review\n \nAbout this data\n\nYou're seeing a limited view of Google Maps. See more\n\nSign in\n\n\n\n\n Layers\nMap data ©2026 IsraelTermsPrivacySend Product Feedback\n\t100 m ",
+   "at": [
+    {
+     "needle": "Add website",
+     "y": 1180,
+     "screenshot": "assets/walk/02-google-listing-desktop-add-website.png"
+    },
+    {
+     "needle": "Add place's phone number",
+     "y": 452,
+     "screenshot": "assets/walk/02-google-listing-desktop-add-phone.png"
+    },
+    {
+     "needle": "Claim this business",
+     "y": 325,
+     "screenshot": "assets/walk/02-google-listing-desktop-claim.png"
+    },
+    {
+     "needle": "View prices",
+     "found": false
+    },
+    {
+     "needle": "Booking.com",
+     "y": 265,
+     "screenshot": "assets/walk/02-google-listing-desktop-offers.png"
+    }
+   ],
+   "panel": [
+    "Prices for Sea You Surfers Nest",
+    "More prices from ₪63",
+    "Address: 151 Weliwaththa Rd, Midigama 80650, Sri Lanka",
+    "Copy address",
+    "Plus code: X96W+VX Ahangama, Sri Lanka",
+    "Copy plus code",
+    "Learn more about plus codes",
+    "Claim this business",
+    "Claim this business"
+   ],
+   "offer_links": [
+    {
+     "label": "Agoda ₪63 ",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEygZVu0PO9Eg-3myqoiJuyfsLZQqupE_qu2QVYXTQv7jpcVLPc4bXxZ4j7tohY0_gfPHC19IyK1Fz7r-m2OF8XwkYJkYDSA6bAjTGc2O-5GkRBzeCBnwSYX2BXrsSZnVsZC2XcsMeWDIImi7QitzEDj"
+    },
+    {
+     "label": "",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEygN1xRlmfSJzSdh60O3F-2zrcU_sW-YermBnJSVaqU8IWGMtOHHl0TOXgMBwk8E81J_dYaKSlkNor5iVY1N8V8BH3V8prGPCxrbooF0ab-F9E1K-qrHhPASbtuXeZ1X8jk2FBHwALhW84sBvmaCZBJ"
+    },
+    {
+     "label": "",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEygZVu0PO9Eg-3myqoiJuyfsLZQqupE_qu2QVYXTQv7jpcVLPc4bXxZ4j7tohY0_gfPHC19IyK1Fz7r-m2OF8XwkYJkYDSA6bAjTGc2O-5GkRBzeCBnwSYX2BXrsSZnVsZC2XcsMeWDIImi7QitzEDj"
+    },
+    {
+     "label": "Booking.com ₪63 Get price  Member discount available",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEyhlNMSQcYcsDLqF4NoxQtEuGzpKdvUPEo1iDjqsbKpV2Iw5XRHFxh4U5hgatx1DrZfo-LNnUVgTF_8eXMhZpkkJZjG6AG8sFh9_YKoADv8l5v-SMTA8GJSCEDy95It3tx44mxJu15bIPECqII0hcmH"
+    },
+    {
+     "label": "",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEygb5cwlsJrvD7OINyDw2T7gG25H_cQzvoMeCVUzkPTQHTj7TV_DxvEKPDpK6WxJdIPSKfmGlNYN2yHApiL9Nb5I_K0D_Nq4F1yPf7rxMHDanPwem6kIp3evil6HoLjT8Lv7pyabFcGNwVlH2s0-qZ6"
+    },
+    {
+     "label": "",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEyhlNMSQcYcsDLqF4NoxQtEuGzpKdvUPEo1iDjqsbKpV2Iw5XRHFxh4U5hgatx1DrZfo-LNnUVgTF_8eXMhZpkkJZjG6AG8sFh9_YKoADv8l5v-SMTA8GJSCEDy95It3tx44mxJu15bIPECqII0hcmH"
+    }
+   ],
+   "website_links": []
+  },
+  {
+   "step": "03-booking-com",
+   "viewport": "390x844",
+   "requested": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html",
+   "status": 202,
+   "error": null,
+   "navigation_chain": [
+    [
+     202,
+     "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html"
+    ],
+    [
+     200,
+     "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html?chal_t=1795303956566&force_referer="
+    ],
+    [
+     302,
+     "https://account.booking.com/auth/oauth2?client_id=vO1Kblk7xX9tUn2cpZLS&redirect_uri=https%3A%2F%2Fsecure.booking.com%2Flogin.html%3Fop%3Doauth_return&response_t"
+    ],
+    [
+     200,
+     "https://account.booking.com/sign-in?op_token=EgVvYXV0aCLWAwoUdk8xS2Jsazd4WDl0VW4yY3BaTFMSCWF1dGhvcml6ZRo1aHR0cHM6Ly9zZWN1cmUuYm9va2luZy5jb20vbG9naW4uaHRtbD9vcD1"
+    ]
+   ],
+   "screenshot_on_load": "assets/walk/03-booking-com-on-load.png",
+   "on_load_dialogs": [],
+   "cookie_declined": null,
+   "dismissed": [
+    "Close"
+   ],
+   "final_url": "https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html?chal_t=1795303956566&force_referer=",
+   "screenshot": "assets/walk/03-booking-com-fold.png",
+   "title": "Sea You Surfers Nest! Hello to waves in a minute walk, Kumbalgama (updated prices 2027)",
+   "doc_width": 390,
+   "page_height": 5179,
+   "text_chars": 3319,
+   "tel_links": [],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_715880052_in_text": false,
+   "add_website": false,
+   "add_phone": false,
+   "claim": false,
+   "offsite_booking_links": [
+    {
+     "label": "",
+     "href": "https://account.booking.com/auth/oauth2?client_id=vO1Kblk7xX9tUn2cpZLS&redirect_uri=https%3A%2F%2Fsecure.booking.com%2Flogin.html%3Fop%3Doauth_return&response_t"
+    }
+   ],
+   "commission_phrases": [],
+   "contact_phrases": [
+    "Ask a question",
+    "Contacting the property"
+   ],
+   "inquire_phrases": [],
+   "ac_phrases": [
+    "Air conditioning",
+    "Comfortable Accommodations: Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama offers family rooms with air-conditioning, private entrances, and balconies"
+   ],
+   "restaurant_phrases": [
+    "Restaurant"
+   ],
+   "checkin_phrases": [
+    "Check-in date"
+   ],
+   "review_source_phrases": [],
+   "login_wall": false,
+   "captcha": false,
+   "text_head": "Kumbalgama\nSelect dates\n \nSea You Surfers Nest! Hello to waves in a minute walk\nAccessibility links\nSkip to description\nSkip to facilities\nSkip to rooms\nSkip to policies\nWeliwaththa Road, Kumbalgama—Excellent location—Show on map\n8.0\nRated: Very good 8, based on 8 reviews Expand ratings and reviews section\nVery good · 8 reviews\n1/45\nBreakfast\nAsian\nFree private parking\nFree WiFi\nFree WiFi\nChoose dates to see prices\nCheck-in date\nSun 22 Nov 2026\nCheck-out date\nMon 23 Nov 2026\nAdults\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\nChildren\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\nRooms\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\nAre you travelling for work?\nYes\nNo\nCheck availability\nUnlock members-only prices\nSave instantly at this Genius property — just sign in or join for free\nSign in\nCreate a free account\nFacilities\nAirport shuttle\nNon-smoking rooms\nRestaurant\nFree parking\nShow all facilities and services\nReviews\n8.0\nRated: Very good 8, based on 8 reviews\nVery good · 8 reviews\nLocation, 10, Average rating out of 10\nLocation\n10\nCleanliness, 8.6, Average rating out of 10\nCleanliness\n8.6\nValue for money, 7.9, Average rating out of 1",
+   "at": [
+    {
+     "needle": "Comfortable Accommodations",
+     "y": 6354,
+     "screenshot": "assets/walk/03-booking-com-summary.png"
+    },
+    {
+     "needle": "Choose dates",
+     "y": 1084,
+     "screenshot": "assets/walk/03-booking-com-dates.png"
+    },
+    {
+     "needle": "ringing several days",
+     "found": false
+    },
+    {
+     "needle": "Check your booking",
+     "found": false
+    },
+    {
+     "needle": "Contacting the property",
+     "y": 6948,
+     "screenshot": "assets/walk/03-booking-com-contacting-closed.png"
+    },
+    {
+     "needle": "Check-in",
+     "y": 1192,
+     "screenshot": "assets/walk/03-booking-com-house-rules.png"
+    }
+   ],
+   "accordions": [
+    {
+     "label": "Contacting the property",
+     "screenshot": "assets/walk/03-booking-com-contacting.png",
+     "text": "Contacting the property\nIf you want to request something specific, you can do that after you choose your rate.\nOnce you book, we'll provide details so you can contact the property directly."
+    },
+    {
+     "label": "Hotel policies",
+     "screenshot": "assets/walk/03-booking-com-policies.png",
+     "text": "Hotel policies\nCheck-in\nFrom 14:00 to 18:00\nCheck-out\nFrom 06:00 to 10:00\nCancellation/ prepayment\nCancellation and prepayment policies vary according to accommodation type. Please enter the dates of your stay and check the conditions of your required option.\nNo age restriction\nThere is no age requirement for check-in\nPets\nPets are allowed on request. Charges may be applicable.\nGroups\nWhen booking more than 2 rooms, different policies and additional supplements may apply.\nParties\nParties/events are not allowed"
+    },
+    {
+     "label": "Preferred Partner Programme",
+     "screenshot": "assets/walk/03-booking-com-preferred-partner.png",
+     "text": "Preferred Partner Programme\nThis property is part of our Preferred Partner Programme. It is committed to providing commendable service and good value. It will pay us a higher commission if you make a booking."
+    }
+   ],
+   "summary_text": "Comfortable Accommodations: Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama offers family rooms with air-conditioning, private entrances, and balconies. Each room includes a work desk, free toiletries, and a...\n\nRead more\nHotel policies\nCheck-in\nFrom 14:00 to 18:00\nCheck-out\nFrom 06:00 to 10:00\nCancellation/ prepayment\nCancellation and prepayment policies vary according to accommodation type. Please enter the dates of your stay and check the conditions of your required option.\nNo age restriction\nThere is no age requirement for check-in\nPets\nPets are allowed on request. Charges may be applicable.\nGroups\nWhen booking more than 2 rooms, different policies and additional supplements may apply.\nParties\nParties/events are not allowed\nImportant & legal info\nContacting the property\n\nIf you want to request something specific, you can do that after you choose your rate.\n\nOnce y",
+   "ask_question": {
+    "label": "Ask a question",
+    "url_after_tap": "https://account.booking.com/sign-in?op_token=EgVvYXV0aCLWAwoUdk8xS2Jsazd4WDl0VW4yY3BaTFMSCWF1dGhvcml6ZRo1aHR0cHM6Ly9zZWN1cmUuYm9va2luZy5jb20vbG9naW4uaHRtbD9vcD1vYXV0aF9yZXR1cm4q9QJVdjhCc3pUTGtObkpzRDV",
+    "navigation_chain": [
+     [
+      302,
+      "https://account.booking.com/auth/oauth2?client_id=vO1Kblk7xX9tUn2cpZLS&redirect_uri=https%3A%2F%2Fsecure.booking.com%2Flogin.html%3Fop%3Doauth_return&response_t"
+     ],
+     [
+      200,
+      "https://account.booking.com/sign-in?op_token=EgVvYXV0aCLWAwoUdk8xS2Jsazd4WDl0VW4yY3BaTFMSCWF1dGhvcml6ZRo1aHR0cHM6Ly9zZWN1cmUuYm9va2luZy5jb20vbG9naW4uaHRtbD9vcD1"
+     ]
+    ],
+    "text": "Sign in or create an account\nYou can sign in using your Booking.com account to access our services.\nEmail address\nContinue with email\nor use one of these options\nHaving trouble signing in?\nBy signing in or creating an account, you agree with our Terms & conditions and Privacy notice\nAll rights reserved.\nCopyright (2006 - 2026) - Booking.com™",
+    "screenshot_before": "assets/walk/03-booking-com-ask-tapped-before.png",
+    "screenshot": "assets/walk/03-booking-com-ask-tapped.png"
+   }
+  },
+  {
+   "step": "04-agoda",
+   "viewport": "390x844",
+   "requested": "https://www.agoda.com/en-gb/sea-you-surfers-nest/hotel/all/midigama-east-lk.html",
+   "status": 200,
+   "error": null,
+   "navigation_chain": [
+    [
+     200,
+     "https://www.agoda.com/en-gb/sea-you-surfers-nest/hotel/all/midigama-east-lk.html"
+    ]
+   ],
+   "screenshot_on_load": "assets/walk/04-agoda-on-load.png",
+   "on_load_dialogs": [
+    "We have even lower prices in our app! Agoda – Best deals on hotels and vacation rentals 450,000+ 5-star reviews See this property in our app Continue to mobile site"
+   ],
+   "cookie_declined": null,
+   "dismissed": [
+    "Continue to mobile site"
+   ],
+   "final_url": "https://www.agoda.com/en-gb/sea-you-surfers-nest/hotel/all/midigama-east-lk.html?ds=WNI%2BWugYUyVFEqcL",
+   "screenshot": "assets/walk/04-agoda-fold.png",
+   "title": "Best Price on Sea You Surfers Nest! Hello to waves in a minute walk in Mirissa + Reviews!",
+   "doc_width": 390,
+   "page_height": 7932,
+   "text_chars": 6217,
+   "tel_links": [],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_715880052_in_text": false,
+   "add_website": false,
+   "add_phone": false,
+   "claim": false,
+   "offsite_booking_links": [],
+   "commission_phrases": [],
+   "contact_phrases": [],
+   "inquire_phrases": [],
+   "ac_phrases": [
+    "Is air conditioning available in all rooms at Sea You Surfers Nest! Hello to waves in a minute walk?",
+    "Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama offers family rooms with air-conditioning, private entrances, and balconies"
+   ],
+   "restaurant_phrases": [
+    "Restaurants",
+    "Is there an on-site restaurant at Sea You Surfers Nest! Hello to waves in a minute walk?",
+    "The on-site restaurant provides a welcoming atmosphere for meals",
+    "The hotel features a restaurant, terrace, garden, and free WiFi in public areas"
+   ],
+   "checkin_phrases": [
+    "Check-in",
+    "Check-in/Check-out",
+    "Check-in from 14:00",
+    "Check-in until 18:00"
+   ],
+   "review_source_phrases": [
+    "Provided by verified guests of"
+   ],
+   "login_wall": false,
+   "captcha": false,
+   "text_head": "                                                                                                                 \n                                                                                                                 \nSea You Surfers Nest! Hello to waves in a minute walk\nWeliwaththa Road, Midigama Beach, Mirissa, Matara, Sri Lanka, 81700\nMake an online reservation \nCheck-in\nSun, Nov 22\nCheck-out\nMon, Nov 23\n1Room2Adults0Children\nCheck availability & prices\n1/44\nSea You Surfers Nest! Hello to waves in a minute walk\nHotel\n8.8 Excellent\n8 reviews\nHighlights\n750 meters to public transportation\nFront desk [24-hour]\nExcellent room comfort & quality\nAirport transfer\n330 meters to Midigama Beach\nOther key offerings\nFree Wi-Fi\nFree parking\nFront desk [24-hour]\nRestaurants\nAirport transfer\nFamily room\nPets allowed\nBalcony/terrace\n10.0\nLocation\nWeliwaththa Road, Midigama Beach, Mirissa, Matara, Sri Lanka, 81700\n330 meters to the beach\nParking\nFREE\nMidigama Beach\n330 m\nWeligama Beach\n2.52 km\nSee nearby\nSee map\nGood to know\nValue for money\t7.9\nLocation rating\t10.0\nNearest airport\tMattala Rajapaksa International Airport (HRI)\nDistance to airport\t88.03 km\n1/8\nDeluxe Double Room\n13 m²/14",
+   "at": [
+    {
+     "needle": "Comfortable Accommodations",
+     "y": 9166,
+     "screenshot": "assets/walk/04-agoda-summary.png"
+    },
+    {
+     "needle": "Provided by verified guests",
+     "y": 9743,
+     "screenshot": "assets/walk/04-agoda-reviews-source.png"
+    },
+    {
+     "needle": "on-site restaurant",
+     "y": 5502,
+     "screenshot": "assets/walk/04-agoda-faq-restaurant.png"
+    },
+    {
+     "needle": "air conditioning available",
+     "y": 5174,
+     "screenshot": "assets/walk/04-agoda-faq-ac.png"
+    },
+    {
+     "needle": "Check-in from",
+     "y": 6555,
+     "screenshot": "assets/walk/04-agoda-checkin.png"
+    }
+   ]
+  },
+  {
+   "step": "05-airbnb-1",
+   "viewport": "390x844",
+   "requested": "https://www.airbnb.co.uk/rooms/1508895627217411616",
+   "status": 200,
+   "error": null,
+   "navigation_chain": [
+    [
+     200,
+     "https://www.airbnb.co.uk/rooms/1508895627217411616"
+    ]
+   ],
+   "screenshot_on_load": "assets/walk/05-airbnb-1-on-load.png",
+   "on_load_dialogs": [],
+   "cookie_declined": "button:has-text(\"Only necessary\")",
+   "dismissed": [
+    "Close"
+   ],
+   "final_url": "https://www.airbnb.co.uk/rooms/1508895627217411616?source_impression_id=p3_1795304021_P3uonp-4SyxwLSjP",
+   "screenshot": "assets/walk/05-airbnb-1-fold.png",
+   "title": "Wake up to waves, 2026 rates, Sea You Surfers Nest - Guest houses for Rent in Matara, Southern Province, Sri Lanka - Airbnb",
+   "doc_width": 390,
+   "page_height": 6938,
+   "text_chars": 7656,
+   "tel_links": [],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_715880052_in_text": false,
+   "add_website": false,
+   "add_phone": false,
+   "claim": false,
+   "offsite_booking_links": [
+    {
+     "label": "Community Centre",
+     "href": "https://community.withairbnb.com/t5/Community-Center/ct-p/community-center"
+    },
+    {
+     "label": "Investors",
+     "href": "https://investors.airbnb.com"
+    },
+    {
+     "label": "Airbnb.org emergency stays",
+     "href": "https://www.airbnb.org?locale=en-GB"
+    },
+    {
+     "label": "",
+     "href": "https://www.facebook.com/airbnb"
+    },
+    {
+     "label": "",
+     "href": "https://twitter.com/airbnb"
+    },
+    {
+     "label": "",
+     "href": "https://instagram.com/airbnb"
+    },
+    {
+     "label": "Airbnb UK Limited S.172 Statement",
+     "href": "https://www.airbnb.com/airbnb-uk-limited-s172-statement"
+    },
+    {
+     "label": "Airbnb Payments UK Limited S.172 Statement",
+     "href": "https://www.airbnb.com/s172-statements-airbnb-payments-uk-limited"
+    },
+    {
+     "label": "Airbnb Payments UK Limited Corporate Governance Statement",
+     "href": "https://www.airbnb.com/airbnb-payments-uk-limited-corporate-governance-statement"
+    }
+   ],
+   "commission_phrases": [],
+   "contact_phrases": [
+    "Response rate: 70%",
+    "Responds within a few hours",
+    "Message host"
+   ],
+   "inquire_phrases": [
+    "(Pls inquire for per room rate for individual rooms)"
+   ],
+   "ac_phrases": [
+    "Note: We have one A/C room & Six Non A/C rooms can accommodate 14 pax",
+    "I had the room with air conditioning, which has a door leading onto a lovely, large balcony"
+   ],
+   "restaurant_phrases": [
+    "Steps from the sea, with restaurants and surf shops within easy walking distance",
+    "The location is amazing, just steps away from the sea and restaurants",
+    "The location is excellent – just a few steps to the sea, restaurants and surf shops",
+    "Nice restaurants right around the corner or in the kitchen quickly prepare something yourself is also no problem",
+    "Peaceful location, but walking distance or short tuk tuk ride to wonderful beaches, surf sports and nice restaurants",
+    "We had a great stay! The location was great, everything within walking distance: surfing, beach, cafés and restaurants"
+   ],
+   "checkin_phrases": [
+    "Let us check in sooner, was able to book an additional night, recommend where to get laundry done & sorted an airport transfer for us! Highly recommend staying here",
+    "Select check-in date",
+    "Check in after 15:00"
+   ],
+   "review_source_phrases": [],
+   "login_wall": false,
+   "captcha": false,
+   "text_head": "Skip to content\nShowing photo 1 of 62\n1 / 62\nWake up to waves, 2026 rates, Sea You Surfers Nest\nRoom in Matara, Sri Lanka\n7 bedrooms · 7 double beds · Private attached bathroom\nRated 5.0 out of 5 stars.\n5.0\nGuest\nfavourite\n10 reviews\n10\nReviews\nListing highlights\nIn Midigama, right by the coast\nSteps from the sea, with restaurants and surf shops within easy walking distance\nBeach access with free parking\nShared beach access, a kitchen for self-catering, and free parking at the guesthouse\nAshly is an attentive host\nGuests praise Ashly as a responsive and welcoming host who helps with local tips\nStay with Ashly\nSuperhost · 1 year hosting\nLearn more about summaries\nEscape to the sun, sand, and waves at our cozy surf haven. Whether you’re chasing the perfect wave, soaking up the beach vibes, or just looking to unwind, our place is your perfect home away from home. Come stay with us, relax, and let the good times roll! \nReserve your surfside escape today! – adds a surf vibe.\nNote: We have one A/C room & Six Non A/C rooms can accommodate 14 pax.(Pls inquire for per room rate for individual rooms)\nShow more\nRated 5.0 out of 5 from 10 reviews.\n5.0\nGuest favourite\nThis home is a guest favou",
+   "at": [
+    {
+     "needle": "Pls inquire",
+     "y": 1768,
+     "screenshot": "assets/walk/05-airbnb-1-inquire.png"
+    },
+    {
+     "needle": "Response rate",
+     "y": 9082,
+     "screenshot": "assets/walk/05-airbnb-1-host-details.png"
+    },
+    {
+     "needle": "Check in after",
+     "y": 9647,
+     "screenshot": "assets/walk/05-airbnb-1-checkin.png"
+    },
+    {
+     "needle": "Message host",
+     "y": 9246,
+     "screenshot": "assets/walk/05-airbnb-1-message-host.png"
+    },
+    {
+     "needle": "Pls inquire",
+     "y": 206,
+     "screenshot": "assets/walk/05-airbnb-1-inquire-open.png"
+    }
+   ],
+   "description_text": "Escape to the sun, sand, and waves at our cozy surf haven. Whether you’re chasing the perfect wave, soaking up the beach vibes, or just looking to unwind, our place is your perfect home away from home. Come stay with us, relax, and let the good times roll! \nReserve your surfside escape today! – adds a surf vibe.\nNote: We have one A/C room & Six Non A/C rooms can accommodate 14 pax.(Pls inquire for per room rate for individual rooms)\nShow more\nRated 5.0 out of 5 from 10 reviews.\n5.0\nGuest favourite\nThis home is a guest favourite based on ratings, reviews and reliability\nGuests mention\nBeach\n2\nLocation\n7\nNearby\n5\nHospitality\n6\nWalkability\n2\nGetting around\n2\nIndoor spaces\n2\nComfort\n2\n1 of 10 it",
+   "show_more": {
+    "label": "Show more",
+    "url_after_tap": "https://www.airbnb.co.uk/rooms/1508895627217411616?source_impression_id=p3_1795304021_P3uonp-4SyxwLSjP&modal=DESCRIPTION",
+    "navigation_chain": [],
+    "text": "About this space\nEscape to the sun, sand, and waves at our cozy surf haven. Whether you’re chasing the perfect wave, soaking up the beach vibes, or just looking to unwind, our place is your perfect home away from home. Come stay with us, relax, and let the good times roll!\nReserve your surfside escape today! – adds a surf vibe.\nNote: We have one A/C room & Six Non A/C rooms can accommodate 14 pax.(Pls inquire for per room rate for individual rooms)",
+    "screenshot_before": "assets/walk/05-airbnb-1-description-open-before.png",
+    "screenshot": "assets/walk/05-airbnb-1-description-open.png"
+   },
+   "message_host": {
+    "label": "Message host",
+    "url_after_tap": "https://www.airbnb.co.uk/rooms/1508895627217411616?source_impression_id=p3_1795304021_P3uonp-4SyxwLSjP",
+    "navigation_chain": [],
+    "text": "Log in or sign up\nPhone number or email\nContinue\nor",
+    "screenshot_before": "assets/walk/05-airbnb-1-message-host-tapped-before.png",
+    "screenshot": "assets/walk/05-airbnb-1-message-host-tapped.png"
+   }
+  },
+  {
+   "step": "06-airbnb-2",
+   "viewport": "390x844",
+   "requested": "https://www.airbnb.co.uk/rooms/1793988904511877292",
+   "status": 200,
+   "error": null,
+   "navigation_chain": [
+    [
+     200,
+     "https://www.airbnb.co.uk/rooms/1793988904511877292"
+    ]
+   ],
+   "screenshot_on_load": "assets/walk/06-airbnb-2-on-load.png",
+   "on_load_dialogs": [],
+   "cookie_declined": null,
+   "dismissed": [
+    "Close"
+   ],
+   "final_url": "https://www.airbnb.co.uk/rooms/1793988904511877292?source_impression_id=p3_1795304060_P37_qbv4eqxB4Id_",
+   "screenshot": "assets/walk/06-airbnb-2-fold.png",
+   "title": "Sea You Surfer's Nest, Escape to the Sun & Sea! - Guest houses for Rent in Matara, Southern Province, Sri Lanka - Airbnb",
+   "doc_width": 390,
+   "page_height": 6129,
+   "text_chars": 3794,
+   "tel_links": [],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_715880052_in_text": false,
+   "add_website": false,
+   "add_phone": false,
+   "claim": false,
+   "offsite_booking_links": [
+    {
+     "label": "Community Centre",
+     "href": "https://community.withairbnb.com/t5/Community-Center/ct-p/community-center"
+    },
+    {
+     "label": "Investors",
+     "href": "https://investors.airbnb.com"
+    },
+    {
+     "label": "Airbnb.org emergency stays",
+     "href": "https://www.airbnb.org?locale=en-GB"
+    },
+    {
+     "label": "",
+     "href": "https://www.facebook.com/airbnb"
+    },
+    {
+     "label": "",
+     "href": "https://twitter.com/airbnb"
+    },
+    {
+     "label": "",
+     "href": "https://instagram.com/airbnb"
+    },
+    {
+     "label": "Airbnb UK Limited S.172 Statement",
+     "href": "https://www.airbnb.com/airbnb-uk-limited-s172-statement"
+    },
+    {
+     "label": "Airbnb Payments UK Limited S.172 Statement",
+     "href": "https://www.airbnb.com/s172-statements-airbnb-payments-uk-limited"
+    },
+    {
+     "label": "Airbnb Payments UK Limited Corporate Governance Statement",
+     "href": "https://www.airbnb.com/airbnb-payments-uk-limited-corporate-governance-statement"
+    }
+   ],
+   "commission_phrases": [],
+   "contact_phrases": [
+    "Response rate: 70%",
+    "Responds within a few hours",
+    "Message host"
+   ],
+   "inquire_phrases": [
+    "(rates are for Non A/C double room, Pls inquire when booking)"
+   ],
+   "ac_phrases": [
+    "With space for up to 14, the guesthouse has A/C in one room and ceiling fans in the rest",
+    "NOTE: We have ONLY ONE A/C room & Six Non A/C rooms can accommodate 14 pax",
+    "(rates are for Non A/C double room, Pls inquire when booking)"
+   ],
+   "restaurant_phrases": [],
+   "checkin_phrases": [
+    "Select check-in date",
+    "Check in after 15:00"
+   ],
+   "review_source_phrases": [],
+   "login_wall": false,
+   "captcha": false,
+   "text_head": "Skip to content\nShowing photo 1 of 241\n1 / 241\nSea You Surfer's Nest, Escape to the Sun & Sea!\nEntire guest house in Matara, Sri Lanka\n14 guests · 7 bedrooms · 6 beds · 0 bathrooms\nNew listing\nNew\nListing highlights\nA surf-side guesthouse with beach access\nBeach access is included, with surf breaks and sandy shoreline nearby on Sri Lanka's southern coast.\nFree parking and a shared kitchen\nFree parking and a kitchen make it easy to settle in, with Wi-Fi and ceiling fans throughout.\nRoom for larger groups\nWith space for up to 14, the guesthouse has A/C in one room and ceiling fans in the rest.\nHosted by Ashly\nSuperhost · 1 year hosting\nLearn more about summaries\nEscape to the sun, sand, and waves at our cozy surf haven. Whether you’re chasing the perfect wave, soaking up the beach vibes, or just looking to unwind, our place is your perfect home away from home. Come stay with us, relax, and let the good times roll! \nReserve your surfside escape today! – adds a surf vibe.\nNOTE: We have ONLY ONE A/C room & Six Non A/C rooms can accommodate 14 pax.(rates are for Non A/C double room, Pls inquire when booking)\nShow more\nWhere you'll sleep\nBedroom 1\n1 double bed\nBedroom 2\n1 double bed\nBedro",
+   "at": [
+    {
+     "needle": "bathroom",
+     "y": 527,
+     "screenshot": "assets/walk/06-airbnb-2-summary.png"
+    },
+    {
+     "needle": "No reviews",
+     "y": 5803,
+     "screenshot": "assets/walk/06-airbnb-2-no-reviews.png"
+    },
+    {
+     "needle": "Pls inquire",
+     "y": 1697,
+     "screenshot": "assets/walk/06-airbnb-2-inquire.png"
+    },
+    {
+     "needle": "Check in after",
+     "y": 8065,
+     "screenshot": "assets/walk/06-airbnb-2-checkin.png"
+    }
+   ],
+   "overview": "14 guests · 7 bedrooms · 6 beds · 0 bathrooms",
+   "show_more": {
+    "label": "Show more",
+    "url_after_tap": "https://www.airbnb.co.uk/rooms/1793988904511877292?source_impression_id=p3_1795304060_P37_qbv4eqxB4Id_&modal=DESCRIPTION",
+    "navigation_chain": [],
+    "text": "About this space\nEscape to the sun, sand, and waves at our cozy surf haven. Whether you’re chasing the perfect wave, soaking up the beach vibes, or just looking to unwind, our place is your perfect home away from home. Come stay with us, relax, and let the good times roll!\nReserve your surfside escape today! – adds a surf vibe.\nNOTE: We have ONLY ONE A/C room & Six Non A/C rooms can accommodate 14 pax.(rates are for Non A/C double room, Pls inquire when booking)",
+    "screenshot_before": "assets/walk/06-airbnb-2-description-open-before.png",
+    "screenshot": "assets/walk/06-airbnb-2-description-open.png"
+   }
+  },
+  {
+   "step": "07-airbnb-host",
+   "viewport": "390x844",
+   "requested": "https://www.airbnb.co.uk/users/show/718689424",
+   "status": 200,
+   "error": null,
+   "navigation_chain": [
+    [
+     200,
+     "https://www.airbnb.co.uk/users/show/718689424"
+    ]
+   ],
+   "screenshot_on_load": "assets/walk/07-airbnb-host-on-load.png",
+   "on_load_dialogs": [
+    "My work: Businessman Where I’ve always wanted to go: Auckland, New Zealand Most useless skill: Photography Born in the 90s Identity verified Show all \"Part entrepreneur, part explorer — I’m all about "
+   ],
+   "cookie_declined": null,
+   "final_url": "https://www.airbnb.co.uk/users/show/718689424",
+   "screenshot": "assets/walk/07-airbnb-host-fold.png",
+   "title": "Host profile · Airbnb",
+   "doc_width": 390,
+   "page_height": 844,
+   "text_chars": 2346,
+   "tel_links": [],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_715880052_in_text": false,
+   "add_website": false,
+   "add_phone": false,
+   "claim": false,
+   "offsite_booking_links": [],
+   "commission_phrases": [],
+   "contact_phrases": [],
+   "inquire_phrases": [],
+   "ac_phrases": [
+    "I had the room with air conditioning, which has a door leading onto a lovely, large balcony"
+   ],
+   "restaurant_phrases": [
+    "The location is excellent – just a few steps to the sea, restaurants and surf shops",
+    "The location is amazing, just steps away from the sea and restaurants"
+   ],
+   "checkin_phrases": [],
+   "review_source_phrases": [],
+   "login_wall": false,
+   "captcha": false,
+   "text_head": "Skip to content\nMy work: Businessman\nWhere I’ve always wanted to go: Auckland, New Zealand\nMost useless skill: Photography\nBorn in the 90s\nIdentity verified\nShow all\n\"Part entrepreneur, part explorer — I’m all about good vibes, bold ideas, and making things happen.\"\nAshly\nSuperhost\n10 reviews\n10\nReviews\n5 out of 5 average rating\n5.0\nRating\n%{count} year of hosting\n1\nYear hosting\nWhat guests are saying\n1 of 5 items showing\n“It was a nice place to stay. Would recommend to go there.”\nRaul\nMarch 2026\n“Everything was great :)”\nKarl\nMarch 2026\n“Ashly and his brother were very attentive and friendly hosts. I was picked up from my previous accommodation free of charge. I received a very prompt response and assistance with all my questions and issues. Ashly lives in the house, and you share the kitchen with him and the other guests. That’s why your stay feels like you’re living with a host family. The location is excellent – just a few steps to the sea, restaurants and surf shops. \nI had the room with air conditioning, which has a door leading onto a lovely, large balcony. Not all rooms have this access. I would also have been pleased to have had free drinking water and a shelf or cupboard ",
+   "at": [
+    {
+     "needle": "Response rate",
+     "found": false
+    }
+   ]
+  },
+  {
+   "step": "08-google-search",
+   "viewport": "390x844",
+   "requested": "https://www.google.com/search?q=%22Sea+You+Surfers+Nest%22+Midigama&hl=en",
+   "status": 200,
+   "error": null,
+   "navigation_chain": [
+    [
+     200,
+     "https://www.google.com/search?q=%22Sea+You+Surfers+Nest%22+Midigama&hl=en"
+    ],
+    [
+     302,
+     "https://www.google.com/search?q=%22Sea+You+Surfers+Nest%22+Midigama&hl=en&sei=oyoCa7-FGoHg7_UPmeq30Ac"
+    ],
+    [
+     429,
+     "https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3D%2522Sea%2BYou%2BSurfers%2BNest%2522%2BMidigama%26hl%3Den%26sei%3DoyoCa7-FGoHg7_"
+    ]
+   ],
+   "screenshot_on_load": "assets/walk/08-google-search-on-load.png",
+   "on_load_dialogs": [],
+   "cookie_declined": null,
+   "final_url": "https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3D%2522Sea%2BYou%2BSurfers%2BNest%2522%2BMidigama%26hl%3Den%26sei%3DoyoCa7-FGoHg7_UPmeq30Ac&hl=en&q=EhAqDW_AFaZ8AKz8qOYfdX",
+   "screenshot": "assets/walk/08-google-search-fold.png",
+   "title": "https://www.google.com/search?q=%22Sea+You+Surfers+Nest%22+Midigama&hl=en&sei=oyoCa7-FGoHg7_UPmeq30Ac",
+   "doc_width": 390,
+   "page_height": 844,
+   "text_chars": 381,
+   "tel_links": [],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_715880052_in_text": false,
+   "add_website": false,
+   "add_phone": false,
+   "claim": false,
+   "offsite_booking_links": [],
+   "commission_phrases": [],
+   "contact_phrases": [],
+   "inquire_phrases": [],
+   "ac_phrases": [],
+   "restaurant_phrases": [],
+   "checkin_phrases": [],
+   "review_source_phrases": [],
+   "login_wall": false,
+   "captcha": true,
+   "text_head": "\nAbout this page\nOur systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. Why did this happen?\nIP address: 2a0d:6fc0:15a6:7c00:acfc:a8e6:1f75:7ff4\nTime: 2026-11-21T23:35:00Z\nURL: https://www.google.com/search?q=%22Sea+You+Surfers+Nest%22+Midigama&hl=en&sei=oyoCa7-FGoHg7_UPmeq30Ac\n",
+   "at": []
+  }
+ ]
+}

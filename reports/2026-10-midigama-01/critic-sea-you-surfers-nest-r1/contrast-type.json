@@ -1,0 +1,132 @@
+{
+ "calm": {
+  "m390": {
+   "n": 100,
+   "fails": [],
+   "min_font": 12.5,
+   "chars_under_12px": [],
+   "body_p_px": [
+    15,
+    17,
+    22,
+    17.5,
+    15.5,
+    14.5
+   ]
+  },
+  "d1440": {
+   "n": 100,
+   "fails": [],
+   "min_font": 13.5,
+   "chars_under_12px": [],
+   "body_p_px": [
+    15,
+    17,
+    26,
+    18,
+    15.5
+   ]
+  }
+ },
+ "interactive": {
+  "m390": {
+   "n": 121,
+   "fails": [],
+   "min_font": 12.5,
+   "chars_under_12px": [],
+   "body_p_px": [
+    16,
+    20,
+    16.5,
+    15
+   ]
+  },
+  "d1440": {
+   "n": 124,
+   "fails": [],
+   "min_font": 13,
+   "chars_under_12px": [],
+   "body_p_px": [
+    16,
+    17,
+    24,
+    18,
+    15
+   ]
+  }
+ },
+ "unique": {
+  "m390": {
+   "n": 99,
+   "fails": [],
+   "min_font": 13,
+   "chars_under_12px": [],
+   "body_p_px": [
+    15,
+    19,
+    17.5,
+    16,
+    22,
+    18,
+    17
+   ],
+   "door": {
+    "triggers": [
+     "A:Book:::door",
+     "A:More ways to book:::door",
+     "A:More:::door"
+    ],
+    "trigText": "Book",
+    "opened": {
+     "url": "http://localhost:8997/",
+     "dialog": true,
+     "open": true,
+     "modal": "true",
+     "label": "door-h",
+     "focus": "See rooms and live dates on Booking.com"
+    },
+    "tabs_inside": "20/20",
+    "after_esc": {
+     "focus": "Book",
+     "url": "http://localhost:8997/"
+    }
+   }
+  },
+  "d1440": {
+   "n": 97,
+   "fails": [],
+   "min_font": 13,
+   "chars_under_12px": [],
+   "body_p_px": [
+    15.5,
+    22,
+    15,
+    17.5,
+    17,
+    28,
+    18,
+    20
+   ],
+   "door": {
+    "triggers": [
+     "A:Book:::door",
+     "A:More ways to book:::door"
+    ],
+    "trigText": "Book",
+    "opened": {
+     "url": "http://localhost:8997/",
+     "dialog": true,
+     "open": true,
+     "modal": "true",
+     "label": "door-h",
+     "focus": "See rooms and live dates on Booking.com"
+    },
+    "tabs_inside": "20/20",
+    "after_esc": {
+     "focus": "Book",
+     "url": "http://localhost:8997/"
+    }
+   }
+  }
+ }
+}

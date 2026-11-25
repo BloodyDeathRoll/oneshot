@@ -1,0 +1,14 @@
+{
+ "note": "Station 5 round 1, final/dist (built 17:37, commits c1a2a35/e637dc0/f2c3eb6). Run 2026-11-25 ~19:05-19:20 +07.",
+ "fresh_build": "final/ copied to scratch (minus dist, node_modules symlinked), `npm run build`; `diff -rq` against final/dist: identical",
+ "served": "tools/_serve.mjs on :8947; served index.html = dist/index.html (cmp); llms.txt and robots.txt 200",
+ "jsoff_invisible_focus": {"390": [], "1440": []},
+ "first_screen": {
+  "390": {"type": "hero 'Bed and breakfast' span display:none on the phone; tagline h2 'A bed and breakfast in Midigama…' at y 697 (of 844)", "ctas": ["See live dates @ 290"]},
+  "1440": {"type": "'Bed and breakfast | Midigama, Sri Lanka' @ y 403", "ctas": ["See live dates @ 450"]}
+ },
+ "lcp_audit_mockup_ms": [908, 1368, 1456],
+ "lcp_observer_ms": [1356, 1380, 1336],
+ "lcp_element": "IMG photos/img-003-graded-r1.433-tall-600.webp (the phone hero)",
+ "pixel_diff_vs_picked_mockup": "shoot.mjs of final (:8947) and mockups/interactive/dist (:8948), same options; >30/765 RGB difference per pixel. Desktop 01–06: 0.1–2.1 % (slideshow/shelf state, font raster); desktop-00 17.1 % (graded fronds); desktop-07/08 52.9 / 37.5 % and mobile-08…11 42–54 % (guests on mint, whole cards, everything after shifted up 29 px desktop / 51 px phone); desktop-09 6.1 %; mobile-05 5.1 % (shelf state); all others ≤ 1.7 %. Page 8,127 / 9,379 px (mockup 8,156 / 9,430)."
+}

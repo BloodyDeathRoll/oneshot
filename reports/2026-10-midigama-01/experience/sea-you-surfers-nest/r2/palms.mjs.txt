@@ -1,0 +1,31 @@
+// experience-critic 4f r2: does interactive's forced palm shader paint a flat green slab on a slow phone load?
+// Serial runs, phone 390x844 @2x, ?palms. Conditions: net+cpu throttle, net only, cpu only, none. Frames at 4/10/20 s.
+import { chromium } from '/Users/alonlavi/.paradev/worktrees/oneshot/pull-latest-version-from-ff5cf4f5/node_modules/playwright/index.mjs';
+import fs from 'node:fs'; import http from 'node:http'; import path from 'node:path';
+const OUT = process.argv[2];
+const ROOT = '/Users/alonlavi/.paradev/worktrees/oneshot/pull-latest-version-from-ff5cf4f5/sites/sea-you-surfers-nest/mockups/interactive/dist';
+const LOG = `${OUT}/palms.log`; fs.writeFileSync(LOG, '');
+const log = (...a) => { const s = a.map(x => typeof x === 'string' ? x : JSON.stringify(x)).join(' '); console.log(s); fs.appendFileSync(LOG, s + '\n'); };
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const T = { '.html': 'text/html; charset=utf-8', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.png': 'image/png' };
+const server = http.createServer((req, res) => { let p = decodeURIComponent(new URL(req.url, 'http://x').pathname); if (p.endsWith('/')) p += 'index.html'; const f = path.join(ROOT, p); if (!f.startsWith(ROOT) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.writeHead(404); return res.end(); } res.writeHead(200, { 'content-type': T[path.extname(f)] || 'application/octet-stream' }); fs.createReadStream(f).pipe(res); });
+await new Promise(r => server.listen(0, '127.0.0.1', r));
+const URL0 = `http://127.0.0.1:${server.address().port}/?palms`;
+const UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1';
+const browser = await chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
+for (const [tag, net, cpu] of [['netcpu', true, true], ['net', true, false], ['cpu', false, true], ['none', false, false]]) {
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, userAgent: UA });
+  const page = await ctx.newPage(); const c = await ctx.newCDPSession(page);
+  await c.send('Network.enable'); await c.send('Network.setCacheDisabled', { cacheDisabled: true });
+  if (net) await c.send('Network.emulateNetworkConditions', { offline: false, latency: 150, downloadThroughput: 1.6e6 / 8, uploadThroughput: 750e3 / 8 });
+  if (cpu) await c.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+  page.on('console', m => log(tag, 'console', m.type(), m.text().slice(0, 160)));
+  const t0 = Date.now(); page.goto(URL0).catch(() => {});
+  for (const t of [4000, 10000, 20000]) {
+    await sleep(Math.max(0, t - (Date.now() - t0)));
+    await page.screenshot({ path: `${OUT}/palms-${tag}-${t / 1000}s.png`, timeout: 20000 }).catch(e => log(tag, 'shot fail', e.message.split('\n')[0]));
+    log(tag, `t=${t / 1000}s`, await page.evaluate(() => { const i = document.querySelector('.hero-img'), cv = document.querySelector('canvas.palms'); return { img: (i.currentSrc || '').split('/').pop(), nw: i.naturalWidth, nh: i.naturalHeight, complete: i.complete, cv: cv && { on: cv.classList.contains('on'), op: getComputedStyle(cv).opacity, w: cv.width, h: cv.height, cw: cv.clientWidth, ch: cv.clientHeight } }; }).catch(e => e.message));
+  }
+  await ctx.close();
+}
+await browser.close(); server.close();

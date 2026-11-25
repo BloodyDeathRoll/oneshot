@@ -15,11 +15,11 @@ area:
   shore_buffer_m: 200            # many Midigama guesthouses sit across the A2 coast road or up the hill
 types: [surf_school, board_rental, surf_shop, surf_camp, beach_lodging, shaper]
 presence_threshold: 2            # shortlist businesses scoring <= this (0–5), as in ahangama-02
-max_sites: 3
+max_sites: 6                     # 2026-11-22: was 3 on main (4 on alon/sanjee-surf-school, PR #81); Alon approved colonial-surfing-villa and surf-swell-hostel-midigama as sites 5 and 6
 languages: [en]
 budget:
-  tokens_per_business: 2_000_000
-  wallclock_min_per_business: 90
+  tokens_per_business: 14_000_000  # 2026-11-22: was 2_000_000; Alon raised it for colonial-surfing-villa and surf-swell-hostel-midigama "like sanjee" (sanjee ended on 14M)
+  wallclock_min_per_business: 850  # 2026-11-22: was 90; raised with the tokens (the-sandhya ran on 850)
 hosting:
   default_mode: managed          # managed | self_hosted_docker | static_only
   modes: {}
