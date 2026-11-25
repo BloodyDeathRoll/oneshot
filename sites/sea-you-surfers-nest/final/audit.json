@@ -1,23 +1,23 @@
 {
  "slug": "sea-you-surfers-nest",
  "variant": "../final",
- "measured_at": "2026-11-25T10:27:24.023Z",
+ "measured_at": "2026-11-25T10:45:39.057Z",
  "first_load": {
   "requests": 15,
   "hosts": [
-   "localhost:47412"
+   "localhost:8987"
   ],
   "third_party_hosts": [],
-  "bytes_total": 526250,
-  "bytes_html": 77776,
+  "bytes_total": 526390,
+  "bytes_html": 77916,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 45580,
   "bytes_images": 402894,
   "largest_image_bytes": 50232,
-  "lcp_ms": 1352,
+  "lcp_ms": 824,
   "cls": 0.0026,
-  "dcl_ms": 1189
+  "dcl_ms": 794
  },
  "scroll": {
   "early": {
@@ -25,7 +25,7 @@
    "shifts": [
     {
      "value": 0.0026,
-     "at_ms": 1067,
+     "at_ms": 1256,
      "y": 0,
      "sources": [
       "::before"

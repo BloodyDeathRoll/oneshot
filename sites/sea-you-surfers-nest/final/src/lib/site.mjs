@@ -184,6 +184,14 @@ export const ogImage = () => {
   return null
 }
 const pageImages = () => [...new Set((c.photos ?? []).map((_, n) => slot(n)?.top.webp).filter(Boolean))]
+/* 4i: the room's size, read from the m² figure its rooms[].note prints ("13 m², with its own bathroom…" → 13), as
+   sites/lotus-surf-house/final. The page shows the same note, so this adds no fact; no figure in the note, no floorSize. */
+export const floorSize = (note) => {
+  const m = /(\d+(?:\.\d+)?)(?:\s*[–-]\s*(\d+(?:\.\d+)?))?\s*m²/.exec(note ?? '')
+  if (!m) return null
+  const q = { '@type': 'QuantitativeValue', unitCode: 'MTK' }
+  return m[2] ? { ...q, minValue: +m[1], maxValue: +m[2] } : { ...q, value: +m[1] }
+}
 /* JSON-LD for the business: one block, every value from content.json or gaps.json. No aggregateRating / review
    (Shahar's no-ratings-markup decision, applied to every site). No priceRange: room rates are live OTA inventory.
    No telephone until TEL_CONFIRMED (the number is read off the sign photograph and unconfirmed). */
@@ -196,11 +204,15 @@ export const businessLd = ({ description } = {}) => {
   /* the listings the business is on: the rated platforms and the booking links (both content fields) */
   const same = [...new Set([...(c.ratings ?? []).map((r) => safeUrl(r.url)), ...LINKS.map((l) => l.url)].filter(Boolean))]
   const rooms = G.houseCount?.rooms
-  const roomsLd = ROOMS.map((r) => ({
-    '@type': 'HotelRoom', name: r.label,
-    ...(r.beds ? { bed: r.beds } : {}),
-    ...(r.sleeps ? { occupancy: { '@type': 'QuantitativeValue', maxValue: r.sleeps } } : {}),
-  }))
+  const roomsLd = ROOMS.map((r) => {
+    const m2 = floorSize(r.note)
+    return {
+      '@type': 'HotelRoom', name: r.label,
+      ...(r.beds ? { bed: r.beds } : {}),
+      ...(r.sleeps ? { occupancy: { '@type': 'QuantitativeValue', maxValue: r.sleeps } } : {}),
+      ...(m2 ? { floorSize: m2 } : {}),
+    }
+  })
   return {
     '@context': 'https://schema.org',
     '@type': ldType(),
