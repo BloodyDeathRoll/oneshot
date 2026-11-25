@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<title>A website for Sea You Surfers Nest</title>
+<meta name="description" content="A proposal for Sea You Surfers Nest, Midigama: the website preview we built, what it changes for a guest on a phone, what you will be able to edit yourself, and the ways it can run.">
+<style>
+:root{
+  --bg:#f6f8f5; --paper:#ffffff; --ink:#1c271f; --muted:#56605a; --line:#d8e0d9;
+  --accent:#2f4a2a; --accent-ink:#ffffff; --link:#2f5f36; --soft:#e8f1ea; --warn:#fff6e0; --warn-line:#d9a02a;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#121613; --paper:#1a201c; --ink:#e6ece7; --muted:#aab4ad; --line:#2d3630; --accent:#7fc596; --accent-ink:#0e1a12; --link:#93d3a8; --soft:#1f2a22; --warn:#2a2416; --warn-line:#b8862a; }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+a{color:var(--link)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header.top{padding:40px 16px 24px}
+.kicker{color:var(--muted);font-size:15px;margin:0 0 8px}
+h1{font-size:clamp(30px,6vw,48px);line-height:1.1;font-weight:600;margin:0 0 16px;letter-spacing:-.01em}
+h2{font-size:clamp(23px,4vw,30px);line-height:1.2;font-weight:600;margin:0 0 14px}
+h3{font-size:18px;margin:0 0 6px}
+p{margin:0 0 14px}
+.lede{font-size:19px;max-width:44em}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:12px 20px;background:var(--accent);color:var(--accent-ink);font-weight:600;text-decoration:none;border-radius:4px;word-break:break-all}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--link);outline-offset:2px}
+.note{color:var(--muted);font-size:15px}
+section{padding:36px 16px;border-top:1px solid var(--line)}
+.grid2{display:grid;gap:24px;grid-template-columns:1fr}
+.shots{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+figure{margin:0}
+figure img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+figcaption{font-size:14px;color:var(--muted);margin-top:6px}
+.wide{margin-top:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px}
+.fix{display:grid;gap:18px;grid-template-columns:1fr;margin-top:20px}
+.fix .card h3{margin-bottom:10px}
+.fix .label{display:block;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:10px 0 2px}
+.fix figure{max-width:300px}
+.fix figure.land{max-width:420px}
+.fix figure+figure{margin-top:14px}
+table{border-collapse:collapse;width:100%;background:var(--paper);border:1px solid var(--line);border-radius:8px;font-size:16px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-top:1px solid var(--line)}
+thead th{border-top:0;font-size:14px;color:var(--muted);font-weight:600}
+tbody th{font-weight:600;width:22%}
+.tablewrap{overflow-x:auto}
+.tabs{list-style:none;padding:0;margin:0;display:grid;gap:8px;grid-template-columns:1fr}
+.tabs li{padding:10px 14px;background:var(--paper);border:1px solid var(--line);border-radius:6px}
+.tabs li>strong:first-child{display:block}
+.offer{background:var(--soft);border-left:4px solid var(--accent);padding:18px 20px;border-radius:4px;max-width:46em}
+.offer p:last-child{margin-bottom:0}
+ol.confirm{padding-left:22px;margin:0;max-width:46em}
+ol.confirm li{margin-bottom:10px}
+footer{padding:28px 16px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (min-width:720px){
+  .grid2{grid-template-columns:1fr 1fr}
+  .fix{grid-template-columns:1fr 1fr}
+  .tabs{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  table,thead,tbody,tr,th,td{display:block}
+  thead{display:none}
+  tbody tr{border-top:1px solid var(--line);padding:10px 12px}
+  tbody tr:first-child{border-top:0}
+  tbody th,tbody td{border:0;padding:2px 0;width:auto}
+  tbody td::before{content:attr(data-h);display:block;font-size:13px;font-weight:600;color:var(--muted)}
+}
+@media (max-width:420px){ .shots{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<header class="top wrap">
+  <p class="kicker">A proposal for Sea You Surfers Nest, Midigama, Sri Lanka</p>
+  <h1>We built Sea You Surfers Nest a website</h1>
+  <p class="lede">Your guests rate Sea You Surfers Nest 4.9 out of 5 on Google, from 11 reviews, 5.0 out of 5 on Airbnb, from 10, and 8.0 out of 10 on Booking.com, from 8 (read 21 November 2026). On Booking.com they give the location 10 and the staff 9.3. Today the house has no website of its own: a traveller finds you on Google Maps, Booking.com, Agoda or Airbnb, and none of them lets them ask you anything before they sign in or book. We built a site that shows the house as it is, with its mint-green four-poster rooms, the courtyard and the balconies over the palms, and with Booking.com and Airbnb one tap away. It is made from your own Booking.com and Airbnb photos and listings, your Google listing and your guests' reviews. You can open it now:</p>
+  <p><a class="btn" href="https://sea-you-surfers-nest.os1.workers.dev/">sea-you-surfers-nest.os1.workers.dev</a></p>
+  <p class="note">This is a private preview. Search engines are told not to list it, so it is not on Google. Your Booking.com, Agoda, Airbnb and Google listings stay exactly as they are. Nothing goes public until you decide.</p>
+</header>
+
+<main>
+<section class="wrap" aria-labelledby="h-first">
+  <h2 id="h-first">The first screen on a phone</h2>
+  <div class="shots">
+    <figure>
+      <img src="before-booking-fold.jpg" width="780" height="1688" loading="lazy" alt="Our screenshot of the Sea You Surfers Nest listing on Booking.com on a phone, 21 November 2026: the blue Booking.com bar and a search box saying Kumbalgama, the name Sea You Surfers Nest! Hello to waves in a minute walk, Weliwaththa Road, Kumbalgama, 8.0 Very good, 8 reviews, a photo of the round Sea You sign marked 1/45, Breakfast Asian and Free private parking, and a yellow box saying Choose dates to see prices.">
+      <figcaption>Today: your Booking.com listing on a phone. Our screenshot, 21 November 2026.</figcaption>
+    </figure>
+    <figure>
+      <img src="after-390-top.jpg" width="780" height="1688" loading="lazy" alt="The preview on a phone: palm fronds above the mint-green balcony table with a potted plant, the name Sea You Surfers Nest in script, Midigama, Sri Lanka, and a dark green button See live dates. Below it: A bed and breakfast in Midigama, on Sri Lanka's south coast, and Hello to waves in a minute walk, says the house's own listing.">
+      <figcaption>The preview on a phone, 25 November 2026: your balcony, your name and one button to live dates.</figcaption>
+    </figure>
+  </div>
+  <div class="grid2 wide">
+    <figure>
+      <img src="after-1440-top.jpg" width="1440" height="900" loading="lazy" alt="The preview on a laptop: palm fronds across the whole screen above the balcony table, with Sea You Surfers Nest, Bed and breakfast, Midigama, Sri Lanka and the button See live dates in the middle.">
+      <figcaption>The preview on a laptop, 25 November 2026. On a capable screen the fronds sway gently.</figcaption>
+    </figure>
+    <figure>
+      <img src="after-1440-rooms.jpg" width="1440" height="900" loading="lazy" alt="The preview on a laptop: Seven rooms, with buttons Deluxe Double and Standard Double, the text All seven rooms are doubles, and between them they sleep fourteen. Only one has air conditioning, so ask when you book if you want the one that has it, and a large photo of a mint-green four-poster bed.">
+      <figcaption>Further down: the seven rooms.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-numbers">
+  <h2 id="h-numbers">Booking from a phone, before and after</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th scope="col"></th><th scope="col">Today (Google, Booking.com, Agoda, Airbnb)</th><th scope="col">The preview</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Your own page</th>
+        <td data-h="Today (Google, Booking.com, Agoda, Airbnb)">None. The Google listing says "Add website" where the website should be.</td>
+        <td data-h="The preview">One page that is only about Sea You Surfers Nest, in your photos and your guests' words.</td></tr>
+      <tr><th scope="row">Name and place</th>
+        <td data-h="Today (Google, Booking.com, Agoda, Airbnb)">The house is in Midigama on Google, Kumbalgama on Booking.com, Mirissa on Agoda and Matara on Airbnb, under four different names.</td>
+        <td data-h="The preview">One name and your Google address, 151 Weliwaththa Rd, Midigama 80650, with the line "Booking.com lists the house under Kumbalgama and Airbnb under Matara, but it's one house, in Midigama."</td></tr>
+      <tr><th scope="row">Booking</th>
+        <td data-h="Today (Google, Booking.com, Agoda, Airbnb)">On Google, "Check availability" compares Agoda and Booking.com. On Airbnb the rooms and the whole house are two separate listings.</td>
+        <td data-h="The preview">"See live dates" on the first screen: one tap to your Booking.com listing. As the guest scrolls it stays in a bar at the bottom of the phone. "Who's coming?" sends two people to Booking.com or a room on Airbnb, and a group to the whole house on Airbnb.</td></tr>
+      <tr><th scope="row">Which room has A/C</th>
+        <td data-h="Today (Google, Booking.com, Agoda, Airbnb)">Booking.com and Agoda say "family rooms with air-conditioning". Your own Airbnb note says one A/C room and six without.</td>
+        <td data-h="The preview">"Only one has air conditioning, so ask when you book if you want the one that has it."</td></tr>
+      <tr><th scope="row">Asking you first</th>
+        <td data-h="Today (Google, Booking.com, Agoda, Airbnb)">A sign-in on Booking.com and on Airbnb; no contact on Agoda. Your phone number is only in the photo of your sign.</td>
+        <td data-h="The preview">"Ask Ashly on Airbnb", which still needs an Airbnb login. A Call button is ready to go in as soon as you confirm your number (below).</td></tr>
+      <tr><th scope="row">Guest reviews</th>
+        <td data-h="Today (Google, Booking.com, Agoda, Airbnb)">Each platform shows its own score. On Google the review texts sit behind a sign-in.</td>
+        <td data-h="The preview">Google 4.9/5 from 11, Booking.com 8.0/10 from 8 and Airbnb 5.0/5 from 10, each with the date we read it, and five guest reviews quoted word for word.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note wide">On a slowed-down phone test of the site's files (25 November 2026) the preview opened with 526 KB, all from its own server, with 0 requests to outside servers, and the main picture showed in about 1.4 seconds. The page fits a 390-pixel phone screen without sideways scrolling, and the Booking.com and Airbnb links work with JavaScript switched off.</p>
+</section>
+
+<section class="wrap" aria-labelledby="h-fixed">
+  <h2 id="h-fixed">What a guest meets today, and what the preview does instead</h2>
+  <p>We walked your Google, Booking.com, Agoda and Airbnb listings on a phone on 21 November 2026, as a guest would, without booking or sending anything. These screenshots are from that walk.</p>
+  <div class="fix">
+    <div class="card">
+      <h3>A guest can't ask you anything before booking</h3>
+      <span class="label">Today</span>
+      <p>Your rooms are sold on Booking.com, Agoda and two Airbnb listings. On Booking.com, "Contacting the property" says: "Once you book, we'll provide details so you can contact the property directly." Tapping "Ask a question" opens a sign-in page. On Airbnb, "Message host" opens "Log in or sign up", and Agoda shows no phone, WhatsApp or email. A guest who wants to ask which room has the air conditioning, or whether they can rent a board, has to make an account or book first.</p>
+      <span class="label">On the preview</span>
+      <p>"Who's coming?" has a third answer, "A question first", which leads to "Ask Ashly on Airbnb" and the line "Your host is Ashly. He's a Superhost on Airbnb and usually replies there within a few hours." That still means an Airbnb login. We left your phone number off the preview on purpose: we could only read it from your sign. Once you confirm it, a Call button goes next to "See live dates", into the bar at the bottom of the phone and at the end of the page.</p>
+      <figure><img src="before-booking-contact.jpg" width="780" height="262" loading="lazy" alt="Our screenshot of the Booking.com listing on a phone, 21 November 2026: Contacting the property. If you want to request something specific, you can do that after you choose your rate. Once you book, we'll provide details so you can contact the property directly."><figcaption>"Contacting the property" on Booking.com, 21 November 2026.</figcaption></figure>
+      <figure><img src="before-booking-signin.jpg" width="780" height="620" loading="lazy" alt="Our screenshot of the page that opens after tapping Ask a question on Booking.com: Sign in or create an account, with an email field and Google, Apple and Facebook buttons."><figcaption>After tapping "Ask a question" on Booking.com.</figcaption></figure>
+      <figure><img src="before-airbnb-login.jpg" width="780" height="600" loading="lazy" alt="Our screenshot of what opens after tapping Message host on Airbnb, 21 November 2026: Log in or sign up, with a phone number or email field, Continue, and Google and Apple buttons."><figcaption>After tapping "Message host" on Airbnb.</figcaption></figure>
+      <figure><img src="after-390-ask.jpg" width="780" height="1688" loading="lazy" alt="The preview on a phone: Who's coming? with three tiles, Two of you, A group and A question first, the last one chosen, a button Ask Ashly on Airbnb and the line Your host is Ashly. He's a Superhost on Airbnb and usually replies there within a few hours. Below, a carved grey door, and the bar See live dates at the bottom."><figcaption>"A question first" on the preview, 25 November 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>Your phone number is on your sign, and nowhere a guest can tap it</h3>
+      <span class="label">Today</span>
+      <p>The first photo on Booking.com (1 of 45) and on Agoda is your street sign, "Sea You, The Surfers Nest, Midigama, +94 715880052". A guest on a phone can read the number but can't tap it. To call, they have to copy it from the photo by hand. We found it written as text on none of your listings, and the Google listing shows "Add place's phone number" instead.</p>
+      <span class="label">On the preview</span>
+      <p>No number yet, because a number read from a photo has to be checked before guests are sent to it. Once you tell us it is right, it becomes a Call button on the first screen, in the bar and at the end of the page, and if it is on WhatsApp we add a WhatsApp button too.</p>
+      <figure class="land"><img src="before-booking-sign.jpg" width="780" height="550" loading="lazy" alt="Our screenshot of the first photo of the Booking.com listing on a phone, 21 November 2026: the round sign Sea You, The Surfers Nest, Midigama, +94 715880052, with a wave, a surfboard and a palm, marked 1/45."><figcaption>Photo 1 of 45 on Booking.com, 21 November 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>Which room has what, said plainly</h3>
+      <span class="label">Today</span>
+      <p>Booking.com's description, copied word for word on Agoda, says the house "offers family rooms with air-conditioning, private entrances, and balconies". Booking.com writes that summary, not you. Your own note on Airbnb says "We have one A/C room &amp; Six Non A/C rooms", and asks guests to inquire for each room's rate, which again needs an Airbnb login. The whole-house Airbnb listing shows "14 guests · 7 bedrooms · 6 beds · 0 bathrooms" and "New", while your ten 5-star Airbnb reviews sit on the other listing.</p>
+      <span class="label">On the preview</span>
+      <p>"All seven rooms are doubles, and between them they sleep fourteen. Only one has air conditioning, so ask when you book if you want the one that has it." The Deluxe Double Room: "13 m², with its own bathroom, a private entrance, a terrace and a balcony." The Standard Double Room: "12 m², with a private entrance and a wardrobe." Each has its own photos. The breakfast is described, and no restaurant is claimed.</p>
+      <figure class="land"><img src="before-booking-summary.jpg" width="780" height="285" loading="lazy" alt="Our screenshot of Booking.com's property description on a phone, 21 November 2026: Comfortable Accommodations: Sea You Surfers Nest! Hello to waves in a minute walk in Kumbalgama offers family rooms with air-conditioning, private entrances, and balconies. Each room includes a work desk, free toiletries, and a…"><figcaption>Booking.com's description, 21 November 2026.</figcaption></figure>
+      <figure class="land"><img src="before-airbnb-note.jpg" width="780" height="238" loading="lazy" alt="Our screenshot of About this space on your Airbnb room listing, 21 November 2026: Note: We have one A/C room &amp; Six Non A/C rooms can accommodate 14 pax. (Pls inquire for per room rate for individual rooms)"><figcaption>Your note on Airbnb, 21 November 2026.</figcaption></figure>
+      <figure class="land"><img src="before-airbnb-house.jpg" width="780" height="325" loading="lazy" alt="Our screenshot of the whole-house Airbnb listing, 21 November 2026: Sea You Surfer's Nest, Escape to the Sun &amp; Sea! Entire guest house in Matara, Sri Lanka. 14 guests, 7 bedrooms, 6 beds, 0 bathrooms. New."><figcaption>The whole-house listing on Airbnb, 21 November 2026.</figcaption></figure>
+      <figure><img src="after-390-rooms.jpg" width="780" height="1688" loading="lazy" alt="The preview on a phone: the Deluxe Double and Standard Double buttons over a mint-green four-poster bed, then Deluxe Double Room, 1 large double bed, Sleeps 2, 13 m², with its own bathroom, a private entrance, a terrace and a balcony, the button See rooms and live dates on Booking.com, and All seven rooms are doubles, and between them they sleep fourteen. Only one has air conditioning, so ask when you book if you want the one that has it."><figcaption>The rooms on the preview, 25 November 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>Google has no website or phone to send people to</h3>
+      <span class="label">Today</span>
+      <p>On Google Maps the listing shows 4.9 from 11 reviews. Under "Add missing information" it shows "Add place's phone number" and "Add website", and it offers "Claim this business": nobody has claimed it yet. On a phone it offers Directions, Start and Save, with no Call button. Its only booking button, "Check availability", compares Agoda and Booking.com. A traveller who found the house on the map can't phone it or read anything you wrote.</p>
+      <span class="label">On the preview</span>
+      <p>The name, "A bed and breakfast in Midigama, on Sri Lanka's south coast.", your Google address with "Open in Google Maps", and all three ratings with their review counts and the date we read them, near the top of the page. Once the site is live, its address is what goes into "Add website".</p>
+      <figure><img src="before-google-phone.jpg" width="780" height="538" loading="lazy" alt="Our screenshot of the Sea You Surfers Nest listing on Google Maps on a phone, 21 November 2026: 4.9 stars, 11 reviews, Bed and breakfast, the buttons Directions, Start and Save, and three photos of the house."><figcaption>Your Google listing on a phone, 21 November 2026.</figcaption></figure>
+      <figure class="land"><img src="before-google-website.jpg" width="408" height="330" loading="lazy" alt="Our screenshot of the Sea You Surfers Nest listing on Google Maps on a laptop, 21 November 2026: 151 Weliwaththa Rd, Midigama 80650, Sri Lanka, the plus code, Claim this business, Suggest an edit, and under Add missing information, Add place's phone number and Add website."><figcaption>The same listing on a laptop, 21 November 2026.</figcaption></figure>
+      <figure><img src="after-390-glance.jpg" width="780" height="1688" loading="lazy" alt="The preview on a phone: A bed and breakfast in Midigama, on Sri Lanka's south coast; Hello to waves in a minute walk, says the house's own listing; 7 rooms, all doubles, sleeps 14, Free WiFi in public areas, Kitchen, Fan and mosquito net, Live dates on Booking.com; the address with Open in Google Maps; and 4.9/5 Google, 11 reviews, 8.0/10 Booking.com, 8 reviews, 5.0/5 Airbnb, 10 reviews, each dated 21 Nov 2026."><figcaption>The house at a glance on the preview, 25 November 2026.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-also">
+  <h2 id="h-also">Also on the preview</h2>
+  <ul>
+    <li>Only your own photographs: all 24 on the page are the ones uploaded to your Booking.com and Airbnb listings.</li>
+    <li>"Around the courtyard" with its carved fanlights and the balconies over the coconut palms, the carved doors and masks, the surfboard shower in the garden, "Breakfast", "Ashly" with your own words to guests, and five guests' reviews.</li>
+    <li>"Finding the house": Midigama railway station 950 m on foot and Weligama Beach 3.4 km, by Booking.com's count, with your address and a Google Maps link.</li>
+    <li>The house rules: check-out 06:00–10:00, children of any age welcome with no cots or extra beds, pets on request, no parties or events.</li>
+    <li>No chat widget, no pop-up, no tracker.</li>
+    <li>Every fact on the preview comes from your Google, Booking.com and Airbnb listings or your guests' reviews. Our reviewer checked them against those sources: 0 mismatches.</li>
+  </ul>
+</section>
+
+<section class="wrap" aria-labelledby="h-off">
+  <h2 id="h-off">Also worth doing, outside the website</h2>
+  <ul>
+    <li><strong>Claim your Google listing.</strong> Then add your phone number and, once the site is live, its address under "Add website".</li>
+    <li><strong>Check the room facilities on Booking.com.</strong> In the Booking.com extranet each room type's facilities can be set, so only the one room shows air conditioning, and no restaurant is listed unless there is one. Agoda copies Booking.com, so it would follow.</li>
+    <li><strong>Give the A/C room's rate on Airbnb</strong>, or list it on its own, instead of asking guests to inquire.</li>
+    <li><strong>Set the bathroom count</strong> on the whole-house Airbnb listing, which shows "0 bathrooms".</li>
+    <li><strong>Use one check-in time</strong> on Booking.com and Airbnb (see the question below).</li>
+    <li><strong>Use one name and one place everywhere:</strong> "Sea You Surfers Nest", as on your sign, and the Midigama address.</li>
+  </ul>
+</section>
+
+<section class="wrap" aria-labelledby="h-edit">
+  <h2 id="h-edit">What you will be able to change yourself</h2>
+  <p>Today the preview is a finished build, with no login yet. With the managed or the self-hosted option below, you get your own login to a simple admin page that shows only Sea You Surfers Nest. You fill in fields, not code, so an edit can't break the design. Press Publish, and the site rebuilds itself.</p>
+  <ul class="tabs">
+    <li><strong>Basics</strong> the name and the opening line, "A bed and breakfast in Midigama, on Sri Lanka's south coast."</li>
+    <li><strong>Text</strong> the courtyard and balconies, the carved doors and the surfboard shower, breakfast, Ashly, finding the house, and the closing line</li>
+    <li><strong>Photos</strong> all 24, in the order they appear. Upload from your phone; the site makes the sizes itself. The moving palms are made for the current first photo; if you replace it, the new one shows still.</li>
+    <li><strong>Rooms and stay</strong> each room's name, bed, how many it sleeps and its details; check-out and the house rules</li>
+    <li><strong>Amenities</strong> the list at a glance</li>
+    <li><strong>Reviews</strong> remove any rating or quote; we add new ones with their source</li>
+    <li><strong>Contact and booking</strong> the address, the map link and the Booking.com and Airbnb links, and your phone once it is confirmed</li>
+  </ul>
+  <p class="wide">The layout, colours and fonts stay fixed. Some parts of this design have no field yet: the "Bed and breakfast" line, "7 rooms, all doubles | sleeps 14", Ashly's name in "Ask Ashly on Airbnb", where each "Who's coming?" answer leads, and the "In every room" list. We change those for you when you ask.</p>
+</section>
+
+<section class="wrap" aria-labelledby="h-offer">
+  <h2 id="h-offer">How it can run: you choose</h2>
+  <div class="offer">
+    <p>Nothing is set up yet: no hosting, no login, no domain. We set it up once you choose. <strong>Managed</strong> is the one we recommend: we host the site and keep it running, and hosting, updates and backups are our job. You pay a monthly fee that we agree with you, and you edit your content whenever you like. <strong>Self-hosted</strong>: we install the same site and editor on a server of your own for a one-time fee that we agree with you. It is then fully yours. You pay your server company roughly $6–12 a month, and you take care of updates and backups yourself. <strong>Files only</strong>: if you never want to edit it yourself, we hand you the finished site as files that run on any web host; every change then needs a developer.</p>
+    <p class="note">The preview runs on a temporary address. Which address the live site gets is something we decide with you once you have chosen.</p>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-confirm">
+  <h2 id="h-confirm">Before it goes live, we need you to confirm</h2>
+  <ol class="confirm">
+    <li><strong>Your phone number.</strong> We read +94 715880052 off your sign in the first Booking.com photo. Is it the right number for guests, and is it on WhatsApp? Once you confirm, we add a Call button, and a WhatsApp button with a message already started if it is on WhatsApp. If guests can write to you by email, send us the address too.</li>
+    <li><strong>Check-in time.</strong> Booking.com and Agoda say check-in is from 14:00 to 18:00; both Airbnb listings say after 15:00. The preview gives no check-in time until you tell us which is right.</li>
+    <li><strong>Breakfast.</strong> Booking.com lists an Asian breakfast, but no listing says whether it is in the room rate. The preview describes the breakfast and says nothing about its price. Is it included, or extra?</li>
+    <li><strong>The air-conditioned room.</strong> Your Airbnb note says one room has A/C. Booking.com lists air conditioning for the Deluxe Double Room, and as an additional charge. Which room is it, and is there an extra charge? Which rooms have their own bathroom? Booking.com lists none inside the Standard Double Room.</li>
+    <li><strong>Five things guests ask about.</strong> Booking.com lists free private parking, an airport shuttle and laundry (both at an extra charge) and free toiletries, and Airbnb mentions security cameras outside. The site's data for search engines and AI assistants already lists them, but the page itself does not show them yet. Shall we show them?</li>
+    <li><strong>A restaurant.</strong> Booking.com and Agoda describe a restaurant on site; your guests write about a shared kitchen and food you cooked for them. The preview mentions no restaurant. Is there one?</li>
+    <li><strong>Prices.</strong> We found your rates only on the booking sites, where they change with the dates, so the preview shows no price and links to live dates. If you want a price on the site, tell us which one.</li>
+    <li><strong>Surfing.</strong> One guest writes that you arranged a surfboard and transport, and your photos show boards on a rack. The preview says nothing about boards, lessons or a surf break. Tell us what you offer and what you want said.</li>
+    <li><strong>More photos and video.</strong> We found no photo of the front of the house, the sea or the beach, and no video. If you send some, we add them. A video could open the site.</li>
+    <li><strong>AI assistants.</strong> Once live, assistants such as ChatGPT can read the site and quote it to travellers. Keep that, or block the ones that train on it?</li>
+  </ol>
+</section>
+
+<section class="wrap" aria-labelledby="h-reply">
+  <h2 id="h-reply">How to reply</h2>
+  <p>Open the preview first: <a href="https://sea-you-surfers-nest.os1.workers.dev/">sea-you-surfers-nest.os1.workers.dev</a>. If you have questions, or want to go ahead, reply to the message this page came with. There is no obligation, and the preview stays private until you decide.</p>
+</section>
+</main>
+
+<footer class="wrap">
+  <p>Prepared 25 November 2026. Screenshots of the Google, Booking.com and Airbnb listings are ours, taken on 21 November 2026, and show only Sea You Surfers Nest. Screenshots of the preview were taken on 25 November 2026. The photographs on the preview are Sea You Surfers Nest's own Booking.com and Airbnb uploads.</p>
+</footer>
+</body>
+</html>
