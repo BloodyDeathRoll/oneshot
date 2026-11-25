@@ -13,6 +13,7 @@ import {
   c, G, L, S, e, t, paras, block, svg, pipe, SEP, monYear, PLATFORM, hostName,
   NAME, LINKS, PRIMARY, TEL, MAP, ADDRESS, TOWN, PLACE, ROOMS, shortRoom, CHECKOUT, STAY_NOTE, amenity,
   RATINGS, REVIEWS, slot, srcset, img, IS_PREVIEW,
+  pageTitle, metaDescription, seoHead, businessLd, ldJson, ogImage,
 } from '../lib/site.mjs'
 
 const P = (body) => paras(body).map((p) => `<p>${e(p)}</p>`).join('')
@@ -265,9 +266,12 @@ const foot = `
 </div>`
 
 const body = [hero, glance, rooms, house, character, bfast, guests, findSec, closing, foot].join('\n')
-/* the other finals' rule (4h), "<businessName>, <town>" */
-const title = TOWN ? `${NAME}, ${TOWN}` : NAME
-const description = [c.tagline, c.closing].filter(Boolean).join(' ')
+/* 4h: the other finals' rule, "<businessName>, <town>", the name alone above 60 characters (pageTitle) */
+const title = pageTitle()
+/* 4h: the same two owner fields as at 4g (tagline + closing), now cut at a sentence boundary to 155 */
+const description = metaDescription([c.tagline, c.closing])
+const head = seoHead({ path: './', title, description, image: ogImage() })
+const ld = ldJson(businessLd({ description }))
 ---
 <!doctype html>
 <html lang="en">
@@ -277,6 +281,7 @@ const description = [c.tagline, c.closing].filter(Boolean).join(' ')
 <title>{title}</title>
 {IS_PREVIEW && <meta name="robots" content="noindex, nofollow">}
 <meta name="description" content={description}>
+<Fragment set:html={head} />
 <meta name="theme-color" content="#ffffff">
 <script is:inline>document.documentElement.className='js'</script>
 {/* 4g: the hero photo first. Preloading the two fonts as well pushed the hero to 1.6 s on the throttled phone
@@ -290,5 +295,7 @@ const description = [c.tagline, c.closing].filter(Boolean).join(' ')
 <Fragment set:html={body} />
 <script is:inline set:html={js}></script>
 <script is:inline set:html={palmsJs}></script>
+{/* 4h: one JSON-LD block, at the end of body (out of the critical path, as the other finals) */}
+<script is:inline type="application/ld+json" set:html={ld}></script>
 </body>
 </html>
