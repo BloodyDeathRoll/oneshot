@@ -554,3 +554,102 @@ Checked against the round-3 change list:
 | unique | 7 | 8 | **8** | **PASS** |
 
 There is no fail list. From the experience side, all three can go to the human pick.
+
+---
+---
+
+# Station 5 — round 1 (final)
+
+experience-critic 0.2.0 · station 5 (full), round 1 · run `2026-10-midigama-01` · 2026-11-25
+Page: the built site, `sites/sea-you-surfers-nest/final/dist/`, the Astro port of the interactive mockup Alon picked at gate b. `dist/` was already built, and it includes the 4h/4i head, JSON-LD (`floorSize` present) and `llms.txt`, so I did not rebuild it. It was served on a random local port. Written without reading the other reviewers' station-5 reports.
+
+Evidence is in `reports/2026-10-midigama-01/experience/sea-you-surfers-nest/s5r1/`:
+- PNG frames, which git ignores;
+- the logs `final-walk.log`, `states.log` and `cold.log`;
+- the recipes `walk.mjs.txt`, `states.mjs.txt` and `cold.mjs.txt`.
+
+The method was the same as 4f:
+- phone 390×844 @2x with touch, then laptop 1440×900;
+- a human-pace scroll, hover, reduced motion and JS off;
+- the booking tap-through, with third-party requests stubbed;
+- the tiles, pill and shelf states;
+- the shader forced with `?palms`, since headless SwiftShader is otherwise treated as a weak device (default URL: canvas opacity 0, still kept).
+
+The cold loads were measured **one at a time**: final, then the round-3 mockup as a control, then final again. The other reviewers were running at the same time (load average 20–33), so the timings are noisy and noted only.
+
+## Score: 8/10, PASS
+
+| | final (built site) |
+|---|---|
+| **Dimension 8 (experience)** | **8 / 10** (the round-3 mockup: 8) |
+| Pass / fail (this critic) | **pass** |
+| Better than the current presence | **yes** |
+| Taps to booking | **1** (hero → `https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html`, "tap 1" in `final-walk.log`); groups 2 (tile → whole house on Airbnb) |
+| Hard fails (dimension-8 side) | none |
+
+## What I checked against the mockup (anything the port broke)
+
+**Links and booking.**
+- The set of `href`s in `dist/index.html` equals the mockup's, apart from the photo paths and the removed Google Fonts links.
+- `tel:` 0, `wa.me` 0, Agoda 0.
+- Booking.com links: 9. Airbnb: both listings.
+- The hero CTA has "See live dates" with the full label in `aria-label`.
+- It lands on Booking.com in one tap.
+
+**First load (phone, throttled, serial).**
+- **Hosts:** only the local host. The fonts are self-hosted now, so there is no Google request at all (`final-walk.log` hosts, `cold.log`).
+- **Transfer to load:** 517 KB.
+- **What appears when (final run 3, frames taken on time):**
+  - at 0.5 s: the title, the place line and the button over a mint ground, before the photograph arrives (`final-cold3-t500.png`). The page is usable before the image, as the playbook asks.
+  - at 1.5 s: the full hero (`final-cold3-t1500.png`).
+- **LCP:** 0.4 s and 4.1 s across the two final runs, against 0.7 s for the mockup control. The machine load makes these noise; the critic owns them.
+
+**First screen.**
+- **Phone:** palms, "Sea You Surfers Nest", "Midigama, Sri Lanka" and one button, with the tagline under the 76 svh hero (`final-phone-s00.png`).
+- **Laptop:** the same, with "Bed and breakfast | Midigama, Sri Lanka" (`final-laptop-t2000.png`).
+- **Darker fronds:** visible top-right at 1440, as intended.
+- **Motion:** the palms move as in round 3, with the palm band at PSNR 18.0 dB in 1.5 s on the laptop (round 3: 17.1) and 22.8 dB on the phone (`final-laptop-palms-*`, `final-phone-palms-*`). No flat block and no edge smear.
+
+**The walk.** The phone page is 11.1 screens (`final-walk.log`; the mockup was 11.2) and the laptop page 9.0, in the same order:
+1. hero;
+2. "At a glance" with Maps and the three ratings;
+3. "Who's coming?";
+4. the carved-door band;
+5. Seven rooms (sticky pill, 4:5 stage, Standard now 4 photos, no WC door);
+6. "In every room";
+7. the courtyard and the shelf;
+8. the board shower and the masks;
+9. Breakfast;
+10. **Ashly and the guests on mint** (`final-phone-s10/s11`, `final-laptop-s08`);
+11. Finding the house;
+12. the closing band, with Booking.com solid and the Airbnb buttons outlined;
+13. the footer.
+
+The phone bar shows from screen 2 to the end.
+
+**The 4g changes, judged as experience.**
+- **Guests on mint** gives the second half a colour change it lacked. The text stays readable (ink on `#73C592`).
+- **The whole review cards** no longer clip at the edge. On the laptop the row shows one card at a time with dots, which reads calmer than the peek.
+- **Dropping img-010** removes the WC door from the Standard gallery.
+- I saw no regressions.
+
+**States** (`states.log`):
+- "Who's coming?" switches answers: the group answer is the whole house on Airbnb, and the question answer is "Ask Ashly on Airbnb".
+- The pill is sticky (top 10) and cross-fades.
+- The shelf drags (scrollLeft 710).
+- The bar is 174×48 at y 776.
+- Tap targets under 44 px: 0.
+
+**Reduced motion:** the canvas is `display:none`, the graded still stays, and the whole page is there (`final-phone-reduced-*`).
+
+**JS off:** the hero, the glance, the answers as plain links (17 booking links), the rooms stacked and the slideshows as swipe rows (`final-phone-nojs-*`).
+- The phone bar is static and visible from the first screen with JS off. So the first JS-off screen has two booking buttons, the hero's and the bar's (`final-phone-nojs-00.png`).
+- This is the same as the mockup (round-2 log: nojs bar visible at step 0), not a port regression.
+
+**Against the current presence:** unchanged from 4f. Booking.com still wins on live prices on the same page, and Google on the instant map. On everything else (the house in its own pictures, one name, the A/C truth, the whole-house option, the couple / group / question choice) the site is clearly better.
+
+## Not a fail list: optional polish for station 8
+1. **JS off:** keep the phone bar hidden while the hero's own button is on screen (`position: sticky` at the end of the page instead of `fixed`), so the no-JS first screen has one booking button.
+2. **Laptop review row:** with one whole card at a time, a second card beside it on wide screens (two per view at ≥ 1100 px) would show more of the guests' words without scrolling.
+
+**Verdict: 8/10, PASS.** The built site is the round-3 interactive mockup that passed at 8, with the intended 4g changes. Nothing the port touched broke the experience.

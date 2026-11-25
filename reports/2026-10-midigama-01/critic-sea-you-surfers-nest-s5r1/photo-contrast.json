@@ -1,0 +1,94 @@
+{
+ "final": {
+  "390 h1": {
+   "t": "Sea You Surfers Nest",
+   "color": "rgb(29, 40, 20)",
+   "fs": "38px",
+   "fw": "400",
+   "median": 8.18,
+   "worst10": 4.87,
+   "worst2": 2.96
+  },
+  "390 .where": {
+   "t": "Midigama, Sri Lanka",
+   "color": "rgb(29, 40, 20)",
+   "fs": "15px",
+   "fw": "600",
+   "median": 9.11,
+   "worst10": 5.71,
+   "worst2": 4.06
+  },
+  "390 #close p, .closing p, section:last-of-type p": {
+   "t": "Live dates are on Booking.com, and group",
+   "color": "rgb(255, 255, 255)",
+   "fs": "22px",
+   "fw": "600",
+   "median": 11.27,
+   "worst10": 9.64,
+   "worst2": 9.2
+  },
+  "390 a[href*=\"1793988904511877292\"] span": {
+   "t": "Book the whole house on Airbnb",
+   "color": "rgb(255, 255, 255)",
+   "fs": "15px",
+   "fw": "600",
+   "median": 13.67,
+   "worst10": 12.48,
+   "worst2": 11.89
+  },
+  "390 a[href*=\"1508895627217411616\"] span": {
+   "t": "Book a room on Airbnb",
+   "color": "rgb(255, 255, 255)",
+   "fs": "15px",
+   "fw": "600",
+   "median": 11.81,
+   "worst10": 11.66,
+   "worst2": 11.62
+  },
+  "1440 h1": {
+   "t": "Sea You Surfers Nest",
+   "color": "rgb(29, 40, 20)",
+   "fs": "60px",
+   "fw": "400",
+   "median": 10.3,
+   "worst10": 7.74,
+   "worst2": 6.44
+  },
+  "1440 .where": {
+   "t": "Bed and breakfast | Midigama, Sri Lanka",
+   "color": "rgb(29, 40, 20)",
+   "fs": "17px",
+   "fw": "600",
+   "median": 11.26,
+   "worst10": 9.06,
+   "worst2": 7.43
+  },
+  "1440 #close p, .closing p, section:last-of-type p": {
+   "t": "Live dates are on Booking.com, and group",
+   "color": "rgb(255, 255, 255)",
+   "fs": "28px",
+   "fw": "600",
+   "median": 11.36,
+   "worst10": 10.26,
+   "worst2": 9.63
+  },
+  "1440 a[href*=\"1793988904511877292\"] span": {
+   "t": "Book the whole house on Airbnb",
+   "color": "rgb(255, 255, 255)",
+   "fs": "16px",
+   "fw": "600",
+   "median": 10.56,
+   "worst10": 10.27,
+   "worst2": 10.23
+  },
+  "1440 a[href*=\"1508895627217411616\"] span": {
+   "t": "Book a room on Airbnb",
+   "color": "rgb(255, 255, 255)",
+   "fs": "16px",
+   "fw": "600",
+   "median": 10.81,
+   "worst10": 10.43,
+   "worst2": 10.34
+  }
+ }
+}

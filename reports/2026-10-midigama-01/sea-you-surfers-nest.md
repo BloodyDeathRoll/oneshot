@@ -437,3 +437,142 @@ Calm (76.5, round 2), interactive (77.8) and unique (77.3) all pass dimensions 1
 - `photo-contrast.json`, `photo-contrast-buttons.json`: text over hero and closing photographs.
 - `phone-bar.json`, `jsoff-keyboard-fold-lcp.json`: phone-bar focusability on and off screen, the JS-off Tab walk, the first-screen type line and CTAs, the LCP runs, and the wheel-scroll bar probe.
 - `check-design.txt`.
+
+## Round 1 — full (station 5)
+
+critic 0.4.3 · rubric 0.3.2 · 2026-11-25 · build `sites/sea-you-surfers-nest/final/dist/`: gate b picked **interactive**, built at 4g (c1a2a35), SEO 4h (e637dc0) and AI SEO 4i (f2c3eb6; ledger 9b1e68e). `dist/` is not tracked. To confirm it is current, I copied `final/` to scratch, ran `npm run build` there, and `diff -rq` against `final/dist/` came out identical. I served `dist/` with `tools/_serve.mjs` on :8947 (served `index.html` = `dist/index.html`, `cmp`), using scratch tool copies on random ports. Every timed measurement was taken one run at a time, as the median of 3, while the other reviewers' browsers were running. I did not read the visual-critic or experience-critic reports.
+
+```
+mode: full        round: 1        variant: interactive ("In the palms", the picked mockup ported to Astro)
+total (dims 1–7): 78.0 / 80      result: pass (critic's part)      hard_fails: []
+dimension 8 (weight 25): not scored here; it belongs to visual-critic + experience-critic
+```
+
+| # | dimension | weight | score | weighted | evidence |
+|---|---|---|---|---|---|
+| 1 | facts | 20 | 10 | 20.0 | Facts table below: **0 mismatches and 0 unsourced claims** on the page, in the JSON-LD and in llms.txt. The visible text is identical, line for line, to the 4f round-3 interactive mockup, whose words are `copy/en.json` (passed 4c). Every href is identical too. 5/5 testimonials equal the copy, and Kenza's matches with its line break (`misc.json`, `quotes.json`). Attribution is 5/5. The A/C sentence appears **once**: "Only one has air conditioning, so ask when you book if you want the one that has it." No "air-conditioned" claim appears anywhere in `dist/`, including the JSON-LD and llms.txt. The seven rooms: "All seven rooms are doubles, and between them they sleep fourteen." plus "7 rooms, all doubles \| sleeps 14" = `room_count` 7 / 14 pax, and JSON-LD `numberOfRooms` 7. **img-008 and img-010 are absent**: no file, no reference, and the Standard slideshow is img-005, 026, 009, 025. `audit.json.facts`: the only non-copy number is "8.0". In llms.txt, Kenza's line break is flattened to a space (whitespace only). |
+| 2 | mobile + performance | 15 | 10 | 15.0 | Throttled phone (390, 1.6 Mbps / 150 ms / 4× CPU), 3 sequential `audit-mockup` runs: first load **526 KB** (526,390 B) in **15 requests, all local**. HTML 78 KB with CSS and JS inline, 0 external JS (inline `site.js` + `palms.js` ≈ 6.7 KB gz per 4g). Fonts 46 KB (2 families, self-hosted woff2). Largest image 50 KB. **LCP 908 / 1,368 / 1,456 ms, median 1,368.** An LCP observer agrees (1,336 / 1,356 / 1,380 ms, the phone hero image). CLS 0.0026 on all three. Scroll CLS early 0.0027 / 0 / 0.0026, settled 0 / 0 / 0, all under 0.01. No overflow at 390 or 1440. 0 of 33 tap targets under 44 px. Every playbook §4 line is met (table below). |
+| 3 | booking CTA | 15 | 9 | 13.5 | **`funnel.mjs --depth 3`**: `primary_action` engine and `hero_action` engine ("See live dates", `clicks_to_flow` 0), **clicks_to_book 1** = `recommended.clicks_to_book` 1. The class equals `recommended.primary_action` **engine**. CTA above the fold (y 290 of 844, 201×56), 1 page, 0 broken links. `recommended.booking_flow` is not set. Tap-through at 390 touch: `audit.json.booking.tapped` = `https://www.booking.com/hotel/lk/sea-you-surfers-nest.en-gb.html` = `booking.engine_url`, character for character. Both Airbnb hrefs = `other_engines[0–1]`. JS off: the first booking link is a real `<a>` at y 290 (390) / 14 (1440), and 3 booking links are reachable in `#book`. The secondary `tel` from the audit is empty on purpose (phone unconfirmed, audit funnel step 4). −1, standing: every action lands on the listing's top, without room or dates; the dossier records no deep-link parameters. |
+| 4 | brand fit | 5 | 9 | 4.5 | Playbook §3 order: palms hero (name, "Bed and breakfast \| Midigama, Sri Lanka" on desktop, one CTA) → glance (tagline, spot line, one fact line, address + Maps, 3 dated ratings, "Who's coming?") → Seven rooms (pill, stage, room line, button, A/C sentence, "In every room") → courtyard + shelf → carved doors / board shower / masks → breakfast → Ashly and guests → finding the house → closing over the palms with the 3 listings → footer. On the phone the tagline is the type line (y 697, first screen). The interactive brief holds (WebGL palms hidden under reduced motion, tiles, pill, drag shelf). −1: **five of the eight `amenities[]` rows are not on the page**: free private parking, airport shuttle (additional charge), laundry (additional charge), free toiletries, security cameras outside. Playbook §2 asks a lodging page to say what's included, and parking and the shuttle are the kind of thing a traveller asks before booking. They are in the JSON-LD and llms.txt (see "Amenities" below). |
+| 5 | copy | 10 | 10 | 10.0 | Every sentence is passed copy or a short interface label. Plain and specific. English complete. No repetition: one type line per screen, the A/C sentence once, the "Who's coming?" panel once. The `<title>` "Sea You Surfers Nest, Midigama" (30) and the description (tagline + closing, 138) are owner fields. |
+| 6 | accessibility | 8 | 10 | 8.0 | axe-core 4.10.2 (WCAG 2.0/2.1 A+AA) after a full scroll: **0 violations at 390 and 1440** (27 rule sets pass). The only incomplete items are `color-contrast` over photographs, measured separately (`photo-contrast.json`, worst 10 % of the pixels behind each box): hero h1 4.87:1 at 390 (38 px, large) / 7.74 at 1440; "Midigama, Sri Lanka" 5.71 / 9.06; closing line 9.64 / 10.26; closing Airbnb buttons ≥ 10.27. Solid grounds: 0 failures, including the guests section, ink on mint `#73C592` (`contrast-type.json`). Keyboard, JS on: 36 (390) / 43 (1440) stops, all on screen with a 3 px solid outline, first stop "Skip to the rooms". JS off: 0 off-screen or hidden stops. The phone bar is focusable only while shown (`phone-bar.json`). There is no drawer, so no trap. 0 / 25 images without alt. Headings H1 → H2/H3 in order, `lang="en"`. Reduced motion: canvas `display:none`, h1 and hero photo at opacity 1, 0 running animations. |
+| 7 | security + delivery | 7 | 10 | 7.0 | Static output only: `index.html`, `llms.txt`, `robots.txt`, 2 woff2 fonts with their OFL texts, 32 WebP files (30 photos, 2 palm masks). No `.js` file, no server code, no worker, no CMS call. **0 third-party requests on first load and 0 attempted over a full scroll** at 390 and 1440 (`final/a11y.json.external_attempted` []). The fonts are self-hosted (the 4f deduction is gone). 0 iframes (0 of the 2 allowed embeds), 0 external scripts. No root-absolute `src` / `href` / `srcset`, every filename lowercase. 0 hits for localhost, key, token, secret or password in any file. Preview build: `noindex, nofollow`, and robots.txt `Disallow: /` for `*` and for every named AI crawler. llms.txt carries the preview line. `check-design`: ok, 0 problems, 0 warnings. |
+| | **total 1–7** | 80 | | **78.0** | |
+
+**Hard fails: 0.** Checked:
+- facts: 0 mismatches.
+- CTA landing: exact.
+- primary-action class: engine, as recommended.
+- third-party requests: 0 on load and over a scroll.
+- CMS dependency: none.
+- keyboard trap: none.
+- content only in a canvas or video: none.
+- budgets: every line met.
+- secrets: none.
+- non-business images: none; all 24 photos are `business-owned` uploads.
+- the visual-media lines: no video exists, and the hero is img-003 from a 2000 px source.
+
+**Pass thresholds (full), critic's part:**
+- No hard fail ✓
+- Every one of dimensions 1–7 ≥ 6 ✓ (the lowest is 9)
+- Every playbook §4 line met ✓
+
+The total of ≥ 85 (rubric 0.3.2: (78.0 + 2.5 × d8) × 100 ÷ 105) is reached with dimension 8 ≥ 6. The binding rule is that both visual critics must give ≥ 8. That is pending, and I have not read their reports. **Critic result: PASS.**
+
+### The checks asked for
+
+- **Unconfirmed phone: absent everywhere in `dist/`.** Every file was scanned for "715880052" in any spacing, "+94 71", `tel:`, `wa.me` and "whatsapp". **0 hits** in `index.html` (page and JSON-LD), `llms.txt`, `robots.txt` and the font licence texts. `audit.json.booking.tel_hrefs` [] and the funnel saw no `tel` action. JSON-LD has no `telephone`. llms.txt "How to book" lists only the 3 listings and "Ask Ashly on Airbnb". `TEL_CONFIRMED = false` is unchanged (4i tested the flag in scratch and restored it).
+- **No prices.** The currency, per-night, `priceRange`, `makesOffer` and `"price"` scan finds nothing. Price on the page is "Live dates on Booking.com". The only price words are inside Niamh's and Marina's verbatim quotes ("Great location and price!", "For the paid price…").
+- **img-008 / img-010 absent from the Standard room**: confirmed (dimension 1). Compared with the mockup's alts, the only image difference is img-010's alt, removed.
+- **The A/C line, the seven rooms, nothing invented**: confirmed (dimension 1). The JSON-LD's 13 keys all trace to the dossier (facts table). `floorSize` 13 / 12 = `room_types[].size_m2`. `checkoutTime` 10:00 = the end of `stay_info.check_out` "06:00 to 10:00". No `checkinTime` (contradiction unresolved), no rating markup.
+- **Deviations from the picked mockup.** I shot the final and `mockups/interactive/dist` with the same `shoot.mjs` options and diffed every capture pixel by pixel (`jsoff-fold-build.json`):
+  - **Fronds:** desktop-00 differs over 17 % of its pixels, the darker graded fronds top right.
+  - **Guests section:** desktop-07/08 and mobile-08…11 differ over 38–54 %, the guests section on mint `#73C592` with whole review cards. Everything after it sits 29 px higher on desktop and 51 px on the phone (page 8,127 / 9,379 px against 8,156 / 9,430).
+  - **Everything else:** every other capture differs by ≤ 2.1 %, except desktop-09 (6.1 %) and mobile-05 (5.1 %). Inspected on the sheets, those are slideshow and momentum-shelf positions and font rasterising, not design changes.
+  - **Invisible changes:** the visible text and every href are identical. Beyond the three named deviations, the only changes are not visible: img-010 removed (one fewer Standard slide and dot), the `<title>` shortened, no font preloads, and the SEO head and JSON-LD. **Nothing else visible changed.** The mint ground is a light ground, ink on it is 7:1, and `check-design` passes. Whether it reads right is dimension 8.
+- **The five amenities in the JSON-LD and llms.txt but not on the page.** Under the rubric this is **not a fail**: each of the five is a true, sourced dossier fact (Booking.com `facilities`, two echoed in guest quotes), so dimension 1 and the hard-fail list are untouched. Playbook §10 ("structured data built only from dossier facts") is met. It costs **dimension 4 one point**: the page does not answer "parking? airport transfer? laundry?", which playbook §2's "what's included" covers. There is also a search-quality risk outside the rubric: structured data is meant to describe what the page shows, so `amenityFeature` entries with no visible counterpart can be ignored or flagged. **The fix is to show them, not to drop them from the markup.** For example, a second " \| " line under the glance's fact line, as calm and unique printed all eight. It is a designer change (4i R4 says the same). I missed this at 4f: the picked mockup already showed only three amenities, and my round 1–3 scorecards did not deduct for it.
+
+### Facts table (claim → dossier key → result)
+
+| Claim (page / JSON-LD / llms.txt) | Dossier key | Result |
+|---|---|---|
+| "Sea You Surfers Nest" (h1, header, bar, footer, `<title>`, JSON-LD `name`) | `business.name` (Google listing) | match |
+| "Bed and breakfast \| Midigama, Sri Lanka"; "A bed and breakfast in Midigama, on Sri Lanka's south coast."; JSON-LD `@type` BedAndBreakfast | `business.google_category` "Bed & breakfast", `businessType` beach_lodging, `location.address` | match |
+| "Hello to waves in a minute walk," says the house's own listing | `business.name` note (Booking.com / Agoda listing title) | match (attributed; no metre figure) |
+| 7 rooms, all doubles, sleep fourteen; only one has A/C; JSON-LD `numberOfRooms` 7 | `room_count` ("one A/C room & Six Non A/C rooms can accommodate 14 pax") | match |
+| In every room: mint-green four-poster double, teal velvet throw, timber towel ladder, green cabinet with a mirror, fan and mosquito net | `room_types_note` ("… in every room (photos)"), `facilities` ("fan, mosquito net, …", Booking room facilities) | match |
+| Deluxe Double Room: 1 large double bed, sleeps 2, 13 m², own bathroom, private entrance, terrace, balcony; JSON-LD HotelRoom occupancy 2, floorSize 13 | `room_types[0]` (`bathrooms` 1, `size_m2` 13.0) | match (Booking's "air conditioning" line for the room not carried) |
+| Standard Double Room: 1 large double bed, sleeps 2, 12 m², private entrance, wardrobe; floorSize 12; photos img-005, 026, 009, 025 | `room_types[1]` (`bathrooms` 0, `size_m2` 12.0, photo tags) | match (no bathroom photo) |
+| Free WiFi in public areas, Kitchen, Fan and mosquito net (page); all 8 amenities (JSON-LD, llms.txt) | `facilities[]` | match (5 not visible, see above) |
+| Breakfast: Asian, local specialities, warm dishes, juice and fruit | `facilities[0]` (Booking + Agoda) | match |
+| Courtyard, fanlights, bench, balconies, palms, settee, carved door and chair, masks, surfboard shower | `images[]` descriptions (img-046, 071, 003, 077, 027, 069, 036) | match |
+| Ashly, Superhost, usually replies on Airbnb within a few hours; his quote; "Ask Ashly on Airbnb" → listing 1 | `business.owner`, `contact.airbnb_messaging`, Airbnb listing text | match |
+| Google 4.9/5 · 11; Booking.com 8.0/10 · 8; Airbnb 5.0/5 · 10; 21 Nov 2026 | `reviews.google`, `.booking`, `.airbnb_1` (fetched 2026-11-21) | match (Agoda's re-score not shown; no rating markup) |
+| 5 testimonials, verbatim, author, source, month | `reviews.all_airbnb[]`, `reviews.all_booking[]` | 5/5 verbatim, 5/5 attribution |
+| Kumbalgama / Matara, one house in Midigama | `location.address_other`, `contradictions[]` | match |
+| Midigama station 950 m on foot; Weligama Beach 3.4 km, by Booking.com's count | `location.nearby` (Booking) | match |
+| 151 Weliwaththa Rd, Midigama 80650, Sri Lanka; JSON-LD PostalAddress (street, 80650, Midigama, LK) | `location.address` (Google) | match |
+| JSON-LD `geo` 5.9621402, 80.3974064; `hasMap` | `location.lat_lng`, `contact.socials.google_maps` | match |
+| Check-out 06:00–10:00; JSON-LD `checkoutTime` 10:00; children, cots, pets, parties | `stay_info.check_out`, `.children`, `.pets`, `.parties` | match (check-in omitted: `contradictions[]`) |
+| `knowsLanguage` en | `languages_spoken` | match |
+| `sameAs`: Google listing, Booking.com, 2 Airbnb listings | `reviews.google.source_url`, `booking.engine_url`, `booking.other_engines[0–1]` | match |
+| Booking.com URL; Airbnb room; Airbnb whole house; Google Maps | `booking.engine_url`, `booking.other_engines`, `location` map | match, character for character |
+| No phone, WhatsApp, email, price, check-in time | `contact.phone` unconfirmed (`gaps[0]`), `whatsapp` / `email` null, `offers` none, `contradictions` | match (deliberate omissions) |
+
+### Playbook §4 budget, measured (390, throttled, no scroll; median of 3 sequential runs)
+
+| line | target | measured | |
+|---|---|---|---|
+| first-load transfer (no video) | ≤ 1.5 MB | **526 KB** (526,390 B), 15 requests | ✓ |
+| hero video | ≤ 2 MB / 4 MB | none (no video exists) | n/a |
+| JS, compressed | ≤ 300 KB | 0 external; inline ≈ 6.7 KB gz | ✓ |
+| largest above-the-fold image | ≤ 300 KB | 50 KB (`img-003-graded-r1.433-tall-600.webp`) | ✓ |
+| fonts | ≤ 2 families, ≤ 150 KB | 2 families, 46 KB, self-hosted | ✓ |
+| LCP | ≤ 2.5 s | **1,368 ms** (908 / 1,368 / 1,456; observer 1,336–1,380) | ✓ |
+| CLS | < 0.1 | 0.0026 | ✓ |
+| scroll CLS early / settled | < 0.01 | 0.0027 / 0 (worst run) | ✓ |
+| third-party requests on load | 0 | **0** (and 0 over a full scroll) | ✓ |
+
+### Network log, first load (390, throttled, no scroll; `network-first-load.json`, run 2 of 3)
+
+15 responses, all from the local static server, all 200, **528,669 B on the wire**:
+- **Document:** `index.html` 78,067 B (CSS and JS inline).
+- **Fonts (2):** `courgette-latin-400-normal.woff2` 18,460 B and `plus-jakarta-sans-latin-wght-normal.woff2` 27,424 B.
+- **Images (12):** `img-003-graded-r1.433-tall-600` (hero, 50,384 B), `img-051-r1.25-tall-800` (48,966 B), and the ten room-stage photos `img-002 / 015 / 012 / 022 / 013 / 033 / 005 / 026 / 009 / 025` (17–42 KB each).
+- **Not fetched:** llms.txt, robots.txt and the palm mask are not fetched on load.
+
+### Compared with the current presence (`no_site`: the Google listing, Booking.com, Agoda, Airbnb; `funnel/walk.json`)
+
+| | today (audit walk) | the site |
+|---|---|---|
+| What and where | four names and four places (F7); "Kumbalgama" on Booking.com | one name, Google's Midigama address, and the Kumbalgama / Matara labels explained |
+| Rooms and A/C | Booking.com and Agoda claim A/C rooms, and Agoda a restaurant (F4) | "Only one has air conditioning…"; no restaurant; both room types with m² and photos tagged to them |
+| Trust | one platform's score at a time; Agoda re-scores Booking's 8 | 3 dated ratings with sources, and 5 verbatim reviews |
+| Booking | Google's "Check availability" compares Agoda/Booking; Airbnb split over two listings | 1 tap to live dates on Booking.com (funnel); both Airbnb listings, including the whole house for groups, side by side |
+| Ask before booking | needs a login everywhere (F1) | "Ask Ashly on Airbnb" (still a platform login): **not better** until the phone is confirmed |
+| Phone | only painted on the sign (F3) | none (deliberate, `gaps[0]`) |
+| Speed on a phone | the OTA pages (Agoda opens under an app pop-up, F6) | 526 KB, LCP 1.4 s, nothing third-party |
+
+On dimensions 1–7 the site is **clearly better than the current presence**: clearer facts, honest A/C, one place, three dated ratings, and 1 tap to dates. It does **not** close F1 or F3: there is still no direct line to Ashly until the owner confirms the number. Whether it is visibly better at a glance is dimension 8.
+
+### Not tested
+
+Real devices; the live Booking.com / Airbnb pages past the link (third party, not opened); a `SITE_URL` production build (4h/4i tested one in scratch, and their reports say canonical, sitemap and robots `Allow` hold); any network schema validator.
+
+**fix list (not blocking; for the owner-facing build, smallest first):**
+1. **Dimension 4:** show the five hidden `amenities[]` rows on the page, for example a second " \| " line under the glance, so the page matches its JSON-LD and llms.txt.
+2. **Dimension 3 (owner, station 8):** confirm the phone, set `TEL_CONFIRMED`, and claim the Google listing (audit F2/F3). One flag adds the Call button, `telephone` and the llms.txt line.
+
+**what the designer prompt got wrong:** The picked mockup showed three of the eight `amenities[]` rows, and nothing in the build or SEO chain asks whether the JSON-LD describes only what the page shows. 4h emitted all eight in `amenityFeature`, 4i printed all eight in llms.txt and flagged the gap (R4), and neither station may change visible markup. A 4g hand-off check, "every JSON-LD property has a visible counterpart on the page", would have caught it. So would a rule in the designer prompt that a page shows every non-empty `amenities[]` row.
+
+### Evidence files (`critic-sea-you-surfers-nest-s5r1/`)
+
+- `audit.json` (median run) and `audit-run1.json` … `audit-run3.json`: `audit-mockup` from a scratch copy on a random port.
+- `network-first-load.json`: 3 throttled first loads, every response with type and bytes, plus the LCP element.
+- `funnel/funnel.json`: `tools/funnel.mjs --depth 3` (its two PNGs deleted: screenshots are scratch).
+- `final/a11y.json`: axe at 390 / 1440, overflow, third-party attempts over a full scroll, page errors, every Tab stop, JS-off link counts, page text, links and alts.
+- `quotes.json`, `misc.json`: testimonials and attributions, Kenza's line break, the A/C sentence count, the Standard gallery, reduced motion at both widths.
+- `contrast-type.json`, `photo-contrast.json`: solid-ground contrast and type sizes; text over the hero and closing photographs.
+- `phone-bar.json`, `jsoff-fold-build.json`: phone-bar focusability, the JS-off Tab walk, the first-screen type line and CTAs, the fresh-build diff, the LCP runs, the pixel diff against the picked mockup.
+- `check-design.txt`: port-safe scratch copy.
+- Screenshots: `shoot.mjs` of the final and the mockup into scratch, deleted after the round (described above).

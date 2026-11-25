@@ -1,0 +1,15 @@
+final t=500 (shot at 536 ms) {"ready":"complete","h1":"Courgette","webfonts":["Plus Jakarta Sans","Courgette"],"img":{"src":"img-003-graded-r1.433-tall-600.webp","done":true},"cta":true}
+final t=1500 (shot at 6493 ms) {"ready":"complete","h1":"Courgette","webfonts":["Plus Jakarta Sans","Courgette"],"img":{"src":"img-003-graded-r1.433-tall-600.webp","done":true},"cta":true}
+final t=3000 (shot at 7814 ms) {"ready":"complete","h1":"Courgette","webfonts":["Plus Jakarta Sans","Courgette"],"img":{"src":"img-003-graded-r1.433-tall-600.webp","done":true},"cta":true}
+final t=6000 (shot at 8384 ms) {"ready":"complete","h1":"Courgette","webfonts":["Plus Jakarta Sans","Courgette"],"img":{"src":"img-003-graded-r1.433-tall-600.webp","done":true},"cta":true}
+final run 1 load event ms 8935 LCP [4080,"","H1"] transfer KB to load 517 hosts ["127.0.0.1:58288"]
+interactive t=500 (shot at 502 ms) {"ready":"complete","h1":"Courgette","webfonts":["Courgette","Plus Jakarta Sans","Plus Jakarta Sans","Plus Jakarta Sans"],"img":{"src":"hero-tall-600.webp","done":true},"cta":true}
+interactive t=1500 (shot at 3096 ms) {"ready":"complete","h1":"Courgette","webfonts":["Courgette","Plus Jakarta Sans","Plus Jakarta Sans","Plus Jakarta Sans"],"img":{"src":"hero-tall-600.webp","done":true},"cta":true}
+interactive t=3000 (shot at 3782 ms) {"ready":"complete","h1":"Courgette","webfonts":["Courgette","Plus Jakarta Sans","Plus Jakarta Sans","Plus Jakarta Sans"],"img":{"src":"hero-tall-600.webp","done":true},"cta":true}
+interactive t=6000 (shot at 6004 ms) {"ready":"complete","h1":"Courgette","webfonts":["Courgette","Plus Jakarta Sans","Plus Jakarta Sans","Plus Jakarta Sans"],"img":{"src":"hero-tall-600.webp","done":true},"cta":true}
+interactive run 2 load event ms 6555 LCP [660,"","H1"] transfer KB to load 546 hosts ["127.0.0.1:58288","fonts.googleapis.com","fonts.gstatic.com"]
+final t=500 (shot at 501 ms) {"ready":"interactive","h1":"Courgette","webfonts":["Plus Jakarta Sans","Courgette"],"img":{"src":"img-003-graded-r1.433-tall-600.webp","done":true},"cta":true}
+final t=1500 (shot at 1501 ms) {"ready":"interactive","h1":"Courgette","webfonts":["Plus Jakarta Sans","Courgette"],"img":{"src":"img-003-graded-r1.433-tall-600.webp","done":true},"cta":true}
+final t=3000 (shot at 3000 ms) {"ready":"complete","h1":"Courgette","webfonts":["Plus Jakarta Sans","Courgette"],"img":{"src":"img-003-graded-r1.433-tall-600.webp","done":true},"cta":true}
+final t=6000 (shot at 6002 ms) {"ready":"complete","h1":"Courgette","webfonts":["Plus Jakarta Sans","Courgette"],"img":{"src":"img-003-graded-r1.433-tall-600.webp","done":true},"cta":true}
+final run 3 load event ms 6282 LCP [412,"","H1"] transfer KB to load 517 hosts ["127.0.0.1:58288"]

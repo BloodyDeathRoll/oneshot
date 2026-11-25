@@ -326,3 +326,54 @@ Independence: I did not open the critic's or the experience-critic's round-3 out
 3. **interactive "In the palms" (8/10, PASS):** clean and green, with a visible palm cinemagraph and the carved door early. Its hero subject is the gentlest of the three.
 
 All three mockups now pass dimension 8 from this critic and are better than the business's current presence (OTA listings only).
+
+---
+
+# Station 5 — round 1 (final)
+
+Run `2026-10-midigama-01` · station 5 (full, the built site) · **round 1** · visual-critic 0.2.0 · 2026-11-25.
+Page: `sites/sea-you-surfers-nest/final/`, the Astro port (4g) of the picked interactive "In the palms". `dist/` was 2 minutes older than `src/lib/site.mjs` (the 4i AI-SEO commit `f2c3eb6`), so I rebuilt it with `npm run build` and served `final/dist` on a random local port (18977). For comparison, the round-3 mockup was served on 18978. What the port says it changed: `final/notes.md`, "Port comparison", items 1–6.
+
+Shot set and walk (scratch), in `reports/2026-10-midigama-01/visual-sea-you-s5r1/`:
+- `shots/`: `tools/shoot.mjs` on the served final, desktop-00…09 (page 8127 px) and mobile-00…12 (page 9379 px), with sheets;
+- `live/{final,mock}-{1440,390}-0…7.png`: both pages with `?palms`, 8 frames 0.5 s apart, SwiftShader;
+- `final-palms-right-0-4-7.png`, `mock-live_final-still_final-live.png` and `hero-bottom-mock-vs-final.png`: crops for the hero comparisons below;
+- `inspect-final.txt`: the inspector on the served final.
+
+Current presence and gold: as at 4f (the walk folds `03-booking-com-fold`, `01-google-listing-fold` and `05-airbnb-1-fold`; gold Global Surf notes and Lavish Haven). Independence: I did not open the critic's or the experience-critic's station-5 output.
+
+## Did the port regress anything against the mockup?
+
+- **Fonts (now self-hosted):** no regression. `document.fonts` on the final shows Courgette 400 and Plus Jakarta Sans as a variable 400–700 face, both from `/fonts/` with their OFL files. The h1 is Courgette at 60 px (1440) and 38 px (390), the same as the mockup. The final requests only its own origin. The mockup still called `fonts.googleapis.com` / `fonts.gstatic.com`, so the port is better here. Type renders identically in desktop-00 to -09 against the round-3 mockup sheet.
+- **The palm shader (vendored):** no regression. The canvas runs on the final at both widths (`palms on`, 1440×900 and 390×641). Live frame-to-frame PSNR is 19.5–20.4 dB at 1440 and 22.7–26.6 dB at 390, against the mockup's 19.2–22.1 and 22.7–26.4 on the same machine. That is the same visible, even sway. Over the 8 frames there was no smear, no flat block and no edge streak (`final-palms-right-0-4-7`: the top-right fronds and the right edge stay clean).
+- **Crops:** no regression. The hero's static lower half (table, pot, parapet) matches the mockup at 41.9 dB at 390. At 1440 it matches by eye (`hero-bottom-mock-vs-final`: identical framing). The 26 dB there is the frond grade and the sway above the parapet. The carved-door band, the 520×650 room stage, the shelf, the board-shower print and the sign print all keep their framing (desktop-02 to -08 against the round-3 mockup sheet).
+- **My three round-3 suggestions, as built:**
+  1. **Darker top-right fronds:** done. The mean luma of the top-right 640×420 is 175 on the final (still and live alike) against 195 on the mockup. The fronds now read green-cream with darker gaps behind the nav, not near-white (desktop-00).
+  2. **Whole review cards:** done. One whole card sits inside the grid (desktop-07: Kenza's quote, "Kenza | Airbnb | Feb 2026", nothing clipped). The inspector's 1440 `edge-text` is gone.
+  3. **The deeper middle section on mint `#73C592` instead of bottle green:** I accept the house-rule reason. On the page it works. "Ashly, and the guests" is now the one saturated full-width band in the pale middle (desktop-07, mobile-08/09): ink Courgette and body on the balcony-table mint, with the white quote card on top. It is the colour of the hero table, so it ties the page together. It is a little flat as a colour field, but it gives the page the beat it lacked.
+- **img-010 dropped from Standard:** confirmed. Four photos, dots "1 of 4" (the stage still opens on Deluxe, desktop-03).
+- **New inspector items:** `edge-text` at 768 only ("13 m², with its own bathroom…" 14 px from the right edge), a tablet-width nit. The rest are as at 4f round 3 (`contrast` "Deluxe Double" is a false reading, white on the dark thumb), plus `still-page`, `eyebrow` and `empty-middle`, with the wide gutters in "Around the courtyard" and "Ashly" now 2249 px.
+
+## Three-second test
+
+- **1440 (desktop-00):** green palm fronds over the whole upper frame, darker at the top right than at 4f, with the Courgette name, "Bed and breakfast | Midigama, Sri Lanka" and the bottle-green "See live dates" centred, and the pothos on the mint table below. Calm, fresh, one action. The fronds sway on a real browser. I would scroll.
+- **390 (mobile-00):** the name, "Midigama, Sri Lanka" and the button over the fronds, then the table. The tagline starts at the foot of the screen, and the phone bar takes over after the hero.
+
+## Checklist
+
+- **Media:** the hero cinemagraph from the house's own balcony photo, then the carved-door band (img-051) as the second full screen, the four-poster rooms, the courtyard shelf of object close-ups, the board shower and the masks, the sign, and the palms closing. The strongest material is used, large, in a sensible order. No video exists.
+- **Composition and grid:** unchanged from the passing mockup. Pace changes at the carved-door band, the mint guests band and the dark closing.
+- **Typography:** Courgette + Plus Jakarta Sans, now self-hosted and identical on screen.
+- **Colour:** white, pale mint, the deeper balcony mint and bottle green. The booking colour is consistent from the hero to the footer.
+- **Hierarchy and rhythm:** one clear action on every screen. The tiles answer "who's coming". The phone bar is persistent.
+- **Polish:** clean at both widths. Whole cards. No overflow. The only nit is the 768 px edge text.
+- **Distinctiveness:** the carved door, the masks, the board shower and the mint of the house carry it. The hero subject (a potted plant on the balcony table) stays the gentlest part.
+- **Hero and motion:** centred, one CTA, and a visible, stable palm cinemagraph.
+
+**Score: 8 / 10.** A faithful port with no regression, and the three round-3 suggestions landed. It is at the level of the passing round-3 mockup, slightly better at the top right and in the middle, and near Global Surf `postcard` in finish. It is below gold on the strength of its hero subject (no footage, a plant rather than the place's most striking frame).
+**Better than the current presence?** **Yes:** first screen (desktop-00 / mobile-00 against 03-booking-com-fold, a road sign under a blue search bar, and 05-airbnb-1-fold, the courtyard in a carousel) and whole page.
+**Result: PASS.**
+
+**Notes for later (none blocking):**
+1. At 768 px, give the room text its full right gutter (`edge-text`, "13 m², with its own bathroom…").
+2. If the owner ever supplies a sharper or more striking balcony frame, the cinemagraph should move to it; the method holds.

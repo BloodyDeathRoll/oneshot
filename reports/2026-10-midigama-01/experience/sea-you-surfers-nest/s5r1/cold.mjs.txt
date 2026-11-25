@@ -1,0 +1,40 @@
+// experience-critic 0.2.0, 4f r1, sea-you-surfers-nest: serial cold phone load per variant (one browser at a time,
+// so the 4x CPU throttle is not shared with other runs). 390x844 @2x touch, 1.6 Mbps / 150 ms RTT / 4x CPU.
+// Default URLs (no ?palms): what a visitor gets. Frames at 0.5 / 1.5 / 3 / 6 s, LCP, load, bytes, hosts.
+import { chromium } from '/Users/alonlavi/.paradev/worktrees/oneshot/pull-latest-version-from-ff5cf4f5/node_modules/playwright/index.mjs';
+import fs from 'node:fs'; import http from 'node:http'; import path from 'node:path';
+const OUT = process.argv[2];
+const MOCK = '/Users/alonlavi/.paradev/worktrees/oneshot/pull-latest-version-from-ff5cf4f5/sites/sea-you-surfers-nest';
+const LOG = `${OUT}/cold.log`; fs.writeFileSync(LOG, '');
+const log = (...a) => { const s = a.map(x => typeof x === 'string' ? x : JSON.stringify(x)).join(' '); console.log(s); fs.appendFileSync(LOG, s + '\n'); };
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const T = { '.woff2': 'font/woff2', '.html': 'text/html; charset=utf-8', '.webp': 'image/webp', '.avif': 'image/avif', '.jpg': 'image/jpeg', '.png': 'image/png', '.svg': 'image/svg+xml' };
+const server = http.createServer((req, res) => { let p = decodeURIComponent(new URL(req.url, 'http://x').pathname); if (p.endsWith('/')) p += 'index.html'; const f = path.join(MOCK, p); if (!f.startsWith(MOCK) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.writeHead(404); return res.end(); } res.writeHead(200, { 'content-type': T[path.extname(f)] || 'application/octet-stream' }); fs.createReadStream(f).pipe(res); });
+await new Promise(r => server.listen(0, '127.0.0.1', r));
+const B = `http://127.0.0.1:${server.address().port}/`;
+const UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1';
+const browser = await chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
+let runN = 0;
+for (const v of ['final', 'interactive', 'final']) {
+  runN++;
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, userAgent: UA });
+  const page = await ctx.newPage();
+  const c = await ctx.newCDPSession(page); await c.send('Network.enable'); await c.send('Network.setCacheDisabled', { cacheDisabled: true });
+  await c.send('Network.emulateNetworkConditions', { offline: false, latency: 150, downloadThroughput: 1.6e6 / 8, uploadThroughput: 750e3 / 8 });
+  await c.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+  let bytes = 0; const hosts = new Set(); c.on('Network.loadingFinished', e => { bytes += e.encodedDataLength; }); c.on('Network.requestWillBeSent', e => hosts.add(new URL(e.request.url).host));
+  const t0 = Date.now(); page.goto(v === 'final' ? `${B}final/dist/` : `${B}mockups/${v}/dist/`).catch(() => {});
+  for (const t of [500, 1500, 3000, 6000]) {
+    await sleep(Math.max(0, t - (Date.now() - t0)));
+    const ts = Date.now() - t0;
+    await page.screenshot({ path: `${OUT}/${v}-cold${runN}-t${t}.png`, timeout: 8000, animations: 'allow', caret: 'initial' }).catch(e => log(v, 'shot fail', t, e.message.split('\n')[0]));
+    const st = await page.evaluate(() => ({ ready: document.readyState, h1: (h => h ? getComputedStyle(h).fontFamily.split(',')[0] : null)(document.querySelector('h1')), webfonts: [...document.fonts].filter(f => f.status === 'loaded' && !/Fallback/.test(f.family)).map(f => f.family), img: (i => i ? { src: (i.currentSrc || '').split('/').pop(), done: i.complete && i.naturalWidth > 0 } : null)(document.querySelector('.hero img, .hero-media img, #piece img, main img')), cta: !!document.querySelector('a[href*="booking.com"]') })).catch(e => ({ err: e.message.split('\n')[0] }));
+    log(v, `t=${t} (shot at ${ts} ms)`, st);
+  }
+  await page.waitForLoadState('load', { timeout: 120000 }).catch(() => {});
+  const loadMs = Date.now() - t0;
+  const lcp = await page.evaluate(() => new Promise(r => { new PerformanceObserver(l => { const e = l.getEntries().pop(); r([Math.round(e.startTime), (e.url || '').split('/').pop(), e.element && e.element.tagName]); }).observe({ type: 'largest-contentful-paint', buffered: true }); setTimeout(() => r('none'), 2000); }));
+  log(v, 'run', runN, 'load event ms', loadMs, 'LCP', lcp, 'transfer KB to load', Math.round(bytes / 1024), 'hosts', [...hosts]);
+  await ctx.close();
+}
+await browser.close(); server.close();
