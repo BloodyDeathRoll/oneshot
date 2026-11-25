@@ -1,0 +1,47 @@
+{
+ "_about": "SCHEMA GAP content: what the picked design shows and schemas/site-content.md v0.11 has no field for. Written by scripts/seed-from-dossier.mjs from copy/en.json and dossier.json; listed in notes.md \"schema gaps\". Edit there, not here.",
+ "typeLine": {
+  "value": "Bed and breakfast",
+  "_source": "the hero line \"Bed and breakfast | Midigama, Sri Lanka\" (4f r1, critic d4: type + place on the first screen). businessType is an enum (beach_lodging) with no display wording; this is Google's category (dossier business.google_category, \"Bed & breakfast\")"
+ },
+ "houseCount": {
+  "rooms": 7,
+  "sleeps": 14,
+  "allDoubles": true,
+  "_source": "the glance line \"7 rooms, all doubles | sleeps 14\". rooms[] holds the two room types Booking.com sells, not the house's count; the copy says it in words (\"All seven rooms are doubles, and between them they sleep fourteen.\", Seven rooms ¶1); dossier room_types[3] (Airbnb, 7 bedrooms, 1 double bed each, sleeps 14)"
+ },
+ "host": {
+  "firstName": "Ashly",
+  "_source": "the \"A question first\" answer's button, \"Ask Ashly on Airbnb\". The schema has no host / owner name for a lodging site (team[] is a brand module); the name is the copy's (\"Your host is Ashly.\", copyBlocks about \"Ashly\") and dossier business.owner"
+ },
+ "bookingRoles": {
+  "couple": [
+   0,
+   1
+  ],
+  "group": [
+   2
+  ],
+  "question": 1,
+  "_source": "\"Who's coming?\": which bookingLinks[] row answers which tile (Two of you → the Booking.com listing and the Airbnb room listing; A group → the whole house on Airbnb; A question first → Airbnb's messaging on the room listing, dossier contact.airbnb_messaging). bookingLinks[] rows have no audience field"
+ },
+ "everyRoom": [
+  {
+   "icon": "bed",
+   "text": "Mint-green four-poster double"
+  },
+  {
+   "icon": "throw",
+   "text": "Teal velvet throw"
+  },
+  {
+   "icon": "ladder",
+   "text": "Timber towel ladder"
+  },
+  {
+   "icon": "cabinet",
+   "text": "Green cabinet with a mirror"
+  }
+ ],
+ "_everyRoom": "the \"In every room\" icon list (concepts.md §3): the objects the copy names in \"Seven rooms\" ¶2, shortened; the fifth item is amenities \"Fan and mosquito net\", read from content.json. The schema has no per-room feature list"
+}

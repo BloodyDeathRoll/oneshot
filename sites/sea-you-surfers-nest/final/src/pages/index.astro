@@ -1,0 +1,294 @@
+---
+/* Home: a port of mockups/interactive/dist/index.html ("In the palms", round 3), picked by Alon at gate b ("i like the
+   interactive one", ledger e73a5a9). Markup, class names, CSS and JS are the mockup's (mockups/interactive/src/build.py,
+   page.css, page.js), bound to the content schema: every word, photo, link and number comes from
+   src/tenant/content.json, the SCHEMA GAP file (src/gaps/gaps.json) or the template's labels (src/lib/labels.json).
+   Section order is the mockup's: the palms → at a glance with "Who's coming?" → the carved-door band → seven rooms →
+   around the courtyard → carved doors and a surfboard shower → breakfast → Ashly and the guests → finding the house →
+   the closing band → footer. 4g changes are commented. */
+import css from '../styles/site.css?raw'
+import js from '../scripts/site.js?raw'
+import palmsJs from '../scripts/palms.js?raw'
+import {
+  c, G, L, S, e, t, paras, block, svg, pipe, SEP, monYear, PLATFORM, hostName,
+  NAME, LINKS, PRIMARY, TEL, MAP, ADDRESS, TOWN, PLACE, ROOMS, shortRoom, CHECKOUT, STAY_NOTE, amenity,
+  RATINGS, REVIEWS, slot, srcset, img, IS_PREVIEW,
+} from '../lib/site.mjs'
+
+const P = (body) => paras(body).map((p) => `<p>${e(p)}</p>`).join('')
+const court = block('intro', 0), offer = block('offer', 0), ashly = block('about', 0), breakfast = block('about', 1),
+  carved = block('about', 2), find = block('info', 0)
+const OFFER = paras(offer?.body)
+const [SLEEPS_LINE] = OFFER.length ? [OFFER[0].split('. ')[0] + '.'] : ['']
+const ASHLY_REPLY = paras(ashly?.body)[0] ?? ''
+
+/* ---------- buttons: real links, work with JS off ---------- */
+const btn = (link, label, kind = 'book', icon = 'out', short = null, cls = '') => link
+  ? `<a class="btn btn-${kind} ${cls}" href="${e(link.url)}" rel="noopener"${short ? ` aria-label="${e(label)}"` : ''}><span>${e(short ?? label)}</span>${svg(icon, 'ico ico-end')}</a>`
+  : ''
+const book = (cls = '', short = null) => btn(PRIMARY, PRIMARY?.label, 'book', 'out', short, cls)
+const host = G.host?.firstName ?? ''
+const call = (cls = '') => (TEL && host ? `<a class="btn btn-soft ${cls}" href="${TEL}">${svg('phone')}<span>${e(t(L.call, { name: host }))}</span></a>` : '')
+const role = (k) => [].concat(G.bookingRoles?.[k] ?? []).map((i) => LINKS[i]).filter(Boolean)
+const [twoA, twoB] = role('couple'), [groupA] = role('group'), [askL] = role('question')
+
+/* ---------- the "Who's coming?" panel: one instance (4f r1); every answer is plain links ---------- */
+const who = (p) => {
+  const r0 = ROOMS[0], r1 = ROOMS[1]
+  const two = `<div class="ans is-on" id="${p}-two" data-ans="two"><p class="ans-h">${e(L.who_two)}</p>`
+    + `<div class="ans-btns">${btn(twoA, twoA?.label)}${btn(twoB, twoB?.label, 'soft')}</div>`
+    + (r0 && r1 ? `<p class="ans-note">${pipe([e(r0.label), e(r1.label), r0.beds === r1.beds ? e(t(L.beds_each, { beds: r0.beds })) : ''])}</p>` : '') + '</div>'
+  const group = groupA ? `<div class="ans" id="${p}-group" data-ans="group"><p class="ans-h">${e(L.who_group)}</p>`
+    + `<div class="ans-btns">${btn(groupA, groupA.label)}</div>`
+    + (SLEEPS_LINE ? `<p class="ans-note">${e(SLEEPS_LINE)}</p>` : '') + '</div>' : ''
+  const ask = askL ? `<div class="ans" id="${p}-ask" data-ans="ask"><p class="ans-h">${e(L.who_ask)}</p>`
+    + `<div class="ans-btns">${TEL ? call() : btn(askL, t(L.ask, { name: host, host: hostName(askL.url) }), 'book', 'ask')}</div>`
+    + (ASHLY_REPLY ? `<p class="ans-note">${e(ASHLY_REPLY)}</p>` : '') + '</div>' : ''
+  const tile = (key, icon, label, on = false) =>
+    `<button class="tile" type="button" data-for="${key}" aria-controls="${p}-${key}" aria-pressed="${on}">`
+    + `${svg(icon)}<span>${e(label)}</span>`
+    + `<svg class="ring" aria-hidden="true"><rect x="1" y="1" rx="17" ry="17" pathLength="1"/></svg></button>`
+  return `<div class="who" data-who>`
+    + `<div class="who-q"><h3 class="hand" id="who-h">${e(L.who)}</h3>`
+    + `<div class="tiles" role="group" aria-label="${e(L.who)}">`
+    + tile('two', 'two', L.who_two, true) + (group ? tile('group', 'group', L.who_group) : '') + (ask ? tile('ask', 'ask', L.who_ask) : '') + '</div></div>'
+    + `<div class="answers" aria-live="polite">${two}${group}${ask}</div></div>`
+}
+
+/* ---------- first screen ---------- */
+const heroW = slot(S.hero, 0), heroT = slot(S.hero, 1)
+const typeLine = G.typeLine?.value ?? ''
+const masks = heroW?.mask && heroT?.mask ? ` data-mask-wide="${heroW.mask}" data-mask-tall="${heroT.mask}"` : ''
+const hero = `
+<header class="top" data-top>
+  <a class="mark hand" href="#top">${e(NAME)}</a>
+  <nav class="nav" aria-label="${e(L.nav_aria)}"><a href="#rooms">${e(L.nav.rooms)}</a><a href="#house">${e(L.nav.house)}</a><a href="#guests">${e(L.nav.guests)}</a><a href="#find">${e(L.nav.find)}</a></nav>
+  ${book('btn-sm', L.cta_short)}
+</header>
+<main id="top">
+<section class="hero" aria-label="${e(NAME)}">
+  <div class="hero-media">
+    ${heroW ? `<picture>
+      ${heroT ? `<source media="(max-width: 767px)" srcset="${srcset(heroT)}" sizes="100vw">` : ''}
+      <img class="hero-img" src="${heroW.top.webp}" srcset="${srcset(heroW)}" sizes="100vw"
+        width="${heroW.top.w}" height="${heroW.top.h}" alt="${e(heroW.alt)}" fetchpriority="high" draggable="false"${masks}>
+    </picture>
+    <canvas class="palms" aria-hidden="true"></canvas>` : ''}
+  </div>
+  <div class="hero-text">
+    <h1 class="hand">${e(NAME)}</h1>
+    <p class="where">${typeLine ? `<span class="type">${e(typeLine)} ${SEP} </span>` : ''}<span>${e(PLACE)}</span></p>
+    ${book('btn-hero', L.cta_short)}
+  </div>
+</section>`
+
+/* ---------- at a glance ---------- */
+const spot = c.spot ?? ''
+const cut = spot.indexOf(',” ')
+const [spotQ, spotBy] = cut > 0 ? [spot.slice(0, cut + 2), spot.slice(cut + 3)] : [spot, '']
+const wifi = amenity('Free WiFi'), kitchen = amenity('Kitchen'), fan = amenity('Fan and mosquito net')
+const hc = G.houseCount
+const incl = pipe([
+  hc ? e(t(L.rooms_all, { n: hc.rooms })) : '', hc ? e(t(L.sleeps_all, { n: hc.sleeps })) : '',
+  wifi ? e(wifi.label + (wifi.note ? ' ' + wifi.note : '')) : '', kitchen ? e(kitchen.label) : '', fan ? e(fan.label) : '',
+  PRIMARY ? e(t(L.glance_live, { host: hostName(PRIMARY.url) })) : '',
+])
+const rates = RATINGS.length ? `<ul class="rates" aria-label="${e(L.ratings_aria)}">` + RATINGS.map((r) =>
+  `<li><a href="${e(r.url)}" rel="noopener"><b>${e(r.shown)}</b><span>${e(r.name)}</span><small>${e(t(L.reviews_n, { n: r.count }))} ${SEP} ${e(r.day)}</small></a></li>`).join('') + '</ul>' : ''
+const courtW = slot(S.court, 0), courtT = slot(S.court, 1)
+const glance = `
+<section class="glance" id="glance" aria-labelledby="glance-h">
+  <div class="wrap glance-grid">
+    <div class="glance-main">
+      <h2 class="tag" id="glance-h">${e(c.tagline)}</h2>
+      ${spot ? `<p class="spot">${e(spotQ)} <span>${e(spotBy)}</span></p>` : ''}
+      <p class="incl">${incl}</p>
+      <div class="where-row">${ADDRESS ? `<p class="addr">${svg('pin')}<span>${e(ADDRESS)}</span></p>` : ''}${MAP ? btn({ url: MAP }, L.map_open, 'soft', 'out') : ''}</div>
+    </div>
+    ${rates}
+  </div>
+  <div class="wrap">${who('w1')}</div>
+</section>
+${courtW ? `<div class="court">
+  <picture>
+    ${courtT ? `<source media="(max-width: 767px)" srcset="${srcset(courtT)}" sizes="100vw">` : ''}
+    <img src="${courtW.top.webp}" srcset="${srcset(courtW)}" sizes="100vw" width="${courtW.top.w}" height="${courtW.top.h}"
+      alt="${e(courtW.alt)}" loading="lazy" decoding="async" draggable="false">
+  </picture>
+</div>` : ''}`
+
+/* ---------- seven rooms ---------- */
+const show = (sid, slots, label) => {
+  const ss = slots.filter((n) => slot(n))
+  if (!ss.length) return ''
+  const slides = ss.map((n, i) => `<li class="slide${i === 0 ? ' is-on' : ''}" aria-roledescription="slide" aria-label="${e(t(L.slide, { i: i + 1, n: ss.length }))}">`
+    + `${img(n, { sizes: '(max-width: 767px) 92vw, 520px' })}</li>`).join('')
+  const dots = ss.map((_, i) => `<button type="button" class="dot" aria-label="${e(t(L.photo_n, { n: i + 1 }))}"${i === 0 ? ' aria-current="true"' : ''}></button>`).join('')
+  return `<div class="show" data-show id="${sid}" role="region" aria-roledescription="carousel" aria-label="${e(label)}">`
+    + `<ul class="track" tabindex="0">${slides}</ul>`
+    + `<div class="ctrl"><button class="arw prev" type="button" aria-label="${e(L.photo_prev)}">${svg('prev')}</button>`
+    + `<div class="dots">${dots}</div>`
+    + `<button class="arw next" type="button" aria-label="${e(L.photo_next)}">${svg('next')}</button></div></div>`
+}
+const key = (r, i) => (['deluxe', 'standard'][i] ?? `room-${i}`)
+const room = (r, i) => `<article class="room${i === 0 ? ' is-on' : ''}" id="room-${key(r, i)}" role="tabpanel" aria-labelledby="tab-${key(r, i)}">`
+  + show(`show-${key(r, i)}`, S.rooms[i] ?? [], t(L.photos_of, { label: r.label }))
+  + `<div class="room-txt"><h3 class="room-h">${e(r.label)}</h3><p class="room-note">${pipe([e(r.beds), r.sleeps ? e(t(L.sleeps, { n: r.sleeps })) : '', e(r.note)])}</p>`
+  + `${book()}</div></article>`
+const every = [...(G.everyRoom ?? []), ...(fan ? [{ icon: 'fan', text: fan.label }] : [])]
+const rooms = `
+<section class="rooms" id="rooms" aria-labelledby="rooms-h">
+  <div class="wrap rooms-grid">
+    <div class="rooms-intro">
+      <h2 class="hand" id="rooms-h">${e(offer?.heading ?? '')}</h2>
+      ${ROOMS.length > 1 ? `<div class="pill" role="tablist" aria-label="${e(L.room_type)}">
+        <span class="pill-thumb" aria-hidden="true"></span>
+        ${ROOMS.map((r, i) => `<button role="tab" id="tab-${key(r, i)}" aria-controls="room-${key(r, i)}" aria-selected="${i === 0}" type="button"${i ? ' tabindex="-1"' : ''}>${e(shortRoom(r.label))}</button>`).join('\n        ')}
+      </div>` : ''}
+      <div class="rooms-copy">${P(offer?.body)}</div>
+    </div>
+    <div class="stage">
+      ${ROOMS.map(room).join('\n      ')}
+    </div>
+  </div>
+  ${every.length ? `<div class="wrap every">
+    <h3>${e(L.every_room)}</h3>
+    <ul>${every.map((x) => `<li>${svg(x.icon)}<span>${e(x.text)}</span></li>`).join('')}</ul>
+  </div>` : ''}
+</section>`
+
+/* ---------- around the courtyard ---------- */
+const shelfSlots = S.shelf.filter((n) => slot(n))
+const house = `
+<section class="house" id="house" aria-labelledby="house-h">
+  <div class="wrap house-head">
+    <h2 class="hand" id="house-h">${e(court?.heading ?? '')}</h2>
+    <div>${P(court?.body)}</div>
+  </div>
+  ${shelfSlots.length ? `<div class="wrap shelf" data-shelf>
+    <ul class="shelf-track" tabindex="0" aria-label="${e(t(L.shelf_aria, { n: shelfSlots.length }))}">
+      ${shelfSlots.map((n) => `<li class="card">${img(n, { sizes: '320px' })}</li>`).join('')}
+    </ul>
+    <div class="shelf-ctrl">
+      <button class="arw prev" type="button" aria-label="${e(L.shelf_prev)}">${svg('prev')}</button>
+      <button class="arw next" type="button" aria-label="${e(L.shelf_next)}">${svg('next')}</button>
+    </div>
+  </div>` : ''}
+</section>`
+
+/* ---------- carved doors and a surfboard shower ---------- */
+const character = `
+<section class="character" id="character" aria-labelledby="char-h">
+  <div class="wrap char-grid">
+    ${slot(S.shower) ? `<figure class="print print-shower">${img(S.shower, { sizes: '(max-width: 767px) 88vw, 520px' })}</figure>` : ''}
+    <div class="char-txt">
+      <h2 class="hand" id="char-h">${e(carved?.heading ?? '')}</h2>
+      ${P(carved?.body)}
+      ${slot(S.masks) ? `<figure class="print print-masks">${img(S.masks, { sizes: '300px' })}</figure>` : ''}
+    </div>
+  </div>
+</section>`
+
+const bfast = breakfast ? `
+<section class="breakfast" aria-labelledby="bf-h">
+  <div class="wrap narrow center">
+    <h2 class="hand" id="bf-h">${e(breakfast.heading ?? '')}</h2>
+    <p class="big">${e(breakfast.body)}</p>
+  </div>
+</section>` : ''
+
+/* ---------- Ashly, and the guests ---------- */
+const quote = (q, i) => {
+  const text = q.quote.split('\n').map(e).join('<br>')
+  return `<li class="q${i === 0 ? ' is-on' : ''}"><blockquote><p>${text}</p></blockquote><p class="q-by">${pipe([e(q.author), e(PLATFORM[q.source] ?? ''), e(monYear(q.date))])}</p></li>`
+}
+const guests = `
+<section class="guests" id="guests" aria-labelledby="ashly-h">
+  <div class="wrap guests-grid">
+    <div class="ashly">
+      <h2 class="hand" id="ashly-h">${e(ashly?.heading ?? '')}</h2>
+      ${P(ashly?.body)}
+    </div>
+    ${REVIEWS.length ? `<div class="said">
+      <div class="qrow" data-qrow>
+        <ul class="qtrack" tabindex="0" aria-label="${e(L.reviews_aria)}">${REVIEWS.map(quote).join('')}</ul>
+        <div class="dots qdots">${REVIEWS.map((_, i) => `<button type="button" class="dot" aria-label="${e(t(L.review_n, { n: i + 1 }))}"${i === 0 ? ' aria-current="true"' : ''}></button>`).join('')}</div>
+      </div>
+    </div>` : ''}
+  </div>
+</section>`
+
+/* ---------- finding the house ---------- */
+const findSec = `
+<section class="find" id="find" aria-labelledby="find-h">
+  <div class="wrap find-grid">
+    ${slot(S.sign) ? `<figure class="print print-sign">${img(S.sign, { sizes: '(max-width: 767px) 80vw, 420px' })}</figure>` : ''}
+    <div class="find-txt">
+      <h2 class="hand" id="find-h">${e(find?.heading ?? '')}</h2>
+      ${P(find?.body)}
+      ${ADDRESS ? `<p class="addr">${svg('pin')}<span>${e(ADDRESS)}</span></p>` : ''}
+      <div class="find-btns">${MAP ? btn({ url: MAP }, L.map_open, 'soft', 'out') : ''}${call()}</div>
+      <p class="stay">${pipe([e(CHECKOUT), e(STAY_NOTE)])}</p>
+    </div>
+  </div>
+</section>`
+
+/* ---------- closing: the palms band, the closing line, the three ways in (Booking.com solid) ---------- */
+const band = slot(S.hero, 2)
+const closing = `
+<section class="closing" id="book" aria-labelledby="close-h">
+  <div class="band">
+    ${band ? `<picture><img src="${band.top.webp}" srcset="${srcset(band)}" sizes="100vw"
+      width="${band.top.w}" height="${band.top.h}" alt="${e(band.alt)}" loading="lazy" decoding="async" draggable="false"></picture>` : ''}
+    <div class="band-txt">
+      ${c.closing ? `<p id="close-h">${e(c.closing)}</p>` : ''}
+      <div class="band-btns">${btn(twoA, twoA?.label, 'solid-light')}${btn(groupA, groupA?.label, 'ghost')}${btn(twoB, twoB?.label, 'ghost')}</div>
+    </div>
+  </div>
+</section>
+</main>`
+
+const foot = `
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div><p class="mark hand">${e(NAME)}</p><p class="foot-addr">${e(ADDRESS)}</p></div>
+    <div class="foot-btns">
+      ${btn(twoA, twoA ? hostName(twoA.url) : '', 'soft', 'out')}${btn(twoB, L.foot_room, 'soft', 'out')}${btn(groupA, L.foot_house, 'soft', 'out')}
+      ${MAP ? btn({ url: MAP }, L.map_short, 'soft', 'pin') : ''}${call()}
+    </div>
+  </div>
+  <div class="wrap foot-small"><p>© 2026 ${e(NAME)}</p></div>
+</footer>
+<div class="bar" data-bar>
+  <span class="bar-name"><b class="hand">${e(NAME)}</b><small>${e(PLACE)}</small></span>
+  ${book('btn-bar', L.cta_short)}
+</div>`
+
+const body = [hero, glance, rooms, house, character, bfast, guests, findSec, closing, foot].join('\n')
+/* the other finals' rule (4h), "<businessName>, <town>" */
+const title = TOWN ? `${NAME}, ${TOWN}` : NAME
+const description = [c.tagline, c.closing].filter(Boolean).join(' ')
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title}</title>
+{IS_PREVIEW && <meta name="robots" content="noindex, nofollow">}
+<meta name="description" content={description}>
+<meta name="theme-color" content="#ffffff">
+<script is:inline>document.documentElement.className='js'</script>
+{/* 4g: the hero photo first. Preloading the two fonts as well pushed the hero to 1.6 s on the throttled phone
+   (measured: 1644 ms with font preloads, 992 ms without); the fonts swap in over metric-matched fallbacks. */}
+{heroW && <link rel="preload" as="image" fetchpriority="high" href={heroW.top.webp} imagesrcset={srcset(heroW)} imagesizes="100vw" media="(min-width: 768px)">}
+{heroT && <link rel="preload" as="image" fetchpriority="high" href={heroT.top.webp} media="(max-width: 767px)">}
+<style is:inline set:html={css}></style>
+</head>
+<body>
+<a class="skip" href="#rooms">{L.skip}</a>
+<Fragment set:html={body} />
+<script is:inline set:html={js}></script>
+<script is:inline set:html={palmsJs}></script>
+</body>
+</html>
